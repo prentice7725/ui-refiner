@@ -1,0 +1,27 @@
+/* scroll-reveal — ScrollReveal의 data-revealed와 한 쌍인 CSS.
+ * 커스터마이즈: --reveal-duration, --reveal-distance, --reveal-delay(연쇄 공개)를 덮어쓴다. */
+
+.reveal {
+  /* 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+   * 600ms: 상호작용 UI(300ms 예산)가 아니라 스크롤 콘텐츠 연출이라 길게 허용 */
+  --_reveal-duration: var(--reveal-duration, 600ms);
+  --_reveal-delay: var(--reveal-delay, 0ms);
+  transition:
+    opacity var(--_reveal-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--_reveal-delay),
+    transform var(--_reveal-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--_reveal-delay);
+}
+
+.reveal[data-revealed='false'] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance, 24px));
+}
+
+/* 모션 민감 사용자: 이동만 제거하고 페이드는 유지한다(0이 아니라 완화) */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity var(--_reveal-duration) linear var(--_reveal-delay);
+  }
+  .reveal[data-revealed='false'] {
+    transform: none;
+  }
+}
