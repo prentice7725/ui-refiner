@@ -3,9 +3,37 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
   for (const rule of [...policy.typeRules, ...policy.controlSizeRules, ...policy.exceptions]) document.querySelector(rule.selector);
   for (const container of policy.controlContainers) document.querySelector(container);
   const findings = [];
+  // Prefer unique application-owned anchors; never use sibling positions as identity.
+  const anchor = element => {
+    for (const attr of ['data-ui-id', 'data-testid', 'data-qa', 'id']) {
+      const value = element.getAttribute(attr);
+      if (!value) continue;
+      const query = `[${attr}="${CSS.escape(value)}"]`;
+      if (document.querySelectorAll(query).length === 1) return query;
+    }
+    return null;
+  };
+  const identity = element => {
+    const direct = anchor(element);
+    if (direct) return { key: direct, stable: true };
+    // Semantic fallback is usable only when unique within a stable ancestor.
+    let parent = element.parentElement;
+    while (parent && !anchor(parent)) parent = parent.parentElement;
+    const scope = parent || document.body;
+    const signature = el => JSON.stringify([el.tagName.toLowerCase(),
+      ...['role', 'name', 'type', 'aria-label', 'href'].map(a => el.getAttribute(a)),
+      [...el.childNodes].filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent.trim()).join(' ')]);
+    const key = signature(element);
+    const unique = [...scope.querySelectorAll(element.tagName.toLowerCase())].filter(el => signature(el) === key).length === 1;
+    return { key: `${parent ? anchor(parent) : 'body'} / ${key}`, stable: unique };
+  };
   const selector = element => {
+    const direct = anchor(element);
+    if (direct) return direct;
     const parts = [];
     for (let node = element; node; node = node.parentElement) {
+      const stable = anchor(node);
+      if (stable) { parts.unshift(stable); break; }
       const tag = node.tagName.toLowerCase();
       if (node === document.documentElement) { parts.unshift(tag); break; }
       const siblings = [...node.parentElement.children].filter(s => s.tagName === node.tagName);
@@ -16,7 +44,7 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
   const add = (rule, element, actual, expected, fix, related, details = {}) => {
     const exception = policy.exceptions.find(e => e.rules.includes(rule) && element.matches(e.selector));
     if (exception) { suppressed.push({ rule, selector: selector(element), reason: exception.reason }); return; }
-    findings.push(format(rule, selector(element), actual, expected, fix, { ...(related ? { relatedSelector: selector(related) } : {}), ...details }));
+    findings.push(format(rule, selector(element), actual, expected, fix, { identity: identity(element), ...(related ? { relatedSelector: selector(related), relatedIdentity: identity(related) } : {}), ...details }));
   };
   const suppressed = [];
   const { textRects, visible, hasVisibleContent, generatedTextStyles } = visibility;
@@ -30,7 +58,7 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
     const size = parseFloat(style.fontSize);
     const sizes = policy.typeRules.find(rule => el.closest(rule.selector))?.sizes ?? policy.fontSizes;
     if (!sizes.some(allowed => Math.abs(size - allowed) < 0.1))
-      add('font-size', el, `${size}px`, `one of ${sizes.join(', ')}px`, 'Use a configured size for this text role.', undefined, { selector: `${selector(el)}${pseudo}` });
+      add('font-size', el, `${size}px`, `one of ${sizes.join(', ')}px`, 'Use a configured size for this text role.', undefined, { selector: `${selector(el)}${pseudo}`, pseudo });
   };
   let numericElements = 0;
   for (const el of elements) {
@@ -89,8 +117,10 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
     list.push(el); groups.set(parent, list);
   }
   // Use the same geometry for control groups and component stacks.
+  const gapPairs = { 'layout-gap': 0, 'control-gap': 0 };
   const checkGap = (group, rule, minimum) => {
     for (let i = 0; i < group.length; i++) for (let j = i + 1; j < group.length; j++) {
+      gapPairs[rule]++;
       const a = group[i].getBoundingClientRect(), b = group[j].getBoundingClientRect();
       const xOverlap = Math.min(a.right, b.right) - Math.max(a.left, b.left);
       const yOverlap = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
@@ -375,5 +405,5 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
     }
   } finally { contrast.teardown(); }
   const accessibilityCoverage = await accessibility({ elements, controls, visible, hasVisibleContent, add, engine: contrast });
-  return { findings, suppressed, accessibilityCoverage, elements: elements.length, controls: controls.length, insetControls, numericElements, alignmentGroups, radiusContracts: elements.filter(el => el.matches('[data-ui-radius]')).length };
+  return { findings, suppressed, accessibilityCoverage, ruleCoverage: { 'layout-gap': gapPairs['layout-gap'], 'control-gap': gapPairs['control-gap'], 'layout-alignment': alignmentGroups, 'control-inset': insetControls, 'nested-radius': elements.filter(el => el.matches('[data-ui-radius]')).length }, elements: elements.length, controls: controls.length, insetControls, numericElements, alignmentGroups, radiusContracts: elements.filter(el => el.matches('[data-ui-radius]')).length };
 }

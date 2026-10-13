@@ -10,6 +10,10 @@
     "owner": "gholtzap",
     "repo": "lintapple",
     "sha": "90ddc736af6f2712903d53dd9a463445e109f586",
-    "scope": "complete browser runtime src/ and CLI"
+    "scope": "complete browser runtime src/ and CLI",
+    "localPatches": [
+      "Disable automatic Chromium installation; explicit launch probe.",
+      "Stable DOM finding identities and per-state layout contract target counts."
+    ]
   }
 }
