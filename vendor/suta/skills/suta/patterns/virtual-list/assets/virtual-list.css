@@ -1,0 +1,36 @@
+/* virtual-list — 보이는 구간만 그리는 목록.
+ * 커스터마이즈: --virtual-height (스크롤 상자 높이).
+ *
+ * 구조가 세 겹인 데는 이유가 있다:
+ *   .virtual-viewport  스크롤되는 상자
+ *   .virtual-sizer     전체 높이만큼 자리를 차지하는 빈 상자 — 스크롤바가 진짜 길이를 갖게 한다
+ *   .virtual-window    실제로 그린 항목 묶음 — transform으로 제자리에 밀어 놓는다
+ * 묶음을 top이 아니라 transform으로 미는 것은 스크롤마다 레이아웃을 다시 계산하지 않기 위해서다. */
+
+.virtual-viewport {
+  height: var(--virtual-height, 400px);
+  overflow-y: auto;
+  /* 스크롤이 목록 안에서 끝나고 페이지로 넘어가지 않게 한다 */
+  overscroll-behavior: contain;
+}
+
+.virtual-sizer {
+  position: relative;
+  width: 100%;
+}
+
+.virtual-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* 묶음 전체를 한 번에 민다 — 항목마다 위치를 주면 노드 수만큼 스타일 계산이 늘어난다 */
+  will-change: transform;
+}
+
+/* 항목 높이는 계산의 전제다 — 내용이 넘쳐 높이가 달라지면 아래 항목들의 위치가 어긋난다 */
+.virtual-item {
+  height: var(--virtual-item-height);
+  box-sizing: border-box;
+  overflow: hidden;
+}
