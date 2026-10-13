@@ -121,6 +121,8 @@ Multi-route fingerprints include route name and canonical configured URL; legacy
 
 Rendered metrics describe visible viewport content: top-pinned fixed/sticky regions (nested regions counted once), filled buttons, repeated button/link names and destinations, and approximate 15-degree chromatic hue buckets from computed text/background/border colors. Inspection is capped at 10000 DOM elements with limited coverage disclosed. Repeated actions or multiple filled buttons may be intentional. Observations are **advisory only**, cannot block or be baselined, and never weaken accessibility checks. Hue buckets are evidence, not an enforced color limit; gradients, images and full perceptual color analysis are outside scope.
 
+Metric action names are DOM label/text approximations, not a full accessible-name algorithm; ARIA YAML provides the semantic evidence. Visibility uses browser `checkVisibility` and viewport bounds, not occlusion modeling. Target samples are capped at 10 per observation and duplicate-action groups at 20; total counts and limits remain recorded.
+
 ## 5. Reports and repair handoff
 
 Outputs appear under `reportDir`:

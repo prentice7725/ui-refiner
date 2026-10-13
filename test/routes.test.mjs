@@ -81,6 +81,7 @@ test('reviewed value exceptions preserve evidence, require exact values/scopes/r
  assert.ok(allowed.groups[0].reviewedException);assert.ok(!groupedHandoff(allowed.findings).includes('Use approved font'));
  assert.equal(await baselineFromReport(path.join(root,config.reportDir,'report.json'),path.join(root,'values-baseline.json')),0,'A value-specific waiver must never broaden into a value-independent baseline');
  const md=await fs.readFile(path.join(root,config.reportDir,'report.md'),'utf8');assert.match(md,/reviewed value exception/);assert.match(md,/Approved wordmark/);
+ const incomplete=await runGate({...options,browserRunner:async()=>{throw Error('Route settings failed');}});assert.equal(incomplete.automatedStatus,'ERROR');await assert.rejects(()=>baselineFromReport(path.join(root,config.reportDir,'report.json'),path.join(root,'incomplete-baseline.json')),/must complete/);
  for(const change of [{actual:'Other Sans'},{route:'settings'},{selector:'#other'}]){const report=await runGate({...options,browserRunner:async()=>({findings:normalizeBrowser({runs:[{}],findings:[{...f,...change}]})})});assert.equal(report.automatedStatus,'FAIL');}
  for(const bad of [{...exception,reason:''},{...exception,rule:'text-contrast'},{...exception,actual:{}},{...exception,typo:true}]){await write([bad]);await assert.rejects(()=>loadValueExceptions(config,root));}
 }));

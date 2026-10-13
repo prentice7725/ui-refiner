@@ -88,6 +88,7 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
 export function exitCode(report){return ['ERROR','INCOMPLETE'].includes(report.automatedStatus)?2:report.automatedStatus==='FAIL'?1:report.automatedStatus==='SCOPED_PASS'?3:0;}
 export async function baselineFromReport(reportFile,outFile){
  const raw=JSON.parse(await fs.readFile(reportFile,'utf8'));
+ if(['ERROR','INCOMPLETE'].includes(raw.automatedStatus))throw Error('Invalid report for baseline: required routes/checkers must complete a full run');
  if(raw.fingerprintVersion!==2||raw.scope?.mode==='changed-only'||!Array.isArray(raw.findings)||raw.findings.some(f=>typeof f.id!=='string'||f.fingerprintVersion!==2))throw Error('Invalid report for baseline: use a full fingerprint v2 report');
  const eligible=f=>f.baselineEligible===true&&!f.advisory&&!f.reviewedException;
  const ids=[...new Set(raw.findings.filter(eligible).map(f=>f.id))].sort();
