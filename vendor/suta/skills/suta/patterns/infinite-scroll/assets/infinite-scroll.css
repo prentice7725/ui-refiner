@@ -1,0 +1,63 @@
+/* infinite-scroll — 목록 끝의 감시 요소와 로딩·끝·실패 표시.
+ * 커스터마이즈: --infinite-scroll-gap, --infinite-scroll-dim.
+ * 목록 자체의 레이아웃은 프로젝트 것을 쓴다 — 여기 있는 것은 "끝부분" 뿐이다. */
+
+/* 감시 요소는 보이지 않지만 높이가 0이면 관찰이 불안정해진다(0px 요소는 교차 판정이 뜬다 말다 한다) */
+.infinite-sentinel {
+  height: 1px;
+  margin: 0;
+}
+
+.infinite-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--infinite-scroll-gap, 1.25rem) 0;
+  color: var(--infinite-scroll-dim, #6b7280);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.infinite-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: infinite-spin 700ms linear infinite;
+}
+
+/* 새로 붙은 항목은 살짝 떠오르며 들어온다 — 어디까지가 새로 온 것인지 눈에 남는다.
+ * 한 페이지가 통째로 같은 순간에 뜨면 "화면이 한 번 바뀐 것"으로 보인다 —
+ * 항목마다 --infinite-item-order(그 페이지 안에서의 순번)를 주면 40ms씩 차례로 들어온다.
+ * 순번을 주지 않으면 0이 되어 다 같이 뜬다(동작은 한다). */
+.infinite-item-new {
+  animation: infinite-item-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--infinite-item-order, 0) * 40ms);
+}
+
+@keyframes infinite-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes infinite-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* 모션 민감 사용자: 새 항목 등장은 없애고 스피너 회전만 남긴다(진행 중이라는 유일한 신호) */
+@media (prefers-reduced-motion: reduce) {
+  .infinite-item-new {
+    animation: none;
+  }
+
+  .infinite-spinner {
+    animation-duration: 1400ms;
+  }
+}

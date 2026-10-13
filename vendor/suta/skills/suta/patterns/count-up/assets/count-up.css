@@ -1,0 +1,19 @@
+/* count-up — 숫자가 변해도 폭이 흔들리지 않게 고정폭 숫자를 쓴다.
+ * 카운트 중 자릿수마다 폭이 달라지면 주변 레이아웃이 매 프레임 떨린다. */
+
+.count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 화면 낭독기용 최종값 — 보이지 않지만 읽힌다. 굴러가는 숫자는 aria-hidden이라 중간값이 낭독되지 않는다 */
+.count-up-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

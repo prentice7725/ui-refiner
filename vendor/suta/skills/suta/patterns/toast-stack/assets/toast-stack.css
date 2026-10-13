@@ -1,0 +1,63 @@
+/* toast-stack — 화면 하단 중앙(기본) 또는 상단 중앙(data-position="top")에 쌓이는 토스트.
+ * 스택 이동은 코어가 transform으로 구동하고, 등장/퇴장은 data-state에 CSS가 반응한다.
+ * 등장 방향(상단에서 내려옴)은 transform과 겹치지 않도록 별도 속성 translate로 그린다.
+ * 커스터마이즈: --toast-bg, --toast-color, --toast-duration. 기본값은 --_ 폴백으로(상속 규칙). */
+
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  translate: -50%;
+  z-index: 80;
+  pointer-events: none;
+  display: grid;
+}
+
+/* 상단 배너 — 코어가 data-position="top"을 붙이면 위에 고정되고 최신이 맨 위에 온다 */
+.toast-region[data-position='top'] {
+  top: 24px;
+  bottom: auto;
+}
+
+.toast-item {
+  --_duration: var(--toast-duration, 300ms);
+  grid-area: 1 / 1; /* 전부 같은 칸에 겹치고, 코어의 translateY로 층을 만든다 */
+  justify-self: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: var(--toast-bg, rgba(30, 32, 40, 0.95));
+  color: var(--toast-color, #fff);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  transition:
+    transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    opacity var(--_duration) ease,
+    scale var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    translate var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toast-item[data-state='entering'] {
+  opacity: 0;
+  scale: 0.9;
+}
+
+.toast-item[data-state='exiting'] {
+  opacity: 0;
+  scale: 0.9;
+}
+
+/* 상단 배너는 위에서 내려오며 나타나고 위로 올라가며 사라진다 — 하단 스택은 그대로(확대·페이드만) */
+.toast-region[data-position='top'] .toast-item[data-state='entering'],
+.toast-region[data-position='top'] .toast-item[data-state='exiting'] {
+  translate: 0 -12px;
+}
+
+/* 모션 민감 사용자: 이동·확대는 끄고 페이드만 유지 */
+@media (prefers-reduced-motion: reduce) {
+  .toast-item {
+    transition: opacity var(--_duration) linear;
+    scale: none;
+    translate: none;
+  }
+}

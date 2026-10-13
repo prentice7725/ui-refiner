@@ -1,0 +1,109 @@
+/* tooltip — 호버/포커스 시 지연 후 떠오르는 말풍선. 4방향 배치는 data-place로.
+ * 커스터마이즈: --tooltip-bg, --tooltip-color, --tooltip-duration, --tooltip-offset.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다. */
+
+.tooltip-anchor {
+  position: relative; /* 툴팁의 offsetParent — 앵커 기준 좌표계를 만든다 */
+  display: inline-flex;
+}
+
+.tooltip {
+  --_bg: var(--tooltip-bg, #2b3440);
+  --_offset: var(--tooltip-offset, 10px);
+  --_duration: var(--tooltip-duration, 150ms);
+  --_slide: 4px; /* 닫힘 위치가 앵커 쪽으로 밀려 있어, 열릴 때 앵커에서 떠오르는 것처럼 보인다 */
+  position: absolute;
+  z-index: 30;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--_bg);
+  color: var(--tooltip-color, #fff);
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: nowrap;
+  pointer-events: none; /* 말풍선이 커서를 가로채 깜빡이는 것을 막는다 */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--_duration) cubic-bezier(0.23, 1, 0.32, 1),
+    transform var(--_duration) cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0s var(--_duration); /* 퇴장이 끝난 뒤에 숨긴다 */
+}
+
+.tooltip[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--_duration) cubic-bezier(0.23, 1, 0.32, 1),
+    transform var(--_duration) cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0s;
+}
+
+/* 화살표 — 회전한 정사각형을 말풍선 밑에 반쯤 겹친다 */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--_bg);
+  transform: rotate(45deg);
+}
+
+.tooltip[data-place='top'] {
+  bottom: calc(100% + var(--_offset));
+  left: 50%;
+  transform: translate(-50%, var(--_slide));
+}
+.tooltip[data-place='top']::before {
+  top: calc(100% - 4px);
+  left: calc(50% - 4px);
+}
+.tooltip[data-place='top'][data-open='true'] {
+  transform: translate(-50%, 0);
+}
+
+.tooltip[data-place='bottom'] {
+  top: calc(100% + var(--_offset));
+  left: 50%;
+  transform: translate(-50%, calc(-1 * var(--_slide)));
+}
+.tooltip[data-place='bottom']::before {
+  bottom: calc(100% - 4px);
+  left: calc(50% - 4px);
+}
+.tooltip[data-place='bottom'][data-open='true'] {
+  transform: translate(-50%, 0);
+}
+
+.tooltip[data-place='left'] {
+  right: calc(100% + var(--_offset));
+  top: 50%;
+  transform: translate(var(--_slide), -50%);
+}
+.tooltip[data-place='left']::before {
+  left: calc(100% - 4px);
+  top: calc(50% - 4px);
+}
+.tooltip[data-place='left'][data-open='true'] {
+  transform: translate(0, -50%);
+}
+
+.tooltip[data-place='right'] {
+  left: calc(100% + var(--_offset));
+  top: 50%;
+  transform: translate(calc(-1 * var(--_slide)), -50%);
+}
+.tooltip[data-place='right']::before {
+  right: calc(100% - 4px);
+  top: calc(50% - 4px);
+}
+.tooltip[data-place='right'][data-open='true'] {
+  transform: translate(0, -50%);
+}
+
+/* 모션 민감 사용자: 슬라이드를 0으로 — 페이드만 남는다 */
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    --_slide: 0px;
+  }
+}

@@ -1,0 +1,38 @@
+# Copy into a target web application's .github/workflows/ui-refiner.yml.
+# This is a template, NOT an executable workflow for the ui-refiner repository itself.
+name: Target app UI QA
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  ui-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+      - name: Install application and UI Refiner dependencies
+        run: |
+          npm ci
+          (cd tools/ui-refiner && npm ci)
+          node tools/ui-refiner/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Install suta source (only once per checkout)
+        run: bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
+      - name: Start the application's own dev server and check readiness
+        run: |
+          npm run dev -- --host 127.0.0.1 > app.log 2>&1 &
+          for i in $(seq 1 40); do
+            if curl --silent --fail http://127.0.0.1:5173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat app.log
+          exit 2
+      - run: node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-refiner-evidence
+          path: artifacts/ui-refiner/
+          if-no-files-found: warn

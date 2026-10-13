@@ -1,0 +1,112 @@
+/* like-pop — 좋아요 하트 팝 + 더블탭 버스트.
+ * 커스터마이즈: --like-color(하트 색), --like-pop-duration(팝 시간), --burst-size(버스트 하트 크기).
+ * 팝·버스트 모두 원샷 연출이라 keyframes를 쓴다 — transform/opacity만 움직인다(GPU). */
+
+.like-btn {
+  /* 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다 */
+  --_like-color: var(--like-color, #ff3040);
+  --_like-pop-duration: var(--like-pop-duration, 400ms);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.like-heart {
+  width: 1.6em;
+  height: 1.6em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: stroke 150ms ease;
+}
+
+.like-btn[aria-pressed='true'] .like-heart {
+  fill: var(--_like-color);
+  stroke: var(--_like-color);
+  animation: like-pop var(--_like-pop-duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 팝: 눌리는 순간 움츠렸다 튀어오르며 제자리 — 시작을 0이 아닌 0.6으로 해 뚝 사라져 보이지 않게 */
+@keyframes like-pop {
+  0% {
+    transform: scale(0.6);
+  }
+  55% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 더블탭 버스트 — 탭 지점에 큰 하트가 튀어나왔다 떠오르며 사라진다 (인스타그램 스타일) */
+.double-tap-area {
+  position: relative;
+  /* 모바일에서 더블탭이 브라우저 확대로 먹히지 않게 한다 */
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.burst-heart {
+  --_burst-size: var(--burst-size, 96px);
+  position: absolute;
+  width: var(--_burst-size);
+  height: var(--_burst-size);
+  margin-left: calc(var(--_burst-size) / -2);
+  margin-top: calc(var(--_burst-size) / -2);
+  fill: #fff;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+  animation: burst-heart 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes burst-heart {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  25% {
+    transform: scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05) translateY(-18px);
+  }
+}
+
+/* 모션 민감 사용자: 확대·이동은 끄고 불투명도만 남긴다(0이 아니라 완화) */
+@media (prefers-reduced-motion: reduce) {
+  .like-btn[aria-pressed='true'] .like-heart {
+    animation: none;
+  }
+  .burst-heart {
+    animation: burst-heart-fade 900ms linear forwards;
+  }
+}
+
+@keyframes burst-heart-fade {
+  0% {
+    opacity: 0;
+  }
+  15%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

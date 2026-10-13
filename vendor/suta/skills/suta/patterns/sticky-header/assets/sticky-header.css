@@ -1,0 +1,52 @@
+/* sticky-header — 큰 제목이 스크롤에 밀려 나가면 고정 헤더의 컴팩트 제목이 페이드 인.
+ * 커스터마이즈: --header-bg, --header-duration. 기본값은 --_ 폴백으로(상속 규칙).
+ * 헤더 높이는 고정이다 — 높이를 애니메이션하면 매 프레임 레이아웃이 돌기 때문에,
+ * 움직이는 것은 opacity·transform(GPU)뿐이다. */
+
+.sticky-header {
+  --_duration: var(--header-duration, 250ms);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  background: var(--header-bg, rgba(15, 17, 21, 0.85));
+  backdrop-filter: blur(8px);
+}
+
+.sticky-header-title {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sticky-header[data-collapsed='true'] .sticky-header-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 그림자는 ::after의 opacity로 — box-shadow transition(페인트)보다 싸다 */
+.sticky-header::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -12px 0;
+  height: 12px;
+  background: linear-gradient(rgba(0, 0, 0, 0.25), transparent);
+  opacity: 0;
+  transition: opacity var(--_duration) ease;
+  pointer-events: none;
+}
+
+.sticky-header[data-collapsed='true']::after {
+  opacity: 1;
+}
+
+/* 모션 민감 사용자: 이동은 끄고 페이드만 남긴다 */
+@media (prefers-reduced-motion: reduce) {
+  .sticky-header-title {
+    transform: none;
+    transition: opacity var(--_duration) linear;
+  }
+}

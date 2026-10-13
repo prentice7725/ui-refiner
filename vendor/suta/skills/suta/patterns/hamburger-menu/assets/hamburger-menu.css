@@ -1,0 +1,123 @@
+/* hamburger-menu — 햄버거 아이콘(≡)이 X로 모핑 + 사이드 드로어 슬라이드.
+ * 커스터마이즈: --hamburger-color, --hamburger-duration, --drawer-width, --drawer-duration, --drawer-bg.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 드로어는 언마운트하지 않고 data-open으로만 여닫는다 — 닫힘 애니메이션이 공짜가 된다. */
+
+.hamburger {
+  --_bar-width: var(--hamburger-bar-width, 22px);
+  --_bar-height: var(--hamburger-bar-height, 2px);
+  --_gap: var(--hamburger-gap, 7px);
+  --_duration: var(--hamburger-duration, 300ms);
+  position: relative;
+  width: 44px; /* 최소 터치 타깃 */
+  height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--_bar-width);
+  height: var(--_bar-height);
+  margin: calc(var(--_bar-height) / -2) 0 0 calc(var(--_bar-width) / -2);
+  border-radius: 999px;
+  background: var(--hamburger-color, currentColor);
+  /* 이동·회전·소멸 전부 transform/opacity — 레이아웃 애니메이션 없음 */
+  transition:
+    transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    opacity var(--_duration) ease;
+}
+
+.hamburger-bar:nth-child(1) {
+  transform: translateY(calc(-1 * var(--_gap)));
+}
+
+.hamburger-bar:nth-child(3) {
+  transform: translateY(var(--_gap));
+}
+
+/* 열림: 위·아래 막대가 중앙으로 모여 X로 교차하고 가운데 막대는 사라진다 */
+.hamburger[aria-expanded='true'] .hamburger-bar:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger[aria-expanded='true'] .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.4);
+}
+
+.hamburger[aria-expanded='true'] .hamburger-bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--drawer-duration, 300ms) ease;
+  z-index: 40;
+}
+
+.drawer-backdrop[data-open='true'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  --_duration: var(--drawer-duration, 300ms);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--drawer-width, min(300px, 80vw));
+  background: var(--drawer-bg, #fff);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  visibility: hidden; /* 닫힌 드로어 안의 링크가 화면 밖에서 Tab 포커스를 받지 않게 */
+  /* 드로어 전용 커브 — 빠르게 나와서 부드럽게 정착한다 */
+  transition:
+    transform var(--_duration) cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0s var(--_duration); /* 닫힘 애니메이션이 끝난 뒤에 숨긴다 */
+  z-index: 41;
+}
+
+.drawer[data-side='right'] {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+/* data-side 규칙보다 뒤에 둔다 — 같은 특이성이라 순서로 열림이 이긴다 */
+.drawer[data-open='true'] {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform var(--_duration) cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* 모션 민감 사용자: 아이콘은 즉시 전환, 드로어는 슬라이드 대신 페이드 */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger-bar {
+    transition: none;
+  }
+
+  .drawer {
+    transform: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 150ms linear,
+      visibility 0s 150ms;
+  }
+
+  .drawer[data-open='true'] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 150ms linear;
+  }
+}

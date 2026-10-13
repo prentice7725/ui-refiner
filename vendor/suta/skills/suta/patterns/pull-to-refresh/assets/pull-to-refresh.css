@@ -1,0 +1,52 @@
+/* pull-to-refresh — 당김 인디케이터와 복귀 이동.
+ * 코어가 노출하는 --pull-progress(0~1)·data-refreshing에 CSS가 반응한다.
+ * 커스터마이즈: --ptr-indicator-size, --ptr-duration. 기본값은 --_ 폴백으로(상속 규칙). */
+
+.ptr-container {
+  position: relative;
+  overflow-y: auto;
+  /* 컨테이너 경계에서 브라우저 자체 당김(바운스·새로고침)과 겹치지 않게 */
+  overscroll-behavior: contain;
+}
+
+.ptr-content {
+  --_duration: var(--ptr-duration, 300ms);
+  transition: transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 인디케이터 — 당김 진행률에 따라 나타나며 회전하고, 새로고침 중에는 계속 돈다 */
+.ptr-indicator {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: var(--ptr-indicator-size, 28px);
+  height: var(--ptr-indicator-size, 28px);
+  margin-left: calc(var(--ptr-indicator-size, 28px) / -2);
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  opacity: var(--pull-progress, 0);
+  transform: rotate(calc(var(--pull-progress, 0) * 270deg));
+  pointer-events: none;
+}
+
+.ptr-container[data-refreshing='true'] .ptr-indicator {
+  animation: ptr-spin 800ms linear infinite;
+}
+
+@keyframes ptr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 모션 민감 사용자: 복귀 이동은 짧게, 스피너 회전(상태 표시)은 유지 */
+@media (prefers-reduced-motion: reduce) {
+  .ptr-content {
+    transition-duration: 0.01ms;
+  }
+  /* 새로고침 중임은 알려야 하므로 스피너를 끄지 않고 느리게만 돌린다 */
+  .ptr-container[data-refreshing='true'] .ptr-indicator {
+    animation-duration: 2s;
+  }
+}

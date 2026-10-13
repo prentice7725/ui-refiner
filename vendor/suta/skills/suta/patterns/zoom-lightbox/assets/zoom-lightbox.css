@@ -1,0 +1,34 @@
+/* zoom-lightbox — 확대 전환의 백드롭과 커서.
+ * 고스트의 위치·전환은 코어(openZoom)가 인라인으로 구동한다.
+ * 커스터마이즈: --zoom-backdrop(배경), --zoom-duration은 코어 옵션 durationMs로. */
+
+.zoom-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--zoom-backdrop, rgba(0, 0, 0, 0.8));
+  opacity: 0;
+  transition: opacity 300ms ease;
+  z-index: 90;
+  cursor: zoom-out;
+}
+
+.zoom-backdrop[data-open='true'] {
+  opacity: 1;
+}
+
+.zoom-ghost {
+  cursor: zoom-out;
+  pointer-events: none; /* 닫기는 백드롭·Esc 몫 — 고스트가 클릭을 삼키지 않게 */
+}
+
+/* 확대 대상임을 알리는 커서 힌트 (원본에 붙이는 선택 클래스) */
+.zoomable {
+  cursor: zoom-in;
+}
+
+/* 모션 민감 사용자: 확대 이동 없이 즉시 전환(백드롭 페이드만) */
+@media (prefers-reduced-motion: reduce) {
+  .zoom-ghost {
+    transition-duration: 0.01ms !important;
+  }
+}

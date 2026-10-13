@@ -1,0 +1,85 @@
+/* wheel-picker — iOS 드럼(휠) 피커. 스크롤·스냅·관성은 브라우저 네이티브(scroll-snap),
+ * 3D 기울기·흐림은 createWheel.ts가 inline transform/opacity로 찍는다.
+ * 커스터마이즈: --wheel-item-height(36px), --wheel-visible(5, 홀수), --wheel-highlight-bg, --wheel-perspective.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다. */
+
+.wheel {
+  --_item: var(--wheel-item-height, 36px);
+  --_visible: var(--wheel-visible, 5);
+  --_highlight: var(--wheel-highlight-bg, rgba(127, 127, 127, 0.14));
+  position: relative;
+  height: calc(var(--_item) * var(--_visible));
+  /* 위아래 끝을 페이드 — 원통이 뒤로 말려 들어가는 인상을 준다 */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent);
+  user-select: none;
+}
+
+/* 가운데 선택 띠 — 트랙 위에 떠 있지만 포인터는 통과시켜 스크롤·클릭을 막지 않는다 */
+.wheel::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: var(--_item);
+  transform: translateY(-50%);
+  border-radius: 8px;
+  background: var(--_highlight);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wheel-track {
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain; /* 끝에서 더 굴려도 페이지가 따라 움직이지 않게 */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  /* 첫/마지막 항목도 가운데 칸에 올 수 있도록 (높이 − 항목) / 2 만큼 위아래를 비운다 */
+  padding-block: calc(var(--_item) * (var(--_visible) - 1) / 2);
+  /* 항목의 rotateX·translateZ가 원근을 갖게 하는 시점 — 작을수록 원통이 도드라진다 */
+  perspective: var(--wheel-perspective, 600px);
+  outline: none;
+  /* 스크롤바 숨김 — 드럼에 막대가 붙어 있으면 관례가 깨진다 */
+  scrollbar-width: none;
+}
+
+.wheel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.wheel-track:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--wheel-focus-ring, currentColor);
+  border-radius: 8px;
+}
+
+.wheel-item {
+  box-sizing: border-box;
+  height: var(--_item);
+  display: grid;
+  place-items: center;
+  scroll-snap-align: center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden; /* 90도 근처에서 뒷면이 비쳐 보이지 않게 */
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  color: var(--wheel-item-color, inherit);
+  white-space: nowrap;
+}
+
+.wheel-item[data-center] {
+  color: var(--wheel-active-color, inherit);
+  font-weight: 600;
+}
+
+/* 모션 민감 사용자: 3D 기울기·흐림을 끄고 평평한 스냅 리스트로, 이동은 즉시 점프 */
+@media (prefers-reduced-motion: reduce) {
+  .wheel-track {
+    scroll-behavior: auto;
+  }
+  .wheel-item {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

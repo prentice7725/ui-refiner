@@ -1,0 +1,120 @@
+/* range-slider — 두 손잡이로 범위를 고른다.
+ * 커스터마이즈: --range-height, --range-thumb-size, --range-track, --range-fill-color, --range-thumb, --range-accent.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ *
+ * 구조: 보이는 것(트랙·채움)과 조작하는 것(input 두 개)이 분리돼 있다.
+ * input은 투명하게 만들어 손잡이만 남기고, 위치는 --range-lower/--range-upper가 정한다. */
+
+.range-root {
+  --_h: var(--range-height, 6px);
+  --_thumb: var(--range-thumb-size, 24px); /* WCAG 2.2 누르는 영역 최소 24px — 손잡이가 곧 누르는 영역이다 */
+  position: relative;
+  height: var(--_thumb);
+  display: flex;
+  align-items: center;
+  touch-action: none; /* 손잡이를 끄는 동안 화면이 스크롤되지 않게 */
+}
+
+/* 고른 구간만 색으로 채운다 — 두 손잡이 사이가 "선택된 범위"임을 색으로 말한다.
+ * 채움을 별도 요소로 두고 left/right를 옮기면 드래그하는 매 프레임마다 레이아웃이 다시 계산된다.
+ * 그라디언트의 색 경계를 옮기면 그리기(paint)만 일어난다 — 요소도 하나 줄어든다. */
+.range-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--_h);
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--range-track, #e5e7eb) 0 var(--range-lower, 0%),
+    var(--range-fill-color, var(--range-accent, #1b1e24)) var(--range-lower, 0%) var(--range-upper, 100%),
+    var(--range-track, #e5e7eb) var(--range-upper, 100%) 100%
+  );
+}
+
+/* input 자체는 클릭을 받지 않는다 — 트랙 누름은 컴포넌트가 처리하고,
+ * 손잡이(::thumb)에만 pointer-events를 되살려 드래그가 되게 한다 */
+.range-input {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.range-input::-webkit-slider-runnable-track {
+  background: none;
+  border: none;
+}
+
+.range-input::-moz-range-track {
+  background: none;
+  border: none;
+}
+
+.range-input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--_thumb);
+  height: var(--_thumb);
+  border: 2px solid var(--range-thumb-border, var(--range-accent, #1b1e24));
+  border-radius: 50%;
+  background: var(--range-thumb, #fff);
+  box-shadow: var(--range-thumb-shadow, 0 1px 4px rgb(0 0 0 / 0.2));
+  cursor: grab;
+  pointer-events: auto;
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.range-input::-moz-range-thumb {
+  width: var(--_thumb);
+  height: var(--_thumb);
+  border: 2px solid var(--range-thumb-border, var(--range-accent, #1b1e24));
+  border-radius: 50%;
+  background: var(--range-thumb, #fff);
+  box-shadow: var(--range-thumb-shadow, 0 1px 4px rgb(0 0 0 / 0.2));
+  cursor: grab;
+  pointer-events: auto;
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 잡는 순간 살짝 커진다 — 손가락 아래에서 무엇을 쥐었는지 보이게 */
+.range-input:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+  cursor: grabbing;
+}
+
+.range-input:active::-moz-range-thumb {
+  transform: scale(1.15);
+  cursor: grabbing;
+}
+
+.range-input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--range-accent, #1b1e24);
+  outline-offset: 2px;
+}
+
+.range-input:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--range-accent, #1b1e24);
+  outline-offset: 2px;
+}
+
+/* 두 손잡이가 겹쳤을 때 무엇을 위에 둘지 — 몰려 있는 쪽의 반대로 끌 수 있게 한다 */
+.range-root[data-on-top='lower'] .range-input[data-handle='lower'],
+.range-root[data-on-top='upper'] .range-input[data-handle='upper'] {
+  z-index: 2;
+}
+
+/* 모션 민감 사용자: 손잡이가 커지는 연출만 없앤다(조작은 그대로) */
+@media (prefers-reduced-motion: reduce) {
+  .range-input::-webkit-slider-thumb {
+    transition: none;
+  }
+
+  .range-input::-moz-range-thumb {
+    transition: none;
+  }
+}

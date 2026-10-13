@@ -1,0 +1,80 @@
+/* accordion — 눌러서 펼치는 접이식 목록. 높이 애니메이션은 grid-template-rows 0fr↔1fr.
+ * 커스터마이즈: --accordion-duration, --accordion-border.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다. */
+
+.accordion {
+  --_duration: var(--accordion-duration, 300ms);
+  --_border: var(--accordion-border, #e2e8f0);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--_border);
+}
+
+/* 버튼을 감싸는 헤딩 — 스크린 리더 목차에 잡히게 하되 시각 스타일은 버튼이 가진다 */
+.accordion-header {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 4px;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-chevron {
+  flex: none;
+  transition: transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accordion-trigger[aria-expanded='true'] .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+/* 높이 애니메이션의 핵심: fr 단위는 transition이 된다.
+ * height: auto는 애니메이션할 수 없지만 0fr → 1fr은 JS 측정 없이 콘텐츠 높이만큼 열린다. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden; /* 닫힌 패널 안의 링크·버튼이 Tab 포커스를 받지 않게 */
+  transition:
+    grid-template-rows var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s var(--_duration); /* 닫힘 애니메이션이 끝난 뒤에 숨긴다 */
+}
+
+.accordion-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition:
+    grid-template-rows var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+
+/* min-height: 0이 있어야 0fr에서 실제로 줄어든다 — grid 항목의 기본 min-height는 auto다 */
+.accordion-panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.accordion-panel-content {
+  padding: 0 4px 16px;
+}
+
+/* 모션 민감 사용자: 펼침을 즉시 전환한다 — 상태 표시(화살표 방향·내용)는 그대로 */
+@media (prefers-reduced-motion: reduce) {
+  .accordion-chevron,
+  .accordion-panel {
+    transition: none;
+  }
+}

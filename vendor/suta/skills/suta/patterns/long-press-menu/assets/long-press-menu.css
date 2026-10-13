@@ -1,0 +1,136 @@
+/* long-press-menu — 길게 누르면 항목이 떠오르고 뒤가 흐려지며 옆에 메뉴가 나타난다.
+ * 커스터마이즈: --lpm-duration, --lpm-blur, --lpm-menu-bg, --lpm-radius (그 외 --lpm-tint, --lpm-lift-shadow, --lpm-destructive).
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 메뉴 위치(top·left·data-side)는 React 래퍼가 placeContextMenu 결과를 인라인으로 쓴다. 여기는 모양과 등장 연출이다. */
+
+/* 트리거(길게 누를 항목을 감싸는 상자) */
+.lpm-item {
+  --_duration: var(--lpm-duration, 220ms);
+  --_ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  border-radius: var(--lpm-radius, 16px);
+  /* 터치 브라우저의 기본 길게누르기 동작(링크 미리보기·이미지 저장·텍스트 선택)을 막는다.
+   * touch-action: manipulation은 더블탭 확대만 끄고 스크롤은 살려 둔다 — 스크롤하려던 손가락은 코어가 이동 허용치로 걸러 낸다 */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition:
+    transform var(--_duration) var(--_ease),
+    box-shadow var(--_duration) var(--_ease);
+}
+
+.lpm-item:focus-visible {
+  outline: 2px solid var(--lpm-focus, #1b1e24);
+  outline-offset: 2px;
+}
+
+/* 열린 항목은 복제본이 아니라 원본 자체를 백드롭 위로 띄운다.
+ * transform은 새 stacking context를 만들므로 z-index를 명시해야 백드롭(40) 위에 놓인다 —
+ * 백드롭·메뉴와 같은 부모 아래 형제로 두어 같은 stacking context 안에서 z-index가 비교되게 한다. */
+.lpm-item[data-open='true'] {
+  z-index: 41;
+  transform: scale(1.04);
+  box-shadow: var(--lpm-lift-shadow, 0 18px 48px rgb(0 0 0 / 0.35));
+}
+
+/* 전체 화면 백드롭 — 뒤를 흐리고 어둡게 해서 떠오른 항목만 또렷하게 남긴다 */
+.lpm-backdrop {
+  --_duration: var(--lpm-duration, 220ms);
+  --_blur: var(--lpm-blur, 12px);
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--lpm-tint, rgb(0 0 0 / 0.35));
+  -webkit-backdrop-filter: blur(var(--_blur));
+  backdrop-filter: blur(var(--_blur));
+  animation: lpm-fade-in var(--_duration) ease-out;
+}
+
+/* fixed인 이유: 떠오른 항목이 transform 중이라 그 안에 두면 좌표가 틀어진다.
+ * 대신 좌표는 래퍼가 화면 기준으로 계산해 넣는다. */
+.lpm-menu {
+  --_duration: var(--lpm-duration, 220ms);
+  --_ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: fixed;
+  z-index: 42;
+  min-width: var(--lpm-menu-min-width, 12rem);
+  margin: 0;
+  padding: 0.25rem;
+  border: 1px solid var(--lpm-menu-border, rgb(255 255 255 / 0.12));
+  border-radius: var(--lpm-radius, 16px);
+  background: var(--lpm-menu-bg, rgb(255 255 255 / 0.92));
+  color: var(--lpm-menu-color, #111827);
+  box-shadow: var(--lpm-menu-shadow, 0 16px 40px rgb(0 0 0 / 0.28));
+  animation: lpm-pop-in var(--_duration) var(--_ease);
+}
+
+/* 열린 방향에서 자라 나온다 — 위로 열렸는데 위에서 내려오면 어디서 나왔는지 알 수 없다 */
+.lpm-menu[data-side='bottom'] {
+  transform-origin: top left;
+}
+
+.lpm-menu[data-side='top'] {
+  transform-origin: bottom left;
+}
+
+.lpm-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: calc(var(--lpm-radius, 16px) - 6px);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* 마우스 hover와 키보드 focus가 같은 표시를 쓴다 — 지금 무엇이 실행될지가 한 가지로만 보인다 */
+.lpm-menu-item:hover,
+.lpm-menu-item:focus {
+  outline: none;
+  background: var(--lpm-menu-active-bg, rgb(0 0 0 / 0.06));
+}
+
+.lpm-menu-item:focus-visible {
+  outline: 2px solid var(--lpm-focus, #1b1e24);
+  outline-offset: -2px;
+}
+
+/* 되돌리기 어려운 항목(삭제·숨기기) — 붉은 글자 */
+.lpm-menu-item[data-destructive='true'] {
+  color: var(--lpm-destructive, #dc2626);
+}
+
+@keyframes lpm-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes lpm-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* 모션 민감 사용자: 떠오르는 스케일과 메뉴의 커지는 이동을 끄고 페이드만 남긴다 */
+@media (prefers-reduced-motion: reduce) {
+  .lpm-item {
+    transition: box-shadow 150ms linear;
+  }
+  .lpm-item[data-open='true'] {
+    transform: none;
+  }
+  .lpm-menu {
+    animation: lpm-fade-in 150ms linear;
+  }
+  .lpm-backdrop {
+    animation-duration: 150ms;
+  }
+}

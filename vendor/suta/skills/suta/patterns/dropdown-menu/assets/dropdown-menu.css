@@ -1,0 +1,102 @@
+/* dropdown-menu — ⋯ 버튼을 누르면 아래(또는 위)로 펼쳐지는 액션 메뉴.
+ * 커스터마이즈: --menu-bg, --menu-border, --menu-radius, --menu-duration, --menu-min-width, --menu-danger.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 위치(top·left)는 코어가 인라인으로 쓴다. 여기 있는 것은 모양과 등장 방향이다. */
+
+.menu-root {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-trigger {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* fixed인 이유: 부모의 overflow:hidden이나 transform 안에 갇히면 메뉴가 잘린다.
+ * 대신 좌표는 코어가 화면 기준으로 계산해 넣는다. */
+.menu-panel {
+  --_duration: var(--menu-duration, 140ms);
+  --_ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  position: fixed;
+  z-index: 50;
+  min-width: var(--menu-min-width, 11rem);
+  padding: 0.25rem;
+  border: 1px solid var(--menu-border, #e5e7eb);
+  border-radius: var(--menu-radius, 12px);
+  background: var(--menu-bg, #fff);
+  box-shadow: var(--menu-shadow, 0 12px 32px rgb(0 0 0 / 0.16));
+}
+
+/* 열린 방향에서 자라 나온다 — 위로 열렸는데 위에서 내려오면 어디서 나왔는지 알 수 없다 */
+.menu-panel[data-open='true'][data-side='bottom'] {
+  transform-origin: top center;
+  animation: menu-in-from-top var(--_duration) var(--_ease-out);
+}
+
+.menu-panel[data-open='true'][data-side='top'] {
+  transform-origin: bottom center;
+  animation: menu-in-from-bottom var(--_duration) var(--_ease-out);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--menu-color, #111827);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* 마우스 hover와 키보드 focus가 같은 표시를 쓴다 — 지금 무엇이 실행될지가 한 가지로만 보인다 */
+.menu-item:hover,
+.menu-item:focus {
+  outline: none;
+  background: var(--menu-active-bg, #f3f4f6);
+}
+
+.menu-item:focus-visible {
+  outline: 2px solid var(--menu-focus, #1b1e24);
+  outline-offset: -2px;
+}
+
+.menu-item[data-danger='true'] {
+  color: var(--menu-danger, #dc2626);
+}
+
+/* 비활성은 흐리게 하되 포커스는 받는다 — 닿을 수 없으면 왜 못 누르는지 알 수 없다 */
+.menu-item[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.menu-item[aria-disabled='true']:hover {
+  background: none;
+}
+
+@keyframes menu-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+@keyframes menu-in-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.97);
+  }
+}
+
+/* 모션 민감 사용자: 펼쳐지는 연출만 없앤다(메뉴는 그대로 나타난다) */
+@media (prefers-reduced-motion: reduce) {
+  .menu-panel[data-open='true'] {
+    animation: none;
+  }
+}

@@ -1,22 +1,13 @@
 #!/usr/bin/env bash
-# Install pinned suta skill only. No remote code is executed during install.
+# Install from source already checked into ui-refiner; no remote checkout or npm lintapple dependency.
 set -euo pipefail
 ROOT="${1:-$(pwd)}"
-REV="412bd62e479ce249ef25ca31bc015cfb308aff10"
+SOURCE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/vendor/suta/skills/suta"
 DEST="$ROOT/.agents/skills/suta"
+test -f "$SOURCE/scripts/audit.mjs" || { echo "Missing bundled suta audit source: $SOURCE" >&2; exit 2; }
 if [[ -e "$DEST" ]]; then
-  echo "Refusing to overwrite $DEST. Remove or back it up manually before updating." >&2
-  exit 2
+  echo "Refusing to overwrite existing $DEST" >&2; exit 2
 fi
-TMP="$(mktemp -d)"
-trap 'rm -rf "$TMP"' EXIT
-cd "$TMP"
-git init -q
-git remote add origin https://github.com/Guksu/suta.git
-git sparse-checkout init --cone
-git sparse-checkout set skills/suta
-git -c advice.detachedHead=false fetch --quiet --depth 1 origin "$REV"
-git checkout --quiet --detach FETCH_HEAD
 mkdir -p "$(dirname "$DEST")"
-cp -R skills/suta "$DEST"
-echo "Installed suta pinned at $REV into $DEST"
+cp -R "$SOURCE" "$DEST"
+echo "Installed bundled suta source into $DEST"

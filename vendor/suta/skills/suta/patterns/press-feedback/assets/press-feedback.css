@@ -1,0 +1,39 @@
+/* press-feedback — 버튼 눌림 피드백. CSS만으로 완결(JS 코어 없음).
+ * 커스터마이즈: --press-scale(눌림 배율), --press-release(복귀 시간).
+ * 비대칭 타이밍이 핵심이다: 누름은 즉각(60ms), 복귀는 여유 있게(스프링 느낌) —
+ * 대칭으로 두면 눌림이 굼떠 보인다. */
+
+.pressable {
+  transition:
+    transform var(--press-release, 220ms) cubic-bezier(0.22, 1, 0.36, 1),
+    filter var(--press-release, 220ms) ease;
+  will-change: transform; /* motion-audit-ignore: will-change-global — 눌림 즉시 반응해야 해 레이어를 미리 둔다(작은 요소) */
+}
+
+.pressable:active {
+  transform: scale(var(--press-scale, 0.96));
+  transition-duration: 60ms; /* 누르는 순간은 즉각 반응 */
+}
+
+/* 변형: 어두워짐 동반 — 면적이 큰 카드형 버튼에 */
+.pressable-dim:active {
+  filter: brightness(0.92);
+}
+
+/* 호버 리프트는 정밀 포인터에서만 — 터치에서 호버 잔상이 끈적하게 남는 것을 막는다 */
+@media (hover: hover) and (pointer: fine) {
+  .pressable-lift:hover {
+    transform: translateY(-1px);
+  }
+  .pressable-lift:active {
+    transform: scale(var(--press-scale, 0.96));
+  }
+}
+
+/* 모션 민감 사용자: 축소(이동)는 끄고 밝기 피드백만 남긴다 */
+@media (prefers-reduced-motion: reduce) {
+  .pressable:active {
+    transform: none;
+    filter: brightness(0.92);
+  }
+}

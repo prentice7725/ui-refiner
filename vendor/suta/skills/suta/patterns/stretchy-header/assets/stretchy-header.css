@@ -1,0 +1,76 @@
+/* stretchy-header — 큰 이미지 헤더: 위로 스크롤하면 느리게 밀리며 어두워지고, 맨 위에서 당기면 늘어난다.
+ * 커스터마이즈: --stretch-height, --stretch-duration, --stretch-bg. 기본값은 --_ 폴백으로(상속 규칙).
+ * 움직이는 속성은 transform·opacity뿐이다 — 높이를 바꾸지 않으므로 레이아웃이 돌지 않는다.
+ *
+ * 구조:  .stretchy-container > .stretchy-header > .stretchy-header-clip > .stretchy-header-image
+ *                                                > .stretchy-header-overlay(제목)
+ * 클립 박스가 헤더보다 위로 길게 뻗어 있는 이유: iOS 바운스로 헤더 박스가 내려갔을 때
+ * 이미지를 위로 올려 붙여도(translateY 음수) 잘리지 않아야 빈 띠 없이 늘어나 보인다.
+ * 아래쪽은 헤더 바닥에서 자른다 — 패럴랙스로 이미지가 처져도 본문을 덮지 않는다. */
+
+.stretchy-container {
+  position: relative;
+  overflow-y: auto;
+  /* 세로 스크롤은 브라우저에 맡기고, 당김은 pointer 이벤트로 받는다 */
+  touch-action: pan-y;
+  /* 컨테이너 경계에서 페이지 전체 바운스·당김 새로고침과 겹치지 않게 */
+  overscroll-behavior: contain;
+}
+
+.stretchy-header {
+  --_height: var(--stretch-height, 240px);
+  --_duration: var(--stretch-duration, 300ms);
+  position: relative;
+  height: var(--_height);
+  /* 패럴랙스로 이미지가 투명해질 때 비치는 색 — "어두워진다"는 이 배경이 만든다 */
+  background: var(--stretch-bg, #0b0d12);
+}
+
+.stretchy-header-clip {
+  position: absolute;
+  top: -200%; /* 헤더 높이의 2배만큼 위로 — 포인터·바운스 어느 쪽도 이 안에서 늘어난다 */
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.stretchy-header-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--_height);
+  object-fit: cover;
+  /* 위 가장자리 고정 — scale이 아래로만 커진다(stretchCore의 전제) */
+  transform-origin: top center;
+  will-change: transform; /* motion-audit-ignore: will-change-global — 스크롤마다 프레임 단위로 움직이는 이미지 */
+  /* 기본은 전환 없음: 스크롤·드래그 프레임에 바로 붙어야 한다 */
+  transition: none;
+}
+
+/* 놓았을 때만 전환 — scale 1로 스르륵 복귀 */
+.stretchy-header-image[data-stretch='release'] {
+  transition: transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 제목 오버레이 — 하단 그라디언트 위에 흰 글자. 헤더 박스와 함께 움직인다(패럴랙스 대상 아님) */
+.stretchy-header-overlay {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2.5rem 1.25rem 1rem;
+  color: #fff;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.72));
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* 모션 민감 사용자: JS가 이동(패럴랙스·늘어남)을 건너뛰고 페이드만 남긴다. 혹시 남은 전환도 즉시로 */
+@media (prefers-reduced-motion: reduce) {
+  .stretchy-header-image {
+    transition: none;
+  }
+}
