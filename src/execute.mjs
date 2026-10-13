@@ -2,7 +2,7 @@ import {spawn} from 'node:child_process';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {resolveInside,checkUrl} from './config.mjs';
-import {normalizeStatic,normalizeBrowser} from './normalize.mjs';
+import {normalizeStatic,normalizeBrowser,browserCoverage} from './normalize.mjs';
 
 export async function spawnBounded(bin,args,{cwd,timeoutMs=60000,maxOutput=20_000_000}={}){
   return new Promise((resolve,reject)=>{
@@ -27,7 +27,17 @@ export async function realStatic(config,root){
   if(run.error||![0,1].includes(run.code))throw new Error(`suta runner failed (${run.error||run.code}): ${run.stderr.slice(-800)}`);
   let raw;try{raw=JSON.parse(run.stdout)}catch{throw new Error(`suta did not return JSON: ${run.stderr.slice(-500)}`)}
   if(!Number.isInteger(raw.files)||raw.files<1||!Number.isInteger(raw.errors)||!Number.isInteger(raw.warnings))throw new Error('suta report missing required file/error/warning counts');
-  const findings=normalizeStatic(raw).map(f=>({...f,location: path.isAbsolute(f.location.slice(0, f.location.lastIndexOf(':'))) ? path.relative(root, f.location.slice(0, f.location.lastIndexOf(':'))).replaceAll(path.sep,'/') + f.location.slice(f.location.lastIndexOf(':')) : f.location}));
+  const sources = new Map();
+  for (const f of raw.findings) {
+    const file = resolveInside(root,f.file,'suta finding file');
+    if (!sources.has(file)) sources.set(file, await readFile(file,'utf8').catch(()=>''));
+    const lines = sources.get(file).split(/\r?\n/).map(line=>line.trim());
+    const anchor = lines[f.line-1];
+    // Duplicate/empty source anchors require a stable source marker before baselining.
+    f.sourceAnchor = anchor && lines.filter(line=>line===anchor).length===1 ? anchor : undefined;
+    f.file = path.relative(root,file).replaceAll(path.sep,'/');
+  }
+  const findings=normalizeStatic(raw);
   if((run.code===1)!==findings.some(f=>f.severity==='error'))throw new Error('suta exit code and findings disagree');
   return {findings,stats:{files:raw.files,errors:raw.errors,warnings:raw.warnings}};
 }
@@ -39,7 +49,7 @@ export async function realBrowser(config,root){
   // Runtime dependency is resolved from the UI Refiner installation, not the scanned app.
   const {checkUrl:lintCheck}=await import('../vendor/lintapple/src/index.js');
   const report=await lintCheck(url,policy,{ready:config.browser.ready??undefined,timeout:config.browser.timeoutMs,interactions});
-  return {findings:normalizeBrowser(report),rawReport:report};
+  return {findings:normalizeBrowser(report),rawReport:report,ruleCoverage:browserCoverage(report)};
 }
 export async function screenshots(config,root,reportDir){
   const url=checkUrl(config.browser.url,config.gate.allowedHosts);
@@ -60,4 +70,11 @@ export async function screenshots(config,root,reportDir){
     }
   }finally{await browser.close()}
   return outputs;
+}
+
+export async function probeChromium({launch,timeout=15000}={}){
+  launch ??= (await import('../vendor/lintapple/src/browser.js')).launchBrowser;
+  const browser = await launch({timeout});
+  try { const page = await browser.newPage(); await page.goto('about:blank',{timeout}); }
+  finally { await browser.close(); }
 }
