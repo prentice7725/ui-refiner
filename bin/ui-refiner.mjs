@@ -3,6 +3,7 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import {initProject,loadConfig} from '../src/config.mjs';
 import {runGate,exitCode,baselineFromReport} from '../src/gate.mjs';
+import {probeChromium} from '../src/execute.mjs';
 import {presets} from '../src/presets.mjs';
 
 const help=`UI Refiner 0.3.0 — web-app UI quality gate
@@ -36,7 +37,7 @@ try{
     const probes=[['suta-audit',config.static.enabled,config.static.auditPath],['ui-policy',config.browser.enabled,config.browser.policyPath],['SOT',!!config.sot.path,config.sot.path]];
     let errors=0;console.log(`Preset: ${config.preset} | Node ${process.versions.node}`);
     for(const [name,required,p] of probes){if(!required){console.log(`${name}: N/A`);continue;}try{await fs.access(path.resolve(root,p));console.log(`${name}: installed`)}catch{console.log(`${name}: MISSING (${p})`);errors++}}
-    if(config.browser.enabled){try{await import('../vendor/lintapple/src/index.js');console.log('bundled browser auditor: available')}catch{console.log('bundled browser auditor: MISSING');errors++}}
+    if(config.browser.enabled){try{await import('../vendor/lintapple/src/index.js');console.log('bundled browser auditor: available');await probeChromium();console.log('Chromium: launch OK')}catch(e){console.log(`browser environment: ERROR — ${e.message}`);errors++}}
     const parts=process.versions.node.split('.').map(Number);
     if(parts[0]<22||parts[0]===22&&parts[1]<18){console.log('Node >=22.18 required for current suta native TS');if(config.static.enabled)errors++}
     process.exitCode=errors?2:0;
