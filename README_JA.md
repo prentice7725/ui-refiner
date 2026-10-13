@@ -35,15 +35,19 @@ node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD" --locale ja-JP
 | `static.targets` | 静的監査対象のソースパス。既定は`["src"]` |
 | `static.enforcement` / `browser.enforcement` | `enforce`または`advisory`。両方とも既定は`enforce` |
 | `browser.url` | 起動中のアプリURL。既定は`http://127.0.0.1:5173` |
+| `browser.routes` | 単一URLを置き換える名前付きルート1–50個。パスは`browser.url`基準 |
 | `browser.policyPath` | プロジェクトポリシー。既定は`ui-policy.json` |
 | `browser.ready` | 指定した準備完了セレクターが表示されるまで待機。既定は`null` |
 | `browser.interactionsPath` | 任意の操作計画JSON。既定は`null` |
 | `browser.captureScreenshots` | 同一セッションの状態画像・要素クロップ。既定は`false` |
+| `browser.captureAriaSnapshots` | 同一状態のアクセシビリティツリーYAML・advisory構造比較。既定は`false` |
+| `browser.renderedMetrics` | 任意のレンダリング指標。advisoryのみ、既定は`false` |
 | `browser.timeoutMs` | ナビゲーション・監査の各ステップ上限。既定は`120000` ms |
 | `browser.sessionTimeoutMs` | 独立したセッション全体の上限。既定の`null`では自動算出 |
 | `gate.maxStaticWarnings` | 任意の静的警告上限。`null`では警告をblockerにしない |
 | `gate.allowedHosts` | 明示的なナビゲーション先ホスト許可リスト。既定はループバック |
 | `gate.baselinePath` | レビュー済みのschemaVersion 2ベースライン。既定は`null` |
+| `gate.valueExceptionsPath` | レビュー済みの正確なデザイン値例外JSON。既定は`null` |
 | `gate.manualVisualReview` | 既定は`true`。全体の自動検査成功後も人による確認が必要 |
 | `sot.path` | 任意のプロジェクト正本パス。存在を確認するが内容は自動解析しない |
 | `reportDir` | 既定は`artifacts/ui-refiner` |
@@ -94,6 +98,31 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 クリック可能な汎用要素のキーボードフォーカス・意味的役割の欠落を、インライン`onclick`、DOMの`onclick`プロパティ（React方式を含む）、`data-ui-clickable`、Chromium CDPの直接clickリスナーから確認します。CDPは**状態ごとに最大500個の表示されている非ネイティブ要素候補**を検査し、文書順より`cursor:pointer`を優先します。既知のフレームワークのイベント委譲ルートは除外します。検査の制限とCDPの利用可否をレポートに公開します。委譲先の子要素や上限を超えた候補には、明示的なマーカー・操作計画が必要です。実際のEnter/Space動作は操作計画で検証してください。[examples/interactions.json](examples/interactions.json)を参照してください。
 
+### 名前付きルート・ARIA証拠・レンダリング指標
+
+既存の`browser`オブジェクトの他の設定を保持し、次のフィールドを追加します。
+
+```json
+{
+  "routes": [
+    { "name": "home", "url": "/" },
+    { "name": "settings", "url": "/settings", "ready": "[data-app-ready]", "interactionsPath": null }
+  ],
+  "captureAriaSnapshots": true,
+  "renderedMetrics": true
+}
+```
+
+ルートは一意で安全な名前と、絶対HTTP(S) URLまたはルート相対パスを使用します。`ready` / `interactionsPath`の省略は共通設定を継承し、明示的な`null`はそのルートで無効にします。ルート・ビューポート・テーマごとに新しいコンテキストを作り、1つのブラウザープロセスで検査します。全体の時間予算はルート数を含みます。要求したルートが1つでも失敗すれば部分PASSではなくERRORです。一覧のルートのみを検査し、アプリ全体を自動検査するものではありません。Storybook URLも明示できます。認証状態・Cookieはルート間で共有しません。
+
+ナビゲーションのホストはリクエスト前に検証します。リダイレクトは追跡せず拒否するため、最終URLを直接設定してください。この監査セッションではService Workerを無効にします。外部サブリソースはナビゲーション許可リストの対象外であり、汎用ネットワークサンドボックスではありません。
+
+複数ルートの指紋には名前と正規化した設定URLを含め、従来の単一URLのidentityは維持します。明示的なルートへ移行したら新しい全体ベースラインをレビューしてください。画像名にはルートを含めます。任意のARIA YAMLには内容ハッシュも含め、以前の証拠を保持します。互換性のある連続実行の`ariaDiff`は、変更・追加・削除・不変の次元と`previousFile` / `file`を示します。ハッシュによる構造変更の要約であり、自動的な欠陥判定や行単位diffではありません。YAMLの組を比較してください。保存は任意で状態ごとに2 MBまでです。要求した保存の失敗はERRORです。画像・アクセシブルネームに機密内容が含まれる可能性があるため、共有前に確認してください。
+
+レンダリング指標は現在のビューポートに表示された上端fixed/sticky領域（入れ子は1回）、塗りつぶされたボタン、繰り返しのボタン/リンク名・リンク先、計算済みの文字/背景/枠線色の概算15度有彩色hueバケットを記録します。DOM要素は最大10000個までで、制限を公開します。反復動作や複数の塗りつぶしボタンは意図的なUIの場合があります。観測は**advisoryのみ**で、ゲートをブロックしたりベースラインへ入ったりせず、アクセシビリティ検査を弱めません。hue数はレビュー証拠であり強制色数上限ではありません。グラデーション・画像・完全な知覚色分析は対象外です。
+
+指標の動作名はDOMラベル/テキストの近似であり、完全なアクセシブルネーム計算ではありません。意味の証拠はARIA YAMLを確認してください。可視性はブラウザーの`checkVisibility`とビューポート境界で判断し、遮蔽はモデル化しません。対象サンプルは項目ごとに10個、反復動作グループは20個までで、全体数と上限を記録します。
+
 ## 5. レポートと修正ハンドオフ
 
 出力は`reportDir`に生成します。
@@ -107,6 +136,7 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 | `last-full-report.json` | 部分検査で既存ブラウザー違反を区別するための完了済み全体結果 |
 | `lintapple.raw.json` | 元のレンダリング検査結果 |
 | `render-*.png` | 任意の同一セッション状態画像・要素クロップ |
+| `render-*.aria.yml` | 任意の同一状態ARIA構造。内容ハッシュで以前の証拠を保持 |
 | `VISUAL_REVIEW.md` | 人または外部ビジョンモデル向けのadvisoryレビューパケット |
 
 ハンドオフは**実際のblocker → advisoryエラー → 警告**の順です。同じ原因を対象・ビューポート・状態にまたがってまとめるため、継承されたフォントの問題を子要素ごとに直すのではなく、指定元から修正できます。意味ベースの対象は、identity JSONではなく`h1 "Unlock…"`のようなヒントで表示します。
@@ -133,6 +163,12 @@ node tools/ui-refiner/bin/ui-refiner.mjs baseline create --from artifacts/ui-ref
 - あいまいなidentityは表示し続け、抑制できません。`excludedFindings`に除外数を記録します。ソース内容や意味が変わると、新しいidentityになる場合があります。
 
 検査が違反を自動的にベースラインへ追加したり、ポリシーを弱めたりすることはありません。
+
+### レビュー済みの正確な値例外
+
+`gate.valueExceptionsPath`にプロジェクト相対のJSONパスを指定します。[examples/value-exceptions.json](examples/value-exceptions.json)を参考に、明示的にレビューしてください。例自体は承認ではありません。各項目は`engine: "lintapple"`、`rule`、正確なプリミティブ値`actual`、空でない`reason`が必要です。任意の`route`・レポートの正確な`selector`で範囲を絞れます。対象は`font-family`・`font-size`・`copy`・`root-background`です。類似フォントや同等CSSセレクターではなく、`report.json`の値とセレクターを使用します。
+
+一致した違反は証拠と`reviewedException`理由を保持し、ブロックしません。ベースラインへ自動追加しないため、値限定の承認が値と無関係な抑制へ拡大しません。他の値・範囲は引き続き失敗します。アクセシビリティ・操作規則はこの方式で免除できません。既存ポリシーの`exceptions`はセレクター全体の規則除外であり、より広い別の仕組みです。
 
 ## 7. エージェントスキルとチーム用フック
 
@@ -177,6 +213,7 @@ npx playwright install chromium
 npm run smoke:ui
 npm run smoke:gate
 npm run smoke:review2
+npm run smoke:routes
 ```
 
 CIは単体・契約テスト、実際のChromiumによるUI・CLI検査、セッションタイムアウト検査、固定ベンダー同期の検証を実行します。正常/違反ページ、モノレポの変更、移動したチェックアウトのフック、自動ID、1600行の一覧後にあるpointer候補の優先検出、同じ状態の画像、要素クロップを検証します。
