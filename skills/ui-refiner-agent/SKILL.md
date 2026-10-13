@@ -1,20 +1,20 @@
 ---
 name: ui-refiner-agent
-description: Design, implement and QA ordinary web-app interfaces with existing design systems, suta patterns, lintapple rendered checks and UI Refiner evidence. Never use for Canvas, native game engine HUDs or game design patterns.
+description: Design, implement and QA ordinary DOM web-app interfaces using the project SOT, bundled suta guidance, rendered lintapple checks, grouped repair evidence and bounded rechecks. Exclude Canvas, native game HUDs and game design.
 ---
 
 # UI Refiner agent protocol
 
-Scope: **ordinary browser DOM web-app UI only**. Game HUDs, Canvas-rendered interfaces and Godot/native engine interfaces belong to a separate future research project.
+1. Read the project SOT, approved art direction, tokens, existing components and acceptance criteria. Preserve approved typography; use the configured en-US, ko-KR or ja-JP policy. Check long copy for all required languages.
+2. Read the bundled `vendor/suta/skills/suta/SKILL.md` and relevant patterns in the UI Refiner installation. Treat `.agents/skills/suta` as a guidance snapshot; the maintained runtime is `static.auditPath: "bundled"`. Run doctor to detect drift and browser setup problems.
+3. Define hierarchy, the primary action, navigation, error/empty/loading states, focus and screen-reader behavior, reduced motion and responsive breaks. Prefer semantic buttons/links over generic click handlers. Mark explicit alignment, stack, radius and inset contracts where applicable.
+4. Implement the interface. Use the installed post-edit hook for newly edited static lines. Use `check --changed-only [--base <ref>]` for targeted Git checks; it includes staged, unstaged and untracked source changes. Treat it as partial coverage, never full QA approval.
+5. Run a full `node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json` against the live app. Both engines must complete. Exit 2 means error, missing coverage or partial scope. Inspect `not-tested`/`unknown` rule coverage even when executed rules pass.
+6. Read `AGENT_HANDOFF.md` and fix grouped root causes using the reported actual/expected values. For inherited typography, inspect the parent font before changing each child. Use `report.json` for every affected element; do not drop targets because the handoff shows only representative locations. Read resolved/added/persisting changes after each run.
+7. Inspect the captured initial/interaction-state images and violating element crops. Use `VISUAL_REVIEW.md` for an optional external visual-model review. Treat all model feedback as advisory: require screenshot/state evidence and leave final acceptance to a human. UI Refiner does not call a vision provider automatically.
 
-1. Read the project SOT/design-system tokens, existing components and acceptance criteria; keep approved branding and typography. Generic suta aesthetic preferences are guidelines, not automatic grounds to override explicit branding.
-2. Inspect the bundled `.agents/skills/suta/SKILL.md` and the relevant one of its 57 patterns. Reuse tested core and existing project components instead of inventing new ones.
-3. Define hierarchy, primary action, navigation, error/empty/loading states, keyboard and screen-reader interactions, reduced motion, Korean/English overflow, 320px/390px/1440px viewport behaviors.
-4. Implement semantic accessible DOM elements with clear focus handling; avoid blindly decorating surfaces or using `transition: all`.
-5. Launch the web app and run `node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json`. Both checks must complete. Exit 2 means infrastructure or coverage error, not success.
-6. Read `artifacts/ui-refiner/AGENT_HANDOFF.md`. Fix fresh blocking findings and rerun. Never weaken policy/baseline to hide failures.
-7. Inspect screenshots, interactive states, long content and responsive breaks. The human reviewer owns visual/UX acceptance despite automated PASS.
+## Bounded repair loop
 
-## Worker handoff
+Allow at most two fix/recheck iterations per repair task. Compare the previous and current reports after each iteration, checking resolved findings, new regressions, persisting causes and scope. Stop and report persisting blockers, tool failures or conflicts with the SOT after the second iteration. Never weaken policy, automatically baseline findings or invent suppressions to make the gate pass.
 
-The implementer owns code and the initial pass. QA workers may attempt at most two bounded fix/recheck iterations; report failures to the lead for SOT conflicts or tool failures. No autonomous execution of LLM-proposed shell text. Required evidence: `report.json`, `report.md`, `AGENT_HANDOFF.md`, optional screenshots and a visual-review note.
+Keep `report.json`, `report.md`, `AGENT_HANDOFF.md`, `previous-report.json`, captured images when enabled and a human visual-review note. Use schemaVersion 2 baselines only after explicit review of a fresh full report.

@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Real browser test: clean fixture must pass; deliberately bad font must fail.
 import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import {once} from 'node:events';
 import {createDemoServer} from '../examples/demo-server.mjs';
 import {lintapplePolicy} from '../src/presets.mjs';
@@ -18,6 +20,8 @@ try{
  assert.equal(passing.findings.length,0,'The default demo must satisfy its own policy');
  const failing=await checkUrl(url+'/negative-control',lintapplePolicy,{ready:'[data-app-ready]'});
  assert.ok(failing.findings.some(x=>x.rule==='font-family'),'Deliberate serif font violation must be detected');
+ await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
+ await fs.writeFile('artifacts/upstream-contracts/lintapple.recorded.json',JSON.stringify(failing,null,2)+'\n');
  const coverage=browserCoverage(passing);
  assert.ok(coverage.some(c=>c.rule==='layout-alignment'&&c.status==='not-tested'&&c.targets===0));
  assert.ok(coverage.some(c=>c.rule==='layout-gap'&&c.status==='not-tested'&&c.targets===0));
@@ -46,6 +50,12 @@ try{
   await page.evaluate(()=>document.querySelector('span').before(Object.assign(document.createElement('span'),{textContent:'Unrelated'})));
   const second=(await audit()).find(f=>f.rule==='font-family'&&f.identity.key===first.identity.key);
   assert.equal(first.id,second.id);
+  await page.setContent('<html style="background:white"><body style="font-family:system-ui"><div onclick="void 0" data-qa="click-div">Run action</div><button>Native action</button></body></html>');
+  const clickable=await audit();
+  assert.ok(clickable.some(f=>f.rule==='keyboard-operation'&&f.selector==='[data-qa="click-div"]'));
+  assert.ok(clickable.some(f=>f.rule==='control-state'&&f.selector==='[data-qa="click-div"]'));
+  assert.ok(!clickable.some(f=>f.details.phase==='clickable-focus'&&f.selector.includes('button')));
+
  }finally{await browser.close();}
  console.log(`PASS: default fixture 0 findings, negative control ${failing.findings.length} findings`);
 }finally{
