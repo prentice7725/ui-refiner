@@ -1,0 +1,15 @@
+{
+  "licensePreserved": true,
+  "suta": {
+    "owner": "Guksu",
+    "repo": "suta",
+    "sha": "412bd62e479ce249ef25ca31bc015cfb308aff10",
+    "scope": "skill and audit engine (partial pattern catalog)"
+  },
+  "lintapple": {
+    "owner": "gholtzap",
+    "repo": "lintapple",
+    "sha": "90ddc736af6f2712903d53dd9a463445e109f586",
+    "scope": "complete browser runtime src/ and CLI"
+  }
+}
