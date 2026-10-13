@@ -8,6 +8,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createDemoServer} from '../examples/demo-server.mjs';
+import {verifyRecordedContract} from '../src/contracts.mjs';
 import {makePreset,lintapplePolicy} from '../src/presets.mjs';
 
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -73,6 +74,7 @@ try{
   assert.equal(recorded.code,1);
   const original=JSON.parse(recorded.stdout);for(const finding of original.findings)finding.file=path.relative(root,finding.file).replaceAll(path.sep,'/');
   await writeFile(path.join(repo,'artifacts/upstream-contracts/suta.recorded.json'),JSON.stringify(original,null,2)+'\n');
+  await verifyRecordedContract('suta',original);
   console.log('PASS: integrated negative control rejected by suta, browser remained checked');
   config.browser.url=url+'/negative-control';
   await writeFile(path.join(root,'ui-refiner.config.json'),JSON.stringify(config));

@@ -95,4 +95,4 @@ npm run smoke:ui
 npm run smoke:gate
 ```
 
-CI executes both engines against clean and deliberately violating fixtures, verifies stable DOM identities, mouse-only control defects, same-state images, crop evidence and actual Chromium doctor. Actual checker output is retained as an upstream-contract artifact for recorded-fixture review. A browser PASS is not an aesthetic or release approval.
+CI executes both engines against clean and deliberately violating fixtures, verifies stable DOM identities, mouse-only control defects, same-state images, crop evidence and actual Chromium doctor. Actual checker output is retained as an upstream-contract artifact. Approved recordings in test/fixtures retain their run URL, SHA-256 and provenance; smokes compare live repair contracts against them and require review when the output changes. A browser PASS is not an aesthetic or release approval.

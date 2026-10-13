@@ -1,0 +1,226 @@
+{
+  "url": "http://127.0.0.1:38251/negative-control",
+  "rules": [
+    "font-family",
+    "font-size",
+    "copy",
+    "control-size",
+    "control-gap",
+    "control-inset",
+    "layout-gap",
+    "layout-alignment",
+    "tabular-numbers",
+    "numeric-alignment",
+    "nested-radius",
+    "root-background",
+    "horizontal-overflow",
+    "viewport-bounds",
+    "content-clipping",
+    "content-overflow",
+    "text-contrast",
+    "font-loading",
+    "accessible-name",
+    "form-label",
+    "aria-reference",
+    "label-consistency",
+    "control-state",
+    "keyboard-operation",
+    "focus-visible",
+    "focus-obscured",
+    "dialog-focus",
+    "icon-button-tooltip",
+    "target-size"
+  ],
+  "runs": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "colorScheme": "light",
+      "elements": 7,
+      "controls": 1,
+      "insetControls": 0,
+      "numericElements": 0,
+      "alignmentGroups": 0,
+      "radiusContracts": 0,
+      "suppressed": [],
+      "accessibilityCoverage": {
+        "pageRules": [
+          "accessible-name",
+          "form-label",
+          "label-consistency",
+          "control-state",
+          "keyboard-operation",
+          "target-size",
+          "aria-reference",
+          "icon-button-tooltip",
+          "dialog-focus"
+        ],
+        "interactionRules": "not tested without an interaction plan"
+      },
+      "states": [
+        {
+          "name": "initial",
+          "url": "http://127.0.0.1:38251/negative-control",
+          "findings": [
+            {
+              "rule": "font-family",
+              "selector": "[data-qa=\"primary-action\"]",
+              "message": "Expected one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display. Found serif.",
+              "actual": "serif",
+              "expected": "one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display",
+              "fix": "Use the approved interface font.",
+              "identity": {
+                "key": "[data-qa=\"primary-action\"]",
+                "stable": true
+              }
+            }
+          ],
+          "suppressed": [],
+          "accessibilityCoverage": {
+            "pageRules": [
+              "accessible-name",
+              "form-label",
+              "label-consistency",
+              "control-state",
+              "keyboard-operation",
+              "target-size",
+              "aria-reference",
+              "icon-button-tooltip",
+              "dialog-focus"
+            ],
+            "interactionRules": "not tested without an interaction plan"
+          },
+          "ruleCoverage": {
+            "layout-gap": 0,
+            "control-gap": 0,
+            "layout-alignment": 0,
+            "control-inset": 0,
+            "nested-radius": 0
+          },
+          "elements": 7,
+          "controls": 1,
+          "insetControls": 0,
+          "numericElements": 0,
+          "alignmentGroups": 0,
+          "radiusContracts": 0
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "colorScheme": "light",
+      "elements": 7,
+      "controls": 1,
+      "insetControls": 0,
+      "numericElements": 0,
+      "alignmentGroups": 0,
+      "radiusContracts": 0,
+      "suppressed": [],
+      "accessibilityCoverage": {
+        "pageRules": [
+          "accessible-name",
+          "form-label",
+          "label-consistency",
+          "control-state",
+          "keyboard-operation",
+          "target-size",
+          "aria-reference",
+          "icon-button-tooltip",
+          "dialog-focus"
+        ],
+        "interactionRules": "not tested without an interaction plan"
+      },
+      "states": [
+        {
+          "name": "initial",
+          "url": "http://127.0.0.1:38251/negative-control",
+          "findings": [
+            {
+              "rule": "font-family",
+              "selector": "[data-qa=\"primary-action\"]",
+              "message": "Expected one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display. Found serif.",
+              "actual": "serif",
+              "expected": "one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display",
+              "fix": "Use the approved interface font.",
+              "identity": {
+                "key": "[data-qa=\"primary-action\"]",
+                "stable": true
+              }
+            }
+          ],
+          "suppressed": [],
+          "accessibilityCoverage": {
+            "pageRules": [
+              "accessible-name",
+              "form-label",
+              "label-consistency",
+              "control-state",
+              "keyboard-operation",
+              "target-size",
+              "aria-reference",
+              "icon-button-tooltip",
+              "dialog-focus"
+            ],
+            "interactionRules": "not tested without an interaction plan"
+          },
+          "ruleCoverage": {
+            "layout-gap": 0,
+            "control-gap": 0,
+            "layout-alignment": 0,
+            "control-inset": 0,
+            "nested-radius": 0
+          },
+          "elements": 7,
+          "controls": 1,
+          "insetControls": 0,
+          "numericElements": 0,
+          "alignmentGroups": 0,
+          "radiusContracts": 0
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "rule": "font-family",
+      "selector": "[data-qa=\"primary-action\"]",
+      "message": "Expected one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display. Found serif.",
+      "actual": "serif",
+      "expected": "one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display",
+      "fix": "Use the approved interface font.",
+      "identity": {
+        "key": "[data-qa=\"primary-action\"]",
+        "stable": true
+      },
+      "state": "initial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "colorScheme": "light"
+    },
+    {
+      "rule": "font-family",
+      "selector": "[data-qa=\"primary-action\"]",
+      "message": "Expected one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display. Found serif.",
+      "actual": "serif",
+      "expected": "one of system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display",
+      "fix": "Use the approved interface font.",
+      "identity": {
+        "key": "[data-qa=\"primary-action\"]",
+        "stable": true
+      },
+      "state": "initial",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "colorScheme": "light"
+    }
+  ]
+}

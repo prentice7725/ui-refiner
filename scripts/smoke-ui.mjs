@@ -8,6 +8,7 @@ import {createDemoServer} from '../examples/demo-server.mjs';
 import {lintapplePolicy} from '../src/presets.mjs';
 import {identify,normalizeBrowser,browserCoverage} from '../src/normalize.mjs';
 import {launchBrowser} from '../vendor/lintapple/src/browser.js';
+import {verifyRecordedContract} from '../src/contracts.mjs';
 import {checkPage,checkUrl} from '../vendor/lintapple/src/index.js';
 const server=createDemoServer();
 server.listen(0,'127.0.0.1');
@@ -22,6 +23,7 @@ try{
  assert.ok(failing.findings.some(x=>x.rule==='font-family'),'Deliberate serif font violation must be detected');
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/lintapple.recorded.json',JSON.stringify(failing,null,2)+'\n');
+ await verifyRecordedContract('lintapple',failing);
  const coverage=browserCoverage(passing);
  assert.ok(coverage.some(c=>c.rule==='layout-alignment'&&c.status==='not-tested'&&c.targets===0));
  assert.ok(coverage.some(c=>c.rule==='layout-gap'&&c.status==='not-tested'&&c.targets===0));
