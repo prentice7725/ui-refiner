@@ -37,7 +37,7 @@ export async function realBrowser(config,root){
   let interactions;
   if(config.browser.interactionsPath) interactions=JSON.parse(await readFile(resolveInside(root,config.browser.interactionsPath,'browser.interactionsPath'),'utf8'));
   // Runtime dependency is resolved from the UI Refiner installation, not the scanned app.
-  const {checkUrl:lintCheck}=await import('lintapple');
+  const {checkUrl:lintCheck}=await import('../vendor/lintapple/src/index.js');
   const report=await lintCheck(url,policy,{ready:config.browser.ready??undefined,timeout:config.browser.timeoutMs,interactions});
   return {findings:normalizeBrowser(report),rawReport:report};
 }

@@ -1,8 +1,8 @@
 {
   "name": "ui-refiner",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
-  "description": "Web app design system agent skill + suta static audit + lintapple browser quality gate",
+  "description": "Source-integrated web UI design and deterministic quality gate",
   "type": "module",
   "engines": {
     "node": ">=22.18.0"
@@ -12,10 +12,11 @@
   },
   "scripts": {
     "test": "node --test",
-    "demo": "node examples/demo-server.mjs"
+    "demo": "node examples/demo-server.mjs",
+    "smoke:ui": "node scripts/smoke-ui.mjs"
   },
   "dependencies": {
-    "lintapple": "0.1.21",
+    "axe-core": "4.14.0",
     "playwright": "1.63.0"
   },
   "license": "MIT"
