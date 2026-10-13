@@ -1,7 +1,7 @@
 name: ui-refiner source CI
 on:
   push:
-    branches: [main, feat/source-integrated-qa]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 jobs:
