@@ -22,7 +22,7 @@ Pinned upstream commits and copyright: [vendor/UPSTREAM.json](vendor/UPSTREAM.js
 Place this repo at `tools/ui-refiner`, then from the **app root**:
 
 ```sh
-(cd tools/ui-refiner && npm ci)
+(cd tools/ui-refiner && npm ci && npx playwright install chromium)
 bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
 node tools/ui-refiner/scripts/install-agent-skill.mjs "$PWD"
 node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD"
@@ -57,3 +57,21 @@ The smoke verifies that the default DOM demo has **zero findings at both configu
 - `2`: missing engine, browser, policy or coverage — **never** treat as pass.
 
 Code/runtime dependencies reside here; upstream installs are not needed. Keep `vendor/` MIT notices and update provenance before integrating upstream fixes. For ordinary web apps only.
+
+## Baseline fingerprint v2 and inspection evidence
+
+New baselines use `schemaVersion: 2`; project configuration remains version 1.
+Run a fresh check and create a new, reviewed baseline with:
+
+```sh
+node tools/ui-refiner/bin/ui-refiner.mjs baseline create --from artifacts/ui-refiner/report.json --out ui-refiner.baseline.v2.json
+```
+
+Point `gate.baselinePath` at that file after review. Version 1 hashes cannot be migrated reliably and are rejected; old reports cannot be relabeled as version 2.
+Static fingerprints use the relative file and unique trimmed source line, excluding line number and diagnostic message. Repeated/empty source lines are ineligible for suppression. Browser fingerprints use unique `data-ui-id`, `data-testid`, `data-qa`, or `id` anchors, with a unique semantic fallback scoped to an anchored ancestor. They include viewport dimensions, theme, state, pseudo-element and related element identity, excluding measured values and nth-of-type positions. Ambiguous identities remain reported and cannot be baselined; `excludedFindings` records their count. Changing source content or semantic identity can intentionally create a new finding.
+
+Normalized JSON keeps original browser details, including `actual`, `expected` and related selectors. Markdown and the agent handoff include the measured and expected values.
+
+Coverage reports list target counts for alignment, layout/control gaps, nested radius and control inset for each viewport/theme/state. Zero targets mean `not-tested`; missing counters mean `unknown`. PASS means no new enforced violations among executed checks and does not assert coverage of unmarked layout contracts. Add relevant `data-ui-*` markers and configured control containers where those checks should apply.
+
+`doctor` actually launches Chromium, opens a blank page, and closes it. Neither `doctor` nor `check` downloads Chromium; install it explicitly during setup. Browser launch failures return exit 2. Local upstream patches are recorded in `vendor/UPSTREAM.json`.

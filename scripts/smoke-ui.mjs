@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import {once} from 'node:events';
 import {createDemoServer} from '../examples/demo-server.mjs';
 import {lintapplePolicy} from '../src/presets.mjs';
-import {checkUrl} from '../vendor/lintapple/src/index.js';
+import {identify,normalizeBrowser,browserCoverage} from '../src/normalize.mjs';
+import {launchBrowser} from '../vendor/lintapple/src/browser.js';
+import {checkPage,checkUrl} from '../vendor/lintapple/src/index.js';
 const server=createDemoServer();
 server.listen(0,'127.0.0.1');
 await once(server,'listening');
@@ -16,6 +18,35 @@ try{
  assert.equal(passing.findings.length,0,'The default demo must satisfy its own policy');
  const failing=await checkUrl(url+'/negative-control',lintapplePolicy,{ready:'[data-app-ready]'});
  assert.ok(failing.findings.some(x=>x.rule==='font-family'),'Deliberate serif font violation must be detected');
+ const coverage=browserCoverage(passing);
+ assert.ok(coverage.some(c=>c.rule==='layout-alignment'&&c.status==='not-tested'&&c.targets===0));
+ assert.ok(coverage.some(c=>c.rule==='layout-gap'&&c.status==='not-tested'&&c.targets===0));
+ const browser=await launchBrowser();
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(url+'/negative-control');
+  const audit=async()=>{
+   const raw=await checkPage(page,lintapplePolicy);
+   return identify(normalizeBrowser({runs:[{}],findings:raw.findings.map(f=>({...f,viewport:{width:390,height:844},colorScheme:'light',state:'initial'}))}));
+  };
+  const before=(await audit()).find(f=>f.rule==='font-family'&&f.selector==='[data-qa="primary-action"]');
+  assert.ok(before?.baselineEligible);
+  await page.evaluate(()=>{
+   const button=document.querySelector('[data-qa="primary-action"]');
+   button.before(document.createElement('button'));
+   button.style.fontFamily='Arial';
+  });
+  const after=(await audit()).find(f=>f.rule==='font-family'&&f.selector==='[data-qa="primary-action"]');
+  assert.equal(before.id,after.id,'DOM insertion and changed measured font must preserve fingerprint');
+  assert.equal(after.actual,'Arial');
+  // Unmarked semantic identity also survives an unrelated same-tag sibling insertion.
+  await page.setContent('<body><span>Stable text</span></body>');
+  const first=(await audit()).find(f=>f.rule==='font-family');
+  assert.ok(first?.baselineEligible);
+  await page.evaluate(()=>document.querySelector('span').before(Object.assign(document.createElement('span'),{textContent:'Unrelated'})));
+  const second=(await audit()).find(f=>f.rule==='font-family'&&f.identity.key===first.identity.key);
+  assert.equal(first.id,second.id);
+ }finally{await browser.close();}
  console.log(`PASS: default fixture 0 findings, negative control ${failing.findings.length} findings`);
 }finally{
  await new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()));
