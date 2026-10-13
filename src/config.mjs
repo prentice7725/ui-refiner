@@ -24,15 +24,28 @@ export function validateConfig(input){
   bool(input.static.enabled,'static.enabled'); nonEmpty(input.static.auditPath,'static.auditPath');
   if(!Array.isArray(input.static.targets)||!input.static.targets.length||input.static.targets.some(s=>typeof s!=='string'||!s.trim())) throw new Error('static.targets needs paths');
   assertTimeout(input.static.timeoutMs,'static.timeoutMs');assertEnforcement(input.static.enforcement,'static.enforcement');
-  assertKeys(input.browser,['enabled','url','policyPath','ready','interactionsPath','timeoutMs','sessionTimeoutMs','captureScreenshots','enforcement'],'browser');
+  assertKeys(input.browser,['enabled','url','routes','policyPath','ready','interactionsPath','timeoutMs','sessionTimeoutMs','captureScreenshots','captureAriaSnapshots','renderedMetrics','enforcement'],'browser');
   bool(input.browser.enabled,'browser.enabled'); nonEmpty(input.browser.url,'browser.url');nonEmpty(input.browser.policyPath,'browser.policyPath');
   for(const key of ['ready','interactionsPath'])if(input.browser[key]!==null)nonEmpty(input.browser[key],`browser.${key}`);
   assertTimeout(input.browser.timeoutMs,'browser.timeoutMs');if(input.browser.sessionTimeoutMs!=null)assertTimeout(input.browser.sessionTimeoutMs,'browser.sessionTimeoutMs'); bool(input.browser.captureScreenshots,'browser.captureScreenshots');assertEnforcement(input.browser.enforcement,'browser.enforcement');
-  assertKeys(input.gate,['maxStaticWarnings','allowedHosts','baselinePath','manualVisualReview'],'gate');
+  for(const key of ['captureAriaSnapshots','renderedMetrics'])if(input.browser[key]!==undefined)bool(input.browser[key],`browser.${key}`);
+  if(input.browser.routes!==undefined){
+    if(!Array.isArray(input.browser.routes)||!input.browser.routes.length||input.browser.routes.length>50)throw Error('browser.routes must have 1..50 routes');
+    const names=new Set();
+    for(const route of input.browser.routes){
+      assertKeys(route,['name','url','ready','interactionsPath'],'browser.routes entry');
+      nonEmpty(route.name,'route.name');if(!/^[a-zA-Z0-9_-]{1,64}$/.test(route.name)||names.has(route.name))throw Error('route names must be unique safe identifiers (1..64 characters)');names.add(route.name);
+      nonEmpty(route.url,'route.url');if(!route.url.startsWith('/')&&!/^https?:\/\//.test(route.url))throw Error('route.url must be an absolute HTTP(S) URL or root-relative path');
+      for(const key of ['ready','interactionsPath'])if(route[key]!=null)nonEmpty(route[key],`route.${key}`);
+    }
+  }
+  assertKeys(input.gate,['maxStaticWarnings','allowedHosts','baselinePath','valueExceptionsPath','manualVisualReview'],'gate');
   if(input.gate.maxStaticWarnings!==null && (!Number.isInteger(input.gate.maxStaticWarnings)||input.gate.maxStaticWarnings<0))throw new Error('maxStaticWarnings must be null or nonnegative integer');
   if(!Array.isArray(input.gate.allowedHosts)||!input.gate.allowedHosts.length||input.gate.allowedHosts.some(s=>typeof s!=='string'||!s.trim()))throw new Error('allowedHosts must have hosts');
   if(input.gate.baselinePath!==null)nonEmpty(input.gate.baselinePath,'gate.baselinePath');
+  if(input.gate.valueExceptionsPath!=null)nonEmpty(input.gate.valueExceptionsPath,'gate.valueExceptionsPath');
   bool(input.gate.manualVisualReview,'gate.manualVisualReview');nonEmpty(input.reportDir,'reportDir');
+  if(input.browser.enabled)browserRoutes(input);
   return input;
 }
 function assertTimeout(v,n){if(!Number.isInteger(v)||v<100||v>600000)throw new Error(`${n} must be 100..600000ms`);}
@@ -44,7 +57,9 @@ export async function loadConfig(configFile='ui-refiner.config.json'){
   for(const target of config.static.targets)resolveInside(root,target,'static.targets');
   if(config.sot.path)resolveInside(root,config.sot.path,'sot.path');
   if(config.browser.interactionsPath)resolveInside(root,config.browser.interactionsPath,'browser.interactionsPath');
+  for(const route of config.browser.routes||[])if(route.interactionsPath)resolveInside(root,route.interactionsPath,'route.interactionsPath');
   if(config.gate.baselinePath)resolveInside(root,config.gate.baselinePath,'gate.baselinePath');
+  if(config.gate.valueExceptionsPath)resolveInside(root,config.gate.valueExceptionsPath,'gate.valueExceptionsPath');
   return {root,config,file};
 }
 export function checkUrl(input,allowedHosts){
@@ -53,6 +68,16 @@ export function checkUrl(input,allowedHosts){
   if(u.username||u.password)throw new Error('Credentials inside URL are not allowed');
   if(!allowedHosts.includes(u.hostname))throw new Error(`Host ${u.hostname} is not allowed; edit gate.allowedHosts explicitly`);
   return u.toString();
+}
+// Explicit routes replace the single-page target; legacy single-page identities stay unchanged.
+export function browserRoutes(config){
+  const base=checkUrl(config.browser.url,config.gate.allowedHosts);
+  return (config.browser.routes||[{name:'default',url:base}]).map(route=>({
+    ...route,url:checkUrl(new URL(route.url,base).toString(),config.gate.allowedHosts),
+    ready:route.ready===undefined?config.browser.ready:route.ready,
+    interactionsPath:route.interactionsPath===undefined?config.browser.interactionsPath:route.interactionsPath,
+    routeKey:config.browser.routes?JSON.stringify([route.name,checkUrl(new URL(route.url,base).toString(),config.gate.allowedHosts)]):undefined
+  }));
 }
 export async function initProject(root,preset='web',locale='en-US'){
   const config=makePreset(preset,locale);

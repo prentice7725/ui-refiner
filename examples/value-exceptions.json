@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "exceptions": [
+    {
+      "engine": "lintapple",
+      "rule": "font-family",
+      "actual": "Brand Sans",
+      "selector": "[data-ui-id=\"brand-wordmark\"]",
+      "route": "home",
+      "reason": "Example only: replace with the reviewed SOT decision before enabling."
+    }
+  ]
+}
