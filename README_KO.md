@@ -69,3 +69,5 @@ node tools/ui-refiner/scripts/sync-vendor.mjs --lintapple <40자리-SHA>
 - browser.timeoutMs는 단계 제한, browser.sessionTimeoutMs는 전체 세션 제한입니다. 전체 제한이 없으면 뷰포트·테마·상호작용 수에 맞춰 최대 10분 범위에서 산정합니다.
 - React useId·Radix·Headless UI의 알려진 자동 ID를 안정 앵커에서 제외합니다. 명시적 data-ui-id 등의 마커를 우선합니다.
 - 핸드오프에는 짧은 대상 힌트를 넣고 약 6KiB로 제한합니다. 나머지 그룹·전체 셀렉터·실제 값은 report.json에 보존합니다.
+
+후속 보완: 핸드오프는 실제 blocker → advisory 오류 → 경고 순으로 표시하며, 상한 때문에 생략된 blocker의 수와 규칙명을 명시합니다. 의미 기반 identity는 `h1 "Unlock…"`처럼 사람이 읽기 쉬운 힌트로 렌더링하고 원본은 JSON에 남깁니다. CDP 후보는 cursor:pointer를 먼저 검사하며, React 19.1의 «r0»/«R1» ID도 안정 앵커에서 제외합니다.
