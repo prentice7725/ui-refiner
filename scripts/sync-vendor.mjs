@@ -2,7 +2,7 @@
 // Stage upstream source, replay reviewed local patches, verify manifests and smoke before retaining changes.
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {repoRoot,inventory,sha256} from '../src/vendor.mjs';
+import {repoRoot,inventory,sha256,verifyVendor} from '../src/vendor.mjs';
 import {spawnBounded} from '../src/execute.mjs';
 const args=process.argv.slice(2),updates={};
 for(let i=0;i<args.length;i++){
@@ -10,6 +10,7 @@ for(let i=0;i<args.length;i++){
  updates[name]=args[++i];
 }
 if(!Object.keys(updates).length)throw Error('Specify at least one upstream SHA');
+const drift=await verifyVendor();if(drift.length)throw Error(`Unrecorded vendor changes would be lost: ${drift.join(', ')}. Record reviewed local patches and manifests before syncing.`);
 const vendor=path.join(repoRoot,'vendor'),manifestFile=path.join(vendor,'UPSTREAM.json');
 const old=await fs.readFile(manifestFile,'utf8'),manifest=JSON.parse(old);
 const tmp=await fs.mkdtemp(path.join(repoRoot,'.vendor-sync-')),backups=[];

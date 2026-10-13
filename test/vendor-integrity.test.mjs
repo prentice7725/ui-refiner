@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import {spawnBounded} from '../src/execute.mjs';
 import {inventory,verifyVendor,repoRoot} from '../src/vendor.mjs';
 test('vendored files and reviewed local patches match every SHA-256 manifest entry',async()=>{
  assert.deepEqual(await verifyVendor(),[]);
@@ -23,5 +24,11 @@ test('a one-line vendor edit is detected despite unchanged file count',async()=>
   for(const name of ['suta','lintapple','patches'])await fs.cp(path.join(repoRoot,'vendor',name),path.join(tmp,'vendor',name),{recursive:true});
   await fs.appendFile(path.join(tmp,'vendor/suta/skills/suta/scripts/audit.mjs'),'\n// accidental change\n');
   const drift=await verifyVendor(tmp);assert.ok(drift.includes('suta/skills/suta/scripts/audit.mjs: modified'));assert.equal(drift.length,1);
+  await fs.cp(path.join(repoRoot,'src'),path.join(tmp,'src'),{recursive:true});
+  await fs.mkdir(path.join(tmp,'scripts'));await fs.cp(path.join(repoRoot,'scripts/sync-vendor.mjs'),path.join(tmp,'scripts/sync-vendor.mjs'));
+  const sync=await spawnBounded(process.execPath,[path.join(tmp,'scripts/sync-vendor.mjs'),'--lintapple','90ddc736af6f2712903d53dd9a463445e109f586'],{cwd:tmp,timeoutMs:3000});
+  assert.notEqual(sync.code,0);assert.match(sync.stderr,/Unrecorded vendor changes would be lost/);
+  assert.match(await fs.readFile(path.join(tmp,'vendor/suta/skills/suta/scripts/audit.mjs'),'utf8'),/accidental change/);
+
  }finally{await fs.rm(tmp,{recursive:true,force:true});}
 });
