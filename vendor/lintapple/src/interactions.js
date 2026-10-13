@@ -37,7 +37,7 @@ export function validateInteractions(plan) {
   return result;
 }
 
-export async function runInteractions(page, input, policy, checkPage, createVisibility) {
+export async function runInteractions(page, input, policy, checkPage, createVisibility, onState) {
   const plan = validateInteractions(input);
   const findings = [], suppressed = [], checks = [], states = [];
   const selectors = plan.focus.map(x => x.selector).concat(plan.buttons.flatMap(x => [x.selector, x.outcome]), plan.tooltips.flatMap(x => [x.trigger, x.tooltip]), plan.dialogs.flatMap(x => [x.open, x.dialog, x.close, x.returnFocus].filter(Boolean)));
@@ -78,6 +78,7 @@ export async function runInteractions(page, input, policy, checkPage, createVisi
     let result;
     try { result = await checkPage(page, policy); }
     catch (error) { throw new Error(`State "${name}" could not be checked: ${error.message}`, { cause: error }); }
+    if(onState)await onState(page,{name,...result});
     states.push({ name, url: page.url(), ...result });
     findings.push(...result.findings.map(item => ({ ...item, state: name })));
     suppressed.push(...result.suppressed.map(item => ({ ...item, state: name })));

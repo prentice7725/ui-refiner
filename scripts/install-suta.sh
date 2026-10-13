@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install from source already checked into ui-refiner; no remote checkout or npm lintapple dependency.
+# Optional guidance snapshot. Runtime audits use vendor/suta directly by default.
 set -euo pipefail
 ROOT="${1:-$(pwd)}"
 SOURCE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/vendor/suta/skills/suta"
@@ -10,4 +10,4 @@ if [[ -e "$DEST" ]]; then
 fi
 mkdir -p "$(dirname "$DEST")"
 cp -R "$SOURCE" "$DEST"
-echo "Installed bundled suta source into $DEST"
+echo "Installed suta guidance snapshot into $DEST"

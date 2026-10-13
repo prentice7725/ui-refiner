@@ -1,0 +1,26 @@
+{
+  "files": 1,
+  "errors": 2,
+  "warnings": 0,
+  "findings": [
+    {
+      "file": "src/demo.css",
+      "line": 2,
+      "lines": [
+        2
+      ],
+      "rule": "no-reduced-motion",
+      "severity": "error",
+      "message": "움직임이 있는데 prefers-reduced-motion 블록이 없다",
+      "fix": "@media (prefers-reduced-motion: reduce) { … } 에서 이동·확대를 끄고 페이드만 남긴다 (모든 suta 패턴 CSS 하단 블록 참고)"
+    },
+    {
+      "file": "src/demo.css",
+      "line": 2,
+      "rule": "transition-all",
+      "severity": "error",
+      "message": "transition: all — 어떤 속성이 움직일지 정하지 않았다",
+      "fix": "transform·opacity 등 움직일 속성을 이름으로 나열한다"
+    }
+  ]
+}

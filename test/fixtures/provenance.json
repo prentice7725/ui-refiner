@@ -1,0 +1,12 @@
+{
+  "runId": 38352444592,
+  "runUrl": "https://github.com/prentice7725/ui-refiner/actions/runs/38352444592",
+  "headSha": "abbd126c51be251b425140f9699a1ea9468bb267",
+  "artifactId": 11791272543,
+  "artifactSha256": "ffa7c64469902fe43aef4e4606e27d1724fe69a5c9d4e217abac2c965039436c",
+  "note": "Original engine recordings downloaded from passing GitHub Actions. The source fixture paths were made project-relative by smoke-gate before recording; browser URLs remain as recorded. No synthetic checker findings.",
+  "sha256": {
+    "lintapple.recorded.json": "bcbcc33cde98a7d66b744b18f8003867c261be091b75351ed104f4ecf1920379",
+    "suta.recorded.json": "1adb905b2856d82785771c9abfd10ac63e5e6b4341e3689f9914b21e2d410556"
+  }
+}

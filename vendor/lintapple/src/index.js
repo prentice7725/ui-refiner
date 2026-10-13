@@ -67,11 +67,11 @@ export async function checkPage(page, input = {}) {
   finally { await Promise.all([contrast.dispose(), accessibility.dispose(), format.dispose(), visibility.dispose()]); }
 }
 
-export async function checkInteractions(page, plan, input = {}, { timeout = 15000 } = {}) {
+export async function checkInteractions(page, plan, input = {}, { timeout = 15000, onState } = {}) {
   if (!Number.isInteger(timeout) || timeout < 1) throw new Error('Page-check timeout must be a positive integer.');
   const validated = validateInteractions(plan);
   const policy = validatePolicy(input);
-  return runInteractions(page, validated, policy, (page, policy) => checkPageWithin(page, policy, timeout), createVisibility);
+  return runInteractions(page, validated, policy, (page, policy) => checkPageWithin(page, policy, timeout), createVisibility, onState);
 }
 
 async function checkPageWithin(page, policy, timeout) {
@@ -83,7 +83,7 @@ async function checkPageWithin(page, policy, timeout) {
   } finally { clearTimeout(timer); }
 }
 
-export async function checkUrl(url, input = {}, { ready, timeout = 15000, interactions } = {}) {
+export async function checkUrl(url, input = {}, { ready, timeout = 15000, interactions, onState, locale = 'en-US' } = {}) {
   const parsed = new URL(url);
   if (!['http:', 'https:', 'file:'].includes(parsed.protocol)) throw new Error('Use an HTTP, HTTPS, or file URL.');
   const policy = validatePolicy(input);
@@ -92,7 +92,7 @@ export async function checkUrl(url, input = {}, { ready, timeout = 15000, intera
   const report = { url, rules: ruleIds, runs: [], findings: [] };
   try {
     for (const viewport of policy.viewports) for (const colorScheme of policy.colorSchemes) {
-      const context = await browser.newContext({ viewport, colorScheme, reducedMotion: 'reduce', locale: 'en-US', timezoneId: 'UTC', deviceScaleFactor: 1 });
+      const context = await browser.newContext({ viewport, colorScheme, reducedMotion: 'reduce', locale, timezoneId: 'UTC', deviceScaleFactor: 1 });
       try {
         const page = await context.newPage();
         page.setDefaultTimeout(timeout);
@@ -103,12 +103,13 @@ export async function checkUrl(url, input = {}, { ready, timeout = 15000, intera
         }
         if (ready) await page.locator(ready).waitFor({ state: 'visible' });
         const result = await checkPageWithin(page, policy, timeout);
+        if(onState)await onState(page,{name:'initial',viewport,colorScheme,...result});
         const states = [{ name: 'initial', url: page.url(), ...result }];
         const findings = result.findings.map(f => ({ ...f, state: 'initial' }));
         const suppressed = result.suppressed.map(f => ({ ...f, state: 'initial' }));
         const accessibilityCoverage = { ...result.accessibilityCoverage };
         if (interactions !== undefined) {
-          const interaction = await checkInteractions(page, interactions, policy, { timeout });
+          const interaction = await checkInteractions(page, interactions, policy, { timeout, onState: onState ? (page,state)=>onState(page,{viewport,colorScheme,...state}) : undefined });
           findings.push(...interaction.findings);
           suppressed.push(...interaction.suppressed);
           states.push(...interaction.states);
