@@ -18,7 +18,7 @@ node tools/ui-refiner/scripts/install-agent-skill.mjs "$PWD"
 
 Use `--locale ko-KR` or `--locale ja-JP` to generate corresponding initial fonts/copy policy. Policies derive from `vendor/lintapple/ui-policy.json`; review project overrides against the SOT. Browser rendering uses the same locale. `init` preserves existing configuration and policy files.
 
-The skill installer preserves existing Claude settings and adds a PostToolUse hook. Other hosts should register the generated `hook-registration.json` through their supported hook UI; the installer does not invent unsupported Codex settings. Hooks only check edited static lines and are not full approval gates. Review installed executable hooks as part of normal tool setup.
+For an in-project installation the skill installer preserves existing Claude settings and adds a project-relative PostToolUse hook using CLAUDE_PROJECT_DIR. Its wrapper imports the maintained hook relatively, so moving a checkout does not embed a personal path. External personal tool checkouts use settings.local.json and a local UI_REFINER_HOME override; they never change shared settings.json. Other hosts should register the generated `hook-registration.json` through their supported hook UI; the installer does not invent unsupported Codex settings. Hooks only check edited static lines and are not full approval gates. Review installed executable hooks as part of normal tool setup.
 
 Runtime audits use `static.auditPath: "bundled"` directly. An optional guidance snapshot can be installed with `bash tools/ui-refiner/scripts/install-suta.sh "$PWD"`; doctor warns if that copy drifts. Existing explicit auditPath overrides are preserved but can use outdated code. Migrate old `.agents/skills/suta/scripts/audit.mjs` configuration to `"bundled"` after review.
 
@@ -37,22 +37,23 @@ Doctor verifies vendor hashes and actually launches Chromium, opens a blank page
 |---|---|
 | report.json | Every finding/target, actual/expected, original browser details, grouped identities, coverage and scope |
 | report.md / AGENT_HANDOFF.md | Root-cause groups, representative targets, combined viewport/state coverage and previous-run changes |
-| previous-report.json | The last recorded run; diff compares compatible full/partial scopes |
+| previous-report.json / last-full-report.json | Previous run plus compatible full reference; diff compares matching scopes |
 | lintapple.raw.json | Unmodified rendered audit evidence |
 | render-*.png / finding crops | Same-page captures immediately after initial/interaction-state checks |
 | VISUAL_REVIEW.md | Optional external visual review checklist; advisory only |
 
-JSON always preserves the complete target list, even when Markdown shows only a few representative locations. Grouping combines matching engine/rule/actual/expected/fix findings; fixing an inherited font can clear many elements and viewports together. Reports compare resolved/added/persisting finding identities on consecutive compatible runs. A repair task is limited to two fix/recheck iterations by the agent protocol; UI Refiner does not autonomously edit code.
+JSON always preserves the complete target list, even when Markdown shows only a few representative locations. The handoff uses short identity/selector hints, caps its repair list at roughly 6 KiB, and explicitly points to remaining groups and full selectors in report.json. Grouping combines matching engine/rule/actual/expected/fix findings; fixing an inherited font can clear many elements and viewports together. Reports compare resolved/added/persisting finding identities on consecutive compatible runs. A repair task is limited to two fix/recheck iterations by the agent protocol; UI Refiner does not autonomously edit code.
 
 | Exit | Meaning |
 |---|---|
 | 0 | Executed full-scope automated checks have no new enforced violations; human review may remain |
 | 1 | New enforced violations |
-| 2 | Tool/browser/policy error, disabled required engine or incomplete scope |
+| 2 | Tool/browser/policy error or disabled required engine |
+| 3 | SCOPED_PASS: changed static scope passed; full QA approval remains outstanding |
 
-Per viewport/theme/state target counts are included for alignment, layout/control gaps, nested radius and control inset. Zero targets mean `not-tested`; missing counters mean `unknown`. Full-scope PASS does not assert these unmarked contracts were checked. Add appropriate `data-ui-*` contracts where relevant. Mouse-only inline `onclick` or explicit `data-ui-clickable` elements are checked for focus/semantic omissions; arbitrary JavaScript event listeners are not automatically enumerated. Use an interaction plan to verify actual keyboard activation.
+Per viewport/theme/state target counts are included for alignment, layout/control gaps, nested radius and control inset. Zero targets mean `not-tested`; missing counters mean `unknown`. Full-scope PASS does not assert these unmarked contracts were checked. Add appropriate `data-ui-*` contracts where relevant. Mouse-only inline `onclick`, DOM `onclick` properties (including React-style handlers), and explicit `data-ui-clickable` elements are checked for focus/semantic omissions. Chromium CDP also inspects direct click listeners on up to 500 visible non-native candidates per page state. Known framework delegation roots are excluded. The report exposes the inspected count, cap and CDP availability; delegated descendants and capped candidates still require explicit markers/interaction plans. Use an interaction plan to verify actual keyboard activation.
 
-The browser runs in a separate process with a total time/output bound. Audit and capture share one session, locale and reduced-motion setting. Element crops are bounded to five unique targets per state; unavailable crops are recorded. Partial captures from an interrupted run do not constitute approval; trust the current report's artifact list.
+The browser runs in a separate process with a total time/output bound. browser.timeoutMs limits each navigation/audit step; browser.sessionTimeoutMs is an optional independent total limit. When omitted or null, a total budget is derived from viewports, themes, planned interactions and capture allowance, capped at 600000ms. A short valid per-page limit therefore does not kill multiple valid sequential runs. Audit and capture share one session, locale and reduced-motion setting. Element crops are bounded to five unique targets per state; unavailable crops are recorded. Partial captures from an interrupted run do not constitute approval; trust the current report's artifact list.
 
 Visual-model feedback is advisory. This tool generates a review packet but does not call a vision provider or change gate status from model output. A human owns visual acceptance.
 
@@ -63,7 +64,7 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --changed-only
 node tools/ui-refiner/bin/ui-refiner.mjs check --changed-only --base origin/main
 ```
 
-Without a base, Git diff against HEAD includes staged and unstaged edits; untracked source files are also included. With a base, committed changes since that ref are included. Static findings are filtered to changed new-side lines; rendered browser checks still cover the whole configured page. This mode is partial: clean results return INCOMPLETE/exit 2 rather than a full PASS. It cannot be used to create a regression baseline. Run full QA before approval.
+Without a base, Git diff against HEAD includes staged and unstaged edits; untracked source files are also included. With a base, committed changes since that ref are included. Static findings are filtered to changed new-side lines; rendered browser checks still cover the whole configured page. This mode is partial: clean scoped results return SCOPED_PASS/exit 3, never full PASS/exit 0. Infrastructure/required-stage failures remain exit 2 and new enforced scoped findings exit 1. A matching last-full-report.json distinguishes previously observed stable browser debt from fresh rendered regressions using URL, locale, policy and interaction contents; that debt remains in report.json as existingBrowserDebt and is outside the static edit scope. No baseline is written. Without a compatible full reference, browser findings remain enforced. It cannot be used to create a regression baseline. Run full QA before approval.
 
 ## Baseline v2
 
@@ -73,7 +74,7 @@ Configuration remains schemaVersion 1; baselines use schemaVersion 2.
 node tools/ui-refiner/bin/ui-refiner.mjs baseline create --from artifacts/ui-refiner/report.json --out ui-refiner.baseline.v2.json
 ```
 
-Review a fresh full report and the suppression list before setting `gate.baselinePath`. Version 1 hashes cannot be migrated reliably and are rejected. Static IDs exclude line number/message and use relative file plus unique trimmed source content. Browser IDs use unique application anchors or unique scoped semantic identity, viewport dimensions, theme, state, pseudo-element and related target. Measured values/nth-of-type positions are excluded. Ambiguous identities remain visible and cannot be baselined; excludedFindings records their count. Source/semantic changes can intentionally produce a new identity.
+Review a fresh full report and the suppression list before setting `gate.baselinePath`. Version 1 hashes cannot be migrated reliably and are rejected. Static IDs exclude line number/message and use relative file plus unique trimmed source content. Known React useId, Radix and Headless UI generated IDs are excluded as anchors even when unique; use explicit data-ui-id/data-testid/data-qa markers when a durable identity is required. Browser IDs use unique application anchors or unique scoped semantic identity, viewport dimensions, theme, state, pseudo-element and related target. Measured values/nth-of-type positions are excluded. Ambiguous identities remain visible and cannot be baselined; excludedFindings records their count. Source/semantic changes can intentionally produce a new identity.
 
 ## Upstream maintenance
 

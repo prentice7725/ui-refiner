@@ -20,7 +20,7 @@ node tools/ui-refiner/scripts/install-agent-skill.mjs "$PWD"
 
 기본 정적 검사 정본은 `static.auditPath: "bundled"`입니다. `.agents/skills/suta`는 선택적 지침 사본이며 doctor가 불일치를 알립니다. 예전 설정이 사본의 audit.mjs를 가리킨다면 검토 후 bundled로 바꾸세요.
 
-스킬 설치는 기존 Claude 설정을 보존하면서 편집 후 정적 검사 훅을 추가합니다. 다른 호스트는 생성된 hook-registration.json을 지원하는 훅 UI에 등록합니다. 지원 여부가 불명확한 Codex 설정 필드를 임의로 만들지 않습니다.
+프로젝트 내부에 설치한 훅은 CLAUDE_PROJECT_DIR과 상대 import를 사용해 팀원의 체크아웃에서도 동작합니다. 개인 외부 경로는 settings.local.json의 UI_REFINER_HOME에만 기록하며 공유 settings.json은 변경하지 않습니다. 다른 호스트는 생성된 hook-registration.json을 지원하는 훅 UI에 등록합니다. 지원 여부가 불명확한 Codex 설정 필드를 임의로 만들지 않습니다.
 
 앱 URL·정적 대상·정책·SOT·준비 셀렉터를 설정하고 앱 서버를 실행한 뒤:
 
@@ -47,9 +47,9 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --changed-only
 node tools/ui-refiner/bin/ui-refiner.mjs check --changed-only --base origin/main
 ```
 
-Git 변경 줄·새 소스만 정적 검사하며 브라우저 검사는 전체 설정 페이지를 검사합니다. 부분 검사이므로 깨끗해도 INCOMPLETE/종료 2이며 전체 승인이나 베이스라인 생성에 쓸 수 없습니다.
+Git 변경 줄·새 소스만 정적 검사하며 브라우저 검사는 전체 설정 페이지를 검사합니다. 부분 검사 성공은 SCOPED_PASS/종료 3이며 전체 승인이나 베이스라인 생성에 쓸 수 없습니다.
 
-종료 0은 전체 범위에서 실행한 자동 검사 통과, 1은 새 위반, 2는 오류·필수 검사 누락·부분 범위입니다. 기존 v1 베이스라인은 거부하며 전체 검사 결과로 schemaVersion 2 베이스라인을 재생성·검토해야 합니다. 모호한 항목은 베이스라인으로 숨기지 않습니다.
+종료 0은 전체 검사 통과, 1은 새 위반, 2는 오류·필수 검사 누락, 3은 부분 범위 성공입니다. 같은 URL·로케일·정책·상호작용 계획의 직전 전체 검사에서 관측된 기존 브라우저 위반은 부분 범위에서 별도로 표시하며 자동 베이스라인 저장은 하지 않습니다. 기존 v1 베이스라인은 거부하며 전체 검사 결과로 schemaVersion 2 베이스라인을 재생성·검토해야 합니다. 모호한 항목은 베이스라인으로 숨기지 않습니다.
 
 ## 벤더 유지보수
 
@@ -61,3 +61,11 @@ node tools/ui-refiner/scripts/sync-vendor.mjs --lintapple <40자리-SHA>
 고정 커밋과 HEAD 비교는 읽기 전용입니다. sync-vendor는 임시 소스에 로컬 패치를 재적용하고 manifest·단위·실제 브라우저/CLI 스모크를 통과한 변경만 유지합니다. 실패하면 기존 벤더를 복원하며 자동 커밋/업로드하지 않습니다. 새 로컬 엔진 변경은 별도 패치에 반영해 업데이트 때 잃지 않도록 합니다.
 
 `npm test`, `npm run smoke:ui`, `npm run smoke:gate`가 CI에서 실행되며 실제 출력은 upstream-contracts 증거로 보존합니다. 자동 통과는 미적 완성도나 출시 승인이 아닙니다. 자세한 계약은 README.md와 IMPLEMENTATION_REPORT_KO.md를 참조하세요.
+
+## 후속 리뷰 반영
+
+- 모노레포의 apps/web 같은 설정 루트에서도 tracked·staged·untracked 변경 경로를 일치시킵니다.
+- React 방식의 onclick 프로퍼티와 Chromium CDP의 직접 click 리스너를 탐지합니다. 후보 500개 상한, 이벤트 위임과 CDP 미지원 한계를 리포트에 표시합니다.
+- browser.timeoutMs는 단계 제한, browser.sessionTimeoutMs는 전체 세션 제한입니다. 전체 제한이 없으면 뷰포트·테마·상호작용 수에 맞춰 최대 10분 범위에서 산정합니다.
+- React useId·Radix·Headless UI의 알려진 자동 ID를 안정 앵커에서 제외합니다. 명시적 data-ui-id 등의 마커를 우선합니다.
+- 핸드오프에는 짧은 대상 힌트를 넣고 약 6KiB로 제한합니다. 나머지 그룹·전체 셀렉터·실제 값은 report.json에 보존합니다.

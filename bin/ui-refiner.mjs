@@ -13,7 +13,7 @@ const help=`UI Refiner 0.3.0 — web-app UI quality gate
   ui-refiner doctor [--config ui-refiner.config.json]
   ui-refiner upstream check
   ui-refiner baseline create --from artifacts/ui-refiner/report.json --out ui-refiner.baseline.json
-Exit 0: automated checks pass (manual visual review may remain), 1: findings, 2: infrastructure/error/uncovered`;
+Exit 0: automated checks pass (manual visual review may remain), 1: findings, 2: infrastructure/error/uncovered, 3: scoped pass only (never full approval)`;
 function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   const a=args[i];if(!a.startsWith('--')){out._.push(a);continue;}
   if(a==='--changed-only'){out.changedOnly=true;continue;}

@@ -24,10 +24,10 @@ export function validateConfig(input){
   bool(input.static.enabled,'static.enabled'); nonEmpty(input.static.auditPath,'static.auditPath');
   if(!Array.isArray(input.static.targets)||!input.static.targets.length||input.static.targets.some(s=>typeof s!=='string'||!s.trim())) throw new Error('static.targets needs paths');
   assertTimeout(input.static.timeoutMs,'static.timeoutMs');assertEnforcement(input.static.enforcement,'static.enforcement');
-  assertKeys(input.browser,['enabled','url','policyPath','ready','interactionsPath','timeoutMs','captureScreenshots','enforcement'],'browser');
+  assertKeys(input.browser,['enabled','url','policyPath','ready','interactionsPath','timeoutMs','sessionTimeoutMs','captureScreenshots','enforcement'],'browser');
   bool(input.browser.enabled,'browser.enabled'); nonEmpty(input.browser.url,'browser.url');nonEmpty(input.browser.policyPath,'browser.policyPath');
   for(const key of ['ready','interactionsPath'])if(input.browser[key]!==null)nonEmpty(input.browser[key],`browser.${key}`);
-  assertTimeout(input.browser.timeoutMs,'browser.timeoutMs'); bool(input.browser.captureScreenshots,'browser.captureScreenshots');assertEnforcement(input.browser.enforcement,'browser.enforcement');
+  assertTimeout(input.browser.timeoutMs,'browser.timeoutMs');if(input.browser.sessionTimeoutMs!=null)assertTimeout(input.browser.sessionTimeoutMs,'browser.sessionTimeoutMs'); bool(input.browser.captureScreenshots,'browser.captureScreenshots');assertEnforcement(input.browser.enforcement,'browser.enforcement');
   assertKeys(input.gate,['maxStaticWarnings','allowedHosts','baselinePath','manualVisualReview'],'gate');
   if(input.gate.maxStaticWarnings!==null && (!Number.isInteger(input.gate.maxStaticWarnings)||input.gate.maxStaticWarnings<0))throw new Error('maxStaticWarnings must be null or nonnegative integer');
   if(!Array.isArray(input.gate.allowedHosts)||!input.gate.allowedHosts.length||input.gate.allowedHosts.some(s=>typeof s!=='string'||!s.trim()))throw new Error('allowedHosts must have hosts');
