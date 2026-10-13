@@ -1,5 +1,5 @@
 // Runs in the browser. Use one report shape for all design rules.
-export async function audit({ policy, contrast, accessibility, format, visibility }) {
+export async function audit({ policy, contrast, accessibility, format, visibility, clickListenerTargets }) {
   for (const rule of [...policy.typeRules, ...policy.controlSizeRules, ...policy.exceptions]) document.querySelector(rule.selector);
   for (const container of policy.controlContainers) document.querySelector(container);
   const findings = [];
@@ -8,6 +8,8 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
     for (const attr of ['data-ui-id', 'data-testid', 'data-qa', 'id']) {
       const value = element.getAttribute(attr);
       if (!value) continue;
+      // React useId (legacy and current), Radix and Headless UI IDs are render-order artifacts.
+      if(attr==='id'&&(/(^:r[^:]*:$)|(^_[Rr]_[\w-]+_$)|(^radix[-_:])|(^headlessui[-_:])/i.test(value)))continue;
       const query = `[${attr}="${CSS.escape(value)}"]`;
       if (document.querySelectorAll(query).length === 1) return query;
     }
@@ -404,6 +406,6 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
       } catch (error) { reportContrast(el, 'unresolved', data, `placeholder calculation failed: ${error.message}`); }
     }
   } finally { contrast.teardown(); }
-  const accessibilityCoverage = await accessibility({ elements, controls, visible, hasVisibleContent, add, engine: contrast });
+  const accessibilityCoverage = await accessibility({ elements, controls, visible, hasVisibleContent, add, engine: contrast, clickListenerTargets });
   return { findings, suppressed, accessibilityCoverage, ruleCoverage: { 'layout-gap': gapPairs['layout-gap'], 'control-gap': gapPairs['control-gap'], 'layout-alignment': alignmentGroups, 'control-inset': insetControls, 'nested-radius': elements.filter(el => el.matches('[data-ui-radius]')).length }, elements: elements.length, controls: controls.length, insetControls, numericElements, alignmentGroups, radiusContracts: elements.filter(el => el.matches('[data-ui-radius]')).length };
 }

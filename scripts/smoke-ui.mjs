@@ -56,6 +56,19 @@ try{
   const clickable=await audit();
   assert.ok(clickable.some(f=>f.rule==='keyboard-operation'&&f.selector==='[data-qa="click-div"]'));
   assert.ok(clickable.some(f=>f.rule==='control-state'&&f.selector==='[data-qa="click-div"]'));
+  await page.evaluate(()=>{
+   const property=document.createElement('div');property.setAttribute('data-qa','react-property');property.textContent='React-style action';property.onclick=()=>{};document.body.append(property);
+   const listener=document.createElement('div');listener.setAttribute('data-qa','direct-listener');listener.textContent='Registered action';listener.addEventListener('click',()=>{});document.body.append(listener);
+   const root=document.createElement('div');root.setAttribute('data-qa','react-root');root['__reactContainer$fixture']={};root.addEventListener('click',()=>{});root.textContent='Delegated root';document.body.append(root);
+  });
+  const dynamic=await audit();
+  for(const target of ['react-property','direct-listener'])assert.ok(dynamic.some(f=>f.rule==='keyboard-operation'&&f.selector===`[data-qa="${target}"]`),target);
+  assert.ok(!dynamic.some(f=>f.details.phase==='clickable-focus'&&f.selector==='[data-qa="react-root"]'));
+  const inspected=await checkPage(page,lintapplePolicy);assert.equal(inspected.clickListenerCoverage.status,'direct-listeners-tested');
+  await page.setContent('<body>'+[':r0:',':r1:','_r_0_','_r_1_','radix-menu-1','radix-menu-2','headlessui-dialog-1','headlessui-dialog-2'].map(id=>`<span id="${id}">Repeated</span>`).join('')+'<span id=":r9:" data-ui-id="explicit-app-anchor">Explicit</span></body>');
+  const generated=await audit();const repeated=generated.filter(f=>f.rule==='font-family'&&f.identity.key.includes('Repeated'));
+  assert.equal(repeated.length,8);assert.ok(repeated.every(f=>!f.baselineEligible&&!f.identity.stable));assert.ok(repeated.every(f=>!/:r\d|radix-|headlessui-|_r_/.test(f.identity.key)));
+  assert.ok(generated.some(f=>f.rule==='font-family'&&f.identity.key==='[data-ui-id="explicit-app-anchor"]'&&f.baselineEligible));
   assert.ok(!clickable.some(f=>f.details.phase==='clickable-focus'&&f.selector.includes('button')));
 
  }finally{await browser.close();}

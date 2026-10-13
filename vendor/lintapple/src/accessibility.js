@@ -1,5 +1,5 @@
 // Runs in the browser with the same scope and report helpers as the layout audit.
-export async function auditAccessibility({ elements, controls, visible, hasVisibleContent, add, engine }) {
+export async function auditAccessibility({ elements, controls, visible, hasVisibleContent, add, engine, clickListenerTargets }) {
   const rules = {
     'button-name': 'accessible-name', 'input-button-name': 'accessible-name',
     'input-image-alt': 'accessible-name', 'aria-tab-name': 'accessible-name',
@@ -52,7 +52,8 @@ export async function auditAccessibility({ elements, controls, visible, hasVisib
     const refs = el => (el.getAttribute('aria-labelledby') || '').trim().split(/\s+/).filter(Boolean).map(id => document.getElementById(id));
     for (const el of elements) {
       // UI Refiner bridge: mouse-only DOM handlers are not counted as native controls.
-      if(el.matches('[onclick], [data-ui-clickable]')&&!el.matches('button, input, select, textarea, a[href], summary, [contenteditable="true"]')){
+      const frameworkRoot=Object.keys(el).some(k=>k.startsWith('__reactContainer$')||k==='__vue_app__');
+      if(!frameworkRoot&&(el.matches('[onclick], [data-ui-clickable]')||typeof el.onclick==='function'||clickListenerTargets?.has(el))&&!el.matches('button, input, select, textarea, a[href], summary, [contenteditable="true"]')){
         if(el.tabIndex<0)add('keyboard-operation',el,'clickable element is not keyboard focusable','a semantic, keyboard-reachable interactive element','Use a native button/link. If a custom control is essential, implement focus, role and Enter/Space activation.',null,{status:'failed',category:'accessibility',phase:'clickable-focus'});
         if(!el.getAttribute('role'))add('control-state',el,'clickable element has no semantic role','an interactive role appropriate to the action','Use a native button/link instead of a generic element with a click handler.',null,{status:'failed',category:'accessibility',phase:'clickable-semantics'});
       }

@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { launchBrowser } from './browser.js';
 import axe from 'axe-core';
+import {discoverClickListeners} from './click-listeners.js';
 import { audit } from './audit.js';
 import { auditAccessibility } from './accessibility.js';
 import { finding } from './report.js';
@@ -58,13 +59,15 @@ export async function checkPage(page, input = {}) {
     await document.fonts.ready;
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   });
+  const clickDiscovery=await discoverClickListeners(page);
+  const clickListenerTargets=await page.evaluateHandle(indices=>new Set(indices.map(i=>document.querySelectorAll('body *')[i]).filter(Boolean)),clickDiscovery.indices);
   // Keep the app's own axe object unchanged. Each check gets a fresh engine.
   const contrast = await page.evaluateHandle(`(() => { const previous = window.axe; ${axe.source}\n const engine = window.axe; window.axe = previous; return engine; })()`);
   const accessibility = await page.evaluateHandle(`(${auditAccessibility.toString()})`);
   const format = await page.evaluateHandle(`(${finding.toString()})`);
   const visibility = await page.evaluateHandle(`(${createVisibility.toString()})()`);
-  try { return await page.evaluate(audit, { policy, contrast, accessibility, format, visibility }); }
-  finally { await Promise.all([contrast.dispose(), accessibility.dispose(), format.dispose(), visibility.dispose()]); }
+  try { const result=await page.evaluate(audit, { policy, contrast, accessibility, format, visibility,clickListenerTargets });return {...result,clickListenerCoverage:clickDiscovery.coverage}; }
+  finally { await Promise.all([contrast.dispose(), accessibility.dispose(), format.dispose(), visibility.dispose(),clickListenerTargets.dispose()]); }
 }
 
 export async function checkInteractions(page, plan, input = {}, { timeout = 15000, onState } = {}) {
