@@ -11,7 +11,7 @@ It adds project policy, source-of-truth precedence, regression baseline manageme
 
 ## Independence and provenance
 
-All runtime implementation of lintapple is in `vendor/lintapple/src/`, with its own MIT license. suta skill and static audit implementation are in `vendor/suta/skills/suta/`, with its own MIT license. The upstream suta catalog has 57 patterns; **the complete catalog has not yet been vendored**. Referenced but missing pattern files must be imported or marked unavailable, never silently invented.
+All runtime implementation of lintapple is in `vendor/lintapple/src/`, with its own MIT license. suta skill and static audit implementation are in `vendor/suta/skills/suta/`, with its own MIT license. The complete pinned suta skill catalog (250 source files including 57 pattern documents and their assets) is vendored. The browser and static engines remain independently testable.
 
 Dependencies are **only** `axe-core@4.14.0` and `playwright@1.63.0`. The previously non-published `lintapple@0.1.21` dependency is removed. `npm ci` has a committed v3 lockfile.
 

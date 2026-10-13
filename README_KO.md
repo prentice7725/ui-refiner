@@ -37,6 +37,6 @@ npm run smoke:ui
 
 기본 데모의 위반 **0건**과 의도적 오류를 포함한 음성 대조군(negative control)의 적발 성공을 모두 요구합니다. 종료 코드 2는 검사가 완료되지 않았다는 뜻이며 성공이 아닙니다. 전체 검증은 GitHub Actions `.github/workflows/ci.yml`에서도 실행됩니다.
 
-**남은 범위:** suta의 전체 57개 패턴 카탈로그는 아직 모두 가져오지 않았습니다. 현재는 정적 감사 엔진과 핵심 스킬 문서를 포함합니다. 게임용 검사기, AI 자동 수정, 시각적 디자인 승인 기능은 이 버전에 포함하지 않습니다.
+**소스 편입:** suta 전체 250개 파일(57개 패턴 문서 포함), lintapple 런타임 15개 파일을 원본 커밋과 바이트 단위 해시가 일치하도록 편입했습니다. **미구현 범위:** 게임용 검사기, AI 자동 수정, 인간의 시각적 디자인 승인 기능은 포함하지 않습니다.
 
 원본 출처와 라이선스: `vendor/UPSTREAM.json`, `vendor/suta/LICENSE`, `vendor/lintapple/LICENSE`, `licenses/THIRD_PARTY.md`.
