@@ -1,0 +1,78 @@
+/* drag-to-reorder — 끌어서 순서 바꾸기.
+ * 커스터마이즈: --reorder-duration, --reorder-lift-shadow, --reorder-handle-color.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ *
+ * 위치는 코어가 인라인 transform으로 쓴다. 여기 있는 것은 "비켜 주는 이동"과 "들어올린 모습"이다. */
+
+.reorder-list {
+  --_duration: var(--reorder-duration, 200ms);
+  --_ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 끌고 있는 동안 글자가 선택되면 드래그가 텍스트 선택으로 바뀐다 */
+.reorder-list[data-reordering='true'] {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grabbing;
+}
+
+.reorder-item {
+  transition: transform var(--_duration) var(--_ease-out);
+}
+
+/* 끌리는 항목만 전환을 끈다 — 손가락을 따라오는 것은 애니메이션이 아니라 조작이다 */
+.reorder-item[data-dragging='true'] {
+  position: relative;
+  z-index: 2;
+  transition: none;
+  box-shadow: var(--reorder-lift-shadow, 0 12px 28px rgb(0 0 0 / 0.28));
+}
+
+/* 손잡이는 반드시 <button> — 키보드 사용자에게 드래그는 존재하지 않는 기능이다.
+ * touch-action: none이라 손잡이 위에서는 스크롤 대신 드래그가 시작된다 */
+[data-reorder-handle] {
+  touch-action: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  padding: 0.25rem 0.5rem;
+  color: var(--reorder-handle-color, #9aa1af);
+  font: inherit;
+  line-height: 1;
+  cursor: grab;
+}
+
+[data-reorder-handle]:active {
+  cursor: grabbing;
+}
+
+[data-reorder-handle]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* 순서 변경 안내 — 눈에는 안 보이고 스크린 리더에만 읽힌다 */
+.reorder-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 모션 민감 사용자: 손가락 추적은 그대로 두고(조작), 비켜 주기·정착만 즉시 처리한다 */
+@media (prefers-reduced-motion: reduce) {
+  .reorder-item {
+    transition: none;
+  }
+}
