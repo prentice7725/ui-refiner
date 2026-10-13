@@ -3,6 +3,7 @@ import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {resolveInside,checkUrl} from './config.mjs';
+import {browserBudget} from './browser-budget.mjs';
 import {normalizeStatic,normalizeBrowser,browserCoverage} from './normalize.mjs';
 
 export async function spawnBounded(bin,args,{cwd,timeoutMs=60000,maxOutput=20_000_000}={}){
@@ -55,13 +56,16 @@ export async function realStatic(config,root){
 export function staticAuditPath(config,root){
  return config.static.auditPath==='bundled' ? fileURLToPath(new URL('../vendor/suta/skills/suta/scripts/audit.mjs',import.meta.url)) : resolveInside(root,config.static.auditPath,'static.auditPath');
 }
-export async function realBrowser(config,root){
+export async function realBrowser(config,root,{runner=spawnBounded}={}){
  checkUrl(config.browser.url,config.gate.allowedHosts);
+ const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
+ const interactions=config.browser.interactionsPath?JSON.parse(await readFile(resolveInside(root,config.browser.interactionsPath,'browser.interactionsPath'),'utf8')):undefined;
+ const budgets=browserBudget(config,policy,interactions);
  const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
- const run=await spawnBounded(process.execPath,[worker,JSON.stringify({config,root})],{cwd:root,timeoutMs:config.browser.timeoutMs});
+ const run=await runner(process.execPath,[worker,JSON.stringify({config,root})],{cwd:root,timeoutMs:budgets.sessionTimeoutMs});
  if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${run.stderr.slice(-1000)}`);
  let result;try{result=JSON.parse(run.stdout);}catch{throw Error('Browser worker returned invalid JSON');}
- return {...result,findings:normalizeBrowser(result.rawReport),ruleCoverage:browserCoverage(result.rawReport),capturesIntegrated:true};
+ return {...result,budgets,findings:normalizeBrowser(result.rawReport),ruleCoverage:browserCoverage(result.rawReport),capturesIntegrated:true};
 }
 // Compatibility API for explicit callers. The gate uses the integrated worker session.
 export async function screenshots(config,root){

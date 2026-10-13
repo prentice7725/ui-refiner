@@ -27,7 +27,7 @@ export function makePreset(preset='web',locale='en-US') {
     preset:'web',
     sot: {path: null},
     static: {enabled:true, auditPath:'bundled', targets:['src'], timeoutMs:60000, enforcement:'enforce'},
-    browser: {enabled:true, url:'http://127.0.0.1:5173', policyPath:'ui-policy.json', ready:null, interactionsPath:null, timeoutMs:120000, captureScreenshots:false, enforcement:'enforce'},
+    browser: {enabled:true, url:'http://127.0.0.1:5173', policyPath:'ui-policy.json', ready:null, interactionsPath:null, timeoutMs:120000, sessionTimeoutMs:null, captureScreenshots:false, enforcement:'enforce'},
     gate: {maxStaticWarnings:null, allowedHosts:['localhost','127.0.0.1','[::1]'], baselinePath:null, manualVisualReview:true},
     reportDir:'artifacts/ui-refiner'
   };
