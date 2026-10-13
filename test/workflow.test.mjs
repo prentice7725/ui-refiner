@@ -27,9 +27,10 @@ test('changed-line scope ignores old debt, includes tracked + staged + untracked
  await git(root,['add','.']);await git(root,['-c','user.name=test','-c','user.email=test@example.invalid','commit','-qm','initial']);
  await fs.writeFile(path.join(root,'src/app.css'),'button { transition: all 300ms ease; }\np { color: blue; }\n');
  await git(root,['add','src/app.css']);await fs.writeFile(path.join(root,'src/new.css'),'h1 { color: black; }\n');
+ await fs.writeFile(path.join(root,'outside.css'),'p { color: red; }');
  const changes=await gitChangedLines(root);assert.ok(changes.get('src/app.css').has(2));assert.equal(changes.get('src/new.css'),null);
  const c=makePreset();c.browser.enabled=false;
- const report=await runGate({root,config:c,changedOnly:true,staticRunner:async()=>({findings:[{engine:'suta',rule:'old',severity:'error',file:'src/app.css',line:1,location:'src/app.css:1',sourceAnchor:'old',message:'old debt'}]})});
+ const report=await runGate({root,config:c,changedOnly:true,staticRunner:async scoped=>{assert.ok(scoped.static.targets.every(f=>f.startsWith('src/')));return {findings:[{engine:'suta',rule:'old',severity:'error',file:'src/app.css',line:1,location:'src/app.css:1',sourceAnchor:'old',message:'old debt'}]};}});
  assert.equal(report.findings.length,0);assert.equal(report.automatedStatus,'INCOMPLETE');assert.equal(exitCode(report),2);
  await assert.rejects(()=>baselineFromReport(path.join(root,c.reportDir,'report.json'),path.join(root,'baseline.json')),/full/);
  await assert.rejects(()=>gitChangedLines(root,{base:'--all'}),/Invalid --base/);

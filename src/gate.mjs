@@ -20,7 +20,11 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
  }
  const changed=changedOnly?await gitChangedLines(root,{base:baseRef}):null;
  const stages=[],all=[],rawBrowser=[],artifacts=[],captures=[];
- const partialStatic=changed?{...config,static:{...config.static,targets:[...changed.keys()].filter(f=>/\.(css|scss|less|[cm]?[jt]sx?|vue|svelte|html)$/.test(f)&&!/(^|\/)(node_modules|dist|build|artifacts)\//.test(f))}}:config;
+ const inConfiguredTargets=file=>config.static.targets.some(target=>{
+  const relative=path.relative(root,resolveInside(root,target,'static.targets')).replaceAll(path.sep,'/');
+  return !relative||file===relative||file.startsWith(relative+'/');
+ });
+ const partialStatic=changed?{...config,static:{...config.static,targets:[...changed.keys()].filter(f=>inConfiguredTargets(f)&&/\.(css|scss|less|[cm]?[jt]sx?|vue|svelte|html)$/.test(f)&&!/(^|\/)(node_modules|dist|build|artifacts)\//.test(f))}}:config;
  for(const [engine,enabled,runner,enforcement] of [['suta',config.static.enabled,staticRunner,config.static.enforcement],['lintapple',config.browser.enabled,browserRunner,config.browser.enforcement]]){
   if(!enabled){stages.push({engine,status:'not-covered',enforcement});continue;}
   try{
