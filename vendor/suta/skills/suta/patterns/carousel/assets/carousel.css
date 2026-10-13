@@ -1,0 +1,59 @@
+/* carousel — CSS scroll-snap 캐러셀. 스크롤·스냅·감속은 전부 브라우저 네이티브다.
+ * 커스터마이즈: --carousel-gap, --slide-width. 기본값은 --_ 폴백으로(상속 규칙). */
+
+.carousel-track {
+  --_gap: var(--carousel-gap, 12px);
+  /* offsetParent를 트랙 자신으로 만들어 슬라이드의 offsetLeft가 트랙 기준 좌표가 되게 한다 */
+  position: relative;
+  display: flex;
+  gap: var(--_gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* scroll-behavior: smooth를 CSS로 걸지 않는다 — 트랙에 걸어두면 크롬에서
+   * 프로그램적 scrollTo/scrollLeft가 무시되는 문제가 있다. 부드러운 이동은
+   * 코어(scrollToSlide)가 scrollTo의 behavior 옵션으로 처리한다. */
+  -webkit-overflow-scrolling: touch;
+  /* 스크롤바 숨김 — 스냅 캐러셀에서 막대는 소음이다 */
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: none;
+  width: var(--slide-width, 80%);
+  scroll-snap-align: center;
+}
+
+/* 도트 내비게이션 (선택) */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(128, 128, 128, 0.35);
+  cursor: pointer;
+  transition: background 150ms ease, scale 150ms ease;
+}
+
+.carousel-dot[data-active='true'] {
+  background: currentColor;
+  scale: 1.25;
+}
+
+/* 모션 민감 사용자: 도트 강조 전이를 즉시로. 스냅 스크롤 자체는 사용자의 손짓이라 그대로 둔다 */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-dot {
+    transition: none;
+  }
+}
