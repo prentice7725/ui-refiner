@@ -1,0 +1,121 @@
+/* select — 트리거 버튼 + 아래로 펼쳐지는 리스트박스 패널.
+ * 커스터마이즈: --select-duration, --select-bg, --select-border, --select-highlight, --select-accent.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 패널은 언마운트하지 않고 data-open으로만 여닫는다 — 닫힘 애니메이션이 공짜가 된다. */
+
+.select {
+  --_duration: var(--select-duration, 200ms);
+  --_bg: var(--select-bg, #fff);
+  --_border: var(--select-border, #d4d9e1);
+  position: relative; /* 패널의 offsetParent — 트리거 기준 좌표계를 만든다 */
+  display: inline-block;
+  min-width: var(--select-min-width, 200px);
+}
+
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px; /* 입력칸·주 버튼과 같은 높이 */
+  padding: 8px 12px;
+  border: 1px solid var(--_border);
+  border-radius: 10px;
+  background: var(--_bg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.select-placeholder {
+  color: #8a93a1;
+}
+
+.select-chevron {
+  flex: none;
+  transition: transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 열림 상태 표현은 aria-expanded 하나 — 시각과 접근성이 같은 속성이라 어긋날 수 없다 */
+.select-trigger[aria-expanded='true'] .select-chevron {
+  transform: rotate(180deg);
+}
+
+.select-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--_bg);
+  border: 1px solid var(--_border);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
+  max-height: var(--select-panel-max-height, 240px);
+  overflow-y: auto;
+  z-index: 30;
+  transform-origin: top; /* 트리거에서 자라 나오는 것처럼 보이게 */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.98);
+  transition:
+    opacity var(--_duration) ease,
+    transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s var(--_duration); /* 퇴장이 끝난 뒤에 숨긴다 */
+}
+
+.select-panel[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--_duration) ease,
+    transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+
+.select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 하이라이트(키보드·호버)와 선택(값)은 다른 상태다 — 각각 다른 속성으로 표현한다 */
+.select-option[data-highlighted='true'] {
+  background: var(--select-highlight, #f1f5f9);
+}
+
+.select-option[aria-selected='true'] {
+  color: var(--select-accent, #1b1e24);
+  font-weight: 600;
+}
+
+.select-option[aria-selected='true']::after {
+  content: '✓';
+}
+
+/* 모션 민감 사용자: 이동·확대를 끄고 페이드만 남긴다 */
+@media (prefers-reduced-motion: reduce) {
+  .select-chevron {
+    transition: none;
+  }
+
+  .select-panel {
+    transform: none;
+    transition:
+      opacity var(--_duration) linear,
+      visibility 0s var(--_duration);
+  }
+
+  .select-panel[data-open='true'] {
+    transition: opacity var(--_duration) linear;
+  }
+}
