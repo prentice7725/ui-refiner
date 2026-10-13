@@ -1,0 +1,22 @@
+{
+  "name": "ui-refiner",
+  "version": "0.2.1",
+  "private": true,
+  "description": "Web app design system agent skill + suta static audit + lintapple browser quality gate",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "bin": {
+    "ui-refiner": "./bin/ui-refiner.mjs"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node examples/demo-server.mjs"
+  },
+  "dependencies": {
+    "lintapple": "0.1.21",
+    "playwright": "1.63.0"
+  },
+  "license": "MIT"
+}

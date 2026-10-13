@@ -1,0 +1,9 @@
+{
+  "focus": [{ "selector": "[data-qa=primary-action]" }],
+  "buttons": [{ "selector": "[data-qa=primary-action]", "key": "Enter", "outcome": "[data-qa=result]", "expectedText": "Saved" }],
+  "tooltips": [],
+  "dialogs": [],
+  "tabs": [],
+  "menus": [],
+  "states": []
+}

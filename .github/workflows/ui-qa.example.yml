@@ -1,0 +1,31 @@
+# EXAMPLE: Copy into the target app's .github/workflows/ui-qa.yml and edit paths/commands.
+name: Web UI QA
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  ui-refiner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+      # Assuming UI Refiner is in tools/ui-refiner and your app has a dev script.
+      - name: Install dependencies
+        run: |
+          npm ci
+          (cd tools/ui-refiner && npm ci)
+      - name: Install pinned suta skill
+        run: bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
+      - name: Start app
+        run: npm run dev -- --host 127.0.0.1 > app.log 2>&1 &
+      - name: Quality gate
+        run: node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-refiner-evidence
+          path: artifacts/ui-refiner/
+          if-no-files-found: warn
