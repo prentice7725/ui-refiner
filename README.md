@@ -1,82 +1,160 @@
 # UI Refiner v0.3.0
 
-Source-integrated UI inspection for ordinary browser DOM web applications. Godot, Phaser Canvas and game HUDs belong to separate research.
+[English](README.md) · [한국어](README_KO.md) · [日本語](README_JA.md)
 
-The maintained source includes suta's complete pinned skill catalog (57 patterns) and static auditing code, plus lintapple's rendered layout/accessibility/interaction runtime. Their MIT licenses remain in `vendor/`. Local runtime changes are recorded as replayable patches and per-file SHA-256 manifests in `vendor/UPSTREAM.json`. npm dependencies are only pinned axe-core and Playwright.
+UI Refiner combines **suta source auditing and design guidance** with **lintapple rendered layout, accessibility and interaction checks** for ordinary DOM web applications. It produces repair evidence and a deterministic quality gate for developers and coding agents.
 
-## Install
+It includes suta's complete pinned skill catalog with 57 patterns and lintapple's maintained runtime source. It does not automatically generate interfaces, repair code, call a vision model or approve a release. Godot UIs, Phaser Canvas and game HUDs are outside its scope.
 
-Place this repository under the target app's `tools/ui-refiner`. Node.js >=22.18 is required. A node_modules/npm distribution is not supported until the vendored native TypeScript is compiled.
+## 1. Requirements and installation
 
-From the app root:
+Use Node.js **22.18 or newer**, npm, Git and explicitly installed Playwright Chromium. Runtime npm dependencies are pinned `axe-core@4.14.0` and `playwright@1.63.0`.
+
+Place this repository at the target app's `tools/ui-refiner`. This source installation is supported; running the native suta TypeScript from `node_modules` is not. There is no supported compiled npm distribution yet.
+
+Run from the **target app root**:
 
 ```sh
 (cd tools/ui-refiner && npm ci && npx playwright install chromium)
 node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD" --locale en-US
-node tools/ui-refiner/scripts/install-agent-skill.mjs "$PWD"
 ```
 
-Use `--locale ko-KR` or `--locale ja-JP` to generate corresponding initial fonts/copy policy. Policies derive from `vendor/lintapple/ui-policy.json`; review project overrides against the SOT. Browser rendering uses the same locale. `init` preserves existing configuration and policy files.
+Supported initial policies are `en-US`, `ko-KR` and `ja-JP`. They derive from the single canonical `vendor/lintapple/ui-policy.json`. Korean and Japanese variants add appropriate initial font lists and copy rules; Japanese includes Hiragino, Noto Sans JP, Meiryo and Yu Gothic. Review the generated policy against the project's approved design system.
 
-For an in-project installation the skill installer preserves existing Claude settings and adds a project-relative PostToolUse hook using CLAUDE_PROJECT_DIR. Its wrapper imports the maintained hook relatively, so moving a checkout does not embed a personal path. External personal tool checkouts use settings.local.json and a local UI_REFINER_HOME override; they never change shared settings.json. Other hosts should register the generated `hook-registration.json` through their supported hook UI; the installer does not invent unsupported Codex settings. Hooks only check edited static lines and are not full approval gates. Review installed executable hooks as part of normal tool setup.
+`init` preserves existing configuration and policy files. Re-running it with another locale does not replace an existing policy.
 
-Runtime audits use `static.auditPath: "bundled"` directly. An optional guidance snapshot can be installed with `bash tools/ui-refiner/scripts/install-suta.sh "$PWD"`; doctor warns if that copy drifts. Existing explicit auditPath overrides are preserved but can use outdated code. Migrate old `.agents/skills/suta/scripts/audit.mjs` configuration to `"bundled"` after review.
+## 2. Configure the project
 
-Configure static targets, the live local browser URL, readiness selector, project policy and optional SOT path. Start the app, then:
+`init` creates `ui-refiner.config.json` and `ui-policy.json`. All project paths resolve relative to the **directory containing the configuration file**.
+
+| Field | Purpose / default |
+|---|---|
+| `preset` | Only `web` is supported |
+| `locale` | Browser locale and initial policy selection; default `en-US` |
+| `static.auditPath` | Default `"bundled"`, executing maintained `vendor/suta` source |
+| `static.targets` | Source paths to audit; default `["src"]` |
+| `static.enforcement` / `browser.enforcement` | `enforce` or `advisory`; both default to `enforce` |
+| `browser.url` | Running app URL; default `http://127.0.0.1:5173` |
+| `browser.policyPath` | Project policy; default `ui-policy.json` |
+| `browser.ready` | Optional visible readiness selector; default `null` |
+| `browser.interactionsPath` | Optional interaction-plan JSON; default `null` |
+| `browser.captureScreenshots` | Same-session state images and element crops; default `false` |
+| `browser.timeoutMs` | Per navigation/audit step; default `120000` ms |
+| `browser.sessionTimeoutMs` | Independent total session bound; default `null` for a derived budget |
+| `gate.maxStaticWarnings` | Optional static warning cap; `null` leaves warnings non-blocking |
+| `gate.allowedHosts` | Explicit navigation host allowlist; defaults to loopback hosts |
+| `gate.baselinePath` | Reviewed schemaVersion 2 baseline; default `null` |
+| `gate.manualVisualReview` | Default `true`; successful full checks still require human review |
+| `sot.path` | Optional project source-of-truth path; existence is checked, content is not automatically parsed |
+| `reportDir` | Default `artifacts/ui-refiner` |
+
+Keep policy fonts, sizes and exceptions consistent with the approved source of truth. Agents should read the design documents; the CLI does not infer policy from them. Use trusted app URLs. Non-allowlisted hosts and credentials embedded in URLs are rejected.
+
+## 3. Full and changed-line checks
+
+Start the application separately, then:
 
 ```sh
 node tools/ui-refiner/bin/ui-refiner.mjs doctor --config ui-refiner.config.json
 node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json
 ```
 
-Doctor verifies vendor hashes and actually launches Chromium, opens a blank page and closes it. Neither doctor nor check installs or downloads a browser.
+`doctor` verifies vendor SHA-256 hashes, required paths and the Node runtime, then actually launches Chromium, opens a blank page and closes it. Neither `doctor` nor `check` downloads Chromium.
 
-## Evidence and gate
-
-| Evidence | Contents |
-|---|---|
-| report.json | Every finding/target, actual/expected, original browser details, grouped identities, coverage and scope |
-| report.md / AGENT_HANDOFF.md | Root-cause groups, representative targets, combined viewport/state coverage and previous-run changes |
-| previous-report.json / last-full-report.json | Previous run plus compatible full reference; diff compares matching scopes |
-| lintapple.raw.json | Unmodified rendered audit evidence |
-| render-*.png / finding crops | Same-page captures immediately after initial/interaction-state checks |
-| VISUAL_REVIEW.md | Optional external visual review checklist; advisory only |
-
-JSON always preserves the complete target list, even when Markdown shows only a few representative locations. The handoff sorts enforced blockers first, then advisory errors, then warnings. It uses human-readable tag/text hints for semantic identities and caps its repair list at roughly 6 KiB. Omitted blockers are counted and identified by rule; all remaining groups, exact identities and full selectors stay in report.json. Grouping combines matching engine/rule/actual/expected/fix findings; fixing an inherited font can clear many elements and viewports together. Reports compare resolved/added/persisting finding identities on consecutive compatible runs. A repair task is limited to two fix/recheck iterations by the agent protocol; UI Refiner does not autonomously edit code.
-
-| Exit | Meaning |
-|---|---|
-| 0 | Executed full-scope automated checks have no new enforced violations; human review may remain |
-| 1 | New enforced violations |
-| 2 | Tool/browser/policy error or disabled required engine |
-| 3 | SCOPED_PASS: changed static scope passed; full QA approval remains outstanding |
-
-Per viewport/theme/state target counts are included for alignment, layout/control gaps, nested radius and control inset. Zero targets mean `not-tested`; missing counters mean `unknown`. Full-scope PASS does not assert these unmarked contracts were checked. Add appropriate `data-ui-*` contracts where relevant. Mouse-only inline `onclick`, DOM `onclick` properties (including React-style handlers), and explicit `data-ui-clickable` elements are checked for focus/semantic omissions. Chromium CDP also inspects direct click listeners on up to 500 visible non-native candidates per page state, prioritizing cursor:pointer elements before document order. Large pages can still be limited; the cap is not a claim of complete listener coverage. Known framework delegation roots are excluded. The report exposes the inspected count, cap and CDP availability; delegated descendants and capped candidates still require explicit markers/interaction plans. Use an interaction plan to verify actual keyboard activation.
-
-The browser runs in a separate process with a total time/output bound. browser.timeoutMs limits each navigation/audit step; browser.sessionTimeoutMs is an optional independent total limit. When omitted or null, a total budget is derived from viewports, themes, planned interactions and capture allowance, capped at 600000ms. A short valid per-page limit therefore does not kill multiple valid sequential runs. Audit and capture share one session, locale and reduced-motion setting. Element crops are bounded to five unique targets per state; unavailable crops are recorded. Partial captures from an interrupted run do not constitute approval; trust the current report's artifact list.
-
-Visual-model feedback is advisory. This tool generates a review packet but does not call a vision provider or change gate status from model output. A human owns visual acceptance.
-
-## Changed-line checks
+For targeted static checks:
 
 ```sh
-node tools/ui-refiner/bin/ui-refiner.mjs check --changed-only
-node tools/ui-refiner/bin/ui-refiner.mjs check --changed-only --base origin/main
+node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json --changed-only
+node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json --changed-only --base origin/main
 ```
 
-Without a base, Git diff against HEAD includes staged and unstaged edits; untracked source files are also included. With a base, committed changes since that ref are included. Static findings are filtered to changed new-side lines; rendered browser checks still cover the whole configured page. This mode is partial: clean scoped results return SCOPED_PASS/exit 3, never full PASS/exit 0. Infrastructure/required-stage failures remain exit 2 and new enforced scoped findings exit 1. A matching last-full-report.json distinguishes previously observed stable browser debt from fresh rendered regressions using URL, locale, policy and interaction contents; that debt remains in report.json as existingBrowserDebt and is outside the static edit scope. No baseline is written. Without a compatible full reference, browser findings remain enforced. It cannot be used to create a regression baseline. Run full QA before approval.
+Without `--base`, Git changes against HEAD include staged and unstaged edits plus untracked source files. With a base, committed changes relative to that ref are also included. Paths are normalized to the configuration root, including nested monorepo apps. Only configured static targets and changed new-side lines are inspected; deleted lines alone are not treated as new findings.
 
-## Baseline v2
+**Browser checks still inspect the entire configured page and interaction plan.** A compatible `last-full-report.json` distinguishes previously observed stable browser debt from fresh findings using the URL, locale, policy contents and interaction contents. Existing debt stays visible as `existingBrowserDebt` but does not block the scoped result. Without a compatible full reference, browser findings remain enforced. This does not write or approve a baseline; full checks still enforce the debt.
 
-Configuration remains schemaVersion 1; baselines use schemaVersion 2.
+### Status and exit codes
+
+| Status | Exit | Meaning |
+|---|---:|---|
+| `PASS` | 0 | Full checks have no new enforced violations; manual review disabled |
+| `REVIEW_REQUIRED` | 0 | Full automated checks passed; human visual/UX review remains |
+| `FAIL` | 1 | New enforced findings |
+| `ERROR` / `INCOMPLETE` | 2 | Tool/environment failure or missing required checker coverage |
+| `SCOPED_PASS` | 3 | Changed scope passed; **not full QA approval** |
+
+Disabling either required engine cannot produce a full PASS. A successful scoped check cannot be used to create a baseline. Run full checks before acceptance.
+
+## 4. Browser coverage and evidence capture
+
+The browser runs in a separate process with total time and output bounds. `browser.timeoutMs` limits individual navigation/audit steps. Set `browser.sessionTimeoutMs` for an explicit total limit; otherwise it is derived from viewport/theme combinations, planned interactions and capture allowance, capped at **600000 ms**. Multiple valid sequential steps can therefore outlast one step's timeout without being terminated prematurely.
+
+Initial and interaction-state audits share the same browser session, locale and reduced-motion setting with their images. Capture is optional and produces at most **five unique violating-element crops per state**; unavailable crops record a reason. Treat the current report's artifact list as authoritative after interrupted runs.
+
+Coverage reports show target counts for alignment, layout/control gaps, nested radius and control inset. Zero targets are `not-tested`; missing counters are `unknown`. Add the relevant `data-ui-*` contracts where those checks should apply. PASS does not assert that unmarked contracts were tested.
+
+Clickable generic elements are checked for missing keyboard focus and semantic roles through inline `onclick`, DOM `onclick` properties (including React-style handlers), `data-ui-clickable` and Chromium CDP direct click listeners. CDP inspects at most **500 visible non-native candidates per state**, prioritizing `cursor:pointer` before document order. Known framework delegation roots are excluded. Reports disclose limited inspection and CDP availability; delegated descendants and candidates beyond the cap need explicit markers or interaction plans. Use an interaction plan to verify actual Enter/Space behavior. See [examples/interactions.json](examples/interactions.json).
+
+## 5. Reports and repair handoff
+
+Outputs appear under `reportDir`:
+
+| File | Contents |
+|---|---|
+| `report.json` | All findings and targets, actual/expected values, original browser details, blocking flags, groups, scope and coverage |
+| `report.md` | Readable grouped findings, gate status and coverage |
+| `AGENT_HANDOFF.md` | Prioritized repair tasks, short target hints and previous-run changes |
+| `previous-report.json` | Previous run for comparison of compatible scopes |
+| `last-full-report.json` | Compatible completed full-check reference for scoped browser debt |
+| `lintapple.raw.json` | Original rendered checker output |
+| `render-*.png` | Optional same-session state images and element crops |
+| `VISUAL_REVIEW.md` | Advisory review packet for a person or an external visual model |
+
+The handoff orders **actual blockers → advisory errors → warnings**. Matching causes are grouped across targets, viewports and states, so an inherited font problem can be fixed at its source rather than once per child. Semantic targets render as hints such as `h1 "Unlock…"` instead of raw identity JSON.
+
+The repair list is bounded to roughly **6 KiB**. If blocker groups are omitted, their count and rule names are stated explicitly. Every full selector, exact identity and remaining group is preserved in `report.json`; inspect them before finishing repairs.
+
+Compatible consecutive runs record resolved, added and persisting identities. Agent guidance limits a repair task to two fix/recheck iterations; the CLI does not execute an autonomous repair loop. Visual-model feedback is advisory and never changes gate status. A human owns visual acceptance.
+
+## 6. Baseline schemaVersion 2
+
+Configuration remains `schemaVersion: 1`; regression baselines use **`schemaVersion: 2`**.
+
+Create a baseline from a fresh **full** report:
 
 ```sh
 node tools/ui-refiner/bin/ui-refiner.mjs baseline create --from artifacts/ui-refiner/report.json --out ui-refiner.baseline.v2.json
 ```
 
-Review a fresh full report and the suppression list before setting `gate.baselinePath`. Version 1 hashes cannot be migrated reliably and are rejected. Static IDs exclude line number/message and use relative file plus unique trimmed source content. Known React useId (including React 19.1 «r0»/«R1»), Radix and Headless UI generated IDs are excluded as anchors even when unique; use explicit data-ui-id/data-testid/data-qa markers when a durable identity is required. Browser IDs use unique application anchors or unique scoped semantic identity, viewport dimensions, theme, state, pseudo-element and related target. Measured values/nth-of-type positions are excluded. Ambiguous identities remain visible and cannot be baselined; excludedFindings records their count. Source/semantic changes can intentionally produce a new identity.
+Review the suppression list before setting `gate.baselinePath`. Version 1 baselines are rejected and cannot be safely relabeled as version 2. Baseline creation does not overwrite an existing output file.
 
-## Upstream maintenance
+- Static identity uses the relative source file and unique trimmed source-line content, excluding line number and diagnostic message. Empty or repeated anchors cannot be baselined.
+- Browser identity uses a unique application marker or unique scoped semantic identity, viewport dimensions, theme, state, pseudo-element and related target. Measured values and `nth-of-type` positions are excluded.
+- Known generated IDs from React useId, Radix and Headless UI are excluded as anchors even when unique, including `:r0:`, `«r0»` / `«R1»` and `_r_0_`. Prefer explicit `data-ui-id`, `data-testid` or `data-qa` markers.
+- Ambiguous identities remain reported and cannot be suppressed. `excludedFindings` records the number of skipped items. Source-content or semantic changes can intentionally produce a new identity.
+
+No check automatically adds findings to a baseline or weakens the policy.
+
+## 7. Agent skill and portable hooks
+
+Optional installation from the app root:
+
+```sh
+node tools/ui-refiner/scripts/install-agent-skill.mjs "$PWD"
+```
+
+For an in-project tool checkout, the installer preserves existing Claude settings and adds a project-relative PostToolUse hook using `CLAUDE_PROJECT_DIR`; the wrapper imports the maintained hook relatively. Moving the checkout does not embed a personal absolute path. An external personal checkout uses `.claude/settings.local.json` and a local `UI_REFINER_HOME` override, leaving shared settings unchanged.
+
+Other hosts should register the generated `.agents/skills/ui-refiner-agent/hook-registration.json` through their supported hook UI. Unsupported Codex settings are not invented. The hook checks edited static lines only; it is not a full gate. The installer refuses to overwrite an existing skill, so review installed copies before updating them.
+
+Runtime auditing defaults to `static.auditPath: "bundled"`. An optional suta guidance snapshot can be copied with:
+
+```sh
+bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
+```
+
+Doctor warns when that snapshot drifts. Explicit legacy audit-path overrides are preserved; migrate stale `.agents/skills/suta/scripts/audit.mjs` paths to `"bundled"` after review.
+
+## 8. Upstream maintenance and provenance
 
 ```sh
 node tools/ui-refiner/bin/ui-refiner.mjs upstream check
@@ -84,9 +162,13 @@ node tools/ui-refiner/scripts/sync-vendor.mjs --suta <40-character-SHA>
 node tools/ui-refiner/scripts/sync-vendor.mjs --lintapple <40-character-SHA>
 ```
 
-Check compares pinned commits to upstream HEAD without writing files. Sync fetches the requested source into a temporary stage, replays reviewed patch files, records upstream/current SHA-256 hashes, and runs unit tests plus both real browser/CLI smokes. Patch conflicts or verification failures restore previous vendor files. It never installs Chromium automatically or commits/pushes an upgrade. Review the resulting diff and license/provenance changes before approval; put future local engine changes in the patch file instead of losing them during sync.
+`upstream check` compares pinned commits with upstream HEAD without modifying files. `sync-vendor` rejects unrecorded local vendor edits, stages the requested source, replays reviewed patches, records original/current hashes and runs unit tests plus the UI and CLI browser smokes. Patch conflicts or validation failures restore the previous vendor source and manifest. Sync does not install Chromium, commit, push or approve an upgrade.
 
-## Development
+Preserve future engine modifications in the replayable patch and update the reviewed manifests. Licenses and pins: [vendor/UPSTREAM.json](vendor/UPSTREAM.json), [licenses/THIRD_PARTY.md](licenses/THIRD_PARTY.md), [suta MIT license](vendor/suta/LICENSE), [lintapple MIT license](vendor/lintapple/LICENSE). Upstream projects: [suta](https://github.com/Guksu/suta), [lintapple](https://github.com/gholtzap/lintapple).
+
+## 9. Development and verification
+
+Run from the UI Refiner repository root:
 
 ```sh
 npm ci
@@ -94,6 +176,9 @@ npm test
 npx playwright install chromium
 npm run smoke:ui
 npm run smoke:gate
+npm run smoke:review2
 ```
 
-CI executes both engines against clean and deliberately violating fixtures, verifies stable DOM identities, mouse-only control defects, same-state images, crop evidence and actual Chromium doctor. Actual checker output is retained as an upstream-contract artifact. Approved recordings in test/fixtures retain their run URL, SHA-256 and provenance; smokes compare live repair contracts against them and require review when the output changes. A browser PASS is not an aesthetic or release approval.
+CI runs unit/contract tests, real Chromium UI and CLI checks, session-timeout checks and pinned vendor-sync verification. Fixtures include clean/violating pages, monorepo changes, moved-checkout hooks, generated IDs, pointer-prioritized discovery after a 1600-row list, same-state images and element crops.
+
+Actual checker recordings and their hashes/provenance are retained in `test/fixtures`; live smoke output is compared with the reviewed repair contract. CI also uploads `upstream-contracts` evidence. Contract changes require review rather than silently regenerating fixtures. See [CI workflow](.github/workflows/ci.yml) and [implementation report](IMPLEMENTATION_REPORT_KO.md).
