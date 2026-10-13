@@ -1,0 +1,178 @@
+/* glass-nav — 스크롤에 반응하는 유리 GNB. 상태는 코어(createGlassNav)가 data 속성으로 주고, 움직임은 전부 여기 transition이다.
+ *   data-elevated  맨 위에서는 투명 → 내려가면 유리(배경·흐림·테두리·그림자)
+ *   data-hidden    아래로 스크롤하면 위로 밀려 숨고, 위로 올리면 내려온다
+ *   data-compact   링크가 접히고 알약 하나로 줄어든다(iOS 26 Liquid Glass 탭 바). 브랜드·활성 링크만 남는다
+ * 커스터마이즈: --gnav-duration, --gnav-blur, --gnav-tint, --gnav-border, --gnav-radius, --gnav-color, --gnav-active-bg.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ *
+ * 마크업:
+ *   <header class="gnav">            ← sticky, 투명 띠. 상태 속성이 여기 붙는다
+ *     <div class="gnav-bar">         ← 유리 판. compact에서 알약이 된다
+ *       <a class="gnav-brand">…</a>
+ *       <nav class="gnav-links">     ← 링크 묶음. compact에서 접힌다(grid-template-columns 0fr)
+ *         <div>
+ *           <span class="gnav-pill" aria-hidden="true"></span>   ← (선택) spy가 활성 링크 위로 미끄러뜨리는 알약
+ *           <a href="#menu" aria-current="page">…</a> …          ← spy: href="#섹션id"
+ *         </div>
+ *       </nav>
+ *     </div>
+ *   </header> */
+
+.gnav {
+  --_duration: var(--gnav-duration, 250ms);
+  --_ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --_blur: var(--gnav-blur, 16px);
+  --_tint: var(--gnav-tint, rgba(255, 255, 255, 0.14));
+  --_border: var(--gnav-border, rgba(255, 255, 255, 0.3));
+  --_radius: var(--gnav-radius, 999px);
+  --_color: var(--gnav-color, #fff);
+  --_active-bg: var(--gnav-active-bg, rgba(255, 255, 255, 0.18));
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 8px 12px;
+  color: var(--_color);
+  /* 숨김은 transform만 — 레이아웃 속성 금지 */
+  transition: transform var(--_duration) var(--_ease);
+  pointer-events: none; /* 투명 띠는 클릭을 통과시키고, 유리 판만 받는다 */
+}
+
+.gnav[data-hidden='true'] {
+  transform: translateY(calc(-100% - 8px)); /* 그림자까지 화면 밖으로 */
+}
+
+.gnav-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--_radius);
+  background: transparent;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0);
+  pointer-events: auto;
+  /* 투명 → 유리: 배경·테두리·그림자·흐림을 같은 시간으로. backdrop-filter 전이는 Chrome·Safari·Firefox 모두 지원 */
+  transition:
+    background var(--_duration) var(--_ease),
+    border-color var(--_duration) var(--_ease),
+    box-shadow var(--_duration) var(--_ease),
+    backdrop-filter var(--_duration) var(--_ease);
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+}
+
+.gnav[data-elevated='true'] .gnav-bar {
+  background: var(--_tint);
+  border-color: var(--_border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 8px 32px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(var(--_blur)) saturate(160%);
+  backdrop-filter: blur(var(--_blur)) saturate(160%);
+}
+
+.gnav-brand {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 링크 묶음 — compact에서 열(column)이 0fr로 접힌다. accordion의 세로 기법을 가로로 쓴 것.
+ * width를 전이하면 매 프레임 레이아웃이 돌지만, 이 판(gnav-bar)은 max-content 한 조각이라 비용이 작다 */
+.gnav-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  transition:
+    grid-template-columns var(--_duration) var(--_ease),
+    opacity calc(var(--_duration) * 0.6) var(--_ease);
+}
+
+.gnav-links > * {
+  position: relative; /* 알약(gnav-pill)의 기준 상자 — 링크의 offsetLeft와 같은 원점 */
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.gnav-links a {
+  position: relative;
+  z-index: 1; /* 알약 위에 글자 */
+  color: inherit;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.gnav-links a[aria-current='page'] {
+  opacity: 1;
+  background: var(--_active-bg);
+}
+
+/* 활성 알약 — spy가 활성 링크의 위치·너비를 transform·width로 준다. 링크 사이를 미끄러진다(segmented-control의 thumb과 같은 기법).
+ * 알약이 있으면 활성 링크 자체의 배경은 끈다(두 겹 방지) */
+.gnav-pill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  border-radius: 999px;
+  background: var(--_active-bg);
+  pointer-events: none;
+  /* motion-audit-ignore: layout-animation — 알약은 absolute·pointer-events:none이라 width 전이가 자기 자신만 다시 그린다 */
+  transition:
+    transform var(--_duration) var(--_ease),
+    width var(--_duration) var(--_ease);
+}
+
+.gnav-links:has(.gnav-pill) a[aria-current='page'] {
+  background: transparent;
+}
+
+/* compact — 링크가 접히고 활성 링크 하나만 남아 알약이 된다. 활성 링크는 접히는 묶음 밖(gnav-current)에 복제해 둔다 */
+.gnav[data-compact='true'] .gnav-links {
+  grid-template-columns: 0fr;
+  opacity: 0;
+}
+
+.gnav-current {
+  display: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--_active-bg);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  animation: gnav-current-in var(--_duration) var(--_ease) both;
+}
+
+.gnav[data-compact='true'] .gnav-current {
+  display: block;
+}
+
+@keyframes gnav-current-in {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+}
+
+/* 모션 민감 사용자: 상태는 즉시 바뀐다(숨김·유리·축소 모두). 흐림은 그대로 — 움직임이 아니다 */
+@media (prefers-reduced-motion: reduce) {
+  .gnav,
+  .gnav-bar,
+  .gnav-links,
+  .gnav-pill {
+    transition: none;
+  }
+  .gnav-current {
+    animation: none;
+  }
+}
