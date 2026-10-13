@@ -10,15 +10,15 @@ export function normalizeStatic(raw){
 export function normalizeBrowser(raw){
   if(!raw||!Array.isArray(raw.findings)||!Array.isArray(raw.runs)||raw.runs.length===0)throw new Error('Invalid lintapple JSON: no completed browser runs');
   for(const f of raw.findings)if(!f || typeof f.rule!=='string' || typeof f.selector!=='string' || !f.viewport || !Number.isInteger(f.viewport.width))throw new Error('Invalid lintapple finding structure');
-  return raw.findings.map(x=>({engine:'lintapple',rule:string(x.rule),severity:'error',location:`${string(x.selector)} @ ${x.viewport?.width??'?'}px ${string(x.colorScheme)} ${string(x.state||'initial')}`,message:string(x.message),fix:string(x.fix),actual:x.actual,expected:x.expected,selector:x.selector,relatedSelector:x.relatedSelector,viewport:x.viewport,colorScheme:x.colorScheme,state:x.state||'initial',identity:x.identity,relatedIdentity:x.relatedIdentity,pseudo:x.pseudo,details:{...x}}));
+  return raw.findings.map(x=>({engine:'lintapple',rule:string(x.rule),severity:x.advisory?'warning':'error',advisory:!!x.advisory,route:x.route,routeUrl:x.routeUrl,routeKey:x.routeKey,location:`${x.route?x.route+' / ':''}${string(x.selector)} @ ${x.viewport?.width??'?'}px ${string(x.colorScheme)} ${string(x.state||'initial')}`,message:string(x.message),fix:string(x.fix),actual:x.actual,expected:x.expected,selector:x.selector,relatedSelector:x.relatedSelector,viewport:x.viewport,colorScheme:x.colorScheme,state:x.state||'initial',identity:x.identity,relatedIdentity:x.relatedIdentity,pseudo:x.pseudo,details:{...x}}));
 }
 export const fingerprintVersion = 2;
 export function identify(findings){
   const identified = findings.map(x=>{
-    const stable = x.engine === 'suta' ? !!x.sourceAnchor :
-      x.identity?.stable === true && (!x.relatedIdentity || x.relatedIdentity.stable === true);
+    const stable = !x.advisory && (x.engine === 'suta' ? !!x.sourceAnchor :
+      x.identity?.stable === true && (!x.relatedIdentity || x.relatedIdentity.stable === true));
     const key = x.engine === 'suta' ? [x.file || x.location.replace(/:\d+$/, ''), x.sourceAnchor] :
-      [x.identity?.key, x.relatedIdentity?.key, x.pseudo || '', [x.viewport?.width,x.viewport?.height], x.colorScheme, x.state || 'initial'];
+      [x.identity?.key, x.relatedIdentity?.key, x.pseudo || '', [x.viewport?.width,x.viewport?.height], x.colorScheme, x.state || 'initial',...(x.routeKey?[x.routeKey]:[])];
     return {...x, fingerprintVersion, baselineEligible:stable,
       id:hash(JSON.stringify([fingerprintVersion,x.engine,x.rule,...key,...(stable?[]:[x.location])]))};
   });
@@ -32,18 +32,18 @@ export function browserCoverage(raw){
     ['layout-alignment','layout-gap','control-gap','nested-radius','control-inset'].map(rule=>{
       const legacy = {'layout-alignment':'alignmentGroups','nested-radius':'radiusContracts','control-inset':'insetControls'};
       const targets = state.ruleCoverage?.[rule] ?? state[legacy[rule]];
-      return {rule,viewport:run.viewport,colorScheme:run.colorScheme,state:state.name||'initial',
+      return {rule,route:run.route,routeUrl:run.routeUrl,viewport:run.viewport,colorScheme:run.colorScheme,state:state.name||'initial',
         targets:targets ?? null,status:targets === undefined ? 'unknown' : targets === 0 ? 'not-tested' : 'tested'};
     })));
 }
 export function findingEvidence(f){
   return [f.message, f.actual !== undefined ? `Actual: ${JSON.stringify(f.actual)}` : '',
     f.expected !== undefined ? `Expected: ${JSON.stringify(f.expected)}` : '',
-    f.relatedSelector ? `Related: ${f.relatedSelector}` : ''].filter(Boolean).join(' — ');
+    f.relatedSelector ? `Related: ${f.relatedSelector}` : '',f.reviewedException?`Reviewed exception: ${f.reviewedException.reason}`:''].filter(Boolean).join(' — ');
 }
 export function count(findings){return {errors:findings.filter(f=>f.severity==='error').length,warnings:findings.filter(f=>f.severity==='warning').length};}
 export function toMarkdown(report){
-  const rows=groupFindings(report.findings).map(g=>`| ${g.existingBrowserDebt?'existing/outside scope':g.baselined?'existing':g.findings[0].severity} | ${escapeCell(g.engine+'/'+g.rule)} (${g.count}) | ${escapeCell(g.locations.slice(0,4).join(', '))}${g.locations.length>4?' (more in report.json)':''} | ${escapeCell(g.fix)+'<br>'+escapeCell(findingEvidence(g.findings[0]))} |`);
+  const rows=groupFindings(report.findings).map(g=>`| ${g.findings[0].reviewedException?'reviewed value exception':g.existingBrowserDebt?'existing/outside scope':g.baselined?'existing':g.findings[0].severity} | ${escapeCell(g.engine+'/'+g.rule)} (${g.count}) | ${escapeCell(g.locations.slice(0,4).join(', '))}${g.locations.length>4?' (more in report.json)':''} | ${escapeCell(g.fix)+'<br>'+escapeCell(findingEvidence(g.findings[0]))} |`);
   return [`# UI Refiner UI QA — ${report.status}`,``, `- Project: ${report.project}` ,`- Profile: ${report.preset}`,`- Automated: ${report.automatedStatus}`,`- Human visual review: ${report.manualVisualReview?'REQUIRED':'not configured'}`,`- New blocking findings: ${report.summary.blockers}`,`- Existing baseline findings: ${report.summary.baselined}`,`- Total: ${report.summary.total}`,`- Scope: ${report.scope?.mode||'full'}`,`- Compared to previous run: ${report.diff?.status||'unavailable'}; resolved=${report.diff?.resolved.length||0}, added=${report.diff?.added.length||0}, persisting=${report.diff?.persisting.length||0}`,``, `## Coverage`,``,...report.stages.map(s=>`- ${s.engine}: ${s.status}${s.enforcement==='advisory'?' (advisory)':''}${s.error?` — ${s.error}`:''}`),``,compactCoverage(report.stages),``,`## Findings`,``,`| Status | Rule | Location | Suggested fix |`,`|---|---|---|---|`,...(rows.length?rows:['| — | — | — | — |']),``,`## Agent handoff`,``,report.handoff,``].join('\n');
 }
 function escapeCell(x){return string(x).replace(/\|/g,'\\|').replace(/[\r\n]+/g,' ');}

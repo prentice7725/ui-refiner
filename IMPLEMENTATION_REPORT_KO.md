@@ -17,4 +17,23 @@
 
 검증은 해당 PR의 CI 결과를 기준으로 확인한다. 자동 PASS는 인간의 시각적 완성도 승인이나 운영 배포 승인이 아니다.
 
+## 렌더링 증거·검사 범위 확장
+
+- `browser.routes`로 이름 있는 1–50개 URL을 명시적으로 검사한다. 자동 크롤링은 하지 않는다. 라우트별 준비 조건·상호작용 계획을 지원하고, 지문·커버리지·촬영·시간 예산에 라우트를 반영한다. 기존 단일 URL 지문은 유지한다.
+- 모든 라우트/뷰포트/테마는 한 브라우저 프로세스의 독립 컨텍스트에서 실행한다. 인증 상태는 공유하지 않는다. 검사 중 자동 다운로드는 없다. 검증되지 않은 리다이렉트 체인을 따라가지 않고 최종 URL을 직접 요구한다.
+- 선택적인 `browser.captureAriaSnapshots`는 검사 상태의 ARIA YAML을 내용 해시 파일로 보존하고, 호환 실행의 구조 해시 변경·추가·제거·유지를 표시한다. 줄 단위 diff나 자동 결함 판정은 아니다. 요청한 촬영 실패는 ERROR다.
+- 선택적인 `browser.renderedMetrics`는 상단 fixed/sticky 수, 채운 버튼 수, 반복 동작, 계산된 색의 근사 hue 버킷을 관측한다. 최대 10000개 DOM 요소의 뷰포트 가시 영역만 분석한다. 모두 advisory이며 접근성 위반과 혼동하거나 강제 게이트로 사용하지 않는다.
+- `gate.valueExceptionsPath`는 정확한 디자인 값·이유와 선택적 라우트/셀렉터를 요구한다. 접근성·키보드 규칙은 면제하지 않는다. 승인된 값은 리포트에 남고 값과 무관한 베이스라인 억제로 확대되지 않는다.
+- ARIA·렌더링 지표 기본값은 모두 false다. 새 의존성·벤더 변경 없이 ui-refiner 어댑터에서 구현했다. 실제 브라우저 검증은 `npm run smoke:routes`와 해당 PR의 CI를 기준으로 확인한다.
+
+## 제안 검토 결과와 별도 검증이 필요한 항목
+
+- reg-actions: 기존 이미지 산출물을 활용할 수 있지만 PR 댓글·이미지 업로드 권한과 앱 증거의 민감성을 검토해야 한다. 이번 변경에서 자동 게시하지 않는다.
+- BudouX/textlint: 의미 있는 일본어 보완 후보지만 구 경계와 실제 줄바꿈의 대응, 고정 버전·라이선스·오탐 fixture 검증이 필요하다. 이번에 추가한 ARIA/동일 상태 증거와 분리한다. CSS auto-phrase를 적용했다는 사실만으로 실제 줄바꿈 검사를 했다고 주장하지 않는다.
+- 의사 로컬라이제이션·텍스트 확대/간격 스트레스: 정상 상태와 구분한 독립 상태, mutation 복원·timeout·스크린샷·overflow fixture가 필요하므로 구현됐다고 표시하지 않는다.
+- impeccable 등 제3 엔진: 중복 규칙·종료 코드·사전 설치·다운로드 금지 계약을 검증하기 전에는 편입하지 않는다.
+- Vercel 지침과 human 주석 수집: 유망하지만 실제 상호작용 부작용과 외부 주석 스키마·신뢰 경계 검증을 별도 작업으로 남긴다.
+
+근거: [Playwright ARIA snapshots](https://playwright.dev/docs/aria-snapshots), [reg-actions](https://github.com/reg-viz/reg-actions), [BudouX JavaScript](https://github.com/google/budoux/blob/main/javascript/README.md).
+
 후속 리뷰에서 모노레포 상대 경로, 팀용 훅 경로, 단계/세션 타임아웃 분리, 자동 생성 ID 제외, 부분 범위 기존 브라우저 위반 분리 및 핸드오프 크기 제한을 보완했다.
