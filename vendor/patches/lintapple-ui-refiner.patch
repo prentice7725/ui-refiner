@@ -1,11 +1,19 @@
 --- a/src/accessibility.js
 +++ b/src/accessibility.js
-@@ -51,6 +51,11 @@
+@@ -1,5 +1,5 @@
+ // Runs in the browser with the same scope and report helpers as the layout audit.
+-export async function auditAccessibility({ elements, controls, visible, hasVisibleContent, add, engine }) {
++export async function auditAccessibility({ elements, controls, visible, hasVisibleContent, add, engine, clickListenerTargets }) {
+   const rules = {
+     'button-name': 'accessible-name', 'input-button-name': 'accessible-name',
+     'input-image-alt': 'accessible-name', 'aria-tab-name': 'accessible-name',
+@@ -51,6 +51,12 @@
    try {
      const refs = el => (el.getAttribute('aria-labelledby') || '').trim().split(/\s+/).filter(Boolean).map(id => document.getElementById(id));
      for (const el of elements) {
 +      // UI Refiner bridge: mouse-only DOM handlers are not counted as native controls.
-+      if(el.matches('[onclick], [data-ui-clickable]')&&!el.matches('button, input, select, textarea, a[href], summary, [contenteditable="true"]')){
++      const frameworkRoot=Object.keys(el).some(k=>k.startsWith('__reactContainer$')||k==='__vue_app__');
++      if(!frameworkRoot&&(el.matches('[onclick], [data-ui-clickable]')||typeof el.onclick==='function'||clickListenerTargets?.has(el))&&!el.matches('button, input, select, textarea, a[href], summary, [contenteditable="true"]')){
 +        if(el.tabIndex<0)add('keyboard-operation',el,'clickable element is not keyboard focusable','a semantic, keyboard-reachable interactive element','Use a native button/link. If a custom control is essential, implement focus, role and Enter/Space activation.',null,{status:'failed',category:'accessibility',phase:'clickable-focus'});
 +        if(!el.getAttribute('role'))add('control-state',el,'clickable element has no semantic role','an interactive role appropriate to the action','Use a native button/link instead of a generic element with a click handler.',null,{status:'failed',category:'accessibility',phase:'clickable-semantics'});
 +      }
@@ -14,7 +22,10 @@
          // A collapsed popup can create its controlled element only when opened.
 --- a/src/audit.js
 +++ b/src/audit.js
-@@ -3,9 +3,37 @@
+@@ -1,11 +1,41 @@
+ // Runs in the browser. Use one report shape for all design rules.
+-export async function audit({ policy, contrast, accessibility, format, visibility }) {
++export async function audit({ policy, contrast, accessibility, format, visibility, clickListenerTargets }) {
    for (const rule of [...policy.typeRules, ...policy.controlSizeRules, ...policy.exceptions]) document.querySelector(rule.selector);
    for (const container of policy.controlContainers) document.querySelector(container);
    const findings = [];
@@ -23,6 +34,8 @@
 +    for (const attr of ['data-ui-id', 'data-testid', 'data-qa', 'id']) {
 +      const value = element.getAttribute(attr);
 +      if (!value) continue;
++      // React useId (legacy and current), Radix and Headless UI IDs are render-order artifacts.
++      if(attr==='id'&&(/(^:r[^:]*:$)|(^_[Rr]_[\w-]+_$)|(^radix[-_:])|(^headlessui[-_:])/i.test(value)))continue;
 +      const query = `[${attr}="${CSS.escape(value)}"]`;
 +      if (document.querySelectorAll(query).length === 1) return query;
 +    }
@@ -52,7 +65,7 @@
        const tag = node.tagName.toLowerCase();
        if (node === document.documentElement) { parts.unshift(tag); break; }
        const siblings = [...node.parentElement.children].filter(s => s.tagName === node.tagName);
-@@ -16,7 +44,7 @@
+@@ -16,7 +46,7 @@
    const add = (rule, element, actual, expected, fix, related, details = {}) => {
      const exception = policy.exceptions.find(e => e.rules.includes(rule) && element.matches(e.selector));
      if (exception) { suppressed.push({ rule, selector: selector(element), reason: exception.reason }); return; }
@@ -61,7 +74,7 @@
    };
    const suppressed = [];
    const { textRects, visible, hasVisibleContent, generatedTextStyles } = visibility;
-@@ -30,7 +58,7 @@
+@@ -30,7 +60,7 @@
      const size = parseFloat(style.fontSize);
      const sizes = policy.typeRules.find(rule => el.closest(rule.selector))?.sizes ?? policy.fontSizes;
      if (!sizes.some(allowed => Math.abs(size - allowed) < 0.1))
@@ -70,7 +83,7 @@
    };
    let numericElements = 0;
    for (const el of elements) {
-@@ -89,8 +117,10 @@
+@@ -89,8 +119,10 @@
      list.push(el); groups.set(parent, list);
    }
    // Use the same geometry for control groups and component stacks.
@@ -81,11 +94,13 @@
        const a = group[i].getBoundingClientRect(), b = group[j].getBoundingClientRect();
        const xOverlap = Math.min(a.right, b.right) - Math.max(a.left, b.left);
        const yOverlap = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
-@@ -375,5 +405,5 @@
+@@ -374,6 +406,6 @@
+       } catch (error) { reportContrast(el, 'unresolved', data, `placeholder calculation failed: ${error.message}`); }
      }
    } finally { contrast.teardown(); }
-   const accessibilityCoverage = await accessibility({ elements, controls, visible, hasVisibleContent, add, engine: contrast });
+-  const accessibilityCoverage = await accessibility({ elements, controls, visible, hasVisibleContent, add, engine: contrast });
 -  return { findings, suppressed, accessibilityCoverage, elements: elements.length, controls: controls.length, insetControls, numericElements, alignmentGroups, radiusContracts: elements.filter(el => el.matches('[data-ui-radius]')).length };
++  const accessibilityCoverage = await accessibility({ elements, controls, visible, hasVisibleContent, add, engine: contrast, clickListenerTargets });
 +  return { findings, suppressed, accessibilityCoverage, ruleCoverage: { 'layout-gap': gapPairs['layout-gap'], 'control-gap': gapPairs['control-gap'], 'layout-alignment': alignmentGroups, 'control-inset': insetControls, 'nested-radius': elements.filter(el => el.matches('[data-ui-radius]')).length }, elements: elements.length, controls: controls.length, insetControls, numericElements, alignmentGroups, radiusContracts: elements.filter(el => el.matches('[data-ui-radius]')).length };
  }
 --- a/src/browser.js
@@ -130,10 +145,65 @@
 -  await installation;
 -  return chromium.launch();
  }
+--- /dev/null
++++ b/src/click-listeners.js
+@@ -0,0 +1,31 @@
++// Chromium CDP discovers direct click listeners without instrumenting or changing app code.
++// Delegated root handlers cannot identify every actionable descendant; report that limit explicitly.
++export async function discoverClickListeners(page,{limit=500}={}){
++ let session,array;
++ const handles=[];
++ try{
++  session=await page.context().newCDPSession(page);
++  array=await session.send('Runtime.evaluate',{expression:`Array.from(document.querySelectorAll('body *')).filter(el => !el.matches('button,input,select,textarea,a[href],summary,[contenteditable="true"]') && !Object.keys(el).some(k=>k.startsWith('__reactContainer$')||k==='__vue_app__') && typeof el.onclick !== 'function' && !el.matches('[onclick],[data-ui-clickable]') && (el.getBoundingClientRect().width || el.getBoundingClientRect().height)).slice(0,${limit+1})`,objectGroup:'ui-refiner-click-discovery'});
++  if(!array.result.objectId)throw Error('No element array returned');
++  const properties=await session.send('Runtime.getProperties',{objectId:array.result.objectId,ownProperties:true});
++  const candidates=properties.result.filter(p=>/^\d+$/.test(p.name)&&p.value?.objectId);
++  for(const candidate of candidates.slice(0,limit)){
++   const listeners=await session.send('DOMDebugger.getEventListeners',{objectId:candidate.value.objectId});
++   if(listeners.listeners.some(l=>l.type==='click')){
++    // Transfer the node by backendNodeId instead of writing marker attributes into the page.
++    const described=await session.send('DOM.describeNode',{objectId:candidate.value.objectId});
++    handles.push(described.node.backendNodeId);
++   }
++  }
++  // Handles remain within this CDP session; obtain the nodes as a page JSHandle for the audit.
++  const nodes=[];
++  for(const backendNodeId of handles){
++   const resolved=await session.send('DOM.resolveNode',{backendNodeId,objectGroup:'ui-refiner-click-discovery'});
++   // Find the node's document order index without assigning any application property.
++   const index=await session.send('Runtime.callFunctionOn',{objectId:resolved.object.objectId,functionDeclaration:'function(){ return Array.from(document.querySelectorAll("body *")).indexOf(this); }',returnByValue:true});
++   if(Number.isInteger(index.result.value)&&index.result.value>=0)nodes.push(index.result.value);
++  }
++  return {indices:nodes,coverage:{method:'DOM properties + Chromium CDP direct listeners',status:candidates.length>limit?'limited':'direct-listeners-tested',inspected:Math.min(candidates.length,limit),limit,note:'Delegated handlers and listeners beyond the candidate cap are not fully attributed; use explicit data-ui-clickable markers and interaction plans.'}};
++ }catch(e){return {indices:[],coverage:{method:'DOM properties only',status:'CDP-unavailable',reason:e.message,note:'Direct addEventListener registrations were not enumerated.'}};}
++ finally{if(session){await session.send('Runtime.releaseObjectGroup',{objectGroup:'ui-refiner-click-discovery'}).catch(()=>{});await session.detach().catch(()=>{});}}
++}
 --- a/src/index.js
 +++ b/src/index.js
-@@ -67,11 +67,11 @@
-   finally { await Promise.all([contrast.dispose(), accessibility.dispose(), format.dispose(), visibility.dispose()]); }
+@@ -1,6 +1,7 @@
+ import { readFile } from 'node:fs/promises';
+ import { launchBrowser } from './browser.js';
+ import axe from 'axe-core';
++import {discoverClickListeners} from './click-listeners.js';
+ import { audit } from './audit.js';
+ import { auditAccessibility } from './accessibility.js';
+ import { finding } from './report.js';
+@@ -58,20 +59,22 @@
+     await document.fonts.ready;
+     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+   });
++  const clickDiscovery=await discoverClickListeners(page);
++  const clickListenerTargets=await page.evaluateHandle(indices=>new Set(indices.map(i=>document.querySelectorAll('body *')[i]).filter(Boolean)),clickDiscovery.indices);
+   // Keep the app's own axe object unchanged. Each check gets a fresh engine.
+   const contrast = await page.evaluateHandle(`(() => { const previous = window.axe; ${axe.source}\n const engine = window.axe; window.axe = previous; return engine; })()`);
+   const accessibility = await page.evaluateHandle(`(${auditAccessibility.toString()})`);
+   const format = await page.evaluateHandle(`(${finding.toString()})`);
+   const visibility = await page.evaluateHandle(`(${createVisibility.toString()})()`);
+-  try { return await page.evaluate(audit, { policy, contrast, accessibility, format, visibility }); }
+-  finally { await Promise.all([contrast.dispose(), accessibility.dispose(), format.dispose(), visibility.dispose()]); }
++  try { const result=await page.evaluate(audit, { policy, contrast, accessibility, format, visibility,clickListenerTargets });return {...result,clickListenerCoverage:clickDiscovery.coverage}; }
++  finally { await Promise.all([contrast.dispose(), accessibility.dispose(), format.dispose(), visibility.dispose(),clickListenerTargets.dispose()]); }
  }
  
 -export async function checkInteractions(page, plan, input = {}, { timeout = 15000 } = {}) {
@@ -146,7 +216,7 @@
  }
  
  async function checkPageWithin(page, policy, timeout) {
-@@ -83,7 +83,7 @@
+@@ -83,7 +86,7 @@
    } finally { clearTimeout(timer); }
  }
  
@@ -155,7 +225,7 @@
    const parsed = new URL(url);
    if (!['http:', 'https:', 'file:'].includes(parsed.protocol)) throw new Error('Use an HTTP, HTTPS, or file URL.');
    const policy = validatePolicy(input);
-@@ -92,7 +92,7 @@
+@@ -92,7 +95,7 @@
    const report = { url, rules: ruleIds, runs: [], findings: [] };
    try {
      for (const viewport of policy.viewports) for (const colorScheme of policy.colorSchemes) {
@@ -164,7 +234,7 @@
        try {
          const page = await context.newPage();
          page.setDefaultTimeout(timeout);
-@@ -103,12 +103,13 @@
+@@ -103,12 +106,13 @@
          }
          if (ready) await page.locator(ready).waitFor({ state: 'visible' });
          const result = await checkPageWithin(page, policy, timeout);

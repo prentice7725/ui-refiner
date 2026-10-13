@@ -3,7 +3,7 @@ import {spawnBounded} from './execute.mjs';
 export function parseChangedDiff(text){
  const changed=new Map();let file;
  for(const line of text.split('\n')){
-  if(line.startsWith('+++ b/')){file=line.slice(6);if(!changed.has(file))changed.set(file,new Set());}
+  if(line.startsWith('+++ b/')||line.startsWith('+++ "b/')){file=line.startsWith('+++ "')?JSON.parse(line.slice(4)).slice(2):line.slice(6);if(!changed.has(file))changed.set(file,new Set());}
   else if(line==='+++ /dev/null')file=undefined;
   else if(file&&line.startsWith('@@')){
    const m=line.match(/\+(\d+)(?:,(\d+))? @@/);if(!m)continue;
@@ -20,7 +20,7 @@ export async function gitChangedLines(root,{base}={}){
   if(verified.code!==0||verified.error)throw Error('Invalid --base commit ref');
   commit=verified.stdout.trim();
  }
- const args=['-c','core.quotepath=false','diff' ,'--no-ext-diff','--no-textconv','--no-renames','--unified=0',...(commit?[commit]:['HEAD']),'--'];
+ const args=['-c','core.quotepath=false','diff' ,'--no-ext-diff','--no-textconv','--no-renames','--relative','--src-prefix=a/','--dst-prefix=b/','--unified=0',...(commit?[commit]:['HEAD']),'--'];
  const run=await spawnBounded('git',args,{cwd:root,timeoutMs:15000});
  if(run.code!==0||run.error)throw Error(`Cannot determine changed lines: ${run.error||run.stderr.trim()}`);
  const changed=parseChangedDiff(run.stdout);

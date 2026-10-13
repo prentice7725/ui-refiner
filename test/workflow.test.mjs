@@ -53,12 +53,13 @@ test('bundled suta is the default runtime and doctor can identify stale guidance
 test('installed post-edit hook preserves existing Claude hooks and catches only added violations',()=>temp(async root=>{
  await fs.mkdir(path.join(root,'.claude'));await fs.writeFile(path.join(root,'.claude/settings.json'),JSON.stringify({custom:true,hooks:{PostToolUse:[{matcher:'Read',hooks:[{type:'command',command:'echo existing'}]}]}}));
  const r=await spawnBounded(process.execPath,[path.join(repoRoot,'scripts/install-agent-skill.mjs'),root]);assert.equal(r.code,0,r.stderr);
- const settings=JSON.parse(await fs.readFile(path.join(root,'.claude/settings.json'),'utf8'));assert.equal(settings.custom,true);assert.equal(settings.hooks.PostToolUse.length,2);
+ const settings=JSON.parse(await fs.readFile(path.join(root,'.claude/settings.json'),'utf8'));assert.equal(settings.custom,true);assert.equal(settings.hooks.PostToolUse.length,1);
+ const local=JSON.parse(await fs.readFile(path.join(root,'.claude/settings.local.json'),'utf8'));assert.equal(local.hooks.PostToolUse.length,1);assert.equal(local.env.UI_REFINER_HOME,repoRoot);
  const wrapper=path.join(root,'.agents/skills/ui-refiner-agent/scripts/post-edit-hook.mjs');assert.ok((await fs.readFile(wrapper,'utf8')).includes('scripts/post-edit-hook.mjs'));
  const file=path.join(root,'app.css');await fs.writeFile(file,'button { transition: all 300ms ease; }\np { color: blue; }\n');
  const payload=JSON.stringify({cwd:root,tool_input:{file_path:file,new_string:'p { color: blue; }'}});
- const {spawnSync}=await import('node:child_process');let result=spawnSync(process.execPath,[wrapper],{input:payload,encoding:'utf8'});assert.equal(result.status,0,result.stderr);
- result=spawnSync(process.execPath,[wrapper],{input:JSON.stringify({cwd:root,tool_input:{file_path:file,new_string:'button { transition: all 300ms ease; }'}}),encoding:'utf8'});assert.equal(result.status,2,result.stderr);assert.match(result.stderr,/transition-all/);
+ const {spawnSync}=await import('node:child_process');let result=spawnSync(process.execPath,[wrapper],{input:payload,encoding:'utf8',env:{...process.env,UI_REFINER_HOME:repoRoot}});assert.equal(result.status,0,result.stderr);
+ result=spawnSync(process.execPath,[wrapper],{input:JSON.stringify({cwd:root,tool_input:{file_path:file,new_string:'button { transition: all 300ms ease; }'}}),encoding:'utf8',env:{...process.env,UI_REFINER_HOME:repoRoot}});assert.equal(result.status,2,result.stderr);assert.match(result.stderr,/transition-all/);
 }));
 test('upstream comparison compares pinned SHA and never writes or installs',async()=>{
  let calls=0;const rows=await upstreamCheck({runner:async(bin,args)=>{calls++;assert.equal(bin,'git');assert.equal(args[0],'ls-remote');return {code:0,stdout:'a'.repeat(40)+'\tHEAD\n',stderr:''};}});
