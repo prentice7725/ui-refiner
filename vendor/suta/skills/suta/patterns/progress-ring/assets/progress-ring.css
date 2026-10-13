@@ -1,0 +1,93 @@
+/* progress-ring — 원이 채워지는 진행 표시(활동 링).
+ * 커스터마이즈: --ring-duration(기본 600ms), --ring-color, --ring-track.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ *
+ * 핵심 기법: <circle>의 stroke-dasharray를 둘레로, stroke-dashoffset을 둘레 × (1 − 진행률)로 둔다.
+ * 두 값은 JS(ringGeometry)가 --ring-circumference · --ring-offset 변수로 내려주고,
+ * 값이 바뀌면 stroke-dashoffset의 CSS transition이 알아서 따라간다 — 프레임 루프가 없다. */
+
+.progress-ring {
+  --_duration: var(--ring-duration, 600ms);
+  /* 끝에서 부드럽게 감속 — 목표 도달을 "안착"처럼 보이게 */
+  --_ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+}
+
+.progress-ring-svg {
+  display: block;
+  /* 12시 방향에서 시작해 시계 방향으로 찬다 — SVG 원의 기본 시작점은 3시 방향이다 */
+  transform: rotate(-90deg);
+}
+
+.progress-ring-track,
+.progress-ring-bar {
+  fill: none;
+}
+
+/* 색 변수는 원(circle) 자신에서 푼다 — 바깥 .progress-ring에서 풀어 버리면 겹친 링(ActivityRings)이
+ * 각 <g>에 준 --ring-color가 이미 계산된 값에 덮여 무시된다(브라우저 확인에서 세 링이 전부 같은 색으로 나온 원인) */
+.progress-ring-track {
+  --_track: var(--ring-track, rgb(128 128 128 / 0.2));
+  stroke: var(--_track);
+}
+
+.progress-ring-bar {
+  --_color: var(--ring-color, #1b1e24);
+  stroke: var(--_color);
+  stroke-linecap: round;
+  stroke-dasharray: var(--ring-circumference);
+  stroke-dashoffset: var(--ring-offset);
+  transition: stroke-dashoffset var(--_duration) var(--_ease);
+}
+
+/* 목표 초과: 링은 한 바퀴에서 멈추고, 은은한 번짐으로 "넘었다"를 알린다.
+ * 단일 링은 루트에, 겹친 링(ActivityRings)은 각 링의 <g>에 data-over가 붙는다 */
+:is(.progress-ring[data-over='true'], .progress-ring [data-over='true']) .progress-ring-bar {
+  filter: drop-shadow(0 0 3px var(--_color));
+}
+
+/* 무한(indeterminate): 값이 없으면 1/4 호가 링을 따라 돈다.
+ * transform-box: view-box — SVG 요소의 회전 중심을 캔버스 중심으로 잡는다(기본은 좌상단) */
+.progress-ring[data-indeterminate='true'] .progress-ring-bar {
+  stroke-dashoffset: calc(var(--ring-circumference) * 0.75);
+  transition: none;
+  transform-box: view-box;
+  transform-origin: center;
+  animation: progress-ring-spin 1s linear infinite;
+}
+
+/* 가운데 슬롯 — 숫자·아이콘·버튼. 링 위에 겹쳐 둔다 */
+.progress-ring-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums; /* 퍼센트 숫자가 바뀌어도 폭이 떨리지 않게 */
+}
+
+@keyframes progress-ring-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes progress-ring-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* 모션 민감 사용자: 채워지는 이동은 즉시 반영하고,
+ * 무한 로딩은 회전 대신 느린 맥동으로 "아직 진행 중"만 알린다 — 진행 중 신호 자체를 없애면 안 된다 */
+@media (prefers-reduced-motion: reduce) {
+  .progress-ring-bar {
+    transition: none;
+  }
+
+  .progress-ring[data-indeterminate='true'] .progress-ring-bar {
+    animation: progress-ring-pulse 1.6s ease-in-out infinite;
+  }
+}
