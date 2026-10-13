@@ -35,15 +35,19 @@ Supported initial policies are `en-US`, `ko-KR` and `ja-JP`. They derive from th
 | `static.targets` | Source paths to audit; default `["src"]` |
 | `static.enforcement` / `browser.enforcement` | `enforce` or `advisory`; both default to `enforce` |
 | `browser.url` | Running app URL; default `http://127.0.0.1:5173` |
+| `browser.routes` | Optional 1–50 named routes replacing the single URL target; paths resolve against `browser.url` |
 | `browser.policyPath` | Project policy; default `ui-policy.json` |
 | `browser.ready` | Optional visible readiness selector; default `null` |
 | `browser.interactionsPath` | Optional interaction-plan JSON; default `null` |
 | `browser.captureScreenshots` | Same-session state images and element crops; default `false` |
+| `browser.captureAriaSnapshots` | Same-state accessibility-tree YAML and advisory structure comparisons; default `false` |
+| `browser.renderedMetrics` | Opt-in rendered design heuristics; advisory only, default `false` |
 | `browser.timeoutMs` | Per navigation/audit step; default `120000` ms |
 | `browser.sessionTimeoutMs` | Independent total session bound; default `null` for a derived budget |
 | `gate.maxStaticWarnings` | Optional static warning cap; `null` leaves warnings non-blocking |
 | `gate.allowedHosts` | Explicit navigation host allowlist; defaults to loopback hosts |
 | `gate.baselinePath` | Reviewed schemaVersion 2 baseline; default `null` |
+| `gate.valueExceptionsPath` | Optional reviewed exact design-value exceptions JSON; default `null` |
 | `gate.manualVisualReview` | Default `true`; successful full checks still require human review |
 | `sot.path` | Optional project source-of-truth path; existence is checked, content is not automatically parsed |
 | `reportDir` | Default `artifacts/ui-refiner` |
@@ -94,6 +98,29 @@ Coverage reports show target counts for alignment, layout/control gaps, nested r
 
 Clickable generic elements are checked for missing keyboard focus and semantic roles through inline `onclick`, DOM `onclick` properties (including React-style handlers), `data-ui-clickable` and Chromium CDP direct click listeners. CDP inspects at most **500 visible non-native candidates per state**, prioritizing `cursor:pointer` before document order. Known framework delegation roots are excluded. Reports disclose limited inspection and CDP availability; delegated descendants and candidates beyond the cap need explicit markers or interaction plans. Use an interaction plan to verify actual Enter/Space behavior. See [examples/interactions.json](examples/interactions.json).
 
+### Named routes, ARIA evidence and rendered metrics
+
+Add these fields to the existing `browser` object; keep its other fields:
+
+```json
+{
+  "routes": [
+    { "name": "home", "url": "/" },
+    { "name": "settings", "url": "/settings", "ready": "[data-app-ready]", "interactionsPath": null }
+  ],
+  "captureAriaSnapshots": true,
+  "renderedMetrics": true
+}
+```
+
+Routes have unique safe names and absolute HTTP(S) URLs or root-relative paths. Omitted `ready` / `interactionsPath` inherit shared settings; explicit `null` disables them for that route. Each route/viewport/theme gets a clean context in one browser process. Budgets include route count. Every requested route must finish: a failed route is ERROR, not partial PASS. Only listed routes are covered, not the entire app automatically. Storybook URLs can be listed explicitly. Authentication state and cookies are not shared between routes.
+
+Navigation hosts are validated before requests. Redirects are rejected without following the chain; configure the final URL explicitly. Service workers are disabled in this audit session. External subresources are not covered by the navigation allowlist; this is not a general network sandbox.
+
+Multi-route fingerprints include route name and canonical configured URL; legacy single-URL identities remain unchanged. Switching to explicit routes requires a fresh full baseline review. Image names include routes. Optional ARIA YAML also includes a content hash, retaining previous evidence. Compatible runs produce `ariaDiff` with changed/added/removed/unchanged dimensions and `previousFile` / `file` paths. This is a hash-based structure summary, not an automatic defect verdict or line-by-line diff: compare the YAML pair. Capture is opt-in, limited to 2 MB per state; requested capture failure is ERROR. Images and accessible names may contain sensitive app content; review before sharing.
+
+Rendered metrics describe visible viewport content: top-pinned fixed/sticky regions (nested regions counted once), filled buttons, repeated button/link names and destinations, and approximate 15-degree chromatic hue buckets from computed text/background/border colors. Inspection is capped at 10000 DOM elements with limited coverage disclosed. Repeated actions or multiple filled buttons may be intentional. Observations are **advisory only**, cannot block or be baselined, and never weaken accessibility checks. Hue buckets are evidence, not an enforced color limit; gradients, images and full perceptual color analysis are outside scope.
+
 ## 5. Reports and repair handoff
 
 Outputs appear under `reportDir`:
@@ -107,6 +134,7 @@ Outputs appear under `reportDir`:
 | `last-full-report.json` | Compatible completed full-check reference for scoped browser debt |
 | `lintapple.raw.json` | Original rendered checker output |
 | `render-*.png` | Optional same-session state images and element crops |
+| `render-*.aria.yml` | Optional same-state ARIA structure; content hashes preserve previous evidence |
 | `VISUAL_REVIEW.md` | Advisory review packet for a person or an external visual model |
 
 The handoff orders **actual blockers → advisory errors → warnings**. Matching causes are grouped across targets, viewports and states, so an inherited font problem can be fixed at its source rather than once per child. Semantic targets render as hints such as `h1 "Unlock…"` instead of raw identity JSON.
@@ -133,6 +161,12 @@ Review the suppression list before setting `gate.baselinePath`. Version 1 baseli
 - Ambiguous identities remain reported and cannot be suppressed. `excludedFindings` records the number of skipped items. Source-content or semantic changes can intentionally produce a new identity.
 
 No check automatically adds findings to a baseline or weakens the policy.
+
+### Reviewed exact-value exceptions
+
+Set `gate.valueExceptionsPath` to a project-relative JSON file using [examples/value-exceptions.json](examples/value-exceptions.json). Review it explicitly; the example is not an approval. Entries require `engine: "lintapple"`, `rule`, exact primitive `actual`, and a nonempty `reason`; optional `route` and exact report `selector` narrow scope. Supported design rules are `font-family`, `font-size`, `copy` and `root-background`. Use exact values and selectors from `report.json`, not approximate fonts or equivalent CSS selectors.
+
+Matched findings retain evidence and their `reviewedException` reason but do not block. They are not automatically added to a baseline, preventing a value-specific approval from becoming a value-independent suppression. Other values or scopes still fail. Accessibility and interaction rules cannot be waived here. Existing policy `exceptions` are broader selector-wide rule exclusions, a different mechanism.
 
 ## 7. Agent skill and portable hooks
 
@@ -177,6 +211,7 @@ npx playwright install chromium
 npm run smoke:ui
 npm run smoke:gate
 npm run smoke:review2
+npm run smoke:routes
 ```
 
 CI runs unit/contract tests, real Chromium UI and CLI checks, session-timeout checks and pinned vendor-sync verification. Fixtures include clean/violating pages, monorepo changes, moved-checkout hooks, generated IDs, pointer-prioritized discovery after a 1600-row list, same-state images and element crops.

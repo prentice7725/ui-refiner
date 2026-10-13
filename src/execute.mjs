@@ -2,7 +2,7 @@ import {spawn} from 'node:child_process';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {resolveInside,checkUrl} from './config.mjs';
+import {resolveInside,browserRoutes} from './config.mjs';
 import {browserBudget} from './browser-budget.mjs';
 import {normalizeStatic,normalizeBrowser,browserCoverage} from './normalize.mjs';
 
@@ -57,10 +57,10 @@ export function staticAuditPath(config,root){
  return config.static.auditPath==='bundled' ? fileURLToPath(new URL('../vendor/suta/skills/suta/scripts/audit.mjs',import.meta.url)) : resolveInside(root,config.static.auditPath,'static.auditPath');
 }
 export async function realBrowser(config,root,{runner=spawnBounded}={}){
- checkUrl(config.browser.url,config.gate.allowedHosts);
+ const routes=browserRoutes(config);
  const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
- const interactions=config.browser.interactionsPath?JSON.parse(await readFile(resolveInside(root,config.browser.interactionsPath,'browser.interactionsPath'),'utf8')):undefined;
- const budgets=browserBudget(config,policy,interactions);
+ const plans=await Promise.all(routes.map(async route=>route.interactionsPath?JSON.parse(await readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8')):undefined));
+ const budgets=browserBudget(config,policy,plans);
  const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
  const run=await runner(process.execPath,[worker,JSON.stringify({config,root})],{cwd:root,timeoutMs:budgets.sessionTimeoutMs});
  if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${run.stderr.slice(-1000)}`);

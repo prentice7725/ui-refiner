@@ -35,15 +35,19 @@ node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD" --locale ko-KR
 | `static.targets` | 정적 검사 대상 소스 경로; 기본 `["src"]` |
 | `static.enforcement` / `browser.enforcement` | `enforce` 또는 `advisory`; 둘 다 기본 `enforce` |
 | `browser.url` | 실행 중인 앱 URL; 기본 `http://127.0.0.1:5173` |
+| `browser.routes` | 단일 URL 대상을 대체하는 이름 있는 라우트 1–50개; 경로는 `browser.url` 기준 |
 | `browser.policyPath` | 프로젝트 정책; 기본 `ui-policy.json` |
 | `browser.ready` | 선택적 준비 완료 셀렉터가 보일 때까지 대기; 기본 `null` |
 | `browser.interactionsPath` | 선택적 상호작용 계획 JSON; 기본 `null` |
 | `browser.captureScreenshots` | 같은 세션의 상태 이미지·요소 크롭; 기본 `false` |
+| `browser.captureAriaSnapshots` | 같은 상태의 접근성 트리 YAML·advisory 구조 비교; 기본 `false` |
+| `browser.renderedMetrics` | 선택적 렌더링 디자인 지표; advisory 전용, 기본 `false` |
 | `browser.timeoutMs` | 탐색·감사 단계별 제한; 기본 `120000` ms |
 | `browser.sessionTimeoutMs` | 독립적인 전체 세션 제한; 기본 `null`이면 자동 산정 |
 | `gate.maxStaticWarnings` | 선택적 정적 경고 상한; `null`이면 경고가 blocker가 되지 않음 |
 | `gate.allowedHosts` | 명시적 탐색 호스트 허용 목록; 기본은 루프백 호스트 |
 | `gate.baselinePath` | 검토한 schemaVersion 2 베이스라인; 기본 `null` |
+| `gate.valueExceptionsPath` | 검토된 정확한 디자인 값 예외 JSON; 기본 `null` |
 | `gate.manualVisualReview` | 기본 `true`; 전체 자동 검사 통과 후에도 사람이 검토 |
 | `sot.path` | 선택적 프로젝트 정본 경로; 존재 여부만 검사하며 내용을 자동 파싱하지 않음 |
 | `reportDir` | 기본 `artifacts/ui-refiner` |
@@ -94,6 +98,29 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 클릭 가능한 일반 요소의 키보드 포커스·시맨틱 역할 누락은 인라인 `onclick`, DOM `onclick` 프로퍼티(React 방식 포함), `data-ui-clickable`, Chromium CDP 직접 click 리스너로 확인합니다. CDP는 **상태별 최대 500개 보이는 비네이티브 후보**를 검사하며, `cursor:pointer`를 문서 순서보다 먼저 봅니다. 알려진 프레임워크 이벤트 위임 루트는 제외합니다. 제한된 검사와 CDP 사용 가능 여부를 리포트에 공개하며, 위임된 자식 요소와 상한 밖 후보는 명시적 마커·상호작용 계획이 필요합니다. 실제 Enter/Space 동작은 상호작용 계획으로 검증하세요. [examples/interactions.json](examples/interactions.json)을 참고하세요.
 
+### 다중 라우트·ARIA 증거·렌더링 지표
+
+기존 `browser` 객체의 다른 설정은 유지하고 다음 필드를 추가하세요.
+
+```json
+{
+  "routes": [
+    { "name": "home", "url": "/" },
+    { "name": "settings", "url": "/settings", "ready": "[data-app-ready]", "interactionsPath": null }
+  ],
+  "captureAriaSnapshots": true,
+  "renderedMetrics": true
+}
+```
+
+라우트는 중복 없는 안전한 이름과 절대 HTTP(S) URL 또는 루트 상대 경로를 사용합니다. `ready`·`interactionsPath`를 생략하면 공통 설정을 상속하고, `null`이면 해당 라우트에서는 사용하지 않습니다. 라우트/뷰포트/테마마다 깨끗한 컨텍스트를 만들고 브라우저 프로세스 하나에서 검사합니다. 전체 시간 예산은 라우트 수를 포함합니다. 요청한 라우트 하나라도 실패하면 부분 PASS가 아니라 ERROR입니다. 목록에 있는 라우트만 검사하며 앱 전체를 자동으로 검사하지 않습니다. Storybook URL도 명시적으로 나열할 수 있습니다. 라우트 사이에 인증 상태·쿠키를 공유하지 않습니다.
+
+내비게이션 요청 전에 호스트를 검증합니다. 리다이렉트는 따라가지 않고 거부하므로 최종 URL을 직접 설정하세요. 이 감사 세션에서는 서비스 워커를 비활성화합니다. 외부 하위 리소스는 내비게이션 허용 목록의 대상이 아니며 일반 네트워크 샌드박스는 아닙니다.
+
+다중 라우트 지문에는 이름과 정규화된 설정 URL을 포함하고 기존 단일 URL 식별자는 유지합니다. 명시적 라우트로 전환하면 새 전체 베이스라인을 검토하세요. 이미지 이름에 라우트를 포함합니다. 선택적 ARIA YAML 파일명에는 내용 해시도 넣어 이전 증거를 보존합니다. 호환되는 이전 실행과의 `ariaDiff`는 변경/추가/제거/유지된 차원과 `previousFile`·`file`을 보여줍니다. 이는 해시 기반 구조 요약이며 자동 결함 판정이나 줄 단위 diff가 아닙니다. 두 YAML을 비교하세요. 촬영은 선택 기능이고 상태당 2 MB 제한이며 요청한 촬영 실패는 ERROR입니다. 이미지·접근 가능한 이름에 민감한 앱 내용이 포함될 수 있으므로 공유 전에 확인하세요.
+
+렌더링 지표는 현재 뷰포트의 보이는 상단 fixed/sticky 영역(중첩은 한 번 계산), 채운 버튼, 반복 버튼/링크 이름·목적지, 계산된 글자/배경/테두리 색의 대략적인 15도 유채색 hue 버킷을 기록합니다. DOM 요소 최대 10000개를 검사하고 제한된 범위를 표시합니다. 반복 동작이나 여러 채운 버튼은 의도된 UI일 수 있습니다. 관련 항목은 **advisory 전용**이며 게이트를 막거나 베이스라인에 들어가지 않고 접근성 검사를 약화하지 않습니다. hue 수는 검토 자료이지 강제 색상 상한이 아니며 그라데이션·이미지·완전한 지각 색상 분석은 대상 밖입니다.
+
 ## 5. 리포트와 수정 핸드오프
 
 결과는 `reportDir`에 생성됩니다.
@@ -107,6 +134,7 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 | `last-full-report.json` | 부분 검사에서 기존 브라우저 위반을 구분하는 완료된 전체 기준 결과 |
 | `lintapple.raw.json` | 원본 렌더링 검사 결과 |
 | `render-*.png` | 선택적 동일 세션 상태 이미지·요소 크롭 |
+| `render-*.aria.yml` | 선택적 동일 상태 ARIA 구조; 내용 해시로 이전 증거 보존 |
 | `VISUAL_REVIEW.md` | 사람 또는 외부 비전 모델을 위한 advisory 검토 패킷 |
 
 핸드오프는 **실제 blocker → advisory 오류 → 경고** 순서입니다. 같은 원인을 대상·뷰포트·상태에 걸쳐 묶으므로 상속 폰트를 자식 요소마다 고치는 대신 원본 지정부터 수정할 수 있습니다. 의미 기반 대상은 identity JSON 대신 `h1 "Unlock…"` 같은 힌트로 표시합니다.
@@ -133,6 +161,12 @@ node tools/ui-refiner/bin/ui-refiner.mjs baseline create --from artifacts/ui-ref
 - 모호한 identity는 계속 표시하며 억제할 수 없습니다. `excludedFindings`에 제외 수를 기록합니다. 소스 내용·의미가 바뀌면 새 identity가 생길 수 있습니다.
 
 검사가 위반을 자동으로 베이스라인에 추가하거나 정책을 약화하지 않습니다.
+
+### 검토된 정확한 값 예외
+
+`gate.valueExceptionsPath`에 프로젝트 상대 JSON 경로를 지정합니다. 형식은 [examples/value-exceptions.json](examples/value-exceptions.json)을 참고하되 예제 자체는 승인이 아닙니다. 각 항목은 `engine: "lintapple"`, `rule`, 정확한 기본형 `actual` 값과 비어 있지 않은 `reason`이 필요합니다. 선택적인 `route`·리포트의 정확한 `selector`로 범위를 좁힙니다. 지원 디자인 규칙은 `font-family`·`font-size`·`copy`·`root-background`입니다. 비슷한 폰트나 동등한 CSS 셀렉터가 아니라 `report.json`의 값과 셀렉터를 그대로 사용하세요.
+
+일치한 항목은 증거와 `reviewedException` 이유를 유지하되 게이트를 막지 않습니다. 베이스라인에 자동으로 추가하지 않아 특정 값의 승인이 값과 무관한 억제로 확대되지 않습니다. 다른 값·범위는 계속 실패합니다. 접근성·상호작용 규칙은 이 방식으로 면제할 수 없습니다. 기존 정책의 `exceptions`는 선택자 전체의 규칙 제외이므로 더 넓고 다른 기능입니다.
 
 ## 7. 에이전트 스킬과 팀용 훅
 
@@ -177,6 +211,7 @@ npx playwright install chromium
 npm run smoke:ui
 npm run smoke:gate
 npm run smoke:review2
+npm run smoke:routes
 ```
 
 CI는 단위·계약 테스트, 실제 Chromium UI·CLI 검사, 세션 타임아웃 검사, 고정 벤더 동기화 검증을 실행합니다. 정상/위반 페이지, 모노레포 변경, 이동한 체크아웃의 훅, 자동 ID, 1,600행 목록 뒤의 pointer 우선 탐지, 동일 상태 이미지와 요소 크롭을 검증합니다.

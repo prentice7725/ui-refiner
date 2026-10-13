@@ -2,6 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {staticAuditPath,probeChromium} from './execute.mjs';
 import {verifyVendor,sutaCopyDrift} from './vendor.mjs';
+import {browserRoutes,resolveInside} from './config.mjs';
+import {loadValueExceptions} from './value-exceptions.mjs';
 export async function doctor({root,config,probe=probeChromium}){
  const lines=[`Preset: ${config.preset} | Locale: ${config.locale||'en-US'} | Node ${process.versions.node}`];let errors=0;
  const drift=await verifyVendor();if(drift.length){errors++;lines.push(`Vendor integrity: ERROR (${drift.join(', ')})`);}else lines.push('Vendor integrity: SHA-256 verified');
@@ -13,7 +15,14 @@ export async function doctor({root,config,probe=probeChromium}){
  const copied=await sutaCopyDrift(root);
  if(copied?.length)lines.push(`WARNING: installed suta guidance copy differs in ${copied.length} files. Refresh the guidance after review. Runtime source: ${staticAuditPath(config,root)}`);
  if(config.static.auditPath!=='bundled')lines.push('WARNING: static.auditPath overrides the bundled runtime. Set it to "bundled" to use the maintained source; copies can become stale.');
+ try{const values=await loadValueExceptions(config,root);if(config.gate.valueExceptionsPath)lines.push(`Reviewed value exceptions: ${values.exceptions.length}`);}catch(e){errors++;lines.push(`Value exceptions: ERROR — ${e.message}`);}
  if(config.browser.enabled){try{await probe({timeout:Math.min(config.browser.timeoutMs,15000)});lines.push('Chromium: launch OK');}catch(e){errors++;lines.push(`Chromium: ERROR — ${e.message}`);}}
+ if(config.browser.enabled){
+  const routes=browserRoutes(config);lines.push(`Browser routes: ${routes.length} explicit target(s); only configured routes are covered`);
+  for(const file of new Set(routes.map(r=>r.interactionsPath).filter(Boolean))){
+   try{await fs.access(resolveInside(root,file,'route.interactionsPath'));lines.push(`Interaction plan: installed (${file})`);}catch(e){errors++;lines.push(`Interaction plan: ERROR (${file}) — ${e.message}`);}
+  }
+ }
  const [major,minor]=process.versions.node.split('.').map(Number);if(config.static.enabled&&(major<22||major===22&&minor<18)){errors++;lines.push('Node >=22.18 required for suta native TS.');}
  return {lines,errors};
 }
