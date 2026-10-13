@@ -1,81 +1,59 @@
-# UI Refiner v0.2.1
+# UI Refiner v0.3.0 — source-integrated web UI quality gate
 
-> **Scope**: conventional browser-based, DOM-rendered web applications. No game HUD, Phaser Canvas, or Godot adapters/profiles. Game UI research is a separate workstream; this package must not quietly claim coverage there.
+**Scope:** browser DOM web applications only. Native Godot UIs, Phaser Canvas and game HUD design are out of scope; Game UI Lab is a separate research project.
 
-UI Refiner is a **web UI design-and-QA orchestration tool** combining upstream [suta](https://github.com/Guksu/suta) pattern guidance (57 patterns and a static layout/motion audit) with [lintapple](https://github.com/gholtzap/lintapple) rendered layout/accessibility checks (29 published rules). It adds project-policy governance, a regression-baseline mechanism, JSON/Markdown quality reports, bounded agent handoff and optional screenshots. It does not contain an AI model, generate screens autonomously, or automatically repair code.
+UI Refiner combines the source code (not the npm wrapper packages) of:
 
-## Project identity
+- [suta](https://github.com/Guksu/suta) — layout/motion source auditing and UI design/interaction guidance.
+- [lintapple](https://github.com/gholtzap/lintapple) — rendered geometry, typographic, accessibility and interaction checks.
 
-- **Repository:** [prentice7725/ui-refiner](https://github.com/prentice7725/ui-refiner)
-- **CLI:** `ui-refiner`
-- **Agent skill:** `ui-refiner-agent`
-- **Project configuration:** `ui-refiner.config.json`
-- **Evidence directory:** `artifacts/ui-refiner/`
-- **Scope:** standard web applications with rendered DOM elements. Game UI research is a **separate project** and does not inherit this tool's presets.
+It adds project policy, source-of-truth precedence, regression baseline management, one merged JSON/Markdown finding report and a fail-closed CLI. It does **not** automatically rewrite app code.
 
-## Version and provenance
+## Independence and provenance
 
-- Tool: `ui-refiner` `0.2.1`; own orchestration code, MIT.
-- suta pin: `412bd62e479ce249ef25ca31bc015cfb308aff10`, MIT. Install separately; no full upstream code is copied into this archive.
-- lintapple pin: `0.1.21` (npm), MIT. Playwright pin: `1.63.0`. See `licenses/THIRD_PARTY.md`.
-- Node.js **22.18 or newer**, npm, Git, network for dependencies, Chromium for rendering tests. The local creation environment has Node 22.16 and does **not** support a real Chromium end-to-end test; local unit/contract tests alone do not prove production readiness.
+All runtime implementation of lintapple is in `vendor/lintapple/src/`, with its own MIT license. suta skill and static audit implementation are in `vendor/suta/skills/suta/`, with its own MIT license. The upstream suta catalog has 57 patterns; **the complete catalog has not yet been vendored**. Referenced but missing pattern files must be imported or marked unavailable, never silently invented.
 
-## Installation into a web app
+Dependencies are **only** `axe-core@4.14.0` and `playwright@1.63.0`. The previously non-published `lintapple@0.1.21` dependency is removed. `npm ci` has a committed v3 lockfile.
 
-Assume this folder is copied into the target app at `tools/ui-refiner/`; execute from the **target app root**:
+Pinned upstream commits and copyright: [vendor/UPSTREAM.json](vendor/UPSTREAM.json), [licenses/THIRD_PARTY.md](licenses/THIRD_PARTY.md).
 
-```bash
-(cd tools/ui-refiner && npm install)
+## Install in a target web app
+
+Place this repo at `tools/ui-refiner`, then from the **app root**:
+
+```sh
+(cd tools/ui-refiner && npm ci)
 bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
 node tools/ui-refiner/scripts/install-agent-skill.mjs "$PWD"
 node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD"
 ```
 
-Edit `ui-refiner.config.json`: set `static.targets` (usually `src`), `browser.url` to the actual running web dev server, `sot.path` if a project SOT exists, and `browser.ready` if hydration must finish. Edit `ui-policy.json` to match approved fonts, text sizing, viewports and interaction requirements. Preset `web` is the **only** valid preset. Non-DOM and game UI is out of scope; unsupported profiles are rejected.
+Set the project's `ui-refiner.config.json`: `static.targets`, running `browser.url`, optional `sot.path` and `browser.ready`. Configure the root `ui-policy.json` to match the approved UI, not to silence failures. Start the app, then:
 
-Start your web app separately, then:
-
-```bash
+```sh
 node tools/ui-refiner/bin/ui-refiner.mjs doctor --config ui-refiner.config.json
 node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json
 ```
 
-Evidence appears in `artifacts/ui-refiner/`:
+`artifacts/ui-refiner/` contains the merged report, lintapple raw evidence, agent handoff and optional screenshots. Use a reviewed baseline only for pre-existing debt.
 
-- `report.json` / `report.md`: merged findings and statuses.
-- `AGENT_HANDOFF.md`: actionable fix list; no automatic fixes.
-- `lintapple.raw.json`: browser coverage, including interaction states if configured.
-- optional `render-{width}x{height}-{scheme}.png`: screenshots, **not** pixel-diff approval.
+## Self-test
 
-Add an explicit interaction plan via `browser.interactionsPath`: see `examples/interactions.json`. For regression debt, baseline only approved existing findings:
+From the ui-refiner repo root with Node.js **22.18 or newer**:
 
-```bash
-node tools/ui-refiner/bin/ui-refiner.mjs baseline create \
-  --from artifacts/ui-refiner/report.json --out ui-refiner.baseline.json
+```sh
+npm ci
+npm test
+npx playwright install chromium
+npm run smoke:ui
 ```
 
-After human review, set `gate.baselinePath` in the config. No check command auto-accepts failures into the baseline.
+The smoke verifies that the default DOM demo has **zero findings at both configured viewport sizes**, and a deliberate invalid font is detected on `/negative-control`. The GitHub Actions workflow runs these stages against a clean install. A passing smoke is a deterministic UI check, **not** visual design approval.
 
-## Gate contract
+## Quality gate
 
-| Status | Meaning | CLI exit |
-|---|---|---|
-| `REVIEW_REQUIRED` | Static + browser automated checks passed; manual visual/UX review needed | 0 |
-| `PASS` | Automated checks passed; manual review disabled (not the same as production approval) | 0 |
-| `FAIL` | New enforced violation | 1 |
-| `ERROR` | Tool, policy, browser or screenshot error | 2 |
-| `INCOMPLETE` | One of the required web checker stages disabled/not covered | 2 |
+- `0`: automated checks passed (visual review may still be required).
+- `1`: new enforced findings.
+- `2`: missing engine, browser, policy or coverage — **never** treat as pass.
 
-suta warnings are reported and can be capped by `gate.maxStaticWarnings`; browser findings are enforced. The approved SOT/design system governs visual intent, but measurable accessibility problems still require an explicit and reviewed resolution. Changing a policy is a design decision, not an agent shortcut.
-
-## Security/CI
-
-Run against **trusted local application URLs**. `gate.allowedHosts` defaults to loopback only; tested code executes in a Chromium process. Checker invocations use argument arrays, not a shell command string. Do not blindly approve external hooks. Review `.github/workflows/ui-qa.example.yml` before copying it to the target repo: it assumes a specific app start command and generated lockfiles. Set up CI with `npm ci`, a health/readiness probe, pinned dependencies and uploaded evidence. Screenshots are optional, but human visual review is not replaced by them.
-
-## Development
-
-```bash
-node --test
-```
-
-Tests use stubs for external checkers. Real browser integration remains **NOT VERIFIED** until npm dependencies and Chromium are installed in a proper runtime. The game UI workstream is maintained separately in Game UI Lab and is not included here.
+Code/runtime dependencies reside here; upstream installs are not needed. Keep `vendor/` MIT notices and update provenance before integrating upstream fixes. For ordinary web apps only.

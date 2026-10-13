@@ -1,28 +1,24 @@
-# EXAMPLE: Copy into the target app's .github/workflows/ui-qa.yml and edit paths/commands.
-name: Web UI QA
+# Example for a target app, adapt start command and readiness probe.
+name: Web app UI QA
 on:
   pull_request:
   workflow_dispatch:
 jobs:
-  ui-refiner:
+  ui-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22.18.0'
-      # Assuming UI Refiner is in tools/ui-refiner and your app has a dev script.
-      - name: Install dependencies
-        run: |
+      - run: |
           npm ci
           (cd tools/ui-refiner && npm ci)
-      - name: Install pinned suta skill
-        run: bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
-      - name: Start app
-        run: npm run dev -- --host 127.0.0.1 > app.log 2>&1 &
-      - name: Quality gate
-        run: node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json
+          npx --prefix tools/ui-refiner playwright install --with-deps chromium
+      - run: bash tools/ui-refiner/scripts/install-suta.sh "$PWD"
+      - run: npm run dev -- --host 127.0.0.1 > app.log 2>&1 &
+      - run: node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
