@@ -1,0 +1,118 @@
+/* quantity-stepper — 장바구니 수량의 − / + 버튼.
+ * 커스터마이즈: --qty-height, --qty-radius, --qty-bg, --qty-border, --qty-color, --qty-accent.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다. */
+
+.qty {
+  --_h: var(--qty-height, 2.5rem);
+  display: inline-flex;
+  align-items: center;
+  height: var(--_h);
+  border: 1px solid var(--qty-border, #d1d5db);
+  border-radius: var(--qty-radius, 10px);
+  background: var(--qty-bg, #fff);
+  color: var(--qty-color, #111827);
+  overflow: hidden;
+}
+
+.qty[data-disabled='true'] {
+  opacity: 0.5;
+}
+
+/* 삭제 상태의 휴지통 아이콘 — 글자(−)와 같은 자리, 가운데에 */
+.qty-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.qty-button {
+  width: var(--_h);
+  height: 100%;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  /* 길게 눌러 반복하는 동안 텍스트가 선택되거나 확대 메뉴가 뜨지 않게 */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background 120ms ease;
+}
+
+.qty-button:hover {
+  background: var(--qty-hover, rgb(0 0 0 / 0.05));
+}
+
+.qty-button:active {
+  background: var(--qty-active, rgb(0 0 0 / 0.1));
+}
+
+.qty-button:focus-visible {
+  outline: 2px solid var(--qty-accent, #1b1e24);
+  outline-offset: -2px;
+}
+
+/* 끝에 닿은 버튼은 흐리게 — 다만 포커스는 받는다(왜 못 누르는지 알 수 있게) */
+.qty-button[aria-disabled='true'] {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qty-button[aria-disabled='true']:hover {
+  background: none;
+}
+
+/* 숫자 칸 — 자릿수가 늘어도 폭이 출렁이지 않게 등폭 숫자를 쓴다 */
+.qty-value {
+  width: var(--qty-value-width, 3rem);
+  height: 100%;
+  border: none;
+  border-left: 1px solid var(--qty-border, #d1d5db);
+  border-right: 1px solid var(--qty-border, #d1d5db);
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.qty-value:focus {
+  outline: 2px solid var(--qty-accent, #1b1e24);
+  outline-offset: -2px;
+}
+
+/* 값이 바뀌면 방향대로 밀려 들어온다 — 올라갔는지 내려갔는지가 눈에 남는다 */
+.qty-value[data-bump='up'] {
+  animation: qty-bump-up 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.qty-value[data-bump='down'] {
+  animation: qty-bump-down 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes qty-bump-up {
+  from {
+    opacity: 0.3;
+    transform: translateY(35%);
+  }
+}
+
+@keyframes qty-bump-down {
+  from {
+    opacity: 0.3;
+    transform: translateY(-35%);
+  }
+}
+
+/* 모션 민감 사용자: 숫자가 밀려 들어오는 연출만 없앤다(값은 그대로 바뀐다) */
+@media (prefers-reduced-motion: reduce) {
+  .qty-button {
+    transition: none;
+  }
+
+  .qty-value[data-bump] {
+    animation: none;
+  }
+}

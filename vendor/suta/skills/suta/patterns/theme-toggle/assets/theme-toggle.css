@@ -1,0 +1,86 @@
+/* theme-toggle — 누른 지점에서 원이 퍼지며 테마가 바뀐다.
+ * 커스터마이즈: --theme-toggle-size, --theme-toggle-color, --theme-toggle-bg.
+ *
+ * 이 파일이 하는 일은 두 가지다: (1) 버튼의 해·달 아이콘 교차, (2) 전환 중 두 스냅샷의 겹침 규칙.
+ * 원이 커지는 애니메이션 자체는 코어가 WAAPI로 건다 — 누른 좌표가 매번 달라 CSS로는 쓸 수 없다. */
+
+/* --- 전환 중 두 화면의 겹침 --- */
+
+/* 기본 크로스페이드를 끈다. 새 화면은 위에 온전히 떠 있고, 코어가 그것을 원으로 도려낸다.
+ * 아래 이름 두 개는 각각 "문서 전체 전환"과 "특정 영역만 전환"에 해당한다. */
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(theme-scope),
+::view-transition-new(theme-scope) {
+  animation: none;
+  mix-blend-mode: normal; /* 겹치는 순간 색이 섞여 뜨는 것을 막는다 */
+}
+
+::view-transition-old(root),
+::view-transition-old(theme-scope) {
+  z-index: 0;
+}
+
+::view-transition-new(root),
+::view-transition-new(theme-scope) {
+  z-index: 1;
+}
+
+/* --- 버튼 --- */
+
+.theme-toggle {
+  --_size: var(--theme-toggle-size, 2.25rem);
+  position: relative;
+  display: inline-grid;
+  /* place-items는 칸 안에서의 정렬, place-content는 칸 자체의 정렬 — 둘 다 필요하다.
+   * padding을 0으로 못 박는 이유: 프로젝트 전역 button 스타일의 padding이 스며들면
+   * 내용 영역이 아이콘보다 좁아져 트랙이 왼쪽에 붙고 아이콘이 한쪽으로 밀린다(실제로 겪은 문제다). */
+  place-items: center;
+  place-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  padding: 0;
+  border: 1px solid var(--theme-toggle-border, currentColor);
+  border-radius: 50%;
+  background: var(--theme-toggle-bg, transparent);
+  color: var(--theme-toggle-color, currentColor);
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* 해와 달은 같은 칸에 겹쳐 두고 회전하며 교대한다 — 자리를 옮기지 않으므로 버튼이 흔들리지 않는다 */
+.theme-toggle-icon {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  line-height: 0; /* 상속된 줄 높이가 아이콘 아래에 여백을 만들지 않게 */
+  transition:
+    opacity 200ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-toggle[data-theme-state='light'] .theme-toggle-icon[data-icon='moon'],
+.theme-toggle[data-theme-state='dark'] .theme-toggle-icon[data-icon='sun'] {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.theme-toggle[data-theme-state='light'] .theme-toggle-icon[data-icon='sun'],
+.theme-toggle[data-theme-state='dark'] .theme-toggle-icon[data-icon='moon'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* 모션 민감 사용자: 아이콘 회전은 없애고 즉시 교대한다.
+ * 원이 퍼지는 전환은 코어가 아예 건너뛴다(WAAPI를 걸지 않는다). */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle-icon {
+    transition: none;
+  }
+}

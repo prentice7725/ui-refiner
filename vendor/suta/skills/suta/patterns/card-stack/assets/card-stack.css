@@ -1,0 +1,62 @@
+/* card-stack — 애플 지갑식 카드 묶음(겹침 → 펼침 → 선택).
+ * 커스터마이즈: --stack-duration, --stack-peek, --stack-fan-gap, --stack-card-height, --stack-radius, --stack-card-bg.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 위치는 JS(stackLayout.ts)가 transform으로 정하고, 이동만 여기서 transition한다.
+ * --stack-peek·--stack-fan-gap은 컴포넌트가 컨테이너에 써 두는 값이다 — 카드 안 제목 줄 높이를 peek에 맞출 때 읽어라. */
+
+.card-stack {
+  --_duration: var(--stack-duration, 420ms);
+  position: relative;
+  /* 선택 모드에서 나머지 카드는 컨테이너 아래로 내려가 윗가장자리만 보인다 — 잘라야 "지갑 밑에 꽂힌" 모양이 된다 */
+  overflow: hidden;
+  /* 높이는 컴포넌트가 min-height 인라인으로 준다(모드별 계산). height를 transition하지 않는다 — 매 프레임 레이아웃이 돈다 */
+}
+
+.card-stack-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--stack-card-height, 180px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--stack-radius, 16px);
+  background: var(--stack-card-bg, linear-gradient(135deg, #3a3f4b, #1f232b));
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  /* 윗가장자리가 보이는 쪽이므로 배율을 줄여도 윗선이 제자리에 있어야 겹침 간격이 흔들리지 않는다 */
+  transform-origin: 50% 0;
+  /* 드로어 커브 — 빠르게 나와서 부드럽게 정착한다. transform만 전환(레이아웃 속성 금지) */
+  transition: transform var(--_duration) cubic-bezier(0.32, 0.72, 0, 1);
+  /* 그림자는 위쪽으로 — 앞 카드가 뒤 카드 윗가장자리에 얹힌 깊이감 */
+  box-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 -8px 20px rgba(0, 0, 0, 0.28);
+}
+
+/* overflow:hidden 컨테이너 안이라 바깥 outline은 잘린다 — 안쪽으로 그린다 */
+.card-stack-card:focus-visible {
+  outline: 2px solid var(--stack-focus-color, #fff);
+  outline-offset: -4px;
+}
+
+/* 펼칠 때는 위에서부터 순서대로, 접을 때는 아래(앞) 카드부터 거꾸로 — 항상 "가까운 카드가 먼저" 움직인다 */
+.card-stack[data-mode='fanned'] .card-stack-card {
+  transition-delay: calc(var(--stack-index, 0) * 30ms);
+}
+
+.card-stack[data-mode='stacked'] .card-stack-card {
+  transition-delay: calc((var(--stack-count, 1) - 1 - var(--stack-index, 0)) * 30ms);
+}
+
+/* 모션 민감 사용자: 이동을 끄고 즉시 재배치한다 — 겹침·펼침 상태 자체는 그대로 전달된다 */
+@media (prefers-reduced-motion: reduce) {
+  .card-stack-card {
+    transition: none;
+  }
+  .card-stack[data-mode] .card-stack-card {
+    transition-delay: 0s;
+  }
+}

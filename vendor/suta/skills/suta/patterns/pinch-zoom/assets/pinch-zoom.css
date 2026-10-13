@@ -1,0 +1,54 @@
+/* pinch-zoom — 피드 이미지를 두 손가락으로 벌리면 그 자리에서 커지고, 놓으면 제자리로 돌아온다.
+ * 커스터마이즈: --pinch-duration, --pinch-dim, --pinch-z.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 제스처 중 위치는 코어가 인라인 transform으로 쓰고(transition none), 놓은 뒤 복귀는 여기의 transition이 담당한다. */
+
+.pinch {
+  --_duration: var(--pinch-duration, 300ms);
+  position: relative;
+  touch-action: pan-y; /* 한 손가락 세로 스크롤은 브라우저에, 두 손가락은 코어에 */
+}
+
+/* data-zooming: active(손가락 추종 중) → settling(복귀 중) → 제거. 둘 다 형제 카드 위로 올라온다
+ * — 조상에 overflow:hidden·transform이 있으면 잘리거나 묻힌다 */
+.pinch[data-zooming] {
+  z-index: var(--pinch-z, 50);
+}
+
+.pinch-target {
+  display: block;
+  /* 복귀 커브 — 빠르게 출발해 부드럽게 정착 */
+  transition: transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 배경 딤 — 코어가 쓰는 --pinch-progress(0~1)에 비례. 항상 DOM에 있고 pointer-events가 없어 스크롤을 막지 않는다 */
+.pinch-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1; /* .pinch 안에서 이미지 뒤, 페이지 위 — .pinch[data-zooming]의 z-index 덕에 형제보다 앞 */
+  transition: opacity var(--_duration) ease; /* settling·해제 시 페이드 */
+}
+
+.pinch[data-zooming] .pinch-backdrop {
+  opacity: calc(var(--pinch-progress, 0) * var(--pinch-dim, 0.8));
+}
+
+.pinch[data-zooming='active'] .pinch-backdrop {
+  transition: none; /* 손가락을 따를 땐 즉시 */
+}
+
+/* 레이어 승격은 제스처 중에만 — 피드의 모든 사진에 상시 will-change를 주면 레이어 메모리를 그만큼 먹는다 */
+.pinch[data-zooming] .pinch-target {
+  will-change: transform;
+}
+
+/* 모션 민감 사용자: 손가락 추종은 조작이라 유지, 복귀·딤 페이드만 즉시 */
+@media (prefers-reduced-motion: reduce) {
+  .pinch-target,
+  .pinch-backdrop {
+    transition: none;
+  }
+}

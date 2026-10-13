@@ -1,0 +1,82 @@
+/* switch — 네이티브 체크박스 위에 얹는 토글 스위치. 썸 슬라이드 + 트랙 색 전환 + 누름 스퀴시.
+ * 커스터마이즈: --switch-width, --switch-height, --switch-duration, --switch-on-bg, --switch-off-bg.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다. */
+
+.switch {
+  --_w: var(--switch-width, 44px);
+  --_h: var(--switch-height, 26px);
+  --_pad: 3px;
+  --_duration: var(--switch-duration, 200ms);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 입력은 숨기되 DOM에 남긴다 — 포커스·키보드(Space)·폼 제출은 네이티브가 담당한다 */
+.switch-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.switch-track {
+  position: relative;
+  flex: none;
+  width: var(--_w);
+  height: var(--_h);
+  border-radius: 999px;
+  background: var(--switch-off-bg, #868b94);
+  transition: background var(--_duration) ease;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: var(--_pad);
+  left: var(--_pad);
+  width: calc(var(--_h) - var(--_pad) * 2);
+  height: calc(var(--_h) - var(--_pad) * 2);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.35);
+  transition: transform var(--_duration) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.switch-input:checked + .switch-track {
+  background: var(--switch-on-bg, #1b1e24);
+}
+
+.switch-input:checked + .switch-track .switch-thumb {
+  transform: translateX(calc(var(--_w) - var(--_h)));
+}
+
+/* 누르는 동안 썸이 살짝 눌린다(iOS 관례) — width가 아니라 scaleX라 레이아웃 애니메이션이 없다 */
+.switch:active .switch-input:not(:disabled) + .switch-track .switch-thumb {
+  transform: scaleX(1.12);
+}
+
+.switch:active .switch-input:checked:not(:disabled) + .switch-track .switch-thumb {
+  transform: translateX(calc(var(--_w) - var(--_h))) scaleX(1.12);
+}
+
+.switch-input:focus-visible + .switch-track {
+  outline: 2px solid var(--switch-on-bg, #1b1e24);
+  outline-offset: 2px;
+}
+
+.switch:has(.switch-input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 모션 민감 사용자: 썸 이동을 즉시 점프로 — 트랙 색 전환(상태 표시)은 유지한다 */
+@media (prefers-reduced-motion: reduce) {
+  .switch-thumb {
+    transition: none;
+  }
+}

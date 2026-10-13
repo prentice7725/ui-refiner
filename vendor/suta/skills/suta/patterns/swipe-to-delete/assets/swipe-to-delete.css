@@ -1,0 +1,107 @@
+/* swipe-to-delete — 행을 왼쪽으로 밀어 액션 버튼(한 개 또는 여러 개)을 드러내고, 삭제되면 높이가 접히며 사라진다.
+ * 커스터마이즈: --swipe-action-width(버튼 하나 폭), --swipe-duration, --swipe-bg,
+ *   tone별 배경 --swipe-action-bg(danger) · --swipe-action-accent-bg · --swipe-action-default-bg.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 드래그 중 위치는 코어가 인라인 transform으로 쓰고, 놓은 뒤 정착 이동은 여기의 transition이 담당한다. */
+
+.swipe-item {
+  --_action-w: var(--swipe-action-width, 88px);
+  --_duration: var(--swipe-duration, 260ms);
+  --_ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  /* tone별 배경 — 마지막 액션이 danger(삭제)인 기존 사용법은 --swipe-action-bg 하나로 그대로 바꿀 수 있다 */
+  --_tone-danger: var(--swipe-action-bg, #dc2626);
+  --_tone-accent: var(--swipe-action-accent-bg, #1b1e24);
+  --_tone-default: var(--swipe-action-default-bg, #6b7280);
+  position: relative;
+  overflow: hidden;
+  /* 삭제 후 접힘 — 행을 1행 grid로 두고 grid-template-rows를 1fr→0fr로 전이한다(accordion과 같은 기법).
+   * height를 재서 인라인으로 주는 방식은 매 프레임 레이아웃을 돌리고 JS 측정이 필요했다 — motion-audit이 잡아내 바꿨다 */
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows var(--_duration) var(--_ease-out),
+    opacity var(--_duration) ease;
+}
+
+.swipe-content {
+  position: relative;
+  min-height: 0; /* 0fr로 접힐 때 내용의 최소 높이가 행을 버티지 않게 */
+  background: var(--swipe-bg, #fff);
+  touch-action: pan-y; /* 세로 스크롤은 브라우저에, 가로는 코어에 */
+  user-select: none;
+  -webkit-user-select: none;
+  /* 놓은 뒤 정착(열림/닫힘/끝까지 밀림) — 드래그 중엔 코어가 none으로 끈다 */
+  transition: transform var(--_duration) var(--_ease-out);
+}
+
+/* 액션 영역은 내용의 오른쪽 바깥에 붙어 내용과 함께 움직인다 — 행 아래에 색을 깔지 않으므로
+ * 행 높이가 소수(px)일 때 경계 틈으로 색이 비치는 문제가 없다. 폭은 끝까지 밀려도 남지 않게 넉넉히.
+ * 영역 배경은 마지막(가장 오른쪽) 액션의 tone — 버튼들 뒤로 남는 여백을 같은 색으로 채운다 */
+.swipe-actions {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  display: flex;
+  width: 100%;
+  background: var(--_tone-danger);
+}
+
+.swipe-actions[data-tone='accent'] {
+  background: var(--_tone-accent);
+}
+
+.swipe-actions[data-tone='default'] {
+  background: var(--_tone-default);
+}
+
+.swipe-action {
+  /* tone별 배경은 --_bg 하나로 모은다 — 앱 전역 button:hover 등이 background를 덮으면 var(--_bg)로 되돌리면 된다 */
+  --_bg: var(--_tone-default);
+  flex: 0 0 var(--_action-w);
+  width: var(--_action-w);
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: var(--_bg);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer; /* 닫혀 있는 동안은 .swipe-content가 위를 덮어 눌리지 않는다 */
+  /* 끝까지 밀릴 때 마지막 버튼이 늘어나며 나머지를 덮는 효과 — flex-grow는 레이아웃 속성이지만
+   * 액션 영역 안에서만 일어나 행 전체 리플로우는 없다 */
+  transition: flex-grow var(--_duration) var(--_ease-out);
+}
+
+.swipe-action[data-tone='danger'] {
+  --_bg: var(--_tone-danger);
+}
+
+.swipe-action[data-tone='accent'] {
+  --_bg: var(--_tone-accent);
+}
+
+/* iOS 메일처럼 끝까지 밀리면 마지막 액션이 늘어나 앞의 버튼들을 덮는다 */
+.swipe-item[data-state='deleting'] .swipe-action:last-child {
+  flex-grow: 1;
+}
+
+.swipe-action:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+/* 삭제 확정 — 내용은 이미 왼쪽으로 빠졌고(액션 색이 행을 채운 상태), 행이 0fr로 접힌다 */
+.swipe-item[data-state='deleting'] {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+/* 모션 민감 사용자: 드래그 추적은 그대로(손가락을 따르는 건 모션이 아니라 조작), 정착·접힘은 즉시 */
+@media (prefers-reduced-motion: reduce) {
+  .swipe-item,
+  .swipe-content,
+  .swipe-action {
+    transition: none;
+  }
+}

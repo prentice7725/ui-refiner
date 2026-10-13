@@ -1,0 +1,63 @@
+/* edge-swipe-back — 왼쪽 가장자리를 끌면 현재 화면이 밀리고 이전 화면이 따라 나온다.
+ * 커스터마이즈: --edge-shift(이전 화면이 물러나 있는 거리, 30%), --edge-dim(이전 화면 위 어둠, 0.4),
+ *              --edge-screen-bg(현재 화면 배경 — 불투명해야 아래가 비치지 않는다).
+ *
+ * 놓았을 때의 이동은 CSS transition이 아니라 코어의 JS 스프링이 맡는다 — 손가락 속도를 이어받아야 하기 때문이다.
+ * 그래서 transition은 두지 않고 will-change만 둔다. 정지 상태(진행도 0)의 모양은 여기 CSS가 정의하고,
+ * 코어는 드래그 중에만 인라인 스타일을 쓰고 끝나면 걷어 낸다 — CSS 값이 곧 JS의 기준값이다(코어가 변수를 읽는다). */
+
+.edge-swipe {
+  --_shift: var(--edge-shift, 30%);
+  --_dim: var(--edge-dim, 0.4);
+
+  position: relative;
+  overflow: hidden;
+  /* 가로 제스처는 우리가 받고 세로 스크롤은 브라우저에 맡긴다. overscroll-behavior-x는 크롬 안드로이드의
+   * "가로 당김 → 뒤로가기" 히스토리 제스처를 이 상자 안에서 막는다(Safari 전체 화면 제스처는 못 막는다 — PATTERN.md 주의사항). */
+  touch-action: pan-y;
+  overscroll-behavior-x: contain;
+}
+
+.edge-swipe-screen,
+.edge-swipe-underlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* 현재 화면 — 맨 위. 왼쪽 그림자가 "이전 화면 위에 떠 있다"는 깊이를 준다 */
+.edge-swipe-screen {
+  z-index: 3;
+  background: var(--edge-screen-bg, #fff);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.2);
+  will-change: transform; /* motion-audit-ignore: will-change-global — 화면이 가장자리 드래그로 계속 끌리는 요소 */
+}
+
+/* 이전 화면 — 맨 아래. 정지 상태에서 --edge-shift만큼 왼쪽에 물러나 있다(코어의 진행도 0과 같은 값) */
+.edge-swipe-underlay {
+  z-index: 1;
+  transform: translateX(calc(-1 * var(--_shift)));
+}
+
+/* 이전 화면 위 어둠 — 정지 상태에서 --edge-dim, 끌수록 걷힌다 */
+.edge-swipe-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #000;
+  opacity: var(--_dim);
+  pointer-events: none;
+}
+
+/* 드래그·정착 중에는 텍스트 선택이 따라붙지 않게 */
+.edge-swipe[data-edge-swipe] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 모션 민감 사용자: 손가락 추종은 그대로 두고(사용자가 움직이는 만큼만 움직인다), 놓으면 코어가 스프링 없이
+ * 즉시 커밋/취소한다(matchMedia 판정). 그림자는 이동 중에만 의미가 있으므로 없앤다. */
+@media (prefers-reduced-motion: reduce) {
+  .edge-swipe-screen {
+    box-shadow: none;
+  }
+}

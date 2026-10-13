@@ -1,0 +1,46 @@
+/* enter-exit — Presence의 data-state와 한 쌍인 CSS 변형 모음.
+ * 커스터마이즈: --fx-duration, --fx-ease, 그리고 변형별 시작값 변수를 요소 또는 조상에 설정한다.
+ * 기본값은 --_ 접두사의 내부 변수에 폴백으로 둔다 — 요소 자신에 기본값을 선언하면
+ * 조상에서 설정한 값이 상속되지 못하고 무시되기 때문이다(자기 선언 > 상속값). */
+
+.fx {
+  --_fx-duration: var(--fx-duration, 300ms);
+  --_fx-ease: var(--fx-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  transition:
+    opacity var(--_fx-duration) var(--_fx-ease),
+    transform var(--_fx-duration) var(--_fx-ease),
+    scale var(--_fx-duration) var(--_fx-ease);
+}
+
+/* 변형: 페이드 */
+.fx-fade[data-state='entering'],
+.fx-fade[data-state='exiting'] {
+  opacity: 0;
+}
+
+/* 변형: 슬라이드 업 (아래에서 올라오며 페이드) */
+.fx-slide-up[data-state='entering'],
+.fx-slide-up[data-state='exiting'] {
+  opacity: 0;
+  transform: translateY(var(--fx-distance, 16px));
+}
+
+/* 변형: 스케일 (살짝 작아진 상태에서 커지며 페이드) */
+.fx-scale[data-state='entering'],
+.fx-scale[data-state='exiting'] {
+  opacity: 0;
+  scale: var(--fx-from-scale, 0.95);
+}
+
+/* 모션 민감 사용자: 이동·확대만 제거하고 페이드는 유지한다(0이 아니라 완화).
+ * 선택자를 [data-state]까지 써야 위 변형 선택자(0,2,1)보다 특이도가 높아 실제로 이긴다 —
+ * 미디어 쿼리는 특이도를 올려주지 않는다. */
+@media (prefers-reduced-motion: reduce) {
+  .fx[data-state],
+  .fx[data-state='entering'],
+  .fx[data-state='exiting'] {
+    transition: opacity var(--_fx-duration) linear;
+    transform: none;
+    scale: none;
+  }
+}

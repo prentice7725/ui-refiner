@@ -34,7 +34,7 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   const automatedStatus=infra?'ERROR':!coverage?'INCOMPLETE':blockers.length?'FAIL':'PASS';
   const status=automatedStatus==='PASS'&&config.gate.manualVisualReview?'REVIEW_REQUIRED':automatedStatus;
   const handoff=infra?'Do not claim success. Fix the tool/environment error; rerun full QA.':!coverage?'A required web-app checker is disabled. Enable it and rerun before claiming automated PASS.':blockers.length?`Fix ${blockers.length} new blocking finding(s), preserve SOT art direction, then rerun. Never automatically weaken the UI policy or add suppressions.`:'Automated rules are clear. A human should still inspect information hierarchy, art fidelity, screenshots, and actual user flows.';
-  const result={version:'0.2.1',generatedAt:new Date().toISOString(),project:config.name,preset:config.preset,automatedStatus,status,manualVisualReview:config.gate.manualVisualReview,summary:{total:marked.length,blockers:blockers.length,baselined:marked.filter(x=>x.baselined).length},stages,findings:marked,handoff,artifacts:[]};
+  const result={version:'0.3.0',generatedAt:new Date().toISOString(),project:config.name,preset:config.preset,automatedStatus,status,manualVisualReview:config.gate.manualVisualReview,summary:{total:marked.length,blockers:blockers.length,baselined:marked.filter(x=>x.baselined).length},stages,findings:marked,handoff,artifacts:[]};
   if(writeReports){
     const reportDir=resolveInside(root,config.reportDir,'reportDir');await fs.mkdir(reportDir,{recursive:true});
     if(config.browser.enabled && config.browser.captureScreenshots && !stages.some(s=>s.engine==='lintapple'&&s.status==='error')){

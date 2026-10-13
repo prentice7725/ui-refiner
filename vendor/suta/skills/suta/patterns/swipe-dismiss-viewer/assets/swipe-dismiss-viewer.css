@@ -1,0 +1,61 @@
+/* swipe-dismiss-viewer — 전체화면 이미지 뷰어. 이미지 위치·배율은 코어가 인라인 transform으로, 배경 딤·UI 페이드는 --dismiss-progress로.
+ * 커스터마이즈: --viewer-bg, --viewer-z. 이미지에 transition을 두지 않는다(코어가 프레임마다 쓴다). */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--viewer-z, 100);
+  display: grid;
+  place-items: center;
+  touch-action: none; /* 두 축 모두 코어가 받는다 — 뷰어는 전체화면이라 페이지 스크롤이 필요 없다 */
+  overscroll-behavior: contain;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.viewer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--viewer-bg, #000);
+  /* 끌수록 투명해진다 — 진행도 1에서 완전 투명(썸네일 자리로 돌아가면 뒤 화면이 그대로 보인다) */
+  opacity: calc(1 - var(--dismiss-progress, 0));
+  pointer-events: none;
+}
+
+.viewer-image {
+  position: relative;
+  max-width: 100vw;
+  max-height: 100dvh;
+  object-fit: contain;
+  transform-origin: center;
+  will-change: transform; /* motion-audit-ignore: will-change-global — 뷰어가 열려 있는 동안 계속 끌리는 요소 */
+  -webkit-user-drag: none;
+}
+
+/* 닫기 버튼·캡션 같은 크롬은 끌기 시작하자마자 빠르게 사라진다 (진행도 0.3에서 완전 투명) */
+.viewer-chrome {
+  position: absolute;
+  opacity: calc(1 - var(--dismiss-progress, 0) * 3.3);
+  transition: opacity 120ms linear;
+}
+
+.viewer-close {
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* 모션 민감 사용자: 손가락 추종은 유지, 열림/복귀 스프링은 SwipeDismissViewer.tsx가 임계 감쇠·고강성으로 바꿔 즉시 정착.
+ * CSS 쪽 유일한 전이(크롬 페이드)도 즉시로 */
+@media (prefers-reduced-motion: reduce) {
+  .viewer-chrome {
+    transition: none;
+  }
+}

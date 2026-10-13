@@ -1,0 +1,149 @@
+/* bottom-nav — 하단 탭 바(GNB). 화면 아래에 붙고, 홈 표시줄(안전 영역)만큼 아래를 더 비운다.
+ * 커스터마이즈: --bottom-nav-height, --bottom-nav-bg, --bottom-nav-line, --bottom-nav-color, --bottom-nav-current,
+ *              --bottom-nav-badge-bg, --bottom-nav-max-width, --bottom-nav-z, --bottom-nav-duration.
+ * 본문은 탭 바에 가리지 않게 아래를 비운다: padding-bottom: calc(var(--bottom-nav-height, 56px) + env(safe-area-inset-bottom)).
+ * env()가 0이 아니려면 viewport 메타에 viewport-fit=cover가 있어야 한다. */
+
+.bottom-nav {
+  --_height: var(--bottom-nav-height, 56px);
+  --_color: var(--bottom-nav-color, #646b77);
+  --_current: var(--bottom-nav-current, #1b1e24);
+  --_duration: var(--bottom-nav-duration, 250ms);
+  --_ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: var(--bottom-nav-z, 50);
+  max-width: var(--bottom-nav-max-width, none);
+  margin-inline: auto;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--bottom-nav-bg, #fff);
+  border-top: 1px solid var(--bottom-nav-line, #e3e5e9);
+  transition:
+    transform var(--_duration) var(--_ease),
+    visibility 0s;
+}
+
+/* 숨김 — 상세·장바구니 같은 하위 화면, 키보드가 올라온 동안. 퇴장은 진입의 3/4 */
+.bottom-nav[data-hidden='true'] {
+  visibility: hidden;
+  transform: translateY(100%);
+  transition:
+    transform calc(var(--_duration) * 0.75) var(--_ease),
+    visibility 0s calc(var(--_duration) * 0.75);
+}
+
+.bottom-nav-list {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  height: var(--_height);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bottom-nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 100%;
+  color: var(--_color);
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+  word-break: keep-all;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 현재 탭 — 색과 굵기를 함께 바꾼다(색만 바꾸면 색을 구별하기 어려운 사람이 알아보지 못한다) */
+.bottom-nav-link[aria-current='page'] {
+  color: var(--_current);
+  font-weight: 600;
+}
+
+.bottom-nav-link:focus-visible {
+  outline: 2px solid var(--_current);
+  outline-offset: -4px;
+  border-radius: 8px;
+}
+
+.bottom-nav-icon {
+  position: relative;
+  display: inline-flex;
+  transition: transform 100ms var(--_ease);
+}
+
+/* 누르는 순간 살짝 줄어든다 — 탭했다는 피드백 */
+.bottom-nav-link:active .bottom-nav-icon {
+  transform: scale(0.92);
+}
+
+.bottom-nav-label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 개수 배지 — 빨강 원 + 흰 숫자, 아이콘 오른쪽 위. 새 소식만 있으면 점 */
+.bottom-nav-badge {
+  position: absolute;
+  top: -4px;
+  left: calc(100% - 8px);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--bottom-nav-badge-bg, #c8341f);
+  box-shadow: 0 0 0 2px var(--bottom-nav-bg, #fff);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 18px;
+  text-align: center;
+}
+
+.bottom-nav-badge[data-dot='true'] {
+  top: -2px;
+  left: calc(100% - 4px);
+  min-width: 8px;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+}
+
+/* 화면 낭독기 전용 — 배지 숫자의 뜻을 말로 */
+.bottom-nav-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .bottom-nav-link:hover {
+    color: var(--_current);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-nav,
+  .bottom-nav[data-hidden='true'] {
+    transition: visibility 0s;
+  }
+
+  .bottom-nav-icon {
+    transition: none;
+  }
+
+  .bottom-nav-link:active .bottom-nav-icon {
+    transform: none;
+  }
+}
