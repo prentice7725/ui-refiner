@@ -1,25 +1,36 @@
 import {spawn} from 'node:child_process';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {resolveInside,checkUrl} from './config.mjs';
 import {normalizeStatic,normalizeBrowser,browserCoverage} from './normalize.mjs';
 
 export async function spawnBounded(bin,args,{cwd,timeoutMs=60000,maxOutput=20_000_000}={}){
   return new Promise((resolve,reject)=>{
-    const child=spawn(bin,args,{cwd,stdio:['ignore','pipe','pipe'],shell:false,windowsHide:true});
+    const child=spawn(bin,args,{cwd,stdio:['ignore','pipe','pipe'],shell:false,windowsHide:true,detached:process.platform!=='win32'});
     let stdout='',stderr='',bytes=0,stopped=false,reason='';
-    const timer=setTimeout(()=>{reason='timeout';stopped=true;child.kill('SIGKILL');},timeoutMs);
+    let forceTimer;
+    const stop=()=>{
+      if(process.platform==='win32')spawn('taskkill',['/pid',String(child.pid),'/T','/F'],{stdio:'ignore',windowsHide:true}).on('error',()=>child.kill());
+      else{
+        try{process.kill(-child.pid,'SIGTERM');}catch{child.kill('SIGTERM');}
+        forceTimer=setTimeout(()=>{try{process.kill(-child.pid,'SIGKILL');}catch{}},1000);
+      }
+    };
+    const timer=setTimeout(()=>{reason='timeout';stopped=true;stop();},timeoutMs);
     for(const [stream,label] of [[child.stdout,'stdout'],[child.stderr,'stderr']])stream.on('data',b=>{
+      if(stopped)return;
       bytes+=b.length;
-      if(bytes>maxOutput&&!stopped){reason='output limit';stopped=true;child.kill('SIGKILL');return;}
+      if(bytes>maxOutput&&!stopped){reason='output limit';stopped=true;stop();return;}
       if(label==='stdout')stdout+=b.toString();else stderr+=b.toString();
     });
-    child.on('error',e=>{clearTimeout(timer);reject(e);});
-    child.on('close',(code,signal)=>{clearTimeout(timer);resolve({code,signal,stdout,stderr,error:reason});});
+    child.on('error',e=>{clearTimeout(timer);clearTimeout(forceTimer);reject(e);});
+    child.on('close',(code,signal)=>{clearTimeout(timer);clearTimeout(forceTimer);resolve({code,signal,stdout,stderr,error:reason});});
   });
 }
 export async function realStatic(config,root){
-  const audit=resolveInside(root,config.static.auditPath,'static.auditPath');
+  const audit=staticAuditPath(config,root);
+  if(audit.split(path.sep).includes('node_modules'))throw Error('suta native TypeScript cannot run from node_modules; install UI Refiner under tools/ui-refiner. A compiled npm distribution is not supported.');
   if(!(await stat(audit).catch(()=>null))?.isFile())throw new Error(`suta audit not installed: ${audit} (see README)`);
   const paths=config.static.targets.map(p=>resolveInside(root,p,'static.targets'));
   for(const target of paths)if(!await stat(target).catch(()=>null))throw new Error(`static target missing: ${target}`);
@@ -41,35 +52,21 @@ export async function realStatic(config,root){
   if((run.code===1)!==findings.some(f=>f.severity==='error'))throw new Error('suta exit code and findings disagree');
   return {findings,stats:{files:raw.files,errors:raw.errors,warnings:raw.warnings}};
 }
-export async function realBrowser(config,root){
-  const url=checkUrl(config.browser.url,config.gate.allowedHosts);
-  const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
-  let interactions;
-  if(config.browser.interactionsPath) interactions=JSON.parse(await readFile(resolveInside(root,config.browser.interactionsPath,'browser.interactionsPath'),'utf8'));
-  // Runtime dependency is resolved from the UI Refiner installation, not the scanned app.
-  const {checkUrl:lintCheck}=await import('../vendor/lintapple/src/index.js');
-  const report=await lintCheck(url,policy,{ready:config.browser.ready??undefined,timeout:config.browser.timeoutMs,interactions});
-  return {findings:normalizeBrowser(report),rawReport:report,ruleCoverage:browserCoverage(report)};
+export function staticAuditPath(config,root){
+ return config.static.auditPath==='bundled' ? fileURLToPath(new URL('../vendor/suta/skills/suta/scripts/audit.mjs',import.meta.url)) : resolveInside(root,config.static.auditPath,'static.auditPath');
 }
-export async function screenshots(config,root,reportDir){
-  const url=checkUrl(config.browser.url,config.gate.allowedHosts);
-  const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
-  const {chromium}=await import('playwright');
-  const browser=await chromium.launch();
-  const outputs=[];
-  try{
-    const {mkdir}=await import('node:fs/promises');await mkdir(reportDir,{recursive:true});
-    for(const viewport of policy.viewports)for(const scheme of policy.colorSchemes){
-      const context=await browser.newContext({viewport,colorScheme:scheme,reducedMotion:'reduce'});
-      try{
-        const page=await context.newPage();await page.goto(url,{waitUntil:'load',timeout:config.browser.timeoutMs});
-        if(config.browser.ready)await page.locator(config.browser.ready).waitFor({state:'visible',timeout:config.browser.timeoutMs});
-        const file=`render-${viewport.width}x${viewport.height}-${scheme}.png`;
-        await page.screenshot({path:path.join(reportDir,file),fullPage:true});outputs.push(file);
-      }finally{await context.close()}
-    }
-  }finally{await browser.close()}
-  return outputs;
+export async function realBrowser(config,root){
+ checkUrl(config.browser.url,config.gate.allowedHosts);
+ const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
+ const run=await spawnBounded(process.execPath,[worker,JSON.stringify({config,root})],{cwd:root,timeoutMs:config.browser.timeoutMs});
+ if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${run.stderr.slice(-1000)}`);
+ let result;try{result=JSON.parse(run.stdout);}catch{throw Error('Browser worker returned invalid JSON');}
+ return {...result,findings:normalizeBrowser(result.rawReport),ruleCoverage:browserCoverage(result.rawReport),capturesIntegrated:true};
+}
+// Compatibility API for explicit callers. The gate uses the integrated worker session.
+export async function screenshots(config,root){
+ const result=await realBrowser({...config,browser:{...config.browser,captureScreenshots:true}},root);
+ return result.artifacts;
 }
 
 export async function probeChromium({launch,timeout=15000}={}){

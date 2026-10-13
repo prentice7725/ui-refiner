@@ -14,9 +14,9 @@ export function resolveInside(root,p,field){
   return target;
 }
 export function validateConfig(input){
-  assertKeys(input,['schemaVersion','name','preset','sot','static','browser','gate','reportDir'],'config');
+  assertKeys(input,['schemaVersion','locale','name','preset','sot','static','browser','gate','reportDir'],'config');
   if(input.schemaVersion!==1) throw new Error('Unsupported schemaVersion (expected 1)');
-  makePreset(input.preset);
+  makePreset(input.preset,input.locale||'en-US');
   nonEmpty(input.name,'name');
   assertKeys(input.sot,['path'],'sot');
   if(input.sot.path!==null) nonEmpty(input.sot.path,'sot.path');
@@ -54,10 +54,10 @@ export function checkUrl(input,allowedHosts){
   if(!allowedHosts.includes(u.hostname))throw new Error(`Host ${u.hostname} is not allowed; edit gate.allowedHosts explicitly`);
   return u.toString();
 }
-export async function initProject(root,preset='web'){
-  const config=makePreset(preset);
+export async function initProject(root,preset='web',locale='en-US'){
+  const config=makePreset(preset,locale);
   await fs.mkdir(root,{recursive:true});
-  const entries=[['ui-refiner.config.json',config],['ui-policy.json',(await import('./presets.mjs')).lintapplePolicy]];
+  const entries=[['ui-refiner.config.json',config],['ui-policy.json',(await import('./presets.mjs')).makePolicy(locale)]];
   const status=[];
   for(const [name,content] of entries){
     try{await fs.writeFile(path.join(root,name),JSON.stringify(content,null,2)+'\n',{flag:'wx'});status.push(`Created ${name}`);}

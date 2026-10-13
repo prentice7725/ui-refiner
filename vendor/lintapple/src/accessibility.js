@@ -51,6 +51,11 @@ export async function auditAccessibility({ elements, controls, visible, hasVisib
   try {
     const refs = el => (el.getAttribute('aria-labelledby') || '').trim().split(/\s+/).filter(Boolean).map(id => document.getElementById(id));
     for (const el of elements) {
+      // UI Refiner bridge: mouse-only DOM handlers are not counted as native controls.
+      if(el.matches('[onclick], [data-ui-clickable]')&&!el.matches('button, input, select, textarea, a[href], summary, [contenteditable="true"]')){
+        if(el.tabIndex<0)add('keyboard-operation',el,'clickable element is not keyboard focusable','a semantic, keyboard-reachable interactive element','Use a native button/link. If a custom control is essential, implement focus, role and Enter/Space activation.',null,{status:'failed',category:'accessibility',phase:'clickable-focus'});
+        if(!el.getAttribute('role'))add('control-state',el,'clickable element has no semantic role','an interactive role appropriate to the action','Use a native button/link instead of a generic element with a click handler.',null,{status:'failed',category:'accessibility',phase:'clickable-semantics'});
+      }
       for (const attr of ['aria-labelledby', 'aria-describedby', 'aria-controls', 'aria-owns', 'aria-activedescendant', 'aria-details', 'aria-errormessage', 'aria-flowto']) {
         if (!el.hasAttribute(attr)) continue;
         // A collapsed popup can create its controlled element only when opened.
