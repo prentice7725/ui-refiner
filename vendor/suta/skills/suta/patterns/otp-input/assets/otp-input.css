@@ -1,0 +1,75 @@
+/* otp-input — 인증번호 칸 입력.
+ * 커스터마이즈: --otp-cell-size, --otp-gap, --otp-radius, --otp-accent, --otp-error.
+ * 기본값은 --_ 내부 변수의 폴백으로 둔다 — 요소 자신에 선언하면 조상 설정이 상속되지 못한다.
+ * 포커스 이동·붙여넣기 분배는 코어가 하고, 여기 있는 것은 칸의 모습과 흔들림이다. */
+
+.otp-group {
+  --_size: var(--otp-cell-size, 3rem);
+  --_accent: var(--otp-accent, #1b1e24);
+  display: flex;
+  gap: var(--otp-gap, 0.5rem);
+  /* 여섯 칸(기본 328px)이 320px 화면에서 넘치지 않게 — 부모보다 넓어지지 않고, 칸이 대신 줄어든다 */
+  max-width: 100%;
+}
+
+.otp-cell {
+  width: var(--_size);
+  min-width: 0;
+  height: calc(var(--_size) * 1.2);
+  border: 1.5px solid var(--otp-border, #d1d5db);
+  border-radius: var(--otp-radius, 10px);
+  background: var(--otp-bg, #fff);
+  color: var(--otp-color, #111827);
+  font: inherit;
+  font-size: calc(var(--_size) * 0.5);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  /* 칸이 커지는 것이 아니라 테두리만 굵어지게 — 여섯 칸이 서로 밀지 않는다 */
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+/* 채워진 칸은 테두리를 진하게 — 어디까지 입력했는지 눈으로 셀 수 있다 */
+.otp-cell[data-filled='true'] {
+  border-color: var(--otp-filled-border, #9ca3af);
+}
+
+.otp-cell:focus {
+  outline: none;
+  border-color: var(--_accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--_accent) 25%, transparent);
+}
+
+.otp-cell:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* 흔들림 — shakeCore가 data-shake를 붙였다 animationend에 뗀다.
+ * 감쇠형(6→3→1.5px)이라 "튕겨 나가는" 느낌이 아니라 "거부당한" 느낌으로 읽힌다 */
+.otp-group[data-shake] {
+  animation: otp-shake 420ms cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.otp-group[data-shake] .otp-cell {
+  border-color: var(--otp-error, #dc2626);
+}
+
+@keyframes otp-shake {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(6px); }
+  30%, 50%, 70% { transform: translateX(-6px); }
+  40%, 60% { transform: translateX(6px); }
+}
+
+/* 모션 민감 사용자: 흔들림은 없애되 붉은 테두리는 남긴다 — 실패했다는 정보 자체는 모션이 아니다 */
+@media (prefers-reduced-motion: reduce) {
+  .otp-cell {
+    transition: none;
+  }
+
+  .otp-group[data-shake] {
+    animation: none;
+  }
+}

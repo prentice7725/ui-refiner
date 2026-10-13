@@ -1,0 +1,103 @@
+/* page-transition — 화면이 바뀔 때 이전 화면이 밀려 나가고 새 화면이 들어온다.
+ * 커스터마이즈: --page-transition-duration, --page-transition-shift.
+ *   ※ 이 두 변수는 반드시 :root(또는 html)에 선언해야 한다. ::view-transition-* 가상 요소는
+ *      전환되는 요소가 아니라 **문서 루트**에 붙기 때문에, 컨테이너에 선언한 변수는 닿지 않는다.
+ *
+ * 전환 대상은 [data-page-view] 하나뿐이다 — 헤더·하단 탭바처럼 자리를 지켜야 하는 것들은
+ * 그대로 살아 있고, 그 안쪽 내용만 갈아 끼워진다. 앱에서 탭바가 따라 움직이지 않는 이유가 이것이다. */
+
+/* 페이지 전체(root)를 전환 대상에서 뺀다. 이 한 줄이 "화면 전체가 통째로 밀리는" 것과
+ * "지정한 영역만 밀리는" 것을 가른다. 전체 페이지를 전환하고 싶다면 이 규칙을 지우고
+ * [data-page-view]의 이름을 root로 바꾼다. */
+:root {
+  view-transition-name: none;
+}
+
+[data-page-view] {
+  view-transition-name: page;
+}
+
+::view-transition-old(page),
+::view-transition-new(page) {
+  animation-duration: var(--page-transition-duration, 280ms);
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  /* 두 화면이 겹치는 순간 색이 섞여 뜨는 것을 막는다 */
+  mix-blend-mode: normal;
+}
+
+/* 들어갈 때: 새 화면이 오른쪽에서 덮으며 들어오고, 이전 화면은 조금만 왼쪽으로 물러난다.
+ * 물러나는 쪽을 100%가 아니라 30%만 움직이는 것이 "뒤에 남아 있다"는 느낌을 만든다(iOS 관례) */
+:root[data-nav-direction='forward']::view-transition-new(page) {
+  animation-name: page-in-from-right;
+  z-index: 2;
+}
+
+:root[data-nav-direction='forward']::view-transition-old(page) {
+  animation-name: page-out-to-left;
+}
+
+/* 나올 때: 정확히 반대로 재생된다 — 방향이 뒤집혀야 "돌아왔다"로 읽힌다 */
+:root[data-nav-direction='back']::view-transition-new(page) {
+  animation-name: page-in-from-left;
+}
+
+:root[data-nav-direction='back']::view-transition-old(page) {
+  animation-name: page-out-to-right;
+  z-index: 2;
+}
+
+@keyframes page-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes page-out-to-left {
+  to {
+    transform: translateX(calc(-1 * var(--page-transition-shift, 30%)));
+    opacity: 0.6;
+  }
+}
+
+@keyframes page-in-from-left {
+  from {
+    transform: translateX(calc(-1 * var(--page-transition-shift, 30%)));
+    opacity: 0.6;
+  }
+}
+
+@keyframes page-out-to-right {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* 모션 민감 사용자: 미끄러짐 대신 짧게 겹쳐 넘긴다(전환 자체를 없애면 화면이 툭 끊긴다).
+ * 선택자에 [data-nav-direction]을 남겨 둔 것은 위의 방향별 규칙과 특정도를 맞추기 위해서다 —
+ * 미디어 쿼리는 특정도를 올려 주지 않으므로, 같은 무게로 뒤에 와야 이긴다. */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-nav-direction]::view-transition-old(page) {
+    animation-name: page-fade-out;
+    animation-duration: 120ms;
+    z-index: auto;
+  }
+
+  :root[data-nav-direction]::view-transition-new(page) {
+    animation-name: page-fade-in;
+    animation-duration: 120ms;
+    z-index: auto;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
