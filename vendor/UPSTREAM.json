@@ -525,10 +525,10 @@
       "LICENSE": "1bd3ce0f409491640a15a9736fdc5bd267da9706fedc4a79e22da0a26cc61267",
       "bin/lintapple.js": "ee043e98065efd3d1958721d2bd9c7da9b2bab33842a3abc1ea538ff09ee7da1",
       "src/accessibility.js": "1b879620bad6f29813fba7b293a54f4363c1b4d345931a7823ffc3789f4340ed",
-      "src/audit.js": "153a950fe5eb30f7d8281fcef4ecf13a5af9f4ed08fb4866af7a4f332521d572",
+      "src/audit.js": "29c9d48793956e7bffbaae1132eea5fd37f63614206fa19c3a0adf5c50f9de76",
       "src/browser.js": "41888cf6ba361e494bd78691cc282e88ff08eee37599f462000fd68b587fdca5",
       "src/cli-error.js": "62c45a2d70b4583653fb86226a129f69a435375bd87800f4d105ebf069f73eea",
-      "src/click-listeners.js": "755c84eca28056f7c20eef3950d5e19edf155322d7a63ec5f88eb0244b58143c",
+      "src/click-listeners.js": "649b05811aca3c38ca8b124582d725304c2298b9a80dcb0b956861461de83d74",
       "src/index.js": "c92c5053d775a71afc6b96d89665219e3921c634849bc69f04bd5bc961b91a72",
       "src/interactions.js": "d770176fe47e2c71fe069bb69550a1ff2d90eb3f2007c7bd82fdbe3760f1a59e",
       "src/playwright.d.ts": "fb49e4f5a31d96eec3d13e6678b78d704731278e71cc2cd90b029d4ecbe535f4",
@@ -559,7 +559,7 @@
     "patches": [
       {
         "path": "patches/lintapple-ui-refiner.patch",
-        "sha256": "ee49e8a3f5c87ad89e7c06803fcffccfeff5e30924527238ee9f06879dd52e60"
+        "sha256": "7d825b9119d538bc463d11da81bab69208de20b4c98d02e935bb77f75e8ecb0b"
       }
     ]
   }

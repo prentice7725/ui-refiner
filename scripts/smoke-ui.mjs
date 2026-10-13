@@ -65,9 +65,15 @@ try{
   for(const target of ['react-property','direct-listener'])assert.ok(dynamic.some(f=>f.rule==='keyboard-operation'&&f.selector===`[data-qa="${target}"]`),target);
   assert.ok(!dynamic.some(f=>f.details.phase==='clickable-focus'&&f.selector==='[data-qa="react-root"]'));
   const inspected=await checkPage(page,lintapplePolicy);assert.equal(inspected.clickListenerCoverage.status,'direct-listeners-tested');
-  await page.setContent('<body>'+[':r0:',':r1:','_r_0_','_r_1_','radix-menu-1','radix-menu-2','headlessui-dialog-1','headlessui-dialog-2'].map(id=>`<span id="${id}">Repeated</span>`).join('')+'<span id=":r9:" data-ui-id="explicit-app-anchor">Explicit</span></body>');
+  await page.setContent('<body>'+[':r0:',':r1:','«r0»','«R1»','_r_0_','_r_1_','radix-menu-1','radix-menu-2','headlessui-dialog-1','headlessui-dialog-2'].map(id=>`<span id="${id}">Repeated</span>`).join('')+'<span id=":r9:" data-ui-id="explicit-app-anchor">Explicit</span></body>');
   const generated=await audit();const repeated=generated.filter(f=>f.rule==='font-family'&&f.identity.key.includes('Repeated'));
-  assert.equal(repeated.length,8);assert.ok(repeated.every(f=>!f.baselineEligible&&!f.identity.stable));assert.ok(repeated.every(f=>!/:r\d|radix-|headlessui-|_r_/.test(f.identity.key)));
+  assert.equal(repeated.length,10);assert.ok(repeated.every(f=>!f.baselineEligible&&!f.identity.stable));assert.ok(repeated.every(f=>!/:r\d|«[rR].*»|radix-|headlessui-|_r_/.test(f.identity.key)));
+  // Tail actions must be inspected before a large plain-content list exhausts the CDP cap.
+  await page.setContent('<html style="background:white"><body style="font-family:system-ui">'+Array.from({length:1600},(_,i)=>`<div>Row ${i}</div>`).join('')+'<div data-qa="tail-action-1" style="cursor:pointer">Tail 1</div><div data-qa="tail-action-2" style="cursor:pointer">Tail 2</div></body></html>');
+  await page.evaluate(()=>{for(const el of document.querySelectorAll('[data-qa^="tail-action"]'))el.addEventListener('click',()=>{});});
+  const large=await audit();
+  for(const target of ['tail-action-1','tail-action-2'])assert.ok(large.some(f=>f.rule==='keyboard-operation'&&f.selector===`[data-qa="${target}"]`),target);
+  const largeCoverage=(await checkPage(page,lintapplePolicy)).clickListenerCoverage;assert.equal(largeCoverage.status,'limited');assert.equal(largeCoverage.inspected,500);assert.match(largeCoverage.priority,/cursor:pointer/);
   assert.ok(generated.some(f=>f.rule==='font-family'&&f.identity.key==='[data-ui-id="explicit-app-anchor"]'&&f.baselineEligible));
   assert.ok(!clickable.some(f=>f.details.phase==='clickable-focus'&&f.selector.includes('button')));
 
