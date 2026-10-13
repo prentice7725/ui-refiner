@@ -9,7 +9,7 @@ export async function audit({ policy, contrast, accessibility, format, visibilit
       const value = element.getAttribute(attr);
       if (!value) continue;
       // React useId (legacy and current), Radix and Headless UI IDs are render-order artifacts.
-      if(attr==='id'&&(/(^:r[^:]*:$)|(^_[Rr]_[\w-]+_$)|(^radix[-_:])|(^headlessui[-_:])/i.test(value)))continue;
+      if(attr==='id'&&(/(^:r[^:]*:$)|(^«[rR].*»$)|(^_[Rr]_[\w-]+_$)|(^radix[-_:])|(^headlessui[-_:])/i.test(value)))continue;
       const query = `[${attr}="${CSS.escape(value)}"]`;
       if (document.querySelectorAll(query).length === 1) return query;
     }

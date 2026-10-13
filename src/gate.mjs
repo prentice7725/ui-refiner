@@ -49,6 +49,7 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
  const marked=identify(all).map(f=>({...f,baselined:f.baselineEligible&&baseline.has(f.id),existingBrowserDebt:!!changedOnly&&f.engine==='lintapple'&&f.baselineEligible&&referenceIds.has(f.id)}));
  const warnings=marked.filter(f=>f.engine==='suta'&&f.severity==='warning'&&!f.baselined).length;
  const blockers=marked.filter(f=>!f.baselined&&!f.existingBrowserDebt&&(f.engine==='lintapple'&&config.browser.enforcement==='enforce'||f.engine==='suta'&&config.static.enforcement==='enforce'&&(f.severity==='error'||config.gate.maxStaticWarnings!==null&&warnings>config.gate.maxStaticWarnings&&f.severity==='warning')));
+ for(const finding of marked)finding.blocking=blockers.includes(finding);
  const infra=stages.some(s=>s.status==='error'),covered=stages.every(s=>s.status!=='not-covered');
  const automatedStatus=infra?'ERROR':!covered?'INCOMPLETE':blockers.length?'FAIL':changedOnly?'SCOPED_PASS':'PASS';
  const untested=stages.flatMap(s=>s.ruleCoverage||[]).filter(c=>c.status!=='tested');
