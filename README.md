@@ -41,9 +41,11 @@ Supported initial policies are `en-US`, `ko-KR` and `ja-JP`. They derive from th
 | `browser.interactionsPath` | Optional interaction-plan JSON; default `null` |
 | `browser.captureScreenshots` | Same-session state images and element crops; default `false` |
 | `browser.captureAriaSnapshots` | Same-state accessibility-tree YAML and advisory structure comparisons; default `false` |
+| `browser.ariaSnapshotMasks` | Explicit dynamic-copy regex masks; default `[]` |
 | `browser.renderedMetrics` | Opt-in rendered design heuristics; advisory only, default `false` |
 | `browser.timeoutMs` | Per navigation/audit step; default `120000` ms |
 | `browser.sessionTimeoutMs` | Independent total session bound; default `null` for a derived budget |
+| `browser.routeTimeoutMs` | Optional route-worker limit; default `null` for a fair share of the remaining total budget |
 | `gate.maxStaticWarnings` | Optional static warning cap; `null` leaves warnings non-blocking |
 | `gate.allowedHosts` | Explicit navigation host allowlist; defaults to loopback hosts |
 | `gate.baselinePath` | Reviewed schemaVersion 2 baseline; default `null` |
@@ -113,15 +115,34 @@ Add these fields to the existing `browser` object; keep its other fields:
 }
 ```
 
-Routes have unique safe names and absolute HTTP(S) URLs or root-relative paths. Omitted `ready` / `interactionsPath` inherit shared settings; explicit `null` disables them for that route. Each route/viewport/theme gets a clean context in one browser process. Budgets include route count. Every requested route must finish: a failed route is ERROR, not partial PASS. Only listed routes are covered, not the entire app automatically. Storybook URLs can be listed explicitly. Authentication state and cookies are not shared between routes.
+Routes have unique safe names and absolute HTTP(S) URLs or root-relative paths. Omitted `ready` / `interactionsPath` inherit shared settings; explicit `null` disables them for that route. Each route has an isolated bounded worker/browser; viewport/theme contexts remain clean. Budgets include route count. Every requested route must finish for a successful gate: failures keep the overall result ERROR, but completed run/state findings and other routes remain visible in `routeResults` and raw runs. Worker timeout can discard that worker's buffered partial states; previously completed workers remain intact. Only listed routes are covered, not the entire app automatically. Storybook URLs can be listed explicitly. Authentication state and cookies are not shared between routes.
 
 Navigation hosts are validated before requests. Redirects are rejected without following the chain; configure the final URL explicitly. Service workers are disabled in this audit session. External subresources are not covered by the navigation allowlist; this is not a general network sandbox.
 
-Multi-route fingerprints include route name and canonical configured URL; legacy single-URL identities remain unchanged. Switching to explicit routes requires a fresh full baseline review. Image names include routes. Optional ARIA YAML also includes a content hash, retaining previous evidence. Compatible runs produce `ariaDiff` with changed/added/removed/unchanged dimensions and `previousFile` / `file` paths. This is a hash-based structure summary, not an automatic defect verdict or line-by-line diff: compare the YAML pair. Capture is opt-in, limited to 2 MB per state; requested capture failure is ERROR. Images and accessible names may contain sensitive app content; review before sharing.
+Multi-route fingerprints include route name plus `pathname + search`, excluding origin, host, port and fragment; legacy single-URL identities remain unchanged. Switching to explicit routes requires a fresh full baseline review. Old multi-route baselines using absolute-URL IDs must also be recreated once; their hash-only entries cannot be safely migrated. Baseline schemaVersion remains 2. Image names include routes. Optional ARIA YAML also includes a content hash, retaining previous evidence. Compatible runs produce `ariaDiff` with changed/added/removed/unchanged dimensions and `previousFile` / `file` paths. This is a hash-based structure summary, not an automatic defect verdict or line-by-line diff: compare the YAML pair. Capture is opt-in, limited to 2 MB per state; requested capture failure is ERROR. Images and accessible names may contain sensitive app content; review before sharing.
 
 Rendered metrics describe visible viewport content: top-pinned fixed/sticky regions (nested regions counted once), filled buttons, repeated button/link names and destinations, and approximate 15-degree chromatic hue buckets from computed text/background/border colors. Inspection is capped at 10000 DOM elements with limited coverage disclosed. Repeated actions or multiple filled buttons may be intentional. Observations are **advisory only**, cannot block or be baselined, and never weaken accessibility checks. Hue buckets are evidence, not an enforced color limit; gradients, images and full perceptual color analysis are outside scope.
 
 Metric action names are DOM label/text approximations, not a full accessible-name algorithm; ARIA YAML provides the semantic evidence. Visibility uses browser `checkVisibility` and viewport bounds, not occlusion modeling. Target samples are capped at 10 per observation and duplicate-action groups at 20; total counts and limits remain recorded.
+
+`browser.routeTimeoutMs` optionally caps each worker. Otherwise pending routes receive a fair share of the remaining total session budget. The 600000 ms total cap remains; a 200-run batch has only about 3000 ms per run before overhead. The report discloses allocations and average budgets; split large/slow batches rather than treating partial completion as PASS. Browser output is bounded to 20 MB across the batch.
+
+Filled-button counts require at least 1.5:1 computed background contrast against the nearest opaque ancestor, compositing translucent ancestor layers. This design heuristic excludes same-color ghost buttons and low-contrast default controls. Gradients/images or unresolved canvas backgrounds are reported as unknown instead of assumed filled. Top-pinned counts exclude dialog/explicit backdrop scopes and elements covering at least half the viewport.
+
+Mask only known dynamic copy via optional `browser.ariaSnapshotMasks` (default `[]`, at most 20 patterns; `g/i/m/u` flags, default `g`). For example, add this field to `browser`:
+
+```json
+{
+  "ariaSnapshotMasks": [
+    {
+      "pattern": "\\d{2}:\\d{2}:\\d{2}",
+      "flags": "g"
+    }
+  ]
+}
+```
+
+The masked YAML is both saved and hashed; unconfigured label/role changes remain visible. Avoid broad patterns that erase meaningful quantities or semantic structure. Changing masks starts a new comparison context. After reports are written, only tool-owned unreferenced ARIA files are pruned; current/previous report evidence, comparison pairs and the last-full reference are retained. Manual files are untouched.
 
 ## 5. Reports and repair handoff
 
@@ -214,6 +235,7 @@ npm run smoke:ui
 npm run smoke:gate
 npm run smoke:review2
 npm run smoke:routes
+npm run smoke:review4
 ```
 
 CI runs unit/contract tests, real Chromium UI and CLI checks, session-timeout checks and pinned vendor-sync verification. Fixtures include clean/violating pages, monorepo changes, moved-checkout hooks, generated IDs, pointer-prioritized discovery after a 1600-row list, same-state images and element crops.
