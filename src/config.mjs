@@ -24,11 +24,13 @@ export function validateConfig(input){
   bool(input.static.enabled,'static.enabled'); nonEmpty(input.static.auditPath,'static.auditPath');
   if(!Array.isArray(input.static.targets)||!input.static.targets.length||input.static.targets.some(s=>typeof s!=='string'||!s.trim())) throw new Error('static.targets needs paths');
   assertTimeout(input.static.timeoutMs,'static.timeoutMs');assertEnforcement(input.static.enforcement,'static.enforcement');
-  assertKeys(input.browser,['enabled','url','routes','policyPath','ready','interactionsPath','timeoutMs','sessionTimeoutMs','captureScreenshots','captureAriaSnapshots','renderedMetrics','enforcement'],'browser');
+  assertKeys(input.browser,['enabled','url','routes','policyPath','ready','interactionsPath','timeoutMs','sessionTimeoutMs','routeTimeoutMs','captureScreenshots','captureAriaSnapshots','ariaSnapshotMasks','renderedMetrics','enforcement'],'browser');
   bool(input.browser.enabled,'browser.enabled'); nonEmpty(input.browser.url,'browser.url');nonEmpty(input.browser.policyPath,'browser.policyPath');
   for(const key of ['ready','interactionsPath'])if(input.browser[key]!==null)nonEmpty(input.browser[key],`browser.${key}`);
   assertTimeout(input.browser.timeoutMs,'browser.timeoutMs');if(input.browser.sessionTimeoutMs!=null)assertTimeout(input.browser.sessionTimeoutMs,'browser.sessionTimeoutMs'); bool(input.browser.captureScreenshots,'browser.captureScreenshots');assertEnforcement(input.browser.enforcement,'browser.enforcement');
   for(const key of ['captureAriaSnapshots','renderedMetrics'])if(input.browser[key]!==undefined)bool(input.browser[key],`browser.${key}`);
+  if(input.browser.routeTimeoutMs!=null)assertTimeout(input.browser.routeTimeoutMs,'browser.routeTimeoutMs');
+  validateAriaMasks(input.browser.ariaSnapshotMasks);
   if(input.browser.routes!==undefined){
     if(!Array.isArray(input.browser.routes)||!input.browser.routes.length||input.browser.routes.length>50)throw Error('browser.routes must have 1..50 routes');
     const names=new Set();
@@ -76,8 +78,17 @@ export function browserRoutes(config){
     ...route,url:checkUrl(new URL(route.url,base).toString(),config.gate.allowedHosts),
     ready:route.ready===undefined?config.browser.ready:route.ready,
     interactionsPath:route.interactionsPath===undefined?config.browser.interactionsPath:route.interactionsPath,
-    routeKey:config.browser.routes?JSON.stringify([route.name,checkUrl(new URL(route.url,base).toString(),config.gate.allowedHosts)]):undefined
+    routeKey:config.browser.routes?JSON.stringify([route.name,new URL(route.url,base).pathname+new URL(route.url,base).search]):undefined
   }));
+}
+export function validateAriaMasks(masks){
+ if(masks===undefined)return;
+ if(!Array.isArray(masks)||masks.length>20)throw Error('browser.ariaSnapshotMasks must contain at most 20 regular expressions');
+ for(const mask of masks){
+  assertKeys(mask,['pattern','flags'],'ARIA mask');nonEmpty(mask.pattern,'ARIA mask pattern');
+  if(mask.pattern.length>500||typeof (mask.flags??'g')!=='string'||!/^[gimu]*$/.test(mask.flags??'g'))throw Error('ARIA masks allow only g/i/m/u flags and at most 500 pattern characters');
+  new RegExp(mask.pattern,mask.flags??'g');
+ }
 }
 export async function initProject(root,preset='web',locale='en-US'){
   const config=makePreset(preset,locale);

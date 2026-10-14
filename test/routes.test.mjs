@@ -69,7 +69,7 @@ test('route adapter uses a single browser with isolated contexts and closes ever
  const audit=async()=>({findings:[rawFinding],suppressed:[],accessibilityCoverage:{}});
  const r=await checkRoutes(resolved,lintapplePolicy,{launch,audit,timeout:1000,locale:'ja-JP',allowedHosts:c.gate.allowedHosts,onState:async(page,state)=>observed.push(state)});
  assert.equal(r.runs.length,4);assert.equal(contexts.length,4);assert.ok(contexts.every(x=>x.closed));assert.ok(closed);assert.equal(observed[2].route,'settings');assert.equal(r.findings[2].route,'settings');assert.equal(visits.length,4);
- closed=false;await assert.rejects(()=>checkRoutes(resolved,lintapplePolicy,{launch,audit:async()=>{throw Error('audit failed');},timeout:1000,allowedHosts:c.gate.allowedHosts}),/Route home: audit failed/);assert.ok(closed);assert.ok(contexts.every(x=>x.closed));
+ closed=false;const failed=await checkRoutes(resolved,lintapplePolicy,{launch,audit:async()=>{throw Error('audit failed');},timeout:1000,allowedHosts:c.gate.allowedHosts});assert.equal(failed.errors.length,4);assert.match(failed.errors[0].error,/Route home: audit failed/);assert.ok(closed);assert.ok(contexts.every(x=>x.closed));
 });
 test('reviewed value exceptions preserve evidence, require exact values/scopes/reasons and cannot waive accessibility',()=>temp(async root=>{
  const config=makePreset();config.gate.valueExceptionsPath='values.json';

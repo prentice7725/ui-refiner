@@ -13,12 +13,15 @@ export async function checkRoutes(routes,input,{allowedHosts,timeout,locale,onSt
  const policy=validatePolicy(input);
  for(const route of routes){checkUrl(route.url,allowedHosts);if(route.interactions!==undefined)validateInteractions(route.interactions);}
  const browser=await launch({timeout});
- const report={url:routes[0].url,routes:routes.map(({interactions,...route})=>route),rules:ruleIds,runs:[],findings:[]};
+ const report={url:routes[0].url,routes:routes.map(({interactions,...route})=>route),rules:ruleIds,runs:[],findings:[],errors:[]};
  try{
   for(const route of routes)for(const viewport of policy.viewports)for(const colorScheme of policy.colorSchemes){
-   const context=await browser.newContext({viewport,colorScheme,reducedMotion:'reduce',locale,timezoneId:'UTC',deviceScaleFactor:1,serviceWorkers:'block'});
+   let context;
+   const run={viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey,status:'running',states:[],suppressed:[]};
+   report.runs.push(run);
    let navigationError;
    try{
+    context=await browser.newContext({viewport,colorScheme,reducedMotion:'reduce',locale,timezoneId:'UTC',deviceScaleFactor:1,serviceWorkers:'block'});
     // Check redirected and interaction-driven document requests before allowing network navigation.
     await context.route('**/*',async handler=>{
      const request=handler.request();
@@ -45,25 +48,33 @@ export async function checkRoutes(routes,input,{allowedHosts,timeout,locale,onSt
     if(response&&!response.ok())throw Error(`Page returned HTTP ${response.status()} at ${response.url()}.`);
     if(route.ready)await page.locator(route.ready).waitFor({state:'visible'});
     const result=audit===checkPage?await boundedCheck(page,policy,timeout):await audit(page,policy);
+    const append=(name,result)=>{
+     run.states.push({name,url:page.url(),...result});
+     report.findings.push(...result.findings.map(f=>({...f,state:name,viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey})));
+     run.suppressed.push(...result.suppressed.map(f=>({...f,state:name})));
+    };
+    Object.assign(run,{...result,findings:undefined,states:run.states,suppressed:run.suppressed});
+    append('initial',result);
     const capture=async(page,state)=>{
      checkUrl(page.url(),allowedHosts);if(navigationError)throw navigationError;
      if(onState)await onState(page,{...state,viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey});
     };
     await capture(page,{name:'initial',...result});
-    const states=[{name:'initial',url:page.url(),...result}];
-    const findings=result.findings.map(f=>({...f,state:'initial'})),suppressed=result.suppressed.map(f=>({...f,state:'initial'}));
     const accessibilityCoverage={...result.accessibilityCoverage};
+    run.accessibilityCoverage=accessibilityCoverage;
     if(route.interactions!==undefined){
-     const interaction=await interact(page,route.interactions,policy,{timeout,onState:capture});
+     const interaction=await interact(page,route.interactions,policy,{timeout,onState:async(page,state)=>{append(state.name,state);await capture(page,state);}});
      if(navigationError)throw navigationError;
-     findings.push(...interaction.findings);suppressed.push(...interaction.suppressed);states.push(...interaction.states);
+     // Audited states were recorded immediately; add interaction-only failures without duplicating them.
+     const recorded=new Set(run.states.map(s=>s.name));
+     report.findings.push(...interaction.findings.filter(f=>!recorded.has(f.state)).map(f=>({...f,viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey})));
+     run.suppressed.push(...interaction.suppressed.filter(f=>!recorded.has(f.state)));
      accessibilityCoverage.interactions=interaction.checks;
      accessibilityCoverage.interactionRules=interaction.checks.length?'only listed interactions tested':interaction.states.length?'not tested: page-state actions only':'not tested: empty interaction plan';
     }
-    report.runs.push({viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey,...result,findings:undefined,suppressed,accessibilityCoverage,states});
-    report.findings.push(...findings.map(f=>({...f,viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey})));
-   }catch(e){throw Error(`Route ${route.name}: ${navigationError?.message||e.message}`);}
-   finally{await context.close();}
+    run.status='complete';
+   }catch(e){run.status='error';run.error=`Route ${route.name}: ${navigationError?.message||e.message}`;report.errors.push({route:route.name,viewport,colorScheme,error:run.error});}
+   finally{try{await context?.close();}catch(e){run.status='error';report.errors.push({route:route.name,viewport,colorScheme,error:`Context close failed: ${e.message}`});}}
   }
   return report;
  }finally{await browser.close();}

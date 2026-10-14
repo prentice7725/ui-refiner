@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {browserRoutes,resolveInside} from './config.mjs';
 import {checkRoutes} from './browser-session.mjs';
 import {collectRenderedMetrics,metricFindings} from './rendered-metrics.mjs';
+import {maskAriaSnapshot} from './aria-evidence.mjs';
 try{
  const {config,root}=JSON.parse(process.argv[2]);
  const routes=browserRoutes(config);
@@ -19,8 +20,10 @@ try{
   const dimensions={route:state.route,routeUrl:state.routeUrl,routeKey:state.routeKey,state:state.name,viewport:state.viewport,colorScheme:state.colorScheme};
   if(config.browser.renderedMetrics){const metrics=await page.evaluate(collectRenderedMetrics);renderedMetrics.push({...dimensions,...metrics});advisory.push(...metricFindings(metrics,state));}
   if(config.browser.captureAriaSnapshots){
-   const snapshot=await page.locator('body').ariaSnapshot({timeout:config.browser.timeoutMs});
-   if(Buffer.byteLength(snapshot)>2_000_000)throw Error('ARIA snapshot exceeded the 2 MB evidence limit');
+   const original=await page.locator('body').ariaSnapshot({timeout:config.browser.timeoutMs});
+   if(Buffer.byteLength(original)>2_000_000)throw Error('ARIA snapshot exceeded the 2 MB evidence limit');
+   const snapshot=maskAriaSnapshot(original,config.browser.ariaSnapshotMasks);
+   if(Buffer.byteLength(snapshot)>2_000_000)throw Error('Masked ARIA snapshot exceeded the 2 MB evidence limit');
    const sha256=createHash('sha256').update(snapshot).digest('hex');
    const file=stem+'-'+sha256.slice(0,16)+'.aria.yml';await fs.writeFile(path.join(dir,file),snapshot+'\n');artifacts.push(file);
    ariaSnapshots.push({...dimensions,file,sha256,bytes:Buffer.byteLength(snapshot)});
