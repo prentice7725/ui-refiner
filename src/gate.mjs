@@ -23,7 +23,7 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   baseline=new Set(raw.ids);
  }
  const planContents=await Promise.all(routes.map(async route=>route.interactionsPath?await fs.readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8').catch(()=>null):null));
- const comparisonParts=[config.browser.url,config.locale||'en-US',await fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8').catch(()=>null),config.browser.routes?routes.map((route,i)=>[route.name,route.url,route.ready,planContents[i]]):planContents[0]??null];
+ const comparisonParts=[config.browser.url,config.locale||'en-US',await fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8').catch(()=>null),config.browser.routes?routes.map((route,i)=>[route.name,route.url,route.routeKey,route.ready,planContents[i]]):planContents[0]??null];
  if(reviewedValues.content!==null)comparisonParts.push(reviewedValues.content);
  if(config.browser.ariaSnapshotMasks?.length)comparisonParts.push(config.browser.ariaSnapshotMasks);
  const comparisonContext=createHash('sha256').update(JSON.stringify(comparisonParts)).digest('hex');
@@ -80,9 +80,9 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   // Keep current and previous evidence, plus the last-full reference used by scoped checks.
   let fullReference;if(changedOnly||infra||!covered){try{fullReference=JSON.parse(await fs.readFile(path.join(dir,'last-full-report.json'),'utf8'));}catch{}}
   await fs.writeFile(path.join(dir,'report.json'),JSON.stringify(result,null,2)+'\n');
-  result.ariaRetention=await pruneAriaSnapshots(dir,[result,previous,fullReference]);
+  try{result.ariaRetention=await pruneAriaSnapshots(dir,[result,previous,fullReference]);}catch(e){result.ariaRetention={status:'error',error:e.message};}
   await fs.writeFile(path.join(dir,'report.json'),JSON.stringify(result,null,2)+'\n');
-  await fs.writeFile(path.join(dir,'report.md'),toMarkdown(result)+'\n\n## ARIA structure evidence\n\n'+ariaReviewSummary(result.ariaDiff)+'\n');
+  await fs.writeFile(path.join(dir,'report.md'),toMarkdown(result)+'\n\n## ARIA structure evidence\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nSnapshot retention: '+result.ariaRetention.status+'; removed='+String(result.ariaRetention.removed??'unknown')+(result.ariaRetention.error?' — '+result.ariaRetention.error:'')+'\n');
   if(rawBrowser.length)await fs.writeFile(path.join(dir,'lintapple.raw.json'),JSON.stringify(rawBrowser[0],null,2)+'\n');
   else await fs.rm(path.join(dir,'lintapple.raw.json'),{force:true});
   const diff=result.diff.status==='compared'?`Compared to previous run: resolved=${result.diff.resolved.length}, added=${result.diff.added.length}, persisting=${result.diff.persisting.length}. Full identities and locations: report.json.\n\n`:'';
