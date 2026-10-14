@@ -16,5 +16,5 @@ try{
  const start=Date.now(),result=await realBrowser(config,root);
  assert.equal(result.rawReport.runs.length,2);assert.ok(Date.now()-start>3000,'Combined runs should exceed the per-step timeout');assert.ok(result.budgets.sessionTimeoutMs>3000);assert.equal(result.budgets.stepTimeoutMs,3000);
  assert.equal(result.findings.length,0);console.log('PASS: two individually valid 1.8s navigations survive a 3s step budget within the derived total session budget');
- config.browser.sessionTimeoutMs=1000;await assert.rejects(()=>realBrowser(config,root),/timeout/);console.log('PASS: explicit total session timeout still bounds a slow run');
+ config.browser.sessionTimeoutMs=1000;const timed=await realBrowser(config,root);assert.ok(timed.errors.some(e=>/timeout/.test(e.error)));console.log('PASS: explicit total session timeout still bounds a slow run');
 }finally{await new Promise(resolve=>server.close(resolve));await fs.rm(root,{recursive:true,force:true});}

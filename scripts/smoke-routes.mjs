@@ -35,8 +35,8 @@ try{
  const saved=first.ariaSnapshots.find(s=>s.route==='home'&&s.state==='saved');assert.match(await fs.readFile(path.join(root,config.reportDir,saved.file),'utf8'),/Saved/);
  title='Updated heading';const second=await runGate({root,config});assert.equal(second.ariaDiff.status,'compared');assert.equal(second.ariaDiff.changed.length,4);assert.equal(second.ariaDiff.unchanged.length,2);
  for(const s of second.ariaDiff.changed){assert.notEqual(s.file,s.previousFile);assert.match(await fs.readFile(path.join(root,config.reportDir,s.previousFile),'utf8'),/Home/);}
- config.browser.routes=[{name:'redirect',url:'/redirect'}];await assert.rejects(()=>realBrowser(config,root),/Host example.com is not allowed/);
- config.browser.routes=[{name:'missing',url:'/missing'}];await assert.rejects(()=>realBrowser(config,root),/Route missing: Page returned HTTP 404/);
+ config.browser.routes=[{name:'redirect',url:'/redirect'}];const redirect=await realBrowser(config,root);assert.ok(redirect.errors.some(e=>/Host example.com is not allowed/.test(e.error)));
+ config.browser.routes=[{name:'missing',url:'/missing'}];const missing=await realBrowser(config,root);assert.ok(missing.errors.some(e=>/Route missing: Page returned HTTP 404/.test(e.error)));
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/multi-route.report.json',JSON.stringify(second,null,2)+'\n');
  console.log('PASS: real multi-route IDs, six same-session ARIA/screenshots, advisory metrics, compatible structure comparisons, forbidden redirect and 404 rejection');

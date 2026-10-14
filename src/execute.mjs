@@ -59,17 +59,45 @@ export function staticAuditPath(config,root){
 export async function realBrowser(config,root,{runner=spawnBounded}={}){
  const routes=browserRoutes(config);
  const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
- const plans=await Promise.all(routes.map(async route=>route.interactionsPath?JSON.parse(await readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8')):undefined));
- const budgets=browserBudget(config,policy,plans);
+ const plans=await Promise.all(routes.map(async route=>{
+  try{return route.interactionsPath?JSON.parse(await readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8')):undefined;}
+  catch(e){return {loadError:e.message};}
+ }));
+ const budgets=browserBudget(config,policy,plans),started=Date.now();let outputBytes=0;
  const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
- const run=await runner(process.execPath,[worker,JSON.stringify({config,root})],{cwd:root,timeoutMs:budgets.sessionTimeoutMs});
- if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${run.stderr.slice(-1000)}`);
- let result;try{result=JSON.parse(run.stdout);}catch{throw Error('Browser worker returned invalid JSON');}
- return {...result,budgets,findings:normalizeBrowser(result.rawReport),ruleCoverage:browserCoverage(result.rawReport),capturesIntegrated:true};
+ const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],ariaSnapshots:[],renderedMetrics:[],routeResults:[]};
+ for(const [index,route] of routes.entries()){
+  const remaining=Math.max(0,budgets.sessionTimeoutMs-(Date.now()-started));
+  // Reserve a fair share for every pending route; one slow worker cannot consume the whole batch.
+  const allocated=Math.min(config.browser.routeTimeoutMs??Infinity,Math.floor(remaining/(routes.length-index)));
+  const outcome={route:route.name,url:route.url,status:'error',timeoutMs:allocated};
+  combined.routeResults.push(outcome);
+  try{
+   if(plans[index]?.loadError)throw Error(plans[index].loadError);
+   if(allocated<100)throw Error('Session budget exhausted before this route could run');
+   const selected={...config,browser:{...config.browser,...(config.browser.routes?{routes:[config.browser.routes[index]]}:{})}};
+   const run=await runner(process.execPath,[worker,JSON.stringify({config:selected,root})],{cwd:root,timeoutMs:allocated});
+   if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${String(run.stderr||'').slice(-1000)}`);
+   outputBytes+=Buffer.byteLength(run.stdout||'')+Buffer.byteLength(run.stderr||'');
+   if(outputBytes>20_000_000)throw Error('Aggregate browser output limit exceeded; split routes into smaller batches');
+   let result;try{result=JSON.parse(run.stdout);}catch{throw Error('Browser worker returned invalid JSON');}
+   // Validate before merging, so malformed worker output never masquerades as a completed route.
+   normalizeBrowser(result.rawReport);
+   combined.rawReport.runs.push(...result.rawReport.runs);
+   combined.rawReport.findings.push(...result.rawReport.findings);
+   combined.rawReport.errors.push(...result.rawReport.errors||[]);
+   for(const key of ['artifacts','captures','ariaSnapshots','renderedMetrics'])combined[key].push(...result[key]||[]);
+   outcome.status=result.rawReport.errors?.length?'error':'complete';
+   outcome.completedRuns=result.rawReport.runs.filter(r=>r.status!=='error').length;
+   if(result.rawReport.errors?.length)outcome.error=result.rawReport.errors.map(e=>e.error).join('; ');
+  }catch(e){outcome.error=e.message;combined.rawReport.errors.push({route:route.name,error:e.message});}
+ }
+ return {...combined,errors:combined.rawReport.errors,budgets,findings:combined.rawReport.runs.length?normalizeBrowser(combined.rawReport):[],ruleCoverage:combined.rawReport.runs.length?browserCoverage(combined.rawReport):[],capturesIntegrated:true};
 }
 // Compatibility API for explicit callers. The gate uses the integrated worker session.
 export async function screenshots(config,root){
  const result=await realBrowser({...config,browser:{...config.browser,captureScreenshots:true}},root);
+ if(result.errors.length)throw Error(result.errors.map(e=>e.error).join('; '));
  return result.artifacts;
 }
 
