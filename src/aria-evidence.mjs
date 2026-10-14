@@ -4,7 +4,7 @@ import {validateAriaMasks} from './config.mjs';
 export function maskAriaSnapshot(snapshot,masks=[]){
  validateAriaMasks(masks);
  // Explicit patterns only: numbers can be meaningful labels, so never erase them globally.
- return masks.reduce((text,mask)=>text.replace(new RegExp(mask.pattern,mask.flags??'g'),'<masked>'),snapshot);
+ return masks.reduce((text,mask)=>{const masked=text.replace(new RegExp(mask.pattern,mask.flags??'g'),'<masked>');if(Buffer.byteLength(masked)>2_000_000)throw Error('Masked ARIA snapshot exceeded the 2 MB evidence limit');return masked;},snapshot);
 }
 const managed=/^render-[a-zA-Z0-9_-]+-[a-f0-9]{16}\.aria\.yml$/;
 export async function pruneAriaSnapshots(dir,reports){
@@ -20,5 +20,5 @@ export async function pruneAriaSnapshots(dir,reports){
  for(const entry of await fs.readdir(dir,{withFileTypes:true})){
   if(entry.isFile()&&managed.test(entry.name)&&!keep.has(entry.name)){await fs.unlink(path.join(dir,entry.name));removed++;}
  }
- return {removed,retainedReferences:keep.size};
+ return {status:'complete',removed,retainedReferences:keep.size};
 }
