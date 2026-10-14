@@ -16,7 +16,8 @@
     "smoke:ui": "node scripts/smoke-ui.mjs",
     "smoke:gate": "node scripts/smoke-gate.mjs",
     "smoke:review2": "node scripts/smoke-review2.mjs",
-    "smoke:routes": "node scripts/smoke-routes.mjs"
+    "smoke:routes": "node scripts/smoke-routes.mjs",
+    "smoke:review4": "node scripts/smoke-review4.mjs"
   },
   "dependencies": {
     "axe-core": "4.14.0",
