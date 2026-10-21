@@ -1,6 +1,6 @@
-import {createHash} from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {randomUUID} from 'node:crypto';
 import {resolveInside,browserRoutes} from './config.mjs';
 import {realStatic,realBrowser,screenshots} from './execute.mjs';
 import {identify,toMarkdown} from './normalize.mjs';
@@ -8,8 +8,11 @@ import {groupedHandoff,groupFindings,reportDiff,ariaDiff,ariaReviewSummary,compa
 import {gitChangedLines,touchesChanged} from './changed.mjs';
 import {loadValueExceptions,matchValueException} from './value-exceptions.mjs';
 import {pruneAriaSnapshots} from './aria-evidence.mjs';
+import {comparisonContexts,comparisonUnavailable} from './comparison.mjs';
+import {atomicWrite,completeImageRun,linkImageEvidence,pruneImageEvidence} from './image-evidence.mjs';
 
 export async function runGate({root,config,staticRunner=realStatic,browserRunner=realBrowser,captureRunner=screenshots,writeReports=true,changedOnly=false,baseRef}){
+ const runId=randomUUID();
  const routes=config.browser.enabled?browserRoutes(config):[];
  const reviewedValues=await loadValueExceptions(config,root);
  if(config.sot.path)await fs.access(resolveInside(root,config.sot.path,'sot.path'));
@@ -22,19 +25,17 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   if(raw.schemaVersion!==2||!Array.isArray(raw.ids)||raw.ids.some(id=>typeof id!=='string'))throw Error('Invalid baseline: schemaVersion=2 and ids[] required; recreate v1 baselines from a fresh v2 report');
   baseline=new Set(raw.ids);
  }
- const planContents=await Promise.all(routes.map(async route=>route.interactionsPath?await fs.readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8').catch(()=>null):null));
- const comparisonParts=[config.browser.url,config.locale||'en-US',await fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8').catch(()=>null),config.browser.routes?routes.map((route,i)=>[route.name,route.url,route.routeKey,route.ready,planContents[i]]):planContents[0]??null];
- if(reviewedValues.content!==null)comparisonParts.push(reviewedValues.content);
- if(config.browser.ariaSnapshotMasks?.length)comparisonParts.push(config.browser.ariaSnapshotMasks);
- const comparisonContext=createHash('sha256').update(JSON.stringify(comparisonParts)).digest('hex');
+ const contexts=await comparisonContexts(config,routes,root,reviewedValues);
+ const comparisonContext=contexts.findings;
  let browserReference;
  if(changedOnly){
   try{browserReference=JSON.parse(await fs.readFile(path.join(dir,'last-full-report.json'),'utf8'));}catch(e){if(e.code!=='ENOENT'&&!(e instanceof SyntaxError))throw e;}
   if(!browserReference&&previous?.scope?.mode==='full')browserReference=previous;
  }
- const referenceIds=new Set(browserReference?.fingerprintVersion===2&&browserReference?.comparisonContext===comparisonContext?browserReference.findings.filter(f=>f.engine==='lintapple'&&f.baselineEligible).map(f=>f.id):[]);
+ const referenceReason=changedOnly?comparisonUnavailable(browserReference,contexts,'browserDebt',{full:true}):'Full checks do not suppress existing browser debt';
+ const referenceIds=new Set(!referenceReason?browserReference.findings.filter(f=>f.engine==='lintapple'&&f.baselineEligible&&!f.advisory).map(f=>f.id):[]);
  const changed=changedOnly?await gitChangedLines(root,{base:baseRef}):null;
- const stages=[],all=[],rawBrowser=[],artifacts=[],captures=[],ariaSnapshots=[],renderedMetrics=[];
+ const stages=[],all=[],rawBrowser=[],artifacts=[],captures=[],imageArtifacts=[],ariaSnapshots=[],renderedMetrics=[];
  const inConfiguredTargets=file=>config.static.targets.some(target=>{
   const relative=path.relative(root,resolveInside(root,target,'static.targets')).replaceAll(path.sep,'/');
   return !relative||file===relative||file.startsWith(relative+'/');
@@ -44,12 +45,13 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   if(!enabled){stages.push({engine,status:'not-covered',enforcement});continue;}
   try{
    const runnerConfig=engine==='suta'?partialStatic:{...config,browser:{...config.browser,captureScreenshots:config.browser.captureScreenshots&&writeReports,captureAriaSnapshots:!!config.browser.captureAriaSnapshots&&writeReports}};
-   const run=engine==='suta'&&changed&&!partialStatic.static.targets.length?{findings:[],stats:{files:0},scope:'no changed source files'}:await runner(runnerConfig,root);
+   const run=engine==='suta'&&changed&&!partialStatic.static.targets.length?{findings:[],stats:{files:0},scope:'no changed source files'}:await runner(runnerConfig,root,{evidenceRunId:runId});
    if(!Array.isArray(run.findings))throw Error('Engine result missing findings array');
    const findings=engine==='suta'&&changed?run.findings.filter(f=>touchesChanged(f,changed)):run.findings;
    all.push(...findings);
    if(engine==='lintapple'&&run.rawReport)rawBrowser.push(run.rawReport);
    artifacts.push(...run.artifacts||[]);captures.push(...run.captures||[]);
+   imageArtifacts.push(...run.imageArtifacts||[]);
    ariaSnapshots.push(...run.ariaSnapshots||[]);renderedMetrics.push(...run.renderedMetrics||[]);
    stages.push({engine,status:run.errors?.length?'error':run.scope==='no changed source files'?'no-changes':findings.length?'findings':'complete',error:run.errors?.map(e=>e.error).join('; ')||undefined,routeResults:run.routeResults,enforcement,count:findings.length,ruleCoverage:run.ruleCoverage||[],capturesIntegrated:!!run.capturesIntegrated,budgets:run.budgets,routes:run.rawReport?.routes,clickListenerCoverage:run.rawReport?.runs.flatMap(r=>(r.states||[]).map(s=>({route:r.route,viewport:r.viewport,colorScheme:r.colorScheme,state:s.name,...s.clickListenerCoverage})))});
   }catch(e){stages.push({engine,status:'error',enforcement,error:e.message});}
@@ -65,9 +67,12 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
  const coverageNote=untested.length?`${untested.length} rule/run/state checks have no targets or unknown coverage. Automated PASS does not cover these rules; add contracts where applicable and rerun.`:'';
  const handoff=infra?'Fix the tool/environment error and rerun full QA.':!covered?'Enable both required checkers and rerun full QA.':changedOnly?'Changed-line static scope; browser findings cover the whole page. Previously observed browser debt from a matching full report is listed separately, not saved to a baseline. This is not a full QA PASS. Run a full check before approval.':blockers.length?`Fix ${blockers.length} new blocking finding(s) by root cause, preserve SOT art direction, then rerun. Never weaken policy or add suppressions automatically.`:'Executed checks have no new enforced findings. Human visual/UX review remains necessary.';
  const scope={mode:changedOnly?'changed-only':'full',static:changedOnly?'git changed lines':'all configured targets',browser:'all configured routes and interaction plans',routes:routes.map(({name,url})=>({name,url})),baseRef:baseRef||null};
- const comparable=!infra&&!['ERROR','INCOMPLETE'].includes(previous?.automatedStatus)&&(previous?.scope?.mode===scope.mode&&previous?.scope?.baseRef===scope.baseRef||!previous?.scope&&!changedOnly)&&previous?.comparisonContext===comparisonContext;
- const result={fingerprintVersion:2,comparisonContext,browserReference:{status:referenceIds.size?'matching-full-report':'none',existingDebt:marked.filter(f=>f.existingBrowserDebt).length},version:'0.3.0',generatedAt:new Date().toISOString(),project:config.name,preset:config.preset,locale:config.locale||'en-US',scope,automatedStatus,status:automatedStatus==='PASS'&&config.gate.manualVisualReview?'REVIEW_REQUIRED':automatedStatus,manualVisualReview:config.gate.manualVisualReview,summary:{total:marked.length,blockers:blockers.length,baselined:marked.filter(f=>f.baselined).length,existingBrowserDebt:marked.filter(f=>f.existingBrowserDebt).length},stages,findings:marked,groups:groupFindings(marked).map(({findings,...g})=>({...g,ids:findings.map(f=>f.id)})),diff:reportDiff(comparable?previous:null,marked),coverageNote,handoff:handoff+(coverageNote?' '+coverageNote:''),artifacts,captures};
- Object.assign(result,{ariaSnapshots,renderedMetrics,ariaDiff:ariaDiff(comparable?previous:null,ariaSnapshots),reviewedValueExceptions:reviewedValues.exceptions});
+ const currentReason=infra||!covered?'Current report did not complete required checks':null;
+ const findingReason=currentReason||comparisonUnavailable(previous,contexts,'findings',{scope});
+ const ariaReason=currentReason||comparisonUnavailable(previous,contexts,'aria',{scope});
+ const result={fingerprintVersion:2,comparisonContext,comparisonContexts:contexts,browserReference:{status:!referenceReason?'matching-full-report':'none',reason:referenceReason,existingDebt:marked.filter(f=>f.existingBrowserDebt).length},version:'0.3.0',generatedAt:new Date().toISOString(),project:config.name,preset:config.preset,locale:config.locale||'en-US',scope,automatedStatus,status:automatedStatus==='PASS'&&config.gate.manualVisualReview?'REVIEW_REQUIRED':automatedStatus,manualVisualReview:config.gate.manualVisualReview,summary:{total:marked.length,blockers:blockers.length,baselined:marked.filter(f=>f.baselined).length,existingBrowserDebt:marked.filter(f=>f.existingBrowserDebt).length},stages,findings:marked,groups:groupFindings(marked).map(({findings,...g})=>({...g,ids:findings.map(f=>f.id)})),diff:reportDiff(findingReason?null:previous,marked,findingReason),coverageNote,handoff:handoff+(coverageNote?' '+coverageNote:''),artifacts,captures};
+ Object.assign(result,{runId,imageArtifacts,ariaSnapshots,renderedMetrics,ariaDiff:ariaDiff(ariaReason?null:previous,ariaSnapshots,ariaReason),reviewedValueExceptions:reviewedValues.exceptions});
+ linkImageEvidence(marked,captures);
  result.summary.reviewedExceptions=marked.filter(f=>f.reviewedException).length;
  if(writeReports){
   await fs.mkdir(dir,{recursive:true});
@@ -75,19 +80,25 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   if(config.browser.enabled&&config.browser.captureScreenshots&&!stages.some(s=>s.engine==='lintapple'&&(s.status==='error'||s.capturesIntegrated))){
    try{result.artifacts.push(...await captureRunner(config,root,dir));}catch(e){result.automatedStatus=result.status='ERROR';result.stages.push({engine:'screenshots',status:'error',error:e.message,enforcement:'enforce'});result.handoff='Screenshot evidence capture failed. Fix and rerun; do not approve.';}
   }
-  if(!changedOnly&&!infra&&covered)await fs.writeFile(path.join(dir,'last-full-report.json'),JSON.stringify(result,null,2)+'\n');
-  if(previous)await fs.writeFile(path.join(dir,'previous-report.json'),JSON.stringify(previous,null,2)+'\n');
+  const complete=!['ERROR','INCOMPLETE'].includes(result.automatedStatus);
+  if(previous)await atomicWrite(path.join(dir,'previous-report.json'),JSON.stringify(previous,null,2)+'\n');
+  await atomicWrite(path.join(dir,'report.json'),JSON.stringify(result,null,2)+'\n');
+  if(!changedOnly&&complete)await atomicWrite(path.join(dir,'last-full-report.json'),JSON.stringify(result,null,2)+'\n');
+  await atomicWrite(path.join(dir,'image-artifacts.json'),JSON.stringify({schemaVersion:1,runId,images:imageArtifacts},null,2)+'\n');
+  await completeImageRun(dir,runId);
   // Keep current and previous evidence, plus the last-full reference used by scoped checks.
-  let fullReference;if(changedOnly||infra||!covered){try{fullReference=JSON.parse(await fs.readFile(path.join(dir,'last-full-report.json'),'utf8'));}catch{}}
-  await fs.writeFile(path.join(dir,'report.json'),JSON.stringify(result,null,2)+'\n');
-  try{result.ariaRetention=await pruneAriaSnapshots(dir,[result,previous,fullReference]);}catch(e){result.ariaRetention={status:'error',error:e.message};}
-  await fs.writeFile(path.join(dir,'report.json'),JSON.stringify(result,null,2)+'\n');
-  await fs.writeFile(path.join(dir,'report.md'),toMarkdown(result)+'\n\n## ARIA structure evidence\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nSnapshot retention: '+result.ariaRetention.status+'; removed='+String(result.ariaRetention.removed??'unknown')+(result.ariaRetention.error?' — '+result.ariaRetention.error:'')+'\n');
-  if(rawBrowser.length)await fs.writeFile(path.join(dir,'lintapple.raw.json'),JSON.stringify(rawBrowser[0],null,2)+'\n');
+  let fullReference;if(changedOnly||!complete){try{fullReference=JSON.parse(await fs.readFile(path.join(dir,'last-full-report.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}}
+  let retainedPrevious=previous;
+  if(!retainedPrevious){try{retainedPrevious=JSON.parse(await fs.readFile(path.join(dir,'previous-report.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}}
+  try{result.ariaRetention=await pruneAriaSnapshots(dir,[result,retainedPrevious,fullReference]);}catch(e){result.ariaRetention={status:'error',error:e.message};}
+  try{result.imageRetention=await pruneImageEvidence(dir,[result,retainedPrevious,fullReference]);}catch(e){result.imageRetention={status:'error',error:e.message};}
+  await atomicWrite(path.join(dir,'report.json'),JSON.stringify(result,null,2)+'\n');
+  await atomicWrite(path.join(dir,'report.md'),toMarkdown(result)+'\n\n## ARIA structure evidence\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nSnapshot retention: '+result.ariaRetention.status+'; removed='+String(result.ariaRetention.removed??'unknown')+(result.ariaRetention.error?' — '+result.ariaRetention.error:'')+'\n\nImage retention: '+result.imageRetention.status+'; removed runs='+String(result.imageRetention.removedRuns??'unknown')+'; details in report.json.\n');
+  if(rawBrowser.length)await atomicWrite(path.join(dir,'lintapple.raw.json'),JSON.stringify(rawBrowser[0],null,2)+'\n');
   else await fs.rm(path.join(dir,'lintapple.raw.json'),{force:true});
-  const diff=result.diff.status==='compared'?`Compared to previous run: resolved=${result.diff.resolved.length}, added=${result.diff.added.length}, persisting=${result.diff.persisting.length}. Full identities and locations: report.json.\n\n`:'';
-  await fs.writeFile(path.join(dir,'AGENT_HANDOFF.md'),`# UI QA agent handoff\n\n${result.handoff}\n\n${diff}${result.browserReference.existingDebt?`Existing browser debt outside the static edit scope: ${result.browserReference.existingDebt}; see report.json. No baseline was written.\n\n`:''}ARIA structure comparison (advisory): ${result.ariaDiff.status}; changed=${result.ariaDiff.changed.length}, added=${result.ariaDiff.added.length}, removed=${result.ariaDiff.removed.length}. Snapshot files and exact dimensions: report.json.\n\n## Rule coverage\n\n${compactCoverage(stages)||'- No rendered rule counters returned'}\n\n## Fix root causes\n\n${groupedHandoff(marked)||'- No new automated findings'}\n\nUse report.json for every affected target. Respect the project SOT; do not hide failed checks.\n`);
-  await fs.writeFile(path.join(dir,'VISUAL_REVIEW.md'),visualReviewPacket(result)+'\n## Structure and rendered heuristics\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nRendered metrics (advisory only): '+renderedMetrics.length+' route/viewport/theme/state observations. See report.json for target counts, duplicate actions and approximate chromatic hue buckets. These are design-review evidence, not proven violations.\n');
+  const diff=result.diff.status==='compared'?`Compared to previous run: resolved=${result.diff.resolved.length}, added=${result.diff.added.length}, persisting=${result.diff.persisting.length}. Full identities and locations: report.json.\n\n`:`Previous findings comparison unavailable: ${result.diff.reason}.\n\n`;
+  await atomicWrite(path.join(dir,'AGENT_HANDOFF.md'),`# UI QA agent handoff\n\n${result.handoff}\n\n${diff}${result.browserReference.existingDebt?`Existing browser debt outside the static edit scope: ${result.browserReference.existingDebt}; see report.json. No baseline was written.\n\n`:''}ARIA structure comparison (advisory): ${result.ariaDiff.status}; changed=${result.ariaDiff.changed.length}, added=${result.ariaDiff.added.length}, removed=${result.ariaDiff.removed.length}. Snapshot files and exact dimensions: report.json.\n\nImage evidence: ${imageArtifacts.length} images; immutable paths, hashes and byte counts in image-artifacts.json. Each browser finding's imageEvidence links its state image and available matching crop.\n\n## Rule coverage\n\n${compactCoverage(stages)||'- No rendered rule counters returned'}\n\n## Fix root causes\n\n${groupedHandoff(marked)||'- No new automated findings'}\n\nUse report.json for every affected target. Respect the project SOT; do not hide failed checks.\n`);
+  await atomicWrite(path.join(dir,'VISUAL_REVIEW.md'),visualReviewPacket(result)+'\n## Structure and rendered heuristics\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nRendered metrics (advisory only): '+renderedMetrics.length+' route/viewport/theme/state observations. See report.json for target counts, duplicate actions and approximate chromatic hue buckets. These are design-review evidence, not proven violations.\n');
  }
  return result;
 }

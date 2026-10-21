@@ -78,6 +78,22 @@ Without `--base`, Git changes against HEAD include staged and unstaged edits plu
 
 **Browser checks still inspect the entire configured page and interaction plan.** A compatible `last-full-report.json` distinguishes previously observed stable browser debt from fresh findings using the URL, locale, policy contents and interaction contents. Existing debt stays visible as `existingBrowserDebt` but does not block the scoped result. Without a compatible full reference, browser findings remain enforced. This does not write or approve a baseline; full checks still enforce the debt.
 
+### Report comparison compatibility
+
+Reports include versioned `comparisonContexts` for finding changes, existing browser debt and ARIA evidence. The legacy `comparisonContext` field remains an alias for the findings context. These hashes do not change finding IDs or baseline schemaVersion 2.
+
+Both single-page and named-route checks use each route's effective URL, ready selector and interaction contents, plus locale, policy and pinned engine metadata. Changing `browser.ready` therefore invalidates comparisons and existing-debt suppression. An explicit route override ignores unused global ready/plan settings. Absolute URLs remain part of comparison compatibility; portable baseline IDs still exclude the host and port.
+
+| Change | Findings comparison | Existing browser debt | ARIA comparison |
+|---|---|---|---|
+| Effective URL/ready/plan, locale, policy or browser engine | Reset | Reset | Reset |
+| `renderedMetrics` | Reset | Keep | Keep |
+| ARIA masks or `captureAriaSnapshots` | Keep | Keep | Reset |
+| `captureScreenshots`, time budgets or manual review | Keep | Keep | Keep |
+| Static targets/audit path/engine | Reset | Keep | Keep |
+
+Scope changes and incomplete runs cannot produce resolved findings or ARIA removals. Existing debt requires a completed compatible full report. Older reports without the new metadata are rejected with an explicit reason; run full QA once to establish a new reference. Existing reviewed v2 baselines remain usable. `diff.reason`, `ariaDiff.reason` and `browserReference.reason` explain unavailable comparisons in JSON; the handoff and ARIA summary also show comparison reasons.
+
 ### Status and exit codes
 
 | Status | Exit | Meaning |
@@ -95,6 +111,10 @@ Disabling either required engine cannot produce a full PASS. A successful scoped
 The browser runs in a separate process with total time and output bounds. `browser.timeoutMs` limits individual navigation/audit steps. Set `browser.sessionTimeoutMs` for an explicit total limit; otherwise it is derived from viewport/theme combinations, planned interactions and capture allowance, capped at **600000 ms**. Multiple valid sequential steps can therefore outlast one step's timeout without being terminated prematurely.
 
 Initial and interaction-state audits share the same browser session, locale and reduced-motion setting with their images. Capture is optional and produces at most **five unique violating-element crops per state**; unavailable crops record a reason. Treat the current report's artifact list as authoritative after interrupted runs.
+
+PNG evidence is stored under `images-<runId>/` with SHA-256 in each filename. A later audit never overwrites an earlier image. `imageArtifacts` and `image-artifacts.json` record artifact IDs, hashes, byte counts and route/state/viewport/theme/locale dimensions; each browser finding's `imageEvidence` links its state image and matching available crops. Existing `artifacts` and `captures[].image` paths remain relative to `reportDir`; consumers must support the new subdirectory. Copy the referenced directories when sharing a report.
+
+Current, previous and last-full reports (including image references in finding diffs) protect their image runs. After report and image-inventory files are published with atomic per-file replacement, cleanup removes only unreferenced, explicitly owned image directories. Manual files, unknown contents and symlinks protect a directory; legacy flat PNGs are not deleted. Interrupted unpublished runs have an 11-minute grace period, covering the maximum browser budget plus one minute. Retention is reference-based rather than an unlimited archive; use a separate `reportDir` for each concurrent audit or archival job. Keep an entire referenced image run, not just individual files. Requested state-image failure is ERROR; unavailable element crops retain their reason. A failed capture cannot replace the last completed full report.
 
 Coverage reports show target counts for alignment, layout/control gaps, nested radius and control inset. Zero targets are `not-tested`; missing counters are `unknown`. Add the relevant `data-ui-*` contracts where those checks should apply. PASS does not assert that unmarked contracts were tested.
 
@@ -156,7 +176,8 @@ Outputs appear under `reportDir`:
 | `previous-report.json` | Previous run for comparison of compatible scopes |
 | `last-full-report.json` | Compatible completed full-check reference for scoped browser debt |
 | `lintapple.raw.json` | Original rendered checker output |
-| `render-*.png` | Optional same-session state images and element crops |
+| `images-<runId>/render-*.png` | Optional immutable same-session state images and element crops |
+| `image-artifacts.json` | Current run's image inventory, SHA-256, byte counts and capture dimensions |
 | `render-*.aria.yml` | Optional same-state ARIA structure; content hashes preserve previous evidence |
 | `VISUAL_REVIEW.md` | Advisory review packet for a person or an external visual model |
 

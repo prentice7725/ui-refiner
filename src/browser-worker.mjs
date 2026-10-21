@@ -6,12 +6,13 @@ import {browserRoutes,resolveInside} from './config.mjs';
 import {checkRoutes} from './browser-session.mjs';
 import {collectRenderedMetrics,metricFindings} from './rendered-metrics.mjs';
 import {maskAriaSnapshot} from './aria-evidence.mjs';
+import {captureImages} from './image-evidence.mjs';
 try{
- const {config,root}=JSON.parse(process.argv[2]);
+ const {config,root,evidenceRunId}=JSON.parse(process.argv[2]);
  const routes=browserRoutes(config);
  const policy=JSON.parse(await fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
  for(const route of routes)route.interactions=route.interactionsPath?JSON.parse(await fs.readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8')):undefined;
- const dir=resolveInside(root,config.reportDir,'reportDir'),artifacts=[],captures=[],ariaSnapshots=[],renderedMetrics=[],advisory=[];
+ const dir=resolveInside(root,config.reportDir,'reportDir'),artifacts=[],captures=[],imageArtifacts=[],ariaSnapshots=[],renderedMetrics=[],advisory=[];
  if(config.browser.captureScreenshots||config.browser.captureAriaSnapshots)await fs.mkdir(dir,{recursive:true});
  const onState=async(page,state)=>{
   const label=state.name.replace(/[^a-zA-Z0-9_-]/g,'_').slice(0,40);
@@ -29,19 +30,10 @@ try{
    ariaSnapshots.push({...dimensions,file,sha256,bytes:Buffer.byteLength(snapshot)});
   }
   if(!config.browser.captureScreenshots)return;
-  const image=stem+'.png';await page.screenshot({path:path.join(dir,image),fullPage:true});artifacts.push(image);
-  const capture={image,...dimensions,reducedMotion:'reduce',locale:config.locale||'en-US',crops:[]};
-  const selectors=[...new Set(state.findings.map(f=>f.selector))].slice(0,5);
-  for(const [index,selector] of selectors.entries()){
-   try{
-    const locator=page.locator(selector);if(await locator.count()!==1||!await locator.isVisible())throw Error('target is not uniquely visible');
-    const crop=`${stem}-finding-${index+1}.png`;await locator.screenshot({path:path.join(dir,crop),timeout:Math.min(config.browser.timeoutMs,5000)});
-    artifacts.push(crop);capture.crops.push({selector,image:crop});
-   }catch(e){capture.crops.push({selector,status:'unavailable',reason:e.message});}
-  }
-  captures.push(capture);
+  const images=await captureImages(page,state,{dir,runId:evidenceRunId,locale:config.locale||'en-US',timeoutMs:config.browser.timeoutMs});
+  artifacts.push(...images.artifacts);imageArtifacts.push(...images.imageArtifacts);captures.push(images.capture);
  };
  const rawReport=await checkRoutes(routes,policy,{allowedHosts:config.gate.allowedHosts,timeout:config.browser.timeoutMs,onState,locale:config.locale||'en-US'});
  rawReport.findings.push(...advisory);
- console.log(JSON.stringify({rawReport,artifacts,captures,ariaSnapshots,renderedMetrics}));
+ console.log(JSON.stringify({rawReport,artifacts,captures,imageArtifacts,ariaSnapshots,renderedMetrics}));
 }catch(e){console.error(e.stack||e.message);process.exitCode=2;}
