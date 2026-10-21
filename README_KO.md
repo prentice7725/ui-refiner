@@ -78,6 +78,22 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 **브라우저 검사는 여전히 설정된 전체 페이지와 상호작용 계획을 검사합니다.** 호환되는 `last-full-report.json`이 있으면 URL·로케일·정책 내용·상호작용 내용으로 기존의 안정적으로 식별된 브라우저 위반과 새 위반을 구분합니다. 기존 위반은 `existingBrowserDebt`로 계속 표시하지만 부분 범위 결과를 막지는 않습니다. 호환되는 전체 기준 결과가 없으면 브라우저 위반을 계속 강제합니다. 이 처리는 베이스라인을 작성하거나 승인하지 않으며, 전체 검사에서는 기존 위반도 계속 강제합니다.
 
+### 리포트 비교 호환성
+
+리포트는 finding 변화·기존 브라우저 부채·ARIA 증거의 버전 있는 `comparisonContexts`를 기록합니다. 기존 `comparisonContext`는 finding 컨텍스트의 별칭으로 유지합니다. finding ID와 baseline schemaVersion 2는 바꾸지 않습니다.
+
+단일 페이지와 명시적 라우트 모두 실제 적용되는 URL·ready·상호작용 내용, 로케일·정책·고정 엔진 메타데이터로 비교합니다. `browser.ready`를 바꾸면 이전 결과 비교와 기존 부채 억제를 무효화합니다. 라우트가 명시적으로 덮어쓴 공통 ready/plan은 비교에 영향을 주지 않습니다. 비교 호환성에는 절대 URL을 유지하며, 베이스라인 ID의 호스트·포트 독립성과 구분합니다.
+
+| 변경 | Finding 비교 | 기존 브라우저 부채 | ARIA 비교 |
+|---|---|---|---|
+| 실제 URL/ready/plan, 로케일, 정책, 브라우저 엔진 | 초기화 | 초기화 | 초기화 |
+| `renderedMetrics` | 초기화 | 유지 | 유지 |
+| ARIA 마스크 또는 `captureAriaSnapshots` | 유지 | 유지 | 초기화 |
+| `captureScreenshots`, 시간 예산, 수동 검토 설정 | 유지 | 유지 | 유지 |
+| 정적 대상/audit 경로/엔진 | 초기화 | 유지 | 유지 |
+
+범위가 바뀌거나 필수 검사가 미완료이면 해결된 finding·제거된 ARIA로 비교하지 않습니다. 기존 부채는 완료된 호환 전체 리포트만 참조합니다. 새 메타데이터 없는 이전 리포트는 이유를 표시하고 비교를 거부하므로 전체 검사를 한 번 실행해 참조를 갱신하세요. 검토된 기존 v2 베이스라인은 계속 사용할 수 있습니다. JSON의 `diff.reason`·`ariaDiff.reason`·`browserReference.reason`에 비교 불가 이유를 기록하고 핸드오프·ARIA 요약에도 표시합니다.
+
 ### 상태와 종료 코드
 
 | 상태 | 종료 | 의미 |
@@ -95,6 +111,10 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 브라우저는 전체 시간·출력 상한이 있는 별도 프로세스에서 실행됩니다. `browser.timeoutMs`는 개별 탐색·감사 단계 제한입니다. `browser.sessionTimeoutMs`를 설정하면 전체 제한을 명시할 수 있고, 없으면 뷰포트·테마 조합, 계획된 상호작용, 촬영 여유를 반영해 **최대 600000 ms** 범위에서 산정합니다. 각각 유효한 여러 단계의 합이 한 단계 제한을 넘었다는 이유만으로 조기 종료하지 않습니다.
 
 초기·상호작용 상태 검사와 이미지 촬영은 같은 브라우저 세션·로케일·reduced-motion 설정을 공유합니다. 촬영은 선택 사항이며 **상태별 최대 5개 고유 위반 요소 크롭**을 생성합니다. 불가능한 크롭에는 이유를 기록합니다. 중단된 실행 뒤에는 현재 리포트의 artifact 목록을 기준으로 판단하세요.
+
+PNG는 실행별 `images-<runId>/` 아래에 내용 SHA-256을 포함한 이름으로 저장하므로 다음 검사에서 이전 이미지를 덮어쓰지 않습니다. `imageArtifacts`·`image-artifacts.json`에 artifact ID·해시·바이트 수·라우트/상태/뷰포트/테마/로케일을 기록하고, 각 브라우저 finding의 `imageEvidence`가 상태 이미지와 일치하는 요소 크롭을 연결합니다. 기존 `artifacts`·`captures[].image`는 계속 `reportDir` 상대 경로이며 새 하위 디렉터리를 지원해야 합니다. 리포트 공유 시 참조된 디렉터리도 함께 복사하세요.
+
+현재·직전·마지막 전체 리포트와 finding diff의 이미지 참조가 해당 실행의 이미지 묶음을 보호합니다. 보고서·이미지 목록 파일을 각각 임시 파일로 작성해 원자적으로 교체한 뒤, 명시적 소유 표시가 있고 참조되지 않는 묶음만 정리합니다. 수동 파일·알 수 없는 내용·심볼릭 링크가 있으면 삭제하지 않으며 기존 평면 PNG도 건드리지 않습니다. 중단되어 아직 게시되지 않은 실행은 최대 브라우저 예산에 1분을 더한 11분의 유예를 둡니다. 무제한 기록 보관이 아니라 참조 기반 보존이므로 동시 검사나 장기 보관에는 별도 `reportDir`를 사용하세요. 참조된 실행 디렉터리는 통째로 유지합니다. 요청한 상태 이미지 촬영 실패는 ERROR이며 크롭 불가는 이유를 남깁니다. 촬영 실패 결과가 마지막 완료된 전체 리포트를 대체하지 않습니다.
 
 정렬·레이아웃/컨트롤 간격·중첩 반경·컨트롤 inset의 검사 대상 수를 표시합니다. 대상 0개는 `not-tested`, 정보 누락은 `unknown`입니다. 검사가 필요한 곳에는 해당 `data-ui-*` 계약 마커를 추가해야 합니다. PASS는 마커가 없는 계약까지 검사했다는 뜻이 아닙니다.
 
@@ -156,7 +176,8 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 | `previous-report.json` | 호환되는 범위를 비교하기 위한 직전 실행 결과 |
 | `last-full-report.json` | 부분 검사에서 기존 브라우저 위반을 구분하는 완료된 전체 기준 결과 |
 | `lintapple.raw.json` | 원본 렌더링 검사 결과 |
-| `render-*.png` | 선택적 동일 세션 상태 이미지·요소 크롭 |
+| `images-<runId>/render-*.png` | 선택적 동일 세션 상태 이미지·요소 크롭; 실행별 불변 경로 |
+| `image-artifacts.json` | 현재 실행의 이미지 목록·SHA-256·바이트 수·촬영 차원 |
 | `render-*.aria.yml` | 선택적 동일 상태 ARIA 구조; 내용 해시로 이전 증거 보존 |
 | `VISUAL_REVIEW.md` | 사람 또는 외부 비전 모델을 위한 advisory 검토 패킷 |
 

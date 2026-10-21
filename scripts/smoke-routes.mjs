@@ -6,6 +6,7 @@ import {once} from 'node:events';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {makePreset,lintapplePolicy} from '../src/presets.mjs';
 import {runGate} from '../src/gate.mjs';
 import {realBrowser} from '../src/execute.mjs';
@@ -33,7 +34,16 @@ try{
  assert.ok(first.renderedMetrics.every(m=>m.topPinned.count===2&&m.filledButtons.count===2&&m.duplicateActions.some(a=>a.name==='Save')));
  assert.ok(first.findings.filter(f=>f.advisory).every(f=>!f.blocking&&!f.baselineEligible));
  const saved=first.ariaSnapshots.find(s=>s.route==='home'&&s.state==='saved');assert.match(await fs.readFile(path.join(root,config.reportDir,saved.file),'utf8'),/Saved/);
+ const beforeImages=new Map(await Promise.all(first.imageArtifacts.map(async image=>{
+  const bytes=await fs.readFile(path.join(root,config.reportDir,image.file));
+  assert.equal(image.sha256,createHash('sha256').update(bytes).digest('hex'));assert.equal(image.bytes,bytes.length);assert.equal(image.runId,first.runId);
+  return [image.file,bytes];
+ })));
+ assert.ok(beforeImages.size>6);assert.ok(first.findings.some(f=>f.imageEvidence?.some(image=>image.kind==='crop')));
  title='Updated heading';const second=await runGate({root,config});assert.equal(second.ariaDiff.status,'compared');assert.equal(second.ariaDiff.changed.length,4);assert.equal(second.ariaDiff.unchanged.length,2);
+ assert.notEqual(first.runId,second.runId);assert.ok(second.imageArtifacts.every(image=>!beforeImages.has(image.file)));
+ for(const [file,bytes] of beforeImages)assert.deepEqual(await fs.readFile(path.join(root,config.reportDir,file)),bytes,'Previous screenshot bytes must survive the next audit');
+ const imageManifest=JSON.parse(await fs.readFile(path.join(root,config.reportDir,'image-artifacts.json'),'utf8'));assert.equal(imageManifest.runId,second.runId);assert.deepEqual(imageManifest.images,second.imageArtifacts);
  for(const s of second.ariaDiff.changed){assert.notEqual(s.file,s.previousFile);assert.match(await fs.readFile(path.join(root,config.reportDir,s.previousFile),'utf8'),/Home/);}
  config.browser.routes=[{name:'redirect',url:'/redirect'}];const redirect=await realBrowser(config,root);assert.ok(redirect.errors.some(e=>/Host example.com is not allowed/.test(e.error)));
  config.browser.routes=[{name:'missing',url:'/missing'}];const missing=await realBrowser(config,root);assert.ok(missing.errors.some(e=>/Route missing: Page returned HTTP 404/.test(e.error)));
