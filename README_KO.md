@@ -78,6 +78,22 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 **브라우저 검사는 여전히 설정된 전체 페이지와 상호작용 계획을 검사합니다.** 호환되는 `last-full-report.json`이 있으면 URL·로케일·정책 내용·상호작용 내용으로 기존의 안정적으로 식별된 브라우저 위반과 새 위반을 구분합니다. 기존 위반은 `existingBrowserDebt`로 계속 표시하지만 부분 범위 결과를 막지는 않습니다. 호환되는 전체 기준 결과가 없으면 브라우저 위반을 계속 강제합니다. 이 처리는 베이스라인을 작성하거나 승인하지 않으며, 전체 검사에서는 기존 위반도 계속 강제합니다.
 
+### 리포트 비교 호환성
+
+리포트는 finding 변화·기존 브라우저 부채·ARIA 증거의 버전 있는 `comparisonContexts`를 기록합니다. 기존 `comparisonContext`는 finding 컨텍스트의 별칭으로 유지합니다. finding ID와 baseline schemaVersion 2는 바꾸지 않습니다.
+
+단일 페이지와 명시적 라우트 모두 실제 적용되는 URL·ready·상호작용 내용, 로케일·정책·고정 엔진 메타데이터로 비교합니다. `browser.ready`를 바꾸면 이전 결과 비교와 기존 부채 억제를 무효화합니다. 라우트가 명시적으로 덮어쓴 공통 ready/plan은 비교에 영향을 주지 않습니다. 비교 호환성에는 절대 URL을 유지하며, 베이스라인 ID의 호스트·포트 독립성과 구분합니다.
+
+| 변경 | Finding 비교 | 기존 브라우저 부채 | ARIA 비교 |
+|---|---|---|---|
+| 실제 URL/ready/plan, 로케일, 정책, 브라우저 엔진 | 초기화 | 초기화 | 초기화 |
+| `renderedMetrics` | 초기화 | 유지 | 유지 |
+| ARIA 마스크 또는 `captureAriaSnapshots` | 유지 | 유지 | 초기화 |
+| `captureScreenshots`, 시간 예산, 수동 검토 설정 | 유지 | 유지 | 유지 |
+| 정적 대상/audit 경로/엔진 | 초기화 | 유지 | 유지 |
+
+범위가 바뀌거나 필수 검사가 미완료이면 해결된 finding·제거된 ARIA로 비교하지 않습니다. 기존 부채는 완료된 호환 전체 리포트만 참조합니다. 새 메타데이터 없는 이전 리포트는 이유를 표시하고 비교를 거부하므로 전체 검사를 한 번 실행해 참조를 갱신하세요. 검토된 기존 v2 베이스라인은 계속 사용할 수 있습니다. JSON의 `diff.reason`·`ariaDiff.reason`·`browserReference.reason`에 비교 불가 이유를 기록하고 핸드오프·ARIA 요약에도 표시합니다.
+
 ### 상태와 종료 코드
 
 | 상태 | 종료 | 의미 |

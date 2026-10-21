@@ -1,4 +1,3 @@
-import {createHash} from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {resolveInside,browserRoutes} from './config.mjs';
@@ -8,6 +7,7 @@ import {groupedHandoff,groupFindings,reportDiff,ariaDiff,ariaReviewSummary,compa
 import {gitChangedLines,touchesChanged} from './changed.mjs';
 import {loadValueExceptions,matchValueException} from './value-exceptions.mjs';
 import {pruneAriaSnapshots} from './aria-evidence.mjs';
+import {comparisonContexts,comparisonUnavailable} from './comparison.mjs';
 
 export async function runGate({root,config,staticRunner=realStatic,browserRunner=realBrowser,captureRunner=screenshots,writeReports=true,changedOnly=false,baseRef}){
  const routes=config.browser.enabled?browserRoutes(config):[];
@@ -22,17 +22,15 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   if(raw.schemaVersion!==2||!Array.isArray(raw.ids)||raw.ids.some(id=>typeof id!=='string'))throw Error('Invalid baseline: schemaVersion=2 and ids[] required; recreate v1 baselines from a fresh v2 report');
   baseline=new Set(raw.ids);
  }
- const planContents=await Promise.all(routes.map(async route=>route.interactionsPath?await fs.readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8').catch(()=>null):null));
- const comparisonParts=[config.browser.url,config.locale||'en-US',await fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8').catch(()=>null),config.browser.routes?routes.map((route,i)=>[route.name,route.url,route.routeKey,route.ready,planContents[i]]):planContents[0]??null];
- if(reviewedValues.content!==null)comparisonParts.push(reviewedValues.content);
- if(config.browser.ariaSnapshotMasks?.length)comparisonParts.push(config.browser.ariaSnapshotMasks);
- const comparisonContext=createHash('sha256').update(JSON.stringify(comparisonParts)).digest('hex');
+ const contexts=await comparisonContexts(config,routes,root,reviewedValues);
+ const comparisonContext=contexts.findings;
  let browserReference;
  if(changedOnly){
   try{browserReference=JSON.parse(await fs.readFile(path.join(dir,'last-full-report.json'),'utf8'));}catch(e){if(e.code!=='ENOENT'&&!(e instanceof SyntaxError))throw e;}
   if(!browserReference&&previous?.scope?.mode==='full')browserReference=previous;
  }
- const referenceIds=new Set(browserReference?.fingerprintVersion===2&&browserReference?.comparisonContext===comparisonContext?browserReference.findings.filter(f=>f.engine==='lintapple'&&f.baselineEligible).map(f=>f.id):[]);
+ const referenceReason=changedOnly?comparisonUnavailable(browserReference,contexts,'browserDebt',{full:true}):'Full checks do not suppress existing browser debt';
+ const referenceIds=new Set(!referenceReason?browserReference.findings.filter(f=>f.engine==='lintapple'&&f.baselineEligible&&!f.advisory).map(f=>f.id):[]);
  const changed=changedOnly?await gitChangedLines(root,{base:baseRef}):null;
  const stages=[],all=[],rawBrowser=[],artifacts=[],captures=[],ariaSnapshots=[],renderedMetrics=[];
  const inConfiguredTargets=file=>config.static.targets.some(target=>{
@@ -65,9 +63,11 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
  const coverageNote=untested.length?`${untested.length} rule/run/state checks have no targets or unknown coverage. Automated PASS does not cover these rules; add contracts where applicable and rerun.`:'';
  const handoff=infra?'Fix the tool/environment error and rerun full QA.':!covered?'Enable both required checkers and rerun full QA.':changedOnly?'Changed-line static scope; browser findings cover the whole page. Previously observed browser debt from a matching full report is listed separately, not saved to a baseline. This is not a full QA PASS. Run a full check before approval.':blockers.length?`Fix ${blockers.length} new blocking finding(s) by root cause, preserve SOT art direction, then rerun. Never weaken policy or add suppressions automatically.`:'Executed checks have no new enforced findings. Human visual/UX review remains necessary.';
  const scope={mode:changedOnly?'changed-only':'full',static:changedOnly?'git changed lines':'all configured targets',browser:'all configured routes and interaction plans',routes:routes.map(({name,url})=>({name,url})),baseRef:baseRef||null};
- const comparable=!infra&&!['ERROR','INCOMPLETE'].includes(previous?.automatedStatus)&&(previous?.scope?.mode===scope.mode&&previous?.scope?.baseRef===scope.baseRef||!previous?.scope&&!changedOnly)&&previous?.comparisonContext===comparisonContext;
- const result={fingerprintVersion:2,comparisonContext,browserReference:{status:referenceIds.size?'matching-full-report':'none',existingDebt:marked.filter(f=>f.existingBrowserDebt).length},version:'0.3.0',generatedAt:new Date().toISOString(),project:config.name,preset:config.preset,locale:config.locale||'en-US',scope,automatedStatus,status:automatedStatus==='PASS'&&config.gate.manualVisualReview?'REVIEW_REQUIRED':automatedStatus,manualVisualReview:config.gate.manualVisualReview,summary:{total:marked.length,blockers:blockers.length,baselined:marked.filter(f=>f.baselined).length,existingBrowserDebt:marked.filter(f=>f.existingBrowserDebt).length},stages,findings:marked,groups:groupFindings(marked).map(({findings,...g})=>({...g,ids:findings.map(f=>f.id)})),diff:reportDiff(comparable?previous:null,marked),coverageNote,handoff:handoff+(coverageNote?' '+coverageNote:''),artifacts,captures};
- Object.assign(result,{ariaSnapshots,renderedMetrics,ariaDiff:ariaDiff(comparable?previous:null,ariaSnapshots),reviewedValueExceptions:reviewedValues.exceptions});
+ const currentReason=infra||!covered?'Current report did not complete required checks':null;
+ const findingReason=currentReason||comparisonUnavailable(previous,contexts,'findings',{scope});
+ const ariaReason=currentReason||comparisonUnavailable(previous,contexts,'aria',{scope});
+ const result={fingerprintVersion:2,comparisonContext,comparisonContexts:contexts,browserReference:{status:!referenceReason?'matching-full-report':'none',reason:referenceReason,existingDebt:marked.filter(f=>f.existingBrowserDebt).length},version:'0.3.0',generatedAt:new Date().toISOString(),project:config.name,preset:config.preset,locale:config.locale||'en-US',scope,automatedStatus,status:automatedStatus==='PASS'&&config.gate.manualVisualReview?'REVIEW_REQUIRED':automatedStatus,manualVisualReview:config.gate.manualVisualReview,summary:{total:marked.length,blockers:blockers.length,baselined:marked.filter(f=>f.baselined).length,existingBrowserDebt:marked.filter(f=>f.existingBrowserDebt).length},stages,findings:marked,groups:groupFindings(marked).map(({findings,...g})=>({...g,ids:findings.map(f=>f.id)})),diff:reportDiff(findingReason?null:previous,marked,findingReason),coverageNote,handoff:handoff+(coverageNote?' '+coverageNote:''),artifacts,captures};
+ Object.assign(result,{ariaSnapshots,renderedMetrics,ariaDiff:ariaDiff(ariaReason?null:previous,ariaSnapshots,ariaReason),reviewedValueExceptions:reviewedValues.exceptions});
  result.summary.reviewedExceptions=marked.filter(f=>f.reviewedException).length;
  if(writeReports){
   await fs.mkdir(dir,{recursive:true});
@@ -85,7 +85,7 @@ export async function runGate({root,config,staticRunner=realStatic,browserRunner
   await fs.writeFile(path.join(dir,'report.md'),toMarkdown(result)+'\n\n## ARIA structure evidence\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nSnapshot retention: '+result.ariaRetention.status+'; removed='+String(result.ariaRetention.removed??'unknown')+(result.ariaRetention.error?' — '+result.ariaRetention.error:'')+'\n');
   if(rawBrowser.length)await fs.writeFile(path.join(dir,'lintapple.raw.json'),JSON.stringify(rawBrowser[0],null,2)+'\n');
   else await fs.rm(path.join(dir,'lintapple.raw.json'),{force:true});
-  const diff=result.diff.status==='compared'?`Compared to previous run: resolved=${result.diff.resolved.length}, added=${result.diff.added.length}, persisting=${result.diff.persisting.length}. Full identities and locations: report.json.\n\n`:'';
+  const diff=result.diff.status==='compared'?`Compared to previous run: resolved=${result.diff.resolved.length}, added=${result.diff.added.length}, persisting=${result.diff.persisting.length}. Full identities and locations: report.json.\n\n`:`Previous findings comparison unavailable: ${result.diff.reason}.\n\n`;
   await fs.writeFile(path.join(dir,'AGENT_HANDOFF.md'),`# UI QA agent handoff\n\n${result.handoff}\n\n${diff}${result.browserReference.existingDebt?`Existing browser debt outside the static edit scope: ${result.browserReference.existingDebt}; see report.json. No baseline was written.\n\n`:''}ARIA structure comparison (advisory): ${result.ariaDiff.status}; changed=${result.ariaDiff.changed.length}, added=${result.ariaDiff.added.length}, removed=${result.ariaDiff.removed.length}. Snapshot files and exact dimensions: report.json.\n\n## Rule coverage\n\n${compactCoverage(stages)||'- No rendered rule counters returned'}\n\n## Fix root causes\n\n${groupedHandoff(marked)||'- No new automated findings'}\n\nUse report.json for every affected target. Respect the project SOT; do not hide failed checks.\n`);
   await fs.writeFile(path.join(dir,'VISUAL_REVIEW.md'),visualReviewPacket(result)+'\n## Structure and rendered heuristics\n\n'+ariaReviewSummary(result.ariaDiff)+'\n\nRendered metrics (advisory only): '+renderedMetrics.length+' route/viewport/theme/state observations. See report.json for target counts, duplicate actions and approximate chromatic hue buckets. These are design-review evidence, not proven violations.\n');
  }

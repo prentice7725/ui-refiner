@@ -78,6 +78,22 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 **ブラウザー検査は、引き続き設定したページ全体と操作計画を検査します。** 互換性のある`last-full-report.json`があれば、URL・ロケール・ポリシー内容・操作計画の内容に基づき、以前観測した安定したIDを持つブラウザー違反と新しい違反を区別します。既存違反は`existingBrowserDebt`として表示し続けますが、部分範囲の結果はブロックしません。互換性のある全体結果がなければ、ブラウザー違反は引き続き強制判定の対象です。この処理はベースラインを作成・承認しません。全体検査では既存違反も引き続き強制判定します。
 
+### レポート比較の互換性
+
+レポートはfindingの変化・既存ブラウザー負債・ARIA証拠ごとに、バージョン付きの`comparisonContexts`を記録します。従来の`comparisonContext`はfindingコンテキストの別名として残します。finding IDとbaseline schemaVersion 2は変更しません。
+
+単一ページと名前付きルートの両方で、実際に適用されるURL・ready・操作内容、ロケール・ポリシー・固定エンジン情報を比較します。`browser.ready`の変更は比較と既存負債の抑制を無効にします。ルートが上書きした未使用の共通ready/planは比較に影響しません。比較互換性には絶対URLを残し、ホスト・ポートに依存しないbaseline IDとは区別します。
+
+| 変更 | Finding比較 | 既存ブラウザー負債 | ARIA比較 |
+|---|---|---|---|
+| 有効なURL/ready/plan、ロケール、ポリシー、ブラウザーエンジン | リセット | リセット | リセット |
+| `renderedMetrics` | リセット | 維持 | 維持 |
+| ARIAマスクまたは`captureAriaSnapshots` | 維持 | 維持 | リセット |
+| `captureScreenshots`、時間予算、手動レビュー設定 | 維持 | 維持 | 維持 |
+| 静的対象/auditパス/エンジン | リセット | 維持 | 維持 |
+
+範囲変更や必須検査の未完了を、解決したfindingや削除されたARIAとして比較しません。既存負債には完了した互換全体レポートだけを使います。新しい情報のない旧レポートは理由を示して比較を拒否するため、全体検査を一度実行して参照を更新してください。レビュー済みの既存v2ベースラインは引き続き使えます。JSONの`diff.reason`・`ariaDiff.reason`・`browserReference.reason`に比較できない理由を記録し、ハンドオフとARIA要約にも表示します。
+
 ### ステータスと終了コード
 
 | ステータス | 終了 | 意味 |
