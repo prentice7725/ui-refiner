@@ -2,6 +2,7 @@ import {spawn} from 'node:child_process';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {randomUUID} from 'node:crypto';
 import {resolveInside,browserRoutes} from './config.mjs';
 import {browserBudget} from './browser-budget.mjs';
 import {normalizeStatic,normalizeBrowser,browserCoverage} from './normalize.mjs';
@@ -56,7 +57,7 @@ export async function realStatic(config,root){
 export function staticAuditPath(config,root){
  return config.static.auditPath==='bundled' ? fileURLToPath(new URL('../vendor/suta/skills/suta/scripts/audit.mjs',import.meta.url)) : resolveInside(root,config.static.auditPath,'static.auditPath');
 }
-export async function realBrowser(config,root,{runner=spawnBounded}={}){
+export async function realBrowser(config,root,{runner=spawnBounded,evidenceRunId=randomUUID()}={}){
  const routes=browserRoutes(config);
  const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
  const plans=await Promise.all(routes.map(async route=>{
@@ -65,7 +66,7 @@ export async function realBrowser(config,root,{runner=spawnBounded}={}){
  }));
  const budgets=browserBudget(config,policy,plans),started=Date.now();let outputBytes=0;
  const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
- const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],ariaSnapshots:[],renderedMetrics:[],routeResults:[]};
+ const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],imageArtifacts:[],ariaSnapshots:[],renderedMetrics:[],routeResults:[]};
  for(const [index,route] of routes.entries()){
   const remaining=Math.max(0,budgets.sessionTimeoutMs-(Date.now()-started));
   // Reserve a fair share for every pending route; one slow worker cannot consume the whole batch.
@@ -76,7 +77,7 @@ export async function realBrowser(config,root,{runner=spawnBounded}={}){
    if(plans[index]?.loadError)throw Error(plans[index].loadError);
    if(allocated<100)throw Error('Session budget exhausted before this route could run');
    const selected={...config,browser:{...config.browser,...(config.browser.routes?{routes:[config.browser.routes[index]]}:{})}};
-   const run=await runner(process.execPath,[worker,JSON.stringify({config:selected,root})],{cwd:root,timeoutMs:allocated});
+   const run=await runner(process.execPath,[worker,JSON.stringify({config:selected,root,evidenceRunId})],{cwd:root,timeoutMs:allocated});
    if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${String(run.stderr||'').slice(-1000)}`);
    outputBytes+=Buffer.byteLength(run.stdout||'')+Buffer.byteLength(run.stderr||'');
    if(outputBytes>20_000_000)throw Error('Aggregate browser output limit exceeded; split routes into smaller batches');
@@ -86,7 +87,7 @@ export async function realBrowser(config,root,{runner=spawnBounded}={}){
    combined.rawReport.runs.push(...result.rawReport.runs);
    combined.rawReport.findings.push(...result.rawReport.findings);
    combined.rawReport.errors.push(...result.rawReport.errors||[]);
-   for(const key of ['artifacts','captures','ariaSnapshots','renderedMetrics'])combined[key].push(...result[key]||[]);
+   for(const key of ['artifacts','captures','imageArtifacts','ariaSnapshots','renderedMetrics'])combined[key].push(...result[key]||[]);
    outcome.status=result.rawReport.errors?.length?'error':'complete';
    outcome.completedRuns=result.rawReport.runs.filter(r=>r.status!=='error').length;
    if(result.rawReport.errors?.length)outcome.error=result.rawReport.errors.map(e=>e.error).join('; ');

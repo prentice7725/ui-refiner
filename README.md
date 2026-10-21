@@ -112,6 +112,10 @@ The browser runs in a separate process with total time and output bounds. `brows
 
 Initial and interaction-state audits share the same browser session, locale and reduced-motion setting with their images. Capture is optional and produces at most **five unique violating-element crops per state**; unavailable crops record a reason. Treat the current report's artifact list as authoritative after interrupted runs.
 
+PNG evidence is stored under `images-<runId>/` with SHA-256 in each filename. A later audit never overwrites an earlier image. `imageArtifacts` and `image-artifacts.json` record artifact IDs, hashes, byte counts and route/state/viewport/theme/locale dimensions; each browser finding's `imageEvidence` links its state image and matching available crops. Existing `artifacts` and `captures[].image` paths remain relative to `reportDir`; consumers must support the new subdirectory. Copy the referenced directories when sharing a report.
+
+Current, previous and last-full reports (including image references in finding diffs) protect their image runs. After report and image-inventory files are published with atomic per-file replacement, cleanup removes only unreferenced, explicitly owned image directories. Manual files, unknown contents and symlinks protect a directory; legacy flat PNGs are not deleted. Interrupted unpublished runs have an 11-minute grace period, covering the maximum browser budget plus one minute. Retention is reference-based rather than an unlimited archive; use a separate `reportDir` for each concurrent audit or archival job. Keep an entire referenced image run, not just individual files. Requested state-image failure is ERROR; unavailable element crops retain their reason. A failed capture cannot replace the last completed full report.
+
 Coverage reports show target counts for alignment, layout/control gaps, nested radius and control inset. Zero targets are `not-tested`; missing counters are `unknown`. Add the relevant `data-ui-*` contracts where those checks should apply. PASS does not assert that unmarked contracts were tested.
 
 Clickable generic elements are checked for missing keyboard focus and semantic roles through inline `onclick`, DOM `onclick` properties (including React-style handlers), `data-ui-clickable` and Chromium CDP direct click listeners. CDP inspects at most **500 visible non-native candidates per state**, prioritizing `cursor:pointer` before document order. Known framework delegation roots are excluded. Reports disclose limited inspection and CDP availability; delegated descendants and candidates beyond the cap need explicit markers or interaction plans. Use an interaction plan to verify actual Enter/Space behavior. See [examples/interactions.json](examples/interactions.json).
@@ -172,7 +176,8 @@ Outputs appear under `reportDir`:
 | `previous-report.json` | Previous run for comparison of compatible scopes |
 | `last-full-report.json` | Compatible completed full-check reference for scoped browser debt |
 | `lintapple.raw.json` | Original rendered checker output |
-| `render-*.png` | Optional same-session state images and element crops |
+| `images-<runId>/render-*.png` | Optional immutable same-session state images and element crops |
+| `image-artifacts.json` | Current run's image inventory, SHA-256, byte counts and capture dimensions |
 | `render-*.aria.yml` | Optional same-state ARIA structure; content hashes preserve previous evidence |
 | `VISUAL_REVIEW.md` | Advisory review packet for a person or an external visual model |
 
