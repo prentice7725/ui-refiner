@@ -112,6 +112,10 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 初期状態・操作後の監査と画像は、同じブラウザーセッション・ロケール・reduced-motion設定を共有します。撮影は任意で、**状態ごとに最大5個の一意な違反要素クロップ**を生成します。クロップできない場合は理由を記録します。中断した実行後は、現在のレポートのartifact一覧を基準にしてください。
 
+PNGは実行ごとの`images-<runId>/`に、内容のSHA-256を含む名前で保存し、次の監査で以前の画像を上書きしません。`imageArtifacts`と`image-artifacts.json`にartifact ID・ハッシュ・バイト数・ルート/状態/ビューポート/テーマ/ロケールを記録します。各ブラウザーfindingの`imageEvidence`は状態画像と一致する要素クロップを参照します。`artifacts`と`captures[].image`は引き続き`reportDir`相対パスですが、新しいサブディレクトリへの対応が必要です。共有時は参照ディレクトリもコピーしてください。
+
+現在・直前・最後の全体レポートとfinding diff内の画像参照が、その実行の画像一式を保護します。レポートと画像一覧をファイルごとに一時ファイルから原子的に置き換えた後、所有マーカーのある未参照ディレクトリだけを整理します。手動ファイル・未知の内容・シンボリックリンクがあれば削除せず、旧形式の平面PNGも残します。中断した未公開の実行には、最大ブラウザー予算と1分を合わせた11分の猶予を設けます。無期限アーカイブではなく参照に基づく保持です。同時監査や長期保存には別の`reportDir`を使用し、参照した実行ディレクトリ全体を保持してください。要求した状態画像の失敗はERROR、クロップ不可は理由を記録します。撮影失敗で最後の完了済み全体レポートを置き換えません。
+
 整列、レイアウト/コントロール間隔、入れ子の角丸、コントロールinsetの対象数を表示します。対象ゼロは`not-tested`、カウンター情報の欠落は`unknown`です。検査が必要な場所に適切な`data-ui-*`契約マーカーを追加してください。PASSは、マーカーのない契約まで検査したという意味ではありません。
 
 クリック可能な汎用要素のキーボードフォーカス・意味的役割の欠落を、インライン`onclick`、DOMの`onclick`プロパティ（React方式を含む）、`data-ui-clickable`、Chromium CDPの直接clickリスナーから確認します。CDPは**状態ごとに最大500個の表示されている非ネイティブ要素候補**を検査し、文書順より`cursor:pointer`を優先します。既知のフレームワークのイベント委譲ルートは除外します。検査の制限とCDPの利用可否をレポートに公開します。委譲先の子要素や上限を超えた候補には、明示的なマーカー・操作計画が必要です。実際のEnter/Space動作は操作計画で検証してください。[examples/interactions.json](examples/interactions.json)を参照してください。
@@ -172,7 +176,8 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 | `previous-report.json` | 互換性のある範囲を比較するための前回結果 |
 | `last-full-report.json` | 部分検査で既存ブラウザー違反を区別するための完了済み全体結果 |
 | `lintapple.raw.json` | 元のレンダリング検査結果 |
-| `render-*.png` | 任意の同一セッション状態画像・要素クロップ |
+| `images-<runId>/render-*.png` | 任意の同一セッション状態画像・要素クロップ。実行別の不変パス |
+| `image-artifacts.json` | 現在の実行の画像一覧・SHA-256・バイト数・撮影条件 |
 | `render-*.aria.yml` | 任意の同一状態ARIA構造。内容ハッシュで以前の証拠を保持 |
 | `VISUAL_REVIEW.md` | 人または外部ビジョンモデル向けのadvisoryレビューパケット |
 

@@ -112,6 +112,10 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 
 초기·상호작용 상태 검사와 이미지 촬영은 같은 브라우저 세션·로케일·reduced-motion 설정을 공유합니다. 촬영은 선택 사항이며 **상태별 최대 5개 고유 위반 요소 크롭**을 생성합니다. 불가능한 크롭에는 이유를 기록합니다. 중단된 실행 뒤에는 현재 리포트의 artifact 목록을 기준으로 판단하세요.
 
+PNG는 실행별 `images-<runId>/` 아래에 내용 SHA-256을 포함한 이름으로 저장하므로 다음 검사에서 이전 이미지를 덮어쓰지 않습니다. `imageArtifacts`·`image-artifacts.json`에 artifact ID·해시·바이트 수·라우트/상태/뷰포트/테마/로케일을 기록하고, 각 브라우저 finding의 `imageEvidence`가 상태 이미지와 일치하는 요소 크롭을 연결합니다. 기존 `artifacts`·`captures[].image`는 계속 `reportDir` 상대 경로이며 새 하위 디렉터리를 지원해야 합니다. 리포트 공유 시 참조된 디렉터리도 함께 복사하세요.
+
+현재·직전·마지막 전체 리포트와 finding diff의 이미지 참조가 해당 실행의 이미지 묶음을 보호합니다. 보고서·이미지 목록 파일을 각각 임시 파일로 작성해 원자적으로 교체한 뒤, 명시적 소유 표시가 있고 참조되지 않는 묶음만 정리합니다. 수동 파일·알 수 없는 내용·심볼릭 링크가 있으면 삭제하지 않으며 기존 평면 PNG도 건드리지 않습니다. 중단되어 아직 게시되지 않은 실행은 최대 브라우저 예산에 1분을 더한 11분의 유예를 둡니다. 무제한 기록 보관이 아니라 참조 기반 보존이므로 동시 검사나 장기 보관에는 별도 `reportDir`를 사용하세요. 참조된 실행 디렉터리는 통째로 유지합니다. 요청한 상태 이미지 촬영 실패는 ERROR이며 크롭 불가는 이유를 남깁니다. 촬영 실패 결과가 마지막 완료된 전체 리포트를 대체하지 않습니다.
+
 정렬·레이아웃/컨트롤 간격·중첩 반경·컨트롤 inset의 검사 대상 수를 표시합니다. 대상 0개는 `not-tested`, 정보 누락은 `unknown`입니다. 검사가 필요한 곳에는 해당 `data-ui-*` 계약 마커를 추가해야 합니다. PASS는 마커가 없는 계약까지 검사했다는 뜻이 아닙니다.
 
 클릭 가능한 일반 요소의 키보드 포커스·시맨틱 역할 누락은 인라인 `onclick`, DOM `onclick` 프로퍼티(React 방식 포함), `data-ui-clickable`, Chromium CDP 직접 click 리스너로 확인합니다. CDP는 **상태별 최대 500개 보이는 비네이티브 후보**를 검사하며, `cursor:pointer`를 문서 순서보다 먼저 봅니다. 알려진 프레임워크 이벤트 위임 루트는 제외합니다. 제한된 검사와 CDP 사용 가능 여부를 리포트에 공개하며, 위임된 자식 요소와 상한 밖 후보는 명시적 마커·상호작용 계획이 필요합니다. 실제 Enter/Space 동작은 상호작용 계획으로 검증하세요. [examples/interactions.json](examples/interactions.json)을 참고하세요.
@@ -172,7 +176,8 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 | `previous-report.json` | 호환되는 범위를 비교하기 위한 직전 실행 결과 |
 | `last-full-report.json` | 부분 검사에서 기존 브라우저 위반을 구분하는 완료된 전체 기준 결과 |
 | `lintapple.raw.json` | 원본 렌더링 검사 결과 |
-| `render-*.png` | 선택적 동일 세션 상태 이미지·요소 크롭 |
+| `images-<runId>/render-*.png` | 선택적 동일 세션 상태 이미지·요소 크롭; 실행별 불변 경로 |
+| `image-artifacts.json` | 현재 실행의 이미지 목록·SHA-256·바이트 수·촬영 차원 |
 | `render-*.aria.yml` | 선택적 동일 상태 ARIA 구조; 내용 해시로 이전 증거 보존 |
 | `VISUAL_REVIEW.md` | 사람 또는 외부 비전 모델을 위한 advisory 검토 패킷 |
 
