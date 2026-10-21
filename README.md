@@ -78,6 +78,22 @@ Without `--base`, Git changes against HEAD include staged and unstaged edits plu
 
 **Browser checks still inspect the entire configured page and interaction plan.** A compatible `last-full-report.json` distinguishes previously observed stable browser debt from fresh findings using the URL, locale, policy contents and interaction contents. Existing debt stays visible as `existingBrowserDebt` but does not block the scoped result. Without a compatible full reference, browser findings remain enforced. This does not write or approve a baseline; full checks still enforce the debt.
 
+### Report comparison compatibility
+
+Reports include versioned `comparisonContexts` for finding changes, existing browser debt and ARIA evidence. The legacy `comparisonContext` field remains an alias for the findings context. These hashes do not change finding IDs or baseline schemaVersion 2.
+
+Both single-page and named-route checks use each route's effective URL, ready selector and interaction contents, plus locale, policy and pinned engine metadata. Changing `browser.ready` therefore invalidates comparisons and existing-debt suppression. An explicit route override ignores unused global ready/plan settings. Absolute URLs remain part of comparison compatibility; portable baseline IDs still exclude the host and port.
+
+| Change | Findings comparison | Existing browser debt | ARIA comparison |
+|---|---|---|---|
+| Effective URL/ready/plan, locale, policy or browser engine | Reset | Reset | Reset |
+| `renderedMetrics` | Reset | Keep | Keep |
+| ARIA masks or `captureAriaSnapshots` | Keep | Keep | Reset |
+| `captureScreenshots`, time budgets or manual review | Keep | Keep | Keep |
+| Static targets/audit path/engine | Reset | Keep | Keep |
+
+Scope changes and incomplete runs cannot produce resolved findings or ARIA removals. Existing debt requires a completed compatible full report. Older reports without the new metadata are rejected with an explicit reason; run full QA once to establish a new reference. Existing reviewed v2 baselines remain usable. `diff.reason`, `ariaDiff.reason` and `browserReference.reason` explain unavailable comparisons in JSON; the handoff and ARIA summary also show comparison reasons.
+
 ### Status and exit codes
 
 | Status | Exit | Meaning |

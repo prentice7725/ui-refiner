@@ -46,20 +46,20 @@ function compactSelector(selector){
  if(markers?.length)return markers[markers.length-1];
  return selector.split(' > ').slice(-3).map(s=>s.replace(/:nth-of-type\(\d+\)/g,'')).join(' > ');
 }
-export function reportDiff(previous,current){
- if(!previous||previous.fingerprintVersion!==2||!Array.isArray(previous.findings))return {status:'unavailable',reason:'no compatible previous report',resolved:[],added:[],persisting:[]};
+export function reportDiff(previous,current,reason){
+ if(!previous||previous.fingerprintVersion!==2||!Array.isArray(previous.findings))return {status:'unavailable',reason:reason||'no compatible previous report',resolved:[],added:[],persisting:[]};
  const before=new Map(previous.findings.map(f=>[f.id,f])),after=new Map(current.map(f=>[f.id,f]));
  return {status:'compared',resolved:[...before].filter(([id])=>!after.has(id)).map(([,f])=>f),added:[...after].filter(([id])=>!before.has(id)).map(([,f])=>f),persisting:[...after].filter(([id])=>before.has(id)).map(([,f])=>f)};
 }
-export function ariaDiff(previous,current){
- const empty={status:'unavailable',changed:[],added:[],removed:[],unchanged:[]};
+export function ariaDiff(previous,current,reason){
+ const empty={status:'unavailable',reason:reason||'No previous or current ARIA snapshots',changed:[],added:[],removed:[],unchanged:[]};
  if(!current.length||!previous?.ariaSnapshots?.length)return empty;
  const key=s=>JSON.stringify([s.routeKey||s.route||'default',s.viewport.width,s.viewport.height,s.colorScheme,s.state]);
  const before=new Map(previous.ariaSnapshots.map(s=>[key(s),s])),after=new Map(current.map(s=>[key(s),s]));
  return {status:'compared',changed:[...after].filter(([k,s])=>before.has(k)&&before.get(k).sha256!==s.sha256).map(([k,s])=>({...s,previousFile:before.get(k).file})),added:[...after].filter(([k])=>!before.has(k)).map(([,s])=>s),removed:[...before].filter(([k])=>!after.has(k)).map(([,s])=>s),unchanged:[...after].filter(([k,s])=>before.get(k)?.sha256===s.sha256).map(([,s])=>s)};
 }
 export function ariaReviewSummary(diff){
- return `ARIA structure (advisory): ${diff?.status||'unavailable'}; changed=${diff?.changed.length||0}, added=${diff?.added.length||0}, removed=${diff?.removed.length||0}. Compare previousFile and file in report.json; a structure change is not automatically a defect.`;
+ return `ARIA structure (advisory): ${diff?.status||'unavailable'}; changed=${diff?.changed.length||0}, added=${diff?.added.length||0}, removed=${diff?.removed.length||0}.${diff?.reason?' Reason: '+clip(diff.reason,240)+'.':''} Compare previousFile and file in report.json; a structure change is not automatically a defect.`;
 }
 export function compactCoverage(stages){
  const rows=stages.flatMap(s=>s.ruleCoverage||[]),groups=new Map();
