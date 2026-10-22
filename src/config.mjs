@@ -1,3 +1,4 @@
+import {validateVisual} from './visual-config.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {makePreset} from './presets.mjs';
@@ -14,7 +15,7 @@ export function resolveInside(root,p,field){
   return target;
 }
 export function validateConfig(input){
-  assertKeys(input,['schemaVersion','locale','name','preset','sot','static','browser','gate','reportDir'],'config');
+  assertKeys(input,['schemaVersion','locale','name','preset','sot','static','browser','gate','reportDir','visual'],'config');
   if(input.schemaVersion!==1) throw new Error('Unsupported schemaVersion (expected 1)');
   makePreset(input.preset,input.locale||'en-US');
   nonEmpty(input.name,'name');
@@ -47,6 +48,8 @@ export function validateConfig(input){
   if(input.gate.baselinePath!==null)nonEmpty(input.gate.baselinePath,'gate.baselinePath');
   if(input.gate.valueExceptionsPath!=null)nonEmpty(input.gate.valueExceptionsPath,'gate.valueExceptionsPath');
   bool(input.gate.manualVisualReview,'gate.manualVisualReview');nonEmpty(input.reportDir,'reportDir');
+  validateVisual(input.visual);
+  if(input.visual?.enabled&&!input.browser.enabled)throw Error('visual requires browser.enabled');
   if(input.browser.enabled)browserRoutes(input);
   return input;
 }
@@ -62,6 +65,7 @@ export async function loadConfig(configFile='ui-refiner.config.json'){
   for(const route of config.browser.routes||[])if(route.interactionsPath)resolveInside(root,route.interactionsPath,'route.interactionsPath');
   if(config.gate.baselinePath)resolveInside(root,config.gate.baselinePath,'gate.baselinePath');
   if(config.gate.valueExceptionsPath)resolveInside(root,config.gate.valueExceptionsPath,'gate.valueExceptionsPath');
+  if(config.visual?.baselineDir)resolveInside(root,config.visual.baselineDir,'visual.baselineDir');
   return {root,config,file};
 }
 export function checkUrl(input,allowedHosts){

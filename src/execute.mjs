@@ -1,3 +1,5 @@
+import {validateInteractions} from '../vendor/lintapple/src/interactions.js';
+import {inspectionScope} from './inspection-scope.mjs';
 import {spawn} from 'node:child_process';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
@@ -61,12 +63,12 @@ export async function realBrowser(config,root,{runner=spawnBounded,evidenceRunId
  const routes=browserRoutes(config);
  const policy=JSON.parse(await readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
  const plans=await Promise.all(routes.map(async route=>{
-  try{return route.interactionsPath?JSON.parse(await readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8')):undefined;}
+  try{return route.interactionsPath?validateInteractions(JSON.parse(await readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8'))):undefined;}
   catch(e){return {loadError:e.message};}
  }));
  const budgets=browserBudget(config,policy,plans),started=Date.now();let outputBytes=0;
  const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
- const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],imageArtifacts:[],ariaSnapshots:[],renderedMetrics:[],routeResults:[]};
+ const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],imageArtifacts:[],ariaSnapshots:[],renderedMetrics:[],visualEntries:[],routeResults:[]};
  for(const [index,route] of routes.entries()){
   const remaining=Math.max(0,budgets.sessionTimeoutMs-(Date.now()-started));
   // Reserve a fair share for every pending route; one slow worker cannot consume the whole batch.
@@ -77,6 +79,7 @@ export async function realBrowser(config,root,{runner=spawnBounded,evidenceRunId
    if(plans[index]?.loadError)throw Error(plans[index].loadError);
    if(allocated<100)throw Error('Session budget exhausted before this route could run');
    const selected={...config,browser:{...config.browser,...(config.browser.routes?{routes:[config.browser.routes[index]]}:{})}};
+   outcome.started=true;
    const run=await runner(process.execPath,[worker,JSON.stringify({config:selected,root,evidenceRunId})],{cwd:root,timeoutMs:allocated});
    if(run.error||run.code!==0)throw Error(`Browser worker failed (${run.error||run.code}): ${String(run.stderr||'').slice(-1000)}`);
    outputBytes+=Buffer.byteLength(run.stdout||'')+Buffer.byteLength(run.stderr||'');
@@ -87,13 +90,13 @@ export async function realBrowser(config,root,{runner=spawnBounded,evidenceRunId
    combined.rawReport.runs.push(...result.rawReport.runs);
    combined.rawReport.findings.push(...result.rawReport.findings);
    combined.rawReport.errors.push(...result.rawReport.errors||[]);
-   for(const key of ['artifacts','captures','imageArtifacts','ariaSnapshots','renderedMetrics'])combined[key].push(...result[key]||[]);
+   for(const key of ['artifacts','captures','imageArtifacts','ariaSnapshots','renderedMetrics','visualEntries'])combined[key].push(...result[key]||[]);
    outcome.status=result.rawReport.errors?.length?'error':'complete';
    outcome.completedRuns=result.rawReport.runs.filter(r=>r.status!=='error').length;
    if(result.rawReport.errors?.length)outcome.error=result.rawReport.errors.map(e=>e.error).join('; ');
   }catch(e){outcome.error=e.message;combined.rawReport.errors.push({route:route.name,error:e.message});}
  }
- return {...combined,errors:combined.rawReport.errors,budgets,findings:combined.rawReport.runs.length?normalizeBrowser(combined.rawReport):[],ruleCoverage:combined.rawReport.runs.length?browserCoverage(combined.rawReport):[],capturesIntegrated:true};
+ return {...combined,inspectionScope:inspectionScope(routes,policy,plans,combined.rawReport.runs,combined.routeResults),errors:combined.rawReport.errors,budgets,findings:combined.rawReport.runs.length?normalizeBrowser(combined.rawReport):[],ruleCoverage:combined.rawReport.runs.length?browserCoverage(combined.rawReport):[],capturesIntegrated:true};
 }
 // Compatibility API for explicit callers. The gate uses the integrated worker session.
 export async function screenshots(config,root){

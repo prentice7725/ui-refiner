@@ -8,7 +8,7 @@ It includes suta's complete pinned skill catalog with 57 patterns and lintapple'
 
 ## 1. Requirements and installation
 
-Use Node.js **22.18 or newer**, npm, Git and explicitly installed Playwright Chromium. Runtime npm dependencies are pinned `axe-core@4.14.0` and `playwright@1.63.0`.
+Use Node.js **22.18 or newer**, npm, Git and explicitly installed Playwright Chromium. Runtime npm dependencies are pinned `axe-core@4.14.0`, `playwright@1.63.0`, `pixelmatch@7.2.0` and `pngjs@7.0.0`.
 
 Place this repository at the target app's `tools/ui-refiner`. This source installation is supported; running the native suta TypeScript from `node_modules` is not. There is no supported compiled npm distribution yet.
 
@@ -52,6 +52,7 @@ Supported initial policies are `en-US`, `ko-KR` and `ja-JP`. They derive from th
 | `gate.valueExceptionsPath` | Optional reviewed exact design-value exceptions JSON; default `null` |
 | `gate.manualVisualReview` | Default `true`; successful full checks still require human review |
 | `sot.path` | Optional project source-of-truth path; existence is checked, content is not automatically parsed |
+| `visual` | Optional same-session image regression; enabled=false, mode=advisory; separate approved image store |
 | `reportDir` | Default `artifacts/ui-refiner` |
 
 Keep policy fonts, sizes and exceptions consistent with the approved source of truth. Agents should read the design documents; the CLI does not infer policy from them. Use trusted app URLs. Non-allowlisted hosts and credentials embedded in URLs are rejected.
@@ -99,7 +100,7 @@ Scope changes and incomplete runs cannot produce resolved findings or ARIA remov
 | Status | Exit | Meaning |
 |---|---:|---|
 | `PASS` | 0 | Full checks have no new enforced violations; manual review disabled |
-| `REVIEW_REQUIRED` | 0 | Full automated checks passed; human visual/UX review remains |
+| `REVIEW_REQUIRED` | 0 | Configured enforced checks passed; advisory image/human visual review remains |
 | `FAIL` | 1 | New enforced findings |
 | `ERROR` / `INCOMPLETE` | 2 | Tool/environment failure or missing required checker coverage |
 | `SCOPED_PASS` | 3 | Changed scope passed; **not full QA approval** |
@@ -139,7 +140,7 @@ Routes have unique safe names and absolute HTTP(S) URLs or root-relative paths. 
 
 Navigation hosts are validated before requests. Redirects are rejected without following the chain; configure the final URL explicitly. Service workers are disabled in this audit session. External subresources are not covered by the navigation allowlist; this is not a general network sandbox.
 
-Multi-route fingerprints include route name plus `pathname + search`, excluding origin, host, port and fragment; legacy single-URL identities remain unchanged. Switching to explicit routes requires a fresh full baseline review. Old multi-route baselines using absolute-URL IDs must also be recreated once; their hash-only entries cannot be safely migrated. Baseline schemaVersion remains 2. Image names include routes. Optional ARIA YAML also includes a content hash, retaining previous evidence. Compatible runs produce `ariaDiff` with changed/added/removed/unchanged dimensions and `previousFile` / `file` paths. This is a hash-based structure summary, not an automatic defect verdict or line-by-line diff: compare the YAML pair. Capture is opt-in, limited to 2 MB per state; requested capture failure is ERROR. Images and accessible names may contain sensitive app content; review before sharing.
+Multi-route fingerprints include route name plus `pathname + search`, excluding origin, host, port and fragment; legacy single-URL identities remain unchanged. Switching to explicit routes requires a fresh full baseline review. Old multi-route baselines using absolute-URL IDs must also be recreated once; their hash-only entries cannot be safely migrated. Baseline schemaVersion remains 2. Image names include routes. Optional ARIA YAML also includes a content hash, retaining previous evidence. Compatible runs produce `ariaDiff` with changed/added/removed/unchanged dimensions and `previousFile` / `file` paths. The hash summary also includes bounded, line-numbered YAML text explanations in report.json/report.md and the agent handoff. ARIA changes remain advisory; compare the linked YAML pair for full evidence. Capture is opt-in, limited to 2 MB per state; requested capture failure is ERROR. Images and accessible names may contain sensitive app content; review before sharing.
 
 Rendered metrics describe visible viewport content: top-pinned fixed/sticky regions (nested regions counted once), filled buttons, repeated button/link names and destinations, and approximate 15-degree chromatic hue buckets from computed text/background/border colors. Inspection is capped at 10000 DOM elements with limited coverage disclosed. Repeated actions or multiple filled buttons may be intentional. Observations are **advisory only**, cannot block or be baselined, and never weaken accessibility checks. Hue buckets are evidence, not an enforced color limit; gradients, images and full perceptual color analysis are outside scope.
 
@@ -163,6 +164,90 @@ Mask only known dynamic copy via optional `browser.ariaSnapshotMasks` (default `
 ```
 
 The masked YAML is both saved and hashed; unconfigured label/role changes remain visible. Avoid broad patterns that erase meaningful quantities or semantic structure. Changing masks starts a new comparison context. After reports are written, only tool-owned unreferenced ARIA files are pruned; current/previous report evidence, comparison pairs and the last-full reference are retained. Manual files are untouched.
+
+### Readable ARIA changes
+
+With `browser.captureAriaSnapshots` enabled, compatible runs explain changed/added/removed snapshot dimensions using plain YAML text edits. `ariaDiff.changed[].textDiff` (and added/removed equivalents) records unified hunks, old/new line positions, oldFile/newFile, algorithm, limits and truncation reasons. Changed entries also retain previousSha256/previousBytes; `ariaDiff.textSummary` reports compared/unavailable/notGenerated/truncated counts. These additions do not change compatibility hashes or finding/baseline IDs. Existing mask changes still reset ARIA compatibility. Explanations are generated while writing reports.
+
+The reader verifies regular files, the 2 MB snapshot limit, stored hashes and available byte counts. Missing or inconsistent historical evidence produces an explicit unavailable explanation; it cannot prove no change. The browser's requested capture failures still produce ERROR. This feature compares text without parsing YAML or classifying semantic/WCAG violations. Name, role and selection changes can be inspected at their line positions; actual contrast and keyboard checks remain independently enforced, and human visual review remains required.
+
+Per explanation, generated text is capped at 120 lines / 12000 bytes and 2000 bytes per line. A batch attempts at most 16 comparisons with 600 output lines / 64000 text bytes, before JSON metadata. Larger line-matching problems use a bounded replacement edit (algorithm=bounded-replacement), which may be less compact. Truncation is explicit, including omitted lines/hunks; full source YAML remains linked. report.md displays at most 8 comparisons / 24000 excerpt bytes; AGENT_HANDOFF.md displays 2 / 6000. Review excerpts with TRUNCATED markers as excerpts rather than applicable patches. Unchanged snapshots need no text reads.
+
+Run `npm run smoke:aria` for real Chromium name/role/selected/add/remove changes, masked clock stability, old-file retention, missing-history reasons and contrast/keyboard defect controls. CI saves `artifacts/upstream-contracts/aria-text.report.json` and adjacent `aria-text-evidence/` with YAML plus a Markdown comparison.
+
+
+### Planned inspection scope and paired benchmark
+
+The browser stage's `inspectionScope` in `report.json` lists each configured route × viewport × color scheme × initial/named state. Counts distinguish requested, confirmed started, completed, failed, not-run and unknown; completionRate uses the configured plan only, never undiscovered app pages. Generated interaction snapshots are listed separately as intermediateStates. Completed means the audit/evidence operation finished, even when it found violations. A terminated worker cannot expose unreturned in-memory progress; those states remain unknown. A plan load error sets planComplete=false, so its missing named states are not a known denominator. Partial failures retain completed findings, produce ERROR/exit 2 and prohibit baseline creation.
+
+Rule-target coverage is independent of plan completion. Zero targets are not-tested; null/missing/invalid counters are unknown. Neither counts as tested. Scope limits disclose axe color contrast, the selected axe accessibility rules and custom rules separately; this is not a full WCAG audit. iframe content and shadow-root elements are excluded from document-scoped audits. Explicit interactions require main-document targets. Delegated listeners and capped direct-listener discovery need explicit markers/plans.
+
+Run `npm run benchmark:scope` after installing the pinned Chromium. Paired fixtures label expected presence/absence for font policy, accessible names, labels, contrast, horizontal overflow and clipping. iframe, open Shadow DOM and delegated-event probes verify exclusions separately. CI retains `artifacts/upstream-contracts/scope-benchmark.json` with labels, actual findings, matched outcomes, scope and TP/FP/FN. Duplicate detections count once per labeled instance; precision/recall exclude boundary probes and use null for zero denominators. Metrics describe this small labeled suite, not whole-product accuracy or performance. Existing interaction, route failure, timeout, compatibility and evidence smoke suites remain required.
+
+
+### State scenarios and explicit Storybook routes
+
+Run `npm run demo:states` to serve `/ko` and `/ja` on port 5173 (override with `UI_REFINER_DEMO_PORT`). The pages contain actual translated KO/JA data. Copy the relevant entries from `examples/state-scenarios/routes.json` into `browser.routes`; its interaction paths are relative to your project root, so copy the examples or adjust those paths when using another project. Set `browser.url` to the fixture server origin. Use the corresponding locale for each run; one browser locale setting does not translate the app or give routes separate locales. Existing interactions/config formats are unchanged.
+
+The checked-in KO/JA interaction JSON demonstrates form validation errors, opening/closing a modal, an empty list, loading → ready, and long wrapping copy. Enter/Space checks verify distinct output text; dialog checks verify focus containment, Escape and return to the opener. Every named state has a visible/hidden or exact-text ready contract. The controlled loading fixture holds its data until the explicit “Release fixture data” action; ready is observed from page content, without sleeps. Production apps should wait on their real ready elements/data instead of adding this fixture control.
+
+`npm run smoke:states` runs both translations across two viewports and light/dark, checks keyboard/clipping defect controls, and makes each of the seven named states unreachable in turn. Failed reachability produces ERROR/2, preserves earlier completed audits, leaves later states unexecuted and forbids baselines. The machine-readable result is `artifacts/upstream-contracts/state-scenarios.json`; referenced ARIA YAML is archived in the adjacent `state-scenarios-evidence/` directory before normal report retention runs. This finite fixture run does not establish application-wide coverage or performance targets.
+
+For a known Storybook story, configure its document URL directly, for example `/iframe.html?id=states--ko&viewMode=story`, with its own ready selector and interaction plan. The demo includes a local fixture at that URL to validate route/query handling; it is not a real Storybook installation. For your app, use its actual story ID/URL. No story discovery, index adapter, login automation or shared route cookies are added. A version-specific index adapter remains optional when a real target requires it; Storybook is not a dependency.
+
+
+### Optional visual image regression
+
+Visual comparison is disabled by default and uses advisory mode when enabled. It captures initial and interaction states in the existing onState browser session; it does not launch a second comparison browser. Add this top-level configuration, replacing the profile with your reviewed font/execution-image identifier:
+
+```json
+{
+  "visual": {
+    "enabled": true,
+    "mode": "advisory",
+    "baselineDir": "ui-visual-baseline",
+    "environmentProfile": "reviewed-fonts-and-execution-image-v1",
+    "capture": "viewport",
+    "threshold": 0.1,
+    "maxDiffPixels": 0,
+    "maxDiffRatio": 0,
+    "masks": [],
+    "stabilityAttempts": 3
+  }
+}
+```
+
+Existing browser.captureScreenshots independently captures raw evidence and crops. Visual captures wait for document.fonts.ready and visible image decoding, disable animations, hide the caret and use CSS-pixel scale. Two consecutive PNG byte streams must match within stabilityAttempts (2–5); instability or resource/capture failure is ERROR. capture supports viewport or fullPage. PNGs are limited to 16 million pixels / 32 MB each. Session/route time and output limits still apply; a timed-out worker never implies a visual match.
+
+The profile is explicitly declared by the user for controlled fonts/test data/execution provisioning. It is not automatic font-file or container verification. Manifests also record OS/release/architecture, browser/Playwright/comparator/decoder versions, DPR, locale, UTC/reduced-motion settings, ready/interactions and capture/comparison options. Missing profiles cannot be approved. Changing recorded conditions produces not-comparable; changing route/state/viewport/theme/locale/capture identity requires the corresponding approved image. Baseline keys exclude the server origin/port. Automatic discovery, authentication and application data setup are outside this feature.
+
+Run check to collect candidates, inspect them, then explicitly approve:
+
+```sh
+node tools/ui-refiner/bin/ui-refiner.mjs visual candidate --from artifacts/ui-refiner/report.json --out visual-candidate
+# Review candidate PNGs, manifest dimensions, masks, environment and policy first.
+node tools/ui-refiner/bin/ui-refiner.mjs visual approve --from visual-candidate/manifest.json --out ui-visual-baseline
+```
+
+Candidate images are copied out of report retention into their own owned directory. Approval atomically publishes an image manifest in baselineDir; a later explicit approval replaces its full image set and removes only old manifest-owned images. Manual files remain. check only reads this store and never updates approved images. The existing baseline create command remains finding-ID suppression and does not approve images. Candidate creation requires a full completed static/browser run with all requested captures; an enforced needs-baseline result can still supply a candidate. Neither changed-only runs nor failed captures can create one.
+
+| Visual result | Advisory | Explicit enforce |
+|---|---|---|
+| Disabled | not-requested | — |
+| Approved image matches | matched | matched |
+| Different image/size | review required | FAIL / 1 |
+| Approved image missing | needs-baseline, review required | INCOMPLETE / 2 |
+| Environment/options incompatible | not-comparable, review required | INCOMPLETE / 2 |
+| Requested capture/file/comparison failure | ERROR / 2 | ERROR / 2 |
+
+Switch mode to enforce only after reviewing approved images and repeat stability in your controlled environment. Other enforced DOM/source defects continue to fail independently. Advisory differences or pending baselines cannot be described as matched; REVIEW_REQUIRED is shown even when manual review was not otherwise configured. A match never clears an existing human review requirement.
+
+Masks are explicit selector strings, at most 20. Each must match 1–100 elements with a visible target; missing targets fail. Masked areas use opaque magenta, with selector/index/viewport CSS boxes recorded in maskRegions. No background/panel is automatically ignored. Fix fixture data or declare narrow masks deliberately; outside changes remain detectable. pixelmatch threshold (0–1) is per-pixel color tolerance. Allowed differing pixels = max(maxDiffPixels, floor(totalPixels × maxDiffRatio)); defaults permit zero different pixels after color tolerance/anti-alias handling. Sizes are compared without resizing; changed dimensions are different with a reason and actual/expected sizes.
+
+report.visual contains state status, actual/expected/diff immutable image references, pixel counts/ratio/tolerances, stabilization/mask/environment metadata and timing/size metrics. Images use existing run-scoped retention, with expected images copied from the baseline into the run so later approval does not rewrite old report evidence. maxObservedWorkerRssBytes is sampled worker RSS, excluding browser descendants; it is not whole-process-tree peak memory. Missing baseline/error states have explicit reasons and cannot become a full enforced PASS. Visual options use their own compatibility contract and do not reset finding/ARIA comparisons.
+
+Run npm run smoke:visual for ten controlled repetitions (initial and saved states), masked normal changes, layout/clipping/outside-mask defects, image-size changes, missing/incompatible baselines, unstable/broken captures, explicit CLI approval and raw-evidence independence. CI retains artifacts/upstream-contracts/visual.report.json and adjacent visual-evidence/. Results describe that fixture/environment, with raw samples and source/environment metadata; no general accuracy, p95 or speed-improvement target is claimed. pixelmatch 7.2.0 (ISC) and pngjs 7.0.0 (MIT) are exact dependencies; original notices are in licenses/.
+
 
 ## 5. Reports and repair handoff
 
@@ -262,3 +347,25 @@ npm run smoke:review4
 CI runs unit/contract tests, real Chromium UI and CLI checks, session-timeout checks and pinned vendor-sync verification. Fixtures include clean/violating pages, monorepo changes, moved-checkout hooks, generated IDs, pointer-prioritized discovery after a 1600-row list, same-state images and element crops.
 
 Actual checker recordings and their hashes/provenance are retained in `test/fixtures`; live smoke output is compared with the reviewed repair contract. CI also uploads `upstream-contracts` evidence. Contract changes require review rather than silently regenerating fixtures. See [CI workflow](.github/workflows/ci.yml) and [implementation report](IMPLEMENTATION_REPORT_KO.md).
+
+## 10. Standard output and offline review
+
+JSON remains the canonical result. Every check writes `report.html` (no scripts/server), `handoff.json` and the bounded `AGENT_HANDOFF.md`. Handoff records route/state/viewport/theme, actual/expected, verified static source positions, immutable image/ARIA references, input hashes and reproduction arguments. Saved configuration checks record runnable commands; in-memory configurations explicitly require saving the snapshot first. Run the app and reproduce the recorded test data/authentication before rechecking.
+
+```sh
+node bin/ui-refiner.mjs check --config ui-refiner.config.json --format json
+node bin/ui-refiner.mjs check --config ui-refiner.config.json --format sarif
+node bin/ui-refiner.mjs export html --from artifacts/ui-refiner/report.json --out review-bundle
+node bin/ui-refiner.mjs export sarif --from artifacts/ui-refiner/report.json --out review.sarif
+npm run smoke:export
+```
+
+`--format json|sarif|html|markdown` selects stdout only; default summary stays unchanged. All formats and successful exports preserve the original exit codes 0/1/2/3, including human review and scoped-pass distinctions. Export failures return 2. JUnit is deferred until there is a concrete consumer.
+
+Open `review-bundle/report.html` directly using `file://`. Export requires a fresh destination, copies the canonical JSON unchanged and includes referenced current/previous PNG/YAML evidence. `evidence-manifest.json` reports missing/corrupt files and unverified legacy hashes. Evidence stays within the original report directory; symlink/path escapes are rejected. Limits: 2000 references, 256 MB total, 32 MB/PNG and 2 MB/YAML. HTML previews cap findings at 300, visual states at 40, ARIA comparisons at 20 and preformatted values at 12000 characters, with visible omission notices; full data remains in JSON. No source tree, hosting or database is needed.
+
+SARIF 2.1.0 includes primary source locations only for static files/lines read and verified at audit time. Browser selectors remain properties; browser PNG/YAML appears as related evidence, never invented source paths. Relative source/report URIs use separately recorded original base directories, so relocate them deliberately when consuming elsewhere. The pinned official OASIS schema validates output offline in tests; production export adds no runtime dependency.
+
+`smoke:export` includes two deterministic fixture repairs with a two-attempt budget and full rechecks, recording attempts and new blockers. This is a fixture-consumer experiment: autonomous-agent trials = 0, so no autonomous-agent success rate is claimed. The tool never applies fixes, approves baselines or posts PR comments automatically. Preserve policy/SOT and human visual acceptance.
+
+Original evidence paths remain in the bundle; short `e/` aliases keep HTML links usable in Windows browsers with long-path limits. Alias copies count toward the total byte budget.

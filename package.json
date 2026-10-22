@@ -17,11 +17,24 @@
     "smoke:gate": "node scripts/smoke-gate.mjs",
     "smoke:review2": "node scripts/smoke-review2.mjs",
     "smoke:routes": "node scripts/smoke-routes.mjs",
-    "smoke:review4": "node scripts/smoke-review4.mjs"
+    "smoke:review4": "node scripts/smoke-review4.mjs",
+    "benchmark:scope": "node scripts/benchmark-scope.mjs",
+    "demo:states": "node examples/state-scenarios.mjs",
+    "smoke:states": "node scripts/smoke-states.mjs",
+    "smoke:aria": "node scripts/smoke-aria.mjs",
+    "smoke:visual": "node scripts/smoke-visual.mjs",
+    "smoke:export": "node scripts/smoke-export.mjs"
   },
   "dependencies": {
     "axe-core": "4.14.0",
-    "playwright": "1.63.0"
+    "pixelmatch": "7.2.0",
+    "playwright": "1.63.0",
+    "pngjs": "7.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-draft-04": "1.0.0",
+    "ajv-formats": "3.0.1"
+  }
 }

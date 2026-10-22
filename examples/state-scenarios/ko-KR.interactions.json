@@ -1,0 +1,97 @@
+{
+  "timeout": 1000,
+  "maxTabStops": 80,
+  "focus": [
+    {
+      "selector": "#enter"
+    }
+  ],
+  "buttons": [
+    {
+      "selector": "#enter",
+      "key": "Enter",
+      "outcome": "#enter-result",
+      "expectedText": "Enter saved"
+    },
+    {
+      "selector": "#space",
+      "key": "Space",
+      "outcome": "#space-result",
+      "expectedText": "Space saved"
+    }
+  ],
+  "dialogs": [
+    {
+      "open": "#open",
+      "dialog": "#modal",
+      "close": "#close",
+      "returnFocus": "#open"
+    }
+  ],
+  "states": [
+    {
+      "name": "form-error",
+      "action": "click",
+      "selector": "#submit",
+      "ready": {
+        "selector": "#form-error",
+        "expectedText": "이름을 입력해 주세요."
+      }
+    },
+    {
+      "name": "modal-open",
+      "action": "click",
+      "selector": "#open",
+      "ready": {
+        "selector": "#modal",
+        "state": "visible"
+      }
+    },
+    {
+      "name": "modal-closed",
+      "action": "press",
+      "selector": "#close",
+      "key": "Escape",
+      "ready": {
+        "selector": "#modal",
+        "state": "hidden"
+      }
+    },
+    {
+      "name": "empty-list",
+      "action": "click",
+      "selector": "#clear",
+      "ready": {
+        "selector": "#empty",
+        "expectedText": "표시할 항목이 없습니다."
+      }
+    },
+    {
+      "name": "loading",
+      "action": "click",
+      "selector": "#load",
+      "ready": {
+        "selector": "#loading",
+        "expectedText": "데이터를 불러오는 중입니다."
+      }
+    },
+    {
+      "name": "ready",
+      "action": "click",
+      "selector": "#complete",
+      "ready": {
+        "selector": "#loaded",
+        "expectedText": "데이터를 모두 불러왔습니다."
+      }
+    },
+    {
+      "name": "long-copy",
+      "action": "click",
+      "selector": "#show-copy",
+      "ready": {
+        "selector": "#long-copy",
+        "expectedText": "저장한 설정은 모든 기기에서 사용할 수 있습니다. 변경 사항을 확인한 다음 저장 버튼을 눌러 주세요. 화면이 좁아도 이 안내 문구 전체를 읽을 수 있어야 합니다."
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "korean-states",
+    "url": "/ko",
+    "ready": "[data-app-ready]",
+    "interactionsPath": "examples/state-scenarios/ko-KR.interactions.json"
+  },
+  {
+    "name": "japanese-states",
+    "url": "/ja",
+    "ready": "[data-app-ready]",
+    "interactionsPath": "examples/state-scenarios/ja-JP.interactions.json"
+  },
+  {
+    "name": "storybook-known-story",
+    "url": "/iframe.html?id=states--ko&viewMode=story",
+    "ready": "[data-app-ready]",
+    "interactionsPath": "examples/state-scenarios/ko-KR.interactions.json"
+  }
+]

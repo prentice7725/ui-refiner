@@ -1,0 +1,60 @@
+[
+  {
+    "id": "font",
+    "rule": "font-family",
+    "normal": "<p id=\"target\">Approved type</p>",
+    "defect": "<p id=\"target\" style=\"font-family:serif\">Unapproved type</p>"
+  },
+  {
+    "id": "name",
+    "rule": "accessible-name",
+    "normal": "<button id=\"target\">Save</button>",
+    "defect": "<button id=\"target\"></button>"
+  },
+  {
+    "id": "label",
+    "rule": "form-label",
+    "normal": "<label for=\"target\">Name</label><input id=\"target\">",
+    "defect": "<input id=\"target\">"
+  },
+  {
+    "id": "contrast",
+    "rule": "text-contrast",
+    "normal": "<p id=\"target\" style=\"color:#222\">Readable text</p>",
+    "defect": "<p id=\"target\" style=\"color:#eee\">Low contrast text</p>"
+  },
+  {
+    "id": "overflow",
+    "rule": "horizontal-overflow",
+    "normal": "<div style=\"width:100%\">Responsive content</div>",
+    "defect": "<div style=\"width:2000px\">Wide content</div>",
+    "pageTarget": true
+  },
+  {
+    "id": "clipping",
+    "rule": "content-clipping",
+    "normal": "<div style=\"width:240px\"><p id=\"target\">Long readable text that wraps within its container</p></div>",
+    "defect": "<div style=\"width:64px;overflow:hidden\"><p id=\"target\" style=\"white-space:nowrap\">Long readable text that clips within its container</p></div>"
+  },
+  {
+    "id": "iframe",
+    "rule": "font-family",
+    "boundary": "excluded",
+    "normal": "<iframe title=\"Frame\" srcdoc=\"<p style=font-family:system-ui>Frame</p>\"></iframe>",
+    "defect": "<iframe title=\"Frame\" srcdoc=\"<p style=font-family:serif>Frame</p>\"></iframe>"
+  },
+  {
+    "id": "shadow",
+    "rule": "font-family",
+    "boundary": "excluded",
+    "normal": "<div id=\"host\"></div><script>host.attachShadow({mode:\"open\"}).innerHTML=\"<p style=font-family:system-ui>Shadow</p>\"</script>",
+    "defect": "<div id=\"host\"></div><script>host.attachShadow({mode:\"open\"}).innerHTML=\"<p style=font-family:serif>Shadow</p>\"</script>"
+  },
+  {
+    "id": "delegated",
+    "rule": "keyboard-operation",
+    "boundary": "requires-marker",
+    "normal": "<div id=\"target\">Click</div><script>document.body.addEventListener(\"click\",e=>{if(e.target.id===\"target\")e.target.textContent=\"Clicked\"})</script>",
+    "defect": "<div id=\"target\" data-ui-clickable>Click</div><script>document.body.addEventListener(\"click\",e=>{if(e.target.id===\"target\")e.target.textContent=\"Clicked\"})</script>"
+  }
+]

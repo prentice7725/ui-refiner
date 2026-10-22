@@ -8,3 +8,9 @@ UI Refiner is an independent source-level combination of two MIT-licensed projec
 * **Playwright** — Microsoft, Apache-2.0, installed as npm dependency for Chromium automation.
 
 The copied upstream source remains credited. Any future source edits must preserve those notices. We do not vendor npm binaries, Chromium, upstream demo images or bundled fonts.
+
+* **pixelmatch 7.2.0** — Mapbox, ISC, exact npm dependency for pixel comparison. Repository: https://github.com/mapbox/pixelmatch. Original license: [licenses/pixelmatch.LICENSE](pixelmatch.LICENSE).
+* **pngjs 7.0.0** — Luke Page and original contributors, MIT, exact npm dependency for PNG decoding/encoding (Node >=14.19.0). Repository: https://github.com/pngjs/pngjs. Original notices: [licenses/pngjs.LICENSE](pngjs.LICENSE).
+
+* **Ajv 8.20.0**, **ajv-draft-04 1.0.0**, **ajv-formats 3.0.1** — Evgeny Poberezkin and contributors, MIT. Development-only SARIF validation dependencies; original licenses: `ajv.LICENSE`, `ajv-draft-04.LICENSE`, `ajv-formats.LICENSE` in this directory.
+* **OASIS SARIF 2.1.0 JSON Schema** — OASIS Open repository terms, not relicensed as MIT. Used only in offline tests. Original terms: [test/schemas/OASIS-LICENSE.md](../test/schemas/OASIS-LICENSE.md); source, retrieval date and SHA-256: [provenance.json](../test/schemas/provenance.json).
