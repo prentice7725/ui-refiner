@@ -8,7 +8,7 @@ suta의 고정된 전체 스킬 카탈로그와 57개 패턴, 유지보수되는
 
 ## 1. 요구사항과 설치
 
-**Node.js 22.18 이상**, npm, Git과 명시적으로 설치한 Playwright Chromium이 필요합니다. 런타임 npm 의존성은 `axe-core@4.14.0`, `playwright@1.63.0`으로 고정됩니다.
+**Node.js 22.18 이상**, npm, Git과 명시적으로 설치한 Playwright Chromium이 필요합니다. 런타임 npm 의존성은 `axe-core@4.14.0`, `playwright@1.63.0`, `pixelmatch@7.2.0`, `pngjs@7.0.0`으로 고정됩니다.
 
 저장소를 대상 앱의 `tools/ui-refiner`에 배치합니다. 이 소스 설치 방식은 지원하지만, `node_modules` 아래에서 suta의 native TypeScript를 실행하는 방식은 지원하지 않습니다. 컴파일된 npm 배포판은 아직 없습니다.
 
@@ -52,6 +52,7 @@ node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD" --locale ko-KR
 | `gate.valueExceptionsPath` | 검토된 정확한 디자인 값 예외 JSON; 기본 `null` |
 | `gate.manualVisualReview` | 기본 `true`; 전체 자동 검사 통과 후에도 사람이 검토 |
 | `sot.path` | 선택적 프로젝트 정본 경로; 존재 여부만 검사하며 내용을 자동 파싱하지 않음 |
+| `visual` | 선택적 같은 세션 이미지 회귀검사; enabled=false, mode=advisory; 별도 승인 이미지 저장소 |
 | `reportDir` | 기본 `artifacts/ui-refiner` |
 
 정책의 폰트·크기·예외는 승인된 정본과 일치시켜야 합니다. 에이전트가 디자인 문서를 읽어야 하며 CLI가 문서에서 정책을 추론하지는 않습니다. 신뢰할 수 있는 앱 URL을 사용하세요. 허용 목록 밖의 호스트와 URL 안의 인증 정보는 거부합니다.
@@ -99,7 +100,7 @@ node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json -
 | 상태 | 종료 | 의미 |
 |---|---:|---|
 | `PASS` | 0 | 전체 검사에 새 강제 위반이 없음; 수동 검토 비활성화 상태 |
-| `REVIEW_REQUIRED` | 0 | 전체 자동 검사 통과; 사람이 시각·UX 검토해야 함 |
+| `REVIEW_REQUIRED` | 0 | 설정한 강제 검사 통과; advisory 이미지·사람 시각 검토 필요 |
 | `FAIL` | 1 | 새 강제 위반 발견 |
 | `ERROR` / `INCOMPLETE` | 2 | 도구·환경 오류 또는 필수 검사 범위 누락 |
 | `SCOPED_PASS` | 3 | 변경 범위 통과; **전체 QA 승인이 아님** |
@@ -139,7 +140,7 @@ PNG는 실행별 `images-<runId>/` 아래에 내용 SHA-256을 포함한 이름�
 
 내비게이션 요청 전에 호스트를 검증합니다. 리다이렉트는 따라가지 않고 거부하므로 최종 URL을 직접 설정하세요. 이 감사 세션에서는 서비스 워커를 비활성화합니다. 외부 하위 리소스는 내비게이션 허용 목록의 대상이 아니며 일반 네트워크 샌드박스는 아닙니다.
 
-다중 라우트 지문에는 이름과 `pathname + search`만 포함하고 origin·호스트·포트·fragment를 제외하며 기존 단일 URL 식별자는 유지합니다. 명시적 라우트로 전환하면 새 전체 베이스라인을 검토하세요. 절대 URL 지문을 사용한 기존 다중 라우트 베이스라인도 한 번 재생성해야 합니다. 해시만 있는 항목은 안전하게 이행할 수 없습니다. 베이스라인 schemaVersion은 2를 유지합니다. 이미지 이름에 라우트를 포함합니다. 선택적 ARIA YAML 파일명에는 내용 해시도 넣어 이전 증거를 보존합니다. 호환되는 이전 실행과의 `ariaDiff`는 변경/추가/제거/유지된 차원과 `previousFile`·`file`을 보여줍니다. 이는 해시 기반 구조 요약이며 자동 결함 판정이나 줄 단위 diff가 아닙니다. 두 YAML을 비교하세요. 촬영은 선택 기능이고 상태당 2 MB 제한이며 요청한 촬영 실패는 ERROR입니다. 이미지·접근 가능한 이름에 민감한 앱 내용이 포함될 수 있으므로 공유 전에 확인하세요.
+다중 라우트 지문에는 이름과 `pathname + search`만 포함하고 origin·호스트·포트·fragment를 제외하며 기존 단일 URL 식별자는 유지합니다. 명시적 라우트로 전환하면 새 전체 베이스라인을 검토하세요. 절대 URL 지문을 사용한 기존 다중 라우트 베이스라인도 한 번 재생성해야 합니다. 해시만 있는 항목은 안전하게 이행할 수 없습니다. 베이스라인 schemaVersion은 2를 유지합니다. 이미지 이름에 라우트를 포함합니다. 선택적 ARIA YAML 파일명에는 내용 해시도 넣어 이전 증거를 보존합니다. 호환되는 이전 실행과의 `ariaDiff`는 변경/추가/제거/유지된 차원과 `previousFile`·`file`을 보여줍니다. 해시 요약에 줄 번호가 있는 YAML 텍스트 설명을 추가해 report.json/report.md와 에이전트 핸드오프에 제공합니다. ARIA 변화는 advisory이며 전체 증거는 연결된 YAML 쌍에서 확인합니다. 촬영은 선택 기능이고 상태당 2 MB 제한이며 요청한 촬영 실패는 ERROR입니다. 이미지·접근 가능한 이름에 민감한 앱 내용이 포함될 수 있으므로 공유 전에 확인하세요.
 
 렌더링 지표는 현재 뷰포트의 보이는 상단 fixed/sticky 영역(중첩은 한 번 계산), 채운 버튼, 반복 버튼/링크 이름·목적지, 계산된 글자/배경/테두리 색의 대략적인 15도 유채색 hue 버킷을 기록합니다. DOM 요소 최대 10000개를 검사하고 제한된 범위를 표시합니다. 반복 동작이나 여러 채운 버튼은 의도된 UI일 수 있습니다. 관련 항목은 **advisory 전용**이며 게이트를 막거나 베이스라인에 들어가지 않고 접근성 검사를 약화하지 않습니다. hue 수는 검토 자료이지 강제 색상 상한이 아니며 그라데이션·이미지·완전한 지각 색상 분석은 대상 밖입니다.
 
@@ -163,6 +164,90 @@ PNG는 실행별 `images-<runId>/` 아래에 내용 SHA-256을 포함한 이름�
 ```
 
 마스킹된 YAML을 저장하고 해시를 계산합니다. 설정하지 않은 라벨·역할 변경은 계속 표시합니다. 의미 있는 수량이나 구조를 지우는 광범위한 패턴은 피하세요. 마스크 변경 시 비교 컨텍스트가 새로 시작됩니다. 리포트를 쓴 뒤 도구가 만든 미참조 ARIA 파일만 정리하고 현재·직전 리포트, 비교 쌍, 마지막 전체 검사 참조의 증거는 보존합니다. 수동 파일은 건드리지 않습니다.
+
+### 읽기 쉬운 ARIA 변경 설명
+
+`browser.captureAriaSnapshots`를 켠 호환 실행은 변경/추가/제거된 스냅샷 차원을 YAML 텍스트 편집으로 설명합니다. `ariaDiff.changed[].textDiff`(added/removed도 동일)는 unified hunk·전후 줄 위치·oldFile/newFile·algorithm·제한·잘림 이유를 기록합니다. 변경 항목에는 previousSha256/previousBytes도 보존하며 `ariaDiff.textSummary`는 compared/unavailable/notGenerated/truncated 수를 표시합니다. 비교 호환성 해시와 finding/baseline ID는 유지하고, 기존처럼 마스크 변경 시 ARIA 비교를 초기화합니다. 텍스트 설명은 보고서 쓰기 시 생성합니다.
+
+읽는 파일의 일반 파일 여부·2 MB 스냅샷 상한·저장 해시·확인 가능한 바이트 수를 검증합니다. 과거 증거가 없거나 일치하지 않으면 설명에 unavailable 이유를 남기며 변화 없음으로 해석하지 않습니다. 요청한 브라우저 캡처 실패는 기존대로 ERROR입니다. YAML 문법을 파싱하거나 의미/WCAG 위반을 판정하지 않고 텍스트를 비교합니다. 이름·역할·선택 상태 변화의 줄 위치를 확인할 수 있으며 실제 대비·키보드 규칙과 사람 시각 검토 요구는 독립적으로 유지합니다.
+
+설명당 생성 텍스트는 120줄/12000바이트, 한 줄은 2000바이트까지입니다. 배치는 최대 16건을 시도하고 출력 600줄/64000 텍스트 바이트로 제한합니다(JSON 메타데이터 제외). 줄 매칭 계산량이 크면 bounded-replacement 편집으로 전환하며 결과가 덜 간결할 수 있습니다. 잘린 줄/hunk와 이유를 명시하고 전체 YAML 링크를 유지합니다. report.md는 최대 8건/24000 발췌 바이트, AGENT_HANDOFF.md는 2건/6000까지 표시합니다. TRUNCATED 발췌는 적용 가능한 패치로 사용하지 않습니다. 변경 없는 스냅샷은 텍스트를 다시 읽지 않습니다.
+
+`npm run smoke:aria`는 실제 Chromium의 이름/역할/선택 상태/추가/삭제, 시간 마스크 안정성, 이전 파일 보존·누락 이유, 대비·키보드 결함 대조를 검증합니다. CI는 `artifacts/upstream-contracts/aria-text.report.json`과 옆 `aria-text-evidence/`에 YAML·Markdown 비교 증거를 보존합니다.
+
+
+### 계획한 검사 범위와 정상/결함 벤치마크
+
+`report.json`의 브라우저 stage에 있는 `inspectionScope`는 설정 route × viewport × colorScheme × initial/이름 있는 state를 나열합니다. 요청·시작 확인·완료·실패·미실행·확인 불가(unknown)를 집계하며 completionRate의 분모는 설정한 계획뿐입니다. 발견하지 않은 앱 페이지는 포함하지 않습니다. 상호작용 중간 스냅샷은 intermediateStates로 분리합니다. 완료는 결함 유무와 관계없이 검사와 요청 증거 처리가 끝났다는 뜻입니다. 강제 종료 worker가 반환하지 않은 진행 상태는 unknown입니다. 계획 파일 로드 실패 시 planComplete=false이며 누락된 이름 있는 상태의 분모는 확정되지 않습니다. 부분 실패에서도 완료 finding을 보존하고 ERROR/종료 코드 2 및 baseline 생성 금지를 유지합니다.
+
+규칙 대상 범위는 계획 완료율과 별개입니다. 대상 0은 not-tested, null·누락·유효하지 않은 계측값은 unknown이며 tested로 세지 않습니다. 제외 명세는 axe 대비 검사, 선택된 axe 접근성 규칙과 자체 규칙을 구분하며 전체 WCAG 검사를 의미하지 않습니다. iframe 내부와 shadow root는 문서 범위 검사에서 제외하고 명시적 상호작용은 주 문서의 대상만 지원합니다. 위임 이벤트와 후보 상한이 있는 직접 리스너 탐색에는 명시적 마커·계획이 필요합니다.
+
+고정 Chromium 설치 후 `npm run benchmark:scope`를 실행합니다. 폰트 정책·접근 가능한 이름·라벨·대비·가로 overflow·텍스트 clipping을 정상/결함 쌍의 expected label과 대조합니다. iframe·open Shadow DOM·위임 이벤트 경계 probe는 별도로 검증합니다. CI는 label·실제 finding·일치 여부·scope·TP/FP/FN을 `artifacts/upstream-contracts/scope-benchmark.json`에 보존합니다. 동일 라벨 인스턴스의 중복 탐지는 한 번만 세고 경계 probe는 정확도 분모에서 제외하며 분모 0은 null입니다. 이 작은 표본의 수치를 제품 전체 정확도나 성능으로 해석하지 않습니다. 기존 상호작용·라우트 실패·시간 초과·호환성·증거 스모크도 계속 실행합니다.
+
+
+### 상태 시나리오와 명시적 Storybook 라우트
+
+`npm run demo:states`로 5173 포트의 `/ko`, `/ja`를 실행합니다(`UI_REFINER_DEMO_PORT`로 변경). 페이지에 실제 KO/JA 번역 데이터를 넣었습니다. `examples/state-scenarios/routes.json`에서 필요한 항목을 `browser.routes`로 복사하고 `browser.url`을 fixture 서버 origin으로 설정합니다. interactions 경로는 프로젝트 루트 기준이므로 다른 앱에서는 예제를 복사하거나 경로를 수정합니다. 각 실행의 locale도 맞춰 설정합니다. 브라우저 locale 하나로 앱을 번역하거나 라우트별 locale을 별도로 지정하는 것은 아닙니다. 기존 interactions/config 형식을 그대로 사용합니다.
+
+KO/JA JSON 예제는 폼 검증 오류·모달 열기/닫기·빈 목록·loading → ready·긴 문구 줄바꿈을 검사합니다. Enter/Space는 서로 다른 결과 텍스트로, 모달은 포커스 가두기·Escape·opener로 포커스 복귀로 검증합니다. 모든 이름 있는 상태는 visible/hidden 또는 정확한 텍스트 ready 계약을 가집니다. 통제된 로딩 fixture는 “Release fixture data” 동작 전까지 데이터를 보류하며 임의 sleep 없이 실제 페이지 내용으로 ready를 확인합니다. 실제 앱은 이 fixture 제어 버튼 대신 앱의 준비 요소·데이터를 기다려야 합니다.
+
+`npm run smoke:states`는 두 번역 × 두 viewport × light/dark를 실행하고 키보드/clipping 결함 대조 및 7개 이름 있는 상태 각각의 도달 실패를 검증합니다. 도달 실패는 ERROR/2이며 이전 완료 검사를 보존하고 이후 상태를 미실행으로 남기며 baseline 생성을 거부합니다. 기계 판독 결과는 `artifacts/upstream-contracts/state-scenarios.json`이고 참조한 ARIA YAML은 정상 보존 정리 전에 옆의 `state-scenarios-evidence/`에 복사합니다. 유한한 예제 검증을 앱 전체 커버리지나 성능 목표로 해석하지 않습니다.
+
+알고 있는 Storybook 스토리는 `/iframe.html?id=states--ko&viewMode=story`처럼 문서 URL을 ready selector·interaction plan과 함께 routes로 직접 지정합니다. 데모의 같은 URL은 route/query 처리를 확인하는 로컬 fixture이며 실제 Storybook 설치가 아닙니다. 앱에서는 실제 story ID/URL을 사용해야 합니다. 자동 스토리 탐색·index 어댑터·로그인 자동화·라우트 사이 쿠키 공유는 추가하지 않았습니다. 실제 대상이 필요로 할 때 버전을 확인해 선택적 index 어댑터를 검토하며 Storybook을 의존성으로 넣지 않습니다.
+
+
+### 선택적 이미지 시각 회귀검사
+
+시각 비교는 기본 비활성이며 활성화 시 기본 advisory입니다. 기존 onState 브라우저 세션의 초기·상호작용 상태를 캡처하며 비교용 브라우저를 다시 열지 않습니다. 다음 최상위 설정을 추가하고 profile은 검토한 폰트/실행 이미지 식별자로 바꿉니다.
+
+```json
+{
+  "visual": {
+    "enabled": true,
+    "mode": "advisory",
+    "baselineDir": "ui-visual-baseline",
+    "environmentProfile": "reviewed-fonts-and-execution-image-v1",
+    "capture": "viewport",
+    "threshold": 0.1,
+    "maxDiffPixels": 0,
+    "maxDiffRatio": 0,
+    "masks": [],
+    "stabilityAttempts": 3
+  }
+}
+```
+
+기존 browser.captureScreenshots의 원본 증거·크롭 캡처는 독립적으로 유지합니다. visual 캡처는 document.fonts.ready와 표시 이미지 decode를 기다리고 animation 비활성·caret 숨김·CSS pixel 스케일을 사용합니다. stabilityAttempts(2–5) 안에서 연속 두 PNG 바이트가 같아야 하며 안정화·리소스·캡처 실패는 ERROR입니다. capture는 viewport 또는 fullPage이며 PNG당 1600만 픽셀/32 MB로 제한합니다. 기존 session/route 시간·출력 상한을 유지하며 worker 시간 초과를 일치로 해석하지 않습니다.
+
+profile은 통제된 폰트·테스트 데이터·실행 환경을 사용자가 명시하는 값이며 폰트 파일/컨테이너 자동 검증이 아닙니다. manifest는 OS/release/architecture·브라우저/Playwright/비교기/디코더 버전·DPR·locale·UTC/reduced-motion·ready/interactions·캡처/비교 옵션도 기록합니다. profile 없는 후보는 승인할 수 없습니다. 기록한 조건이 다르면 not-comparable이고 route/state/viewport/theme/locale/capture별 승인 이미지가 필요합니다. 기준 키에서 서버 origin/포트는 제외합니다. 자동 탐색·인증·앱 데이터 준비는 이 기능에 포함하지 않습니다.
+
+check로 수집한 후보를 검토한 뒤 명시적으로 승인합니다.
+
+```sh
+node tools/ui-refiner/bin/ui-refiner.mjs visual candidate --from artifacts/ui-refiner/report.json --out visual-candidate
+# Review candidate PNGs, manifest dimensions, masks, environment and policy first.
+node tools/ui-refiner/bin/ui-refiner.mjs visual approve --from visual-candidate/manifest.json --out ui-visual-baseline
+```
+
+후보 이미지는 보고서 보존 정리와 독립된 소유 디렉터리로 복사합니다. approve는 baselineDir의 이미지 manifest를 원자적으로 게시하며 이후 명시적 승인은 전체 이미지 집합을 교체하고 이전 manifest 소유 이미지 중 미참조 파일만 정리합니다. 수동 파일은 유지합니다. check는 승인 저장소를 읽기만 합니다. 기존 baseline create는 finding ID 억제용이며 이미지를 승인하지 않습니다. 후보 생성에는 전체 static/browser 완료와 요청 캡처가 필요합니다. enforce의 needs-baseline 결과에서도 후보를 만들 수 있지만 changed-only·캡처 실패에서는 거부합니다.
+
+| visual 결과 | advisory | 명시적 enforce |
+|---|---|---|
+| 비활성 | not-requested | — |
+| 승인 이미지 일치 | matched | matched |
+| 이미지/크기 차이 | 검토 필요 | FAIL / 1 |
+| 승인 이미지 없음 | needs-baseline·검토 필요 | INCOMPLETE / 2 |
+| 환경/옵션 불일치 | not-comparable·검토 필요 | INCOMPLETE / 2 |
+| 요청 캡처/파일/비교 실패 | ERROR / 2 | ERROR / 2 |
+
+통제 환경의 반복 안정성과 승인 이미지를 검토한 뒤 mode를 enforce로 바꿉니다. 기존 DOM/소스 강제 결함은 독립적으로 계속 차단합니다. advisory 차이·미승인 상태를 matched로 표시하지 않으며 수동 검토 설정이 꺼져 있어도 REVIEW_REQUIRED를 표시합니다. 이미지 일치가 기존 사람 검토 요구를 해제하지 않습니다.
+
+masks는 최대 20개 selector 문자열이며 각각 1–100개 요소와 표시 대상을 가져야 합니다. 대상 누락은 실패입니다. 불투명 magenta 마스크와 selector/index/viewport CSS box를 maskRegions에 기록하며 배경·패널을 자동 제외하지 않습니다. 테스트 데이터를 고정하거나 좁은 영역을 명시적으로 가리며 영역 밖 변화는 계속 탐지합니다. pixelmatch threshold(0–1)는 픽셀별 색 차이 허용값입니다. 허용 차이 픽셀 수는 max(maxDiffPixels, floor(totalPixels × maxDiffRatio))이며 기본값은 색 허용값/안티앨리어싱 처리 후 차이 0픽셀입니다. 크기가 달라도 resize하지 않고 different와 실제/기준 크기·이유를 표시합니다.
+
+report.visual에는 상태별 actual/expected/diff의 불변 이미지 참조·픽셀 수/비율/허용값·안정화/마스크/환경·시간/용량 지표를 기록합니다. expected도 기준 저장소에서 해당 실행으로 복사하므로 이후 승인으로 과거 증거가 바뀌지 않습니다. 기존 실행별 이미지 보존 정리를 사용합니다. maxObservedWorkerRssBytes는 브라우저 자손을 제외한 worker RSS 표본이며 전체 프로세스 트리의 최고 메모리가 아닙니다. 기준 누락/실패는 이유를 남기고 enforce 전체 PASS로 처리하지 않습니다. visual 옵션은 자체 호환성 계약을 사용하며 finding/ARIA 비교를 초기화하지 않습니다.
+
+npm run smoke:visual은 10회 통제 반복(초기/저장 상태), 마스크 안 정상 변화·레이아웃/잘림/마스크 밖 결함·크기 변경·기준 누락/환경 불일치·불안정/실패 캡처·CLI 명시적 승인·원본 증거 독립성을 검증합니다. CI는 artifacts/upstream-contracts/visual.report.json과 옆 visual-evidence/를 보존합니다. 표본과 소스/환경 정보를 함께 기록하며 제품 전체 정확도·p95·속도 개선 목표를 주장하지 않습니다. pixelmatch 7.2.0(ISC)·pngjs 7.0.0(MIT)을 정확히 고정하고 licenses/에 원문 고지를 보존했습니다.
+
 
 ## 5. 리포트와 수정 핸드오프
 
@@ -262,3 +347,25 @@ npm run smoke:review4
 CI는 단위·계약 테스트, 실제 Chromium UI·CLI 검사, 세션 타임아웃 검사, 고정 벤더 동기화 검증을 실행합니다. 정상/위반 페이지, 모노레포 변경, 이동한 체크아웃의 훅, 자동 ID, 1,600행 목록 뒤의 pointer 우선 탐지, 동일 상태 이미지와 요소 크롭을 검증합니다.
 
 실제 검사 출력과 해시·출처는 `test/fixtures`에 보존하고, 스모크의 실제 출력을 검토된 수정 정보 계약과 비교합니다. CI는 `upstream-contracts` 증거도 업로드합니다. 계약이 바뀌면 fixture를 자동으로 재생성하지 않고 검토해야 합니다. [CI 워크플로](.github/workflows/ci.yml)와 [구현 보고서](IMPLEMENTATION_REPORT_KO.md)를 참고하세요.
+
+## 10. 표준 출력과 오프라인 검토
+
+JSON이 판정 원본입니다. 검사마다 스크립트·서버가 없는 `report.html`, `handoff.json`, 분량이 제한된 `AGENT_HANDOFF.md`를 생성합니다. 인계에는 경로·상태·화면 크기·테마, 실제/기대 값, 검증된 정적 소스 위치, 불변 PNG/ARIA 참조, 입력 해시와 재현 인수를 기록합니다. 저장된 설정은 실행 명령을 제공하고, 메모리 설정은 먼저 스냅샷을 저장해야 한다고 표시합니다. 재검사 전에 앱과 동일한 데이터·인증 상태를 준비하세요.
+
+```sh
+node bin/ui-refiner.mjs check --config ui-refiner.config.json --format json
+node bin/ui-refiner.mjs check --config ui-refiner.config.json --format sarif
+node bin/ui-refiner.mjs export html --from artifacts/ui-refiner/report.json --out review-bundle
+node bin/ui-refiner.mjs export sarif --from artifacts/ui-refiner/report.json --out review.sarif
+npm run smoke:export
+```
+
+`--format json|sarif|html|markdown`은 stdout 형식만 선택하며 기존 요약 출력은 기본값입니다. 모든 형식과 성공한 내보내기는 원본 종료 코드 0/1/2/3, 수동 검토와 부분 통과 구분을 유지합니다. 내보내기 자체 실패는 2입니다. JUnit은 실제 소비자가 생길 때까지 보류합니다.
+
+`review-bundle/report.html`을 `file://`로 직접 열 수 있습니다. 새 대상 폴더만 허용하며 원본 JSON을 그대로 복사하고 현재·이전 PNG/YAML을 포함합니다. `evidence-manifest.json`에 누락·손상·해시가 없는 구형 증거를 표시합니다. 보고서 폴더 밖 경로나 심볼릭 링크 탈출은 거부합니다. 한도는 참조 2000개, 전체 256 MB, PNG당 32 MB, YAML당 2 MB입니다. HTML 미리보기는 finding 300개, 시각 상태 40개, ARIA 비교 20개, 서식 텍스트 12000자로 제한하고 생략을 표시합니다. 전체 데이터는 JSON에 남습니다. 소스 트리·호스팅·DB는 필요 없습니다.
+
+SARIF 2.1.0의 주 소스 위치는 검사 시 실제 파일과 줄을 확인한 정적 결과만 포함합니다. 브라우저 선택자는 속성으로, PNG/YAML은 관련 증거로 기록하며 소스 경로를 만들지 않습니다. 원본 프로젝트와 보고서 기준 URI를 별도로 기록하므로 다른 환경에서는 기준 경로를 조정해야 합니다. 테스트는 고정된 OASIS 공식 스키마로 오프라인 검증하며 런타임 의존성을 추가하지 않습니다.
+
+`smoke:export`는 고정 결함 두 종류를 최대 2회 예산 안에서 수정하고 전체 재검사하여 시도 수와 새 차단 결함을 기록합니다. 정해진 fixture 소비자 실험이며 자율 에이전트 실험 수는 0이므로 에이전트 수정 성공률을 주장하지 않습니다. 도구는 자동 수정·기준선 승인·PR 댓글을 수행하지 않습니다. 정책·SOT와 사람의 시각 승인을 유지하세요.
+
+원본 증거 경로를 유지하면서 짧은 `e/` 별칭으로 HTML을 연결해 Windows 브라우저의 긴 경로 제한을 피합니다. 별칭 사본도 전체 바이트 예산에 포함합니다.

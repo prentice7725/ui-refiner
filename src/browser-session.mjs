@@ -18,6 +18,8 @@ export async function checkRoutes(routes,input,{allowedHosts,timeout,locale,onSt
   for(const route of routes)for(const viewport of policy.viewports)for(const colorScheme of policy.colorSchemes){
    let context;
    const run={viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey,status:'running',states:[],suppressed:[]};
+   run.plannedStates=['initial',...(route.interactions?.states||[]).map(s=>s.name)].map(name=>({name,status:'not-run',started:false}));
+   run.plannedStates[0]={name:'initial',status:'failed',started:true};
    report.runs.push(run);
    let navigationError;
    try{
@@ -60,10 +62,11 @@ export async function checkRoutes(routes,input,{allowedHosts,timeout,locale,onSt
      if(onState)await onState(page,{...state,viewport,colorScheme,route:route.name,routeUrl:route.url,routeKey:route.routeKey});
     };
     await capture(page,{name:'initial',...result});
+    run.plannedStates[0].status='completed';
     const accessibilityCoverage={...result.accessibilityCoverage};
     run.accessibilityCoverage=accessibilityCoverage;
     if(route.interactions!==undefined){
-     const interaction=await interact(page,route.interactions,policy,{timeout,onState:async(page,state)=>{append(state.name,state);await capture(page,state);}});
+     const interaction=await interact(page,route.interactions,policy,{timeout,onState:async(page,state)=>{const planned=run.plannedStates.find(s=>s.name===state.name);if(planned)Object.assign(planned,{status:'failed',started:true});append(state.name,state);await capture(page,state);if(planned)planned.status='completed';}});
      if(navigationError)throw navigationError;
      // Audited states were recorded immediately; add interaction-only failures without duplicating them.
      const recorded=new Set(run.states.map(s=>s.name));
@@ -73,7 +76,7 @@ export async function checkRoutes(routes,input,{allowedHosts,timeout,locale,onSt
      accessibilityCoverage.interactionRules=interaction.checks.length?'only listed interactions tested':interaction.states.length?'not tested: page-state actions only':'not tested: empty interaction plan';
     }
     run.status='complete';
-   }catch(e){run.status='error';run.error=`Route ${route.name}: ${navigationError?.message||e.message}`;report.errors.push({route:route.name,viewport,colorScheme,error:run.error});}
+   }catch(e){const failed=run.plannedStates.find(s=>e.message.startsWith('State "'+s.name+'" could not be checked:'));if(failed)Object.assign(failed,{status:'failed',started:true});for(const state of run.plannedStates)if(!failed&&run.plannedStates[0].status==='completed'&&state.name!=='initial'&&state.status==='not-run')Object.assign(state,{status:'unknown',started:null});run.status='error';run.error=`Route ${route.name}: ${navigationError?.message||e.message}`;report.errors.push({route:route.name,viewport,colorScheme,error:run.error});}
    finally{try{await context?.close();}catch(e){run.status='error';report.errors.push({route:route.name,viewport,colorScheme,error:`Context close failed: ${e.message}`});}}
   }
   return report;

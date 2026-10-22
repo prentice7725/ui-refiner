@@ -37,7 +37,7 @@
 
 - `browser.routes`로 이름 있는 1–50개 URL을 명시적으로 검사한다. 자동 크롤링은 하지 않는다. 라우트별 준비 조건·상호작용 계획을 지원하고, 지문·커버리지·촬영·시간 예산에 라우트를 반영한다. 기존 단일 URL 지문은 유지한다.
 - 라우트별 시간 제한 worker/브라우저를 실행하고 각 뷰포트·테마를 독립 컨텍스트로 검사한다. 남은 시간을 미실행 라우트에 나누므로 한 worker가 전체 시간을 독점하지 않는다. 인증 상태는 공유하지 않는다. 검사 중 자동 다운로드는 없다. 검증되지 않은 리다이렉트 체인을 따라가지 않고 최종 URL을 직접 요구한다.
-- 선택적인 `browser.captureAriaSnapshots`는 검사 상태의 ARIA YAML을 내용 해시 파일로 보존하고, 호환 실행의 구조 해시 변경·추가·제거·유지를 표시한다. 줄 단위 diff나 자동 결함 판정은 아니다. 요청한 촬영 실패는 ERROR다.
+- 선택적인 `browser.captureAriaSnapshots`는 검사 상태의 ARIA YAML을 내용 해시 파일로 보존하고, 호환 실행의 구조 해시 변경·추가·제거·유지를 표시한다. 초기 구현은 해시 요약이었다. PR05에서 줄 단위 텍스트 설명을 추가했으며 자동 결함 판정은 하지 않는다. 요청한 촬영 실패는 ERROR다.
 - 선택적인 `browser.renderedMetrics`는 상단 fixed/sticky 수, 채운 버튼 수, 반복 동작, 계산된 색의 근사 hue 버킷을 관측한다. 최대 10000개 DOM 요소의 뷰포트 가시 영역만 분석한다. 모두 advisory이며 접근성 위반과 혼동하거나 강제 게이트로 사용하지 않는다.
 - `gate.valueExceptionsPath`는 정확한 디자인 값·이유와 선택적 라우트/셀렉터를 요구한다. 접근성·키보드 규칙은 면제하지 않는다. 승인된 값은 리포트에 남고 값과 무관한 베이스라인 억제로 확대되지 않는다.
 - ARIA·렌더링 지표 기본값은 모두 false다. 새 의존성·벤더 변경 없이 ui-refiner 어댑터에서 구현했다. 실제 브라우저 검증은 `npm run smoke:routes`와 해당 PR의 CI를 기준으로 확인한다.
@@ -62,3 +62,58 @@
 - `npm run smoke:review4`가 실제 두 포트 베이스라인, 중간 404 결과 보존, primary/ghost/native 버튼, modal 배경, 반복 시각 마스킹·파일 수·의미 있는 라벨 변경 및 어두운 조상 배경을 검증한다. 최종 판정은 해당 PR의 CI 결과를 따른다.
 
 후속 리뷰에서 모노레포 상대 경로, 팀용 훅 경로, 단계/세션 타임아웃 분리, 자동 생성 ID 제외, 부분 범위 기존 브라우저 위반 분리 및 핸드오프 크기 제한을 보완했다.
+
+## PR03 — 검사 범위 명세와 정상/결함 벤치마크 (2026-10-21)
+
+- 최신 main `3c1fdd3`의 PR01·02 구현 위에서 진행했다. route × viewport × colorScheme × initial/이름 있는 state를 `stages[].inspectionScope`에 기록하고 요청·시작 확인·완료·실패·미실행·unknown을 집계한다. 상호작용 중간 스냅샷은 별도 목록이며 미발견 페이지는 분모에 넣지 않는다.
+- 완료는 검사와 요청 증거 처리가 끝났다는 뜻이며 위반 없음과 다르다. 이름 있는 상태 도달 실패는 failed, 이후 미도달 상태는 not-run으로 표시한다. 반환되지 않은 worker 진행 상태는 unknown이다. 계획 로드·검증 실패는 planComplete=false 및 completionRate=null이다.
+- 규칙 대상 수 null/누락/음수는 unknown, 0은 not-tested다. 계획 완료율과 구분하고 axe 대비·선택된 axe 접근성 규칙·자체 규칙·명시적 상호작용 범위 및 iframe/Shadow DOM/이벤트 위임 한계를 보고서와 README EN/KO/JA에 공개한다.
+- `npm run benchmark:scope`와 CI 단계를 추가했다. 폰트·이름·라벨·대비·가로 overflow·clipping 정상/결함 6쌍, iframe·open Shadow DOM·위임 클릭 경계 3쌍의 18개 label이 실제 Chromium 출력과 일치했다. 경계 결과는 폰트 및 클릭 탐지 범위만 검증하며 전체 Shadow DOM 접근성 지원을 보장하지 않는다.
+- 기계 판독 결과는 `artifacts/upstream-contracts/scope-benchmark.json`이다. label별 실제 finding·기대 일치 여부·scope·TP/FP/FN을 보존한다. 중복을 인스턴스별로 합치고 경계 probe는 정확도 분모에서 제외한다. 전체 제품 정확도·속도 목표를 확정하지 않았다.
+- 부분 결과 보존, 전체 ERROR/종료 코드 2, baseline 생성 거부의 기존 계약을 유지했다. malformed interaction plan이 다른 라우트 결과를 소실시키지 않는 회귀와 상태 집계 검증을 추가했다.
+- Windows 검증을 위해 바이트 해시 대상 vendor/기록 JSON의 체크아웃 변환을 `.gitattributes`로 방지했다. 벤더 소스·패치·manifest 내용은 변경하지 않았다. timeout worker 종료 직후 smoke 임시 폴더의 EBUSY 정리는 제한된 재시도를 적용했다.
+- 검증: Node v24.21.0, 고정 Playwright 1.63.0/Chromium 153.0.8010.12. `npm test` 76/76 통과(실패·스킵 0), `benchmark:scope` 및 기존 `smoke:ui/gate/review2/routes/review4` 모두 통과. CI Node 22 환경 결과와 반복 안정성·성능 측정은 별도다.
+
+## PR04 — 상태 시나리오와 명시적 Storybook 라우트 (2026-10-21)
+
+- `examples/state-scenarios.mjs`와 KO/JA interaction JSON을 추가했다. 폼 검증 오류·모달 열기/닫기·빈 목록·loading→ready·긴 KO/JA 문구의 7개 이름 있는 상태를 기존 인터페이스로 검사한다. 번역 데이터는 앱 fixture에 명시적으로 제공하며 browser locale에 의한 자동 번역으로 간주하지 않는다.
+- native button의 Enter/Space 결과, native dialog의 Tab/Shift+Tab 포커스 포함·Escape 닫기·opener로 복귀를 검증한다. 각 상태는 실제 요소의 표시/숨김 또는 정확한 텍스트 ready 계약을 가진다. 로딩 fixture는 명시적 데이터 해제 동작까지 비동기 Promise를 보류하며 sleep으로 준비를 추정하지 않는다.
+- `demo:states`, `smoke:states`와 CI 단계를 추가했다. 정상 KO/JA × 2 viewport × light/dark의 64개 계획 검사를 검증한다. 키보드/clipping 결함 대조와 7개 상태 각각의 도달 실패를 확인하며 FAIL/1과 ERROR/2, 이전 상태 보존·이후 미실행·baseline 거부를 구분한다.
+- `examples/state-scenarios/routes.json`은 실제 페이지 경로와 알려진 Storybook iframe 문서 URL을 기존 routes로 지정하는 예제다. 스모크의 iframe URL은 로컬 프로토콜 fixture이며 실제 Storybook 설치를 검증한 것은 아니다. 실제 대상 버전·index 요구가 없으므로 선택적 index 어댑터는 추가하지 않았다. Storybook 의존성·자동 탐색·인증·라우트 간 cookie 공유는 추가하지 않았다.
+- 기계 판독 결과는 `artifacts/upstream-contracts/state-scenarios.json`이며 정상 실행의 ARIA YAML을 옆 `state-scenarios-evidence/`에 복사하여 임시 폴더 제거와 실행 간 정상 보존 정리 이후에도 결과 증거를 유지한다. README EN/KO/JA에 재현 명령·프로젝트 상대 경로·통제 fixture의 한계를 설명했다.
+- 최종 검증: `npm test` 76/76 통과(실패·스킵 0), `smoke:states` 통과(정상 계획 검사 64개, 결함 대조 2개, 상태 도달 실패 대조 7개, 명시적 story URL 1개). 저장된 JSON 예제를 직접 사용했고 내보낸 보고서의 모든 ARIA 파일 참조가 보존됐음을 확인했다. 기존 검사 엔진·버짓·상태 판정 계약은 변경하지 않았다.
+
+## PR05 — 읽기 쉬운 ARIA 변경 증거 (2026-10-21)
+
+- 저장된 마스크 적용 YAML을 줄 단위로 비교하여 `ariaDiff.changed/added/removed[].textDiff`에 전후 줄 번호와 unified hunk, oldFile/newFile, 알고리즘·출력 상한·잘림 여부를 기록한다. `changed`에는 previousSha256/previousBytes를 보존하고 `textSummary`에 비교 성공·파일 불가·생성 생략·잘림 수를 구분한다. YAML 파서나 의미/WCAG 판정기를 추가하지 않았다.
+- report.md에는 최대 8개/24000 발췌 바이트, AGENT_HANDOFF.md에는 2개/6000까지 이전·현재 YAML 링크와 변경 줄을 제공한다. 이름·역할·선택 상태 및 추가/삭제의 위치를 원문에서 검토할 수 있다. 길이 제한은 TRUNCATED와 생략 이유로 명시하며 원본 YAML을 계속 보존한다.
+- 입력 파일의 일반 파일 여부·2 MB 제한·해시·바이트 수를 확인한다. 과거 파일 누락·변조는 unavailable 이유로 남기고 변화 없음으로 처리하지 않는다. 신규 캡처 실패의 ERROR 계약은 유지한다. 후속 캡처가 실패한 현재 실행도 ARIA 비교 불가이며 텍스트 설명을 생성하지 않는다.
+- 줄 매칭은 최대 100만 LCS 셀/4000 작업 줄까지 계산한다. 큰 변경은 bounded-replacement 편집을 사용하며 최소 diff를 보장하지 않는다. 설명별 120줄/12000 텍스트 바이트/줄당 2000바이트, 배치 16건/600줄/64000 텍스트 바이트 상한을 적용한다(JSON 메타데이터 제외). UTF-8 문자를 중간에서 자르지 않고 Markdown fence를 원문보다 길게 잡아 증거가 출력 구조를 깨지 않게 한다.
+- 기존 비교 컨텍스트·명시적 마스크·finding/baseline ID·증거 정리를 유지한다. ARIA 변경은 advisory이며 실제 대비·키보드 blocker와 사람 검토 요구를 바꾸지 않는다. 선택적 ARIA 기대 계약 강제 검사는 후속 결정이다.
+- `smoke:aria`와 CI 단계를 추가했다. 실제 Chromium에서 버튼 이름/역할/탭 선택 상태·추가/삭제·시간 마스크 안정성·이전 YAML 바이트 보존·누락 이유·대비/키보드 결함 유지를 검증한다. 결과와 YAML/Markdown 증거는 `artifacts/upstream-contracts/aria-text.report.json`, `aria-text-evidence/`에 보존한다. README EN/KO/JA에 스키마·상한·실패 의미를 동기화했다.
+- 최종 검증: 전체 `npm test` 84/84 통과(실패·스킵 0), 새 `smoke:aria`와 기존 `smoke:routes`, `smoke:review4` 통과. Chromium 비교 6회에서 생성한 보고서·원문 YAML·Markdown 링크를 확인했다. 추가 의존성과 벤더 소스 변경은 없다.
+
+## PR06 — 선택적 시각 회귀검사 (2026-10-21)
+
+- 최상위 visual 설정을 도입했다. 기본 비활성/활성화 시 advisory이며 기존 browser.captureScreenshots 원본·크롭과 독립적이다. 기존 onState에서 같은 브라우저 세션을 사용하고 별도의 비교용 브라우저나 테스트 런너를 추가하지 않았다.
+- 공식 저장소·npm 메타데이터와 설치 소스를 대조해 pixelmatch 7.2.0(ISC), pngjs 7.0.0(MIT)을 정확히 고정하고 lockfile·원문 라이선스를 갱신했다. PNG 디코딩/픽셀 비교를 라이브러리에 맡긴다. finding/ARIA 호환성은 기존 axe-core/Playwright 엔진 정보를 유지하며 visual 옵션·라이브러리는 별도 호환성 계약을 갖는다.
+- visual candidate는 완료된 전체 검사에서 PNG·차원·환경·마스크·옵션을 별도 후보 디렉터리로 복사한다. visual approve만 승인 manifest를 원자적으로 갱신한다. check는 승인 이미지/manifest를 갱신하지 않고 finding baseline create(v2) 의미도 유지한다. 승인 갱신은 이전 manifest가 소유한 미참조 이미지만 제거하고 수동 파일을 보존한다.
+- 기준 키에는 route(이름+pathname/search)·state·viewport·theme·locale·capture 범위·선언한 환경 profile을 포함한다. origin/포트는 제외한다. 환경에는 OS/release/architecture·브라우저/Playwright/비교기/디코더 버전·DPR·UTC/reduced-motion을 기록하고 ready/interactions·캡처/비교 옵션도 대조한다. profile은 사용자가 고정 폰트/실행 이미지 조건을 선언하는 값이며 실제 폰트 파일·컨테이너 동일성을 자동 검증했다고 주장하지 않는다.
+- font 준비와 표시 이미지 decode 후 animation 비활성·caret 숨김·CSS pixel 스케일로 연속 두 PNG 바이트 일치를 확인한다. 2–5회 안정화 시도 상한과 기존 worker/session/route·출력 예산을 적용한다. PNG당 1600만 픽셀/32 MB 상한과 파일 해시·바이트 검증을 사용한다. 명시적 selector만 magenta 마스크하고 대상·viewport CSS box를 기록한다. 대상 누락·불안정·요청 리소스/파일/비교 실패는 ERROR/2다.
+- report.visual에 상태별 actual/expected/diff의 불변 이미지 참조·픽셀 수/비율/허용값·크기 변경 이유·시간/worker RSS 표본/이미지 용량을 기록한다. expected도 실행 디렉터리에 복사해 이후 기준 승인으로 과거 보고서 파일이 바뀌지 않게 한다. 현재/직전/last-full의 기존 이미지 보존 정리를 재사용한다. 크기 변경을 resize해 일치시키지 않는다.
+- 결과 계약: 비활성 not-requested, 일치 matched, 차이 different, 기준 없음 needs-baseline, 환경/옵션 불일치 not-comparable, 요청 실패 error. advisory의 차이/미승인/비교 불가는 REVIEW_REQUIRED이며 matched로 표시하지 않는다. 명시적 enforce는 차이 FAIL/1, 기준 없음·비교 불가 INCOMPLETE/2, 요청 실패 ERROR/2다. 기존 DOM/소스 결함과 사람 검토 요구는 독립적으로 유지한다.
+- README EN/KO/JA, CLI 도움말, 제품 에이전트 지침, CI를 동기화했다. 자동 스크린샷 비교는 디자인 품질·전체 접근성 보증이 아니며 실제 앱에서 고정된 폰트/데이터/실행 환경과 승인 이미지를 검토한 뒤 enforce를 선택한다. 기본 모드를 enforce로 승격하지 않았다.
+- 새 smoke:visual은 초기/저장 상태 10회 반복, 마스크 안 동적 문구 정상 대조, 레이아웃 이동·clipping·마스크 밖 변화·이미지 크기 변경, 기준 없음/환경 불일치, 잘못된 마스크·불안정 canvas·깨진 이미지·누락 기준 파일, CLI 후보/승인, 원본 증거 독립성을 검증한다. 원시 표본·실행 환경·핵심 소스 해시·PNG·비교 예시는 artifacts/upstream-contracts/visual.report.json 및 visual-evidence/에 보존한다. 메모리는 브라우저 자손을 제외한 worker RSS 표본이며 프로세스 트리 최고 RSS로 소개하지 않는다. p95·일반적 정확도·속도 개선 목표는 확정하지 않았다.
+- 최종 검증: 전체 npm test 90/90 통과(실패·스킵 0), 시각 비교 계약 6개 재검증 통과. 새 smoke:visual 및 기존 ui/gate/review2/routes/review4/aria/states/benchmark:scope 총 9종 실브라우저 검증 통과. 최신 측정과 핵심 소스 해시·PNG 해시/바이트도 대조했다.
+- 최신 통제 반복: Node v24.21.0, Chromium 153.0.8010.12, win32/x64, viewport 390×844, 초기/저장 2상태 × 10회, 결과/PNG/finding 집합 변동 0/10. gate 전체 wall time 중앙값 3.177초(최소 3.081, 최대 3.537), 비교 단계(I/O 포함) 실행당 중앙값 65.7ms, 최대 관측 worker RSS 207.1MiB, 생성 PNG 66388바이트/실행(2상태 actual/expected/diff). 전체 24회 대조의 참조 PNG 105개/1134379바이트, 결과 JSON 733727바이트를 보존했다. 브라우저 프로세스 트리 전체 메모리와 일반 앱 안정성·성능은 입증하지 않았다.
+
+
+## PR07 — 표준 출력·오프라인 검토·인계 검증 (2026-10-22)
+
+- JSON 판정을 원본으로 유지하고 `check --format json|sarif|html|markdown`, `export html|sarif --from --out`을 추가했다. 기본 CLI 요약과 0/1/2/3 종료 코드, REVIEW_REQUIRED/SCOPED_PASS 구분을 유지한다. JUnit은 구체적인 소비자가 없어 보류했다.
+- 매 검사에 정적 `report.html`, 전체 대상과 원인 그룹을 담은 `handoff.json`, 재현 인수·범위·증거 미리보기가 보강된 AGENT_HANDOFF.md를 생성한다. 기존 원인 그룹 및 ARIA/이미지 미리보기의 생략 한도를 유지한다. 설정·정책·실효 상호작용 계획의 해시를 기록하며 메모리 설정은 실행 준비 완료로 표시하지 않는다. 앱 실행·데이터·인증 준비가 재현의 전제다.
+- 오프라인 묶음은 새 폴더에 원본 report.json 바이트를 그대로 복사하고 현재·이전 PNG/ARIA 증거의 해시·크기를 검사한다. 누락·손상·구형 해시 부재는 evidence-manifest.json과 HTML에 명시한다. 경로 탈출·외부 디렉터리 junction·ADS를 차단하고 개별/전체 복사 예산을 적용한다. 원본 경로와 함께 짧은 e/ 별칭을 기록하여 Windows Chromium의 긴 파일 경로 실패를 해결했다. 별칭 사본도 바이트 예산에 포함한다.
+- SARIF 2.1.0은 실제 파일·줄·앵커를 읽어 확인한 정적 결과만 주 소스 위치로 내보낸다. 브라우저 선택자는 속성으로, PNG/ARIA는 관련 증거로 기록한다. 환경 오류·미실행과 시각 비교 대기 사유 및 원래 판정을 속성/알림에 유지한다. 원본 기준 URI는 이동한 환경에서 조정해야 한다.
+- 공식 OASIS draft-04 스키마 원본과 이용 조건·조회일·SHA-256을 test/schemas에 고정했다. Ajv 8.20.0, ajv-draft-04 1.0.0, ajv-formats 3.0.1은 개발 전용이며 런타임 의존성과 기존 식별자를 바꾸지 않는다. README EN/KO/JA, 배포 agent protocol, CI와 라이선스 고지를 동기화했다.
+- 검증: 전체 단위/계약 테스트 95/95 통과. 실제 Chromium smoke:gate, smoke:aria, smoke:visual, smoke:export 통과. 오프라인 file:// 화면을 1280/390px에서 열고 실제/기대/차이 PNG 3장과 ARIA 변경을 확인했으며 외부 요청은 0건이었다. 정상 JSON stdout과 결함 SARIF stdout을 파싱하고 공식 스키마를 검증했다. 저장 결과의 PASS/FAIL/ERROR/INCOMPLETE/SCOPED_PASS 내보내기 종료 코드는 각각 0/1/2/2/3을 유지했다. 화면·묶음·실험 기록은 artifacts/upstream-contracts/export-evidence 및 export.report.json에 남긴다.
+- 인계 소비자 실험: 고정 정적 transition 결함과 브라우저 contrast 결함 2개, 최대 2회 예산, 각 1회 수정 후 전체 검사 PASS, 신규 차단 결함 0개. 실제 handoff의 파일/줄 또는 선택자를 읽은 뒤 fixture 전용의 정해진 수정 절차를 적용했다. 정책/기준선으로 결함을 숨기지 않았다. 자율 코딩 에이전트 실행 수는 0이며 이 수치를 에이전트 수정 성공률로 일반화하지 않는다. 자동 코드 수정·기준선 승인·PR 댓글 기능은 추가하지 않았다.

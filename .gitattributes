@@ -1,0 +1,5 @@
+# Vendored sources and recorded fixtures are verified by byte-level SHA-256 manifests.
+# Keep their committed bytes when checking out on Windows as well as Unix.
+vendor/** -text
+test/fixtures/*.json -text
+test/schemas/** -text

@@ -21,6 +21,11 @@ jobs:
       - run: npm run smoke:gate
       - run: npm run smoke:review2
       - run: npm run smoke:routes
+      - run: npm run smoke:export
+      - run: npm run smoke:visual
+      - run: npm run smoke:aria
+      - run: npm run smoke:states
+      - run: npm run benchmark:scope
       - run: npm run smoke:review4
       - run: node scripts/sync-vendor.mjs --lintapple 90ddc736af6f2712903d53dd9a463445e109f586
       - uses: actions/upload-artifact@v4

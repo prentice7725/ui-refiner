@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+import {createVisualCandidate,approveVisualCandidate} from '../src/visual-baseline.mjs';
+import {exportHtmlBundle,exportSarif} from '../src/exporters.mjs';
+import {reportToSarif} from '../src/sarif.mjs';
+import {renderOfflineReport} from '../src/offline-report.mjs';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import {initProject,loadConfig} from '../src/config.mjs';
@@ -10,15 +14,19 @@ import {presets} from '../src/presets.mjs';
 const help=`UI Refiner 0.3.0 — web-app UI quality gate
   ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
+  ui-refiner export html|sarif --from report.json --out destination
+  ui-refiner check [--format json|sarif|html|markdown]
   ui-refiner doctor [--config ui-refiner.config.json]
   ui-refiner upstream check
   ui-refiner baseline create --from artifacts/ui-refiner/report.json --out ui-refiner.baseline.json
+  ui-refiner visual candidate --from artifacts/ui-refiner/report.json --out visual-candidate
+  ui-refiner visual approve --from visual-candidate/manifest.json --out ui-visual-baseline
 Exit 0: automated checks pass (manual visual review may remain), 1: findings, 2: infrastructure/error/uncovered, 3: scoped pass only (never full approval)`;
 function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   const a=args[i];if(!a.startsWith('--')){out._.push(a);continue;}
   if(a==='--changed-only'){out.changedOnly=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -29,17 +37,27 @@ try{
   else if(command==='init'&&args._.length===1){
     const root=path.resolve(args.dir||'.');const statuses=await initProject(root,args.preset||'web',args.locale||'en-US');console.log(statuses.join('\n'));console.log('Configure SOT; use bundled source of both auditors, then run ui-refiner check.');
   }else if(command==='check'&&args._.length===1){
-    const {root,config}=await loadConfig(args.config);
+    const {root,config,file}=await loadConfig(args.config);
+    if(args.format&&!["json","sarif","html","markdown"].includes(args.format))throw Error("Unknown output format");
     if(args.url)config.browser.url=args.url;
-    const report=await runGate({root,config,changedOnly:!!args.changedOnly,baseRef:args.base});
-    console.log(`[${report.status}] new blockers=${report.summary.blockers}, findings=${report.summary.total}; ${path.join(root,config.reportDir,'report.md')}`);
+    const report=await runGate({root,config,configFile:file,changedOnly:!!args.changedOnly,baseRef:args.base});
+    if(args.format)console.log(args.format==='json'?JSON.stringify(report,null,2):args.format==='sarif'?JSON.stringify(reportToSarif(report),null,2):args.format==='html'?renderOfflineReport(report):await fs.readFile(path.join(root,config.reportDir,'report.md'),'utf8'));
+    else console.log(`[${report.status}] new blockers=${report.summary.blockers}, findings=${report.summary.total}, visual=${report.visual?.status||'not-requested'}; ${path.join(root,config.reportDir,'report.md')}`);
     for(const s of report.stages)if(s.error)console.error(`[${s.engine}] ${s.error}`);
     process.exitCode=exitCode(report);
+  }else if(command==='export'&&['html','sarif'].includes(sub)&&args._.length===2){
+    if(!args.from||!args.out)throw Error('export requires --from and --out');
+    const report=await (sub==='html'?exportHtmlBundle:exportSarif)(args.from,args.out);
+    console.log('Exported '+sub+'; original verdict '+report.status+'; exit '+exitCode(report));process.exitCode=exitCode(report);
   }else if(command==='doctor'&&args._.length===1){
     const {root,config}=await loadConfig(args.config);
     const result=await doctor({root,config});console.log(result.lines.join('\n'));process.exitCode=result.errors?2:0;
   }else if(command==='upstream'&&sub==='check'&&args._.length===2){
     for(const row of await upstreamCheck())console.log(`${row.name}: ${row.status} — pinned=${row.pinned} HEAD=${row.head}`);
+  }else if(command==='visual'&&['candidate','approve'].includes(sub)&&args._.length===2){
+    if(!args.from||!args.out)throw Error('visual '+sub+' requires --from and --out');
+    const manifest=await (sub==='candidate'?createVisualCandidate:approveVisualCandidate)(args.from,args.out);
+    console.log('Visual '+manifest.kind+': '+manifest.entries.length+' images. '+(sub==='candidate'?'Review images and environment before visual approve.':'Approved image manifest written; check never updates it.'));
   }else if(command==='baseline'&&sub==='create'&&args._.length===2){
     if(!args.from||!args.out)throw new Error('baseline create requires --from and --out');
     const count=await baselineFromReport(args.from,args.out);

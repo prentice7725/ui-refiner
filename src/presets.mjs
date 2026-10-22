@@ -1,3 +1,4 @@
+import {visualDefaults} from './visual-config.mjs';
 /** Web-app only. Do not reuse these rules for Canvas/HUD/native-game UIs. */
 import {readFile} from 'node:fs/promises';
 // One canonical policy source, shared with the vendored auditor.
@@ -22,6 +23,7 @@ export function makePreset(preset='web',locale='en-US') {
   if (preset !== 'web') throw new Error(`Unsupported profile: ${preset}. UI Refiner supports only web. Game UI is a separate research project.`);
   return {
     schemaVersion: 1,
+    visual:structuredClone(visualDefaults),
     locale,
     name: 'my-web-app',
     preset:'web',

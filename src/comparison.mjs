@@ -12,7 +12,7 @@ export async function comparisonContexts(config,routes,root,reviewedValues){
   fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8').catch(()=>null),
   Promise.all(routes.map(route=>route.interactionsPath?fs.readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8').catch(()=>null):null))
  ]);
- const engine={refiner:pkg.version,dependencies:pkg.dependencies,vendor:hash(vendor.lintapple)};
+ const engine={refiner:pkg.version,dependencies:Object.fromEntries(['axe-core','playwright'].map(name=>[name,pkg.dependencies[name]])),vendor:hash(vendor.lintapple)};
  // Effective values, including single-page ready, are the same ones passed to the runner.
  // URLs stay conservative here; port-independent baseline identity is a separate contract.
  const browser={engine,enabled:config.browser.enabled,locale:config.locale||'en-US',policy,

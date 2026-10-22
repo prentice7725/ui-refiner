@@ -8,7 +8,7 @@ UI Refinerは、一般的なDOMベースのWebアプリ向けに、**sutaのソ�
 
 ## 1. 必要環境とインストール
 
-**Node.js 22.18以上**、npm、Git、および明示的にインストールしたPlaywright Chromiumが必要です。ランタイムのnpm依存関係は`axe-core@4.14.0`と`playwright@1.63.0`に固定されています。
+**Node.js 22.18以上**、npm、Git、および明示的にインストールしたPlaywright Chromiumが必要です。ランタイムのnpm依存関係は`axe-core@4.14.0`・`playwright@1.63.0`・`pixelmatch@7.2.0`・`pngjs@7.0.0`に固定されています。
 
 このリポジトリを対象アプリの`tools/ui-refiner`に配置してください。このソース配置をサポートしますが、`node_modules`配下でsutaのnative TypeScriptを実行する方式はサポートしません。コンパイル済みのnpm配布版はまだありません。
 
@@ -52,6 +52,7 @@ node tools/ui-refiner/bin/ui-refiner.mjs init --dir "$PWD" --locale ja-JP
 | `gate.valueExceptionsPath` | レビュー済みの正確なデザイン値例外JSON。既定は`null` |
 | `gate.manualVisualReview` | 既定は`true`。全体の自動検査成功後も人による確認が必要 |
 | `sot.path` | 任意のプロジェクト正本パス。存在を確認するが内容は自動解析しない |
+| `visual` | 任意の同一セッション画像回帰検査。enabled=false、mode=advisory、独立した承認画像ストア |
 | `reportDir` | 既定は`artifacts/ui-refiner` |
 
 フォント・サイズ・例外は、承認された正本に合わせてください。エージェントがデザイン文書を読み、CLIは文書からポリシーを推論しません。信頼できるアプリURLを使用してください。許可リスト外のホストと、URL内の認証情報は拒否します。
@@ -139,7 +140,7 @@ PNGは実行ごとの`images-<runId>/`に、内容のSHA-256を含む名前で�
 
 ナビゲーションのホストはリクエスト前に検証します。リダイレクトは追跡せず拒否するため、最終URLを直接設定してください。この監査セッションではService Workerを無効にします。外部サブリソースはナビゲーション許可リストの対象外であり、汎用ネットワークサンドボックスではありません。
 
-複数ルートの指紋には名前と`pathname + search`のみを含め、origin・ホスト・ポート・fragmentを除外し、従来の単一URLのidentityは維持します。明示的なルートへ移行したら新しい全体ベースラインをレビューしてください。絶対URL指紋を使った既存の複数ルートベースラインも一度再作成します。ハッシュだけの項目は安全に移行できません。ベースラインschemaVersionは2のままです。画像名にはルートを含めます。任意のARIA YAMLには内容ハッシュも含め、以前の証拠を保持します。互換性のある連続実行の`ariaDiff`は、変更・追加・削除・不変の次元と`previousFile` / `file`を示します。ハッシュによる構造変更の要約であり、自動的な欠陥判定や行単位diffではありません。YAMLの組を比較してください。保存は任意で状態ごとに2 MBまでです。要求した保存の失敗はERRORです。画像・アクセシブルネームに機密内容が含まれる可能性があるため、共有前に確認してください。
+複数ルートの指紋には名前と`pathname + search`のみを含め、origin・ホスト・ポート・fragmentを除外し、従来の単一URLのidentityは維持します。明示的なルートへ移行したら新しい全体ベースラインをレビューしてください。絶対URL指紋を使った既存の複数ルートベースラインも一度再作成します。ハッシュだけの項目は安全に移行できません。ベースラインschemaVersionは2のままです。画像名にはルートを含めます。任意のARIA YAMLには内容ハッシュも含め、以前の証拠を保持します。互換性のある連続実行の`ariaDiff`は、変更・追加・削除・不変の次元と`previousFile` / `file`を示します。ハッシュ要約に行番号付きの YAML テキスト説明を追加し、report.json/report.md とエージェント引き継ぎに表示します。ARIA の変化は advisory とし、完全な証拠はリンクした YAML の組で確認します。保存は任意で状態ごとに2 MBまでです。要求した保存の失敗はERRORです。画像・アクセシブルネームに機密内容が含まれる可能性があるため、共有前に確認してください。
 
 レンダリング指標は現在のビューポートに表示された上端fixed/sticky領域（入れ子は1回）、塗りつぶされたボタン、繰り返しのボタン/リンク名・リンク先、計算済みの文字/背景/枠線色の概算15度有彩色hueバケットを記録します。DOM要素は最大10000個までで、制限を公開します。反復動作や複数の塗りつぶしボタンは意図的なUIの場合があります。観測は**advisoryのみ**で、ゲートをブロックしたりベースラインへ入ったりせず、アクセシビリティ検査を弱めません。hue数はレビュー証拠であり強制色数上限ではありません。グラデーション・画像・完全な知覚色分析は対象外です。
 
@@ -163,6 +164,90 @@ PNGは実行ごとの`images-<runId>/`に、内容のSHA-256を含む名前で�
 ```
 
 マスク済みYAMLを保存してハッシュを計算します。未設定のラベル・役割変更は引き続き表示します。意味ある数量や構造まで消す広いパターンは避けてください。マスク変更は新しい比較コンテキストを開始します。レポート保存後にツール所有の未参照ARIAファイルのみを整理し、現在・直前のレポート、比較の組、最後の全体検査参照の証拠を保持します。手動ファイルは変更しません。
+
+### 読みやすい ARIA 変更説明
+
+`browser.captureAriaSnapshots` が有効な互換実行では、変更/追加/削除した snapshot 次元を YAML テキスト編集として説明します。`ariaDiff.changed[].textDiff`（added/removed も同様）は unified hunk・前後の行位置・oldFile/newFile・algorithm・上限・省略理由を記録します。変更項目には previousSha256/previousBytes も保持し、`ariaDiff.textSummary` は compared/unavailable/notGenerated/truncated 数を示します。互換性ハッシュと finding/baseline ID は維持し、マスク変更時は従来どおり ARIA 比較をリセットします。説明はレポート書き込み時に生成します。
+
+通常ファイルであること、2 MB snapshot 上限、保存ハッシュと確認できるバイト数を検証します。過去の証拠が欠落または不整合なら unavailable の理由を示し、変化なしとは解釈しません。要求したブラウザー保存の失敗は従来どおり ERROR です。YAML 文法を解析したり意味/WCAG 違反を判定したりせず、テキストを比較します。名前・役割・選択状態の行位置を確認でき、実際のコントラスト・キーボード規則と人の視覚レビュー要件は独立して維持します。
+
+説明ごとの生成テキストは120行/12000バイト、1行は2000バイトまでです。バッチは最大16件を試み、出力600行/64000テキストバイトに制限します（JSON メタデータを除く）。行照合の計算量が大きい場合は bounded-replacement 編集へ切り替え、結果が長くなることがあります。省略した行/hunk と理由を明記し、完全な YAML へのリンクを維持します。report.md は最大8件/24000抜粋バイト、AGENT_HANDOFF.md は2件/6000まで表示します。TRUNCATED の抜粋を適用可能なパッチとして使用しないでください。不変 snapshot のテキストは再読込しません。
+
+`npm run smoke:aria` は実際の Chromium で名前/役割/選択状態/追加/削除、時刻マスクの安定性、旧ファイル保持・欠落理由、コントラスト/キーボード欠陥の対照を検証します。CI は `artifacts/upstream-contracts/aria-text.report.json` と隣の `aria-text-evidence/` に YAML・Markdown 比較の証拠を保存します。
+
+
+### 計画した検査範囲と正常／欠陥ベンチマーク
+
+`report.json` のブラウザー stage にある `inspectionScope` は、設定 route × viewport × colorScheme × initial／名前付き state を列挙します。要求・開始確認・完了・失敗・未実行・不明(unknown)を集計し、completionRate の分母は設定した計画のみです。未発見のアプリページは含めません。操作途中のスナップショットは intermediateStates に分離します。完了は違反の有無に関係なく検査と要求された証拠処理が終了したことを示します。強制終了した worker が返していない進捗は unknown です。計画ファイルの読み込み失敗では planComplete=false となり、欠落した名前付き状態の分母は未確定です。部分失敗でも完了した finding を保持し、ERROR／終了コード2と baseline 作成禁止を維持します。
+
+規則の対象範囲は計画完了率とは別です。対象0は not-tested、null・欠落・無効なカウンターは unknown で、tested に数えません。制限の明細では axe の色コントラスト、選択した axe アクセシビリティ規則、独自規則を区別します。完全な WCAG 検査ではありません。iframe 内部と shadow root は文書範囲の検査から除外し、明示的な操作は主文書の対象のみ対応します。イベント委譲と候補上限のある直接リスナー探索には明示的なマーカー・計画が必要です。
+
+固定 Chromium のインストール後に `npm run benchmark:scope` を実行します。フォント方針・アクセシブル名・ラベル・コントラスト・横 overflow・テキスト clipping の正常／欠陥ペアを expected label と照合します。iframe・open Shadow DOM・イベント委譲の境界 probe は別に検証します。CI は label・実際の finding・一致判定・scope・TP/FP/FN を `artifacts/upstream-contracts/scope-benchmark.json` に保存します。同じラベルの重複検出は一度だけ数え、境界 probe は精度の分母から除外し、分母0は null にします。この小さな標本の数値は製品全体の精度や性能を表しません。既存の操作・route失敗・timeout・互換性・証拠の smoke も引き続き実行します。
+
+
+### 状態シナリオと明示的な Storybook ルート
+
+`npm run demo:states` でポート5173の `/ko`、`/ja` を起動します（`UI_REFINER_DEMO_PORT` で変更可能）。ページには実際の KO/JA 翻訳データがあります。`examples/state-scenarios/routes.json` の必要な項目を `browser.routes` にコピーし、`browser.url` を fixture サーバーの origin に設定します。interactions のパスはプロジェクトルート基準なので、別のアプリでは例をコピーするかパスを変更します。実行ごとに locale も合わせて設定します。ブラウザー locale だけではアプリは翻訳されず、ルートごとの locale 指定にもなりません。既存の interactions/config 形式を使用します。
+
+KO/JA の JSON 例はフォーム検証エラー・モーダルの開閉・空リスト・loading → ready・長文の折り返しを検査します。Enter/Space は異なる結果テキスト、モーダルはフォーカス包含・Escape・opener への復帰で確認します。名前付き状態はすべて visible/hidden または正確なテキストの ready 契約を持ちます。制御された loading fixture は “Release fixture data” 操作までデータを保留し、任意の sleep を使わずページ内容から ready を確認します。実際のアプリでは fixture の制御ボタンではなく、アプリの準備要素・データを待ちます。
+
+`npm run smoke:states` は両翻訳 × 2 viewport × light/dark、キーボード/clipping の欠陥対照、7つの名前付き状態それぞれの到達失敗を検証します。到達失敗は ERROR/2 となり、前の完了検査を保持し、後の状態を未実行にして baseline 作成を拒否します。機械可読結果は `artifacts/upstream-contracts/state-scenarios.json`、参照する ARIA YAML は通常の保持整理前に隣接する `state-scenarios-evidence/` へコピーします。この有限の例はアプリ全体のカバレッジや性能目標を示しません。
+
+既知の Storybook story は `/iframe.html?id=states--ko&viewMode=story` のような文書 URL を ready selector・interaction plan とともに routes に直接指定します。デモの同じ URL は route/query 処理を確認するローカル fixture であり、本物の Storybook 環境ではありません。アプリの実際の story ID/URL を使用してください。自動探索・index adapter・ログイン自動化・ルート間の cookie 共有は追加しません。実際の対象が必要とする場合にバージョンを確認して任意の index adapter を検討し、Storybook を依存関係に追加しません。
+
+
+### 任意の画像ビジュアル回帰検査
+
+画像比較は既定で無効、有効にした場合の既定モードは advisory です。既存の onState ブラウザーセッションで初期・操作状態を撮影し、比較用ブラウザーを別に起動しません。次の最上位設定を追加し、profile をレビューしたフォント/実行イメージの識別子に置き換えます。
+
+```json
+{
+  "visual": {
+    "enabled": true,
+    "mode": "advisory",
+    "baselineDir": "ui-visual-baseline",
+    "environmentProfile": "reviewed-fonts-and-execution-image-v1",
+    "capture": "viewport",
+    "threshold": 0.1,
+    "maxDiffPixels": 0,
+    "maxDiffRatio": 0,
+    "masks": [],
+    "stabilityAttempts": 3
+  }
+}
+```
+
+既存 browser.captureScreenshots の生の証拠画像・クロップは独立して維持します。visual 撮影は document.fonts.ready と表示画像の decode を待ち、animation 無効・caret 非表示・CSS pixel scale を使用します。stabilityAttempts（2–5）内で連続する2枚の PNG バイトが一致する必要があり、安定化・リソース・撮影失敗は ERROR です。capture は viewport または fullPage、PNG ごとに1600万pixel/32 MBまでです。既存 session/route の時間・出力上限を維持し、worker timeout を一致と扱いません。
+
+profile は制御したフォント・テストデータ・実行環境を利用者が明示する値で、フォントファイル/コンテナーの自動検証ではありません。manifest には OS/release/architecture、ブラウザー/Playwright/比較器/decoder version、DPR、locale、UTC/reduced-motion、ready/interactions、撮影/比較 options も記録します。profile のない候補は承認できません。記録条件が違えば not-comparable とし、route/state/viewport/theme/locale/capture ごとの承認画像を必要とします。基準キーから server origin/port は除外します。自動探索・認証・アプリデータ準備は含みません。
+
+check で集めた候補をレビューして明示的に承認します。
+
+```sh
+node tools/ui-refiner/bin/ui-refiner.mjs visual candidate --from artifacts/ui-refiner/report.json --out visual-candidate
+# Review candidate PNGs, manifest dimensions, masks, environment and policy first.
+node tools/ui-refiner/bin/ui-refiner.mjs visual approve --from visual-candidate/manifest.json --out ui-visual-baseline
+```
+
+候補画像はレポート保持整理から独立した所有ディレクトリーへコピーします。approve は baselineDir に画像 manifest を原子的に公開します。後の明示的承認は画像集合全体を置換し、旧 manifest 所有画像の未参照ファイルのみ削除します。手動ファイルは保持します。check は承認ストアを読み取るだけです。既存 baseline create は finding ID 抑制用で画像を承認しません。候補には全体の static/browser 完了と要求撮影が必要です。enforce の needs-baseline 結果からも候補を作れますが、changed-only や撮影失敗は拒否します。
+
+| visual 結果 | advisory | 明示的 enforce |
+|---|---|---|
+| 無効 | not-requested | — |
+| 承認画像と一致 | matched | matched |
+| 画像/寸法の差 | レビュー必要 | FAIL / 1 |
+| 承認画像なし | needs-baseline・レビュー必要 | INCOMPLETE / 2 |
+| 環境/options 不一致 | not-comparable・レビュー必要 | INCOMPLETE / 2 |
+| 要求撮影/ファイル/比較失敗 | ERROR / 2 | ERROR / 2 |
+
+制御環境での反復安定性と承認画像を確認してから mode を enforce に変更します。既存 DOM/ソースの強制違反は独立して失敗します。advisory の差や未承認を matched と表示せず、手動レビュー設定が無効でも REVIEW_REQUIRED を表示します。一致によって既存の人の確認要件は解除しません。
+
+masks は最大20個の selector 文字列です。各 selector は1–100要素と表示対象を持つ必要があり、対象欠落は失敗です。不透明 magenta でマスクし、selector/index/viewport CSS box を maskRegions に記録します。背景やパネルの自動除外はありません。データを固定するか狭い範囲を明示的に隠し、範囲外の差は検出し続けます。pixelmatch threshold（0–1）は pixel ごとの色許容値です。許容差pixel数は max(maxDiffPixels, floor(totalPixels × maxDiffRatio))、既定は色許容/anti-alias処理後0pixelです。寸法変更は resize せず different と実際/基準寸法・理由を記録します。
+
+report.visual に状態ごとの actual/expected/diff の不変参照・pixel数/比率/許容値・安定化/mask/環境・時間/容量を記録します。expected も基準ストアから実行へコピーするため、後の承認で過去の証拠は変わりません。既存の実行別画像保持整理を使用します。maxObservedWorkerRssBytes はブラウザー子孫を除く worker RSS 標本であり、全プロセスツリーの最大メモリーではありません。基準欠落/失敗には理由を記録し enforce 全体 PASS にしません。visual options は独立した互換性契約を持ち finding/ARIA 比較をリセットしません。
+
+npm run smoke:visual は10回の制御反復（初期/保存状態）、mask 内の正常変化・layout/clipping/mask外の欠陥・寸法変更・基準欠落/環境不一致・不安定/失敗撮影・CLI 明示承認・生証拠の独立性を検証します。CI は artifacts/upstream-contracts/visual.report.json と隣接 visual-evidence/ を保持します。生の標本と source/環境情報を記録し、製品全体の精度・p95・速度改善目標は主張しません。pixelmatch 7.2.0（ISC）・pngjs 7.0.0（MIT）を固定し、licenses/ に原文通知を保持します。
+
 
 ## 5. レポートと修正ハンドオフ
 
@@ -262,3 +347,25 @@ npm run smoke:review4
 CIは単体・契約テスト、実際のChromiumによるUI・CLI検査、セッションタイムアウト検査、固定ベンダー同期の検証を実行します。正常/違反ページ、モノレポの変更、移動したチェックアウトのフック、自動ID、1600行の一覧後にあるpointer候補の優先検出、同じ状態の画像、要素クロップを検証します。
 
 実際の検査出力とハッシュ・出典は`test/fixtures`に保持し、ライブスモーク出力をレビュー済みの修正情報契約と比較します。CIは`upstream-contracts`の証拠もアップロードします。契約が変わった場合はfixtureを自動再生成せず、レビューしてください。[CIワークフロー](.github/workflows/ci.yml)と[実装レポート](IMPLEMENTATION_REPORT_KO.md)を参照してください。
+
+## 10. 標準出力とオフラインレビュー
+
+JSONが判定の原本です。各検査はスクリプト・サーバー不要の `report.html`、`handoff.json`、分量制限付き `AGENT_HANDOFF.md` を生成します。引き継ぎにはルート・状態・画面サイズ・テーマ、実測/期待値、検証済み静的ソース位置、不変PNG/ARIA参照、入力ハッシュ、再現引数を記録します。保存済み設定では実行コマンドを提供し、メモリ設定では先にスナップショットを保存する必要を明示します。再検査前にアプリと同じデータ・認証を用意してください。
+
+```sh
+node bin/ui-refiner.mjs check --config ui-refiner.config.json --format json
+node bin/ui-refiner.mjs check --config ui-refiner.config.json --format sarif
+node bin/ui-refiner.mjs export html --from artifacts/ui-refiner/report.json --out review-bundle
+node bin/ui-refiner.mjs export sarif --from artifacts/ui-refiner/report.json --out review.sarif
+npm run smoke:export
+```
+
+`--format json|sarif|html|markdown` はstdoutのみを選択し、既定は従来の要約です。全形式と成功したエクスポートは元の終了コード0/1/2/3、手動レビューと部分通過の区別を維持します。エクスポート自体の失敗は2です。JUnitは具体的な利用先ができるまで保留します。
+
+`review-bundle/report.html` は `file://` で直接開けます。新規出力先のみ許可し、原本JSONを変更せず、現在・以前のPNG/YAMLをコピーします。`evidence-manifest.json` は欠落・破損・ハッシュのない旧証拠を明示します。レポート外のパスとシンボリックリンクによる逸脱を拒否します。上限は参照2000件、合計256 MB、PNGあたり32 MB、YAMLあたり2 MBです。HTMLはfinding300件、画像状態40件、ARIA比較20件、整形テキスト12000文字までを表示し、省略を明示します。全データはJSONに残ります。ソースツリー・ホスティング・DBは不要です。
+
+SARIF 2.1.0の主要ソース位置は、検査時に実ファイルと行を確認した静的結果だけです。ブラウザーセレクターは属性、PNG/YAMLは関連証拠として記録し、架空のソースパスを作りません。元のプロジェクトとレポートの基準URIを別々に記録するため、他環境では基準パスを調整してください。固定したOASIS公式スキーマでオフライン検証し、ランタイム依存は追加しません。
+
+`smoke:export` は固定欠陥2種類を最大2回の予算で修正し、全体再検査で試行数と新規ブロッカーを記録します。決められたfixture消費者の実験であり、自律エージェント試行数は0なのでエージェント成功率は主張しません。自動修正・ベースライン承認・PRコメントは実行しません。ポリシー・SOTと人による視覚承認を維持してください。
+
+元の証拠パスを維持し、短い `e/` 別名でHTMLを参照することでWindowsブラウザーの長いパス制限を回避します。別名コピーも合計バイト上限に含めます。

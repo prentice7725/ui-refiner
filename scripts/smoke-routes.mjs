@@ -29,6 +29,7 @@ try{
  assert.ok(first.stages.every(s=>s.status!=='error'));
  const fonts=first.findings.filter(f=>f.rule==='font-family'&&f.selector==='[data-ui-id="shared"]'&&f.viewport.width===390&&f.state==='initial');
  assert.equal(fonts.length,2);assert.notEqual(fonts[0].id,fonts[1].id);assert.ok(fonts.every(f=>f.baselineEligible));
+ const scope=first.stages.find(s=>s.engine==='lintapple').inspectionScope;assert.equal(scope.counts.requested,6);assert.equal(scope.counts.completed,6);assert.equal(scope.completionRate,1);
  assert.equal(first.ariaSnapshots.length,6);assert.equal(first.captures.length,6);assert.equal(first.renderedMetrics.length,6);
  assert.equal(new Set(first.artifacts).size,first.artifacts.length,'Routes/states must never overwrite one another');
  assert.ok(first.renderedMetrics.every(m=>m.topPinned.count===2&&m.filledButtons.count===2&&m.duplicateActions.some(a=>a.name==='Save')));
@@ -46,7 +47,7 @@ try{
  const imageManifest=JSON.parse(await fs.readFile(path.join(root,config.reportDir,'image-artifacts.json'),'utf8'));assert.equal(imageManifest.runId,second.runId);assert.deepEqual(imageManifest.images,second.imageArtifacts);
  for(const s of second.ariaDiff.changed){assert.notEqual(s.file,s.previousFile);assert.match(await fs.readFile(path.join(root,config.reportDir,s.previousFile),'utf8'),/Home/);}
  config.browser.routes=[{name:'redirect',url:'/redirect'}];const redirect=await realBrowser(config,root);assert.ok(redirect.errors.some(e=>/Host example.com is not allowed/.test(e.error)));
- config.browser.routes=[{name:'missing',url:'/missing'}];const missing=await realBrowser(config,root);assert.ok(missing.errors.some(e=>/Route missing: Page returned HTTP 404/.test(e.error)));
+ config.browser.routes=[{name:'missing',url:'/missing'}];const missing=await realBrowser(config,root);assert.ok(missing.errors.some(e=>/Route missing: Page returned HTTP 404/.test(e.error)));assert.equal(missing.inspectionScope.counts.failed,2);assert.equal(missing.inspectionScope.counts.completed,0);
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/multi-route.report.json',JSON.stringify(second,null,2)+'\n');
  console.log('PASS: real multi-route IDs, six same-session ARIA/screenshots, advisory metrics, compatible structure comparisons, forbidden redirect and 404 rejection');
