@@ -21,6 +21,8 @@ jobs:
       - run: npm run smoke:gate
       - run: npm run smoke:review2
       - run: npm run smoke:routes
+      - run: npm run smoke:guidance
+      - run: npm run smoke:context
       - run: npm run smoke:export
       - run: npm run smoke:visual
       - run: npm run smoke:aria

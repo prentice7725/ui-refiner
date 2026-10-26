@@ -3,3 +3,4 @@
 vendor/** -text
 test/fixtures/*.json -text
 test/schemas/** -text
+knowledge/** -text

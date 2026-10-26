@@ -1,3 +1,5 @@
+import {collectInventory} from './preservation.mjs';
+import {loadProjectContext} from './project-context.mjs';
 import {visualOptions} from './visual-config.mjs';
 import {inspectVisualState} from './visual.mjs';
 // Dedicated process bounds the entire browser session, including checks and evidence capture.
@@ -14,13 +16,15 @@ try{
  const routes=browserRoutes(config);
  const policy=JSON.parse(await fs.readFile(resolveInside(root,config.browser.policyPath,'browser.policyPath'),'utf8'));
  for(const route of routes)route.interactions=route.interactionsPath?JSON.parse(await fs.readFile(resolveInside(root,route.interactionsPath,'route.interactionsPath'),'utf8')):undefined;
- const dir=resolveInside(root,config.reportDir,'reportDir'),artifacts=[],captures=[],imageArtifacts=[],ariaSnapshots=[],renderedMetrics=[],advisory=[],visualEntries=[];
+ const dir=resolveInside(root,config.reportDir,'reportDir'),artifacts=[],captures=[],imageArtifacts=[],ariaSnapshots=[],renderedMetrics=[],advisory=[],visualEntries=[],preservationEntries=[];
+ const projectContext=config.preservation?.enabled?await loadProjectContext(config,root):null;
  if(config.browser.captureScreenshots||config.browser.captureAriaSnapshots||config.visual?.enabled)await fs.mkdir(dir,{recursive:true});
  const onState=async(page,state)=>{
   const label=state.name.replace(/[^a-zA-Z0-9_-]/g,'_').slice(0,40);
   const suffix=createHash('sha256').update(JSON.stringify([state.routeKey||'',state.name])).digest('hex').slice(0,8);
   const stem=`render-${state.route}-${state.viewport.width}x${state.viewport.height}-${state.colorScheme}-${label}-${suffix}`;
   const dimensions={route:state.route,routeUrl:state.routeUrl,routeKey:state.routeKey,state:state.name,viewport:state.viewport,colorScheme:state.colorScheme};
+  if(config.preservation?.enabled){const contract=projectContext.surfaces.find(s=>s.route===state.route)?.preserve||{};const inventory=await page.evaluate(collectInventory,contract);if(Buffer.byteLength(JSON.stringify(inventory))>2_000_000)throw Error('Preservation inventory exceeds 2 MB');preservationEntries.push({...dimensions,inventory});}
   if(config.browser.renderedMetrics){const metrics=await page.evaluate(collectRenderedMetrics);renderedMetrics.push({...dimensions,...metrics});advisory.push(...metricFindings(metrics,state));}
   if(config.browser.captureAriaSnapshots){
    const original=await page.locator('body').ariaSnapshot({timeout:config.browser.timeoutMs});
@@ -45,5 +49,5 @@ try{
  };
  const rawReport=await checkRoutes(routes,policy,{allowedHosts:config.gate.allowedHosts,timeout:config.browser.timeoutMs,onState,locale:config.locale||'en-US'});
  rawReport.findings.push(...advisory);
- console.log(JSON.stringify({rawReport,artifacts,captures,imageArtifacts,ariaSnapshots,renderedMetrics,visualEntries}));
+ console.log(JSON.stringify({rawReport,artifacts,captures,imageArtifacts,ariaSnapshots,renderedMetrics,visualEntries,preservationEntries}));
 }catch(e){console.error(e.stack||e.message);process.exitCode=2;}
