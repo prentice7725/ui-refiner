@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+  "commit": "28b3b8dee8c976df4fa3e94aed4e092ad43fcb03",
+  "retrieved": "2026-10-26",
+  "path": "src/ui-ux-pro-max/data/ux-guidelines.csv",
+  "gitBlobSha1": "4e7d52b296537a03513b18b2c3f2b946cc802051",
+  "source": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/28b3b8dee8c976df4fa3e94aed4e092ad43fcb03/src/ui-ux-pro-max/data/ux-guidelines.csv",
+  "license": "MIT",
+  "role": "Advisory retrieval data only; upstream severity is never gate authority",
+  "rowCount": 119,
+  "sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5"
+}

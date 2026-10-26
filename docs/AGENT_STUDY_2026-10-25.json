@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "measuredDate": "2026-10-25",
+  "method": "Restricted real file-tool agent; synthetic motion/contrast fixtures; brief-only versus structured-handoff",
+  "executorVersion": "2.1.310 (Claude Code)",
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "engineFingerprint": "7c23d003f9382e1c06366f92456b7c9c9fd572a21d8635bf7f365c5550a24600",
+  "engineUnchanged": true,
+  "sameStartingSourceBySample": true,
+  "status": "completed",
+  "requestedTrials": 4,
+  "executedTrials": 4,
+  "attemptBudget": 2,
+  "timeoutMs": 180000,
+  "perAttemptApiBudgetUsd": 1,
+  "arms": {
+    "brief-only": {
+      "requested": 2,
+      "executed": 2,
+      "repaired": 2,
+      "executorErrors": 0,
+      "newBlockers": 0
+    },
+    "structured-handoff": {
+      "requested": 2,
+      "executed": 2,
+      "repaired": 2,
+      "executorErrors": 0,
+      "newBlockers": 0
+    }
+  },
+  "totalCliReportedCostUsd": 0.1215388,
+  "trials": [
+    {
+      "sample": "motion",
+      "arm": "brief-only",
+      "status": "repaired",
+      "attempts": 1,
+      "newBlockers": 0,
+      "policyViolations": 0,
+      "finalPreservation": "matched",
+      "startSourceSha256": "ebb4845569ae0ae246aa4d376a7a56754b1189a94b29f911142b046b5a61f032",
+      "finalSourceSha256": "c41b201248ed6a020e23fc24abfaed41fd2db0cf96e4f678344d8b4834eef2c3"
+    },
+    {
+      "sample": "motion",
+      "arm": "structured-handoff",
+      "status": "repaired",
+      "attempts": 1,
+      "newBlockers": 0,
+      "policyViolations": 0,
+      "finalPreservation": "matched",
+      "startSourceSha256": "ebb4845569ae0ae246aa4d376a7a56754b1189a94b29f911142b046b5a61f032",
+      "finalSourceSha256": "e7965fb6773b26e5ba94ba92ebc57d9ccebed62fecb1030eef3a9a818d53b687"
+    },
+    {
+      "sample": "contrast",
+      "arm": "brief-only",
+      "status": "repaired",
+      "attempts": 1,
+      "newBlockers": 0,
+      "policyViolations": 0,
+      "finalPreservation": "matched",
+      "startSourceSha256": "b76d9665ee19c1b8a6ee87cea14cb449aa4593091618496d150f6e3378a83805",
+      "finalSourceSha256": "14106fc14c3488102dd54148cee2fe7979bd86eb0c20f62edc590ed1af6882ea"
+    },
+    {
+      "sample": "contrast",
+      "arm": "structured-handoff",
+      "status": "repaired",
+      "attempts": 1,
+      "newBlockers": 0,
+      "policyViolations": 0,
+      "finalPreservation": "matched",
+      "startSourceSha256": "b76d9665ee19c1b8a6ee87cea14cb449aa4593091618496d150f6e3378a83805",
+      "finalSourceSha256": "14106fc14c3488102dd54148cee2fe7979bd86eb0c20f62edc590ed1af6882ea"
+    }
+  ],
+  "artifacts": "artifacts/upstream-contracts/agent-study-2977a3bd-72c4-44e3-ac8a-5dd7818980b1/study.json",
+  "limits": "Real file-tool agent executions on synthetic fixtures only; 2 samples per arm are not a statistical quality comparison. No independent human visual evaluation performed.",
+  "developmentRunsExcluded": [
+    {
+      "path": "artifacts/upstream-contracts/agent-study-856533ba-4a1e-482f-84d3-a4a074c2fade/study.json",
+      "reason": "Fixture injection did not produce the required initial failure; zero agent attempts."
+    },
+    {
+      "path": "artifacts/upstream-contracts/agent-study-d4c84a8e-3ed1-44c7-badc-5cc14bb16f50/study.json",
+      "reason": "Inventory schema changed during development while the experiment was running, causing a spurious preservation mismatch. Records retained; excluded from final comparison."
+    }
+  ]
+}

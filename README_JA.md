@@ -369,3 +369,37 @@ SARIF 2.1.0の主要ソース位置は、検査時に実ファイルと行を確
 `smoke:export` は固定欠陥2種類を最大2回の予算で修正し、全体再検査で試行数と新規ブロッカーを記録します。決められたfixture消費者の実験であり、自律エージェント試行数は0なのでエージェント成功率は主張しません。自動修正・ベースライン承認・PRコメントは実行しません。ポリシー・SOTと人による視覚承認を維持してください。
 
 元の証拠パスを維持し、短い `e/` 別名でHTMLを参照することでWindowsブラウザーの長いパス制限を回避します。別名コピーも合計バイト上限に含めます。
+
+## 11. 製品コンテキスト・機能保持・デザインレビュー
+
+任意の `contextPath` は製品の事実、文書参照、ルート別の画面目的（`persuade`、`operate`、`read`、`experience`）を分けたschemaVersion 1 JSONを指定します。不明な事実はunknownのまま残し、文書ハッシュとユーザーが宣言した承認状態を記録します。コンテキストから検査ポリシーを自動生成・緩和しません。[例](examples/project-context.json)と[詳しい手順](docs/CONTEXT_PRESERVATION_REVIEW_KO.md)を参照してください。
+
+`preservation: {enabled: true, enforcement: "advisory", baselinePath: null}` は同じ状態のリンク・フォーム・フィールド・操作・テストフック、明示した対象の属性/文言/名前とルートCSSトークンを記録します。全体キャプチャを確認し、`preserve record --from report.json --out preservation-reference.json` で別の基準を記録してbaselinePathと必要ならenforceを設定します。enforceの差分はFAIL/1、基準なし・互換性なしはINCOMPLETE/2、収集失敗はERROR/2です。checkは基準を更新しません。ID/class/順序は比較せず、名前は近似で入力値は保存しません。DOM一致はハンドラーやサーバー動作の証明ではなく、interaction planも必要です。
+
+```sh
+node bin/ui-refiner.mjs rules --json
+node bin/ui-refiner.mjs guide harden --json
+node bin/ui-refiner.mjs review packet --from artifacts/ui-refiner/report.json --out design-review
+node bin/ui-refiner.mjs review validate --from submitted-review.json --report artifacts/ui-refiner/report.json --out accepted-review.json
+npm run smoke:context
+```
+
+`guide` はaudit/critique/polish/hardenの手順を案内し、必須検査範囲を減らしません。規則カタログはID・エンジン・領域・検査段階・前提・制限を説明し、実際の実行範囲はレポートに残します。レビューパケットはデザイン入力と検出結果を分離して証拠を保持します。検証は正確なレポートハッシュ・添付・画面状態を確認しますが、宣言されたレビュー実行や独立性を証明しません。意見は常にadvisoryで、モデルの自動呼び出しはありません。
+
+`npm run benchmark:agent -- --executor <claude実行ファイルの絶対パス>` はCIとは別の実エージェント実験です。一時的な合成fixtureのみを、制限したCLIのファイルツールで修正します。欠陥2種類×2条件、課題ごと最大2回、試行ごと180秒・API予算1 USDです。返されたモデル・費用、ポリシー/保持違反、全体再検査、未解決・エラー・未実行と検査コードのハッシュを記録します。この少数例から統計的な優劣やHallmark/Impeccableとの直接比較は主張しません。要件と成果物は詳しい手順を参照してください。
+
+## 12. UX修正ガイダンスの検索と引き継ぎ
+
+検査結果にローカルUX検索を関連付けます。全候補は `report.json.repairGuidance`、`handoff.json.repairGuidance` と各targetの `repairSuggestions`、制限付きプレビューはAGENT_HANDOFF.md/report.md/report.htmlに記録します。クエリは既知のfinding rule IDから作り、ページの文言を検索指示には使いません。未知の規則はno-matchです。ブロッカーを優先し、baseline・承認済み例外・既存負債の対象は除外します。
+
+```sh
+node bin/ui-refiner.mjs guidance --query "keyboard focus" --limit 3
+node bin/ui-refiner.mjs guidance --query "フォーム エラー" --limit 2
+npm run smoke:guidance
+```
+
+UI UX Pro MaxのUX CSVをコミット `28b3b8dee8c976df4fa3e94aed4e092ad43fcb03` に固定しました。原本119行からWeb/Allのみ検索し、正確なバイト・ライセンス・原本行・行ID・ハッシュを `knowledge/ui-ux-pro-max/` に保持します。Pythonの検索/デザインシステム生成器はインストール・実行しません。Node実装は決定的BM25順位、限定的な韓国語/日本語キーワード別名、カテゴリーフィルター、明示的no-matchを提供します。順位はキーワード関連度であり、視覚品質や確信度ではありません。
+
+任意の `guidance` 設定の既定値は `{"enabled":true,"maxFindings":20,"maxSuggestions":2}` です。上限はfinding50件、対象ごと3候補で、`guidance.enabled=false` で無効にできます。Markdownプレビューは別途4件/3200バイトまでとし、JSONに省略件数を記録します。データ欠落・ハッシュ不一致はguidance unavailableとし、元の判定を変えません。検索中のネットワーク/モデル呼び出しはありません。
+
+候補には原本の優先度、良い/悪い例、固定ソースURLを含めます。原本のHighも常にadvisoryで、ブロッカーやポリシー値にはなりません。実際のfinding・証拠・承認済みSOTを先に読み、例がプロジェクトに適合するか確認してください。例はフレームワークや文脈に依存し、既存基準より厳しい場合もあります。ポリシー生成・ページ別上書き・スタック推論・自動修正・MCP/プラグイン導入は含めません。

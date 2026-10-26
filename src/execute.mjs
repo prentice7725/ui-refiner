@@ -68,7 +68,7 @@ export async function realBrowser(config,root,{runner=spawnBounded,evidenceRunId
  }));
  const budgets=browserBudget(config,policy,plans),started=Date.now();let outputBytes=0;
  const worker=fileURLToPath(new URL('./browser-worker.mjs',import.meta.url));
- const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],imageArtifacts:[],ariaSnapshots:[],renderedMetrics:[],visualEntries:[],routeResults:[]};
+ const combined={rawReport:{url:config.browser.url,routes,runs:[],findings:[],errors:[]},artifacts:[],captures:[],imageArtifacts:[],ariaSnapshots:[],renderedMetrics:[],visualEntries:[],preservationEntries:[],routeResults:[]};
  for(const [index,route] of routes.entries()){
   const remaining=Math.max(0,budgets.sessionTimeoutMs-(Date.now()-started));
   // Reserve a fair share for every pending route; one slow worker cannot consume the whole batch.
@@ -90,7 +90,7 @@ export async function realBrowser(config,root,{runner=spawnBounded,evidenceRunId
    combined.rawReport.runs.push(...result.rawReport.runs);
    combined.rawReport.findings.push(...result.rawReport.findings);
    combined.rawReport.errors.push(...result.rawReport.errors||[]);
-   for(const key of ['artifacts','captures','imageArtifacts','ariaSnapshots','renderedMetrics','visualEntries'])combined[key].push(...result[key]||[]);
+   for(const key of ['artifacts','captures','imageArtifacts','ariaSnapshots','renderedMetrics','visualEntries','preservationEntries'])combined[key].push(...result[key]||[]);
    outcome.status=result.rawReport.errors?.length?'error':'complete';
    outcome.completedRuns=result.rawReport.runs.filter(r=>r.status!=='error').length;
    if(result.rawReport.errors?.length)outcome.error=result.rawReport.errors.map(e=>e.error).join('; ');

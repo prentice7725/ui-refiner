@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "audience": "Invoice operators",
+    "primaryTask": "Review and save invoice details",
+    "facts": []
+  },
+  "references": [
+    {"kind": "design", "file": "DESIGN.md", "approved": false},
+    {"kind": "acceptance", "file": "docs/acceptance.md", "approved": false}
+  ],
+  "surfaces": [
+    {
+      "route": "default",
+      "mode": "operate",
+      "purpose": "Save invoice details without losing entered data",
+      "allowedChanges": ["Correct contrast and spacing without changing product facts or behavior"],
+      "preserve": {
+        "elements": [
+          {"selector": "#save", "attributes": ["type"], "text": true, "accessibleName": true}
+        ],
+        "tokens": ["--brand"]
+      }
+    }
+  ]
+}

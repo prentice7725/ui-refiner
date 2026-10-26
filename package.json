@@ -23,7 +23,10 @@
     "smoke:states": "node scripts/smoke-states.mjs",
     "smoke:aria": "node scripts/smoke-aria.mjs",
     "smoke:visual": "node scripts/smoke-visual.mjs",
-    "smoke:export": "node scripts/smoke-export.mjs"
+    "smoke:export": "node scripts/smoke-export.mjs",
+    "smoke:context": "node scripts/smoke-context-preservation.mjs",
+    "benchmark:agent": "node scripts/benchmark-agent.mjs",
+    "smoke:guidance": "node scripts/smoke-guidance.mjs"
   },
   "dependencies": {
     "axe-core": "4.14.0",

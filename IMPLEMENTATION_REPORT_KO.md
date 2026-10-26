@@ -117,3 +117,32 @@
 - 공식 OASIS draft-04 스키마 원본과 이용 조건·조회일·SHA-256을 test/schemas에 고정했다. Ajv 8.20.0, ajv-draft-04 1.0.0, ajv-formats 3.0.1은 개발 전용이며 런타임 의존성과 기존 식별자를 바꾸지 않는다. README EN/KO/JA, 배포 agent protocol, CI와 라이선스 고지를 동기화했다.
 - 검증: 전체 단위/계약 테스트 95/95 통과. 실제 Chromium smoke:gate, smoke:aria, smoke:visual, smoke:export 통과. 오프라인 file:// 화면을 1280/390px에서 열고 실제/기대/차이 PNG 3장과 ARIA 변경을 확인했으며 외부 요청은 0건이었다. 정상 JSON stdout과 결함 SARIF stdout을 파싱하고 공식 스키마를 검증했다. 저장 결과의 PASS/FAIL/ERROR/INCOMPLETE/SCOPED_PASS 내보내기 종료 코드는 각각 0/1/2/2/3을 유지했다. 화면·묶음·실험 기록은 artifacts/upstream-contracts/export-evidence 및 export.report.json에 남긴다.
 - 인계 소비자 실험: 고정 정적 transition 결함과 브라우저 contrast 결함 2개, 최대 2회 예산, 각 1회 수정 후 전체 검사 PASS, 신규 차단 결함 0개. 실제 handoff의 파일/줄 또는 선택자를 읽은 뒤 fixture 전용의 정해진 수정 절차를 적용했다. 정책/기준선으로 결함을 숨기지 않았다. 자율 코딩 에이전트 실행 수는 0이며 이 수치를 에이전트 수정 성공률로 일반화하지 않는다. 자동 코드 수정·기준선 승인·PR 댓글 기능은 추가하지 않았다.
+
+
+## PR08~12 — 맥락·기능 보존·규칙·리뷰·실제 agent 실험 (2026-10-25)
+
+벤치마킹 후 제안한 순서대로 구현했다. 외부 skill/런타임 코드를 복사하지 않았고 기존 engine pin·finding ID·baseline v2·기본 판정을 유지했다. 커밋·푸시는 이번 요청 범위에 포함하지 않았다.
+
+- PR08: 선택 contextPath와 검증된 schemaVersion 1 입력을 추가했다. 제품 사실·문서 참조·route별 purpose/mode·보존 대상·허용 변경을 분리한다. 파일 해시·선언한 승인·stale/unavailable/unknown을 기록하고 정책을 자동 생성하지 않는다. 관련 context 변경은 finding/review 비교를 갱신하되 ARIA와 browser-debt 의미를 유지한다.
+- PR09: 동일 브라우저 상태에서 링크·폼·입력·컨트롤·테스트 훅과 명시한 속성/문구/이름·루트 토큰을 수집한다. 입력 값과 핸들러 소스는 저장하지 않는다. 동적 ID/class/순서를 비교하지 않고 중복 개수를 보존한다. preserve record는 검토된 전체 검사에서만 별도 기준을 만들며 덮어쓰지 않는다. enforce의 차이는 FAIL/1, 기준 부재/호환 불가는 INCOMPLETE/2, 수집 실패는 ERROR/2다. 알려진 대상 부재와 수집 불확실성을 구분하며 실제 backend/handler 성공은 주장하지 않는다. JSON·인계·Markdown·HTML·SARIF에 결과를 연결했다.
+- PR10: rules --json은 pinned 엔진의 ID와 domain/phase/prerequisite/limits를 공개한다. 수동 판단과 advisory를 자동 검사와 구분한다. guide audit/critique/polish/harden은 기존 full check 범위를 줄이지 않는 읽기 전용 안내다.
+- PR11: review packet은 맥락·캡처를 담은 디자인 입력과 결함·판정을 담은 detector 입력을 분리해 오프라인 증거와 함께 내보낸다. review validate는 정확한 원본 해시·첨부 파일 해시·route/state와 reviewer 선언을 검증한다. 수동 판단은 manual로 표시하고 제출된 blocking 플래그는 false로 고정한다. 별도 파일은 실행 격리가 아니며 reviewer의 실제 실행/독립성을 입증하지 않는다. 모델 자동 호출은 추가하지 않았다.
+- PR12: benchmark:agent는 명시적으로 선택한 설치된 Claude CLI를 제한 모드에서 구동하는 실제 file-tool agent 실험이다. 합성 임시 프로젝트에서 Read/Edit/Write만 제공하고 shell/MCP/hook을 사용하지 않는다. 모션/대비 결함 × brief-only/structured-handoff 조건의 시작 소스를 맞추고 시도·비용·도구 거부·정책/보존 위반·새 blocker·전체 재검사를 기록한다. 과제당 2회, 시도당 180초/API 예산 1 USD이며 CI에서 모델을 자동 호출하지 않는다. 검사 코드 해시가 실행 중 바뀌면 실험을 무효화한다.
+
+검증: 전체 단위·계약 테스트 103/103 통과. 실제 Chromium의 context/preservation/review smoke와 기존 export smoke를 실행했다. 정상·동적 ID 변경·링크 목적지/필드 이름 손실·토큰 변경·명시 기준 불변·리뷰 증거 오류·권고 판정을 확인했다. 자세한 사용법과 예시, README EN/KO/JA, agent protocol과 CI를 동기화했다.
+
+최종 실제 agent 실험은 Claude Code 2.1.310 / 응답에 기록된 claude-opus-5-5로 총 4개 과제를 실행했다. 두 조건 각각 2/2가 한 번의 수정 후 전체 PASS·보존 matched, 새 blocker/정책 위반 0이었다. 동일 시작 소스와 실행 중 검사 코드 불변을 확인했다. CLI 보고 비용 합계는 0.1215388 USD이며 청구서 검증값이나 일반적인 비용 추정이 아니다. 표본이 작고 둘 다 전부 통과했으므로 조건 간 우열은 주장하지 않는다. 실제 Hallmark/Impeccable 실행 비교나 독립적인 사람의 시각 평가는 수행하지 않았다. 공유 가능한 요약: docs/AGENT_STUDY_2026-10-25.json.
+
+개발 중 초기 fixture 결함 주입 실패(실제 agent 0회)와 실험 중 수집 스키마 변경이 섞인 실행은 산출물을 보존하고 최종 비교에서 제외했다. 후자의 마지막 조건은 agent가 만들지 않은 보존 차이로 미해결 판정됐으므로 성공/실패 통계로 사용하지 않았다. 코드 해시 고정 장치를 추가한 뒤 전체 네 과제를 재실행한 결과만 위 수치로 보고했다.
+
+
+## PR13 — UX 지침 검색과 핸드오프 첨부 (2026-10-26)
+
+사용자가 선택한 범위인 UX 지침 검색·인계 첨부만 구현했다. 정책 초안 생성·페이지별 덮어쓰기·프레임워크별 데이터 검색·MCP/플러그인 패키징은 포함하지 않는다.
+
+- UI UX Pro Max의 ux-guidelines.csv를 커밋 28b3b8dee8c976df4fa3e94aed4e092ad43fcb03에 고정했다. 원본 119행, MIT LICENSE, 출처/조회일/커밋/행 수/SHA-256/Git blob SHA-1을 knowledge/ui-ux-pro-max에 기록했다. Git blob SHA-1까지 원본과 일치하며 knowledge/** -text로 체크아웃 바이트를 유지한다. Python 검색·디자인 시스템 생성 코드는 복사·실행하지 않는다.
+- 의존성을 추가하지 않는 로컬 Node BM25 검색을 작성했다. Web/All 지침만 대상으로 검색하며 한국어·일본어 일부 UX 키워드 별칭, 규칙별 검색어·카테고리, 약한 일치 필터, 결정적 tie-break, no-match를 제공한다. 검색어는 finding rule ID로 만들고 검사한 페이지의 문구를 지시로 사용하지 않는다. 순위 점수는 키워드 관련도이며 화면 품질·진단 확신을 뜻하지 않는다.
+- report.json.repairGuidance, handoff.json.repairGuidance와 target.repairSuggestions에 실제/기대 값·기존 이미지/ARIA 근거와 함께 참고 지침을 연결했다. 각 제안에는 추천·피할 점·좋은/나쁜 예·원본 우선순위·행 ID·원본 줄·고정 출처 URL이 있다. 원본 High도 advisory=true/blocking=false이며 finding 배열·ID·scope·호환성·정책·baseline v2·판정·종료 코드를 변경하지 않는다.
+- 기본 대상은 차단 결함 우선 최대 20개, 대상당 최대 2개 제안이다. baseline/검토 예외/기존 부채는 제외한다. 옵션 상한은 대상 50개·제안 3개이며 disabled/no-match/unavailable/생략 수를 명시한다. Markdown 미리보기는 4개·3200바이트로 제한한다. 데이터 오류는 지침만 unavailable로 처리한다. 네트워크·모델 호출과 source example 실행은 없다.
+- guidance --query [--limit] 명령과 report.md/AGENT_HANDOFF.md/오프라인 HTML 표시를 추가했다. agent protocol은 실제 finding과 SOT를 먼저 읽고 예시의 프레임워크·접근성·reduced-motion 적합성을 검토하도록 보강했다. README EN/KO/JA·라이선스 고지·CI를 동기화했다.
+- 검증: 단위/계약 테스트 108/108 통과. 실제 suta/Chromium의 no-reduced-motion·transition-all·text-contrast 결함에 고정 출처 지침이 연결됐다. 지침을 꺼도 같은 결함·ID·비교 기준·FAIL을 유지하고 실제 수정 후 PASS로 돌아오는 것을 확인했다. source integrity·CSV 인용/여러 줄·다국어 키워드·bounded/no-match·원본 High 비승격을 검증했다. smoke:guidance 결과와 휴대 가능한 예제는 artifacts/upstream-contracts/guidance.report.json 및 guidance-evidence에 남긴다.
