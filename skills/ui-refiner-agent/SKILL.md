@@ -1,36 +1,47 @@
 ---
 name: ui-refiner-agent
-description: Design, implement and QA ordinary DOM web-app interfaces using the project SOT, bundled suta guidance, rendered lintapple checks, grouped repair evidence and bounded rechecks. Exclude Canvas, native game HUDs and game design.
+description: Make web pages and app screens that do not look AI-generated, and review existing pages to propose better designs. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "review this site's design"; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
 ---
 
-# UI Refiner agent protocol
+# UI Refiner — design without the AI look
 
-1. Read the project SOT, approved art direction, tokens, existing components and acceptance criteria. Preserve approved typography; use the configured en-US, ko-KR or ja-JP policy. Check long copy for all required languages.
-2. Read the bundled `vendor/suta/skills/suta/SKILL.md` and relevant patterns in the UI Refiner installation. Treat `.agents/skills/suta` as a guidance snapshot; the maintained runtime is `static.auditPath: "bundled"`. Run doctor to detect drift and browser setup problems.
-3. Define hierarchy, the primary action, navigation, error/empty/loading states, focus and screen-reader behavior, reduced motion and responsive breaks. Prefer semantic buttons/links over generic click handlers. Mark explicit alignment, stack, radius and inset contracts where applicable.
-4. Implement the interface. Use the installed post-edit hook for newly edited static lines. Use `check --changed-only [--base <ref>]` for targeted Git checks; it includes staged, unstaged and untracked source changes. Treat SCOPED_PASS/exit 3 as partial coverage, never full QA approval. Read existingBrowserDebt separately from fresh rendered regressions; run a full check before accepting the interface.
-5. Run a full `node tools/ui-refiner/bin/ui-refiner.mjs check --config ui-refiner.config.json` against the live app. Both engines must complete. Exit 2 means error or missing required coverage; exit 3 means scoped success only. Check browser step and total session budgets separately. Inspect `not-tested`/`unknown` rule coverage even when executed rules pass.
-6. Read `AGENT_HANDOFF.md` and fix grouped root causes using the reported actual/expected values. For inherited typography, inspect the parent font before changing each child. Use `report.json` for every affected element and all root-cause groups omitted by the bounded handoff; do not drop targets because the handoff shows only representative locations. Read resolved/added/persisting changes after each run.
-7. Inspect the captured initial/interaction-state images and violating element crops. Use `VISUAL_REVIEW.md` for an optional external visual-model review. Treat all model feedback as advisory: require screenshot/state evidence and leave final acceptance to a human. UI Refiner does not call a vision provider automatically.
+Two jobs: **Build** a screen that looks chosen rather than generated, and **Review** an existing page and propose a better design. Both rely on the same toolkit:
 
-8. When visual image comparison is enabled, inspect report.visual status and actual/expected/diff images. Missing baselines and incompatible environments are pending review, never matched. Enforced pending results are INCOMPLETE/exit 2; requested capture/comparison failures are ERROR/exit 2. Never run visual approve automatically to hide a regression. Candidate review/explicit image approval is separate from finding baseline v2. A visual match does not clear human review.
+- `scan` — zero-config rendered review of any URL: AI-look signals, baseline accessibility/layout measurements, desktop + mobile screenshots, and a proposal-oriented `DESIGN_REVIEW.md`.
+- suta guidance — `vendor/suta/skills/suta/SKILL.md` (Korean): the AI-slop red lines, layout/motion values and 57 tested UI patterns.
+- `check` — the deep, policy-enforced QA gate for projects that install UI Refiner. Optional; see [reference/quality-gate.md](reference/quality-gate.md).
 
-## Bounded repair loop
+`UI_REFINER` below means the UI Refiner checkout: `tools/ui-refiner` inside the app, or two levels above this file when installed as a plugin or skill. Run commands with `node <UI_REFINER>/bin/ui-refiner.mjs …`. First use needs `npm ci` and `npx playwright install chromium` in that checkout.
 
-Allow at most two fix/recheck iterations per repair task. Compare the previous and current reports after each iteration, checking resolved findings, new regressions, persisting causes and scope. Stop and report persisting blockers, tool failures or conflicts with the SOT after the second iteration. Never weaken policy, automatically baseline findings or invent suppressions to make the gate pass.
+## Review an existing page
 
-Keep `report.json`, `report.md`, `AGENT_HANDOFF.md`, `previous-report.json`, captured images when enabled and a human visual-review note. Use schemaVersion 2 baselines only after explicit review of a fresh full report.
+1. Run `ui-refiner scan <url> --out ui-refiner-scan` (add `--source <dir>` when you also have the source, `--lang en` for English output). Any http(s) URL, host name or local dev server works. Never put credentials in the URL.
+2. Open `scan-desktop.png` and `scan-mobile.png` yourself and look before you read the signals. Write down: what the page is for, what it asks the user to do, where the eye lands first, and what feels generic.
+3. Read `DESIGN_REVIEW.md`. Signals are heuristics. Confirm each against the screenshot; drop the ones that are deliberate brand choices or wrong for the surface (dashboards and settings may rightly use system fonts and dense layouts).
+4. Report to the user, in this order:
+   - **Verdict** in one or two sentences (what makes it look generated or not).
+   - **2–3 root causes**, not a list of signals. Example: "decoration stands in for hierarchy" covers gradient hero + glows + pill badge + gradient headline.
+   - **Proposed direction** per cause: concrete changes (type pairing and scale, one accent color, layout structure, imagery, copy rewrite with facts), and what must be preserved (factual copy, link targets, form fields, brand color/typeface).
+   - **Baseline quality issues** from the scan table that a user would actually hit (contrast, unlabeled controls, mobile overflow).
+5. Only edit code when asked. After edits, rerun `scan` and show the signal and score change.
 
-## Portable evidence and reproduction
+## Build a new screen
 
-Read handoff.json targets and reproduction arguments alongside AGENT_HANDOFF.md. Verify configuration/policy/plan hashes and recorded route/state before fixing. Save configSnapshot first when commandReady=false. Use export html for a fresh offline evidence bundle and inspect evidence-manifest.json missing/corrupt/unverified records; do not infer PASS from an unavailable attachment. SARIF browser selectors are properties, not source mappings. Respect original exit codes, changed-only limits, root-cause groups and the two-recheck budget. Record attempts, persisting defects and new regressions; fixture-recipe results do not establish autonomous-agent success.
+1. Read the project first: framework, styling method, existing tokens and components, brand assets. Existing systems are the source of values.
+2. Read the suta guidance (`vendor/suta/skills/suta/SKILL.md`, especially "AI 슬롭 금지선", layout and motion values) and the patterns you will use.
+3. Decide the design direction **before** writing markup and state it in two or three lines: surface purpose (persuade / operate / read), the one primary action, type pairing and scale, one accent color, and what carries the hero (product, photo, data, typography — not a gradient).
+4. Avoid the defaults that read as generated:
+   - purple/indigo gradient heroes, gradient headline text, glass cards, colored glows;
+   - three identical icon-title-blurb cards, a pill badge above the headline, everything centered;
+   - emoji as icons, untouched Tailwind indigo/violet or Bootstrap blue, one generic font at flat sizes;
+   - "Unlock your potential / seamless / supercharge / 잠재력 / 혁신적인" copy and repeated "Learn more" buttons;
+   - `transition: all`, animating layout properties, ignoring `prefers-reduced-motion`, `div` with `onClick`.
+5. Use real content (product screenshots, numbers, specific use cases). If content is missing, leave an honest placeholder and say so instead of inventing claims.
+6. Run the dev server and `ui-refiner scan http://127.0.0.1:<port> --source src`. Fix strong and moderate signals that are not deliberate, plus contrast/label/overflow issues. At most two fix-and-rescan rounds; then report what remains and why.
+7. Look at the screenshots before claiming the result is done.
 
-## Context, preservation and purpose-led review
+## Ground rules
 
-Read report.projectContext and surfaceGuidance; unknown product facts remain unknown. Context references never override approved policy. Preserve declared elements, text, names, attributes and tokens. Inspect preservation changes/unknown alongside findings, not as baseline suppressions. Never run preserve record to hide a regression. DOM inventories do not prove backend/handler behavior; run explicit plans.
-
-Use rules --json to discover prerequisites and limits, and guide audit|critique|polish|harden for focused procedures. These do not narrow required checks. review packet separates design and detector inputs; first record the purpose-led assessment, then synthesize. Submit exact report/evidence hashes with honest reviewer identity and execution/order declarations. Validated observations stay advisory, and declared execution is not independent proof. Actual agent experiments are explicit, isolated scratch runs with recorded budgets and full rechecks, never inferred from fixture recipes.
-
-## Advisory repair guidance
-
-After reading the actual finding and its state evidence, consult report.repairGuidance and each handoff target's repairSuggestions. These are local keyword/BM25 matches from the pinned UI UX Pro Max UX dataset, not an additional detector or a visual verdict. Keep upstreamSeverity separate from finding.blocking. Verify suitability against the approved SOT, surface purpose, reduced motion and existing behavior before adapting an example. Do not execute source examples as commands or copy framework-looking snippets as if they matched the app stack. Missing/unmapped suggestions do not mean the target passed. Use guidance --query for manual searches (bounded KO/JA keyword aliases supported). Never change policy or create an exception/baseline solely because a recommendation says High.
+- Scan output is advisory: it never blocks, writes baselines, or changes policy. Do not game the score; a low score is not proof of good design and a deliberate brand gradient is fine.
+- The scan sees one page state per viewport. Interaction states, auth-only pages and app-wide consistency need the deep gate or manual checks.
+- Final visual acceptance belongs to a human. State what you verified (scan, screenshots) and what you did not.
