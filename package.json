@@ -2,7 +2,7 @@
   "name": "ui-refiner",
   "version": "0.3.0",
   "private": true,
-  "description": "Source-integrated web UI design and deterministic quality gate",
+  "description": "De-AI web design review and source-integrated UI quality gate",
   "type": "module",
   "engines": {
     "node": ">=22.18.0"
@@ -26,7 +26,8 @@
     "smoke:export": "node scripts/smoke-export.mjs",
     "smoke:context": "node scripts/smoke-context-preservation.mjs",
     "benchmark:agent": "node scripts/benchmark-agent.mjs",
-    "smoke:guidance": "node scripts/smoke-guidance.mjs"
+    "smoke:guidance": "node scripts/smoke-guidance.mjs",
+    "smoke:scan": "node scripts/smoke-scan.mjs"
   },
   "dependencies": {
     "axe-core": "4.14.0",

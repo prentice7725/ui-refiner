@@ -6,6 +6,20 @@ UI Refiner combines **suta source auditing and design guidance** with **lintappl
 
 It includes suta's complete pinned skill catalog with 57 patterns and lintapple's maintained runtime source. It does not automatically generate interfaces, repair code, call a vision model or approve a release. Godot UIs, Phaser Canvas and game HUDs are outside its scope.
 
+## Quick start: what it is for
+
+UI Refiner helps coding agents (Claude Code, Codex) **build web UIs that do not look AI-generated** and **review existing pages to propose better designs**. Start with the zero-config scan; the policy-enforced gate in the sections below is optional.
+
+```sh
+npm ci && npx playwright install chromium
+node bin/ui-refiner.mjs scan https://your-site.example --out ui-refiner-scan --lang en
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --source src      # your dev server + source audit
+```
+
+`scan` opens the page at 1440px and 390px, saves full-page screenshots and writes `DESIGN_REVIEW.md` + `scan.json`: an **AI-look index** (0–100, heuristic) built from rendered signals — purple gradient heroes, gradient headlines, glass cards, colored glows, emoji icons, identical icon-card trios, eyebrow pills, centered-everything, framework default accents, generic type, buzzword copy, repeated generic CTAs, `transition: all` — each with why and a concrete fix, plus baseline contrast/label/overflow measurements. A chosen webfont, real imagery and a rich type scale dampen the score. It is advisory only and accepts any host you name. `examples/ai-slop-landing.html` scores 100; the plain demo scores 6; stripe.com, linear.app, github.com, toss.im and apple.com/kr scored 3–21 at the time of writing.
+
+Agent use: install as a Claude Code plugin (`/plugin marketplace add prentice7725/ui-refiner`) or run `node tools/ui-refiner/scripts/install-agent-skill.mjs .` in an app to place the skill in `.claude/skills` (Claude Code) and `.agents/skills` (Codex). The skill ([skills/ui-refiner-agent/SKILL.md](skills/ui-refiner-agent/SKILL.md)) defines the **Build** and **Review** workflows; the deep gate protocol lives in [reference/quality-gate.md](skills/ui-refiner-agent/reference/quality-gate.md).
+
 ## 1. Requirements and installation
 
 Use Node.js **22.18 or newer**, npm, Git and explicitly installed Playwright Chromium. Runtime npm dependencies are pinned `axe-core@4.14.0`, `playwright@1.63.0`, `pixelmatch@7.2.0` and `pngjs@7.0.0`.
