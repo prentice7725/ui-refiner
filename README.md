@@ -369,3 +369,37 @@ SARIF 2.1.0 includes primary source locations only for static files/lines read a
 `smoke:export` includes two deterministic fixture repairs with a two-attempt budget and full rechecks, recording attempts and new blockers. This is a fixture-consumer experiment: autonomous-agent trials = 0, so no autonomous-agent success rate is claimed. The tool never applies fixes, approves baselines or posts PR comments automatically. Preserve policy/SOT and human visual acceptance.
 
 Original evidence paths remain in the bundle; short `e/` aliases keep HTML links usable in Windows browsers with long-path limits. Alias copies count toward the total byte budget.
+
+## 11. Product context, functional preservation and design review
+
+Optional `contextPath` points to a schemaVersion 1 JSON file separating product facts, declared document references and route-specific surface purposes (`persuade`, `operate`, `read`, `experience`). Missing facts stay unknown; reference hashes and declared approvals are recorded. Context never generates or weakens checker policy. See [example](examples/project-context.json) and [complete workflow](docs/CONTEXT_PRESERVATION_REVIEW_KO.md).
+
+Optional `preservation: {enabled: true, enforcement: "advisory", baselinePath: null}` records same-state link/form/field/control/test-hook inventories, explicit target attributes/text/names and declared root CSS tokens. Review a full capture, then explicitly record it with `preserve record --from report.json --out preservation-reference.json`. Set baselinePath and optionally enforce. Enforced differences fail (1), missing/incompatible references are incomplete (2), and collection failures are errors (2). Checks never update references. IDs/classes/order are excluded; names are approximate, no input values are stored, and DOM equality does not prove handlers or backend behavior. Existing interaction plans remain necessary.
+
+```sh
+node bin/ui-refiner.mjs rules --json
+node bin/ui-refiner.mjs guide harden --json
+node bin/ui-refiner.mjs review packet --from artifacts/ui-refiner/report.json --out design-review
+node bin/ui-refiner.mjs review validate --from submitted-review.json --report artifacts/ui-refiner/report.json --out accepted-review.json
+npm run smoke:context
+```
+
+`guide` supports audit/critique/polish/harden without changing check scope. The rule catalog describes engine IDs, domains, phases, prerequisites and limits; actual execution coverage stays in the report. Review packets separate design input from detector input and preserve evidence. Validation checks exact report hashes, attachments and dimensions; declared reviewer execution/order is not independently attested. All review observations stay advisory. No model is called automatically.
+
+`npm run benchmark:agent -- --executor <absolute-claude-executable>` is an opt-in real agent experiment on synthetic scratch fixtures, not part of CI. It uses a restricted installed CLI with file tools only, 2 samples × 2 arms, at most 2 attempts, 180 seconds and 1 USD API budget per attempt. It records actual model usage/cost when reported, policy/preservation violations, full rechecks, unresolved/error/not-run cases and detector implementation hashes. These small samples do not establish statistical superiority or a Hallmark/Impeccable head-to-head result. See the workflow document for requirements and artifacts.
+
+## 12. Advisory UX repair guidance
+
+Checks now attach local UX search results to `report.json.repairGuidance`, `handoff.json.repairGuidance` and target `repairSuggestions`, plus bounded previews in AGENT_HANDOFF.md/report.md/report.html. Queries are derived from known finding rule IDs, not page text. Unknown rules explicitly have no match. Blocking findings are considered first, while baselined, reviewed-exception and existing-debt findings are excluded.
+
+```sh
+node bin/ui-refiner.mjs guidance --query "keyboard focus" --limit 3
+node bin/ui-refiner.mjs guidance --query "폼 오류" --limit 2
+npm run smoke:guidance
+```
+
+The bundled UI UX Pro Max UX CSV is pinned at commit `28b3b8dee8c976df4fa3e94aed4e092ad43fcb03`: 119 source rows, filtered to Web/All for retrieval. Exact bytes, license, source lines, row IDs and hashes are preserved under `knowledge/ui-ux-pro-max/`. The original Python search/design-system generator is not installed or executed. The Node implementation provides deterministic BM25 ranking, lexical KO/JA aliases, category filtering and explicit no-match results. These scores measure keyword relevance, not visual quality or confidence.
+
+Optional `guidance` settings default to `{"enabled":true,"maxFindings":20,"maxSuggestions":2}` (limits: 50 findings, 3 suggestions per finding). Set `guidance.enabled=false` to disable attachment. The Markdown preview is capped separately at 4 entries/3200 bytes; JSON records omissions. Missing/corrupt corpus data is reported as guidance unavailable and does not alter the gate verdict. No network/model requests run during search.
+
+Every suggestion includes upstream severity, good/bad examples and an immutable source URL. Upstream High is always advisory, never a new blocker or policy value. Read the real finding/evidence and approved SOT first; examples can be framework-specific, contextual or stricter than the project's standard. This feature does not generate policy, apply page overrides, infer a stack, auto-fix code or provide MCP/plugin installation.

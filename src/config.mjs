@@ -1,3 +1,4 @@
+import {guidanceOptions} from './repair-guidance.mjs';
 import {validateVisual} from './visual-config.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -15,7 +16,7 @@ export function resolveInside(root,p,field){
   return target;
 }
 export function validateConfig(input){
-  assertKeys(input,['schemaVersion','locale','name','preset','sot','static','browser','gate','reportDir','visual'],'config');
+  assertKeys(input,['schemaVersion','locale','name','preset','sot','static','browser','gate','reportDir','visual','contextPath','preservation','guidance'],'config');
   if(input.schemaVersion!==1) throw new Error('Unsupported schemaVersion (expected 1)');
   makePreset(input.preset,input.locale||'en-US');
   nonEmpty(input.name,'name');
@@ -48,6 +49,11 @@ export function validateConfig(input){
   if(input.gate.baselinePath!==null)nonEmpty(input.gate.baselinePath,'gate.baselinePath');
   if(input.gate.valueExceptionsPath!=null)nonEmpty(input.gate.valueExceptionsPath,'gate.valueExceptionsPath');
   bool(input.gate.manualVisualReview,'gate.manualVisualReview');nonEmpty(input.reportDir,'reportDir');
+  if(input.contextPath!==undefined&&input.contextPath!==null)nonEmpty(input.contextPath,'contextPath');
+  if(input.preservation!==undefined){
+    assertKeys(input.preservation,['enabled','enforcement','baselinePath'],'preservation');bool(input.preservation.enabled,'preservation.enabled');assertEnforcement(input.preservation.enforcement,'preservation.enforcement');if(input.preservation.baselinePath!=null)nonEmpty(input.preservation.baselinePath,'preservation.baselinePath');if(input.preservation.enabled&&!input.browser.enabled)throw Error('preservation requires browser.enabled');
+  }
+  guidanceOptions(input);
   validateVisual(input.visual);
   if(input.visual?.enabled&&!input.browser.enabled)throw Error('visual requires browser.enabled');
   if(input.browser.enabled)browserRoutes(input);
@@ -60,6 +66,8 @@ export async function loadConfig(configFile='ui-refiner.config.json'){
   const config=validateConfig(JSON.parse(await fs.readFile(file,'utf8')));
   for(const [v,n] of [[config.static.auditPath,'static.auditPath'],[config.browser.policyPath,'browser.policyPath'],[config.reportDir,'reportDir']])resolveInside(root,v,n);
   for(const target of config.static.targets)resolveInside(root,target,'static.targets');
+  if(config.contextPath)resolveInside(root,config.contextPath,'contextPath');
+  if(config.preservation?.baselinePath)resolveInside(root,config.preservation.baselinePath,'preservation.baselinePath');
   if(config.sot.path)resolveInside(root,config.sot.path,'sot.path');
   if(config.browser.interactionsPath)resolveInside(root,config.browser.interactionsPath,'browser.interactionsPath');
   for(const route of config.browser.routes||[])if(route.interactionsPath)resolveInside(root,route.interactionsPath,'route.interactionsPath');

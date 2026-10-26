@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import fs from 'node:fs/promises';
+import {loadProjectContext} from './project-context.mjs';
 import {resolveInside} from './config.mjs';
 
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -17,11 +18,13 @@ export async function comparisonContexts(config,routes,root,reviewedValues){
  // URLs stay conservative here; port-independent baseline identity is a separate contract.
  const browser={engine,enabled:config.browser.enabled,locale:config.locale||'en-US',policy,
   routes:routes.map((route,i)=>({name:route.name,url:route.url,routeKey:route.routeKey??null,ready:route.ready??null,plan:plans[i]}))};
+ const context=config.contextPath?await loadProjectContext(config,root):null;
  const browserDebt=hash({browser,reviewedValues:reviewedValues.content});
  return {schemaVersion,
-  findings:hash({browserDebt,renderedMetrics:!!config.browser.renderedMetrics,
+  findings:hash({browserDebt,...(context?{context:context.compatibility}:{}),renderedMetrics:!!config.browser.renderedMetrics,
    static:{enabled:config.static.enabled,auditPath:config.static.auditPath,targets:config.static.targets,vendor:hash(vendor.suta)}}),
   browserDebt,
+  review:context?.compatibility||null,
   // Image capture and rendered observations do not change ARIA semantics or browser debt.
   aria:hash({browser,captureAriaSnapshots:!!config.browser.captureAriaSnapshots,masks:config.browser.ariaSnapshotMasks||[]})};
 }

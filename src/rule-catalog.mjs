@@ -1,0 +1,25 @@
+import fs from 'node:fs/promises';
+const files={motion:'vendor/suta/skills/suta/patterns/motion-audit/assets/auditMotion.ts',layout:'vendor/suta/skills/suta/patterns/layout-audit/assets/auditLayout.ts'};
+const interaction=new Set(['focus-visible','focus-obscured','dialog-focus','keyboard-operation','icon-button-tooltip']);
+const access=new Set(['text-contrast','accessible-name','form-label','aria-reference','label-consistency','control-state','keyboard-operation','focus-visible','focus-obscured','dialog-focus','icon-button-tooltip','target-size']);
+const contracts=new Map([['layout-alignment','data-ui-align'],['layout-gap','data-ui-stack'],['nested-radius','data-ui-radius'],['control-inset','declared control inset contract']]);
+const domain=id=>access.has(id)?'accessibility':/font|tabular|numeric/.test(id)?'typography':id==='copy'?'copy':id==='root-background'?'color':'layout';
+export async function ruleCatalog(){
+ const rows=[];
+ for(const [area,file] of Object.entries(files)){
+  const source=await fs.readFile(new URL('../'+file,import.meta.url),'utf8'),ids=[...new Set([...source.matchAll(/\brule:\s*'([^']+)'/g)].map(m=>m[1]))];
+  for(const id of ids)rows.push({id,engine:'suta',domain:area,phases:['static'],advisory:false,enforcement:'Engine severity and static.enforcement/maxStaticWarnings',requires:['Configured source targets'],limits:['Source heuristics; rendered behavior is not proven'],source:file});
+ }
+ const file='vendor/lintapple/src/index.js',source=await fs.readFile(new URL('../'+file,import.meta.url),'utf8'),array=source.match(/export const ruleIds = \[([^\]]+)\]/)?.[1];if(!array)throw Error('Pinned browser rule registry unavailable');
+ for(const id of [...array.matchAll(/'([^']+)'/g)].map(m=>m[1]))rows.push({id,engine:'lintapple',domain:domain(id),phases:interaction.has(id)?['render','interaction']:['render'],advisory:false,enforcement:'browser.enforcement; executed finding.blocking is authoritative',requires:['Configured route and viewport/theme',...(interaction.has(id)?['Explicit interaction plan for behavioral checks']:[]),...(contracts.has(id)?[contracts.get(id)]:[])],limits:['Main document; no complete WCAG or application discovery claim','Zero targets means not-tested; inspect report coverage'],source:file});
+ for(const id of ['render-top-pinned','render-filled-buttons','render-duplicate-actions'])rows.push({id,engine:'lintapple',domain:'hierarchy',phases:['render'],advisory:true,enforcement:'Never blocking or baseline eligible',requires:['browser.renderedMetrics=true'],limits:['DOM/computed-style approximation; evaluate against surface purpose'],source:'src/rendered-metrics.mjs'});
+ rows.push({id:'image-difference',engine:'visual',domain:'visual',phases:['render'],advisory:'depends on visual.mode',enforcement:'visual.mode; pending is distinct from matched',requires:['visual.enabled','Explicit approved image baseline','Matching capture environment'],limits:['Pixel equality does not establish design quality'],source:'src/visual.mjs'});
+ rows.push({id:'functional-preservation',engine:'preservation',domain:'behavior',phases:['render'],advisory:'depends on preservation.enforcement',enforcement:'Separate preservation verdict; never a finding baseline suppression',requires:['preservation.enabled','Reviewed full reference'],limits:['DOM contracts do not prove backend or handler behavior','Missing/incomplete capture is never matched'],source:'src/preservation.mjs'});
+ for(const id of ['hierarchy','task-clarity','density','typography','states','i18n'])rows.push({id,engine:'review',domain:id,phases:['manual'],advisory:true,enforcement:'Never changes automated verdict',requires:['Surface purpose','Source-linked image or target evidence','Named reviewer and actual execution provenance'],limits:['Human/model judgment, not deterministic detection'],source:'src/design-review.mjs'});
+ return {schemaVersion:1,rules:rows,limits:'Catalog describes available checks, not proof every rule ran. Read report.stages and inspectionScope for actual coverage.'};
+}
+export function workflowGuide(task){
+ const goals={audit:'Run a full deterministic check and inspect coverage/error states.',critique:'Record purpose-led design observations before reading detector findings; then synthesize evidence.',polish:'Preserve product, system, layout and behavior; fix evidence-backed details in place.',harden:'Inspect loading, empty, error, keyboard, long copy and KO/JA states using explicit plans.'};
+ if(!goals[task])throw Error('Unknown guide; choose audit, critique, polish or harden');
+ return {schemaVersion:1,task,goal:goals[task],required:['Read project context/SOT and declared preservation contract','Run full check; scoped success is not release approval','Inspect handoff.json and every affected root-cause target','Inspect image/ARIA and preservation evidence','Allow at most two repair/recheck attempts; record new regressions'],prohibited:['Do not weaken policy or auto-approve references','Do not invent source mappings or claim unexecuted agent/model review'],completion:'Automated pass and human visual acceptance remain separate'};
+}
