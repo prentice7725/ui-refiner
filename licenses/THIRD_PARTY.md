@@ -14,3 +14,5 @@ The copied upstream source remains credited. Any future source edits must preser
 
 * **Ajv 8.20.0**, **ajv-draft-04 1.0.0**, **ajv-formats 3.0.1** — Evgeny Poberezkin and contributors, MIT. Development-only SARIF validation dependencies; original licenses: `ajv.LICENSE`, `ajv-draft-04.LICENSE`, `ajv-formats.LICENSE` in this directory.
 * **OASIS SARIF 2.1.0 JSON Schema** — OASIS Open repository terms, not relicensed as MIT. Used only in offline tests. Original terms: [test/schemas/OASIS-LICENSE.md](../test/schemas/OASIS-LICENSE.md); source, retrieval date and SHA-256: [provenance.json](../test/schemas/provenance.json).
+
+* **UI UX Pro Max UX guidelines** — Copyright (c) 2024 Next Level Builder, MIT. Only the pinned `ux-guidelines.csv` dataset is included for advisory retrieval. Original license: [knowledge/ui-ux-pro-max/LICENSE](../knowledge/ui-ux-pro-max/LICENSE). Commit, source file, SHA-256 and Git blob SHA-1: [provenance.json](../knowledge/ui-ux-pro-max/provenance.json). No upstream search/design-system executable is included or run; dataset severity is never an enforcement rule.

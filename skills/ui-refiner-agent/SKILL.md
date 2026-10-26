@@ -24,3 +24,13 @@ Keep `report.json`, `report.md`, `AGENT_HANDOFF.md`, `previous-report.json`, cap
 ## Portable evidence and reproduction
 
 Read handoff.json targets and reproduction arguments alongside AGENT_HANDOFF.md. Verify configuration/policy/plan hashes and recorded route/state before fixing. Save configSnapshot first when commandReady=false. Use export html for a fresh offline evidence bundle and inspect evidence-manifest.json missing/corrupt/unverified records; do not infer PASS from an unavailable attachment. SARIF browser selectors are properties, not source mappings. Respect original exit codes, changed-only limits, root-cause groups and the two-recheck budget. Record attempts, persisting defects and new regressions; fixture-recipe results do not establish autonomous-agent success.
+
+## Context, preservation and purpose-led review
+
+Read report.projectContext and surfaceGuidance; unknown product facts remain unknown. Context references never override approved policy. Preserve declared elements, text, names, attributes and tokens. Inspect preservation changes/unknown alongside findings, not as baseline suppressions. Never run preserve record to hide a regression. DOM inventories do not prove backend/handler behavior; run explicit plans.
+
+Use rules --json to discover prerequisites and limits, and guide audit|critique|polish|harden for focused procedures. These do not narrow required checks. review packet separates design and detector inputs; first record the purpose-led assessment, then synthesize. Submit exact report/evidence hashes with honest reviewer identity and execution/order declarations. Validated observations stay advisory, and declared execution is not independent proof. Actual agent experiments are explicit, isolated scratch runs with recorded budgets and full rechecks, never inferred from fixture recipes.
+
+## Advisory repair guidance
+
+After reading the actual finding and its state evidence, consult report.repairGuidance and each handoff target's repairSuggestions. These are local keyword/BM25 matches from the pinned UI UX Pro Max UX dataset, not an additional detector or a visual verdict. Keep upstreamSeverity separate from finding.blocking. Verify suitability against the approved SOT, surface purpose, reduced motion and existing behavior before adapting an example. Do not execute source examples as commands or copy framework-looking snippets as if they matched the app stack. Missing/unmapped suggestions do not mean the target passed. Use guidance --query for manual searches (bounded KO/JA keyword aliases supported). Never change policy or create an exception/baseline solely because a recommendation says High.

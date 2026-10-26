@@ -369,3 +369,37 @@ SARIF 2.1.0의 주 소스 위치는 검사 시 실제 파일과 줄을 확인한
 `smoke:export`는 고정 결함 두 종류를 최대 2회 예산 안에서 수정하고 전체 재검사하여 시도 수와 새 차단 결함을 기록합니다. 정해진 fixture 소비자 실험이며 자율 에이전트 실험 수는 0이므로 에이전트 수정 성공률을 주장하지 않습니다. 도구는 자동 수정·기준선 승인·PR 댓글을 수행하지 않습니다. 정책·SOT와 사람의 시각 승인을 유지하세요.
 
 원본 증거 경로를 유지하면서 짧은 `e/` 별칭으로 HTML을 연결해 Windows 브라우저의 긴 경로 제한을 피합니다. 별칭 사본도 전체 바이트 예산에 포함합니다.
+
+## 11. 제품 맥락·기능 보존·디자인 리뷰
+
+선택 설정 `contextPath`는 제품 사실, 문서 참조, route별 화면 목적(`persuade`, `operate`, `read`, `experience`)을 구분한 schemaVersion 1 JSON을 가리킵니다. 없는 사실은 unknown으로 남기고 문서 해시와 사용자가 선언한 승인 상태를 기록합니다. 맥락에서 검사 정책을 자동 생성하거나 완화하지 않습니다. [예시](examples/project-context.json)와 [전체 사용법](docs/CONTEXT_PRESERVATION_REVIEW_KO.md)을 참고하세요.
+
+`preservation: {enabled: true, enforcement: "advisory", baselinePath: null}`로 동일 상태의 링크·폼·필드·컨트롤·테스트 훅과 명시한 대상의 속성/문구/이름 및 루트 CSS 토큰을 기록합니다. 전체 캡처를 검토한 뒤 `preserve record --from report.json --out preservation-reference.json`으로 별도 기준을 만들고 baselinePath와 필요 시 enforce를 설정합니다. enforce에서 차이는 FAIL/1, 기준 부재·호환 불가는 INCOMPLETE/2, 수집 실패는 ERROR/2입니다. check는 기준을 갱신하지 않습니다. ID/class/순서는 제외하며 이름은 근사값이고 입력 값은 저장하지 않습니다. DOM 일치는 핸들러·서버 동작의 증명이 아니므로 interaction plan을 함께 실행하세요.
+
+```sh
+node bin/ui-refiner.mjs rules --json
+node bin/ui-refiner.mjs guide harden --json
+node bin/ui-refiner.mjs review packet --from artifacts/ui-refiner/report.json --out design-review
+node bin/ui-refiner.mjs review validate --from submitted-review.json --report artifacts/ui-refiner/report.json --out accepted-review.json
+npm run smoke:context
+```
+
+`guide`는 audit/critique/polish/harden 절차를 안내하며 필수 검사 범위를 줄이지 않습니다. 규칙 카탈로그는 ID·엔진·영역·검사 층위·전제·한계를 설명하며 실제 실행 범위는 보고서에서 확인합니다. 리뷰 패킷은 디자인 입력과 검사 입력을 분리하고 증거를 보존합니다. 검증은 정확한 보고서 해시·첨부·화면 상태를 확인하지만 선언된 리뷰어의 실제 실행·독립성을 입증하지 않습니다. 리뷰 의견은 항상 advisory이며 모델을 자동 호출하지 않습니다.
+
+`npm run benchmark:agent -- --executor <claude 실행 파일 절대 경로>`는 CI와 분리된 실제 에이전트 실험입니다. 임시 합성 fixture만 대상으로 제한된 CLI의 파일 도구를 사용하며 결함 2종×조건 2개, 과제당 최대 2회, 시도당 180초·API 예산 1 USD로 제한합니다. 응답이 제공하는 모델·비용, 정책/보존 위반, 전체 재검사, 미해결·오류·미실행과 검사 코드 해시를 기록합니다. 소규모 결과로 통계적인 우열이나 Hallmark/Impeccable 직접 비교를 주장하지 않습니다. 요구 환경과 결과 경로는 전체 사용법에 설명했습니다.
+
+## 12. UX 수정 지침 검색·인계 첨부
+
+검사 결과에 로컬 UX 검색 결과를 연결합니다. 전체 제안은 `report.json.repairGuidance`, `handoff.json.repairGuidance`와 각 target의 `repairSuggestions`에, 제한된 미리보기는 AGENT_HANDOFF.md/report.md/report.html에 기록합니다. 검색어는 알려진 finding rule ID에서 만들고 페이지 문구를 검색 지시로 사용하지 않습니다. 모르는 규칙은 no-match로 표시합니다. 차단 결함을 우선하며 baseline·검토된 예외·기존 부채 대상은 제외합니다.
+
+```sh
+node bin/ui-refiner.mjs guidance --query "keyboard focus" --limit 3
+node bin/ui-refiner.mjs guidance --query "폼 오류" --limit 2
+npm run smoke:guidance
+```
+
+UI UX Pro Max의 UX CSV를 커밋 `28b3b8dee8c976df4fa3e94aed4e092ad43fcb03`에 고정했습니다. 원본 119행 중 Web/All만 검색하며 정확한 바이트·라이선스·원본 줄·행 ID·해시를 `knowledge/ui-ux-pro-max/`에 보존합니다. 원래 Python 검색/디자인 시스템 생성기는 설치·실행하지 않습니다. Node 구현은 결정적 BM25 순위, 제한된 한/일 검색어 별칭, 카테고리 필터와 명시적 no-match를 제공합니다. 순위 점수는 키워드 관련도이며 시각 품질이나 확신 점수가 아닙니다.
+
+선택 설정 `guidance`의 기본값은 `{"enabled":true,"maxFindings":20,"maxSuggestions":2}`입니다. 최대 finding 50개, 대상당 제안 3개이며 `guidance.enabled=false`로 끌 수 있습니다. Markdown 미리보기는 별도로 4개/3200바이트 한도를 두고 JSON에 생략 수를 남깁니다. 데이터 누락·해시 오류는 guidance unavailable로 표시하며 기존 판정을 바꾸지 않습니다. 검색 중 네트워크·모델 호출은 없습니다.
+
+제안마다 원본 우선순위·좋은/나쁜 예·고정 출처 URL을 제공합니다. 원본 High도 항상 advisory이며 새 blocker나 정책 값이 아닙니다. 실제 finding·증거·승인된 SOT를 먼저 확인하고 적용하세요. 예시는 특정 프레임워크나 맥락에 맞거나 프로젝트 기준보다 엄격할 수 있습니다. 이번 기능은 정책 생성·페이지 덮어쓰기·스택 추론·자동 수정·MCP/플러그인 설치를 포함하지 않습니다.
