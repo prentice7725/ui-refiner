@@ -1,0 +1,9 @@
+{
+  "name": "ui-refiner",
+  "version": "0.3.0",
+  "description": "Build web UIs that do not look AI-generated and review existing pages with rendered AI-look signals, screenshots and design proposals.",
+  "author": { "name": "prentice7725" },
+  "repository": "https://github.com/prentice7725/ui-refiner",
+  "license": "MIT",
+  "keywords": ["design", "ui", "review", "ai-slop", "accessibility"]
+}

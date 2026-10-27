@@ -1,0 +1,11 @@
+{
+  "name": "ui-refiner",
+  "owner": { "name": "prentice7725" },
+  "plugins": [
+    {
+      "name": "ui-refiner",
+      "source": "./",
+      "description": "De-AI web design: build guidance, zero-config page scan and an optional QA gate."
+    }
+  ]
+}

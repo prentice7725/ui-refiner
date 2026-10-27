@@ -6,6 +6,20 @@ UI Refiner는 일반 DOM 웹앱을 대상으로 **suta의 소스 검사·디자�
 
 suta의 고정된 전체 스킬 카탈로그와 57개 패턴, 유지보수되는 lintapple 런타임 소스가 포함됩니다. UI 자동 생성, 자동 코드 수정, 비전 모델 호출, 출시 승인은 수행하지 않습니다. Godot UI·Phaser Canvas·게임 HUD는 검사 대상이 아닙니다.
 
+## 빠른 시작: 무엇을 위한 도구인가
+
+UI Refiner는 코딩 에이전트(Claude Code, Codex)가 **AI가 만든 티가 나지 않는 웹 UI를 만들고**, **기존 페이지를 점검해 더 나은 디자인을 제안**하도록 돕습니다. 설정 없는 `scan`부터 쓰고, 아래 절의 정책 강제 게이트는 필요할 때만 씁니다.
+
+```sh
+npm ci && npx playwright install chromium
+node bin/ui-refiner.mjs scan https://your-site.example --out ui-refiner-scan
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --source src      # 개발 서버 + 소스 정적 검사
+```
+
+`scan`은 1440px·390px로 페이지를 열어 전체 스크린샷을 저장하고 `DESIGN_REVIEW.md`·`scan.json`을 씁니다. 실제 렌더링에서 측정한 신호(보라 그라데이션 히어로, 그라데이션 제목, 유리 카드, 색 글로우, 이모지 아이콘, 똑같은 아이콘 카드 3개, 제목 위 알약 배지, 전부 가운데 정렬, 프레임워크 기본 강조색, 개성 없는 서체, 상투 문구, 반복 CTA, `transition: all`)로 **AI 티 지수**(0–100, 휴리스틱)를 내고, 신호마다 이유와 구체적 수정 방향을 줍니다. 대비·라벨·가로 넘침 같은 기본 품질도 함께 측정합니다. 직접 고른 웹폰트·실제 이미지·풍부한 글자 크기 단계가 있으면 점수를 낮춥니다. 결과는 advisory이며 지정한 어떤 호스트든 검사합니다. `examples/ai-slop-landing.html`은 100, 기본 데모는 6, 작성 시점의 stripe.com·linear.app·github.com·toss.im·apple.com/kr은 3–21이었습니다.
+
+에이전트 사용: Claude Code 플러그인으로 설치(`/plugin marketplace add prentice7725/ui-refiner`)하거나, 앱에서 `node tools/ui-refiner/scripts/install-agent-skill.mjs .`을 실행해 `.claude/skills`(Claude Code)와 `.agents/skills`(Codex)에 스킬을 둡니다. 스킬([skills/ui-refiner-agent/SKILL.md](skills/ui-refiner-agent/SKILL.md))은 **만들기**와 **점검** 절차를 정의하고, 심화 게이트 절차는 [reference/quality-gate.md](skills/ui-refiner-agent/reference/quality-gate.md)에 있습니다.
+
 ## 1. 요구사항과 설치
 
 **Node.js 22.18 이상**, npm, Git과 명시적으로 설치한 Playwright Chromium이 필요합니다. 런타임 npm 의존성은 `axe-core@4.14.0`, `playwright@1.63.0`, `pixelmatch@7.2.0`, `pngjs@7.0.0`으로 고정됩니다.

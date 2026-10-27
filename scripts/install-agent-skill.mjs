@@ -21,5 +21,8 @@ try{
  if(!settings.hooks.PostToolUse.some(x=>x.hooks?.some(h=>h.command===command)))settings.hooks.PostToolUse.push({matcher:'Write|Edit|MultiEdit|apply_patch',hooks:[{type:'command',command,timeout:15}]});
  await fs.mkdir(path.dirname(settingsPath),{recursive:true});await fs.writeFile(settingsPath,JSON.stringify(settings,null,2)+'\n');
  await fs.writeFile(path.join(destination,'hook-registration.json'),JSON.stringify({event:'PostToolUse',tools:['Write','Edit','MultiEdit','apply_patch'],command:['node','.agents/skills/ui-refiner-agent/scripts/post-edit-hook.mjs'],cwd:'project root',timeoutSeconds:15,source:'bundled suta',...(portable?{}:{note:'External checkout: UI_REFINER_HOME is configured only in settings.local.json; other hosts must supply it locally.'})},null,2)+'\n');
- console.log(`Installed agent skill and ${portable?'portable':'local external-checkout'} Claude hook: ${destination}\nOther hosts: register hook-registration.json through their supported hook UI. A hook is not a full QA gate.`);
+ // Codex reads .agents/skills; Claude Code discovers project skills under .claude/skills.
+ const claudeSkill=path.join(root,'.claude/skills/ui-refiner-agent');
+ if(!await fs.stat(claudeSkill).catch(()=>null)){await fs.mkdir(path.dirname(claudeSkill),{recursive:true});await fs.cp(destination,claudeSkill,{recursive:true,errorOnExist:true,force:false});}
+ console.log(`Installed agent skill and ${portable?'portable':'local external-checkout'} Claude hook: ${destination} (+ ${claudeSkill})\nOther hosts: register hook-registration.json through their supported hook UI. A hook is not a full QA gate.`);
 }catch(e){console.error(`Could not install skill: ${e.message}`);process.exitCode=2;}
