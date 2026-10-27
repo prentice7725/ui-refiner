@@ -6,6 +6,17 @@ UI Refinerは、一般的なDOMベースのWebアプリ向けに、**sutaのソ�
 
 固定されたsutaの完全なスキルカタログと57のパターン、保守対象のlintappleランタイムソースを含みます。UIの自動生成、コードの自動修正、ビジョンモデルの呼び出し、リリース承認は行いません。Godot UI、Phaser Canvas、ゲームHUDは対象外です。
 
+## クイックスタート：何のためのツールか
+
+UI Refinerは、コーディングエージェント（Claude Code、Codex）が**AIが作った感じのしないWeb UIを作り**、**既存ページを点検してより良いデザインを提案する**ためのツールです。まず設定不要の`scan`を使い、以下の節のポリシー強制ゲートは必要なときだけ使います。
+
+```sh
+npm ci && npx playwright install chromium
+node bin/ui-refiner.mjs scan https://your-site.example --out ui-refiner-scan --lang en
+```
+
+`scan`は1440px・390pxでページを開き、全体スクリーンショットと`DESIGN_REVIEW.md`・`scan.json`を出力します。紫グラデーションのヒーロー、グラデーション見出し、ガラスカード、絵文字アイコン、同じアイコンカード3枚、定型コピーなどのレンダリング信号から**AI感指数**（0–100、ヒューリスティック）を算出し、信号ごとに理由と具体的な改善案を示します。結果はadvisoryのみです（レポート言語はko/en）。
+
 ## 1. 必要環境とインストール
 
 **Node.js 22.18以上**、npm、Git、および明示的にインストールしたPlaywright Chromiumが必要です。ランタイムのnpm依存関係は`axe-core@4.14.0`・`playwright@1.63.0`・`pixelmatch@7.2.0`・`pngjs@7.0.0`に固定されています。

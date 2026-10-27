@@ -29,6 +29,7 @@ jobs:
       - run: npm run smoke:states
       - run: npm run benchmark:scope
       - run: npm run smoke:review4
+      - run: npm run smoke:scan
       - run: node scripts/sync-vendor.mjs --lintapple 90ddc736af6f2712903d53dd9a463445e109f586
       - uses: actions/upload-artifact@v4
         if: always()
