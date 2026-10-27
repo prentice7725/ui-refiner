@@ -1,6 +1,6 @@
 ---
 name: ui-refiner-agent
-description: Make web pages and app screens that do not look AI-generated, and review existing pages to propose better designs. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "review this site's design"; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
+description: Make web pages and app screens that do not look AI-generated, and review existing pages to propose better designs. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "review this site's design", "AIっぽくないデザイン", "このサイトのデザインを点検"; Japanese typesetting reviews; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
 ---
 
 # UI Refiner — design without the AI look
@@ -15,7 +15,7 @@ Two jobs: **Build** a screen that looks chosen rather than generated, and **Revi
 
 ## Review an existing page
 
-1. Run `ui-refiner scan <url> --out ui-refiner-scan` (add `--source <dir>` when you also have the source, `--lang en` for English output). Any http(s) URL, host name or local dev server works. Never put credentials in the URL.
+1. Run `ui-refiner scan <url> --out ui-refiner-scan` (add `--source <dir>` when you also have the source; `--lang ko|ja|en` picks the report language, matching the user's language by default). Any http(s) URL, host name or local dev server works. Never put credentials in the URL.
 2. Open `scan-desktop.png` and `scan-mobile.png` yourself and look before you read the signals. Write down: what the page is for, what it asks the user to do, where the eye lands first, and what feels generic.
 3. Read `DESIGN_REVIEW.md`. Signals are heuristics. Confirm each against the screenshot; drop the ones that are deliberate brand choices or wrong for the surface (dashboards and settings may rightly use system fonts and dense layouts).
 4. Report to the user, in this order:
@@ -39,6 +39,14 @@ Two jobs: **Build** a screen that looks chosen rather than generated, and **Revi
 5. Use real content (product screenshots, numbers, specific use cases). If content is missing, leave an honest placeholder and say so instead of inventing claims.
 6. Run the dev server and `ui-refiner scan http://127.0.0.1:<port> --source src`. Fix strong and moderate signals that are not deliberate, plus contrast/label/overflow issues. At most two fix-and-rescan rounds; then report what remains and why.
 7. Look at the screenshots before claiming the result is done.
+
+## Japanese pages (日本語)
+
+- Scan Japanese sites with `--lang ja` (report in Japanese, browser locale `ja-JP`); use `--lang ko|en --locale ja-JP` to read a Japanese page's report in another language.
+- The report adds **日本語タイポグラフィ** when the page is Japanese: a font stack without a Japanese family (the classic AI `Inter, sans-serif`), body line height below 1.45, heading orphans (泣き別れ) per viewport, `word-break: break-all` on headings, italic Japanese, negative tracking, text under 12px, half-width katakana and full-width alphanumerics.
+- When building Japanese UI: name a Japanese family after the Latin one (`Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif`), use body line height 1.7–2.0, break headings by phrase (`word-break: auto-phrase`, BudouX or `<wbr>`) with `text-wrap: balance`, never italicize Japanese, and tighten only punctuation with `font-feature-settings: "palt"`.
+- Rewrite stock copy (可能性を解き放つ, シームレスな, 次世代の, ビジネスを加速, 誰でも簡単に) with concrete facts and numbers, and make repeated 「詳しく見る」 buttons say where they go.
+- Japanese conventions are not AI tells: Hiragino/Noto/Yu Gothic stacks, denser layouts and modest heading sizes are normal on Japanese sites. Judge against Japanese references, not Western landing pages.
 
 ## Ground rules
 

@@ -14,10 +14,10 @@ import {runGate,exitCode,baselineFromReport} from '../src/gate.mjs';
 import {doctor} from '../src/doctor.mjs';
 import {upstreamCheck} from '../src/vendor.mjs';
 import {presets} from '../src/presets.mjs';
-import {scanUrl} from '../src/scan.mjs';
+import {scanUrl,scanLangs} from '../src/scan.mjs';
 
-const help=`UI Refiner 0.3.0 — de-AI web design review and UI quality gate
-  ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang ko|en] [--source src] [--json]   zero-config design review of any page
+const help=`UI Refiner 0.4.0 — de-AI web design review and UI quality gate
+  ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang ko|ja|en] [--locale ja-JP] [--source src] [--json]   zero-config design review of any page
   ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
@@ -48,10 +48,10 @@ try{
   const [command,sub]=args._;
   if(!command||args.help||command==='help'){console.log(help);process.exitCode=0;}
   else if(command==='scan'&&args._.length===2){
-    if(args.lang&&!['ko','en'].includes(args.lang))throw Error('--lang must be ko or en');
-    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang:args.lang||'ko',source:args.source||null});
+    if(args.lang&&!scanLangs.includes(args.lang))throw Error(`--lang must be one of ${scanLangs.join(', ')}`);
+    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang:args.lang||'ko',locale:args.locale||null,source:args.source||null});
     if(args.json)console.log(JSON.stringify(result,null,2));
-    else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)}; ${path.join(dir,'DESIGN_REVIEW.md')}`);
+    else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);
   }
   else if(command==='guidance'&&args._.length===1){
     if(!args.query)throw Error('guidance requires --query');const limit=args.limit===undefined?3:Number(args.limit);const corpus=await loadGuidanceCorpus();const suggestions=makeSuggestions(corpus,args.query,limit);console.log(JSON.stringify({schemaVersion:1,advisory:true,blocking:false,query:args.query,status:suggestions.length?'matched':'no-match',suggestions},null,2));
