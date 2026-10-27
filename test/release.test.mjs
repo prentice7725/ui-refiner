@@ -6,7 +6,7 @@ import {lintapplePolicy} from '../src/presets.mjs';
 test('source-integrated runtime dependencies and lockfile match',async()=>{
  const pkg=JSON.parse(await readFile(new URL('../package.json',import.meta.url),'utf8'));
  const lock=JSON.parse(await readFile(new URL('../package-lock.json',import.meta.url),'utf8'));
- assert.equal(pkg.version,'0.3.0');
+ assert.equal(pkg.version,'0.4.0');
  assert.deepEqual(pkg.dependencies,{'axe-core':'4.14.0','pixelmatch':'7.2.0','playwright':'1.63.0','pngjs':'7.0.0'});
  assert.deepEqual(lock.packages[''].dependencies,pkg.dependencies);
  assert.equal(lock.version,pkg.version);

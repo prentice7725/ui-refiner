@@ -11,12 +11,12 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 test('project and CLI use the ui-refiner identity', async () => {
   const pkg = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
   assert.equal(pkg.name, 'ui-refiner');
-  assert.equal(pkg.version, '0.3.0');
+  assert.equal(pkg.version, '0.4.0');
   assert.equal(pkg.bin['ui-refiner'], './bin/ui-refiner.mjs');
   await access(path.join(root, 'skills/ui-refiner-agent/SKILL.md'));
   const cli = spawnSync(process.execPath, [path.join(root, 'bin/ui-refiner.mjs'), '--help'], {encoding:'utf8'});
   assert.equal(cli.status, 0, cli.stderr);
-  assert.match(cli.stdout, /UI Refiner 0\.3\.0/);
+  assert.match(cli.stdout, /UI Refiner 0\.4\.0/);
   assert.match(cli.stdout, /ui-refiner\.config\.json/);
 });
 

@@ -46,7 +46,7 @@ try{
   const cleanReport=JSON.parse(await readFile(path.join(root,'artifacts/ui-refiner/report.json'),'utf8'));
   if(clean.code!==0)console.error(JSON.stringify({clean,stages:cleanReport.stages,findings:cleanReport.findings.slice(0,5)},null,2));
   assert.equal(clean.code,0,'bundled suta and lintapple must both execute without blockers');
-  assert.equal(cleanReport.version,'0.3.0');
+  assert.equal(cleanReport.version,'0.4.0');
   assert.equal(cleanReport.automatedStatus,'PASS');
   assert.equal(cleanReport.status,'REVIEW_REQUIRED');
   assert.equal(cleanReport.stages.length,2);
