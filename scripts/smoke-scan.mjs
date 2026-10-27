@@ -7,6 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {once} from 'node:events';
 import {createDemoServer} from '../examples/demo-server.mjs';
+import {fileURLToPath} from 'node:url';
 import {scanUrl} from '../src/scan.mjs';
 
 const slop=await fs.readFile(new URL('../examples/ai-slop-landing.html',import.meta.url),'utf8');
@@ -24,7 +25,14 @@ try{
  assert.ok(bad.quality.some(q=>q.rule==='text-contrast'),'baseline quality checks run during the scan');
  for(const v of bad.views)assert.ok((await fs.stat(path.join(out,'slop',v.screenshot))).size>1000);
  assert.match(await fs.readFile(path.join(out,'slop','DESIGN_REVIEW.md'),'utf8'),/AI 티 지수/);
+ // Japanese fixture: AI tells plus Japanese typesetting problems, reported in Japanese.
+ const ja=(await scanUrl(fileURLToPath(new URL('../examples/ai-slop-landing-ja.html',import.meta.url)),{out:path.join(out,'ja'),lang:'ja'})).result;
+ assert.equal(ja.aiLook.band,'high');assert.ok(ja.aiLook.signals.some(s=>s.id==='buzzword-copy'));
+ const jaIds=ja.japanese.issues.map(i=>i.id);
+ for(const id of ['ja-font-fallback','ja-line-height','ja-break-all','ja-italic','ja-half-kana','ja-orphans'])assert.ok(jaIds.includes(id),`missing ${id}: ${jaIds}`);
+ assert.equal(good.japanese.japanese,false,'English demo is not treated as Japanese');
+ assert.match(await fs.readFile(path.join(out,'ja','DESIGN_REVIEW.md'),'utf8'),/日本語タイポグラフィ/);
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
- await fs.writeFile('artifacts/upstream-contracts/scan.json',JSON.stringify({slop:{score:bad.aiLook.score,signals:ids},clean:{score:good.aiLook.score,signals:good.aiLook.signals.map(s=>s.id)}},null,2)+'\n');
- console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}`);
+ await fs.writeFile('artifacts/upstream-contracts/scan.json',JSON.stringify({slop:{score:bad.aiLook.score,signals:ids},clean:{score:good.aiLook.score,signals:good.aiLook.signals.map(s=>s.id)},ja:{score:ja.aiLook.score,signals:ja.aiLook.signals.map(s=>s.id),typography:jaIds}},null,2)+'\n');
+ console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}, ja=${ja.aiLook.score} [${jaIds}]`);
 }finally{slopServer.close();cleanServer.close();await fs.rm(out,{recursive:true,force:true});}

@@ -1,6 +1,6 @@
 {
   "name": "ui-refiner",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "De-AI web design review and source-integrated UI quality gate",
   "type": "module",

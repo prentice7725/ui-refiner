@@ -1,5 +1,7 @@
 // Rendered "AI-made look" signals. Heuristics for design review only: never enforced, never baselined.
 // collectAiTells runs inside the page (page.evaluate) and must stay self-contained.
+import {jaSignals} from './ja-copy.mjs';
+
 export function collectAiTells(){
  const limit=8000,all=[...document.querySelectorAll('body *')];
  const visible=el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0&&el.checkVisibility({checkOpacity:true,checkVisibilityCSS:true});};
@@ -34,7 +36,8 @@ export function collectAiTells(){
  // Emoji used as icons or decoration in headings, buttons, badges.
  const pictographic=/\p{Extended_Pictographic}/u;
  const emojiEls=els.filter(el=>pictographic.test([...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').replace(/[©®™]/g,'')));
- const emojiIcons=emojiEls.filter(el=>{const t=el.textContent.trim();return t.length<=3||el.matches('h1,h2,h3,h4,button,a,[role=button],li')||parseFloat(css(el).fontSize)>=28;});
+ // Icons are standalone or leading glyphs; emoji inside user-written titles are content, not decoration.
+ const emojiIcons=emojiEls.filter(el=>{const t=el.textContent.trim();return t.length<=3||/^\p{Extended_Pictographic}/u.test(t)&&el.matches('h1,h2,h3,h4,button,a,[role=button],li,span')||parseFloat(css(el).fontSize)>=28&&t.length<=6;});
  // Text alignment.
  const blocks=els.filter(el=>el.matches('p,h1,h2,h3,h4,li,blockquote')&&el.textContent.trim().length>20);
  const centered=blocks.filter(el=>css(el).textAlign==='center');
@@ -65,9 +68,11 @@ export function collectAiTells(){
  const rounded=containers.filter(el=>parseFloat(css(el).borderTopLeftRadius)>=16);
  // Typography.
  const textEls=els.filter(el=>!el.matches('button,input,select,textarea,code,pre,kbd')&&[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
- const families=new Map(),sizes=new Map();
- for(const el of textEls){const f=css(el).fontFamily.split(',')[0].replace(/["']/g,'').trim().toLowerCase();families.set(f,(families.get(f)||0)+1);const z=Math.round(parseFloat(css(el).fontSize));sizes.set(z,(sizes.get(z)||0)+1);}
- const body=[...sizes].sort((a,b)=>b[1]-a[1])[0]?.[0]||16,h1Size=h1?parseFloat(getComputedStyle(h1).fontSize):null;
+ const families=new Map(),sizes=new Map(),chars=new Map();
+ for(const el of textEls){const f=css(el).fontFamily.split(',')[0].replace(/["']/g,'').trim().toLowerCase();families.set(f,(families.get(f)||0)+1);const z=Math.round(parseFloat(css(el).fontSize));chars.set(z,(chars.get(z)||0)+[...el.childNodes].filter(n=>n.nodeType===3).reduce((n,t)=>n+t.textContent.trim().length,0));sizes.set(z,(sizes.get(z)||0)+1);}
+ // Many sites put the logo in a small h1, so the type scale uses the largest heading-like text instead.
+ const body=[...chars].sort((a,b)=>b[1]-a[1])[0]?.[0]||16,h1Size=h1?parseFloat(getComputedStyle(h1).fontSize):null;
+ const display=Math.max(0,...textEls.filter(el=>(el.innerText||'').trim().length>=2).map(el=>parseFloat(css(el).fontSize)));
  const weights=new Set(textEls.map(el=>css(el).fontWeight));
  // Buttons, accents, hues.
  const buttons=els.filter(el=>el.matches('button,[role=button],input[type=submit],input[type=button],a[class*=btn],a[class*=button]'));
@@ -92,7 +97,7 @@ export function collectAiTells(){
   cardGrids:{count:cardGroups.length,groups:cardGroups.slice(0,8)},
   eyebrowPills:{count:eyebrowPills.length,targets:sample(eyebrowPills)},
   rounding:{containers:containers.length,rounded:rounded.length,ratio:containers.length?rounded.length/containers.length:0},
-  typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,ratio:h1Size?h1Size/body:null},
+  typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
   text:text.slice(0,20000),labels:labels.slice(0,200)
@@ -105,9 +110,10 @@ const defaultAccents={'Tailwind indigo-500':[99,102,241],'Tailwind indigo-600':[
 const phrases={
  en:['unlock your potential','unlock the power','supercharge','seamless','seamlessly','effortless','effortlessly','harness the power','elevate your','revolutionize','revolutionary','next-level','next level','cutting-edge','blazing fast','lightning fast','all-in-one','game-changing','game changer','empower','transform your','take your','to the next level','built for the future','reimagine','unleash','10x','ai-powered','powered by ai','in seconds','like never before','say goodbye to'],
  ko:['잠재력','혁신적인','차원이 다른','새로운 경험','손쉽게','한 번에','게임 체인저','완벽한 솔루션','미래를 여는','당신의 가능성','지금 바로 시작','스마트한','올인원','획기적인'],
- ja:['可能性を解き放つ','シームレス','革新的','次世代','ワンランク上','新しい体験','かんたんに','圧倒的']
+ // Phrase forms, not bare words: 次世代 or 革新 alone appear in honest Japanese copy.
+ ja:['可能性を解き放つ','可能性を最大化','シームレスな','シームレスに','革新的な','次世代の','ワンランク上の','新しい体験を','圧倒的な','ビジネスを加速','未来を切り拓く','未来を切り開く','新たな価値を創造','最先端の','誰でも簡単に','魔法のように','革命を起こす','パワフルな','唯一無二の','かつてない','次のステージへ','想像を超える','もっと自由に','ゲームチェンジャー','aiの力で','数秒で','オールインワン','さあ、始めよう']
 };
-const genericCtas=['learn more','get started','get started for free','start free trial','try it free','sign up free','read more','discover more','explore','자세히 보기','더 알아보기','시작하기','무료로 시작하기','더보기','詳しく見る','今すぐ始める','もっと見る'];
+const genericCtas=['learn more','get started','get started for free','start free trial','try it free','sign up free','read more','discover more','explore','자세히 보기','더 알아보기','시작하기','무료로 시작하기','더보기','詳しく見る','詳細はこちら','詳細を見る','もっと見る','もっと詳しく','続きを読む','今すぐ始める','無料で始める','無料ではじめる'];
 const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
 
 const copy={
@@ -129,12 +135,20 @@ const copy={
  'buzzword-copy':{ko:['상투적 마케팅 문구','"잠재력을 깨우세요", "seamless" 같은 문구는 AI 카피의 대표 신호이며 아무 정보도 주지 않는다.','무엇을, 누구를 위해, 얼마나 빨리/싸게 하는지 구체적 사실과 숫자로 다시 쓴다.'],en:['Buzzword copy','"Unlock your potential", "seamless" etc. are classic AI copy and carry no information.','Rewrite with concrete facts: what it does, for whom, with numbers.']},
  'generic-cta':{ko:['같은 일반 CTA 반복("Learn more" 등)','같은 문구의 버튼이 여러 번 나오면 무엇을 눌러야 할지 흐려진다.','주 행동 하나를 정하고, 나머지는 목적지를 말하는 구체적 링크 문구로("요금제 비교", "API 문서 보기").'],en:['Repeated generic CTAs','Many identical "Learn more" buttons blur the primary action.','Pick one primary action; make the rest specific ("Compare plans", "Read the API docs").']}
 };
+for(const [id,text] of Object.entries(jaSignals))copy[id].ja=text;
+const langKey=lang=>['en','ja'].includes(lang)?lang:'ko';
 
-export const signalTitle=(id,lang='ko')=>copy[id]?.[lang==='en'?'en':'ko'][0];
+export const signalTitle=(id,lang='ko')=>copy[id]?.[langKey(lang)][0];
+
+/** Weighted sum of signals, dampened 15% per craft signal. */
+export function scoreSignals(signals,craft=[]){
+ const raw=signals.reduce((n,s)=>n+s.weight,0),score=Math.min(100,Math.round(raw*100/18*(1-.15*craft.length)));
+ return {score,band:score>=60?'high':score>=30?'medium':signals.length?'low':'none'};
+}
 
 /** Turns raw page metrics into ranked, explained signals. Pure; safe to unit-test. */
 export function evaluateAiTells(m,{lang='ko'}={}){
- const L=lang==='en'?'en':'ko',out=[];
+ const L=langKey(lang),out=[];
  const add=(id,strength,evidence,targets=[])=>{const [title,why,fix]=copy[id][L];out.push({id,strength,weight:{strong:3,moderate:2,weak:1}[strength],title,why,fix,evidence,targets});};
  if(m.gradients.purple>0&&(m.gradients.large>0||m.gradients.purple>=2))add('purple-gradient','strong',{purple:m.gradients.purple,large:m.gradients.large},m.gradients.targets);
  else if(m.gradients.large>=2||m.gradients.coverage>.3)add('large-gradient','moderate',{large:m.gradients.large,coverage:+m.gradients.coverage.toFixed(2)},m.gradients.targets);
@@ -148,8 +162,10 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if(m.centered.blocks>=4&&m.centered.ratio>=.6)add('centered','moderate',{centered:m.centered.centered,blocks:m.centered.blocks,ratio:+m.centered.ratio.toFixed(2)},m.centered.targets);
  if(m.rounding.containers>=4&&m.rounding.ratio>=.75)add('over-rounded','weak',{rounded:m.rounding.rounded,containers:m.rounding.containers});
  const fams=m.typography.families,top=fams[0]?.name;
- if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1)add('generic-type','weak',{families:fams.map(f=>f.name)});
- if(m.typography.ratio&&m.typography.ratio<2)add('flat-scale','weak',{h1:m.typography.h1,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)});
+ // Japanese pages with a real Japanese stack (Hiragino, Noto Sans JP …) follow local convention, not a template default.
+ if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)});
+ // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
+ if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)});
  const hits=new Map();for(const c of m.accents)for(const [name,ref] of Object.entries(defaultAccents))if(dist(c,ref)<14)hits.set(name,(hits.get(name)||0)+1);
  if([...hits.values()].reduce((a,b)=>a+b,0)>=2)add('default-accent','moderate',{matches:Object.fromEntries(hits)});
  if(m.hueBuckets>=5)add('many-hues','weak',{hueBuckets30deg:m.hueBuckets});
@@ -166,8 +182,7 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if((c.loadedFonts||[]).some(f=>!genericFonts.includes(f)&&!/icon|awesome|material|symbol/.test(f)))craft.push('custom-webfont');
  if((c.imagery||0)>=3)craft.push('imagery');
  if((c.fontSizes||0)>=7)craft.push('type-scale');
- const raw=out.reduce((n,s)=>n+s.weight,0),score=Math.min(100,Math.round(raw*100/18*(1-.15*craft.length)));
- const band=score>=60?'high':score>=30?'medium':score>0?'low':'none';
+ const {score,band}=scoreSignals(out,craft);
  const absent=Object.keys(copy).filter(id=>!out.some(s=>s.id===id)&&!(id==='large-gradient'&&out.some(s=>s.id==='purple-gradient')));
  return {heuristic:true,blocking:false,score,band,craft,signals:out,absent};
 }

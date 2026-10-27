@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {evaluateAiTells,signalTitle} from '../src/ai-tells.mjs';
 import {scanTarget,renderScan} from '../src/scan.mjs';
+import {evaluateJaTypography} from '../src/ja-typography.mjs';
 
 const quiet=()=>({gradients:{count:0,large:0,purple:0,coverage:0,targets:[]},gradientText:{count:0,headings:0,targets:[]},glass:{count:0,targets:[]},glow:{count:0,targets:[]},transitionAll:{count:0,targets:[]},emoji:{count:0,icons:0,targets:[]},centered:{blocks:6,centered:1,ratio:1/6,targets:[]},cardGrids:{count:0,groups:[]},eyebrowPills:{count:0,targets:[]},rounding:{containers:5,rounded:1,ratio:.2},typography:{families:[{name:'söhne',count:40}],sizes:8,ratio:3},accents:[[200,60,40]],hueBuckets:2,craft:{loadedFonts:['söhne'],imagery:4,fontSizes:8},text:'Invoices sent in 2 clicks. Used by 4,000 clinics.',labels:['compare plans','read the api docs']});
 
@@ -43,4 +44,30 @@ test('DESIGN_REVIEW.md leads with the index, signals, quality and agent next ste
  const m=quiet();m.emoji={count:3,icons:3,targets:['div.icon']};
  const md=renderScan({url:'http://x/',lang:'ko',aiLook:evaluateAiTells(m),quality:[{rule:'text-contrast',count:2,viewports:['mobile'],examples:[{selector:'p',message:'Found 3:1 | low'}]}],views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
  assert.match(md,/AI 티 지수: \d+\/100/);assert.match(md,/이모지를 아이콘으로/);assert.match(md,/text-contrast \| 2/);assert.match(md,/3:1 \\\| low/);assert.match(md,/에이전트가 이어서 할 일/);
+});
+
+const jaMetrics=over=>({japanese:true,jaRatio:.8,lang:'ja',phraseAware:0,fontFallback:{count:0,ratio:0,stacks:[],targets:[]},lineHeight:{paragraphs:6,tight:0,normal:0,values:[],targets:[]},italic:{count:0,targets:[]},tiny:{count:0,targets:[]},tracking:{count:0,targets:[]},orphans:{count:0,headings:5,examples:[]},breakAll:{count:0,targets:[]},halfWidthKana:{count:0,targets:[]},fullWidthAlnum:{count:0,targets:[]},...over});
+
+test('Japanese typesetting: non-Japanese pages are skipped and clean pages report nothing',()=>{
+ assert.deepEqual(evaluateJaTypography({japanese:false}),{japanese:false,issues:[]});
+ assert.deepEqual(evaluateJaTypography(jaMetrics({})).issues,[]);
+});
+
+test('Japanese typesetting: AI-default Inter stack, tight leading and orphans are explained in Japanese',()=>{
+ const r=evaluateJaTypography(jaMetrics({fontFallback:{count:15,ratio:1,stacks:[{stack:'Inter, sans-serif',count:15}],targets:['h1']},lineHeight:{paragraphs:4,tight:3,normal:0,values:[1.3],targets:['p']},orphans:{count:2,headings:4,examples:[{target:'h1',lastLine:'を',lines:3}]},italic:{count:1,targets:['p']},halfWidthKana:{count:1,targets:['p']}}),{lang:'ja'});
+ assert.deepEqual(r.issues.map(i=>i.id),['ja-font-fallback','ja-line-height','ja-orphans','ja-italic','ja-half-kana']);
+ assert.match(r.issues[0].title,/和文書体/);assert.match(r.issues[0].fix,/Noto Sans JP/);assert.deepEqual(r.issues[2].evidence.examples,['を']);
+});
+
+test('Japanese pages: stock phrases and CTAs count, a proper Japanese stack is not "generic type"',()=>{
+ const m=quiet();m.text='次世代のAIであなたのビジネスを加速。シームレスな連携。';m.labels=['詳しく見る','詳しく見る'];m.typography.families=[{name:'noto sans jp',count:40}];m.japanese=true;m.japaneseFontCoverage=1;
+ const r=evaluateAiTells(m,{lang:'ja'});
+ assert.ok(r.signals.some(s=>s.id==='buzzword-copy'&&s.title==='紋切り型のマーケティング文句'));
+ assert.ok(r.signals.some(s=>s.id==='generic-cta'));assert.ok(!r.signals.some(s=>s.id==='generic-type'));
+ assert.ok(evaluateAiTells({...m,japaneseFontCoverage:0},{lang:'ja'}).signals.some(s=>s.id==='generic-type'));
+});
+
+test('Japanese report renders its own section and numbering without gaps',()=>{
+ const md=renderScan({url:'http://x/',lang:'ja',aiLook:evaluateAiTells(quiet(),{lang:'ja'}),quality:[],japanese:{japanese:true,issues:[{...evaluateJaTypography(jaMetrics({italic:{count:1,targets:['p']}}),{lang:'ja'}).issues[0],viewports:['mobile']}]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
+ assert.match(md,/AI感指数/);assert.match(md,/## 3\. 日本語タイポグラフィ/);assert.match(md,/日本語の斜体 \(mobile\)/);assert.match(md,/## 5\. エージェントが続けて行うこと/);
 });
