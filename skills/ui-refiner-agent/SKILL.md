@@ -23,7 +23,7 @@ Two jobs: **Build** a screen that looks chosen rather than generated, and **Revi
    - **2–3 root causes**, not a list of signals. Example: "decoration stands in for hierarchy" covers gradient hero + glows + pill badge + gradient headline.
    - **Proposed direction** per cause: concrete changes (type pairing and scale, one accent color, layout structure, imagery, copy rewrite with facts), and what must be preserved (factual copy, link targets, form fields, brand color/typeface).
    - **Baseline quality issues** from the scan table that a user would actually hit (contrast, unlabeled controls, mobile overflow).
-5. Only edit code when asked. After edits, rerun `scan` and show the signal and score change.
+5. Only edit code when asked. After edits, rerun `scan … --compare <previous scan folder>` and show the comparison section (score change, resolved/new/remaining signals, before/after screenshots). Treat new signals as regressions to explain or fix.
 
 ## Build a new screen
 
@@ -37,7 +37,7 @@ Two jobs: **Build** a screen that looks chosen rather than generated, and **Revi
    - "Unlock your potential / seamless / supercharge / 잠재력 / 혁신적인" copy and repeated "Learn more" buttons;
    - `transition: all`, animating layout properties, ignoring `prefers-reduced-motion`, `div` with `onClick`.
 5. Use real content (product screenshots, numbers, specific use cases). If content is missing, leave an honest placeholder and say so instead of inventing claims.
-6. Run the dev server and `ui-refiner scan http://127.0.0.1:<port> --source src`. Fix strong and moderate signals that are not deliberate, plus contrast/label/overflow issues. At most two fix-and-rescan rounds; then report what remains and why.
+6. Run the dev server and `ui-refiner scan http://127.0.0.1:<port> --source src`. Fix strong and moderate signals that are not deliberate, plus contrast/label/overflow issues. Rescan with `--compare <previous scan folder>` after each round so resolved and new signals are explicit. At most two fix-and-rescan rounds; then report what remains and why.
 7. Look at the screenshots before claiming the result is done.
 
 ## Japanese pages (日本語)

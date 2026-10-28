@@ -34,6 +34,20 @@ Output goes to `ui-refiner-scan/` (change with `--out`):
 | `DESIGN_REVIEW.md` | AI-look index, signals with evidence/why/fix, baseline quality table, Japanese typography (Japanese pages), source audit (`--source`), what the page avoided, next steps for the agent |
 | `scan.json` | The same data for tools |
 | `scan-desktop.png`, `scan-mobile.png` | Full-page screenshots at 1440px and 390px after scrolling through lazy content |
+| `before-scan-*.png`, `previous-scan.json` | With `--compare`: the previous screenshots and result, kept for side-by-side review |
+
+### Before/after comparison
+
+After changing a page, scan it again with `--compare` pointing at the previous scan folder (or its `scan.json`):
+
+```sh
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --out scan-before
+# … edit the page …
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --out scan-after --compare scan-before
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --compare ui-refiner-scan   # same folder also works
+```
+
+The report then opens with a comparison section: AI-look score before → after, resolved, new and remaining signals (with stronger/weaker direction), baseline quality changes per rule, Japanese typesetting changes, and before/after screenshot links. Comparing production with a local dev server is fine because only the path has to match. A different page or browser locale is called out as a warning. `examples/ai-slop-landing-ja.html` → `examples/redesign-landing-ja.html` is a worked example: 100 → 0, 13 signals and 7 Japanese issues resolved.
 
 ### AI-look index (0–100)
 

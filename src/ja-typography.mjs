@@ -67,6 +67,8 @@ const copy={
  'ja-full-alnum':{ja:['全角英数字','全角英数字は字幅が不揃いになり、検索やコピーでも扱いにくい。','英数字は半角に統一する。'],ko:['전각 영숫자','폭이 들쭉날쭉하고 검색·복사에 불리하다.','영숫자는 반각으로 통일한다.'],en:['Full-width alphanumerics','Uneven widths; awkward for search and copy.','Use half-width letters and digits.']}
 };
 
+export const jaIssueTitle=(id,lang='ko')=>copy[id]?.[['ja','en'].includes(lang)?lang:'ko'][0];
+
 export function evaluateJaTypography(m,{lang='ko'}={}){
  if(!m?.japanese)return {japanese:false,issues:[]};
  const L=['ja','en'].includes(lang)?lang:'ko',issues=[];

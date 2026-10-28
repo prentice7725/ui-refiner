@@ -32,7 +32,14 @@ try{
  for(const id of ['ja-font-fallback','ja-line-height','ja-break-all','ja-italic','ja-half-kana','ja-orphans'])assert.ok(jaIds.includes(id),`missing ${id}: ${jaIds}`);
  assert.equal(good.japanese.japanese,false,'English demo is not treated as Japanese');
  assert.match(await fs.readFile(path.join(out,'ja','DESIGN_REVIEW.md'),'utf8'),/日本語タイポグラフィ/);
+ // Redesign loop: the fixed page compared with the slop scan. It also guards a well-made Japanese page against false positives.
+ const fixed=(await scanUrl(fileURLToPath(new URL('../examples/redesign-landing-ja.html',import.meta.url)),{out:path.join(out,'fixed'),lang:'ja',compare:path.join(out,'ja')})).result;
+ assert.ok(fixed.aiLook.score<10,`redesign scored ${fixed.aiLook.score}: ${fixed.aiLook.signals.map(s=>s.id)}`);
+ assert.deepEqual(fixed.japanese.issues.map(i=>i.id),[],'redesign has no Japanese typesetting issues');
+ assert.ok(fixed.comparison.scoreDelta<=-90&&fixed.comparison.signals.resolved.length>=10&&fixed.comparison.japanese.resolved.length===jaIds.length);
+ for(const name of ['before-scan-desktop.png','previous-scan.json'])await fs.stat(path.join(out,'fixed',name));
+ assert.match(await fs.readFile(path.join(out,'fixed','DESIGN_REVIEW.md'),'utf8'),/## 1\. 前回スキャンとの比較/);
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/scan.json',JSON.stringify({slop:{score:bad.aiLook.score,signals:ids},clean:{score:good.aiLook.score,signals:good.aiLook.signals.map(s=>s.id)},ja:{score:ja.aiLook.score,signals:ja.aiLook.signals.map(s=>s.id),typography:jaIds}},null,2)+'\n');
- console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}, ja=${ja.aiLook.score} [${jaIds}]`);
+ console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}, ja=${ja.aiLook.score} [${jaIds}], redesign=${fixed.aiLook.score} (${fixed.comparison.scoreDelta})`);
 }finally{slopServer.close();cleanServer.close();await fs.rm(out,{recursive:true,force:true});}

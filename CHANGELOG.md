@@ -2,6 +2,12 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+### Added
+- `scan --compare <previous scan folder|scan.json>`: before/after comparison. The report opens with the score change, resolved/new/remaining signals (with stronger/weaker direction), per-rule baseline quality changes, Japanese typesetting changes and before/after screenshot links (ko/ja/en). The previous result and screenshots are kept as `previous-scan.json` and `before-scan-*.png`, also when rescanning into the same folder. Only the path must match, so production can be compared with a local dev server; a different page or locale is flagged.
+- `examples/redesign-landing-ja.html`: a redesign of the Japanese slop fixture following its own report (100 → 0, 13 signals and 7 Japanese issues resolved). `smoke:scan` runs this loop and uses it as a well-made Japanese page that must stay below 10.
+
 ## 0.4.0 — 2026-10-27
 
 Refocused on the original goal: help coding agents build web UIs that do not look AI-generated, and review existing pages to propose better designs. The deep QA gate is unchanged and now documented separately.
