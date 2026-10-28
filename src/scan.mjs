@@ -10,6 +10,7 @@ import {collectAiTells,evaluateAiTells,scoreSignals,signalTitle} from './ai-tell
 import {spawnBounded} from './execute.mjs';
 import {collectJaTypography,evaluateJaTypography} from './ja-typography.mjs';
 import {jaReport} from './ja-copy.mjs';
+import {compareScans,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
 
 // Universal checks only. Font/size/copy/contract rules depend on a project policy, and content-clipping is
 // too noisy on marketing pages (marquees, carousels), so a scan skips them.
@@ -44,10 +45,14 @@ async function staticSource(source){
  catch{return {error:'suta did not return JSON'};}
 }
 
-export async function scanUrl(input,{out='ui-refiner-scan',lang='ko',locale=null,source=null,timeoutMs=45000}={}){
+export async function scanUrl(input,{out='ui-refiner-scan',lang='ko',locale=null,source=null,compare=null,timeoutMs=45000}={}){
  if(!scanLangs.includes(lang))throw Error(`Unsupported report language: ${lang}`);
  const url=scanTarget(input),dir=path.resolve(out);
+ // Load the previous scan and keep its screenshots before this run can overwrite them in the same folder.
+ const previous=compare?await loadPreviousScan(compare):null;
  await fs.mkdir(dir,{recursive:true});
+ const beforeImages=previous?await keepBeforeImages(previous,dir):null;
+ if(previous)await fs.writeFile(path.join(dir,'previous-scan.json'),JSON.stringify(previous.scan,null,2)+'\n');
  const browser=await launchBrowser({timeout:timeoutMs}),views=[];
  try{
   for(const vp of scanViewports){
@@ -84,6 +89,7 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='ko',locale=null
  const result={schemaVersion:1,tool:'ui-refiner scan',advisory:true,blocking:false,url,scannedAt:new Date().toISOString(),lang,locale:locale||browserLocale[lang],aiLook:tells,quality,japanese,
   views:views.map(({metrics,quality,ja,...v})=>({...v,typography:metrics?.typography,inspectedElements:metrics?.inspected,totalElements:metrics?.total})),
   static:source?await staticSource(source):null};
+ if(previous)result.comparison={...compareScans(previous.scan,result,{lang}),images:Object.keys(beforeImages).length?beforeImages:null};
  await fs.writeFile(path.join(dir,'scan.json'),JSON.stringify(result,null,2)+'\n');
  await fs.writeFile(path.join(dir,'DESIGN_REVIEW.md'),renderScan(result));
  return {result,dir};
@@ -114,6 +120,7 @@ const severity={ko:{high:'높음',medium:'중간',low:'낮음'},ja:{high:'高',m
 export function renderScan(r){
  const L=scanLangs.includes(r.lang)?r.lang:'ko',x=t[L],a=r.aiLook;let n=0;const h=title=>`## ${++n}. ${title}`;
  const lines=[`# ${x.title}: ${r.url}`,'',`- **${x.index}: ${a.score}/100 (${x.bands[a.band]})** — ${x.note}`,...(a.craft?.length?[`- ${x.craft}: ${a.craft.map(c=>x.crafts[c]).join(', ')} (${x.craftNote})`]:[]),`- ${x.shots}: ${r.views.map(v=>v.screenshot?`[${v.viewport} ${v.width}px](${v.screenshot})`:`${v.viewport}: ${x.error} — ${v.error}`).join(' · ')}`,''];
+ if(r.comparison)lines.push(...renderComparison(r.comparison,L,h));
  lines.push(h(x.signals),'');
  if(!a.signals.length)lines.push(x.none,'');
  for(const s of a.signals){

@@ -34,6 +34,20 @@ node bin/ui-refiner.mjs scan https://your-site.example --lang ko --locale ja-JP 
 | `DESIGN_REVIEW.md` | AI感指数、サインごとの根拠・理由・改善案、基本品質の表、日本語タイポグラフィ（日本語ページ）、ソース検査（`--source`）、避けられていたもの、エージェントの次の手順 |
 | `scan.json` | 同じ内容の機械可読データ |
 | `scan-desktop.png`、`scan-mobile.png` | 遅延読み込みまでスクロールした後の1440px・390pxの全体スクリーンショット |
+| `before-scan-*.png`、`previous-scan.json` | `--compare`使用時、並べて確認するために保存した前回のスクリーンショットと結果 |
+
+### 修正前後の比較
+
+ページを直したら、`--compare`に前回のスキャンフォルダー（またはその`scan.json`）を指定して再スキャンします。
+
+```sh
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --out scan-before
+# … ページを修正 …
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --out scan-after --compare scan-before
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --compare ui-refiner-scan   # 同じフォルダーでも可
+```
+
+レポートの先頭に比較の節が付きます。AI感指数の変化、解消・新規・残っているサイン（強くなったか弱くなったか）、ルールごとの基本品質の変化、日本語組版の変化、前後のスクリーンショットへのリンクを示します。パスが同じなら比較できるので、本番サイトとローカル開発サーバーの比較も可能です。別のページやブラウザのロケールが異なる場合は警告を出します。例として`examples/ai-slop-landing-ja.html` → `examples/redesign-landing-ja.html`は100 → 0、サイン13件と日本語の問題7件が解消します。
 
 ## 日本語タイポグラフィのチェック
 
