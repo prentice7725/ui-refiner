@@ -34,6 +34,20 @@ node bin/ui-refiner.mjs scan examples/ai-slop-landing.html                  # �
 | `DESIGN_REVIEW.md` | AI 티 지수, 신호별 근거·이유·수정 방향, 기본 품질 표, 일본어 타이포그래피(일본어 페이지), 소스 검사(`--source`), 피한 것, 에이전트의 다음 단계 |
 | `scan.json` | 같은 내용의 기계 판독용 데이터 |
 | `scan-desktop.png`, `scan-mobile.png` | 지연 로딩 콘텐츠까지 스크롤한 뒤의 1440px·390px 전체 스크린샷 |
+| `before-scan-*.png`, `previous-scan.json` | `--compare` 사용 시 나란히 보기 위해 보관한 이전 스크린샷과 결과 |
+
+### 고치기 전후 비교
+
+페이지를 고친 뒤 `--compare`에 이전 스캔 폴더(또는 그 `scan.json`)를 지정해 다시 스캔합니다.
+
+```sh
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --out scan-before
+# … 페이지 수정 …
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --out scan-after --compare scan-before
+node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --compare ui-refiner-scan   # 같은 폴더도 가능
+```
+
+리포트 맨 앞에 비교 섹션이 붙습니다. AI 티 지수 변화, 해결·새로 생김·남아 있는 신호(강해졌는지 약해졌는지 포함), 규칙별 기본 품질 변화, 일본어 조판 변화, 전후 스크린샷 링크를 보여 줍니다. 경로만 같으면 되므로 운영 사이트와 로컬 개발 서버를 비교해도 됩니다. 다른 페이지나 다른 브라우저 로케일이면 경고를 표시합니다. 예시로 `examples/ai-slop-landing-ja.html` → `examples/redesign-landing-ja.html`은 100 → 0, 신호 13개와 일본어 문제 7개가 해결됩니다.
 
 ### AI 티 지수 (0–100)
 
