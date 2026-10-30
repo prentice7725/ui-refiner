@@ -16,14 +16,19 @@ UI Refinerは、コーディングエージェント（Claude Code、Codex）と
 ```sh
 git clone https://github.com/prentice7725/ui-refiner && cd ui-refiner
 npm ci && npx playwright install chromium
+npm link                                   # 任意：どこからでも`ui-refiner`で実行できるようにする
 
-node bin/ui-refiner.mjs scan https://your-site.example --lang ja            # 日本語レポート、ja-JPブラウザ
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --source src --lang ja   # 開発サーバー＋ソースの静的検査
-node bin/ui-refiner.mjs scan examples/ai-slop-landing-ja.html --lang ja     # ローカルHTMLファイル
-node bin/ui-refiner.mjs scan https://your-site.example --lang ko --locale ja-JP   # 日本語ページを韓国語レポートで
+ui-refiner scan your-site.example          # 公開中のページを点検
+ui-refiner scan localhost:5173             # 開発サーバー。直したあと同じコマンドを再実行すると変化が分かる
 ```
 
-`scan`はURL、ホスト名、ローカルの`.html`ファイルを受け付けます。設定は不要で、対象プロジェクトを変更しません。`--lang`は`ja`・`ko`・`en`（既定は`ko`）、ブラウザのロケールは`--lang`に合わせます（`--locale`で変更可）。
+これだけです。`scan`はURL、ホスト名、ローカルの`.html`ファイルを受け付け、設定は不要で、対象プロジェクトを変更しません。`npm link`をしていない場合は`node bin/ui-refiner.mjs scan …`で実行します。
+
+- **レポートの言語**はページに合わせます。日本語ページは日本語、韓国語ページは韓国語、それ以外は英語です。常に同じ言語にしたい場合は`UI_REFINER_LANG=ja`（または`ko`、`en`）を設定し、1回だけ変えるなら`--lang`を使います。ブラウザのロケールはホストに合わせます（`.jp` → `ja-JP`、`.kr` → `ko-KR`）。`--locale`で変更できます。
+- **再スキャンすると自動で比較します。** 出力フォルダーに同じページの前回スキャンがあれば、新しいレポートの先頭に前後比較が付きます。比較しない場合は`--no-compare`、別フォルダーのスキャンと比べる場合は`--compare <フォルダー>`を使います。
+- `--source src`でソースの静的検査を追加、`--out`で出力フォルダーを変更します（既定は`ui-refiner-scan/`）。
+
+Claude Codeでは`/ui-review <URL>`コマンドひとつで、スキャン、スクリーンショットの確認、レビュー作成まで行います（[エージェントと使う](#エージェントと使う)参照）。
 
 ## `scan`の出力
 
@@ -34,17 +39,17 @@ node bin/ui-refiner.mjs scan https://your-site.example --lang ko --locale ja-JP 
 | `DESIGN_REVIEW.md` | AI感指数、サインごとの根拠・理由・改善案、基本品質の表、日本語タイポグラフィ（日本語ページ）、ソース検査（`--source`）、避けられていたもの、エージェントの次の手順 |
 | `scan.json` | 同じ内容の機械可読データ |
 | `scan-desktop.png`、`scan-mobile.png` | 遅延読み込みまでスクロールした後の1440px・390pxの全体スクリーンショット |
-| `before-scan-*.png`、`previous-scan.json` | `--compare`使用時、並べて確認するために保存した前回のスクリーンショットと結果 |
+| `before-scan-*.png`、`previous-scan.json` | 再スキャン時、並べて確認するために保存した前回のスクリーンショットと結果 |
 
 ### 修正前後の比較
 
-ページを直したら、`--compare`に前回のスキャンフォルダー（またはその`scan.json`）を指定して再スキャンします。
+同じページを同じフォルダーに再スキャンすると自動で比較します。フォルダーを分ける場合は`--compare`で前回のフォルダーを指定します。
 
 ```sh
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --out scan-before
+ui-refiner scan localhost:5173                                   # 最初のスキャン
 # … ページを修正 …
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --out scan-after --compare scan-before
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --compare ui-refiner-scan   # 同じフォルダーでも可
+ui-refiner scan localhost:5173                                   # 最初のスキャンと自動で比較
+ui-refiner scan localhost:5173 --out scan-after --compare scan-before
 ```
 
 レポートの先頭に比較の節が付きます。AI感指数の変化、解消・新規・残っているサイン（強くなったか弱くなったか）、ルールごとの基本品質の変化、日本語組版の変化、前後のスクリーンショットへのリンクを示します。パスが同じなら比較できるので、本番サイトとローカル開発サーバーの比較も可能です。別のページやブラウザのロケールが異なる場合は警告を出します。例として`examples/ai-slop-landing-ja.html` → `examples/redesign-landing-ja.html`は100 → 0、サイン13件と日本語の問題7件が解消します。
@@ -120,12 +125,19 @@ node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --lang ja --compare ui-refine
 - **点検**：`scan`を実行し、まずスクリーンショットを見てから各サインの妥当性を判断する。結論、根本原因2〜3個、原因ごとのリデザイン方針（守るべきものを含む）、ユーザーが実際に困る品質問題を報告する。
 - **作る**：プロジェクトと同梱のsutaガイドを読み、マークアップの前にデザイン方針を決め、既定値の罠を避ける。その後、開発サーバーを`scan`して意図しないものを直す（最大2回）。日本語UIでは和文書体の指定、行間、見出しの改行位置を必ず確認する。
 
+インストールしておけば、CLIを自分で使う場面はほとんどありません。言葉で頼むか（「example.co.jpのデザインを点検して」「AIっぽくないLPを作って」「指摘を直してもう一度比較して」）、Claude Codeならスラッシュコマンドを使います。
+
+```
+/ui-review https://example.co.jp
+/ui-review localhost:5173 強いサインを直して再スキャンして
+```
+
 インストール方法：
 
 | エージェント | 方法 |
 |---|---|
 | Claude Code（プラグイン） | `/plugin marketplace add prentice7725/ui-refiner`のあと`ui-refiner`をインストール。プラグインのフォルダーで`npm ci && npx playwright install chromium`を一度実行 |
-| Claude Code / Codex（プロジェクト単位） | アプリの`tools/ui-refiner`にこのリポジトリを置き、`node tools/ui-refiner/scripts/install-agent-skill.mjs .`を実行。`.claude/skills/ui-refiner-agent`（Claude Code）と`.agents/skills/ui-refiner-agent`（Codex）にスキルを置き、編集後フックを登録 |
+| Claude Code / Codex（プロジェクト単位） | アプリの`tools/ui-refiner`にこのリポジトリを置き、`node tools/ui-refiner/scripts/install-agent-skill.mjs .`を実行。`.claude/skills/ui-refiner-agent`と`/ui-review`コマンド（Claude Code）、`.agents/skills/ui-refiner-agent`（Codex）にスキルを置き、編集後フックを登録 |
 
 同梱のデザイン知識は`vendor/suta/skills/suta`（韓国語）にあります。AIスロップの禁止ライン、レイアウト・モーションの値、テスト済みUIパターン57種です。
 

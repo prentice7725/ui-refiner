@@ -45,9 +45,10 @@ test('scoped pass has exit 3, separates observed browser debt without auto-basel
 }));
 test('portable hook wiring survives moving a team checkout and contains no personal path or absolute file URI',()=>temp(async parent=>{
  const app=path.join(parent,'original'),tools=path.join(app,'tools/ui-refiner');await fs.mkdir(tools,{recursive:true});
- for(const dir of ['src','vendor','skills'])await fs.cp(path.join(repoRoot,dir),path.join(tools,dir),{recursive:true});await fs.mkdir(path.join(tools,'scripts'));
+ for(const dir of ['src','vendor','skills','commands'])await fs.cp(path.join(repoRoot,dir),path.join(tools,dir),{recursive:true});await fs.mkdir(path.join(tools,'scripts'));
  for(const file of ['install-agent-skill.mjs','post-edit-hook.mjs'])await fs.cp(path.join(repoRoot,'scripts',file),path.join(tools,'scripts',file));
  const installed=await spawnBounded(process.execPath,[path.join(tools,'scripts/install-agent-skill.mjs'),app]);assert.equal(installed.code,0,installed.stderr);
+ for(const file of ['.claude/commands/ui-review.md','.claude/skills/ui-refiner-agent/SKILL.md'])await fs.access(path.join(app,file));
  const settings=await fs.readFile(path.join(app,'.claude/settings.json'),'utf8'),wrapper=await fs.readFile(path.join(app,'.agents/skills/ui-refiner-agent/scripts/post-edit-hook.mjs'),'utf8');assert.match(settings,/CLAUDE_PROJECT_DIR/);assert.ok(!settings.includes(parent));assert.ok(!wrapper.includes(parent));assert.ok(!wrapper.includes('file:///'));
  const moved=path.join(parent,'teammate');await fs.rename(app,moved);const file=path.join(moved,'app.css');await fs.writeFile(file,'button { transition: all 300ms ease; }\n');
  const result=spawnSync(process.execPath,[path.join(moved,'.agents/skills/ui-refiner-agent/scripts/post-edit-hook.mjs')],{encoding:'utf8',input:JSON.stringify({cwd:moved,tool_input:{file_path:file,new_string:'button { transition: all 300ms ease; }'}}),env:{...process.env,UI_REFINER_HOME:''}});assert.equal(result.status,2,result.stderr);assert.match(result.stderr,/transition-all/);
