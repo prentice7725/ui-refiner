@@ -15,6 +15,14 @@ export async function loadPreviousScan(input){
  return {scan,file,dir:path.dirname(file)};
 }
 
+const pagePath=v=>{try{const u=new URL(v);return u.protocol==='file:'?u.href:u.pathname+u.search;}catch{return v;}};
+
+/** For automatic comparison: the last scan in the output folder, only if it is of the same page. */
+export async function findAutoPrevious(dir,url){
+ const previous=await loadPreviousScan(dir).catch(()=>null);
+ return previous&&pagePath(previous.scan.url)===pagePath(url)?previous:null;
+}
+
 const rank={strong:3,moderate:2,weak:1,high:3,medium:2,low:1};
 function diffById(before=[],after=[],level,title){
  const prev=new Map(before.map(x=>[x.id,x])),next=new Map(after.map(x=>[x.id,x]));
@@ -26,9 +34,9 @@ function diffById(before=[],after=[],level,title){
 }
 
 export function compareScans(before,after,{lang='ko'}={}){
- const warnings=[],u=v=>{try{const x=new URL(v);return x.pathname+x.search;}catch{return v;}};
+ const warnings=[];
  // Comparing production with a local dev server is normal, so only the path has to match.
- if(u(before.url)!==u(after.url))warnings.push('different-page');
+ if(pagePath(before.url)!==pagePath(after.url))warnings.push('different-page');
  else if(before.url!==after.url)warnings.push('different-host');
  if((before.locale||'')!==(after.locale||''))warnings.push('different-locale');
  const quality=new Map();
