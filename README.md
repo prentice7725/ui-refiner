@@ -16,14 +16,19 @@ Requirements: Node.js 22.18+, npm, Git.
 ```sh
 git clone https://github.com/prentice7725/ui-refiner && cd ui-refiner
 npm ci && npx playwright install chromium
+npm link                                   # optional: makes `ui-refiner` available everywhere
 
-node bin/ui-refiner.mjs scan https://your-site.example                      # Korean report (default)
-node bin/ui-refiner.mjs scan https://your-site.example --lang ja            # Japanese report, ja-JP browser
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --source src --lang en   # dev server + source audit
-node bin/ui-refiner.mjs scan examples/ai-slop-landing.html                  # local HTML file
+ui-refiner scan your-site.example          # review a live page
+ui-refiner scan localhost:5173             # your dev server; run it again after edits to see what changed
 ```
 
-`scan` takes any URL, bare host name or local `.html` file. It needs no config and changes nothing in the target project.
+That is the whole loop. `scan` takes any URL, bare host name or local `.html` file, needs no config and changes nothing in the target project. Without `npm link`, use `node bin/ui-refiner.mjs scan …` instead.
+
+- **Report language** follows the page: Japanese pages get a Japanese report, Korean pages Korean, everything else English. Set a fixed default with `UI_REFINER_LANG=ko` (or `ja`, `en`), or pass `--lang` for one run. The browser locale follows the host (`.jp` → `ja-JP`, `.kr` → `ko-KR`) unless `--locale` is given.
+- **Rescans compare automatically.** When the output folder already holds a scan of the same page, the new report opens with a before/after comparison. Use `--no-compare` to skip it, or `--compare <folder>` to compare with a scan elsewhere.
+- `--source src` adds the static source audit. `--out` changes the output folder (default `ui-refiner-scan/`).
+
+In Claude Code, the `/ui-review <url>` command does the scan, looks at the screenshots and writes the review for you (see [Using it with agents](#using-it-with-agents)).
 
 ## What `scan` produces
 
@@ -34,17 +39,17 @@ Output goes to `ui-refiner-scan/` (change with `--out`):
 | `DESIGN_REVIEW.md` | AI-look index, signals with evidence/why/fix, baseline quality table, Japanese typography (Japanese pages), source audit (`--source`), what the page avoided, next steps for the agent |
 | `scan.json` | The same data for tools |
 | `scan-desktop.png`, `scan-mobile.png` | Full-page screenshots at 1440px and 390px after scrolling through lazy content |
-| `before-scan-*.png`, `previous-scan.json` | With `--compare`: the previous screenshots and result, kept for side-by-side review |
+| `before-scan-*.png`, `previous-scan.json` | On a rescan: the previous screenshots and result, kept for side-by-side review |
 
 ### Before/after comparison
 
-After changing a page, scan it again with `--compare` pointing at the previous scan folder (or its `scan.json`):
+Rescanning the same page into the same folder compares automatically. To keep separate folders, point `--compare` at the earlier one:
 
 ```sh
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --out scan-before
+ui-refiner scan localhost:5173                                   # first scan
 # … edit the page …
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --out scan-after --compare scan-before
-node bin/ui-refiner.mjs scan http://127.0.0.1:5173 --compare ui-refiner-scan   # same folder also works
+ui-refiner scan localhost:5173                                   # compared with the first scan automatically
+ui-refiner scan localhost:5173 --out scan-after --compare scan-before
 ```
 
 The report then opens with a comparison section: AI-look score before → after, resolved, new and remaining signals (with stronger/weaker direction), baseline quality changes per rule, Japanese typesetting changes, and before/after screenshot links. Comparing production with a local dev server is fine because only the path has to match. A different page or browser locale is called out as a warning. `examples/ai-slop-landing-ja.html` → `examples/redesign-landing-ja.html` is a worked example: 100 → 0, 13 signals and 7 Japanese issues resolved.
@@ -113,12 +118,19 @@ The skill in [skills/ui-refiner-agent/SKILL.md](skills/ui-refiner-agent/SKILL.md
 - **Review**: run `scan`, look at the screenshots first, confirm or reject each signal, then report a verdict, 2–3 root causes, a redesign direction per cause (with what must be preserved) and the quality issues users would hit.
 - **Build**: read the project and the bundled suta guidance, decide the design direction before writing markup, avoid the listed defaults, then `scan` the dev server and fix what is not deliberate (at most two rounds).
 
+Once installed you rarely need the CLI yourself. Ask in plain words ("review the design of example.co.jp", "build this landing page without the AI look", "fix those and compare again"), or in Claude Code use the slash command:
+
+```
+/ui-review https://example.co.jp
+/ui-review localhost:5173 fix the strong signals, then rescan
+```
+
 Install it in one of these ways:
 
 | Agent | How |
 |---|---|
 | Claude Code (plugin) | `/plugin marketplace add prentice7725/ui-refiner`, then install `ui-refiner`; run `npm ci && npx playwright install chromium` once in the plugin folder |
-| Claude Code / Codex (per project) | Place this repo at `tools/ui-refiner` in the app, then `node tools/ui-refiner/scripts/install-agent-skill.mjs .`; this writes `.claude/skills/ui-refiner-agent` (Claude Code) and `.agents/skills/ui-refiner-agent` (Codex) and registers a post-edit hook |
+| Claude Code / Codex (per project) | Place this repo at `tools/ui-refiner` in the app, then `node tools/ui-refiner/scripts/install-agent-skill.mjs .`; this writes `.claude/skills/ui-refiner-agent` and the `/ui-review` command (Claude Code), `.agents/skills/ui-refiner-agent` (Codex), and registers a post-edit hook |
 
 The bundled design knowledge lives in `vendor/suta/skills/suta` (Korean): AI-slop red lines, layout and motion values and 57 tested UI patterns.
 

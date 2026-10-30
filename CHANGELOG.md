@@ -4,7 +4,14 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Changed
+- Simpler `scan` defaults:
+  - The report language follows the page (Japanese → `ja`, Korean → `ko`, else `en`). `UI_REFINER_LANG` sets a fixed default, `--lang` overrides one run, and the browser locale follows the host (`.jp` → `ja-JP`, `.kr` → `ko-KR`). Previously the default was always Korean.
+  - Rescanning the same page into the same output folder compares with the previous scan automatically. `--no-compare` opts out; `--compare <folder>` still compares with a scan elsewhere. A different page in the same folder is not compared.
+- `scan.json` records `langSource` (`page` or `option`) and `comparison.mode` (`auto` or `explicit`).
+
 ### Added
+- `/ui-review <url> [instructions]` slash command for Claude Code (plugin `commands/`, also installed to `.claude/commands/` by `install-agent-skill.mjs`).
 - `scan --compare <previous scan folder|scan.json>`: before/after comparison. The report opens with the score change, resolved/new/remaining signals (with stronger/weaker direction), per-rule baseline quality changes, Japanese typesetting changes and before/after screenshot links (ko/ja/en). The previous result and screenshots are kept as `previous-scan.json` and `before-scan-*.png`, also when rescanning into the same folder. Only the path must match, so production can be compared with a local dev server; a different page or locale is flagged.
 - `examples/redesign-landing-ja.html`: a redesign of the Japanese slop fixture following its own report (100 → 0, 13 signals and 7 Japanese issues resolved). `smoke:scan` runs this loop and uses it as a well-made Japanese page that must stay below 10.
 

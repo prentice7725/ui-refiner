@@ -24,5 +24,8 @@ try{
  // Codex reads .agents/skills; Claude Code discovers project skills under .claude/skills.
  const claudeSkill=path.join(root,'.claude/skills/ui-refiner-agent');
  if(!await fs.stat(claudeSkill).catch(()=>null)){await fs.mkdir(path.dirname(claudeSkill),{recursive:true});await fs.cp(destination,claudeSkill,{recursive:true,errorOnExist:true,force:false});}
- console.log(`Installed agent skill and ${portable?'portable':'local external-checkout'} Claude hook: ${destination} (+ ${claudeSkill})\nOther hosts: register hook-registration.json through their supported hook UI. A hook is not a full QA gate.`);
+ // The /ui-review slash command; an existing project command of the same name is left alone.
+ const slashCommand=path.join(root,'.claude/commands/ui-review.md');
+ if(!await fs.stat(slashCommand).catch(()=>null)){await fs.mkdir(path.dirname(slashCommand),{recursive:true});await fs.copyFile(path.join(repo,'commands/ui-review.md'),slashCommand);}
+ console.log(`Installed agent skill, /ui-review command and ${portable?'portable':'local external-checkout'} Claude hook: ${destination} (+ ${claudeSkill})\nOther hosts: register hook-registration.json through their supported hook UI. A hook is not a full QA gate.`);
 }catch(e){console.error(`Could not install skill: ${e.message}`);process.exitCode=2;}
