@@ -10,7 +10,7 @@ import {collectAiTells,evaluateAiTells,scoreSignals,signalTitle} from './ai-tell
 import {spawnBounded} from './execute.mjs';
 import {collectJaTypography,evaluateJaTypography} from './ja-typography.mjs';
 import {jaReport} from './ja-copy.mjs';
-import {compareScans,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
+import {compareScans,findAutoPrevious,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
 
 // Universal checks only. Font/size/copy/contract rules depend on a project policy, and content-clipping is
 // too noisy on marketing pages (marquees, carousels), so a scan skips them.
@@ -45,18 +45,34 @@ async function staticSource(source){
  catch{return {error:'suta did not return JSON'};}
 }
 
-export async function scanUrl(input,{out='ui-refiner-scan',lang='ko',locale=null,source=null,compare=null,timeoutMs=45000}={}){
- if(!scanLangs.includes(lang))throw Error(`Unsupported report language: ${lang}`);
- const url=scanTarget(input),dir=path.resolve(out);
+// Before the page is loaded only the host hints at its language; the report language is settled after loading.
+export function hintLocale(url){
+ const host=(()=>{try{return new URL(url).hostname;}catch{return '';}})();
+ return /\.jp$/i.test(host)?'ja-JP':/\.kr$/i.test(host)?'ko-KR':'en-US';
+}
+
+/** Report language for lang 'auto': Japanese or Korean text on the page, then <html lang>, else English. */
+export function detectLang(view){
+ if(view.ja?.japanese)return 'ja';
+ const text=(view.metrics?.text||'').replace(/\s/g,''),hangul=(text.match(/[가-힣]/g)||[]).length;
+ if(text.length&&hangul/text.length>=.15)return 'ko';
+ const declared=(view.ja?.lang||'').toLowerCase().slice(0,2);
+ return ['ja','ko'].includes(declared)?declared:'en';
+}
+
+export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000}={}){
+ if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`Unsupported report language: ${lang}`);
+ const url=scanTarget(input),dir=path.resolve(out),browserLoc=locale||(lang==='auto'?hintLocale(url):browserLocale[lang]);
  // Load the previous scan and keep its screenshots before this run can overwrite them in the same folder.
- const previous=compare?await loadPreviousScan(compare):null;
+ // 'auto' reuses the last scan of the same page in the output folder and stays quiet otherwise.
+ const previous=compare==='auto'?await findAutoPrevious(dir,url):compare?await loadPreviousScan(compare):null;
  await fs.mkdir(dir,{recursive:true});
  const beforeImages=previous?await keepBeforeImages(previous,dir):null;
  if(previous)await fs.writeFile(path.join(dir,'previous-scan.json'),JSON.stringify(previous.scan,null,2)+'\n');
  const browser=await launchBrowser({timeout:timeoutMs}),views=[];
  try{
   for(const vp of scanViewports){
-   const context=await browser.newContext({viewport:{width:vp.width,height:vp.height},reducedMotion:'no-preference',locale:locale||browserLocale[lang],deviceScaleFactor:1,serviceWorkers:'block'});
+   const context=await browser.newContext({viewport:{width:vp.width,height:vp.height},reducedMotion:'no-preference',locale:browserLoc,deviceScaleFactor:1,serviceWorkers:'block'});
    const view={viewport:vp.name,width:vp.width,height:vp.height};
    try{
     const page=await context.newPage();page.setDefaultTimeout(timeoutMs);
@@ -81,15 +97,17 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='ko',locale=null
  const ok=views.filter(v=>v.metrics);
  if(!ok.length)throw Error(`Could not load ${url}: ${views.map(v=>v.error).join('; ')}`);
  // Desktop drives the design read; mobile adds any signal desktop missed.
+ const langSource=lang==='auto'?'page':'option';
+ if(lang==='auto')lang=detectLang(ok[0]);
  const tells=evaluateAiTells(ok[0].metrics,{lang});
  for(const v of ok.slice(1))for(const s of evaluateAiTells(v.metrics,{lang}).signals)if(!tells.signals.some(x=>x.id===s.id))tells.signals.push({...s,viewport:v.viewport});
  tells.absent=tells.absent.filter(id=>!tells.signals.some(s=>s.id===id));
  Object.assign(tells,scoreSignals(tells.signals,tells.craft));
  const quality=groupQuality(views),japanese=mergeJa(ok,lang);
- const result={schemaVersion:1,tool:'ui-refiner scan',advisory:true,blocking:false,url,scannedAt:new Date().toISOString(),lang,locale:locale||browserLocale[lang],aiLook:tells,quality,japanese,
+ const result={schemaVersion:1,tool:'ui-refiner scan',advisory:true,blocking:false,url,scannedAt:new Date().toISOString(),lang,langSource,locale:browserLoc,aiLook:tells,quality,japanese,
   views:views.map(({metrics,quality,ja,...v})=>({...v,typography:metrics?.typography,inspectedElements:metrics?.inspected,totalElements:metrics?.total})),
   static:source?await staticSource(source):null};
- if(previous)result.comparison={...compareScans(previous.scan,result,{lang}),images:Object.keys(beforeImages).length?beforeImages:null};
+ if(previous)result.comparison={...compareScans(previous.scan,result,{lang}),mode:compare==='auto'?'auto':'explicit',images:Object.keys(beforeImages).length?beforeImages:null};
  await fs.writeFile(path.join(dir,'scan.json'),JSON.stringify(result,null,2)+'\n');
  await fs.writeFile(path.join(dir,'DESIGN_REVIEW.md'),renderScan(result));
  return {result,dir};

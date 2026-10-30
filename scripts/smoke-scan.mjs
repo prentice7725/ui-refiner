@@ -16,7 +16,7 @@ const cleanServer=createDemoServer();
 for(const s of [slopServer,cleanServer]){s.listen(0,'127.0.0.1');await once(s,'listening');}
 const out=await fs.mkdtemp(path.join(os.tmpdir(),'ui-refiner-scan-'));
 try{
- const bad=(await scanUrl(`http://127.0.0.1:${slopServer.address().port}`,{out:path.join(out,'slop')})).result;
+ const bad=(await scanUrl(`http://127.0.0.1:${slopServer.address().port}`,{out:path.join(out,'slop'),lang:'ko'})).result;
  const good=(await scanUrl(`http://127.0.0.1:${cleanServer.address().port}`,{out:path.join(out,'clean'),lang:'en'})).result;
  const ids=bad.aiLook.signals.map(s=>s.id);
  for(const id of ['purple-gradient','gradient-text','emoji-icons','card-grid','buzzword-copy','eyebrow-pill','transition-all'])assert.ok(ids.includes(id),`missing ${id}: ${ids}`);
@@ -26,7 +26,8 @@ try{
  for(const v of bad.views)assert.ok((await fs.stat(path.join(out,'slop',v.screenshot))).size>1000);
  assert.match(await fs.readFile(path.join(out,'slop','DESIGN_REVIEW.md'),'utf8'),/AI 티 지수/);
  // Japanese fixture: AI tells plus Japanese typesetting problems, reported in Japanese.
- const ja=(await scanUrl(fileURLToPath(new URL('../examples/ai-slop-landing-ja.html',import.meta.url)),{out:path.join(out,'ja'),lang:'ja'})).result;
+ const ja=(await scanUrl(fileURLToPath(new URL('../examples/ai-slop-landing-ja.html',import.meta.url)),{out:path.join(out,'ja')})).result;
+ assert.deepEqual([ja.lang,ja.langSource],['ja','page'],'report language follows the Japanese page');
  assert.equal(ja.aiLook.band,'high');assert.ok(ja.aiLook.signals.some(s=>s.id==='buzzword-copy'));
  const jaIds=ja.japanese.issues.map(i=>i.id);
  for(const id of ['ja-font-fallback','ja-line-height','ja-break-all','ja-italic','ja-half-kana','ja-orphans'])assert.ok(jaIds.includes(id),`missing ${id}: ${jaIds}`);

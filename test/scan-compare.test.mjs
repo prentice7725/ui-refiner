@@ -47,3 +47,25 @@ test('previous scan loads from a folder, rejects other JSON and keeps screenshot
   assert.equal(await fs.readFile(path.join(root,'before-scan-desktop.png'),'utf8'),'old-image');
  }finally{await fs.rm(root,{recursive:true,force:true});}
 });
+
+test('automatic comparison only picks up the last scan of the same page in the output folder',async()=>{
+ const {findAutoPrevious}=await import('../src/scan-compare.mjs');
+ const root=await fs.mkdtemp(path.join(os.tmpdir(),'ui-refiner-auto-'));
+ try{
+  assert.equal(await findAutoPrevious(root,'https://example.com/pricing'),null,'empty folder');
+  await fs.writeFile(path.join(root,'scan.json'),JSON.stringify(scan()));
+  assert.equal((await findAutoPrevious(root,'http://127.0.0.1:5173/pricing')).scan.aiLook.score,80,'same path on a dev server');
+  assert.equal(await findAutoPrevious(root,'https://example.com/about'),null,'different page');
+  await fs.writeFile(path.join(root,'scan.json'),'not json');
+  assert.equal(await findAutoPrevious(root,'https://example.com/pricing'),null,'unreadable scan is ignored');
+ }finally{await fs.rm(root,{recursive:true,force:true});}
+});
+
+test('report language: Japanese or Korean text first, then <html lang>, else English; host hints the browser locale',async()=>{
+ const {detectLang,hintLocale}=await import('../src/scan.mjs');
+ assert.equal(detectLang({ja:{japanese:true,lang:'en'},metrics:{text:''}}),'ja');
+ assert.equal(detectLang({ja:{japanese:false,lang:''},metrics:{text:'청구서를 올리면 분개 후보를 만들어 드립니다'}}),'ko');
+ assert.equal(detectLang({ja:{japanese:false,lang:'ko-KR'},metrics:{text:'Pricing'}}),'ko');
+ assert.equal(detectLang({ja:{japanese:false,lang:'de'},metrics:{text:'Preise und Tarife'}}),'en');
+ assert.equal(hintLocale('https://www.example.co.jp/'),'ja-JP');assert.equal(hintLocale('https://toss.im/'),'en-US');assert.equal(hintLocale('https://naver.co.kr'),'ko-KR');
+});

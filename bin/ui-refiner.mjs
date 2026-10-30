@@ -17,7 +17,9 @@ import {presets} from '../src/presets.mjs';
 import {scanUrl,scanLangs} from '../src/scan.mjs';
 
 const help=`UI Refiner 0.4.0 — de-AI web design review and UI quality gate
-  ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json] [--json]   zero-config design review of any page
+  ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang auto|ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json | --no-compare] [--json]
+      zero-config design review of any page; report language follows the page unless --lang or UI_REFINER_LANG is set;
+      a rescan of the same page into the same --out folder is compared with the previous scan automatically
   ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
@@ -38,6 +40,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   const a=args[i];if(!a.startsWith('--')){out._.push(a);continue;}
   if(a==='--changed-only'){out.changedOnly=true;continue;}
   if(a==='--json'){out.json=true;continue;}
+  if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--help'){out.help=true;continue;}
   if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
@@ -48,11 +51,14 @@ try{
   const [command,sub]=args._;
   if(!command||args.help||command==='help'){console.log(help);process.exitCode=0;}
   else if(command==='scan'&&args._.length===2){
-    if(args.lang&&!scanLangs.includes(args.lang))throw Error(`--lang must be one of ${scanLangs.join(', ')}`);
-    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang:args.lang||'ko',locale:args.locale||null,source:args.source||null,compare:args.compare||null});
+    // --lang wins over UI_REFINER_LANG; without either the report follows the page language.
+    const lang=args.lang||process.env.UI_REFINER_LANG||'auto';
+    if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`${args.lang?'--lang':'UI_REFINER_LANG'} must be auto or one of ${scanLangs.join(', ')}`);
+    if(args.compare&&args.noCompare)throw Error('Use either --compare or --no-compare');
+    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang,locale:args.locale||null,source:args.source||null,compare:args.noCompare?null:args.compare||'auto'});
     const c=result.comparison,delta=n=>n>0?`+${n}`:`${n}`;
     if(args.json)console.log(JSON.stringify(result,null,2));
-    else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''}${c?` vs previous ${c.previous.score}→${c.current.score} (${delta(c.scoreDelta)}), resolved=${c.signals.resolved.length}, new=${c.signals.added.length}${c.warnings.length?`, warnings=${c.warnings.join(',')}`:''};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);
+    else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''} report=${result.lang};${c?` vs ${c.mode==='auto'?'last scan':'previous'} ${c.previous.score}→${c.current.score} (${delta(c.scoreDelta)}), resolved=${c.signals.resolved.length}, new=${c.signals.added.length}${c.warnings.length?`, warnings=${c.warnings.join(',')}`:''};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);
   }
   else if(command==='guidance'&&args._.length===1){
     if(!args.query)throw Error('guidance requires --query');const limit=args.limit===undefined?3:Number(args.limit);const corpus=await loadGuidanceCorpus();const suggestions=makeSuggestions(corpus,args.query,limit);console.log(JSON.stringify({schemaVersion:1,advisory:true,blocking:false,query:args.query,status:suggestions.length?'matched':'no-match',suggestions},null,2));
