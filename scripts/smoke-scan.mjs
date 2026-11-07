@@ -30,7 +30,7 @@ try{
  assert.deepEqual([ja.lang,ja.langSource],['ja','page'],'report language follows the Japanese page');
  assert.equal(ja.aiLook.band,'high');assert.ok(ja.aiLook.signals.some(s=>s.id==='buzzword-copy'));
  const jaIds=ja.japanese.issues.map(i=>i.id);
- for(const id of ['ja-font-fallback','ja-line-height','ja-break-all','ja-italic','ja-half-kana','ja-orphans'])assert.ok(jaIds.includes(id),`missing ${id}: ${jaIds}`);
+ for(const id of ['ja-font-fallback','ja-line-height','ja-break-all','ja-italic','ja-half-kana','ja-orphans','ja-bad-break'])assert.ok(jaIds.includes(id),`missing ${id}: ${jaIds}`);
  assert.equal(good.japanese.japanese,false,'English demo is not treated as Japanese');
  assert.match(await fs.readFile(path.join(out,'ja','DESIGN_REVIEW.md'),'utf8'),/日本語タイポグラフィ/);
  // Redesign loop: the fixed page compared with the slop scan. It also guards a well-made Japanese page against false positives.
