@@ -79,6 +79,14 @@ test('Japanese typesetting: words broken in short titles and links are reported 
  assert.deepEqual(evaluateJaTypography(jaMetrics({badBreaks:{count:0,blocks:12,examples:[]}})).issues,[],'clean short blocks report nothing');
 });
 
+test('Japanese typesetting: only main-heading line starts and UI-label breaks are reported, others are counted',()=>{
+ const ex=[{target:'nav > button',kind:'split-word',where:'label',at:'サステナ／ビリティ'},{target:'h2',kind:'split-word',where:'heading',at:'ニュース／リリース'},{target:'ul.news > li > a',kind:'line-start',where:'list',at:'支援フ／ァンド」'}];
+ const r=evaluateJaTypography(jaMetrics({badBreaks:{count:5,prominent:1,blocks:30,examples:ex}}),{lang:'ja'});
+ assert.deepEqual(r.issues.map(i=>[i.id,i.severity]),[['ja-bad-break','low']]);
+ assert.deepEqual(r.issues[0].evidence,{count:1,inLists:4,examples:['サステナ／ビリティ']});assert.deepEqual(r.issues[0].targets,['nav > button']);
+ assert.deepEqual(evaluateJaTypography(jaMetrics({badBreaks:{count:4,prominent:0,blocks:30,examples:[ex[1]]}})).issues,[],'news-list breaks alone are not an issue');
+});
+
 test('quality counts each element once across viewports and shows one example per threshold',()=>{
  const f=(selector,expected)=>({rule:'text-contrast',selector,expected,message:`Expected text contrast of at least ${expected}. Found 2.96:1.`});
  const [q]=groupQuality([{viewport:'desktop',quality:[f('nav > a','3:1'),f('nav > a.b','3:1'),f('#Message h2','4.5:1')]},{viewport:'mobile',quality:[f('nav > a','3:1'),f('#Message h2','4.5:1')]}]);

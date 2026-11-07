@@ -60,7 +60,7 @@ export function detectLang(view){
  return ['ja','ko'].includes(declared)?declared:'en';
 }
 
-export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000}={}){
+export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000,screenshots=true,keepRaw=false}={}){
  if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`Unsupported report language: ${lang}`);
  const url=scanTarget(input),dir=path.resolve(out),browserLoc=locale||(lang==='auto'?hintLocale(url):browserLocale[lang]);
  // Load the previous scan and keep its screenshots before this run can overwrite them in the same folder.
@@ -80,8 +80,8 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
     if(response&&!response.ok())throw Error(`HTTP ${response.status()} at ${response.url()}`);
     await page.waitForLoadState('networkidle',{timeout:8000}).catch(()=>{});
     await settle(page);
-    view.screenshot=`scan-${vp.name}.png`;
-    await page.screenshot({path:path.join(dir,view.screenshot),fullPage:true,timeout:timeoutMs});
+    if(screenshots){view.screenshot=`scan-${vp.name}.png`;
+     await page.screenshot({path:path.join(dir,view.screenshot),fullPage:true,timeout:timeoutMs});}
     view.metrics=await page.evaluate(collectAiTells);
     view.ja=await page.evaluate(collectJaTypography);
     Object.assign(view.metrics,{japanese:view.ja.japanese,japaneseFontCoverage:view.ja.japanese?1-view.ja.fontFallback.ratio:0});
@@ -96,21 +96,27 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
  }finally{await browser.close();}
  const ok=views.filter(v=>v.metrics);
  if(!ok.length)throw Error(`Could not load ${url}: ${views.map(v=>v.error).join('; ')}`);
- // Desktop drives the design read; mobile adds any signal desktop missed.
  const langSource=lang==='auto'?'page':'option';
  if(lang==='auto')lang=detectLang(ok[0]);
- const tells=evaluateAiTells(ok[0].metrics,{lang});
- for(const v of ok.slice(1))for(const s of evaluateAiTells(v.metrics,{lang}).signals)if(!tells.signals.some(x=>x.id===s.id))tells.signals.push({...s,viewport:v.viewport});
- tells.absent=tells.absent.filter(id=>!tells.signals.some(s=>s.id===id));
- Object.assign(tells,scoreSignals(tells.signals,tells.craft));
+ const tells=mergeTells(ok,lang);
  const quality=groupQuality(views),japanese=mergeJa(ok,lang);
  const result={schemaVersion:1,tool:'ui-refiner scan',advisory:true,blocking:false,url,scannedAt:new Date().toISOString(),lang,langSource,locale:browserLoc,aiLook:tells,quality,japanese,
   views:views.map(({metrics,quality,ja,...v})=>({...v,typography:metrics?.typography,inspectedElements:metrics?.inspected,totalElements:metrics?.total})),
   static:source?await staticSource(source):null};
+ // Raw collector output (includes page text) for offline recalibration; never written by the CLI.
+ if(keepRaw)result.raw=ok.map(v=>({viewport:v.viewport,metrics:v.metrics,ja:v.ja}));
  if(previous)result.comparison={...compareScans(previous.scan,result,{lang}),mode:compare==='auto'?'auto':'explicit',images:Object.keys(beforeImages).length?beforeImages:null};
  await fs.writeFile(path.join(dir,'scan.json'),JSON.stringify(result,null,2)+'\n');
  await fs.writeFile(path.join(dir,'DESIGN_REVIEW.md'),renderScan(result));
  return {result,dir};
+}
+
+/** Desktop drives the design read; later viewports add any signal it missed. Pure; reused for offline rescoring. */
+export function mergeTells(views,lang){
+ const tells=evaluateAiTells(views[0].metrics,{lang});
+ for(const v of views.slice(1))for(const s of evaluateAiTells(v.metrics,{lang}).signals)if(!tells.signals.some(x=>x.id===s.id))tells.signals.push({...s,viewport:v.viewport});
+ tells.absent=tells.absent.filter(id=>!tells.signals.some(s=>s.id===id));
+ return Object.assign(tells,scoreSignals(tells.signals,tells.craft));
 }
 
 // Japanese headings wrap differently per width, so keep every viewport an issue appears in.
@@ -149,7 +155,7 @@ const severity={ko:{high:'높음',medium:'중간',low:'낮음'},ja:{high:'高',m
 
 export function renderScan(r){
  const L=scanLangs.includes(r.lang)?r.lang:'ko',x=t[L],a=r.aiLook;let n=0;const h=title=>`## ${++n}. ${title}`;
- const lines=[`# ${x.title}: ${r.url}`,'',`- **${x.index}: ${a.score}/100 (${x.bands[a.band]})** — ${x.note}`,...(a.craft?.length?[`- ${x.craft}: ${a.craft.map(c=>x.crafts[c]).join(', ')} (${x.craftNote})`]:[]),`- ${x.shots}: ${r.views.map(v=>v.screenshot?`[${v.viewport} ${v.width}px](${v.screenshot})`:`${v.viewport}: ${x.error} — ${v.error}`).join(' · ')}`,''];
+ const lines=[`# ${x.title}: ${r.url}`,'',`- **${x.index}: ${a.score}/100 (${x.bands[a.band]})** — ${x.note}`,...(a.craft?.length?[`- ${x.craft}: ${a.craft.map(c=>x.crafts[c]).join(', ')} (${x.craftNote})`]:[]),`- ${x.shots}: ${r.views.map(v=>v.screenshot?`[${v.viewport} ${v.width}px](${v.screenshot})`:v.error?`${v.viewport}: ${x.error} — ${v.error}`:`${v.viewport} ${v.width}px`).join(' · ')}`,''];
  if(r.comparison)lines.push(...renderComparison(r.comparison,L,h));
  lines.push(h(x.signals),'');
  if(!a.signals.length)lines.push(x.none,'');

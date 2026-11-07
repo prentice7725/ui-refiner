@@ -97,7 +97,8 @@ export function collectAiTells(){
  // Copy and generic calls to action.
  const text=(document.body.innerText||'').replace(/\s+/g,' ');
  const labels=buttons.concat(els.filter(el=>el.matches('a[href]'))).map(el=>(el.innerText||el.value||'').trim().toLowerCase()).filter(Boolean);
- const rootBg=rgba(getComputedStyle(document.body).backgroundColor)?.[3]>.5?rgba(getComputedStyle(document.body).backgroundColor):rgba(getComputedStyle(document.documentElement).backgroundColor);
+ // Transparent body and html paint the default white canvas, not black.
+ const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
   gradients:{count:gradients.length,large:largeGradients.length,purple:purpleGradients.length,coverage:Math.min(1,largeGradients.reduce((n,el)=>n+area(el),0)/page),targets:sample(largeGradients.length?largeGradients:gradients)},
