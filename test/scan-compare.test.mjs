@@ -69,3 +69,11 @@ test('report language: Japanese or Korean text first, then <html lang>, else Eng
  assert.equal(detectLang({ja:{japanese:false,lang:'de'},metrics:{text:'Preise und Tarife'}}),'en');
  assert.equal(hintLocale('https://www.example.co.jp/'),'ja-JP');assert.equal(hintLocale('https://toss.im/'),'en-US');assert.equal(hintLocale('https://naver.co.kr'),'ko-KR');
 });
+
+test('a scan from before per-element counting is compared by raw occurrences',()=>{
+ const after=scan({quality:[{rule:'text-contrast',count:20,occurrences:40}]});
+ const c=compareScans(scan({quality:[{rule:'text-contrast',count:40}]}),after,{lang:'en'});
+ assert.deepEqual(c.quality,[]);assert.deepEqual(c.qualityTotal,{before:40,after:40});
+ const d=compareScans(after,scan({quality:[{rule:'text-contrast',count:5,occurrences:9}]}),{lang:'en'});
+ assert.deepEqual(d.qualityTotal,{before:20,after:5});
+});

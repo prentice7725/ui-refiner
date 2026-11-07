@@ -9,6 +9,18 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   - The report language follows the page (Japanese → `ja`, Korean → `ko`, else `en`). `UI_REFINER_LANG` sets a fixed default, `--lang` overrides one run, and the browser locale follows the host (`.jp` → `ja-JP`, `.kr` → `ko-KR`). Previously the default was always Korean.
   - Rescanning the same page into the same output folder compares with the previous scan automatically. `--no-compare` opts out; `--compare <folder>` still compares with a scan elsewhere. A different page in the same folder is not compared.
 - `scan.json` records `langSource` (`page` or `option`) and `comparison.mode` (`auto` or `explicit`).
+- Baseline quality now counts each element once across viewports (`count`); raw findings move to `occurrences`. Comparing with a scan from before this change uses occurrences on both sides. The report column is renamed 要素数 / 요소 수 / Elements.
+- The quality table shows up to three examples, one per threshold first, so a 4.5:1 body-text failure is no longer hidden behind a 3:1 button example.
+
+- AI-look scoring recalibrated on 30 ChatGPT Sites vs 26 human sites (`scripts/calibrate-scan.mjs`, `scripts/calibration-sites.tsv`). Median score: AI 12 → 33, human 8 → 0; at score ≥ 20, 70% of AI sites and 0% of human sites are flagged (was 30% / 4%).
+  - New signals for the 2025–26 editorial AI template: `tracked-labels` (tiny letter-spaced uppercase labels), `numbered-labels` ("01 / …", "STEP 1 · …"), `period-headlines` (short display headings ending in a period) and `paper-serif` (warm off-white background with serif display type).
+  - `transition-all`, `generic-cta` and plain blue `default-accent` fired more on human sites; they stay in the report with weight 0. Tailwind indigo/violet/purple accents still score.
+  - Type scale no longer counts as a craft counter-signal (AI sites had it as often as human sites).
+  - `aiLook.measures` records the raw editorial measurements for later calibration.
+  - Holdout check with unchanged thresholds (`scripts/calibration-holdout.tsv`: 38 Lovable/v0 sites vs 29 design-forward studio, award and editorial sites): median AI 24, human 5; at score ≥ 20, 66% of AI sites and 3% of human sites are flagged (one studio site at 27). `tracked-labels` fires on 14% of these human sites (0% in the tuning set).
+
+### Fixed
+- Japanese typesetting missed words broken in short titles, list items and links under 24px (e.g. 「支援フ／ァンド」 in a news list). New `ja-bad-break` reports a small kana or ー at a line start and katakana words split across lines; long body copy is not checked.
 
 ### Added
 - `/ui-review <url> [instructions]` slash command for Claude Code (plugin `commands/`, also installed to `.claude/commands/` by `install-agent-skill.mjs`).
