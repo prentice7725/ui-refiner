@@ -47,14 +47,20 @@ export function collectJaTypography(){
  }
  // Short text blocks (titles, list and link labels, table cells): a line that starts with a small kana
  // or the prolonged sound mark (禁則), or a katakana word split across lines (「フ／ァンド」).
- // Long body copy is left alone: mid-word breaks are normal there.
+ // Long body copy is left alone: mid-word breaks are normal there. Reported: a small kana or ー opening a line
+ // in a main heading (h1/h2, ≥24px), and any break in a short UI label (nav, button) that should fit one line.
+ // News lists, card titles (h3) and katakana splits in headings are only counted: they occur on most Japanese
+ // sites, and a katakana split cannot tell 「ニュース／リリース」 (two words) from 「フ／ァンド」 (2026-11 reference).
  const blockTags='h1,h2,h3,h4,h5,h6,a,li,dt,dd,th,td,button,label,figcaption,p';
  const textOf=el=>(el.innerText||'').replace(/\s/g,'');
- let short=els.map(el=>el.closest(blockTags)||el).filter((el,i,a)=>a.indexOf(el)===i&&el.matches(blockTags)&&shown(el)&&getComputedStyle(el).whiteSpace!=='nowrap'&&textOf(el).length>=8&&textOf(el).length<=120);
+ let short=els.map(el=>el.closest(blockTags)||el).filter((el,i,a)=>a.indexOf(el)===i&&el.matches(blockTags)&&shown(el)&&getComputedStyle(el).whiteSpace!=='nowrap'&&textOf(el).length>=4&&textOf(el).length<=120);
  short=short.filter(el=>!short.some(o=>o!==el&&el.contains(o)&&textOf(o).length>=textOf(el).length*.6));
  const smallKana=/^[ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰ-ㇿー]/,katakana=/[ァ-ヺー]/;
+ const breakWhere=el=>el.matches('h1,h2')||parseFloat(getComputedStyle(el).fontSize)>=24?'heading':textOf(el).length<=16&&(el.matches('button,label,[role=button]')||el.closest('nav,[role=navigation],header,button'))?'label':'list';
+ const rank={heading:0,label:1,list:2};
+ short=short.map(el=>({el,where:breakWhere(el)})).sort((a,b)=>rank[a.where]-rank[b.where]);
  const badBreaks=[];let budget=4000;
- for(const el of short){
+ for(const {el,where} of short){
   if(budget<=0)break;
   const rows=[];let prev=null;
   const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n;
@@ -68,15 +74,15 @@ export function collectJaTypography(){
   for(let i=1;i<rows.length;i++){
    const end=rows[i-1].at(-1),start=rows[i][0];
    const kind=smallKana.test(rows[i])?'line-start':katakana.test(end)&&katakana.test(start)?'split-word':null;
-   if(kind){badBreaks.push({target:sel(el),kind,at:rows[i-1].slice(-4)+'／'+rows[i].slice(0,4)});break;}
+   if(kind){badBreaks.push({target:sel(el),kind,where,at:rows[i-1].slice(-4)+'／'+rows[i].slice(0,4)});break;}
   }
  }
  const sample=list=>list.slice(0,6).map(sel);
  return {...result,textElements:els.length,
   fontFallback:{count:noJaFont.length,ratio:+(noJaFont.length/Math.max(1,els.length)).toFixed(2),stacks:[...stacks].sort((a,b)=>b[1]-a[1]).slice(0,3).map(([stack,count])=>({stack,count})),targets:sample(noJaFont)},
-  lineHeight:{paragraphs:paragraphs.length,tight:tight.length,normal:normalLh.length,values:[...new Set(tight.map(el=>+lh(el).toFixed(2)))].slice(0,5),targets:sample(tight)},
+  lineHeight:{paragraphs:paragraphs.length,tight:tight.length,normal:normalLh.length,values:[...new Set(tight.map(el=>+lh(el).toFixed(2)))].slice(0,5),median:(v=>v.length?+v[v.length>>1].toFixed(2):null)(paragraphs.map(lh).filter(v=>v!==null).sort((a,b)=>a-b)),bodySize:(v=>v.length?v[v.length>>1]:null)(paragraphs.map(el=>parseFloat(getComputedStyle(el).fontSize)).sort((a,b)=>a-b)),targets:sample(tight)},
   italic:{count:italic.length,targets:sample(italic)},tiny:{count:tiny.length,targets:sample(tiny)},tracking:{count:tracking.length,targets:sample(tracking)},
-  orphans:{count:orphans.length,headings:headings.length,examples:orphans.slice(0,6)},badBreaks:{count:badBreaks.length,blocks:short.length,examples:badBreaks.slice(0,6)},breakAll:{count:breakAll.length,targets:sample(breakAll)},phraseAware,
+  orphans:{count:orphans.length,headings:headings.length,examples:orphans.slice(0,6)},badBreaks:{count:badBreaks.length,prominent:badBreaks.filter(b=>b.where==='label'||b.where==='heading'&&b.kind==='line-start').length,blocks:short.length,examples:badBreaks.slice(0,6)},breakAll:{count:breakAll.length,targets:sample(breakAll)},phraseAware,
   halfWidthKana:{count:halfKana.length,targets:sample(halfKana)},fullWidthAlnum:{count:fullAlnum.length,targets:sample(fullAlnum)}
  };
 }
@@ -85,7 +91,7 @@ const copy={
  'ja-font-fallback':{ja:['和文書体が指定されていない','font-familyに日本語を含む書体がなく、端末ごとに別のフォールバック書体（Windowsでは游ゴシックやMSゴシック等）で表示される。AI生成の「Inter, sans-serif」指定でよく起きる。','欧文書体の後ろに和文書体を明示する（例：Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif）。ブランドに合う和文Webフォントの採用も検討する。'],ko:['일본어 서체가 지정되지 않음','font-family에 일본어 글리프가 있는 서체가 없어 기기마다 다른 대체 서체로 보인다. AI가 만든 "Inter, sans-serif" 지정에서 흔하다.','영문 서체 뒤에 일본어 서체를 명시한다(예: Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif).'],en:['No Japanese typeface specified','The font stack has no family with Japanese glyphs, so each OS substitutes its own fallback. Common with AI-generated "Inter, sans-serif" stacks.','Name a Japanese family after the Latin one (e.g. Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif).']},
  'ja-line-height':{ja:['本文の行間が狭い','日本語は字面が大きく、行間が1.45未満だと長文が詰まって読みにくい。','本文はline-height 1.7〜2.0を目安に。見出しは1.3〜1.5。'],ko:['일본어 본문 행간이 좁음','일본어는 글자면이 커서 1.45 미만 행간은 긴 글이 답답하다.','본문 line-height 1.7~2.0, 제목 1.3~1.5.'],en:['Tight Japanese body line height','Japanese glyphs fill the em box; below 1.45 long text feels cramped.','Use line-height 1.7–2.0 for body text and 1.3–1.5 for headings.']},
  'ja-orphans':{ja:['見出しの泣き別れ（最終行が1〜2文字）','単語の途中や1〜2文字だけが次の行に落ち、AIが組んだ未調整の見出しに見える。','見出しにword-break: auto-phrase（Chrome）やBudouX、<wbr>で文節改行し、text-wrap: balanceで行長を揃える。'],ko:['제목 마지막 줄에 1~2글자만 남음','단어 중간이나 1~2글자만 다음 줄로 떨어져 다듬지 않은 제목으로 보인다.','word-break: auto-phrase(Chrome)나 BudouX, <wbr>로 문절 단위 줄바꿈을 하고 text-wrap: balance를 쓴다.'],en:['Heading orphans (last line of 1–2 characters)','A word splits or one or two characters drop to a new line; the heading looks unadjusted.','Break at phrases with word-break: auto-phrase (Chrome), BudouX or <wbr>, and balance lines with text-wrap: balance.']},
- 'ja-bad-break':{ja:['語の途中での改行（行頭の小書き仮名・カタカナ語の分断）','「フ／ァンド」のように語が割れたり、行頭に「ァ」「ッ」「ー」が来たりすると、短い見出しやリンクの意味が一瞬読めなくなる。本文では許容されても、タイトル・リスト項目では目立つ。','line-break: strictで行頭の小書き仮名を禁止し、短い見出しやリンクにはword-break: auto-phrase（Chrome）、BudouX、または固有名詞を<span style="white-space:nowrap">で包んで分割を防ぐ。'],ko:['단어 중간 줄바꿈(줄 머리 작은 가나·가타카나 단어 분리)','「フ／ァンド」처럼 단어가 갈리거나 줄 머리에 「ァ」「ッ」「ー」가 오면 짧은 제목·링크를 순간 읽기 어렵다. 본문에서는 허용돼도 제목·목록 항목에서는 눈에 띈다.','line-break: strict로 줄 머리 작은 가나를 막고, 짧은 제목·링크에는 word-break: auto-phrase(Chrome), BudouX, 또는 고유명사를 white-space:nowrap span으로 감싼다.'],en:['Words broken mid-line (small kana at line start, split katakana)','A word splits like 「フ／ァンド」 or a line opens with 「ァ」「ッ」「ー」; short titles and links stop reading as one unit. Tolerable in body copy, visible in titles and list items.','Use line-break: strict to keep small kana off the line start, and word-break: auto-phrase (Chrome), BudouX or a white-space: nowrap span around names in short titles and links.']},
+ 'ja-bad-break':{ja:['語の途中での改行（行頭の小書き仮名・カタカナ語の分断）','「フ／ァンド」のように語が割れたり、行頭に「ァ」「ッ」「ー」が来たりすると、見出しやボタン・ナビの語が一瞬読めなくなる。本文やニュース一覧ではよくあることだが、大見出しの行頭やナビ・ボタンのラベルでは目立つ。','line-break: strictで行頭の小書き仮名を禁止し、短い見出しやリンクにはword-break: auto-phrase（Chrome）、BudouX、または固有名詞を<span style="white-space:nowrap">で包んで分割を防ぐ。'],ko:['단어 중간 줄바꿈(줄 머리 작은 가나·가타카나 단어 분리)','「フ／ァンド」처럼 단어가 갈리거나 줄 머리에 「ァ」「ッ」「ー」가 오면 제목이나 버튼·내비 라벨을 순간 읽기 어렵다. 본문이나 뉴스 목록에서는 흔하지만, 큰 제목의 줄 머리나 내비·버튼 라벨에서는 눈에 띈다.','line-break: strict로 줄 머리 작은 가나를 막고, 짧은 제목·링크에는 word-break: auto-phrase(Chrome), BudouX, 또는 고유명사를 white-space:nowrap span으로 감싼다.'],en:['Words broken mid-line (small kana at line start, split katakana)','A word splits like 「フ／ァンド」 or a line opens with 「ァ」「ッ」「ー」; headings and button or navigation labels stop reading as one unit. Common in body copy and news lists; visible at the start of a main heading line or in a nav or button label.','Use line-break: strict to keep small kana off the line start, and word-break: auto-phrase (Chrome), BudouX or a white-space: nowrap span around names in short titles and links.']},
  'ja-break-all':{ja:['見出しにword-break: break-all','文節を無視してどこでも改行され、読みのまとまりが崩れる。','見出しはword-break: auto-phraseかkeep-all＋<wbr>に。break-allはURLなど長い英数字だけに。'],ko:['제목에 word-break: break-all','문절을 무시하고 아무 곳에서나 줄이 바뀐다.','제목은 auto-phrase 또는 keep-all + <wbr>. break-all은 URL 같은 긴 영숫자에만.'],en:['word-break: break-all on headings','Lines break anywhere, ignoring phrase boundaries.','Use auto-phrase or keep-all with <wbr> for headings; keep break-all for long URLs.']},
  'ja-italic':{ja:['日本語の斜体','和文書体に斜体はなく、ブラウザが機械的に傾けた汚い字形になる。','強調は太さ・色・傍点（text-emphasis）で。斜体は欧文だけに。'],ko:['일본어에 기울임꼴','일본어 서체에는 이탤릭이 없어 브라우저가 억지로 기울인다.','강조는 굵기·색·방점(text-emphasis)으로.'],en:['Italic Japanese text','Japanese fonts have no italics; the browser fakes a slant.','Emphasize with weight, color or text-emphasis; keep italics for Latin text.']},
  'ja-tracking':{ja:['日本語の字間を詰めすぎ','欧文向けのtracking-tight（負の字間）を和文に当てると文字がぶつかる。','和文は0〜0.05em程度。詰めるならfont-feature-settings: "palt"で約物だけを詰める。'],ko:['일본어 자간을 너무 좁힘','영문용 음수 자간을 일본어에 적용하면 글자가 부딪힌다.','일본어는 0~0.05em. 좁히려면 font-feature-settings: "palt".'],en:['Negative tracking on Japanese','Latin-style tight tracking makes Japanese glyphs collide.','Keep 0–0.05em; use font-feature-settings: "palt" to tighten punctuation only.']},
@@ -103,7 +109,9 @@ export function evaluateJaTypography(m,{lang='ko'}={}){
  if(m.fontFallback.ratio>=.5)add('ja-font-fallback','high',{elements:m.fontFallback.count,ratio:m.fontFallback.ratio,stacks:m.fontFallback.stacks.map(s=>s.stack)},m.fontFallback.targets);
  if(m.lineHeight.tight>=2||m.lineHeight.paragraphs&&m.lineHeight.tight/m.lineHeight.paragraphs>=.3)add('ja-line-height','medium',{tight:m.lineHeight.tight,paragraphs:m.lineHeight.paragraphs,values:m.lineHeight.values},m.lineHeight.targets);
  if(m.orphans.count)add('ja-orphans',m.orphans.count>=2?'medium':'low',{orphans:m.orphans.count,headings:m.orphans.headings,examples:m.orphans.examples.map(o=>o.lastLine)},m.orphans.examples.map(o=>o.target));
- if(m.badBreaks?.count)add('ja-bad-break',m.badBreaks.count>=2?'medium':'low',{count:m.badBreaks.count,blocks:m.badBreaks.blocks,examples:m.badBreaks.examples.map(b=>b.at)},m.badBreaks.examples.map(b=>b.target));
+ // Older scans have no `prominent` and counted every short block.
+ const bb=m.badBreaks,prominent=bb?.prominent??bb?.count??0,shown=(bb?.examples||[]).filter(b=>bb.prominent===undefined||b.where==='label'||b.where==='heading'&&b.kind==='line-start');
+ if(prominent)add('ja-bad-break',prominent>=2?'medium':'low',{count:prominent,inLists:(bb.count||0)-prominent,examples:shown.map(b=>b.at)},shown.map(b=>b.target));
  if(m.breakAll.count)add('ja-break-all','medium',{count:m.breakAll.count},m.breakAll.targets);
  if(m.italic.count)add('ja-italic','medium',{count:m.italic.count},m.italic.targets);
  if(m.tracking.count>=2)add('ja-tracking','low',{count:m.tracking.count},m.tracking.targets);

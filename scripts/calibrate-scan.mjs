@@ -19,7 +19,7 @@ async function worker(){
   const r=rows[next++],dir=path.join(outDir,r.label,slug(r.url));
   const t=Date.now();
   try{
-   const {result}=await scanUrl(r.url,{out:dir,compare:false});
+   const {result}=await scanUrl(r.url,{out:dir,compare:false,keepRaw:true});
    results.push({...r,score:result.aiLook.score,band:result.aiLook.band,signals:result.aiLook.signals.map(s=>s.id),craft:result.aiLook.craft||[],measures:result.aiLook.measures,
     quality:Object.fromEntries(result.quality.map(q=>[q.rule,q.count])),ja:result.japanese?.japanese?result.japanese.issues.map(i=>i.id):null,lang:result.lang});
    console.log(`${r.label}\t${result.aiLook.score}\t${r.url}\t${((Date.now()-t)/1000).toFixed(0)}s`);
