@@ -1,0 +1,78 @@
+# Holdout set (2026-11-07): not used to tune thresholds.
+# ai: listed on madewithlovable.com / sitebuilderreport Lovable gallery, plus v0-built pages that say so.
+# human: design-forward agency, studio, award and editorial sites (Awwwards / 81-web / S5-Style era 2019-2022 and well-known studios).
+label	url	note
+ai	https://lift-off.sh/	lovable
+ai	https://shinebythara.lovable.app/	lovable
+ai	https://luna-vos.lovable.app/	lovable
+ai	https://aastudioweb.fr/	lovable
+ai	https://digitaloctopods.com/	lovable
+ai	https://launchin48.co/	lovable
+ai	https://assurancebridges.ca/	lovable
+ai	https://www.hellosilvermoon.com/	lovable
+ai	https://claritysync360.com/	lovable
+ai	https://karen-blixen-tales.lovable.app/	lovable
+ai	https://matchwise.app/	lovable
+ai	https://asifmanijewellers.com/	lovable
+ai	https://densops.com/	lovable
+ai	https://uskub.fr/	lovable
+ai	https://pharmatech-ace.lovable.app/	lovable
+ai	https://www.flycalm.app/	lovable
+ai	https://blackoutplaner.de/	lovable
+ai	https://pilates-circles-by-cult.lovable.app/	lovable
+ai	https://color-drenching.lovable.app/	lovable
+ai	https://atelier-olga.fr/	lovable
+ai	https://creative-services.lovable.app/	lovable
+ai	https://jukeboxburgers.com/	lovable
+ai	https://modfii.com/	lovable
+ai	https://afterimagefilmfestival.com/	lovable
+ai	https://padelplayerone.com/	lovable
+ai	https://healthylongevity.club/	lovable
+ai	https://www.antalee.com/	lovable
+ai	https://justhunt.co/	lovable
+ai	https://princetontxrealtor.lovable.app/	lovable
+ai	https://kanhaguestroom.lovable.app/	lovable
+ai	https://pysaf.com/	lovable
+ai	https://greatcompany.ai/	lovable
+ai	https://progineer.lovable.app/	lovable
+ai	https://edgedesignations.com/	lovable
+ai	https://trysiri.com/	lovable
+ai	https://mygiftgenie.io/	lovable
+ai	https://brieflybook.com/	lovable
+ai	https://iphoneduoguide.com/	lovable
+ai	https://porsche-perfection-pds.lovable.app/	lovable
+ai	https://pathpilot.pro/	lovable
+ai	https://wppgencxhackathonspotlight.vercel.app/	v0
+ai	https://clearlot.vercel.app/	v0
+human	https://garden-eight.jp/	jp studio
+human	https://www.shiftbrain.com/	jp studio
+human	https://homunculus.jp/	jp studio
+human	https://www.utsubo.com/	jp studio
+human	https://qrz.co.jp/	jp studio
+human	https://ultrasupernew.com/ja/	jp agency
+human	https://kaobeautybrands.com/	jp brand award
+human	https://gngn.inc/	jp award
+human	https://wota.co.jp/	jp award
+human	https://sisan.co.jp/	jp award
+human	https://www.takram.com/	jp studio
+human	https://www.nendo.jp/	jp studio
+human	https://tha.jp/	jp studio
+human	https://mount.jp/	jp studio
+human	https://www.baigie.me/	jp studio
+human	https://www.yamatane-museum.jp/	jp museum
+human	https://www.pentagram.com/	en studio
+human	https://www.collinsnyc.com/	en studio
+human	https://area17.com/	en studio
+human	https://www.instrument.com/	en studio
+human	https://metalab.com/	en studio
+human	https://locomotive.ca/en	en studio
+human	https://work.co/	en studio
+human	https://activetheory.net/	en studio
+human	https://www.studiofreight.com/	en studio
+human	https://kinfolk.com/	en editorial
+human	https://monocle.com/	en editorial
+human	https://www.newyorker.com/	en editorial
+human	https://www.theverge.com/	en editorial
+human	https://www.vercel.com/	en product
+human	https://www.figma.com/	en product
+human	https://www.are.na/	en product

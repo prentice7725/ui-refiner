@@ -122,15 +122,27 @@ function mergeJa(views,lang){
  return merged;
 }
 
-function groupQuality(views){
- const groups=new Map();
- for(const v of views)for(const f of v.quality||[]){const g=groups.get(f.rule)||{rule:f.rule,count:0,viewports:new Set(),examples:[]};g.count++;g.viewports.add(v.viewport);if(g.examples.length<3)g.examples.push({selector:f.selector,message:f.message});groups.set(f.rule,g);}
- return [...groups.values()].map(g=>({...g,viewports:[...g.viewports]})).sort((a,b)=>b.count-a.count);
+// Count each element once even when both viewports report it, and pick examples that cover every
+// threshold (3:1 large text vs 4.5:1 body text) before repeating one.
+export function groupQuality(views){
+ const groups=new Map(),key=f=>String(f.expected??(f.message||'').split('.')[0]);
+ for(const v of views)for(const f of v.quality||[]){
+  const g=groups.get(f.rule)||{rule:f.rule,occurrences:0,elements:new Map(),viewports:new Set()};
+  g.occurrences++;g.viewports.add(v.viewport);
+  if(!g.elements.has(f.selector))g.elements.set(f.selector,{selector:f.selector,message:f.message,key:key(f)});
+  groups.set(f.rule,g);
+ }
+ return [...groups.values()].map(g=>{
+  const all=[...g.elements.values()],picked=[],seen=new Set();
+  for(const e of all)if(!seen.has(e.key)&&picked.length<3){seen.add(e.key);picked.push(e);}
+  for(const e of all)if(picked.length<3&&!picked.includes(e))picked.push(e);
+  return {rule:g.rule,count:all.length,occurrences:g.occurrences,viewports:[...g.viewports],examples:picked.map(({selector,message})=>({selector,message}))};
+ }).sort((a,b)=>b.count-a.count);
 }
 
 const t={
- ko:{jaType:'일본어 타이포그래피',jaNone:'일본어 조판에서 눈에 띄는 문제를 찾지 못했습니다.',craft:'의도된 디자인 신호',crafts:{'custom-webfont':'직접 고른 웹폰트','imagery':'실제 이미지·영상','type-scale':'풍부한 글자 크기 단계'},craftNote:'점수를 낮췄지만 신호가 사라지지는 않습니다',title:'디자인 점검',index:'AI 티 지수',bands:{high:'높음',medium:'보통',low:'낮음',none:'없음'},note:'휴리스틱 신호이며 차단 판정이 아닙니다. 승인된 브랜드 선택이면 유지하세요.',shots:'스크린샷',signals:'AI 티 신호 (강한 순)',none:'뚜렷한 AI 티 신호를 찾지 못했습니다.',strength:{strong:'강',moderate:'중',weak:'약'},evidence:'근거',targets:'대상',why:'왜',fix:'제안',quality:'기본 품질 (실제 렌더링 측정)',qnone:'측정한 보편 규칙에서 문제를 찾지 못했습니다.',rule:'규칙',count:'건수',vp:'뷰포트',ex:'예시',stat:'소스 정적 검사 (suta)',good:'피한 것',next:'에이전트가 이어서 할 일',steps:['위 스크린샷을 직접 열어 본다. 첫 화면에서 "무슨 서비스이고 무엇을 하라는지" 3초 안에 읽히는지, 시선이 어디서 시작해 어디로 가는지 적는다.','신호 목록을 그대로 나열하지 말고, 근본 원인 2~3개로 묶어 리디자인 방향을 제안한다(예: "장식으로 위계를 대신함" → 그라데이션·글로우·배지 제거 + 타이포 크기 대비).','각 제안에 보존할 것(문구의 사실, 링크 목적지, 폼 필드, 브랜드 색/서체)을 명시한다.','코드를 고칠 수 있으면 suta 패턴(vendor/suta/skills/suta)을 참고해 수정하고 `ui-refiner scan`을 다시 돌려 신호가 줄었는지 비교한다.','업무형 화면(대시보드·설정·표)은 시스템 서체·높은 밀도가 정상일 수 있다. 화면 목적에 맞지 않는 지적은 근거와 함께 기각한다.'],error:'불러오기 실패'},
- en:{jaType:'Japanese typography',jaNone:'No notable Japanese typesetting issues found.',craft:'Deliberate-design signals',crafts:{'custom-webfont':'chosen webfont','imagery':'real imagery','type-scale':'rich type scale'},craftNote:'score dampened; signals still apply',title:'Design scan',index:'AI-look index',bands:{high:'high',medium:'medium',low:'low',none:'none'},note:'Heuristic signals, not a blocking verdict. Keep anything that is an approved brand choice.',shots:'Screenshots',signals:'AI-look signals (strongest first)',none:'No clear AI-look signals found.',strength:{strong:'strong',moderate:'moderate',weak:'weak'},evidence:'Evidence',targets:'Targets',why:'Why',fix:'Suggestion',quality:'Baseline quality (rendered measurements)',qnone:'No issues in the universal rules measured.',rule:'Rule',count:'Count',vp:'Viewports',ex:'Example',stat:'Source static audit (suta)',good:'Avoided',next:'Next steps for the agent',steps:['Open the screenshots. Can you tell in three seconds what this is and what to do? Note where the eye starts and where it goes.','Do not just list signals: group them into 2–3 root causes and propose a redesign direction (e.g. "decoration replaces hierarchy" → drop gradients/glows/badges, strengthen type contrast).','For each proposal, state what must be preserved (factual copy, link targets, form fields, brand color/typeface).','If you can edit the code, use the suta patterns (vendor/suta/skills/suta), then rerun `ui-refiner scan` and compare signals.','Operational screens (dashboards, settings, tables) may legitimately use system fonts and high density. Reject findings that do not fit the surface purpose, with a reason.'],error:'load failed'},
+ ko:{jaType:'일본어 타이포그래피',jaNone:'일본어 조판에서 눈에 띄는 문제를 찾지 못했습니다.',craft:'의도된 디자인 신호',crafts:{'custom-webfont':'직접 고른 웹폰트','imagery':'실제 이미지·영상','type-scale':'풍부한 글자 크기 단계'},craftNote:'점수를 낮췄지만 신호가 사라지지는 않습니다',title:'디자인 점검',index:'AI 티 지수',bands:{high:'높음',medium:'보통',low:'낮음',none:'없음'},note:'휴리스틱 신호이며 차단 판정이 아닙니다. 승인된 브랜드 선택이면 유지하세요.',shots:'스크린샷',signals:'AI 티 신호 (강한 순)',none:'뚜렷한 AI 티 신호를 찾지 못했습니다.',strength:{strong:'강',moderate:'중',weak:'약'},evidence:'근거',targets:'대상',why:'왜',fix:'제안',quality:'기본 품질 (실제 렌더링 측정)',qnone:'측정한 보편 규칙에서 문제를 찾지 못했습니다.',rule:'규칙',count:'요소 수',vp:'뷰포트',ex:'예시',stat:'소스 정적 검사 (suta)',good:'피한 것',next:'에이전트가 이어서 할 일',steps:['위 스크린샷을 직접 열어 본다. 첫 화면에서 "무슨 서비스이고 무엇을 하라는지" 3초 안에 읽히는지, 시선이 어디서 시작해 어디로 가는지 적는다.','신호 목록을 그대로 나열하지 말고, 근본 원인 2~3개로 묶어 리디자인 방향을 제안한다(예: "장식으로 위계를 대신함" → 그라데이션·글로우·배지 제거 + 타이포 크기 대비).','각 제안에 보존할 것(문구의 사실, 링크 목적지, 폼 필드, 브랜드 색/서체)을 명시한다.','코드를 고칠 수 있으면 suta 패턴(vendor/suta/skills/suta)을 참고해 수정하고 `ui-refiner scan`을 다시 돌려 신호가 줄었는지 비교한다.','업무형 화면(대시보드·설정·표)은 시스템 서체·높은 밀도가 정상일 수 있다. 화면 목적에 맞지 않는 지적은 근거와 함께 기각한다.'],error:'불러오기 실패'},
+ en:{jaType:'Japanese typography',jaNone:'No notable Japanese typesetting issues found.',craft:'Deliberate-design signals',crafts:{'custom-webfont':'chosen webfont','imagery':'real imagery','type-scale':'rich type scale'},craftNote:'score dampened; signals still apply',title:'Design scan',index:'AI-look index',bands:{high:'high',medium:'medium',low:'low',none:'none'},note:'Heuristic signals, not a blocking verdict. Keep anything that is an approved brand choice.',shots:'Screenshots',signals:'AI-look signals (strongest first)',none:'No clear AI-look signals found.',strength:{strong:'strong',moderate:'moderate',weak:'weak'},evidence:'Evidence',targets:'Targets',why:'Why',fix:'Suggestion',quality:'Baseline quality (rendered measurements)',qnone:'No issues in the universal rules measured.',rule:'Rule',count:'Elements',vp:'Viewports',ex:'Example',stat:'Source static audit (suta)',good:'Avoided',next:'Next steps for the agent',steps:['Open the screenshots. Can you tell in three seconds what this is and what to do? Note where the eye starts and where it goes.','Do not just list signals: group them into 2–3 root causes and propose a redesign direction (e.g. "decoration replaces hierarchy" → drop gradients/glows/badges, strengthen type contrast).','For each proposal, state what must be preserved (factual copy, link targets, form fields, brand color/typeface).','If you can edit the code, use the suta patterns (vendor/suta/skills/suta), then rerun `ui-refiner scan` and compare signals.','Operational screens (dashboards, settings, tables) may legitimately use system fonts and high density. Reject findings that do not fit the surface purpose, with a reason.'],error:'load failed'},
  ja:jaReport
 };
 const severity={ko:{high:'높음',medium:'중간',low:'낮음'},ja:{high:'高',medium:'中',low:'低'},en:{high:'high',medium:'medium',low:'low'}};
@@ -148,7 +160,7 @@ export function renderScan(r){
  }
  lines.push(h(x.quality),'');
  if(!r.quality.length)lines.push(x.qnone,'');
- else{lines.push(`| ${x.rule} | ${x.count} | ${x.vp} | ${x.ex} |`,'|---|---:|---|---|');for(const q of r.quality)lines.push(`| ${q.rule} | ${q.count} | ${q.viewports.join(', ')} | \`${q.examples[0].selector}\` — ${q.examples[0].message.replace(/\|/g,'\\|')} |`);lines.push('');}
+ else{lines.push(`| ${x.rule} | ${x.count} | ${x.vp} | ${x.ex} |`,'|---|---:|---|---|');for(const q of r.quality)lines.push(`| ${q.rule} | ${q.count} | ${q.viewports.join(', ')} | ${q.examples.slice(0,3).map(e=>`\`${e.selector}\` — ${e.message.replace(/\|/g,'\\|')}`).join('<br>')} |`);lines.push('');}
  const qe=r.views.filter(v=>v.qualityError);if(qe.length)lines.push(...qe.map(v=>`- ${v.viewport}: ${v.qualityError}`),'');
  if(r.japanese?.japanese){
   lines.push(h(x.jaType),'');
