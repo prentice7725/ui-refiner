@@ -4,7 +4,23 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Added
+- `data/ja-reference/`: design measurements from about 240 Japanese company, prefecture, public-body, media, startup and design-brand sites. It holds measurements only, with distributions overall and per category, and a fixed 70/30 tune/holdout split by host. It is collected with `scripts/collect-reference.mjs`, which skips pages that robots.txt disallows and paces its requests.
+- `scripts/rescore.mjs` re-scores saved scans with the current rules, without opening any page.
+  - `scanUrl` takes `keepRaw` to keep the raw collector output, and `screenshots: false` to skip screenshots.
+  - `calibrate-scan.mjs` now keeps the raw output.
+- The Japanese collector records the median paragraph line-height and font size.
+- `/ui-review <url> [instructions]` slash command for Claude Code (plugin `commands/`, also installed to `.claude/commands/` by `install-agent-skill.mjs`).
+- `scan --compare <previous scan folder|scan.json>`: before/after comparison. The report opens with the score change, resolved/new/remaining signals (with stronger/weaker direction), per-rule baseline quality changes, Japanese typesetting changes and before/after screenshot links (ko/ja/en). The previous result and screenshots are kept as `previous-scan.json` and `before-scan-*.png`, also when rescanning into the same folder. Only the path must match, so production can be compared with a local dev server; a different page or locale is flagged.
+- `examples/redesign-landing-ja.html`: a redesign of the Japanese slop fixture following its own report (100 → 0, 13 signals and 7 Japanese issues resolved). `smoke:scan` runs this loop and uses it as a well-made Japanese page that must stay below 10.
+
 ### Changed
+- `ja-bad-break` reports only a small kana or ー at the start of a main-heading line (h1/h2, ≥ 24px), and any break in a short nav or button label.
+  - Breaks in news lists, card titles and katakana splits inside headings are only counted (`inLists`). On the reference sites the earlier rule fired on 95% of pages; it now fires on 12% (tune) and 13% (holdout).
+  - A katakana split cannot tell 「ニュース／リリース」 (two words) from 「フ／ァンド」.
+- A transparent `body` and `html` now read as a white canvas, not black.
+- `tracked-labels` is unchanged. It fires on 3% of the Japanese reference sites. Making it weak when it is the only editorial tell was tried: AI detection at score ≥ 20 dropped from 70% to 63% (tuning) and from 66% to 58% (holdout), and human false positives at 20 did not change.
+
 - Simpler `scan` defaults:
   - The report language follows the page (Japanese → `ja`, Korean → `ko`, else `en`). `UI_REFINER_LANG` sets a fixed default, `--lang` overrides one run, and the browser locale follows the host (`.jp` → `ja-JP`, `.kr` → `ko-KR`). Previously the default was always Korean.
   - Rescanning the same page into the same output folder compares with the previous scan automatically. `--no-compare` opts out; `--compare <folder>` still compares with a scan elsewhere. A different page in the same folder is not compared.
@@ -20,12 +36,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   - Holdout check with unchanged thresholds (`scripts/calibration-holdout.tsv`: 38 Lovable/v0 sites vs 29 design-forward studio, award and editorial sites): median AI 24, human 5; at score ≥ 20, 66% of AI sites and 3% of human sites are flagged (one studio site at 27). `tracked-labels` fires on 14% of these human sites (0% in the tuning set).
 
 ### Fixed
-- Japanese typesetting missed words broken in short titles, list items and links under 24px (e.g. 「支援フ／ァンド」 in a news list). New `ja-bad-break` reports a small kana or ー at a line start and katakana words split across lines; long body copy is not checked.
-
-### Added
-- `/ui-review <url> [instructions]` slash command for Claude Code (plugin `commands/`, also installed to `.claude/commands/` by `install-agent-skill.mjs`).
-- `scan --compare <previous scan folder|scan.json>`: before/after comparison. The report opens with the score change, resolved/new/remaining signals (with stronger/weaker direction), per-rule baseline quality changes, Japanese typesetting changes and before/after screenshot links (ko/ja/en). The previous result and screenshots are kept as `previous-scan.json` and `before-scan-*.png`, also when rescanning into the same folder. Only the path must match, so production can be compared with a local dev server; a different page or locale is flagged.
-- `examples/redesign-landing-ja.html`: a redesign of the Japanese slop fixture following its own report (100 → 0, 13 signals and 7 Japanese issues resolved). `smoke:scan` runs this loop and uses it as a well-made Japanese page that must stay below 10.
+- Japanese typesetting missed words broken in short text under 24px. New `ja-bad-break` detects a small kana or ー at a line start and katakana words split across lines in short blocks; long body copy is not checked. What it reports was narrowed later (see Changed): a news-list break such as 「支援フ／ァンド」 is now only counted.
 
 ## 0.4.0 — 2026-10-27
 
