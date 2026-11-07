@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {evaluateAiTells,signalTitle} from '../src/ai-tells.mjs';
-import {scanTarget,renderScan} from '../src/scan.mjs';
+import {scanTarget,renderScan,groupQuality} from '../src/scan.mjs';
 import {evaluateJaTypography} from '../src/ja-typography.mjs';
 
 const quiet=()=>({gradients:{count:0,large:0,purple:0,coverage:0,targets:[]},gradientText:{count:0,headings:0,targets:[]},glass:{count:0,targets:[]},glow:{count:0,targets:[]},transitionAll:{count:0,targets:[]},emoji:{count:0,icons:0,targets:[]},centered:{blocks:6,centered:1,ratio:1/6,targets:[]},cardGrids:{count:0,groups:[]},eyebrowPills:{count:0,targets:[]},rounding:{containers:5,rounded:1,ratio:.2},typography:{families:[{name:'söhne',count:40}],sizes:8,ratio:3},accents:[[200,60,40]],hueBuckets:2,craft:{loadedFonts:['söhne'],imagery:4,fontSizes:8},text:'Invoices sent in 2 clicks. Used by 4,000 clinics.',labels:['compare plans','read the api docs']});
@@ -9,7 +9,7 @@ const quiet=()=>({gradients:{count:0,large:0,purple:0,coverage:0,targets:[]},gra
 test('a deliberate page with craft signals scores none and lists every avoided tell',()=>{
  const r=evaluateAiTells(quiet());
  assert.equal(r.score,0);assert.equal(r.band,'none');assert.equal(r.blocking,false);
- assert.deepEqual(r.craft,['custom-webfont','imagery','type-scale']);
+ assert.deepEqual(r.craft,['custom-webfont','imagery'],'type scale no longer counts as craft: AI sites have it as often (calibration 2026-11)');
  assert.ok(r.absent.includes('purple-gradient')&&r.absent.includes('card-grid'));
 });
 
@@ -70,4 +70,40 @@ test('Japanese pages: stock phrases and CTAs count, a proper Japanese stack is n
 test('Japanese report renders its own section and numbering without gaps',()=>{
  const md=renderScan({url:'http://x/',lang:'ja',aiLook:evaluateAiTells(quiet(),{lang:'ja'}),quality:[],japanese:{japanese:true,issues:[{...evaluateJaTypography(jaMetrics({italic:{count:1,targets:['p']}}),{lang:'ja'}).issues[0],viewports:['mobile']}]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
  assert.match(md,/AI感指数/);assert.match(md,/## 3\. 日本語タイポグラフィ/);assert.match(md,/日本語の斜体 \(mobile\)/);assert.match(md,/## 5\. エージェントが続けて行うこと/);
+});
+
+test('Japanese typesetting: words broken in short titles and links are reported with the break point',()=>{
+ const r=evaluateJaTypography(jaMetrics({badBreaks:{count:2,blocks:12,examples:[{target:'li > a',kind:'split-word',at:'支援フ／ァンド」'},{target:'h3',kind:'line-start',at:'ブロ／ッグ'}]}}),{lang:'ja'});
+ assert.deepEqual(r.issues.map(i=>[i.id,i.severity]),[['ja-bad-break','medium']]);
+ assert.deepEqual(r.issues[0].evidence.examples,['支援フ／ァンド」','ブロ／ッグ']);assert.match(r.issues[0].title,/カタカナ語の分断/);
+ assert.deepEqual(evaluateJaTypography(jaMetrics({badBreaks:{count:0,blocks:12,examples:[]}})).issues,[],'clean short blocks report nothing');
+});
+
+test('quality counts each element once across viewports and shows one example per threshold',()=>{
+ const f=(selector,expected)=>({rule:'text-contrast',selector,expected,message:`Expected text contrast of at least ${expected}. Found 2.96:1.`});
+ const [q]=groupQuality([{viewport:'desktop',quality:[f('nav > a','3:1'),f('nav > a.b','3:1'),f('#Message h2','4.5:1')]},{viewport:'mobile',quality:[f('nav > a','3:1'),f('#Message h2','4.5:1')]}]);
+ assert.equal(q.count,3);assert.equal(q.occurrences,5);assert.deepEqual(q.viewports,['desktop','mobile']);
+ assert.deepEqual(q.examples.map(e=>e.selector),['nav > a','#Message h2','nav > a.b'],'4.5:1 is shown even though 3:1 came first');
+ const md=renderScan({url:'http://x/',lang:'ko',aiLook:evaluateAiTells(quiet()),quality:[q],views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
+ assert.match(md,/요소 수/);assert.match(md,/`nav > a` — .*<br>`#Message h2` — .*4\.5:1/);
+});
+
+test('editorial AI template: tracked labels, numbered labels, period headlines and paper+serif score; quiet editorial pages do not',()=>{
+ const m=quiet();m.editorial={tracked:14,numbered:4,periodHeadings:5,headings:7,serifDisplay:1,paper:true,targets:['h2']};
+ const r=evaluateAiTells(m,{lang:'en'});
+ assert.deepEqual(r.signals.filter(s=>['tracked-labels','numbered-labels','period-headlines','paper-serif'].includes(s.id)).map(s=>[s.id,s.strength]),[['tracked-labels','strong'],['period-headlines','strong'],['numbered-labels','moderate'],['paper-serif','weak']]);
+ assert.ok(r.score>=30,`editorial template should reach medium, got ${r.score}`);
+ assert.deepEqual(r.measures,{tracked:14,numbered:4,periodHeadings:5,headings:7,serifDisplay:1,paper:true});
+ m.editorial={tracked:2,numbered:1,periodHeadings:1,headings:7,serifDisplay:1,paper:false,targets:[]};
+ assert.equal(evaluateAiTells(m).score,0,'one period headline and a serif face are ordinary choices');
+ assert.ok(signalTitle('period-headlines','ja'));
+});
+
+test('signals common on human sites are reported but not scored',()=>{
+ const m=quiet();m.transitionAll={count:5,targets:['a']};m.labels=['learn more','learn more'];m.accents=[[37,99,235],[37,99,235]];
+ const r=evaluateAiTells(m,{lang:'en'});
+ assert.deepEqual(r.signals.map(s=>[s.id,s.weight]).sort(),[['default-accent',0],['generic-cta',0],['transition-all',0]]);
+ assert.equal(r.score,0);assert.equal(r.band,'none');
+ m.accents=[[99,102,241],[99,102,241]];
+ assert.equal(evaluateAiTells(m).signals.find(s=>s.id==='default-accent').weight,2,'Tailwind indigo still scores');
 });

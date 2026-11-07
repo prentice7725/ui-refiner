@@ -39,9 +39,12 @@ export function compareScans(before,after,{lang='ko'}={}){
  if(pagePath(before.url)!==pagePath(after.url))warnings.push('different-page');
  else if(before.url!==after.url)warnings.push('different-host');
  if((before.locale||'')!==(after.locale||''))warnings.push('different-locale');
+ // Scans before per-element counting stored raw occurrences in `count`; compare like with like.
+ const legacy=(before.quality||[]).some(q=>q.occurrences===undefined)&&(after.quality||[]).some(q=>q.occurrences!==undefined);
+ const n=(q,side)=>side==='after'&&legacy?q.occurrences??q.count:q.count;
  const quality=new Map();
- for(const q of before.quality||[])quality.set(q.rule,{rule:q.rule,before:q.count,after:0});
- for(const q of after.quality||[])quality.set(q.rule,{rule:q.rule,before:quality.get(q.rule)?.before||0,after:q.count});
+ for(const q of before.quality||[])quality.set(q.rule,{rule:q.rule,before:n(q,'before'),after:0});
+ for(const q of after.quality||[])quality.set(q.rule,{rule:q.rule,before:quality.get(q.rule)?.before||0,after:n(q,'after')});
  const japanese=before.japanese?.japanese||after.japanese?.japanese?diffById(before.japanese?.issues,after.japanese?.issues,'severity',id=>jaIssueTitle(id,lang)):null;
  return {
   previous:{url:before.url,scannedAt:before.scannedAt,score:before.aiLook.score,band:before.aiLook.band},
@@ -49,7 +52,7 @@ export function compareScans(before,after,{lang='ko'}={}){
   scoreDelta:after.aiLook.score-before.aiLook.score,
   signals:diffById(before.aiLook.signals,after.aiLook.signals,'strength',id=>signalTitle(id,lang)),
   quality:[...quality.values()].filter(q=>q.before!==q.after).sort((a,b)=>(b.before-b.after)-(a.before-a.after)),
-  qualityTotal:{before:(before.quality||[]).reduce((n,q)=>n+q.count,0),after:(after.quality||[]).reduce((n,q)=>n+q.count,0)},
+  qualityTotal:{before:(before.quality||[]).reduce((t,q)=>t+n(q,'before'),0),after:(after.quality||[]).reduce((t,q)=>t+n(q,'after'),0)},
   japanese,warnings
  };
 }

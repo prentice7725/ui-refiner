@@ -74,6 +74,19 @@ export function collectAiTells(){
  const body=[...chars].sort((a,b)=>b[1]-a[1])[0]?.[0]||16,h1Size=h1?parseFloat(getComputedStyle(h1).fontSize):null;
  const display=Math.max(0,...textEls.filter(el=>(el.innerText||'').trim().length>=2).map(el=>parseFloat(css(el).fontSize)));
  const weights=new Set(textEls.map(el=>css(el).fontWeight));
+ // 2025–26 "editorial" template: tiny tracked uppercase labels, numbered section labels,
+ // short display headings ending in a period, serif display type on warm off-white paper.
+ const latin=t=>/[A-Za-z]/.test(t)&&!/[ぁ-ヿ㐀-鿿가-힣]/.test(t);
+ const ownText=el=>[...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim();
+ const tracked=textEls.filter(el=>{const s=css(el),z=parseFloat(s.fontSize),t=(el.innerText||'').trim(),ls=parseFloat(s.letterSpacing);
+  return z<=13&&t.length>=3&&t.length<=60&&latin(t)&&Number.isFinite(ls)&&ls/z>=.06&&(s.textTransform==='uppercase'||t===t.toUpperCase()&&/[A-Z]{3}/.test(t));});
+ const numbered=textEls.filter(el=>{const t=(el.innerText||'').trim();return parseFloat(css(el).fontSize)<=14&&t.length<=60&&(/^(0\d|\d{1,2})\s*[\/·.—–|:-]\s*\S/.test(t)&&/[A-Za-z]/.test(t)||/^step\s*\d+\b/i.test(t));});
+ const displayHeads=textEls.filter(el=>(el.matches('h1,h2,h3')||parseFloat(css(el).fontSize)>=28)&&(el.innerText||'').trim().length>=4);
+ const uniqueHeads=[...new Set(displayHeads.map(el=>el.closest('h1,h2,h3')||el))];
+ const periodHeads=uniqueHeads.filter(el=>{const t=(el.innerText||'').trim().replace(/\s+/g,' ');return latin(t)&&/[a-z]\.$/i.test(t)&&!/\.\.$/.test(t)&&t.split(' ').length<=9;});
+ const serifNames=/(^|\s)serif$|garamond|playfair|fraunces|instrument serif|cormorant|dm serif|baskerville|newsreader|source serif|lora|merriweather|crimson|spectral|georgia|times|tiempos|canela|gt sectra|editorial new|ivar|reckless|signifier|ogg|domaine|freight|bodoni|didot|caslon|libre caslon|young serif|gloock|bricolage serif|literata|ibm plex serif|noto serif|pt serif/i;
+ const isSerif=el=>{const fams=css(el).fontFamily.split(',').map(f=>f.replace(/["']/g,'').trim().toLowerCase());return serifNames.test(fams[0])||fams[0]!=='sans-serif'&&fams.includes('serif')&&!fams.includes('sans-serif');};
+ const bigHeads=uniqueHeads.filter(el=>parseFloat(css(el).fontSize)>=32);
  // Buttons, accents, hues.
  const buttons=els.filter(el=>el.matches('button,[role=button],input[type=submit],input[type=button],a[class*=btn],a[class*=button]'));
  const accents=[];for(const el of [...buttons,...els.filter(el=>el.matches('a[href]'))]){for(const v of [css(el).backgroundColor,css(el).color]){const c=rgba(v);if(c&&c[3]>.5&&hsl(c).h!==null)accents.push(c.slice(0,3));}}
@@ -100,6 +113,7 @@ export function collectAiTells(){
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
+  editorial:{tracked:tracked.length,numbered:numbered.length,headings:uniqueHeads.length,periodHeadings:periodHeads.length,serifDisplay:bigHeads.length?+(bigHeads.filter(isSerif).length/bigHeads.length).toFixed(2):0,paper:!!rootBg&&(([r,g,b])=>r>=g&&g>=b&&r-b>=6&&r-b<=45&&b>=195)(rootBg),targets:sample([...periodHeads,...tracked,...numbered])},
   text:text.slice(0,20000),labels:labels.slice(0,200)
  };
 }
@@ -132,6 +146,10 @@ const copy={
  'default-accent':{ko:['프레임워크 기본 강조색','Tailwind indigo/violet, Bootstrap 파랑 그대로는 "기본값" 신호다.','브랜드에서 한 색을 정해 채도·명도를 조정하고, 주 버튼 한 곳에만 쓴다.'],en:['Framework default accent color','Untouched Tailwind indigo/violet or Bootstrap blue signals defaults.','Choose one brand hue, tune it, and spend it on the primary action only.']},
  'many-hues':{ko:['유채색 계열이 많음','색이 많으면 강조가 사라진다.','무채색 + 강조색 1 + 오류 빨강. 상태는 글자·아이콘 모양으로 구분.'],en:['Too many hues','Many hues cancel emphasis.','Neutrals + one accent + error red; distinguish states by label and shape.']},
  'transition-all':{ko:['transition: all','의도치 않은 속성까지 움직이고 레이아웃이 흔들린다(AI 코드의 흔한 습관).','transform·opacity 등 움직일 속성만 나열하고 reduced-motion 블록을 둔다.'],en:['transition: all','Animates unintended properties and causes jank — a common AI-code habit.','List only transform/opacity and add a reduced-motion block.']},
+ 'tracked-labels':{ko:['자간 넓힌 작은 대문자 라벨 반복','"SOUTH-FACING CABINS · SLEEPS TWO" 같은 작은 대문자 라벨을 섹션마다 붙이는 것은 2025–26년 AI 사이트의 에디토리얼 템플릿 신호다.','라벨은 정보가 있을 때만(날짜, 카테고리). 장식용 눈썹 라벨은 지우고 제목이 스스로 말하게 한다.'],ja:['字間を広げた小さな大文字ラベルの多用','「SOUTH-FACING CABINS · SLEEPS TWO」のような小さな大文字ラベルを各セクションに付けるのは、2025〜26年のAIサイトに多いエディトリアル風テンプレートのサイン。','ラベルは日付・カテゴリなど情報があるときだけ。飾りの見出しラベルは外し、見出し自体で伝える。'],en:['Repeated tiny tracked uppercase labels','Small letter-spaced caps over every section ("SOUTH-FACING CABINS · SLEEPS TWO") are the 2025–26 editorial AI template.','Keep labels only when they carry information (date, category); drop decorative eyebrows and let headings speak.']},
+ 'numbered-labels':{ko:['번호 붙인 섹션 라벨("01 / REFERENCES")','"01 / …", "STEP 1 · …" 라벨은 순서가 없는 내용에도 붙는 AI 템플릿 장식이다.','실제 순서가 있는 절차에만 번호를 쓰고, 나머지는 번호 없이 제목만.'],ja:['番号付きのセクションラベル（「01 / REFERENCES」）','「01 / …」「STEP 1 · …」は順序のない内容にも付けられるAIテンプレートの飾り。','実際に手順があるところだけ番号を使い、ほかは見出しだけにする。'],en:['Numbered section labels ("01 / REFERENCES")','"01 / …" and "STEP 1 · …" labels get stamped on content with no real order — an AI template ornament.','Number only real sequences; elsewhere use plain headings.']},
+ 'period-headlines':{ko:['마침표로 끝나는 짧은 대형 제목 반복','"Stay by the sea." "Made slowly. Kept for years."처럼 모든 섹션 제목이 마침표 달린 짧은 문장이면 생성형 카피의 리듬으로 읽힌다.','제목 하나만 선언문으로 두고, 나머지는 내용을 설명하는 제목(명사구·질문)으로 바꾼다.'],ja:['ピリオドで終わる短い大見出しの連続','「Stay by the sea.」のように全セクションの見出しがピリオド付きの短文だと、生成AIのコピーのリズムに見える。','宣言文の見出しは一つだけにし、ほかは内容を説明する見出しにする。'],en:['Short display headings ending in a period','When every section headline is a clipped sentence with a period ("Stay by the sea."), it reads as generated copy rhythm.','Keep one declarative headline; make the rest descriptive (noun phrases, questions).']},
+ 'paper-serif':{ko:['크림색 배경 + 세리프 대형 제목','따뜻한 오프화이트 배경에 세리프 디스플레이 제목은 2025–26년 AI 사이트의 기본 "고급" 룩이다(단독으로는 브랜드 선택일 수 있음).','브랜드 근거가 있으면 유지하되, 서체·배경 중 하나는 브랜드 고유의 것으로. 근거가 없으면 제품 사진·색으로 개성을 만든다.'],ja:['クリーム色の背景＋セリフの大見出し','温かいオフホワイトの背景にセリフ体の大見出しは、2025〜26年のAIサイトの定番「上質」ルック（単独ならブランドの選択の場合もある）。','ブランド上の根拠があれば維持し、書体か背景のどちらかはブランド固有のものにする。'],en:['Cream paper background with serif display type','Warm off-white plus a serif display face is the default "premium" look of 2025–26 AI sites (alone it may be a brand choice).','Keep it only with a brand reason, and make either the typeface or the surface specific to the brand.']},
  'buzzword-copy':{ko:['상투적 마케팅 문구','"잠재력을 깨우세요", "seamless" 같은 문구는 AI 카피의 대표 신호이며 아무 정보도 주지 않는다.','무엇을, 누구를 위해, 얼마나 빨리/싸게 하는지 구체적 사실과 숫자로 다시 쓴다.'],en:['Buzzword copy','"Unlock your potential", "seamless" etc. are classic AI copy and carry no information.','Rewrite with concrete facts: what it does, for whom, with numbers.']},
  'generic-cta':{ko:['같은 일반 CTA 반복("Learn more" 등)','같은 문구의 버튼이 여러 번 나오면 무엇을 눌러야 할지 흐려진다.','주 행동 하나를 정하고, 나머지는 목적지를 말하는 구체적 링크 문구로("요금제 비교", "API 문서 보기").'],en:['Repeated generic CTAs','Many identical "Learn more" buttons blur the primary action.','Pick one primary action; make the rest specific ("Compare plans", "Read the API docs").']}
 };
@@ -140,16 +158,22 @@ const langKey=lang=>['en','ja'].includes(lang)?lang:'ko';
 
 export const signalTitle=(id,lang='ko')=>copy[id]?.[langKey(lang)][0];
 
+// Calibrated on 30 ChatGPT Sites vs 26 human sites (2026-11, scripts/calibrate-scan.mjs):
+// transition: all and repeated generic CTAs fired more on human sites, so they are reported but not scored.
+const UNSCORED=new Set(['transition-all','generic-cta']);
+const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5};
+
 /** Weighted sum of signals, dampened 15% per craft signal. */
 export function scoreSignals(signals,craft=[]){
  const raw=signals.reduce((n,s)=>n+s.weight,0),score=Math.min(100,Math.round(raw*100/18*(1-.15*craft.length)));
- return {score,band:score>=60?'high':score>=30?'medium':signals.length?'low':'none'};
+ return {score,band:score>=60?'high':score>=30?'medium':signals.some(s=>s.weight>0)?'low':'none'};
 }
 
 /** Turns raw page metrics into ranked, explained signals. Pure; safe to unit-test. */
 export function evaluateAiTells(m,{lang='ko'}={}){
  const L=langKey(lang),out=[];
- const add=(id,strength,evidence,targets=[])=>{const [title,why,fix]=copy[id][L];out.push({id,strength,weight:{strong:3,moderate:2,weak:1}[strength],title,why,fix,evidence,targets});};
+ // weight 0 keeps a finding in the report without scoring it (calibrated as common on human-made sites).
+ const add=(id,strength,evidence,targets=[],weight=null)=>{const [title,why,fix]=copy[id][L];out.push({id,strength,weight:weight??(UNSCORED.has(id)?0:{strong:3,moderate:2,weak:1}[strength]),...(weight===0||UNSCORED.has(id)?{scored:false}:{}),title,why,fix,evidence,targets});};
  if(m.gradients.purple>0&&(m.gradients.large>0||m.gradients.purple>=2))add('purple-gradient','strong',{purple:m.gradients.purple,large:m.gradients.large},m.gradients.targets);
  else if(m.gradients.large>=2||m.gradients.coverage>.3)add('large-gradient','moderate',{large:m.gradients.large,coverage:+m.gradients.coverage.toFixed(2)},m.gradients.targets);
  if(m.gradientText.count)add('gradient-text',m.gradientText.headings?'strong':'weak',{count:m.gradientText.count,headings:m.gradientText.headings},m.gradientText.targets);
@@ -167,7 +191,15 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
  if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)});
  const hits=new Map();for(const c of m.accents)for(const [name,ref] of Object.entries(defaultAccents))if(dist(c,ref)<14)hits.set(name,(hits.get(name)||0)+1);
- if([...hits.values()].reduce((a,b)=>a+b,0)>=2)add('default-accent','moderate',{matches:Object.fromEntries(hits)});
+ // Calibration (2026-11): plain blue defaults are as common on human sites; only indigo/violet/purple defaults score.
+ if([...hits.values()].reduce((a,b)=>a+b,0)>=2)add('default-accent','moderate',{matches:Object.fromEntries(hits)},[],[...hits.keys()].some(k=>/indigo|violet|purple/.test(k))?null:0);
+ const e=m.editorial;
+ if(e){
+  if(e.tracked>=TH.tracked)add('tracked-labels',e.tracked>=TH.trackedStrong?'strong':'moderate',{labels:e.tracked},e.targets);
+  if(e.numbered>=TH.numbered)add('numbered-labels','moderate',{labels:e.numbered},e.targets);
+  if(e.periodHeadings>=TH.period)add('period-headlines',e.periodHeadings>=TH.periodStrong?'strong':'moderate',{periodHeadings:e.periodHeadings,headings:e.headings},e.targets);
+  if(e.paper&&e.serifDisplay>=.5)add('paper-serif','weak',{serifDisplay:e.serifDisplay});
+ }
  if(m.hueBuckets>=5)add('many-hues','weak',{hueBuckets30deg:m.hueBuckets});
  if(m.transitionAll.count)add('transition-all',m.transitionAll.count>=3?'moderate':'weak',{count:m.transitionAll.count},m.transitionAll.targets);
  const lower=m.text.toLowerCase(),found=[...phrases.en,...phrases.ko,...phrases.ja].filter(p=>lower.includes(p));
@@ -181,8 +213,7 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  const c=m.craft||{},craft=[];
  if((c.loadedFonts||[]).some(f=>!genericFonts.includes(f)&&!/icon|awesome|material|symbol/.test(f)))craft.push('custom-webfont');
  if((c.imagery||0)>=3)craft.push('imagery');
- if((c.fontSizes||0)>=7)craft.push('type-scale');
  const {score,band}=scoreSignals(out,craft);
  const absent=Object.keys(copy).filter(id=>!out.some(s=>s.id===id)&&!(id==='large-gradient'&&out.some(s=>s.id==='purple-gradient')));
- return {heuristic:true,blocking:false,score,band,craft,signals:out,absent};
+ return {heuristic:true,blocking:false,score,band,craft,signals:out,absent,measures:e?{tracked:e.tracked,numbered:e.numbered,periodHeadings:e.periodHeadings,headings:e.headings,serifDisplay:e.serifDisplay,paper:e.paper}:null};
 }
