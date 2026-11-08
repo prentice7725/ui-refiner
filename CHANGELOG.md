@@ -2,7 +2,9 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.5.0 — 2026-11-08
+
+Scan scores are now calibrated against real AI-built and human-made sites, and Japanese pages are compared with measurements from 209 Japanese sites. The deep gate is unchanged apart from the version number, so the first 0.5.0 `check` starts a new comparison context; reviewed schemaVersion 2 baselines remain valid.
 
 ### Added
 - Japanese scan reports end with **日本のサイトとの比較**. For body size, line height, display ratio, font sizes, hue groups, centered and rounded blocks, and contrast failures, the table shows where the page sits among the `data/ja-reference` sites (p10 / median / p90, and the share of sites below the page). The page's own host is left out. `scan.json` records the comparison as `reference`.
