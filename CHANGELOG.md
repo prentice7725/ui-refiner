@@ -2,7 +2,9 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.6.0 — 2026-11-08
+
+UI Refiner now fixes pages, not only reviews them. `/ui-refine` shows three first-screen directions side by side (`ui-refiner directions`), waits for the user to pick one, and rebuilds the page around a signature element from its real content. The release also adds two AI-look signals, a wider calibration set and a blind-judged refine benchmark. The deep gate is unchanged apart from the version number, so the first 0.6.0 `check` starts a new comparison context; reviewed schemaVersion 2 baselines remain valid.
 
 ### Added
 - `ui-refiner directions <folder>`: scans every `.html` design-direction mock in a folder and writes two files:
