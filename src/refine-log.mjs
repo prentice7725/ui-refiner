@@ -15,7 +15,7 @@ export const HERO_STRUCTURES={
  'left+panel':'Headline on the left, the signature element as a panel beside it.',
  'right+panel':'Mirrored split: the signature element on the left, the headline on the right.',
  'left+media':'Headline on the left beside a real photo or product shot.',
- 'full-bleed':'A real photo or product shot fills the first screen; the headline sits on or directly under it.',
+ 'full-bleed':'A real photo or product shot fills the first screen; the headline sits on or directly under it. Without client photos, use credited stand-ins from `ui-refiner photos`.',
  'wide+stacked':'One very large headline across the full width; the signature element follows below.',
  'center+stacked':'A short centred headline; the signature element follows below at full width.',
  'left+stacked':'Headline in a narrow left column; the signature element runs full width below it.',
@@ -49,7 +49,8 @@ export function dealStructures(entries,project,{n=3,seed=0,human=null,noPhoto=fa
  for(const k of order)if(out.length<n&&!out.includes(k))out.push(k);
  return out;
 }
-// Structures that need a real photo or product shot; never deal them when the project has none.
+// Structures that need a photo or product shot. With no client photos, deal them only when stand-ins
+// (ui-refiner photos) are acceptable; --no-photo removes them.
 const PHOTO=new Set(['full-bleed','left+media']);
 const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','full-bleed':'image','wide+stacked':'stacked','center+stacked':'stacked','left+stacked':'stacked','below-fold':'signature-first'};
 
