@@ -42,3 +42,41 @@ Claude Design (the product) has no public gallery yet, so this sample stands for
 - 8 pages, one run each, one model. The plain arm is one prompt wording.
 - The refine arm was scored by the same tool it was steered by, so its scores are optimistic by construction. Contrast, Japanese issues and content kept are the more independent measures.
 - Generated pages and screenshots stay in the local scratchpad and are not committed.
+
+## Round 2: direction-first refine and a blind judge
+
+The first refine removed every tell but left the pages plain: the same accent, the same white page, no typographic voice. The workflow was changed:
+- mock three clearly different first-screen directions, scan them and pick one;
+- give the page one signature element built from its real content;
+- treat a generated page's colors and fonts as changeable;
+- check a craft list (scale, faces, hero, rhythm, accent, spacing, details) on the screenshots;
+- use the score only as a guard.
+
+The same 8 pages were refined again with the new workflow, at $1.19–2.97 per page. All four versions of each page were then judged blind by headless Claude (Opus 5.5) acting as a senior designer. Each judge saw full-page screenshots under shuffled letters and scored each version 1–10, then ranked them.
+
+| Version | Hierarchy | Distinctiveness | Typography | Cohesion | AI look (lower is better) | Mean rank | Ranked first |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Before | 7.3 | 3.8 | 6.4 | 7.1 | 8.6 | 4.0 | 0 |
+| Refine, round 1 | 7.9 | 5.9 | 7.1 | 7.9 | 5.1 | 2.6 | 0 |
+| Plain prompt | 7.5 | 7.8 | 7.5 | 7.8 | 3.0 | 1.9 | 3 |
+| Refine, round 2 | 8.1 | 7.9 | 7.8 | 7.9 | 3.4 | 1.5 | 5 |
+
+The judge called the round-1 refine "competent but familiar SaaS blue" on most pages. Each round-2 page has a signature element:
+- a Monday–Friday week strip;
+- a take-home pay splitter;
+- an "open now" hours board;
+- a weekly pantry timetable;
+- three employees' real days side by side;
+- a ledger table;
+- a shipment status board.
+
+All scored 0 on the AI-look index.
+
+Caveats:
+- The judge is Claude, and it is lenient on the cream-and-serif editorial look. The plain prompt moved all 8 pages to a warm paper background and still got the lowest AI-look rating.
+- Round 2 has its own sameness:
+  - 3 of 4 English pages used Bricolage Grotesque + Instrument Sans;
+  - 7 of 8 sit on a warm grey off-white;
+  - the skill now warns about the font pair.
+- The logistics page went dark with dense, dim text, and the judge flagged its readability.
+- Contrast failures that remain on two pages (29 and 26) are mostly elements the checker could not measure, not measured failures.
