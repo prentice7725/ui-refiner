@@ -14,6 +14,14 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - `scripts/calibration-extra.tsv`: 91 AI-built sites from the Replit and Lovable galleries and 68 Korean, global-brand, editorial, public-body and personal sites.
 
 ### Changed
+- **Refine** now designs instead of only subtracting:
+  - it mocks three clearly different first-screen directions, scans them and picks one;
+  - it adds a signature element built from the page's real content;
+  - it treats a generated page's colors and fonts as changeable;
+  - it checks a craft list (scale, faces, hero, rhythm, accent, spacing, details) on the screenshots;
+  - it uses the AI-look score only as a guard.
+
+  `/ui-refine` follows the same steps. Blind judge on the same 8 pages (`docs/REFINE_BENCHMARK_2026-11-08.md`, round 2): mean rank 1.5 and 5 of 8 first places, against 2.6 and none for the first refine and 1.9 and 3 for a plain "less AI-generated" prompt. Distinctiveness went from 5.9 to 7.9. The skill also warns against the font pair round 2 converged on (Bricolage Grotesque + Instrument Sans) and lists a white page with thin rules and one blue accent as a common fallback.
 - `paper-serif` is moderate (was weak). It fires on 14% of AI-built calibration sites, 2% of human sites and none of the 210 Japanese reference sites; the human share at score ≥ 20 is unchanged, and the extra AI set goes from 73% to 74%. The plain-prompt arm of the refine benchmark showed why it matters: it is the look a "make it less AI" request swaps in.
 - The Build workflow also avoids icons in tinted rounded squares, cards inside cards and the stock section order.
 - Calibration with the two signals:

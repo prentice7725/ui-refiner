@@ -27,21 +27,31 @@ Three jobs: **Build** a screen that looks chosen rather than generated, **Review
 
 ## Refine an AI-looking page
 
-Use this when the user wants a page they own made less generic, not just reviewed. The goal is a page that looks decided for this content, not a different stock look.
+Use this when the user wants a page they own made less generic, not just reviewed. Removing the tells is not the goal. A page that only lost its gradients and cards is plain, not designed. The goal is a page with a point of view that fits this content.
 
-1. Scan and look at both screenshots. Write down what the page is for, its one primary action, and what must survive: every fact, price, name, link target, form field and legal text, plus any brand logo, color or typeface the project already uses.
-2. Choose a direction before editing and state it in three lines:
-   - one principle taken from the content, not a style word ("a clinic: calm, opening hours and booking first", not "minimal and elegant");
-   - a type pairing: a chosen display face plus a readable text face, and for Japanese or Korean pages a named Japanese or Korean family;
-   - one accent color taken from the brand or the subject, and what carries the hero (a product view, a photo, data or typography — not a gradient).
-3. Fix by root cause, in this order:
+1. Scan and look at both screenshots. Write down what the page is for, its one primary action, and what must survive: every fact, price, name, link target, form field and legal text. Brand assets survive only when the project really has them (logo files, design tokens, a documented palette or typeface). A palette or font that came with a generated page is not a brand, so you may change it.
+2. Explore three directions before touching the page:
+   - Write each as a one-line concept taken from the content ("a ledger you want to keep", "the clinic's front desk: hours and booking first"), never a style word like "minimal and elegant". Give each a type pairing (a chosen display face plus a text face, and a named Japanese or Korean family on those pages), a palette and what carries the hero (the product, a photo, data or typography, never a gradient). Pick faces for this subject, not your usual safe pair: in the November 2026 benchmark, 3 of 4 English pages landed on Bricolage Grotesque + Instrument Sans.
+   - The three must differ in at least three of: structure, typefaces, palette, what carries the hero.
+   - Build each as a quick mock of the first screen plus one content section in a scratch folder (`refine-directions/a.html`, `b.html`, `c.html`), scan each with its own `--out`, and look at the three desktop screenshots side by side.
+   - Pick the strongest for this page's purpose and say in one line why the other two lost. Delete the scratch folder afterwards.
+3. Give the page one **signature element**: something only this subject would have, built from the page's real content and made the most memorable thing on the page. Examples: a ledger-style table of this month's spending for a budgeting app, today's opening hours and the next free slot for a clinic, which pantries are open right now for a food bank. Never invent data for it.
+4. Apply the chosen direction to the whole page, fixing by root cause in this order:
    - **Structure.** The stock section recipe is the strongest tell: pill badge → hero with a two-tone headline → row of logo names → three feature cards with icons in rounded squares → stats trio → testimonial trio → three-tier pricing with "Most popular" → FAQ → colored CTA band. Keep only sections that carry real content, merge thin ones, and vary the rhythm (a list or table instead of cards, one large feature instead of three equal ones).
    - **Type.** Real size contrast, one or two families, no tracked uppercase eyebrow over every section.
    - **Color and surface.** One accent; no gradient text, glows or glass; fewer rounded boxes and no boxes inside boxes.
    - **Copy.** Replace stock phrases with the page's own facts. Never invent numbers, quotes, customers or logos; when the page already has invented ones, flag them instead of polishing them.
-4. Do not trade one template for another. Cream paper with a serif display face, tiny tracked labels, "01 /" numbering and short headlines ending in a period is the 2025–26 editorial AI template, not an escape from it.
-5. Rescan into the same folder; the report opens with the before/after comparison. Stop when the scored signals that remain are deliberate and you can say why, no quality issue got worse, and Japanese typesetting issues did not increase. At most three rounds.
-6. Report: score before → after, resolved and remaining signals (with the reason each remaining one stays), the changes by root cause, what was preserved, and the screenshot paths. Look at the final screenshots before you say it is done.
+5. Do not trade one template for another. Cream paper with a serif display face, tiny tracked labels, "01 /" numbering and short headlines ending in a period is the 2025–26 editorial AI template, not an escape from it. A white page with thin rules and one blue accent is the other common fallback.
+6. Check the craft on the screenshots, not only the score:
+   - **Scale.** The display type is clearly bigger than the body (about 3× or more on a persuasive page; Japanese pages may stay smaller, judged against 日本のサイトとの比較). There are a few deliberate sizes, not many near-identical ones.
+   - **Faces.** At most two families, and the display face is a choice that suits the subject.
+   - **Hero.** The first screen is carried by the signature element, the product, a photo or the type itself.
+   - **Rhythm.** No three sections in a row share the same layout; section widths, density and alignment change with the content.
+   - **Accent.** One accent, used for the primary action and the signature element, not sprinkled everywhere.
+   - **Space and alignment.** One spacing scale, a visible grid, aligned edges and baselines.
+   - **Details.** Tabular numbers where they line up, real states (open/closed, sold out, selected), no placeholder text.
+7. Rescan into the same folder; the report opens with the before/after comparison. The AI-look score is a guard, not the target: no new scored signals and no quality issue or Japanese typesetting issue that got worse. You are done when the direction and the craft checklist show in the screenshots, not when the score reaches 0. At most three rounds.
+8. Report: the three directions and why one won, the signature element, score before → after, resolved and remaining signals (with the reason each remaining one stays), the changes by root cause, what was preserved, and the screenshot paths. Look at the final screenshots before you say it is done.
 
 ## Build a new screen
 
