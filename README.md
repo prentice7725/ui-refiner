@@ -11,7 +11,7 @@ It renders the page in a real browser, measures what it sees, and writes a repor
 
 ## What the report gives you
 
-- **An AI-look score checked against real sites.** It was tuned on 30 ChatGPT-built sites and 26 human sites, then tested unchanged on 38 Lovable/v0 sites and 29 design-forward studio and editorial sites. At a score of 20 or more it flags 66–70% of the AI-built sites and 0–3% of the human ones; a later, wider sample (77 Replit/Lovable sites, 54 Korean, global-brand, editorial, public and personal sites) gave 73% and 15%, because big SaaS brands share the same marketing patterns. Each signal comes with evidence, the reason it reads as generic, and a concrete fix.
+- **An AI-look score checked against real sites.** It was tuned on 30 ChatGPT-built sites and 26 human sites, then tested unchanged on 38 Lovable/v0 sites and 29 design-forward studio and editorial sites. At a score of 20 or more it flags 66–70% of the AI-built sites and 0–3% of the human ones; a later, wider sample (77 Replit/Lovable sites, 54 Korean, global-brand, editorial, public and personal sites) gave 74% and 15%, because big SaaS brands share the same marketing patterns. Each signal comes with evidence, the reason it reads as generic, and a concrete fix.
 - **Japanese pages placed among 209 real Japanese sites.** Company, prefecture, public-body, media, startup and design-brand sites were measured once (robots.txt respected, numbers only). The report shows where the page sits on each measure, so "line height 1.3" becomes "lower than 99% of Japanese sites". Excerpt for [`examples/ai-slop-landing-ja.html`](examples/ai-slop-landing-ja.html):
 
   | 項目 | このページ | 日本のサイト（下位10% / 中央 / 上位10%） | 位置 |
@@ -24,6 +24,7 @@ It renders the page in a real browser, measures what it sees, and writes a repor
 
   Being outside the range is a reason to look, not a defect by itself. The same data keeps Japanese conventions from being flagged: about 1% of the reference sites score 20 or more.
 - **Japanese typesetting checks** for missing Japanese fonts, cramped line height, heading orphans (泣き別れ), bad breaks in headings and nav labels, fake italics and more.
+- **Refine, not just review.** `/ui-refine` fixes an AI-looking page in place by root cause (structure, type, color, copy), keeps its facts and links, and rescans to show the change. On 8 pages Claude made from one-line prompts it took the median score from 66 to 0 and contrast failures from 27 to 5. Asking plainly for "less AI-generated" mostly swapped in the cream-and-serif editorial template instead ([benchmark](docs/REFINE_BENCHMARK_2026-11-08.md)).
 - **Before/after in one command.** Scan again after editing and the report opens with what was resolved, what is new and the score change, with both sets of screenshots.
 
 ## Quick start
@@ -133,11 +134,11 @@ Measured in November 2026 (scores change as sites change). Scripts: `scripts/cal
 
 | Set | Sites | Median score | Score ≥ 20 |
 |---|---:|---:|---:|
-| ChatGPT-built sites (tuning) | 30 | 33 | 70% |
+| ChatGPT-built sites (tuning) | 30 | 38 | 70% |
 | Human sites (tuning) | 26 | 0 | 0% |
-| Lovable/v0 sites (holdout) | 38 | 27 | 68% |
+| Lovable/v0 sites (holdout) | 38 | 28 | 68% |
 | Design-forward studio, award and editorial sites (holdout) | 29 | 5 | 3% |
-| Replit/Lovable gallery sites (extra) | 77 | 35 | 73% |
+| Replit/Lovable gallery sites (extra) | 77 | 35 | 74% |
 | Korean, global brand, editorial, public and personal sites (extra) | 54 | 8 | 15% |
 | Japanese reference sites | 210 | 0 | 1% |
 | `examples/ai-slop-landing.html`, `ai-slop-landing-ja.html` | 2 | 100 | |
@@ -149,6 +150,7 @@ The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds w
 The skill in [skills/ui-refiner-agent/SKILL.md](skills/ui-refiner-agent/SKILL.md) defines two workflows:
 
 - **Review**: run `scan`, look at the screenshots first, confirm or reject each signal, then report a verdict, 2–3 root causes, a redesign direction per cause (with what must be preserved) and the quality issues users would hit.
+- **Refine**: scan, write down what must be preserved, choose a direction from the content, fix by root cause (structure first: the stock section order of pill, two-tone hero, logo row, icon cards, stats, testimonials, three tiers, FAQ and CTA band), never invent facts or swap in another stock look, and rescan until what remains is deliberate (at most three rounds).
 - **Build**: read the project and the bundled suta guidance, decide the design direction before writing markup, avoid the listed defaults, then `scan` the dev server and fix what is not deliberate (at most two rounds).
 
 Once installed you rarely need the CLI yourself. Ask in plain words ("review the design of example.co.jp", "build this landing page without the AI look", "fix those and compare again"), or in Claude Code use the slash command:
@@ -156,6 +158,7 @@ Once installed you rarely need the CLI yourself. Ask in plain words ("review the
 ```
 /ui-review https://example.co.jp
 /ui-review localhost:5173 fix the strong signals, then rescan
+/ui-refine landing.html
 ```
 
 Install it in one of these ways:
