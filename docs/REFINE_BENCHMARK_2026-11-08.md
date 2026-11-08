@@ -80,3 +80,90 @@ Caveats:
   - the skill now warns about the font pair.
 - The logistics page went dark with dense, dim text, and the judge flagged its readability.
 - Contrast failures that remain on two pages (29 and 26) are mostly elements the checker could not measure, not measured failures.
+
+## Round 3: keeping directions apart (same 8 pages)
+
+Round 2's pages converged on one surface. Calibration data shows how unusual that is for human sites:
+
+| Set | Plain white | Faint off-white | Dark |
+|---|---:|---:|---:|
+| Human (tune / holdout / extra) | 85% / 69% / 74% | 12% / 7% / 11% | 4% / 24% / 6% |
+| Japanese reference (210) | 87% | 7% | 4% |
+| AI (tune / holdout / extra) | 7% / 24% / 36% | 23% / 42% / 32% | 40% / 16% / 22% |
+
+Changes for round 3:
+- `ui-refiner directions` now measures each mock's surface and type pair. It warns when two mocks share either one, or when all of them sit on off-white.
+- The skill allows at most one tinted paper direction.
+- A `tinted-page` signal is reported but not scored. Scoring it raised holdout human false positives from 3% to 7% for a 3-point gain on AI sites.
+
+Results:
+- Surface: 6 of 8 pages became plain white and 2 dark; none stayed off-white (round 2: 7 of 8).
+- Type: Bricolage + Instrument disappeared, but IBM Plex (Sans KR / Condensed + Mono) appeared on 3 of 8.
+- AI-look was 0 on all 8, facts kept 86–98%, and real links (tel:, booking) kept.
+
+Two blind judges:
+- The per-page judge compares the four versions of one page.
+- The new set judge sees one contact sheet per version with the first screens of all eight unrelated sites. It rates how much they look like one reused house style (sameness, 10 = interchangeable). It was run twice.
+
+| Version | Per-page mean rank | Per-page AI look | Set sameness (run 1 / 2) | Set rank (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Before | 4.0 | 8.8 | 9 / 9 | 4 / 4 |
+| Plain prompt | 2.3 | 3.1 | 6 / 8 | 1 / 2 |
+| Refine, round 2 | **1.4** | 3.8 | 8 / 8 | 3 / 3 |
+| Refine, round 3 | 2.4 | 4.0 | 7 / 6 | 2 / 1 |
+
+Reading:
+- The two judges disagree.
+  - Page by page, round 2 still wins.
+  - Seen as a set, round 2 is the most templated of the three fixes. The set judge listed the habits behind that:
+    - the warm off-white surface on 7 of 8 sites;
+    - the same heavy grotesk;
+    - forest green reused across five unrelated clients.
+  - Round 3 removes the shared surface and is judged the least templated set in one of two runs, but loses per-page preference.
+- The per-page judge cannot see convergence by construction, because each comparison shows one subject.
+- A shared skeleton remains in round 3, and the set judge named it: a huge left headline with a bordered data panel at the right (hours, ledger, pantry grid, timeline), a four-number stat strip and monospace figures. The signature-element rule tends to produce this layout. Varying the surface is not enough; the hero structure also has to vary.
+- With 8 pages and one run per arm, the per-page differences between 2.3 and 2.4 are noise.
+
+## Round 4: varying the hero structure too (same 8 pages)
+
+Changes:
+- The scan collector now records the first-screen skeleton (`hero`):
+  - where the main headline's text sits (left, centred, right, or full width);
+  - whether a panel or image sits beside it;
+  - whether a photo fills the screen;
+  - whether a strip of figures follows.
+- `ui-refiner directions` shows the skeleton for each direction and warns when two directions share one.
+- The skill now asks for three different hero structures. At most one may be "headline left, panel beside it".
+
+Measured skeletons across the 8 pages:
+
+| Version | Skeletons |
+|---|---|
+| Before | left + panel 6, left + image 1, left stacked 1 |
+| Plain prompt | left + panel 7, left stacked 1 |
+| Refine, round 2 | left + panel 4, left stacked 4 |
+| Refine, round 3 | left + panel 5, left stacked 3 |
+| Refine, round 4 | left stacked 7, centred stacked 1 |
+
+Round 4 took the signature element (hours board, pantry timetable, ledger, timeline) out of a side panel and made it a full-width block below or above the headline. The dental pages put the week strip first. Every surface is plain white, and English headlines now share Public Sans with Familjen Grotesk or Archivo.
+
+Judges (per page: five versions, mean rank 1–5):
+
+| Version | Per-page mean rank | Per-page AI look | Set sameness (run 1 / 2) | Set rank (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Before | 5.0 | 8.8 | 9 / 9 | 5 / 4 |
+| Plain prompt | 2.4 | 3.1 | 8 / 8 | 4 / 3 |
+| Refine, round 2 | **1.9** | 4.0 | 8 / 8 | 3 / 5 |
+| Refine, round 3 | 2.9 | 4.1 | 7 / 7 | 2 / 2 |
+| Refine, round 4 | 2.9 | 4.0 | **5 / 6** | **1 / 1** |
+
+Reading:
+- The set judge put round 4 first in both runs, as the least templated set (sameness 5–6).
+- The per-page judge still prefers round 2. Its tendency to reward warm paper surfaces, seen in rounds 1–3, may account for part of that preference.
+- Habits the set judge still saw in round 4:
+  - heavy grotesk headlines;
+  - a data widget carrying the hero on every site;
+  - hairline "label | description" lists;
+  - square buttons with one saturated accent.
+- The skeleton warning works inside one page's three directions, but it cannot see that the agent picks the same winner on every page: 7 of 8 chosen directions were "left headline, stacked". Fixing that needs memory across pages, for example a project-level record of what was chosen before.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.

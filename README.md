@@ -101,6 +101,7 @@ A heuristic built from rendered signals. Strong signals weigh 3, moderate 2, wea
 | Period headlines | Short display headings ending in a period ("Stay by the sea.") |
 | Paper and serif | Warm off-white background with serif display type, the 2025–26 editorial template |
 | `transition: all` | Computed on interactive elements (reported only) |
+| Faint off-white page | Light grey or cream page surface instead of white: about 10% of human sites, 25–40% of AI sites (reported only; `directions` uses it) |
 | Buzzword copy | Stock phrases in EN/KO/JA ("unlock your potential", 잠재력, 可能性を解き放つ, 次世代の …); two or more needed |
 | Repeated generic CTA | "Learn more", 자세히 보기, 詳しく見る … repeated (reported only) |
 
