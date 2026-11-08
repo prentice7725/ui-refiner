@@ -15,14 +15,24 @@ import {doctor} from '../src/doctor.mjs';
 import {upstreamCheck} from '../src/vendor.mjs';
 import {presets} from '../src/presets.mjs';
 import {scanUrl,scanLangs} from '../src/scan.mjs';
-import {compareDirections} from '../src/directions.mjs';
+import {compareDirections,verifyApplied} from '../src/directions.mjs';
+import {dealDirections,recordChoice} from '../src/refine-log.mjs';
 
 const help=`UI Refiner 0.6.0 — de-AI web design review and UI quality gate
   ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang auto|ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json | --no-compare] [--json]
       zero-config design review of any page; report language follows the page unless --lang or UI_REFINER_LANG is set;
       a rescan of the same page into the same --out folder is compared with the previous scan automatically
   ui-refiner directions <folder of .html mocks> [--lang auto|ko|ja|en] [--json]
-      scans each design-direction mock and writes DIRECTIONS.html and DIRECTIONS.md side by side, so a person can choose one
+      scans each design-direction mock and writes DIRECTIONS.html and DIRECTIONS.md side by side, so a person can choose one;
+      warns when mocks share a surface, type pair or hero layout, ignore their deal, or repeat a choice made for another project
+  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
+      assigns each of three mocks a hero structure (as common on human-made sites of that kind), a type pairing, an accent family
+      and a surface, avoiding what was chosen recently for other projects;
+      --no-photo skips structures that need a real photo
+  ui-refiner directions record <folder> --pick A|B|C [--page name] [--log file]
+      remembers the picked direction (default log: ~/.ui-refiner/refine-log.json, or UI_REFINER_HOME)
+  ui-refiner directions verify <folder> <applied page> [--pick A|B|C] [--json]
+      checks that the applied page kept the chosen mock's hero structure, surface and type (exit 1 on drift)
   ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
@@ -44,8 +54,9 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--changed-only'){out.changedOnly=true;continue;}
   if(a==='--json'){out.json=true;continue;}
   if(a==='--no-compare'){out.noCompare=true;continue;}
+  if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -63,10 +74,27 @@ try{
     if(args.json)console.log(JSON.stringify(result,null,2));
     else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''} report=${result.lang};${c?` vs ${c.mode==='auto'?'last scan':'previous'} ${c.previous.score}→${c.current.score} (${delta(c.scoreDelta)}), resolved=${c.signals.resolved.length}, new=${c.signals.added.length}${c.warnings.length?`, warnings=${c.warnings.join(',')}`:''};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);
   }
+  else if(command==='directions'&&sub==='deal'&&args._.length===3){
+    const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else console.log(r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
+   type: ${d.type.display} + ${d.type.text} (${d.type.voice}); accent: ${d.accent.family} — ${d.accent.brief}; surface: ${d.surface.brief}`).join('\n')+`\n[DEAL] ${r.file}`);
+  }
+  else if(command==='directions'&&sub==='record'&&args._.length===3){
+    if(!args.pick)throw Error('directions record requires --pick');
+    const r=await recordChoice(args._[2],{pick:args.pick,page:args.page,log:args.log});
+    console.log(`[RECORD] ${r.entry.label} ${r.entry.hero??'-'} ${(r.entry.fonts||[]).join(' + ')||'-'} → ${r.file}`);
+  }
+  else if(command==='directions'&&sub==='verify'&&args._.length===4){
+    const r=await verifyApplied(args._[2],args._[3],{pick:args.pick,log:args.log});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else console.log(r.drift.length?`[DRIFT] ${r.label}: ${r.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}`:`[VERIFY] ${r.label}: hero ${r.applied.hero}, surface and type kept`);
+    process.exitCode=r.drift.length?1:0;
+  }
   else if(command==='directions'&&args._.length===2){
     const lang=args.lang||process.env.UI_REFINER_LANG||'auto';
     if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`${args.lang?'--lang':'UI_REFINER_LANG'} must be auto or one of ${scanLangs.join(', ')}`);
-    const r=await compareDirections(sub,{lang});
+    const r=await compareDirections(sub,{lang,log:args.log});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(`[DIRECTIONS] ${r.items.map(d=>`${d.label}=${d.file} (AI-look ${d.score}, quality ${d.quality}${d.ja!=null?`, ja ${d.ja}`:''})`).join("; ")}${r.warnings.length?`; warnings=${r.warnings.map(w=>w.id+(w.a?`(${w.a},${w.b})`:"")).join(",")}`:""}; ${r.html}`);
   }
