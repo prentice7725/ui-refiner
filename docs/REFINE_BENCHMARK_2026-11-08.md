@@ -123,3 +123,47 @@ Reading:
 - The per-page judge cannot see convergence by construction, because each comparison shows one subject.
 - A shared skeleton remains in round 3, and the set judge named it: a huge left headline with a bordered data panel at the right (hours, ledger, pantry grid, timeline), a four-number stat strip and monospace figures. The signature-element rule tends to produce this layout. Varying the surface is not enough; the hero structure also has to vary.
 - With 8 pages and one run per arm, the per-page differences between 2.3 and 2.4 are noise.
+
+## Round 4: varying the hero structure too (same 8 pages)
+
+Changes:
+- The scan collector now records the first-screen skeleton (`hero`):
+  - where the main headline's text sits (left, centred, right, or full width);
+  - whether a panel or image sits beside it;
+  - whether a photo fills the screen;
+  - whether a strip of figures follows.
+- `ui-refiner directions` shows the skeleton for each direction and warns when two directions share one.
+- The skill now asks for three different hero structures. At most one may be "headline left, panel beside it".
+
+Measured skeletons across the 8 pages:
+
+| Version | Skeletons |
+|---|---|
+| Before | left + panel 6, left + image 1, left stacked 1 |
+| Plain prompt | left + panel 7, left stacked 1 |
+| Refine, round 2 | left + panel 4, left stacked 4 |
+| Refine, round 3 | left + panel 5, left stacked 3 |
+| Refine, round 4 | left stacked 7, centred stacked 1 |
+
+Round 4 took the signature element (hours board, pantry timetable, ledger, timeline) out of a side panel and made it a full-width block below or above the headline. The dental pages put the week strip first. Every surface is plain white, and English headlines now share Public Sans with Familjen Grotesk or Archivo.
+
+Judges (per page: five versions, mean rank 1–5):
+
+| Version | Per-page mean rank | Per-page AI look | Set sameness (run 1 / 2) | Set rank (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Before | 5.0 | 8.8 | 9 / 9 | 5 / 4 |
+| Plain prompt | 2.4 | 3.1 | 8 / 8 | 4 / 3 |
+| Refine, round 2 | **1.9** | 4.0 | 8 / 8 | 3 / 5 |
+| Refine, round 3 | 2.9 | 4.1 | 7 / 7 | 2 / 2 |
+| Refine, round 4 | 2.9 | 4.0 | **5 / 6** | **1 / 1** |
+
+Reading:
+- The set judge put round 4 first in both runs, as the least templated set (sameness 5–6).
+- The per-page judge still prefers round 2. Its tendency to reward warm paper surfaces, seen in rounds 1–3, may account for part of that preference.
+- Habits the set judge still saw in round 4:
+  - heavy grotesk headlines;
+  - a data widget carrying the hero on every site;
+  - hairline "label | description" lists;
+  - square buttons with one saturated accent.
+- The skeleton warning works inside one page's three directions, but it cannot see that the agent picks the same winner on every page: 7 of 8 chosen directions were "left headline, stacked". Fixing that needs memory across pages, for example a project-level record of what was chosen before.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
