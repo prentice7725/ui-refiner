@@ -1,16 +1,18 @@
-# UI Refiner v0.5.0
+# UI Refiner v0.6.0
 
 [English](README.md) · [한국어](README_KO.md) · [日本語](README_JA.md) · [Changelog](CHANGELOG.md)
 
-UI Refiner helps coding agents (Claude Code, Codex) and the people working with them do two things:
+UI Refiner helps coding agents (Claude Code, Codex) and the people working with them do three things:
 
 1. **Build** web pages and app screens that do not look AI-generated.
 2. **Review** existing pages, point out what makes them look generic and propose a better design.
+3. **Refine** an AI-looking page: show three design directions, let you pick one, then rebuild the page around it.
 
 It renders the page in a real browser, measures what it sees, and writes a report an agent or a designer can act on. Japanese pages get dedicated typesetting checks and a Japanese report.
 
-## What the report gives you
+## What it does
 
+- **Refine, not just review.** Before changing anything, `/ui-refine` mocks three clearly different first-screen directions and puts their screenshots side by side (`ui-refiner directions`). You pick one, or a mix. It then rebuilds the page around a signature element taken from the real content: this month's ledger for a budgeting app, today's hours for a clinic. Facts and links stay, and a rescan shows the change. On 8 pages Claude made from one-line prompts, a blind design judge ranked it best (mean rank 1.5). The other versions ranked: plain "make it less AI-generated" prompt 1.9, an earlier refine that only stripped decoration 2.6, original 4.0. The plain prompt moved all 8 pages to the cream-and-serif editorial template ([benchmark](docs/REFINE_BENCHMARK_2026-11-08.md)).
 - **An AI-look score checked against real sites.** It was tuned on 30 ChatGPT-built sites and 26 human sites, then tested unchanged on 38 Lovable/v0 sites and 29 design-forward studio and editorial sites. At a score of 20 or more it flags 66–70% of the AI-built sites and 0–3% of the human ones; a later, wider sample (77 Replit/Lovable sites, 54 Korean, global-brand, editorial, public and personal sites) gave 74% and 15%, because big SaaS brands share the same marketing patterns. Each signal comes with evidence, the reason it reads as generic, and a concrete fix.
 - **Japanese pages placed among 209 real Japanese sites.** Company, prefecture, public-body, media, startup and design-brand sites were measured once (robots.txt respected, numbers only). The report shows where the page sits on each measure, so "line height 1.3" becomes "lower than 99% of Japanese sites". Excerpt for [`examples/ai-slop-landing-ja.html`](examples/ai-slop-landing-ja.html):
 
@@ -24,7 +26,6 @@ It renders the page in a real browser, measures what it sees, and writes a repor
 
   Being outside the range is a reason to look, not a defect by itself. The same data keeps Japanese conventions from being flagged: about 1% of the reference sites score 20 or more.
 - **Japanese typesetting checks** for missing Japanese fonts, cramped line height, heading orphans (泣き別れ), bad breaks in headings and nav labels, fake italics and more.
-- **Refine, not just review.** `/ui-refine` fixes an AI-looking page in place by root cause (structure, type, color, copy), keeps its facts and links, and rescans to show the change. On 8 pages Claude made from one-line prompts it took the median score from 66 to 0 and contrast failures from 27 to 5. Asking plainly for "less AI-generated" mostly swapped in the cream-and-serif editorial template instead ([benchmark](docs/REFINE_BENCHMARK_2026-11-08.md)).
 - **Before/after in one command.** Scan again after editing and the report opens with what was resolved, what is new and the score change, with both sets of screenshots.
 
 ## Quick start
@@ -38,6 +39,7 @@ npm link                                   # optional: makes `ui-refiner` availa
 
 ui-refiner scan your-site.example          # review a live page
 ui-refiner scan localhost:5173             # your dev server; run it again after edits to see what changed
+ui-refiner directions refine-directions     # three design-direction mocks (.html) side by side, to pick one
 ```
 
 That is the whole loop. `scan` takes any URL, bare host name or local `.html` file, needs no config and changes nothing in the target project. Without `npm link`, use `node bin/ui-refiner.mjs scan …` instead.
