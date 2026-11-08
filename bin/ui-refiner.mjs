@@ -68,7 +68,7 @@ try{
     if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`${args.lang?'--lang':'UI_REFINER_LANG'} must be auto or one of ${scanLangs.join(', ')}`);
     const r=await compareDirections(sub,{lang});
     if(args.json)console.log(JSON.stringify(r,null,2));
-    else console.log(`[DIRECTIONS] ${r.items.map(d=>`${d.label}=${d.file} (AI-look ${d.score}, quality ${d.quality}${d.ja!=null?`, ja ${d.ja}`:''})`).join('; ')}; ${r.html}`);
+    else console.log(`[DIRECTIONS] ${r.items.map(d=>`${d.label}=${d.file} (AI-look ${d.score}, quality ${d.quality}${d.ja!=null?`, ja ${d.ja}`:''})`).join("; ")}${r.warnings.length?`; warnings=${r.warnings.map(w=>w.id+(w.a?`(${w.a},${w.b})`:"")).join(",")}`:""}; ${r.html}`);
   }
   else if(command==='guidance'&&args._.length===1){
     if(!args.query)throw Error('guidance requires --query');const limit=args.limit===undefined?3:Number(args.limit);const corpus=await loadGuidanceCorpus();const suggestions=makeSuggestions(corpus,args.query,limit);console.log(JSON.stringify({schemaVersion:1,advisory:true,blocking:false,query:args.query,status:suggestions.length?'matched':'no-match',suggestions},null,2));

@@ -101,6 +101,7 @@ ui-refiner scan localhost:5173 --out scan-after --compare scan-before
 | 마침표 헤드라인 | 마침표로 끝나는 짧은 큰 제목("Stay by the sea.") |
 | 종이색과 세리프 | 따뜻한 미색 배경에 세리프 큰 제목. 2025–26년의 에디토리얼 템플릿 |
 | `transition: all` | 인터랙티브 요소의 계산된 스타일(보고만) |
+| 옅은 미색 바탕 | 순백 대신 옅은 회백·미색 페이지 바탕. 사람이 만든 사이트 약 10%, AI 사이트 25–40%(보고만, `directions`가 활용) |
 | 상투 문구 | 영어·한국어·일본어 상투 문구("unlock your potential", 잠재력, 可能性を解き放つ, 次世代の …) 2개 이상 |
 | 반복되는 일반 CTA | "Learn more", 자세히 보기, 詳しく見る … 반복(보고만) |
 

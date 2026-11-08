@@ -2,6 +2,20 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+### Added
+- `ui-refiner directions` shows each mock's measured page surface and type pair, and warns when two directions share a surface or a type pair, or when all of them sit on faint off-white. The refine workflow redoes the overlapping mock before showing the sheet.
+- `tinted-page` AI-look signal (reported only): a faint grey or cream page surface instead of white. Calibration: 69–87% of human sites use plain white and about 10% off-white, against 23–39% off-white on AI sites. Scoring it raised holdout human false positives from 3% to 7%, so it is not scored.
+
+### Changed
+- Refine guidance: at most one of the three directions may use a tinted paper surface; the others use plain white, a dark ground or a clear brand colour.
+- Refine benchmark round 3 (docs/REFINE_BENCHMARK_2026-11-08.md):
+  - Off-white surfaces went from 7 of 8 pages to 0.
+  - A new set-level judge, which sees all eight sites at once, rated round 3 less templated than round 2 (6–7 vs 8).
+  - The per-page judge still prefers round 2 (mean rank 1.4 vs 2.4).
+  - A shared hero skeleton remains: a big left headline with a data panel at the right.
+
 ## 0.6.0 — 2026-11-08
 
 UI Refiner now fixes pages, not only reviews them. `/ui-refine` shows three first-screen directions side by side (`ui-refiner directions`), waits for the user to pick one, and rebuilds the page around a signature element from its real content. The release also adds two AI-look signals, a wider calibration set and a blind-judged refine benchmark. The deep gate is unchanged apart from the version number, so the first 0.6.0 `check` starts a new comparison context; reviewed schemaVersion 2 baselines remain valid.

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseDirectionNote,renderDirectionsMarkdown,renderDirectionsHtml} from '../src/directions.mjs';
+import {parseDirectionNote,renderDirectionsMarkdown,renderDirectionsHtml,directionWarnings} from '../src/directions.mjs';
 
 test('direction note: concept first, then key: value parts', () => {
  const n=parseDirectionNote('<!doctype html>\n<!-- direction: The clinic\'s front desk | type: Bricolage Grotesque + Public Sans | palette: deep green, marigold | signature: today\'s hours board -->\n<h1>x</h1>');
@@ -27,4 +27,15 @@ test('directions sheet: HTML escapes notes and links the screenshots relatively'
  assert.match(html,/&lt;b&gt;bold&lt;\/b&gt; &amp; co/);
  assert.match(html,/<img src="_scans\/a\/scan-desktop.png"/);
  assert.match(html,/<html lang="en">/);
+});
+
+test('directions sheet: warns when mocks share a surface or a type pair, or all sit on off-white', () => {
+ const d=(label,bg,fonts)=>({label,file:label+'.html',note:null,score:0,signals:[],quality:0,ja:null,desktop:'',mobile:'',bg,fonts});
+ const w=directionWarnings([d('A',[244,241,234],['instrument sans','bricolage grotesque']),d('B',[246,245,241],['instrument sans','bricolage grotesque']),d('C',[250,248,244],['inter'])]);
+ assert.deepEqual(w.map(x=>x.id),['same-surface','same-fonts','same-surface','same-surface','all-tinted']);
+ assert.deepEqual(directionWarnings([d('A',[255,255,255],['inter']),d('B',[16,32,58],['m plus 1']),d('C',[244,241,234],['klee one'])]),[]);
+ const md=renderDirectionsMarkdown([d('A',[244,241,234],['a','b']),d('B',[246,243,236],['c'])],'ko');
+ assert.match(md,/> \*\*시안끼리 너무 비슷합니다\*\*/);assert.match(md,/A와 B의 바탕색이 거의 같습니다\(#f4f1ea \/ #f6f3ec\)/);
+ assert.match(md,/- 바탕색: #f4f1ea · 측정된 서체: a \+ b/);
+ assert.match(renderDirectionsHtml([d('A',[255,255,255],['x']),d('B',[0,0,0],['y'])],'en'),/^(?![\s\S]*class="warn")/);
 });
