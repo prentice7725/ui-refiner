@@ -5,6 +5,8 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- **Refine** workflow in the agent skill and a `/ui-refine` slash command (plugin `commands/`, also installed by `install-agent-skill.mjs`): fix an AI-looking page in place by root cause, preserve facts and links, never swap in another stock look, and rescan until what remains is deliberate (at most three rounds).
+- `docs/REFINE_BENCHMARK_2026-11-08.md`: 16 pages made by headless Claude from one-line prompts (median score 43, 14 of 16 at 20 or more), and 8 of them fixed with `/ui-refine` vs a plain "less AI-generated" prompt. Refine: median 66 → 0, contrast failures 27 → 5, 86–100% of numbers kept. Plain: median 9, but all 8 moved to a warm paper background and 5 to paper + serif.
 - Two AI-look signals from the "slop gate" lists of late 2026, both moderate:
   - `nested-cards`: rounded boxes inside rounded boxes, in three or more outer cards (nav, header, footer and dialogs excluded).
   - `boxed-icons`: three or more small tinted rounded squares that each hold only an icon (controls and links excluded).
@@ -12,6 +14,8 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - `scripts/calibration-extra.tsv`: 91 AI-built sites from the Replit and Lovable galleries and 68 Korean, global-brand, editorial, public-body and personal sites.
 
 ### Changed
+- `paper-serif` is moderate (was weak). It fires on 14% of AI-built calibration sites, 2% of human sites and none of the 210 Japanese reference sites; the human share at score ≥ 20 is unchanged, and the extra AI set goes from 73% to 74%. The plain-prompt arm of the refine benchmark showed why it matters: it is the look a "make it less AI" request swaps in.
+- The Build workflow also avoids icons in tinted rounded squares, cards inside cards and the stock section order.
 - Calibration with the two signals:
   - `boxed-icons` fires on 20% of AI-built sites and 1% of human sites. `nested-cards` fires on 12% and 2%; requiring only two outer cards caught 6% of human sites (toss.im, linear.app, spotify.com, loom.com).
   - Share at score ≥ 20: tuning set AI 70%, human 0% (unchanged); holdout AI 66% → 68%, human 3% (unchanged); extra set AI 71% → 73%, human 15% (unchanged); Japanese reference sites 1%.
