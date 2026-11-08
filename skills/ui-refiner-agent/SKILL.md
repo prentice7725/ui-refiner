@@ -1,11 +1,11 @@
 ---
 name: ui-refiner-agent
-description: Make web pages and app screens that do not look AI-generated, and review existing pages to propose better designs. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "review this site's design", "AIっぽくないデザイン", "このサイトのデザインを点検"; Japanese typesetting reviews; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
+description: Make web pages and app screens that do not look AI-generated, review existing pages, and refine AI-looking pages in place. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "AI 티 빼줘", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "de-slop this page", "review this site's design", "AIっぽくないデザイン", "AIっぽさを消して", "このサイトのデザインを点検"; Japanese typesetting reviews; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
 ---
 
 # UI Refiner — design without the AI look
 
-Two jobs: **Build** a screen that looks chosen rather than generated, and **Review** an existing page and propose a better design. Both rely on the same toolkit:
+Three jobs: **Build** a screen that looks chosen rather than generated, **Review** an existing page and propose a better design, and **Refine** an AI-looking page in place and measure the change. All rely on the same toolkit:
 
 - `scan` — zero-config rendered review of any URL: AI-look signals, baseline accessibility/layout measurements, desktop + mobile screenshots, and a proposal-oriented `DESIGN_REVIEW.md`.
 - suta guidance — `vendor/suta/skills/suta/SKILL.md` (Korean): the AI-slop red lines, layout/motion values and 57 tested UI patterns.
@@ -25,6 +25,24 @@ Two jobs: **Build** a screen that looks chosen rather than generated, and **Revi
    - **Baseline quality issues** from the scan table that a user would actually hit (contrast, unlabeled controls, mobile overflow).
 5. Only edit code when asked. After edits, rerun the same `scan` command (same page, same output folder compares automatically) and show the comparison section (score change, resolved/new/remaining signals, before/after screenshots). Treat new signals as regressions to explain or fix.
 
+## Refine an AI-looking page
+
+Use this when the user wants a page they own made less generic, not just reviewed. The goal is a page that looks decided for this content, not a different stock look.
+
+1. Scan and look at both screenshots. Write down what the page is for, its one primary action, and what must survive: every fact, price, name, link target, form field and legal text, plus any brand logo, color or typeface the project already uses.
+2. Choose a direction before editing and state it in three lines:
+   - one principle taken from the content, not a style word ("a clinic: calm, opening hours and booking first", not "minimal and elegant");
+   - a type pairing: a chosen display face plus a readable text face, and for Japanese or Korean pages a named Japanese or Korean family;
+   - one accent color taken from the brand or the subject, and what carries the hero (a product view, a photo, data or typography — not a gradient).
+3. Fix by root cause, in this order:
+   - **Structure.** The stock section recipe is the strongest tell: pill badge → hero with a two-tone headline → row of logo names → three feature cards with icons in rounded squares → stats trio → testimonial trio → three-tier pricing with "Most popular" → FAQ → colored CTA band. Keep only sections that carry real content, merge thin ones, and vary the rhythm (a list or table instead of cards, one large feature instead of three equal ones).
+   - **Type.** Real size contrast, one or two families, no tracked uppercase eyebrow over every section.
+   - **Color and surface.** One accent; no gradient text, glows or glass; fewer rounded boxes and no boxes inside boxes.
+   - **Copy.** Replace stock phrases with the page's own facts. Never invent numbers, quotes, customers or logos; when the page already has invented ones, flag them instead of polishing them.
+4. Do not trade one template for another. Cream paper with a serif display face, tiny tracked labels, "01 /" numbering and short headlines ending in a period is the 2025–26 editorial AI template, not an escape from it.
+5. Rescan into the same folder; the report opens with the before/after comparison. Stop when the scored signals that remain are deliberate and you can say why, no quality issue got worse, and Japanese typesetting issues did not increase. At most three rounds.
+6. Report: score before → after, resolved and remaining signals (with the reason each remaining one stays), the changes by root cause, what was preserved, and the screenshot paths. Look at the final screenshots before you say it is done.
+
 ## Build a new screen
 
 1. Read the project first: framework, styling method, existing tokens and components, brand assets. Existing systems are the source of values.
@@ -32,7 +50,8 @@ Two jobs: **Build** a screen that looks chosen rather than generated, and **Revi
 3. Decide the design direction **before** writing markup and state it in two or three lines: surface purpose (persuade / operate / read), the one primary action, type pairing and scale, one accent color, and what carries the hero (product, photo, data, typography — not a gradient).
 4. Avoid the defaults that read as generated:
    - purple/indigo gradient heroes, gradient headline text, glass cards, colored glows;
-   - three identical icon-title-blurb cards, a pill badge above the headline, everything centered;
+   - three identical icon-title-blurb cards, icons in tinted rounded squares, cards inside cards, a pill badge above the headline, everything centered;
+   - the stock section recipe (logo-name row, stats trio, testimonial trio, three-tier pricing, FAQ, CTA band) when the content does not need each section;
    - emoji as icons, untouched Tailwind indigo/violet or Bootstrap blue, one generic font at flat sizes;
    - "Unlock your potential / seamless / supercharge / 잠재력 / 혁신적인" copy and repeated "Learn more" buttons;
    - `transition: all`, animating layout properties, ignoring `prefers-reduced-motion`, `div` with `onClick`.
