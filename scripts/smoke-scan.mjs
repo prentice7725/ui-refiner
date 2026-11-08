@@ -9,7 +9,7 @@ import {once} from 'node:events';
 import {createDemoServer} from '../examples/demo-server.mjs';
 import {fileURLToPath} from 'node:url';
 import {scanUrl} from '../src/scan.mjs';
-import {compareDirections} from '../src/directions.mjs';
+import {compareDirections,verifyApplied} from '../src/directions.mjs';
 
 const slop=await fs.readFile(new URL('../examples/ai-slop-landing.html',import.meta.url),'utf8');
 const slopServer=http.createServer((req,res)=>{res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end(slop);});
@@ -53,6 +53,12 @@ try{
  assert.equal(sheet.items[1].note.signature,'時間割');
  await fs.access(path.join(dirs,sheet.items[1].desktop));
  assert.match(await fs.readFile(sheet.markdown,'utf8'),/どの方針で進めるか選んでください：A \/ B/);
+ // Hero skeletons are measured, and verify reports when the applied page left the chosen mock's structure.
+ assert.ok(sheet.items.every(d=>d.hero&&d.heroHuman!=null),'each direction has a hero layout and its human share');
+ const same=await verifyApplied(dirs,path.join(dirs,'b.html'),{pick:'B',log:path.join(out,'log.json')});
+ assert.deepEqual(same.drift,[],'the chosen mock itself does not drift');
+ const moved=await verifyApplied(dirs,path.join(dirs,'a.html'),{pick:'B',log:path.join(out,'log.json')});
+ assert.ok(moved.drift.length>=1,'a different page is reported as drift');
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/scan.json',JSON.stringify({slop:{score:bad.aiLook.score,signals:ids},clean:{score:good.aiLook.score,signals:good.aiLook.signals.map(s=>s.id)},ja:{score:ja.aiLook.score,signals:ja.aiLook.signals.map(s=>s.id),typography:jaIds}},null,2)+'\n');
  console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}, ja=${ja.aiLook.score} [${jaIds}], redesign=${fixed.aiLook.score} (${fixed.comparison.scoreDelta})`);
