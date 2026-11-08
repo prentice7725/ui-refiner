@@ -6,15 +6,16 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ### Added
 - `ui-refiner directions` shows each mock's measured page surface and type pair, and warns when two directions share a surface or a type pair, or when all of them sit on faint off-white. The refine workflow redoes the overlapping mock before showing the sheet.
+- Scan collector records the first-screen skeleton (`hero`: headline alignment, a panel or image beside it, a full-bleed photo, a strip of figures). `directions` shows it per direction and warns when two directions share one.
 - `tinted-page` AI-look signal (reported only): a faint grey or cream page surface instead of white. Calibration: 69–87% of human sites use plain white and about 10% off-white, against 23–39% off-white on AI sites. Scoring it raised holdout human false positives from 3% to 7%, so it is not scored.
 
 ### Changed
-- Refine guidance: at most one of the three directions may use a tinted paper surface; the others use plain white, a dark ground or a clear brand colour.
-- Refine benchmark round 3 (docs/REFINE_BENCHMARK_2026-11-08.md):
-  - Off-white surfaces went from 7 of 8 pages to 0.
-  - A new set-level judge, which sees all eight sites at once, rated round 3 less templated than round 2 (6–7 vs 8).
-  - The per-page judge still prefers round 2 (mean rank 1.4 vs 2.4).
-  - A shared hero skeleton remains: a big left headline with a data panel at the right.
+- Refine guidance: the three directions use three different hero structures (at most one "left headline, panel beside it"), and at most one may use a tinted paper surface; the others use plain white, a dark ground or a clear brand colour.
+- Refine benchmark rounds 3 and 4 (docs/REFINE_BENCHMARK_2026-11-08.md):
+  - Round 3: off-white surfaces went from 7 of 8 pages to 0.
+  - Round 4: side-panel heroes went from 4–5 of 8 pages to 0.
+  - A new set-level judge sees all eight sites at once. It ranked round 4 the least templated set in both runs (sameness 5–6, against 8 for round 2).
+  - The per-page judge still prefers round 2 (mean rank 1.9 against 2.9).
 
 ## 0.6.0 — 2026-11-08
 

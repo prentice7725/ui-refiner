@@ -39,3 +39,16 @@ test('directions sheet: warns when mocks share a surface or a type pair, or all 
  assert.match(md,/- 바탕색: #f4f1ea · 측정된 서체: a \+ b/);
  assert.match(renderDirectionsHtml([d('A',[255,255,255],['x']),d('B',[0,0,0],['y'])],'en'),/^(?![\s\S]*class="warn")/);
 });
+
+test('directions sheet: names the hero skeleton and warns when two directions share it', async () => {
+ const {heroSkeleton}=await import('../src/directions.mjs');
+ assert.equal(heroSkeleton({align:'left',side:{kind:'panel'},fullBleed:false,stats:4}),'left+panel');
+ assert.equal(heroSkeleton({align:'center',side:null,fullBleed:false,stats:0}),'center+stacked');
+ assert.equal(heroSkeleton({align:'left',side:{kind:'media'},fullBleed:true,stats:0}),'full-bleed');
+ assert.equal(heroSkeleton(null),null);
+ const d=(label,hero)=>({label,file:label,note:null,score:0,signals:[],quality:0,ja:null,desktop:'',mobile:'',bg:[255,255,255],fonts:[label],hero});
+ const items=[d('A','left+panel'),d('B','left+panel'),d('C','full-bleed')];
+ assert.deepEqual(directionWarnings(items),[{id:'same-hero',a:'A',b:'B',c:'left+panel'}]);
+ assert.match(renderDirectionsMarkdown(items,'ja'),/AとBのヒーローの構成が同じです（左寄せの見出し＋横にパネル）。/);
+ assert.match(renderDirectionsMarkdown(items,'en'),/- Surface: #ffffff · Measured type: C · Hero layout: full-bleed photo or video/);
+});

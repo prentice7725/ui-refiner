@@ -115,6 +115,27 @@ export function collectAiTells(){
  const text=(document.body.innerText||'').replace(/\s+/g,' ');
  const labels=buttons.concat(els.filter(el=>el.matches('a[href]'))).map(el=>(el.innerText||el.value||'').trim().toLowerCase()).filter(Boolean);
  // Transparent body and html paint the default white canvas, not black.
+ // Hero skeleton: where the main headline sits and what shares the first screen with it, so design directions can be told apart.
+ const hero=(()=>{
+  if(!h1||!visible(h1))return null;
+  const abs=el=>{const r=el.getBoundingClientRect();return {l:r.left+scrollX,t:r.top+scrollY,r:r.right+scrollX,b:r.bottom+scrollY,w:r.width,h:r.height};};
+  const rg=document.createRange();rg.selectNodeContents(h1);const tr=rg.getBoundingClientRect(),H=tr.width>0?{l:tr.left+scrollX,t:tr.top+scrollY,r:tr.right+scrollX,b:tr.bottom+scrollY,w:tr.width,h:tr.height}:abs(h1),W=innerWidth,fold=innerHeight;if(H.t>fold*1.2)return {align:'below-fold',side:null,fullBleed:false,stats:0,headlineWidth:+(H.w/W).toFixed(2)};
+  const cx=(H.l+H.r)/2/W,align=css(h1).textAlign==='center'||Math.abs(cx-.5)<.04&&H.w<W*.6?'center':H.w>=W*.7?'wide':cx<.5?'left':'right';
+  const media=el=>el.matches('img,video,picture,canvas,svg,iframe')||css(el).backgroundImage.includes('url(');
+  let side=null;
+  for(const el of els){if(el===h1||el.contains(h1)||h1.contains(el))continue;const R=abs(el);
+   if(R.t>fold||R.w<W*.2||R.w>W*.62||R.h<140)continue;
+   if(!(R.l>=H.r-12||R.r<=H.l+12))continue;if(R.b<H.t-220||R.t>H.b+260)continue;
+   const isMedia=media(el)||[...el.querySelectorAll('img,video,canvas,picture')].some(m=>{const r=m.getBoundingClientRect();return r.width*r.height>=R.w*R.h*.5;});
+   if(!isMedia&&!boxy(el)&&!el.querySelector('table'))continue;
+   if(!side||R.w*R.h>side.area)side={kind:isMedia?'media':'panel',area:R.w*R.h,target:sel(el)};}
+  const fullBleed=els.some(el=>{const R=abs(el);return R.t<fold&&R.w>=W*.9&&R.h>=fold*.4&&(media(el)&&!el.matches('svg'))&&!el.contains(h1)?true:(R.w>=W*.9&&R.h>=fold*.4&&el.contains(h1)&&css(el).backgroundImage.includes('url('));});
+  // A stat strip: three or more siblings in one row whose text is mostly a figure, within the first 1.6 screens.
+  const figure=el=>{const t=(el.innerText||'').trim();if(!t||t.length>60)return false;const first=t.split(/\n/)[0];return /\d/.test(first)&&first.replace(/[\d\s.,:%+\-/~×$¥₩€円원万만件人名年月日時分秒hmsk]/gi,'').length<=3;};
+  let stats=0;for(const el of els){const R=abs(el);if(R.t>fold*1.6||R.w<W*.5)continue;const kids=[...el.children].filter(visible);if(kids.length<3||kids.length>6)continue;
+   const tops=kids.map(k=>abs(k).t);if(Math.max(...tops)-Math.min(...tops)>12)continue;const n=kids.filter(figure).length;if(n>=3&&n>=kids.length-1)stats=Math.max(stats,n);}
+  return {align,side:side?{kind:side.kind,target:side.target}:null,fullBleed,stats,headlineWidth:+(H.w/W).toFixed(2)};
+ })();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
@@ -132,6 +153,7 @@ export function collectAiTells(){
   iconBoxes:{count:iconBoxes.length,targets:sample(iconBoxes)},
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
+  hero,
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
   editorial:{tracked:tracked.length,numbered:numbered.length,headings:uniqueHeads.length,periodHeadings:periodHeads.length,serifDisplay:bigHeads.length?+(bigHeads.filter(isSerif).length/bigHeads.length).toFixed(2):0,paper:!!rootBg&&(([r,g,b])=>r>=g&&g>=b&&r-b>=6&&r-b<=45&&b>=195)(rootBg),targets:sample([...periodHeads,...tracked,...numbered])},
   text:text.slice(0,20000),labels:labels.slice(0,200)
