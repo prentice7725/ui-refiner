@@ -9,6 +9,7 @@ import {checkPage} from '../vendor/lintapple/src/index.js';
 import {collectAiTells,evaluateAiTells,scoreSignals,signalTitle} from './ai-tells.mjs';
 import {spawnBounded} from './execute.mjs';
 import {collectJaTypography,evaluateJaTypography} from './ja-typography.mjs';
+import {compactSite,compareToReference,loadJaReference,renderReference} from './reference.mjs';
 import {jaReport} from './ja-copy.mjs';
 import {compareScans,findAutoPrevious,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
 
@@ -105,6 +106,8 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
   static:source?await staticSource(source):null};
  // Raw collector output (includes page text) for offline recalibration; never written by the CLI.
  if(keepRaw)result.raw=ok.map(v=>({viewport:v.viewport,metrics:v.metrics,ja:v.ja}));
+ // Japanese pages: place the measurements among the bundled Japanese reference sites.
+ if(japanese.japanese){const ref=await loadJaReference();if(ref){const cmp=compareToReference(compactSite({...result,raw:ok.map(v=>({viewport:v.viewport,metrics:v.metrics,ja:v.ja}))}),ref,url);if(cmp.rows.length)result.reference={set:'ja-reference',...cmp};}}
  if(previous)result.comparison={...compareScans(previous.scan,result,{lang}),mode:compare==='auto'?'auto':'explicit',images:Object.keys(beforeImages).length?beforeImages:null};
  await fs.writeFile(path.join(dir,'scan.json'),JSON.stringify(result,null,2)+'\n');
  await fs.writeFile(path.join(dir,'DESIGN_REVIEW.md'),renderScan(result));
@@ -176,6 +179,7 @@ export function renderScan(r){
    if(i.targets?.length)lines.push(`- ${x.targets}: ${i.targets.slice(0,4).map(v=>'`'+v+'`').join(', ')}`);
    lines.push(`- ${x.why}: ${i.why}`,`- **${x.fix}:** ${i.fix}`,'');
   }
+  lines.push(...renderReference(r.reference,L));
  }
  if(r.static){
   lines.push(h(x.stat),'');

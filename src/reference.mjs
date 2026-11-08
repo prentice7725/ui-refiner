@@ -94,3 +94,55 @@ export function renderReferenceSummary(s){
   '## Japanese typesetting issue rate','',head,sep,...Object.keys(s.all.japanese?.issues||{}).map(id=>row(id,g=>g.japanese?.issues[id]??0)),'',
   '## Most used font family on Japanese pages','',...(s.all.japanese?.topFamilies||[]).map(([f,n])=>`- ${f}: ${n}`),''].join('\n');
 }
+
+// Measurements a scan report compares with the reference sites. `pct` values render as percentages.
+export const REFERENCE_METRICS=[
+ {id:'bodySize',get:s=>s.ja?.bodySize},
+ {id:'lineHeight',get:s=>s.ja?.lineHeight},
+ {id:'displayRatio',get:s=>s.type?.ratio},
+ {id:'fontSizes',get:s=>s.type?.sizes},
+ {id:'hues',get:s=>s.color?.hues},
+ {id:'centered',get:s=>s.layout?.centered,pct:true},
+ {id:'rounded',get:s=>s.layout?.rounded,pct:true},
+ {id:'contrast',get:s=>s.quality?.['text-contrast']??0}
+];
+
+/** Where one page sits among the reference sites: p10/p50/p90 and the share of sites below it. The page's own host is left out. */
+export function compareToReference(page,sites,url=null){
+ const host=url?new URL(url).hostname.replace(/^www\./,''):null;
+ const ok=(sites||[]).filter(s=>s.status==='ok'&&(!host||new URL(s.url).hostname.replace(/^www\./,'')!==host));
+ const rows=[];
+ for(const m of REFERENCE_METRICS){
+  const v=m.get(page);if(v==null)continue;
+  const xs=ok.map(m.get).filter(x=>x!=null).sort((a,b)=>a-b);if(xs.length<20)continue;
+  const q=p=>xs[Math.min(xs.length-1,Math.floor(p*xs.length))],p10=q(.1),p90=q(.9);
+  rows.push({id:m.id,value:v,p10,p50:q(.5),p90,below:Math.round(100*xs.filter(x=>x<v).length/xs.length),position:v<p10?'low':v>p90?'high':'typical',...(m.pct?{pct:true}:{})});
+ }
+ return {n:ok.length,rows};
+}
+
+/** Reads the bundled Japanese reference sites; null when the data folder is missing. */
+export async function loadJaReference(){
+ try{const fs=await import('node:fs/promises');return JSON.parse(await fs.readFile(new URL('../data/ja-reference/sites.json',import.meta.url),'utf8')).sites;}
+ catch{return null;}
+}
+
+const referenceCopy={
+ ja:{title:n=>`### 日本のサイトとの比較（${n}サイトの実測）`,note:'参考値: 日本の企業・自治体・公共機関・メディア・スタートアップ・デザイン系ブランドの実測（data/ja-reference）。範囲外でも欠陥とは限らない。ページの目的と照らして判断する。',
+  cols:['項目','このページ','日本のサイト（下位10% / 中央 / 上位10%）','位置'],pos:{low:'少ない・小さい側',typical:'一般的な範囲',high:'多い・大きい側'},below:p=>`${p}%のサイトより上`,
+  m:{bodySize:'本文の文字サイズ（px）',lineHeight:'本文の行間',displayRatio:'最大見出し ÷ 本文',fontSizes:'使っている文字サイズの数',hues:'色相グループの数',centered:'中央揃えのブロック',rounded:'角丸のボックス',contrast:'コントラスト不足の要素'}},
+ ko:{title:n=>`### 일본 사이트와 비교 (${n}개 사이트 실측)`,note:'참고값: 일본 기업·지자체·공공기관·미디어·스타트업·디자인 브랜드 사이트 실측(data/ja-reference). 범위를 벗어나도 결함이라고 단정하지 말고 페이지 목적에 비춰 판단한다.',
+  cols:['항목','이 페이지','일본 사이트 (하위 10% / 중간 / 상위 10%)','위치'],pos:{low:'적은·작은 쪽',typical:'보통 범위',high:'많은·큰 쪽'},below:p=>`${p}% 사이트보다 위`,
+  m:{bodySize:'본문 글자 크기(px)',lineHeight:'본문 행간',displayRatio:'가장 큰 제목 ÷ 본문',fontSizes:'사용한 글자 크기 수',hues:'색 계열 수',centered:'가운데 정렬 블록',rounded:'둥근 모서리 상자',contrast:'대비 부족 요소'}},
+ en:{title:n=>`### Compared with Japanese sites (${n} measured)`,note:'Reference: measurements from Japanese company, prefecture, public-body, media, startup and design-brand sites (data/ja-reference). Outside the range is not a defect by itself; judge it against the page purpose.',
+  cols:['Measure','This page','Japanese sites (p10 / median / p90)','Position'],pos:{low:'low side',typical:'typical',high:'high side'},below:p=>`above ${p}% of sites`,
+  m:{bodySize:'Body text size (px)',lineHeight:'Body line height',displayRatio:'Largest heading ÷ body',fontSizes:'Font sizes used',hues:'Hue groups',centered:'Centered blocks',rounded:'Rounded boxes',contrast:'Elements with low contrast'}}
+};
+
+/** Markdown lines for the reference comparison; empty when there is nothing to compare. */
+export function renderReference(ref,lang='ko'){
+ if(!ref?.rows?.length)return [];
+ const c=referenceCopy[lang]||referenceCopy.ko,f=(v,pct)=>v==null?'—':pct?`${Math.round(v*100)}%`:String(+(+v).toFixed(2));
+ return [c.title(ref.n),'',c.note,'',`| ${c.cols.join(' | ')} |`,'|---|---:|---:|---|',
+  ...ref.rows.map(r=>`| ${c.m[r.id]||r.id} | ${f(r.value,r.pct)} | ${f(r.p10,r.pct)} / ${f(r.p50,r.pct)} / ${f(r.p90,r.pct)} | ${r.position==='typical'?c.pos.typical:`**${c.pos[r.position]}**`} (${c.below(r.below)}) |`),''];
+}
