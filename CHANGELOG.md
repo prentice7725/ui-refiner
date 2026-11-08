@@ -5,6 +5,19 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- `ui-refiner directions deal <folder> --kind <kind> --lang <lang>` assigns each of the three mocks four things:
+  - a hero structure, weighted by how often human-made sites of that page kind use it;
+  - a Google Fonts pairing, three different voices from `data/type-pairs.json`;
+  - an accent hue family;
+  - a surface (one non-white at most).
+
+  It avoids what was chosen recently for other projects and deals overused faces (Bricolage Grotesque, Fraunces, IBM Plex Mono) last. `--no-photo` skips structures that need a real photo.
+- `ui-refiner photos "<subject>"` saves openly licensed stand-in photographs from Wikimedia Commons (CC0, public domain, CC BY, CC BY-SA; no stock sites) with `credits.json` and a footer credit line in the page language. Pages mark each one `data-stand-in`, and the refine workflow tells the user what to replace. Human-made sites open with a full-bleed photo a third of the time; pages without imagery read as generated. `directions` and `directions verify` count stand-ins.
+- `ui-refiner directions record <folder> --pick B` keeps the chosen direction in a per-user log (`~/.ui-refiner/refine-log.json`, or `UI_REFINER_HOME`). The log is per user so different clients do not get the same page. Pages of one project may share a direction.
+- `ui-refiner directions verify <folder> <page>` reports when the applied page drifted from the chosen mock's hero structure, surface or type (exit 1). In the benchmark a page whose chosen mock opened with content ended as "left headline, stacked".
+- The directions sheet also warns when a mock ignores its deal (structure, type, accent) or repeats a hero, type pair, surface or accent hue picked for another project. It also shows each mock's accent and how common its hero structure is on human-made sites.
+- `data/hero-reference/human.json`: first-screen structure of 406 human-made sites, overall and per page kind. Only 4% use the AI favourite of a left headline with a side panel. 33% open with a full-bleed photo and 29% with content and no visible headline.
+- `scripts/calibration-small.tsv`: 102 small and mid-size organisations (clinics, food banks, bakeries, cafes, small SaaS, fintech, logistics, hiring pages, inns, studios, local public bodies) in Korean, Japanese and English. 16% of them reach 20 on the AI-look index, mostly developer-tool SaaS pages such as Raycast, Resend and cal.com, the look AI pages copy.
 - `ui-refiner directions` shows each mock's measured page surface and type pair, and warns when two directions share a surface or a type pair, or when all of them sit on faint off-white. The refine workflow redoes the overlapping mock before showing the sheet.
 - Scan collector records the first-screen skeleton (`hero`: headline alignment, a panel or image beside it, a full-bleed photo, a strip of figures). `directions` shows it per direction and warns when two directions share one.
 - `tinted-page` AI-look signal (reported only): a faint grey or cream page surface instead of white. Calibration: 69–87% of human sites use plain white and about 10% off-white, against 23–39% off-white on AI sites. Scoring it raised holdout human false positives from 3% to 7%, so it is not scored.
