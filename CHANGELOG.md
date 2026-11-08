@@ -5,6 +5,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- Japanese scan reports end with **日本のサイトとの比較**. For body size, line height, display ratio, font sizes, hue groups, centered and rounded blocks, and contrast failures, the table shows where the page sits among the `data/ja-reference` sites (p10 / median / p90, and the share of sites below the page). The page's own host is left out. `scan.json` records the comparison as `reference`.
 - `data/ja-reference/`: design measurements from about 240 Japanese company, prefecture, public-body, media, startup and design-brand sites. It holds measurements only, with distributions overall and per category, and a fixed 70/30 tune/holdout split by host. It is collected with `scripts/collect-reference.mjs`, which skips pages that robots.txt disallows and paces its requests.
 - `scripts/rescore.mjs` re-scores saved scans with the current rules, without opening any page.
   - `scanUrl` takes `keepRaw` to keep the raw collector output, and `screenshots: false` to skip screenshots.

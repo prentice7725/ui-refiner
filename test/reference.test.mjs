@@ -44,3 +44,25 @@ test('summary groups by category and renders a table', () => {
  const md=renderReferenceSummary(s);
  assert.match(md,/\| all \(2\) \| corp \(1\) \| gov \(1\) \|/);assert.match(md,/JA body line-height \| 1\.8 \/ 1\.8 \/ 1\.8/);
 });
+
+test('compareToReference places a page among reference sites and leaves out its own host', async () => {
+ const {compareToReference,renderReference}=await import('../src/reference.mjs');
+ const site=(i,body)=>({status:'ok',url:`https://s${i}.jp/`,ja:{bodySize:body,lineHeight:1.6},type:{ratio:2,sizes:9},color:{hues:2},layout:{centered:0,rounded:0},quality:{}});
+ const sites=Array.from({length:30},(_,i)=>site(i,12+(i%7))).concat([{...site(99,40),url:'https://www.me.jp/'}]);
+ const r=compareToReference({ja:{bodySize:24,lineHeight:1.6},type:{ratio:2},color:{hues:2},layout:{centered:.5,rounded:0},quality:{'text-contrast':3}},sites,'https://me.jp/');
+ assert.equal(r.n,30,'own host excluded');
+ const body=r.rows.find(x=>x.id==='bodySize');assert.equal(body.position,'high');assert.equal(body.below,100);
+ assert.equal(r.rows.find(x=>x.id==='lineHeight').position,'typical');
+ assert.ok(!r.rows.some(x=>x.id==='fontSizes'),'missing page value is skipped');
+ assert.equal(compareToReference({ja:{bodySize:16}},sites.slice(0,10)).rows.length,0,'fewer than 20 sites: no comparison');
+ const md=renderReference(r,'ja').join('\n');
+ assert.match(md,/日本のサイトとの比較（30サイトの実測）/);assert.match(md,/\| 本文の文字サイズ（px） \| 24 \| 12 \/ 15 \/ 18 \| \*\*多い・大きい側\*\* \(100%のサイトより上\) \|/);
+ assert.match(md,/中央揃えのブロック \| 50%/);
+ assert.deepEqual(renderReference(null,'ja'),[]);
+ assert.match(renderReference(r,'en').join('\n'),/Compared with Japanese sites \(30 measured\)/);
+});
+
+test('bundled Japanese reference data loads', async () => {
+ const {loadJaReference}=await import('../src/reference.mjs');
+ const sites=await loadJaReference();assert.ok(sites.filter(s=>s.status==='ok').length>=150);
+});
