@@ -15,7 +15,7 @@ const [listPath,rawDir,dataDir]=process.argv.slice(2);
 if(!listPath||!rawDir||!dataDir){console.error('usage: collect-reference.mjs <sites.tsv> <raw-dir> <data-dir> [--concurrency 2] [--delay 1500]');process.exit(2);}
 const opt=(name,d)=>{const i=process.argv.indexOf(name);return i>0?Number(process.argv[i+1])||d:d;};
 const concurrency=opt('--concurrency',2),delay=opt('--delay',1500);
-const UA='ui-refiner-reference/0.5 (design measurement; robots-aware)';
+const UA='ui-refiner-reference/0.6 (design measurement; robots-aware)';
 const rows=(await fs.readFile(listPath,'utf8')).split(/\r?\n/).map(l=>l.trim()).filter(l=>l&&!l.startsWith('#')).map(l=>{const [category,url]=l.split('\t');return {category,url};}).filter(r=>r.url?.startsWith('http'));
 
 const toggleWww=u=>{const x=new URL(u);x.hostname=x.hostname.startsWith('www.')?x.hostname.slice(4):'www.'+x.hostname;return x.href;};
