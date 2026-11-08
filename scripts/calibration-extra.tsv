@@ -1,0 +1,163 @@
+# Extra calibration set (2026-11-08): checks new signals and widens the sample. Not used to tune the earlier thresholds.
+# ai: sites listed on sitebuilderreport.com Replit/Lovable galleries and madewithlovable.com category pages.
+# human: Korean, global brand, editorial, public-body and personal sites that predate AI site builders. Treat them as "pre-AI-builder brands", not proof of hand-made code.
+label	url	note
+ai	https://austaxai.replit.app/	replit (sitebuilderreport)
+ai	https://barbertherapy.ca/	replit (sitebuilderreport)
+ai	https://bereavement.replit.app/	replit (sitebuilderreport)
+ai	https://birddogslacrosse.replit.app/	replit (sitebuilderreport)
+ai	https://bluepinedetailingandcleaning.replit.app/	replit (sitebuilderreport)
+ai	https://canttalk.ai/	replit (sitebuilderreport)
+ai	https://counselcompassskills.replit.app/	replit (sitebuilderreport)
+ai	https://dial-moments.replit.app/	replit (sitebuilderreport)
+ai	https://ehrnboeck.replit.app/	replit (sitebuilderreport)
+ai	https://gtconstructions.replit.app/	replit (sitebuilderreport)
+ai	https://healingroomchurch.replit.app/	replit (sitebuilderreport)
+ai	https://meetingbingo.replit.app/	replit (sitebuilderreport)
+ai	https://readingreimagined.replit.app/	replit (sitebuilderreport)
+ai	https://safehousestudios.replit.app/	replit (sitebuilderreport)
+ai	https://sfmathopen.replit.app/	replit (sitebuilderreport)
+ai	https://styqs.replit.app/	replit (sitebuilderreport)
+ai	https://towandabraxton.replit.app/	replit (sitebuilderreport)
+ai	https://wararatspa.replit.app/	replit (sitebuilderreport)
+ai	https://world-cup-knockout-tracker.replit.app/	replit (sitebuilderreport)
+ai	https://iwayec.lovable.app/	lovable (sitebuilderreport)
+ai	https://oxytane.ng/	lovable (sitebuilderreport)
+ai	https://pianovst.com/	lovable (sitebuilderreport)
+ai	https://rachellejeanty.com/	lovable (sitebuilderreport)
+ai	https://rivonix.com/	lovable (sitebuilderreport)
+ai	https://wecarecarcare.com/	lovable (sitebuilderreport)
+ai	https://www.pension-heuhexe.de/	lovable (sitebuilderreport)
+ai	https://www.thegreedyfox.com.au/	lovable (sitebuilderreport)
+ai	https://zdravizenyqueen.lovable.app/	lovable (sitebuilderreport)
+ai	http://donckelektro.nl/	lovable (madewithlovable)
+ai	http://www.lumierespartners.com/	lovable (madewithlovable)
+ai	https://abstractchainai.com/	lovable (madewithlovable)
+ai	https://aiselfi.es/	lovable (madewithlovable)
+ai	https://ancientindianscripts.lovable.app/	lovable (madewithlovable)
+ai	https://archive-shop-store.lovable.app/	lovable (madewithlovable)
+ai	https://audit.amazingsupport.co.uk/	lovable (madewithlovable)
+ai	https://bnbicons.com/	lovable (madewithlovable)
+ai	https://christpilled.com/	lovable (madewithlovable)
+ai	https://chromegoldmine.com/	lovable (madewithlovable)
+ai	https://evebcn.com/	lovable (madewithlovable)
+ai	https://favifiles.com/	lovable (madewithlovable)
+ai	https://fieldmanager.lovable.app/	lovable (madewithlovable)
+ai	https://gastronomic-gateway-web.lovable.app/	lovable (madewithlovable)
+ai	https://getping.store/	lovable (madewithlovable)
+ai	https://goalbt.com/	lovable (madewithlovable)
+ai	https://golden-dragon.lovable.app/	lovable (madewithlovable)
+ai	https://grafikirenatydyk.pl/	lovable (madewithlovable)
+ai	https://gusgarza.com/	lovable (madewithlovable)
+ai	https://jobs.watertechintel.com/	lovable (madewithlovable)
+ai	https://kaiventrouville.fr/	lovable (madewithlovable)
+ai	https://kopikatphdigitalprintingservices.onrender.com/	lovable (madewithlovable)
+ai	https://kudowall.com/	lovable (madewithlovable)
+ai	https://launched-badges.lovable.app/	lovable (madewithlovable)
+ai	https://livingtalentgraph.ai/	lovable (madewithlovable)
+ai	https://logolife.org/	lovable (madewithlovable)
+ai	https://mae-c.space/	lovable (madewithlovable)
+ai	https://marquee-builder.lovable.app/	lovable (madewithlovable)
+ai	https://mealscore.lovable.app/	lovable (madewithlovable)
+ai	https://mihaelamatei.lovable.app/	lovable (madewithlovable)
+ai	https://missdopamine.fr/	lovable (madewithlovable)
+ai	https://mypooch.info/	lovable (madewithlovable)
+ai	https://mystorycast.lovable.app/	lovable (madewithlovable)
+ai	https://namegator.lovable.app/	lovable (madewithlovable)
+ai	https://neon-fit.lovable.app/	lovable (madewithlovable)
+ai	https://nicolasgrenie.com/	lovable (madewithlovable)
+ai	https://parul-deliveries.lovable.app/	lovable (madewithlovable)
+ai	https://phillipohren.com/	lovable (madewithlovable)
+ai	https://product-vision-log.lovable.app/	lovable (madewithlovable)
+ai	https://productlaunch.lovable.app/	lovable (madewithlovable)
+ai	https://quicktables.info/	lovable (madewithlovable)
+ai	https://quote-buddy-generator.lovable.app/	lovable (madewithlovable)
+ai	https://quote-gems-daily.lovable.app/	lovable (madewithlovable)
+ai	https://rafvantongerloo.com/	lovable (madewithlovable)
+ai	https://refined-ai.com/	lovable (madewithlovable)
+ai	https://sausage-genius.lovable.app/	lovable (madewithlovable)
+ai	https://selected.site/	lovable (madewithlovable)
+ai	https://sydlawrence-portfolio.lovable.app/	lovable (madewithlovable)
+ai	https://trenujsmarou.cz/	lovable (madewithlovable)
+ai	https://unitatlas.com/	lovable (madewithlovable)
+ai	https://votenventure.com/	lovable (madewithlovable)
+ai	https://waitfast.netlify.app/	lovable (madewithlovable)
+ai	https://worstgift.lovable.app/	lovable (madewithlovable)
+ai	https://www.amsterdamtradingjobs.com/	lovable (madewithlovable)
+ai	https://www.antforms.com/	lovable (madewithlovable)
+ai	https://www.forkast.in/	lovable (madewithlovable)
+ai	https://www.microvictoryarmy.com/	lovable (madewithlovable)
+ai	https://www.mylisto.app/	lovable (madewithlovable)
+ai	https://www.reorconsulting.com/	lovable (madewithlovable)
+ai	https://www.sideprojectspot.com/	lovable (madewithlovable)
+ai	https://www.venturetemplates.com/	lovable (madewithlovable)
+ai	https://www.w3wu.com/	lovable (madewithlovable)
+ai	https://www.webcomparis.com/	lovable (madewithlovable)
+human	https://toss.im/	kr
+human	https://www.kakaocorp.com/	kr
+human	https://www.daangn.com/	kr
+human	https://www.woowahan.com/	kr
+human	https://www.musinsa.com/	kr
+human	https://www.kurly.com/	kr
+human	https://www.29cm.co.kr/	kr
+human	https://www.samsung.com/sec/	kr
+human	https://www.hyundai.com/kr/ko/	kr
+human	https://www.gov.kr/	kr
+human	https://www.seoul.go.kr/	kr
+human	https://www.mmca.go.kr/	kr
+human	https://www.amorepacific.com/kr/ko/	kr
+human	https://www.gentlemonster.com/kr/ko/	kr
+human	https://ohou.se/	kr
+human	https://www.airbnb.com/	global
+human	https://www.shopify.com/	global
+human	https://www.dropbox.com/	global
+human	https://slack.com/	global
+human	https://www.atlassian.com/	global
+human	https://www.spotify.com/	global
+human	https://www.ikea.com/us/en/	global
+human	https://www.nike.com/	global
+human	https://mailchimp.com/	global
+human	https://www.squarespace.com/	global
+human	https://www.canva.com/	global
+human	https://www.duolingo.com/	global
+human	https://www.headspace.com/	global
+human	https://www.allbirds.com/	global
+human	https://www.warbyparker.com/	global
+human	https://www.everlane.com/	global
+human	https://www.lego.com/en-us	global
+human	https://www.adobe.com/	global
+human	https://www.ycombinator.com/	global
+human	https://www.intercom.com/	global
+human	https://www.loom.com/	global
+human	https://www.airtable.com/	global
+human	https://www.dyson.com/en	global
+human	https://www.braun.com/	global
+human	https://www.vitsoe.com/	global
+human	https://www.nytimes.com/	editorial
+human	https://www.theguardian.com/international	editorial
+human	https://www.wikipedia.org/	editorial
+human	https://www.economist.com/	editorial
+human	https://www.wired.com/	editorial
+human	https://www.nationalgeographic.com/	editorial
+human	https://www.itsnicethat.com/	editorial
+human	https://www.dezeen.com/	editorial
+human	https://www.usa.gov/	public
+human	https://www.nasa.gov/	public
+human	https://www.canada.ca/en.html	public
+human	https://european-union.europa.eu/	public
+human	https://www.who.int/	public
+human	https://www.un.org/en/	public
+human	https://www.govt.nz/	public
+human	https://www.moma.org/	public
+human	https://www.tate.org.uk/	public
+human	https://www.rijksmuseum.nl/en	public
+human	https://danluu.com/	personal
+human	https://www.paulgraham.com/	personal
+human	https://jvns.ca/	personal
+human	https://www.joshwcomeau.com/	personal
+human	https://rauno.me/	personal
+human	https://brittanychiang.com/	personal
+human	https://www.robinsloan.com/	personal
+human	https://craigmod.com/	personal
+human	https://maggieappleton.com/	personal
+human	https://www.frankchimero.com/	personal

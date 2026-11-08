@@ -2,6 +2,22 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+### Added
+- Two AI-look signals from the "slop gate" lists of late 2026, both moderate:
+  - `nested-cards`: rounded boxes inside rounded boxes, in three or more outer cards (nav, header, footer and dialogs excluded).
+  - `boxed-icons`: three or more small tinted rounded squares that each hold only an icon (controls and links excluded).
+  - Scans saved before this change have no measurement for them and are not re-judged. `aiLook.measures` records `nestedCards`, `nestedHosts` and `iconBoxes`.
+- `scripts/calibration-extra.tsv`: 91 AI-built sites from the Replit and Lovable galleries and 68 Korean, global-brand, editorial, public-body and personal sites.
+
+### Changed
+- Calibration with the two signals:
+  - `boxed-icons` fires on 20% of AI-built sites and 1% of human sites. `nested-cards` fires on 12% and 2%; requiring only two outer cards caught 6% of human sites (toss.im, linear.app, spotify.com, loom.com).
+  - Share at score ≥ 20: tuning set AI 70%, human 0% (unchanged); holdout AI 66% → 68%, human 3% (unchanged); extra set AI 71% → 73%, human 15% (unchanged); Japanese reference sites 1%.
+  - The extra set's human side scores higher than the earlier sets: large SaaS and consumer brands use the same gradients, stock copy, card grids and glass. The READMEs now say so.
+- The English slop fixture has nested cards and boxed icons, and `smoke:scan` expects both signals.
+
 ## 0.5.0 — 2026-11-08
 
 Scan scores are now calibrated against real AI-built and human-made sites, and Japanese pages are compared with measurements from 209 Japanese sites. The deep gate is unchanged apart from the version number, so the first 0.5.0 `check` starts a new comparison context; reviewed schemaVersion 2 baselines remain valid.
