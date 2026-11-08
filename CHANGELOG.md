@@ -5,6 +5,12 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- `ui-refiner directions <folder>`: scans every `.html` design-direction mock in a folder and writes two files:
+  - `DIRECTIONS.html`: desktop and mobile screenshots side by side, with each mock's AI-look score, quality issues and Japanese typesetting issues;
+  - `DIRECTIONS.md`.
+
+  A `<!-- direction: concept | type: … | palette: … | signature: … -->` comment at the top of a mock fills in its description. The report language follows the pages (ko/ja/en).
+- Refine and `/ui-refine` now stop after the three first-screen directions and ask the user to pick one, or a mix. They decide alone only when told to or when no person is in the loop.
 - **Refine** workflow in the agent skill and a `/ui-refine` slash command (plugin `commands/`, also installed by `install-agent-skill.mjs`): fix an AI-looking page in place by root cause, preserve facts and links, never swap in another stock look, and rescan until what remains is deliberate (at most three rounds).
 - `docs/REFINE_BENCHMARK_2026-11-08.md`: 16 pages made by headless Claude from one-line prompts (median score 43, 14 of 16 at 20 or more), and 8 of them fixed with `/ui-refine` vs a plain "less AI-generated" prompt. Refine: median 66 → 0, contrast failures 27 → 5, 86–100% of numbers kept. Plain: median 9, but all 8 moved to a warm paper background and 5 to paper + serif.
 - Two AI-look signals from the "slop gate" lists of late 2026, both moderate:
