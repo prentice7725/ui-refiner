@@ -2,9 +2,17 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.6.0 — 2026-11-08
+
+UI Refiner now fixes pages, not only reviews them. `/ui-refine` shows three first-screen directions side by side (`ui-refiner directions`), waits for the user to pick one, and rebuilds the page around a signature element from its real content. The release also adds two AI-look signals, a wider calibration set and a blind-judged refine benchmark. The deep gate is unchanged apart from the version number, so the first 0.6.0 `check` starts a new comparison context; reviewed schemaVersion 2 baselines remain valid.
 
 ### Added
+- `ui-refiner directions <folder>`: scans every `.html` design-direction mock in a folder and writes two files:
+  - `DIRECTIONS.html`: desktop and mobile screenshots side by side, with each mock's AI-look score, quality issues and Japanese typesetting issues;
+  - `DIRECTIONS.md`.
+
+  A `<!-- direction: concept | type: … | palette: … | signature: … -->` comment at the top of a mock fills in its description. The report language follows the pages (ko/ja/en).
+- Refine and `/ui-refine` now stop after the three first-screen directions and ask the user to pick one, or a mix. They decide alone only when told to or when no person is in the loop.
 - **Refine** workflow in the agent skill and a `/ui-refine` slash command (plugin `commands/`, also installed by `install-agent-skill.mjs`): fix an AI-looking page in place by root cause, preserve facts and links, never swap in another stock look, and rescan until what remains is deliberate (at most three rounds).
 - `docs/REFINE_BENCHMARK_2026-11-08.md`: 16 pages made by headless Claude from one-line prompts (median score 43, 14 of 16 at 20 or more), and 8 of them fixed with `/ui-refine` vs a plain "less AI-generated" prompt. Refine: median 66 → 0, contrast failures 27 → 5, 86–100% of numbers kept. Plain: median 9, but all 8 moved to a warm paper background and 5 to paper + serif.
 - Two AI-look signals from the "slop gate" lists of late 2026, both moderate:
@@ -14,6 +22,14 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - `scripts/calibration-extra.tsv`: 91 AI-built sites from the Replit and Lovable galleries and 68 Korean, global-brand, editorial, public-body and personal sites.
 
 ### Changed
+- **Refine** now designs instead of only subtracting:
+  - it mocks three clearly different first-screen directions, scans them and picks one;
+  - it adds a signature element built from the page's real content;
+  - it treats a generated page's colors and fonts as changeable;
+  - it checks a craft list (scale, faces, hero, rhythm, accent, spacing, details) on the screenshots;
+  - it uses the AI-look score only as a guard.
+
+  `/ui-refine` follows the same steps. Blind judge on the same 8 pages (`docs/REFINE_BENCHMARK_2026-11-08.md`, round 2): mean rank 1.5 and 5 of 8 first places, against 2.6 and none for the first refine and 1.9 and 3 for a plain "less AI-generated" prompt. Distinctiveness went from 5.9 to 7.9. The skill also warns against the font pair round 2 converged on (Bricolage Grotesque + Instrument Sans) and lists a white page with thin rules and one blue accent as a common fallback.
 - `paper-serif` is moderate (was weak). It fires on 14% of AI-built calibration sites, 2% of human sites and none of the 210 Japanese reference sites; the human share at score ≥ 20 is unchanged, and the extra AI set goes from 73% to 74%. The plain-prompt arm of the refine benchmark showed why it matters: it is the look a "make it less AI" request swaps in.
 - The Build workflow also avoids icons in tinted rounded squares, cards inside cards and the stock section order.
 - Calibration with the two signals:

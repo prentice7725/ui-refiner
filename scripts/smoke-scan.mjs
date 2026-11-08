@@ -9,6 +9,7 @@ import {once} from 'node:events';
 import {createDemoServer} from '../examples/demo-server.mjs';
 import {fileURLToPath} from 'node:url';
 import {scanUrl} from '../src/scan.mjs';
+import {compareDirections} from '../src/directions.mjs';
 
 const slop=await fs.readFile(new URL('../examples/ai-slop-landing.html',import.meta.url),'utf8');
 const slopServer=http.createServer((req,res)=>{res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end(slop);});
@@ -42,6 +43,16 @@ try{
  assert.ok(fixed.comparison.scoreDelta<=-90&&fixed.comparison.signals.resolved.length>=10&&fixed.comparison.japanese.resolved.length===jaIds.length);
  for(const name of ['before-scan-desktop.png','previous-scan.json'])await fs.stat(path.join(out,'fixed',name));
  assert.match(await fs.readFile(path.join(out,'fixed','DESIGN_REVIEW.md'),'utf8'),/## 1\. 前回スキャンとの比較/);
+ // Directions sheet: the slop and redesign fixtures as two mocks, one with a direction note.
+ const dirs=path.join(out,'directions');await fs.mkdir(dirs);
+ await fs.copyFile(fileURLToPath(new URL('../examples/ai-slop-landing-ja.html',import.meta.url)),path.join(dirs,'a.html'));
+ await fs.writeFile(path.join(dirs,'b.html'),'<!-- direction: 現場の一日 | type: Noto Sans JP | signature: 時間割 -->\n'+await fs.readFile(fileURLToPath(new URL('../examples/redesign-landing-ja.html',import.meta.url)),'utf8'));
+ const sheet=await compareDirections(dirs);
+ assert.equal(sheet.lang,'ja');assert.deepEqual(sheet.items.map(d=>d.label),['A','B']);
+ assert.ok(sheet.items[0].score>sheet.items[1].score,'slop mock scores above the redesign mock');
+ assert.equal(sheet.items[1].note.signature,'時間割');
+ await fs.access(path.join(dirs,sheet.items[1].desktop));
+ assert.match(await fs.readFile(sheet.markdown,'utf8'),/どの方針で進めるか選んでください：A \/ B/);
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/scan.json',JSON.stringify({slop:{score:bad.aiLook.score,signals:ids},clean:{score:good.aiLook.score,signals:good.aiLook.signals.map(s=>s.id)},ja:{score:ja.aiLook.score,signals:ja.aiLook.signals.map(s=>s.id),typography:jaIds}},null,2)+'\n');
  console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}, ja=${ja.aiLook.score} [${jaIds}], redesign=${fixed.aiLook.score} (${fixed.comparison.scoreDelta})`);
