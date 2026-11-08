@@ -33,6 +33,8 @@ try{
  for(const id of ['ja-font-fallback','ja-line-height','ja-break-all','ja-italic','ja-half-kana','ja-orphans','ja-bad-break'])assert.ok(jaIds.includes(id),`missing ${id}: ${jaIds}`);
  assert.equal(good.japanese.japanese,false,'English demo is not treated as Japanese');
  assert.match(await fs.readFile(path.join(out,'ja','DESIGN_REVIEW.md'),'utf8'),/日本語タイポグラフィ/);
+ assert.equal(ja.reference?.set,'ja-reference','Japanese pages are compared with the reference sites');assert.equal(good.reference,undefined);
+ assert.match(await fs.readFile(path.join(out,'ja','DESIGN_REVIEW.md'),'utf8'),/日本のサイトとの比較/);
  // Redesign loop: the fixed page compared with the slop scan. It also guards a well-made Japanese page against false positives.
  const fixed=(await scanUrl(fileURLToPath(new URL('../examples/redesign-landing-ja.html',import.meta.url)),{out:path.join(out,'fixed'),lang:'ja',compare:path.join(out,'ja')})).result;
  assert.ok(fixed.aiLook.score<10,`redesign scored ${fixed.aiLook.score}: ${fixed.aiLook.signals.map(s=>s.id)}`);
