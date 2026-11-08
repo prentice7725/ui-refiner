@@ -150,7 +150,7 @@ The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds w
 The skill in [skills/ui-refiner-agent/SKILL.md](skills/ui-refiner-agent/SKILL.md) defines two workflows:
 
 - **Review**: run `scan`, look at the screenshots first, confirm or reject each signal, then report a verdict, 2–3 root causes, a redesign direction per cause (with what must be preserved) and the quality issues users would hit.
-- **Refine**: scan, write down what must be preserved, choose a direction from the content, fix by root cause (structure first: the stock section order of pill, two-tone hero, logo row, icon cards, stats, testimonials, three tiers, FAQ and CTA band), never invent facts or swap in another stock look, and rescan until what remains is deliberate (at most three rounds).
+- **Refine**: scan, write down what must be preserved, mock three first-screen directions and let you pick one (`ui-refiner directions <folder>` puts their screenshots side by side), add a signature element from the real content, fix by root cause (structure first: the stock section order of pill, two-tone hero, logo row, icon cards, stats, testimonials, three tiers, FAQ and CTA band), never invent facts or swap in another stock look, and rescan until what remains is deliberate (at most three rounds).
 - **Build**: read the project and the bundled suta guidance, decide the design direction before writing markup, avoid the listed defaults, then `scan` the dev server and fix what is not deliberate (at most two rounds).
 
 Once installed you rarely need the CLI yourself. Ask in plain words ("review the design of example.co.jp", "build this landing page without the AI look", "fix those and compare again"), or in Claude Code use the slash command:
