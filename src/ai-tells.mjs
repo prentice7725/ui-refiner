@@ -66,6 +66,23 @@ export function collectAiTells(){
  // Rounding.
  const containers=els.filter(el=>boxy(el)&&area(el)>=6000&&!el.matches('button,a,input,select,textarea,img'));
  const rounded=containers.filter(el=>parseFloat(css(el).borderTopLeftRadius)>=16);
+ // Card-in-card: a rounded, boxed surface sitting inside another one (controls, media and pinned bars excluded).
+ const cardLike=containers.filter(el=>parseFloat(css(el).borderTopLeftRadius)>=8&&!el.matches('[role=button],video,picture,canvas,iframe')&&!graphic(el)&&!el.closest('nav,header,footer,dialog,[role=dialog]'));
+ const cardSet=new Set(cardLike);
+ const nestedCards=cardLike.filter(el=>{for(let n=el.parentElement;n&&n!==document.body;n=n.parentElement)if(cardSet.has(n))return area(n)>=area(el)*1.5;return false;});
+ const outerOf=el=>{for(let n=el.parentElement;n;n=n.parentElement)if(cardSet.has(n))return n;};
+ const nestedHosts=new Set(nestedCards.map(outerOf));
+ // Icons in tinted rounded squares: a small square box (not a circle, not a control) holding only an icon.
+ const iconBoxes=els.filter(el=>{
+  if(el.matches('button,a,input,select,textarea,label,[role=button],img,svg')||el.closest('button,a,nav,header,footer'))return false;
+  const r=el.getBoundingClientRect();if(r.width<28||r.width>96||Math.abs(r.width-r.height)>4)return false;
+  const s=css(el),rad=parseFloat(s.borderTopLeftRadius),bg=rgba(s.backgroundColor);
+  if(rad<4||rad>=r.width/2-1||!(bg&&bg[3]>.04||/gradient\(/.test(s.backgroundImage)))return false;
+  const t=(el.innerText||'').trim();if(t.length>2)return false;
+  const icon=el.querySelector('svg,img,i,[class*=icon]');
+  if(!icon)return pictographic.test(t);
+  const ir=icon.getBoundingClientRect();return ir.width>0&&ir.width<=r.width*.75;
+ });
  // Typography.
  const textEls=els.filter(el=>!el.matches('button,input,select,textarea,code,pre,kbd')&&[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
  const families=new Map(),sizes=new Map(),chars=new Map();
@@ -111,6 +128,8 @@ export function collectAiTells(){
   cardGrids:{count:cardGroups.length,groups:cardGroups.slice(0,8)},
   eyebrowPills:{count:eyebrowPills.length,targets:sample(eyebrowPills)},
   rounding:{containers:containers.length,rounded:rounded.length,ratio:containers.length?rounded.length/containers.length:0},
+  nestedCards:{count:nestedCards.length,hosts:nestedHosts.size,targets:sample(nestedCards)},
+  iconBoxes:{count:iconBoxes.length,targets:sample(iconBoxes)},
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
@@ -147,6 +166,8 @@ const copy={
  'default-accent':{ko:['프레임워크 기본 강조색','Tailwind indigo/violet, Bootstrap 파랑 그대로는 "기본값" 신호다.','브랜드에서 한 색을 정해 채도·명도를 조정하고, 주 버튼 한 곳에만 쓴다.'],en:['Framework default accent color','Untouched Tailwind indigo/violet or Bootstrap blue signals defaults.','Choose one brand hue, tune it, and spend it on the primary action only.']},
  'many-hues':{ko:['유채색 계열이 많음','색이 많으면 강조가 사라진다.','무채색 + 강조색 1 + 오류 빨강. 상태는 글자·아이콘 모양으로 구분.'],en:['Too many hues','Many hues cancel emphasis.','Neutrals + one accent + error red; distinguish states by label and shape.']},
  'transition-all':{ko:['transition: all','의도치 않은 속성까지 움직이고 레이아웃이 흔들린다(AI 코드의 흔한 습관).','transform·opacity 등 움직일 속성만 나열하고 reduced-motion 블록을 둔다.'],en:['transition: all','Animates unintended properties and causes jank — a common AI-code habit.','List only transform/opacity and add a reduced-motion block.']},
+ 'nested-cards':{ko:['카드 안의 카드','둥근 상자 안에 또 둥근 상자를 넣으면 테두리·그림자가 겹쳐 위계가 흐려진다. AI 화면이 정보를 묶을 때 흔히 쓰는 방식이다.','바깥 상자나 안쪽 상자 중 하나만 남긴다. 안쪽 묶음은 여백, 구분선, 제목 크기로 나눈다.'],ja:['カードの中のカード','角丸の箱の中にさらに角丸の箱を入れると、枠線や影が重なって階層がぼやける。AI生成の画面が情報をまとめるときによく使う形。','外側か内側のどちらか一方だけを箱にする。内側のまとまりは余白、区切り線、見出しのサイズで分ける。'],en:['Cards inside cards','Rounded boxes nested in rounded boxes stack borders and shadows and blur the hierarchy; a common AI way to group content.','Keep only one level of boxes. Separate the inner groups with spacing, rules or heading size.']},
+ 'boxed-icons':{ko:['둥근 사각형 안의 아이콘 반복','연한 색 둥근 사각형에 아이콘을 하나씩 넣어 늘어놓는 것은 AI 기능 소개 블록의 정형이다.','아이콘이 정말 필요한지 먼저 본다. 남긴다면 상자 없이 글자 크기에 맞춘 선 아이콘으로, 또는 실제 화면·사진으로 바꾼다.'],ja:['角丸の四角に入ったアイコンの繰り返し','薄い色の角丸の四角にアイコンをひとつずつ入れて並べるのは、AIが作る機能紹介ブロックの定型。','まずアイコンが本当に必要かを考える。残すなら箱なしで文字サイズに合わせた線のアイコンに、または実際の画面や写真に置き換える。'],en:['Icons in tinted rounded squares','A row of icons, each in its own pale rounded square, is the stock AI feature block.','Ask whether the icons are needed at all. If they stay, drop the boxes and size line icons to the text, or use real screenshots or photos.']},
  'tracked-labels':{ko:['자간 넓힌 작은 대문자 라벨 반복','"SOUTH-FACING CABINS · SLEEPS TWO" 같은 작은 대문자 라벨을 섹션마다 붙이는 것은 2025–26년 AI 사이트의 에디토리얼 템플릿 신호다.','라벨은 정보가 있을 때만(날짜, 카테고리). 장식용 눈썹 라벨은 지우고 제목이 스스로 말하게 한다.'],ja:['字間を広げた小さな大文字ラベルの多用','「SOUTH-FACING CABINS · SLEEPS TWO」のような小さな大文字ラベルを各セクションに付けるのは、2025〜26年のAIサイトに多いエディトリアル風テンプレートのサイン。','ラベルは日付・カテゴリなど情報があるときだけ。飾りの見出しラベルは外し、見出し自体で伝える。'],en:['Repeated tiny tracked uppercase labels','Small letter-spaced caps over every section ("SOUTH-FACING CABINS · SLEEPS TWO") are the 2025–26 editorial AI template.','Keep labels only when they carry information (date, category); drop decorative eyebrows and let headings speak.']},
  'numbered-labels':{ko:['번호 붙인 섹션 라벨("01 / REFERENCES")','"01 / …", "STEP 1 · …" 라벨은 순서가 없는 내용에도 붙는 AI 템플릿 장식이다.','실제 순서가 있는 절차에만 번호를 쓰고, 나머지는 번호 없이 제목만.'],ja:['番号付きのセクションラベル（「01 / REFERENCES」）','「01 / …」「STEP 1 · …」は順序のない内容にも付けられるAIテンプレートの飾り。','実際に手順があるところだけ番号を使い、ほかは見出しだけにする。'],en:['Numbered section labels ("01 / REFERENCES")','"01 / …" and "STEP 1 · …" labels get stamped on content with no real order — an AI template ornament.','Number only real sequences; elsewhere use plain headings.']},
  'period-headlines':{ko:['마침표로 끝나는 짧은 대형 제목 반복','"Stay by the sea." "Made slowly. Kept for years."처럼 모든 섹션 제목이 마침표 달린 짧은 문장이면 생성형 카피의 리듬으로 읽힌다.','제목 하나만 선언문으로 두고, 나머지는 내용을 설명하는 제목(명사구·질문)으로 바꾼다.'],ja:['ピリオドで終わる短い大見出しの連続','「Stay by the sea.」のように全セクションの見出しがピリオド付きの短文だと、生成AIのコピーのリズムに見える。','宣言文の見出しは一つだけにし、ほかは内容を説明する見出しにする。'],en:['Short display headings ending in a period','When every section headline is a clipped sentence with a period ("Stay by the sea."), it reads as generated copy rhythm.','Keep one declarative headline; make the rest descriptive (noun phrases, questions).']},
@@ -162,7 +183,7 @@ export const signalTitle=(id,lang='ko')=>copy[id]?.[langKey(lang)][0];
 // Calibrated on 30 ChatGPT Sites vs 26 human sites (2026-11, scripts/calibrate-scan.mjs):
 // transition: all and repeated generic CTAs fired more on human sites, so they are reported but not scored.
 const UNSCORED=new Set(['transition-all','generic-cta']);
-const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5};
+const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5,nested:3,nestedHosts:3,iconBoxes:3};
 
 /** Weighted sum of signals, dampened 15% per craft signal. */
 export function scoreSignals(signals,craft=[]){
@@ -186,6 +207,9 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if(m.eyebrowPills.count)add('eyebrow-pill','moderate',{count:m.eyebrowPills.count},m.eyebrowPills.targets);
  if(m.centered.blocks>=4&&m.centered.ratio>=.6)add('centered','moderate',{centered:m.centered.centered,blocks:m.centered.blocks,ratio:+m.centered.ratio.toFixed(2)},m.centered.targets);
  if(m.rounding.containers>=4&&m.rounding.ratio>=.75)add('over-rounded','weak',{rounded:m.rounding.rounded,containers:m.rounding.containers});
+ // Scans saved before these collectors existed have no nestedCards/iconBoxes; skip rather than guess.
+ if(m.nestedCards&&m.nestedCards.count>=TH.nested&&m.nestedCards.hosts>=TH.nestedHosts)add('nested-cards','moderate',{nested:m.nestedCards.count,hosts:m.nestedCards.hosts},m.nestedCards.targets);
+ if(m.iconBoxes&&m.iconBoxes.count>=TH.iconBoxes)add('boxed-icons','moderate',{boxes:m.iconBoxes.count},m.iconBoxes.targets);
  const fams=m.typography.families,top=fams[0]?.name;
  // Japanese pages with a real Japanese stack (Hiragino, Noto Sans JP …) follow local convention, not a template default.
  if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)});
@@ -216,5 +240,5 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if((c.imagery||0)>=3)craft.push('imagery');
  const {score,band}=scoreSignals(out,craft);
  const absent=Object.keys(copy).filter(id=>!out.some(s=>s.id===id)&&!(id==='large-gradient'&&out.some(s=>s.id==='purple-gradient')));
- return {heuristic:true,blocking:false,score,band,craft,signals:out,absent,measures:e?{tracked:e.tracked,numbered:e.numbered,periodHeadings:e.periodHeadings,headings:e.headings,serifDisplay:e.serifDisplay,paper:e.paper}:null};
+ return {heuristic:true,blocking:false,score,band,craft,signals:out,absent,measures:e?{tracked:e.tracked,numbered:e.numbered,periodHeadings:e.periodHeadings,headings:e.headings,serifDisplay:e.serifDisplay,paper:e.paper,...(m.nestedCards?{nestedCards:m.nestedCards.count,nestedHosts:m.nestedCards.hosts}:{}),...(m.iconBoxes?{iconBoxes:m.iconBoxes.count}:{})}:null};
 }

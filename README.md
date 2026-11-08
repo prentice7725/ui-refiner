@@ -11,7 +11,7 @@ It renders the page in a real browser, measures what it sees, and writes a repor
 
 ## What the report gives you
 
-- **An AI-look score checked against real sites.** It was tuned on 30 ChatGPT-built sites and 26 human sites, then tested unchanged on 38 Lovable/v0 sites and 29 design-forward studio and editorial sites. At a score of 20 or more it flags 66–70% of the AI-built sites and 0–3% of the human ones. Each signal comes with evidence, the reason it reads as generic, and a concrete fix.
+- **An AI-look score checked against real sites.** It was tuned on 30 ChatGPT-built sites and 26 human sites, then tested unchanged on 38 Lovable/v0 sites and 29 design-forward studio and editorial sites. At a score of 20 or more it flags 66–70% of the AI-built sites and 0–3% of the human ones; a later, wider sample (77 Replit/Lovable sites, 54 Korean, global-brand, editorial, public and personal sites) gave 73% and 15%, because big SaaS brands share the same marketing patterns. Each signal comes with evidence, the reason it reads as generic, and a concrete fix.
 - **Japanese pages placed among 209 real Japanese sites.** Company, prefecture, public-body, media, startup and design-brand sites were measured once (robots.txt respected, numbers only). The report shows where the page sits on each measure, so "line height 1.3" becomes "lower than 99% of Japanese sites". Excerpt for [`examples/ai-slop-landing-ja.html`](examples/ai-slop-landing-ja.html):
 
   | 項目 | このページ | 日本のサイト（下位10% / 中央 / 上位10%） | 位置 |
@@ -87,6 +87,8 @@ A heuristic built from rendered signals. Strong signals weigh 3, moderate 2, wea
 | Eyebrow pill | Pill badge right above the headline |
 | Centered text | Most text blocks centered |
 | Over-rounding | Nearly every box ≥16px radius |
+| Cards inside cards | Rounded boxes nested in rounded boxes, in three or more outer cards |
+| Icons in rounded squares | Three or more small tinted rounded squares that each hold only an icon |
 | Generic type | One stock face (Inter, Roboto, system…) for everything |
 | Flat type scale | Largest heading under 2× the body size (skipped on Japanese pages) |
 | Default accent | Untouched Tailwind indigo/violet/purple (plain blue and Bootstrap blue are reported only) |
@@ -133,12 +135,14 @@ Measured in November 2026 (scores change as sites change). Scripts: `scripts/cal
 |---|---:|---:|---:|
 | ChatGPT-built sites (tuning) | 30 | 33 | 70% |
 | Human sites (tuning) | 26 | 0 | 0% |
-| Lovable/v0 sites (holdout) | 38 | 24 | 66% |
+| Lovable/v0 sites (holdout) | 38 | 27 | 68% |
 | Design-forward studio, award and editorial sites (holdout) | 29 | 5 | 3% |
-| Japanese reference sites | 209 | 0 | 1% |
+| Replit/Lovable gallery sites (extra) | 77 | 35 | 73% |
+| Korean, global brand, editorial, public and personal sites (extra) | 54 | 8 | 15% |
+| Japanese reference sites | 210 | 0 | 1% |
 | `examples/ai-slop-landing.html`, `ai-slop-landing-ja.html` | 2 | 100 | |
 
-A low score does not prove good design, and about a third of AI-built sites still score under 20.
+The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds were set. Its human side is where the score is weakest: large SaaS and consumer brands such as toss.im, shopify.com, loom.com, canva.com and dropbox.com score 27–57 because they use the same purple gradients, stock copy, card grids and glass. A low score does not prove good design, and about a third of AI-built sites still score under 20.
 
 ## Using it with agents
 
