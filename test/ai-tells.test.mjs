@@ -115,3 +115,16 @@ test('signals common on human sites are reported but not scored',()=>{
  m.accents=[[99,102,241],[99,102,241]];
  assert.equal(evaluateAiTells(m).signals.find(s=>s.id==='default-accent').weight,2,'Tailwind indigo still scores');
 });
+
+test('cards inside cards and icons in tinted rounded squares are reported; old scans without the measures are skipped',()=>{
+ const old=evaluateAiTells(quiet());
+ assert.ok(!old.signals.some(s=>['nested-cards','boxed-icons'].includes(s.id)),'no measure, no signal');
+ const m=quiet();m.editorial={tracked:0,numbered:0,periodHeadings:0,headings:4,serifDisplay:0,paper:false,targets:[]};
+ m.nestedCards={count:4,hosts:3,targets:['div.card > div.inner']};m.iconBoxes={count:3,targets:['div.icon-wrap']};
+ const r=evaluateAiTells(m,{lang:'ja'});
+ assert.deepEqual(r.signals.filter(s=>['nested-cards','boxed-icons'].includes(s.id)).map(s=>[s.id,s.weight]),[['nested-cards',2],['boxed-icons',2]]);
+ assert.equal(r.signals.find(s=>s.id==='nested-cards').title,'カードの中のカード');
+ assert.deepEqual([r.measures.nestedCards,r.measures.nestedHosts,r.measures.iconBoxes],[4,3,3]);
+ m.nestedCards={count:5,hosts:2,targets:[]};m.iconBoxes={count:2,targets:[]};
+ assert.ok(!evaluateAiTells(m).signals.some(s=>['nested-cards','boxed-icons'].includes(s.id)),'inner boxes in only two cards, or two icon boxes, are normal');
+});

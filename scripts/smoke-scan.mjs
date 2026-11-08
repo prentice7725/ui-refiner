@@ -19,7 +19,7 @@ try{
  const bad=(await scanUrl(`http://127.0.0.1:${slopServer.address().port}`,{out:path.join(out,'slop'),lang:'ko'})).result;
  const good=(await scanUrl(`http://127.0.0.1:${cleanServer.address().port}`,{out:path.join(out,'clean'),lang:'en'})).result;
  const ids=bad.aiLook.signals.map(s=>s.id);
- for(const id of ['purple-gradient','gradient-text','emoji-icons','card-grid','buzzword-copy','eyebrow-pill','transition-all'])assert.ok(ids.includes(id),`missing ${id}: ${ids}`);
+ for(const id of ['purple-gradient','gradient-text','emoji-icons','card-grid','buzzword-copy','eyebrow-pill','transition-all','nested-cards','boxed-icons'])assert.ok(ids.includes(id),`missing ${id}: ${ids}`);
  assert.equal(bad.aiLook.band,'high');
  assert.ok(good.aiLook.score<20,`clean demo scored ${good.aiLook.score}: ${good.aiLook.signals.map(s=>s.id)}`);
  assert.ok(bad.quality.some(q=>q.rule==='text-contrast'),'baseline quality checks run during the scan');
