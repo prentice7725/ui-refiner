@@ -223,7 +223,7 @@ export function evaluateAiTells(m,{lang='ko'}={}){
   if(e.tracked>=TH.tracked)add('tracked-labels',e.tracked>=TH.trackedStrong?'strong':'moderate',{labels:e.tracked},e.targets);
   if(e.numbered>=TH.numbered)add('numbered-labels','moderate',{labels:e.numbered},e.targets);
   if(e.periodHeadings>=TH.period)add('period-headlines',e.periodHeadings>=TH.periodStrong?'strong':'moderate',{periodHeadings:e.periodHeadings,headings:e.headings},e.targets);
-  if(e.paper&&e.serifDisplay>=.5)add('paper-serif','weak',{serifDisplay:e.serifDisplay});
+  if(e.paper&&e.serifDisplay>=.5)add('paper-serif','moderate',{serifDisplay:e.serifDisplay});
  }
  if(m.hueBuckets>=5)add('many-hues','weak',{hueBuckets30deg:m.hueBuckets});
  if(m.transitionAll.count)add('transition-all',m.transitionAll.count>=3?'moderate':'weak',{count:m.transitionAll.count},m.transitionAll.targets);

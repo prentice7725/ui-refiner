@@ -99,7 +99,7 @@ test('quality counts each element once across viewports and shows one example pe
 test('editorial AI template: tracked labels, numbered labels, period headlines and paper+serif score; quiet editorial pages do not',()=>{
  const m=quiet();m.editorial={tracked:14,numbered:4,periodHeadings:5,headings:7,serifDisplay:1,paper:true,targets:['h2']};
  const r=evaluateAiTells(m,{lang:'en'});
- assert.deepEqual(r.signals.filter(s=>['tracked-labels','numbered-labels','period-headlines','paper-serif'].includes(s.id)).map(s=>[s.id,s.strength]),[['tracked-labels','strong'],['period-headlines','strong'],['numbered-labels','moderate'],['paper-serif','weak']]);
+ assert.deepEqual(r.signals.filter(s=>['tracked-labels','numbered-labels','period-headlines','paper-serif'].includes(s.id)).map(s=>[s.id,s.strength]),[['tracked-labels','strong'],['period-headlines','strong'],['numbered-labels','moderate'],['paper-serif','moderate']]);
  assert.ok(r.score>=30,`editorial template should reach medium, got ${r.score}`);
  assert.deepEqual(r.measures,{tracked:14,numbered:4,periodHeadings:5,headings:7,serifDisplay:1,paper:true});
  m.editorial={tracked:2,numbered:1,periodHeadings:1,headings:7,serifDisplay:1,paper:false,targets:[]};
