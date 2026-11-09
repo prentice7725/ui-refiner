@@ -113,7 +113,7 @@ try{
     const r=await verifyApplied(args._[2],args._[3],{pick:args.pick,log:args.log});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(r.drift.length?`[DRIFT] ${r.label}: ${r.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}`:`[VERIFY] ${r.label}: hero ${r.applied.hero}, surface and type kept`);
-    if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim, as its largest text, and the main action`);
+    if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim, not dwarfed by other text, and the main action`);
     process.exitCode=r.drift.length||r.problems?.length?1:0;
   }
   else if(command==='directions'&&args._.length===2){
@@ -121,7 +121,7 @@ try{
     if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`${args.lang?'--lang':'UI_REFINER_LANG'} must be auto or one of ${scanLangs.join(', ')}`);
     const r=await compareDirections(sub,{lang,log:args.log});
     if(args.json)console.log(JSON.stringify(r,null,2));
-    else console.log(`[DIRECTIONS] ${r.items.map(d=>`${d.label}=${d.file} (AI-look ${d.score}, quality ${d.quality}${d.ja!=null?`, ja ${d.ja}`:''})`).join("; ")}${r.warnings.length?`; warnings=${r.warnings.map(w=>w.id+(w.a?`(${w.a},${w.b})`:"")).join(",")}`:""}; ${r.html}`);
+    else console.log(`[DIRECTIONS] ${r.items.map(d=>`${d.label}=${d.file} (AI-look ${d.score}, quality ${d.quality}${d.ja!=null?`, ja ${d.ja}`:''})`).join("; ")}${r.warnings.length?`; warnings=${r.warnings.map(w=>w.id+(w.a?`(${w.a},${w.b})`:"")).join(",")}`:""}${r.notes?.length?`; note=white-run (prefer ${r.notes[0].a})`:""}; ${r.html}`);
   }
   else if(command==='guidance'&&args._.length===1){
     if(!args.query)throw Error('guidance requires --query');const limit=args.limit===undefined?3:Number(args.limit);const corpus=await loadGuidanceCorpus();const suggestions=makeSuggestions(corpus,args.query,limit);console.log(JSON.stringify({schemaVersion:1,advisory:true,blocking:false,query:args.query,status:suggestions.length?'matched':'no-match',suggestions},null,2));

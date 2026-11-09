@@ -38,6 +38,17 @@ test('deal and record round-trip through DEAL.json, DIRECTIONS.json and the log 
  assert.equal((await readLog(log)).length,1);
 });
 
+test('pick note: a run of white picks for other projects points at the non-white directions', async () => {
+ const {pickNotes}=await import('../src/refine-log.mjs');
+ const items=[{label:'A',bg:[255,255,255]},{label:'B',bg:[20,22,24]},{label:'C',bg:[255,255,255]}];
+ const white=i=>({project:'/p/o'+i,page:'p'+i,bg:[255,255,255]});
+ assert.deepEqual(pickNotes(items,[0,1,2,3].map(white),'/p/me'),[{id:'white-run',n:4,a:'B'}]);
+ assert.deepEqual(pickNotes(items,[0,1,2].map(white),'/p/me'),[],'three white picks are normal');
+ assert.deepEqual(pickNotes(items,[...[0,1,2].map(white),{project:'/p/x',bg:[17,17,17]}],'/p/me'),[]);
+ assert.deepEqual(pickNotes(items,[0,1,2,3].map(i=>({...white(i),project:'/p/me'})),'/p/me'),[],'own project is ignored');
+ assert.deepEqual(pickNotes(items.map(d=>({...d,bg:[255,255,255]})),[0,1,2,3].map(white),'/p/me'),[],'nothing to point at');
+});
+
 test('history: warns when the accent hue repeats one picked for another project', async () => {
  const {accentOf}=await import('../src/directions.mjs');
  assert.deepEqual(accentOf({accents:[[22,59,51],[22,59,51],[255,255,255],[17,17,17],[244,194,91]]}),[22,59,51],'greys and white are not accents');
