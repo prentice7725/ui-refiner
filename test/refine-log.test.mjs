@@ -14,6 +14,8 @@ test('deal: three different structures, recent picks for other projects go last'
  assert.ok(dealt.includes('below-fold')&&!dealt.includes('wide+stacked')&&!dealt.includes('full-bleed'),'never-chosen structures first, the latest picks last');
  assert.equal(new Set(dealt.map(k=>k.split('+')[1]??k)).size,3,'spread over structure families');
  assert.deepEqual(new Set(dealStructures(log.map(e=>({...e,project:'/p/a'})),'/p/a',{seed:1})).size,3,'own project history is ignored');
+ for(let seed=0;seed<20;seed++)assert.ok(!dealStructures([],'/p/a',{seed,noPhoto:true}).some(k=>['below-fold','full-bleed','left+media'].includes(k)),'without photos, no image-led structure is dealt');
+ for(let seed=0;seed<20;seed++){const d=dealStructures([],'/p/a',{seed});assert.ok(!(d.includes('below-fold')&&d.includes('full-bleed')),'image-led structures share one family');}
  assert.deepEqual(dealStructures([],'/p/a',{seed:1,human:{'center+stacked':.5,'left+media':.3,'full-bleed':.2}}),['center+stacked','left+media','full-bleed']);
 });
 
