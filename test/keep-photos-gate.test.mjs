@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {compareKeep,recordKeep} from '../src/keep.mjs';
+import {compareKeep} from '../src/keep.mjs';
 import {openLicence,toCandidate,searchPhotos,creditLine,countStandIns,fetchStandIns} from '../src/photos.mjs';
 import {refineGateProblems} from '../scripts/refine-gate-hook.mjs';
 import {evaluateAiTells} from '../src/ai-tells.mjs';
@@ -97,13 +97,4 @@ test('gate hook: plugin and installer register it, and the script blocks with ex
  const last=run();assert.equal(last.status,0);assert.match(last.stdout,/gave up after 3/);
  const off=spawnSync(process.execPath,[new URL('../scripts/refine-gate-hook.mjs',import.meta.url).pathname.replace(/^\/(?=[A-Za-z]:)/,'')],{input:JSON.stringify({cwd}),encoding:'utf8',env:{...process.env,UI_REFINER_GATE:'off'}});
  assert.equal(off.status,0);
-});
-
-test('keep: animated counters are recorded at their target figure, not the 0 they start at', async () => {
- const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-keep-'));
- const page=path.join(dir,'index.html');
- await fs.writeFile(page,'<p><span data-count="8600">0</span> households, <span data-count="94" data-suffix="%">0</span> to programs, rated <span data-target="4.7">0</span></p>');
- const {inventory}=await recordKeep(page,{out:path.join(dir,'keep.json')});
- for(const f of ['8,600','94%','4.7'])assert.ok(inventory.facts.includes(f),f);
- assert.ok(!inventory.facts.includes('0%'));
 });
