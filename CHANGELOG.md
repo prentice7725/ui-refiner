@@ -21,6 +21,13 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - `ui-refiner directions` shows each mock's measured page surface and type pair, and warns when two directions share a surface or a type pair, or when all of them sit on faint off-white. The refine workflow redoes the overlapping mock before showing the sheet.
 - Scan collector records the first-screen skeleton (`hero`: headline alignment, a panel or image beside it, a full-bleed photo, a strip of figures). `directions` shows it per direction and warns when two directions share one.
 - `tinted-page` AI-look signal (reported only): a faint grey or cream page surface instead of white. Calibration: 69–87% of human sites use plain white and about 10% off-white, against 23–39% off-white on AI sites. Scoring it raised holdout human false positives from 3% to 7%, so it is not scored.
+- Four more AI-look signals, reported only:
+  - `accent-word`: one word of a heading in a different solid colour;
+  - `newsletter-tail`: a lone e-mail sign-up near the bottom of the page;
+  - `empty-frames`: two or more filled or bordered boxes with nothing in them;
+  - `hero-cta-below`: the headline is on the first screen but its first button is not.
+
+  Calibration on 30–77 AI and 26–209 human sites per set: AI pages have a coloured heading word 30–34% of the time against 3–19% for human pages (16% on small SaaS-heavy sites). Scoring it as a weak signal added 3 points of AI detection but also 1–2 human false positives per set, so none of the four is scored. Empty frames hit human pages as often as AI pages (23% against 10% on the tuning set).
 
 ### Changed
 - Refine guidance: the three directions use three different hero structures (at most one "left headline, panel beside it"), and at most one may use a tinted paper surface; the others use plain white, a dark ground or a clear brand colour.
