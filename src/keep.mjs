@@ -9,6 +9,13 @@ import {scanTarget} from './scan.mjs';
 
 /** Runs in the page. Collects targets and facts only, never field values. */
 export function collectKeep(){
+ // Animated counters show 0 until scrolled into view; read their target figure instead.
+ for(const el of document.querySelectorAll('[data-count],[data-target],[data-to],[data-countup],[data-value]')){
+  const raw=['count','target','to','countup','value'].map(k=>el.dataset[k]).find(v=>v!=null&&/^-?\d+(\.\d+)?$/.test(v.trim()));
+  if(raw==null||el.children.length)continue;
+  const n=Number(raw),shown=Number.isInteger(n)?n.toLocaleString('en-US'):raw.trim();
+  el.textContent=(el.dataset.prefix||'')+shown+(el.dataset.suffix||'');
+ }
  const text=(document.body?.innerText||'').replace(/ /g,' ');
  const abs=v=>{try{const u=new URL(v,location.href);return u.origin===location.origin?u.pathname.replace(/\/index\.html?$/,'/')+u.search+u.hash:u.href;}catch{return v;}};
  const hrefs=[...document.querySelectorAll('a[href]')].map(a=>a.getAttribute('href').trim()).filter(h=>h&&h!=='#'&&!/^javascript:/i.test(h)).map(h=>/^(tel|mailto):/i.test(h)?h.toLowerCase().replace(/[\s-]/g,''):h.replace(/\/index\.html?(?=$|[?#])/,'/'));
