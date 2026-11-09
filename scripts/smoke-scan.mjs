@@ -10,6 +10,7 @@ import {createDemoServer} from '../examples/demo-server.mjs';
 import {fileURLToPath} from 'node:url';
 import {scanUrl} from '../src/scan.mjs';
 import {compareDirections,verifyApplied} from '../src/directions.mjs';
+import {recordKeep} from '../src/keep.mjs';
 
 const slop=await fs.readFile(new URL('../examples/ai-slop-landing.html',import.meta.url),'utf8');
 const slopServer=http.createServer((req,res)=>{res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end(slop);});
@@ -59,6 +60,12 @@ try{
  assert.deepEqual(same.drift,[],'the chosen mock itself does not drift');
  const moved=await verifyApplied(dirs,path.join(dirs,'a.html'),{pick:'B',log:path.join(out,'log.json')});
  assert.ok(moved.drift.length>=1,'a different page is reported as drift');
+ // keep reads animated counters at their target figure, not the 0 they start at.
+ const counters=path.join(out,'counters.html');
+ await fs.writeFile(counters,'<p><span data-count="8600">0</span> households, <span data-count="94" data-suffix="%">0</span> to programs, rated <span data-target="4.7">0</span></p>');
+ const {inventory:kept}=await recordKeep(counters,{out:path.join(out,'keep.json')});
+ for(const f of ['8,600','94%','4.7'])assert.ok(kept.facts.includes(f),`keep records counter ${f}`);
+ assert.ok(!kept.facts.includes('0%'));
  await fs.mkdir('artifacts/upstream-contracts',{recursive:true});
  await fs.writeFile('artifacts/upstream-contracts/scan.json',JSON.stringify({slop:{score:bad.aiLook.score,signals:ids},clean:{score:good.aiLook.score,signals:good.aiLook.signals.map(s=>s.id)},ja:{score:ja.aiLook.score,signals:ja.aiLook.signals.map(s=>s.id),typography:jaIds}},null,2)+'\n');
  console.log(`scan smoke ok: slop=${bad.aiLook.score} [${ids}], clean=${good.aiLook.score}, ja=${ja.aiLook.score} [${jaIds}], redesign=${fixed.aiLook.score} (${fixed.comparison.scoreDelta})`);
