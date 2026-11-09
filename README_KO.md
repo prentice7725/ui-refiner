@@ -39,11 +39,13 @@ npm link                                   # 선택: 어디서든 `ui-refiner` �
 
 ui-refiner scan your-site.example          # 운영 중인 페이지 점검
 ui-refiner scan localhost:5173             # 개발 서버. 고친 뒤 같은 명령을 다시 실행하면 변화가 보임
+ui-refiner keep record index.html                                  # 리파인 전에 링크·폼·수치 목록 저장
 ui-refiner directions deal refine-directions --kind service --lang ko   # 시안마다 히어로 구조·서체·강조색·바탕 배정
 ui-refiner directions refine-directions     # 디자인 시안(.html) 여러 개를 나란히 비교해 하나 고르기
 ui-refiner directions record refine-directions --pick B                # 고른 방향 기록(다른 고객에겐 다른 방향)
 ui-refiner photos "dentist chair" --out assets/stand-in             # 실제 사진이 오기 전까지 쓸 출처 표기 임시 사진(Wikimedia Commons)
 ui-refiner directions verify refine-directions index.html             # 완성본이 고른 구조를 지켰는지 확인
+ui-refiner keep check index.html                                   # 리파인한 페이지가 그중 하나라도 잃으면 exit 1
 ```
 
 이게 전부입니다. `scan`은 URL, 호스트 이름, 로컬 `.html` 파일을 받고, 설정이 필요 없으며 대상 프로젝트를 바꾸지 않습니다. `npm link`를 하지 않았다면 `node bin/ui-refiner.mjs scan …`으로 실행합니다.
