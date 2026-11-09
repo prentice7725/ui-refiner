@@ -71,6 +71,8 @@ test('gate: blocks only while a recorded refine lacks a fresh, passing keep chec
  assert.match((await refineGateProblems(cwd))[0],/directions verify/);
  await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[{id:'hero',chosen:'below-fold',applied:'left+stacked'}]}));
  assert.match((await refineGateProblems(cwd))[0],/drifted.*below-fold → left\+stacked/);
+ await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[],problems:['no-claim']}));
+ assert.match((await refineGateProblems(cwd))[0],/does not say what this is/);
  await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[]}));
  assert.deepEqual(await refineGateProblems(cwd),[]);
  assert.deepEqual(await refineGateProblems(cwd,Date.now()+13*3600e3),[],'stale refine state older than 12 hours is ignored');

@@ -217,3 +217,31 @@ Reading:
 - Page by page, the judge liked it least of the refine arms. Its notes reward a polished, familiar page, which is the quality the set judge counts against a set when every page shares it. A real client sees one page, so this cost is real and is the next thing to work on.
 - Habits the set judge still saw: heavy grotesk headlines, client data (schedules, ledgers, shipment tables) as the hero, hairline-ruled tables, stat rows.
 - Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
+
+## Round 8: first-screen check (same 8 pages)
+
+Same as round 7, plus the first-screen check: `directions verify` and the finish gate now fail a page whose first screen has no one-line claim or no main action, and the below-fold brief says real content may lead but must not replace the claim. Cost: $18.76 for 8 pages (37–84 turns each).
+
+- All 8 pages passed `keep check` and `directions verify`.
+- First screen: all 8 pages show a claim and the main action above the fold. In round 7, en-saas and ko-fintech had neither, because a board pushed them down.
+- Applied heroes: below-fold 3, right + panel 1, full-bleed 1, left stacked 1, wide stacked 1, centred 1.
+- Surfaces: white 5, dark 2, yellow 1. Type: eight different families again.
+
+Judges:
+
+| Version | Per-page mean rank (1–5) | Per-page AI look | Set sameness (run 1 / 2) | Set rank of 8 (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 1 / 2 | 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 | 4 / 4 |
+| Before | 4.6 | 8.6 | 8 / 9 | 7 / 7 |
+| Plain prompt | 2.4 | 3.0 | 9 / 9 | 8 / 8 |
+| Refine, round 2 | **1.6** | 3.5 | 8 / 8 | 6 / 6 |
+| Refine, round 5 | — | — | 6 / 7 | 5 / 5 |
+| Refine, round 7 | 3.3 | 4.4 | 5 / 4 | 3 / 3 |
+| Refine, round 8 | 3.1 | 4.1 | **3 / 4** | **2 / 2** |
+
+Reading:
+- Across the set, round 8 holds round 7's place: right behind the first human set in both runs, now ahead of round 7.
+- Page by page it improved on round 7 (hierarchy 6.9 → 7.3, mean rank 3.3 → 3.1), but round 2 and the plain prompt still win single pages.
+- Habits the set judge still saw: heavy grotesk headlines, schedules and tables as the hero, hairline dividers.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.

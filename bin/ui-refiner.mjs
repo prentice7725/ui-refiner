@@ -113,7 +113,8 @@ try{
     const r=await verifyApplied(args._[2],args._[3],{pick:args.pick,log:args.log});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(r.drift.length?`[DRIFT] ${r.label}: ${r.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}`:`[VERIFY] ${r.label}: hero ${r.applied.hero}, surface and type kept`);
-    process.exitCode=r.drift.length?1:0;
+    if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim and the main action`);
+    process.exitCode=r.drift.length||r.problems?.length?1:0;
   }
   else if(command==='directions'&&args._.length===2){
     const lang=args.lang||process.env.UI_REFINER_LANG||'auto';
