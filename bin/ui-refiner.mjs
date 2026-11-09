@@ -18,6 +18,7 @@ import {scanUrl,scanLangs} from '../src/scan.mjs';
 import {compareDirections,verifyApplied} from '../src/directions.mjs';
 import {dealDirections,recordChoice} from '../src/refine-log.mjs';
 import {fetchStandIns} from '../src/photos.mjs';
+import {recordKeep,checkKeep} from '../src/keep.mjs';
 
 const help=`UI Refiner 0.6.0 — de-AI web design review and UI quality gate
   ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang auto|ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json | --no-compare] [--json]
@@ -37,6 +38,10 @@ const help=`UI Refiner 0.6.0 — de-AI web design review and UI quality gate
   ui-refiner photos "<subject>" [--out assets/stand-in] [--count 6] [--orientation landscape|portrait|any] [--lang en|ja|ko] [--json]
       saves openly licensed stand-in photographs from Wikimedia Commons with credits.json and a footer credit line;
       mark each on the page with data-stand-in, never present it as the client's own, replace it with real photos
+  ui-refiner keep record <page> [--out ui-refiner-keep.json]
+  ui-refiner keep check <page> [--from ui-refiner-keep.json] [--json]
+      records link targets, forms, fields, contact links and facts before a redesign, then fails (exit 1) when the
+      redesigned page lost any of them; facts that appear only afterwards are listed to check they are real
   ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
@@ -77,6 +82,16 @@ try{
     const c=result.comparison,delta=n=>n>0?`+${n}`:`${n}`;
     if(args.json)console.log(JSON.stringify(result,null,2));
     else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''} report=${result.lang};${c?` vs ${c.mode==='auto'?'last scan':'previous'} ${c.previous.score}→${c.current.score} (${delta(c.scoreDelta)}), resolved=${c.signals.resolved.length}, new=${c.signals.added.length}${c.warnings.length?`, warnings=${c.warnings.join(',')}`:''};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);
+  }
+  else if(command==='keep'&&sub==='record'&&args._.length===3){
+    const r=await recordKeep(args._[2],{out:args.out||'ui-refiner-keep.json'});
+    console.log(`[KEEP] ${r.inventory.links.length} links, ${r.inventory.forms.length} forms, ${r.inventory.fields.length} fields, ${r.inventory.facts.length} facts → ${r.file}`);
+  }
+  else if(command==='keep'&&sub==='check'&&args._.length===3){
+    const r=await checkKeep(args._[2],{from:args.from||'ui-refiner-keep.json'});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else{const part=(k,label)=>r[k].length?`\n  ${label}: ${r[k].join(', ')}`:'';console.log((r.ok?'[KEPT] links, forms, fields and facts are all still there':'[LOST] the redesign dropped:')+part('links','links')+part('forms','forms')+part('fields','fields')+part('facts','facts')+(r.added.length?`\n  new facts to confirm (not on the original page): ${r.added.join(', ')}`:''));}
+    process.exitCode=r.ok?0:1;
   }
   else if(command==='photos'&&args._.length===2){
     const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
