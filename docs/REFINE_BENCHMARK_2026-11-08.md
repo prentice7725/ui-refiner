@@ -245,3 +245,35 @@ Reading:
 - Page by page it improved on round 7 (hierarchy 6.9 → 7.3, mean rank 3.3 → 3.1), but round 2 and the plain prompt still win single pages.
 - Habits the set judge still saw: heavy grotesk headlines, schedules and tables as the hero, hairline dividers.
 - Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
+
+## Round 9: claim size check, image-led below-fold (same 8 pages)
+
+Same as round 8, plus a claim size check and an image-led below-fold:
+- `directions verify` and the finish gate fail a text-led first screen whose claim is under 0.6 of its largest text.
+- The skill asks for a claim of about 44–64px as the largest text on the first screen.
+- `below-fold` is now image-led, in the image family, and not dealt with `--no-photo`.
+
+Cost: $17.88 ($16.13 for the 8 refines at 38–73 turns each, $1.75 for the judges).
+
+- All 8 pages passed `keep check` and `directions verify`. The claim is the largest text on all 8 (44–75px, ratio 1).
+- Applied heroes: wide stacked 2, left stacked 2, centred 1, left + panel 1, full-bleed 1, below-fold 1 (photos, ja-dental).
+- Surfaces: white on all 8, although every deal offered a dark, brand or paper surface. Round 8 had 3 non-white.
+
+Judges (the same run judged round 8 again, so its figures differ from the round 8 table):
+
+| Version | Per-page mean rank (1–5) | Per-page AI look | Set sameness (run 1 / 2) | Set rank of 8 (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 1 / 2 | 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 | 5 / 3 |
+| Before | 5.0 | 8.8 | 9 / 8 | 8 / 7 |
+| Plain prompt | 2.5 | 3.0 | 8 / 9 | 7 / 8 |
+| Refine, round 2 | **1.5** | 3.6 | 7 / 8 | 6 / 6 |
+| Refine, round 7 | — | — | 3 / 5 | 3 / 4 |
+| Refine, round 8 | 2.5 | 3.8 | **3 / 4** | **2 / 2** |
+| Refine, round 9 | 3.5 | 4.5 | 5 / 6 | 4 / 5 |
+
+Reading:
+- Round 9 is worse than round 8 on both judges. Page by page, distinctiveness fell 7.4 → 6.1 and typography 7.1 → 6.9. Across the set, sameness rose from 3–4 to 5–6.
+- The set judge named the shared look: plain white pages, a bold sans headline, then a schedule, table or ledger right under it.
+- The size check worked as a check, but a large claim on white over a data widget became the new template. Every page picked white, which removed the variety the surface deal used to bring.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output. Round 8's per-page rank moved 3.1 → 2.5 between runs, so differences under about 0.6 are noise.
