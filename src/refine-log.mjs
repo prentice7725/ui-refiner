@@ -19,7 +19,7 @@ export const HERO_STRUCTURES={
  'wide+stacked':'One very large headline across the full width; the signature element follows below.',
  'center+stacked':'A short centred headline; the signature element follows below at full width.',
  'left+stacked':'Headline in a narrow left column; the signature element runs full width below it.',
- 'below-fold':'Content first: real content (products, schedule, listings, news) takes most of the first screen instead of a big headline. The first screen still says what this is in one line (it need not be the h1) and shows the main action. Never an empty or mock board.'
+ 'below-fold':'Images first: real photos, products or listings with pictures fill most of the first screen, as on human-made sites that open without a headline (most of them are image-led). The one-line claim and the main action still sit on or beside them, and the claim is the largest text on the screen. Not a text, table or dashboard board; without real images, use another structure.'
 };
 
 export function logPath(file){return file||path.join(process.env.UI_REFINER_HOME||path.join(os.homedir(),'.ui-refiner'),'refine-log.json');}
@@ -49,10 +49,10 @@ export function dealStructures(entries,project,{n=3,seed=0,human=null,noPhoto=fa
  for(const k of order)if(out.length<n&&!out.includes(k))out.push(k);
  return out;
 }
-// Structures that need a photo or product shot. With no client photos, deal them only when stand-ins
+// Structures that need a photo or product shot (human first screens without a headline are mostly image-led). With no client photos, deal them only when stand-ins
 // (ui-refiner photos) are acceptable; --no-photo removes them.
-const PHOTO=new Set(['full-bleed','left+media']);
-const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','full-bleed':'image','wide+stacked':'stacked','center+stacked':'stacked','left+stacked':'stacked','below-fold':'signature-first'};
+const PHOTO=new Set(['full-bleed','left+media','below-fold']);
+const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','full-bleed':'image','wide+stacked':'stacked','center+stacked':'stacked','left+stacked':'stacked','below-fold':'image'};
 
 /** Share of each hero structure on human-made sites (data/hero-reference/human.json), overall or for one page kind. */
 export async function humanHeroShare(kind){try{const j=JSON.parse(await fs.readFile(new URL('../data/hero-reference/human.json',import.meta.url),'utf8'));return (kind&&j.byKind?.[kind]?.share)||j.share;}catch{return null;}}
