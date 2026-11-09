@@ -155,5 +155,6 @@ export async function verifyApplied(dir,target,{pick,log,lang='auto',timeoutMs=4
  if(chosen.bg&&applied.bg&&!(white(chosen.bg)&&white(applied.bg))&&!chosen.bg.every((v,k)=>Math.abs(v-applied.bg[k])<=16))drift.push({id:'surface',chosen:hex(chosen.bg),applied:hex(applied.bg)});
  if(chosen.fonts?.length&&applied.fonts.length&&!chosen.fonts.some(f=>applied.fonts.includes(f)))drift.push({id:'type',chosen:chosen.fonts.join(' + '),applied:applied.fonts.join(' + ')});
  let standIns=null;try{standIns=countStandIns(await fs.readFile(path.resolve(target),'utf8'));}catch{}
+ await fs.writeFile(path.join(root,'VERIFY.json'),JSON.stringify({checkedAt:new Date().toISOString(),target,label,drift},null,1)+'\n');
  return {label,chosen:{hero:chosen.hero,bg:chosen.bg,fonts:chosen.fonts},applied:{...applied,standIns},drift};
 }

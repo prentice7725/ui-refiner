@@ -1,0 +1,12 @@
+{
+  "description": "UI Refiner refine finish gate: while a refine has recorded state in the project (ui-refiner-keep.json, refine-directions/PICK.json), the turn cannot end until keep check and directions verify have passed on the current page. Blocks at most three times; UI_REFINER_GATE=off disables it.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/refine-gate-hook.mjs\"", "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

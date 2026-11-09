@@ -136,6 +136,23 @@ export function collectAiTells(){
    const tops=kids.map(k=>abs(k).t);if(Math.max(...tops)-Math.min(...tops)>12)continue;const n=kids.filter(figure).length;if(n>=3&&n>=kids.length-1)stats=Math.max(stats,n);}
   return {align,side:side?{kind:side.kind,target:side.target}:null,fullBleed,stats,headlineWidth:+(H.w/W).toFixed(2)};
  })();
+ // One coloured word: a short span inside a heading set in a solid colour clearly different from the heading.
+ const dist3=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
+ const accentWords=[...document.querySelectorAll('h1,h2')].filter(visible).filter(h=>{const hc=rgba(css(h).color);if(!hc)return false;const total=(h.textContent||'').trim().length;
+  return [...h.querySelectorAll('span,em,strong,mark,b,i')].some(sp=>{const t=(sp.textContent||'').trim();if(!t||t.length>total*.6)return false;const s=css(sp),c=rgba(s.color);
+   return c&&s.backgroundClip!=='text'&&!String(s.webkitBackgroundClip||'').includes('text')&&dist3(c,hc)>90&&hsl(c).s>.25;});});
+ // A newsletter box near the end: a lone email field in the last quarter of the page.
+ const pageH=Math.max(1,document.documentElement.scrollHeight);
+ const tailSignup=[...document.querySelectorAll('input[type=email]')].filter(visible).filter(inp=>{const r=inp.getBoundingClientRect(),top=r.top+scrollY;if(top<pageH*.72)return false;
+  const box=inp.closest('form')||inp.parentElement?.parentElement;const fields=box?[...box.querySelectorAll('input,select,textarea')].filter(x=>!['hidden','submit','button'].includes(x.type)).length:1;return fields<=1;});
+ // Empty frames: image-sized boxes with a fill or border but nothing in them (no text, image, video, canvas or svg).
+ const emptyFrames=els.filter(el=>{if(graphic(el)||pinned(el))return false;const r=el.getBoundingClientRect();if(r.width<120||r.height<80||r.width>innerWidth*.95)return false;
+  if((el.innerText||'').trim()||el.querySelector('img,video,canvas,svg,picture,iframe,input,button'))return false;const s=css(el);if(s.backgroundImage!=='none')return false;
+  const bg=rgba(s.backgroundColor);return (bg&&bg[3]>.05)||parseFloat(s.borderTopWidth)>0&&(rgba(s.borderTopColor)?.[3]??0)>.05;}).filter((el,i,a)=>!a.some(o=>o!==el&&o.contains(el)));
+ // Hero that misses its screen: the main headline starts on the first screen but its first call to action does not.
+ const heroCta=(()=>{const h=document.querySelector('h1');if(!h||!visible(h))return null;const top=h.getBoundingClientRect().top+scrollY;if(top>innerHeight*.85)return null;
+  const sec=h.closest('section,header,main>div,[class*=hero]')||h.parentElement;const cta=[...(sec?.querySelectorAll('a[href],button')||[])].filter(visible).find(el=>el.compareDocumentPosition(h)&Node.DOCUMENT_POSITION_PRECEDING&&(el.matches('button')||boxy(el)));
+  if(!cta)return null;const ct=cta.getBoundingClientRect().top+scrollY;return {headlineTop:Math.round(top),ctaTop:Math.round(ct),fold:innerHeight,below:ct+20>innerHeight};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
@@ -154,6 +171,7 @@ export function collectAiTells(){
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   hero,
+  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
   editorial:{tracked:tracked.length,numbered:numbered.length,headings:uniqueHeads.length,periodHeadings:periodHeads.length,serifDisplay:bigHeads.length?+(bigHeads.filter(isSerif).length/bigHeads.length).toFixed(2):0,paper:!!rootBg&&(([r,g,b])=>r>=g&&g>=b&&r-b>=6&&r-b<=45&&b>=195)(rootBg),targets:sample([...periodHeads,...tracked,...numbered])},
   text:text.slice(0,20000),labels:labels.slice(0,200)
@@ -193,6 +211,10 @@ const copy={
  'tracked-labels':{ko:['자간 넓힌 작은 대문자 라벨 반복','"SOUTH-FACING CABINS · SLEEPS TWO" 같은 작은 대문자 라벨을 섹션마다 붙이는 것은 2025–26년 AI 사이트의 에디토리얼 템플릿 신호다.','라벨은 정보가 있을 때만(날짜, 카테고리). 장식용 눈썹 라벨은 지우고 제목이 스스로 말하게 한다.'],ja:['字間を広げた小さな大文字ラベルの多用','「SOUTH-FACING CABINS · SLEEPS TWO」のような小さな大文字ラベルを各セクションに付けるのは、2025〜26年のAIサイトに多いエディトリアル風テンプレートのサイン。','ラベルは日付・カテゴリなど情報があるときだけ。飾りの見出しラベルは外し、見出し自体で伝える。'],en:['Repeated tiny tracked uppercase labels','Small letter-spaced caps over every section ("SOUTH-FACING CABINS · SLEEPS TWO") are the 2025–26 editorial AI template.','Keep labels only when they carry information (date, category); drop decorative eyebrows and let headings speak.']},
  'numbered-labels':{ko:['번호 붙인 섹션 라벨("01 / REFERENCES")','"01 / …", "STEP 1 · …" 라벨은 순서가 없는 내용에도 붙는 AI 템플릿 장식이다.','실제 순서가 있는 절차에만 번호를 쓰고, 나머지는 번호 없이 제목만.'],ja:['番号付きのセクションラベル（「01 / REFERENCES」）','「01 / …」「STEP 1 · …」は順序のない内容にも付けられるAIテンプレートの飾り。','実際に手順があるところだけ番号を使い、ほかは見出しだけにする。'],en:['Numbered section labels ("01 / REFERENCES")','"01 / …" and "STEP 1 · …" labels get stamped on content with no real order — an AI template ornament.','Number only real sequences; elsewhere use plain headings.']},
  'period-headlines':{ko:['마침표로 끝나는 짧은 대형 제목 반복','"Stay by the sea." "Made slowly. Kept for years."처럼 모든 섹션 제목이 마침표 달린 짧은 문장이면 생성형 카피의 리듬으로 읽힌다.','제목 하나만 선언문으로 두고, 나머지는 내용을 설명하는 제목(명사구·질문)으로 바꾼다.'],ja:['ピリオドで終わる短い大見出しの連続','「Stay by the sea.」のように全セクションの見出しがピリオド付きの短文だと、生成AIのコピーのリズムに見える。','宣言文の見出しは一つだけにし、ほかは内容を説明する見出しにする。'],en:['Short display headings ending in a period','When every section headline is a clipped sentence with a period ("Stay by the sea."), it reads as generated copy rhythm.','Keep one declarative headline; make the rest descriptive (noun phrases, questions).']},
+ 'accent-word':{ko:['제목의 한 단어만 다른 색','제목 안에서 한 구절만 강조색으로 칠하는 것은 AI 랜딩 페이지의 단골 수법이다(그라데이션이 아닌 단색도 마찬가지).','강조는 글자 크기·굵기·줄바꿈이나 문장 자체로 만든다. 색은 행동 버튼과 상태 표시에 아낀다.'],ja:['見出しの一語だけ別の色','見出しの一部だけをアクセントカラーで塗るのは、AIランディングページの定番の手口（グラデーションでない単色でも同じ）。','強調は文字の大きさ・太さ・改行や文そのもので作る。色は行動ボタンや状態表示に取っておく。'],en:['One coloured word in a headline','Painting one phrase of a headline in the accent colour is a stock move of AI landing pages, solid colour as much as gradient.','Make emphasis with size, weight, line breaks or the sentence itself. Save colour for actions and states.']},
+ 'newsletter-tail':{ko:['페이지 끝의 이메일 구독란','내용과 상관없이 맨 끝에 붙는 이메일 하나짜리 구독 상자는 생성된 페이지의 기본 마무리다.','구독할 이유(정기 소식, 재입고 알림 등)가 실제로 있을 때만 두고, 페이지의 주 행동으로 끝낸다.'],ja:['ページ末尾のメール登録欄','内容と関係なく最後に付くメールアドレスだけの登録ボックスは、生成ページの定番の締め方。','登録する理由（定期のお知らせ、再入荷通知など）が本当にあるときだけ置き、ページの主な行動で締める。'],en:['Email sign-up box at the end','A lone email sign-up bolted to the bottom of the page, whatever the page is for, is the default ending of generated pages.','Keep it only when there is something to subscribe to, and end the page on its primary action.']},
+ 'empty-frames':{ko:['빈 이미지 틀','배경색이나 테두리만 있고 안이 빈 상자는 넣을 사진·화면이 없다는 표시다.','실제 사진이나 제품 화면을 넣거나, 출처를 밝힌 임시 사진(ui-refiner photos)을 쓰거나, 틀을 없애고 글과 표로 보여 준다.'],ja:['空の画像枠','背景色や枠線だけで中身のない箱は、入れる写真や画面がないことの表れ。','実際の写真や製品画面を入れるか、出典付きの仮写真（ui-refiner photos）を使うか、枠をやめて文章や表で見せる。'],en:['Empty image frames','Boxes with only a fill or border and nothing inside say there was no photo or screen to show.','Put in a real photo or product screen, use credited stand-ins (ui-refiner photos), or drop the frame and show the content as text or a table.']},
+ 'hero-cta-below':{ko:['첫 화면에서 잘린 히어로','제목은 첫 화면에 있는데 그 행동 버튼은 화면 아래로 밀려 있다. 1440×900에서 확인했다.','제목·소개문·여백을 줄여 주 행동을 첫 화면에 올리거나, 히어로를 한 화면 안에 맞춘다.'],ja:['ファーストビューで切れるヒーロー','見出しはファーストビューにあるのに、その行動ボタンが画面の下に押し出されている（1440×900で確認）。','見出し・リード文・余白を詰めて主な行動をファーストビューに上げるか、ヒーローを1画面に収める。'],en:["Hero that misses its screen","The headline is on the first screen but its call to action is pushed below it at 1440×900.","Tighten the headline, intro and spacing so the primary action is on the first screen, or fit the hero to one screen."]},
  'tinted-page':{ko:['흰색 대신 옅은 미색 배경','페이지 바탕이 순백이 아닌 옅은 회백·미색이다. 보정 데이터에서 사람이 만든 사이트는 70–87%가 순백이고 미색은 약 10%인데, AI 사이트는 25–40%가 미색이었다.','브랜드 근거가 없으면 순백을 쓰거나, 바탕색을 쓸 거라면 브랜드 색에서 온 분명한 색으로 정한다.'],ja:['白ではなく薄いオフホワイトの背景','ページの地が純白ではなく、ごく薄いグレーやクリーム色。校正データでは人が作ったサイトの70〜87%が純白でオフホワイトは約10%、AIサイトは25〜40%がオフホワイトだった。','ブランド上の根拠がなければ純白にするか、地色を使うならブランド色から決めたはっきりした色にする。'],en:['Faint off-white page instead of white','The page surface is a faint grey or cream rather than white. In the calibration data 70–87% of human-made sites use plain white and about 10% off-white; 25–40% of AI sites use off-white.','Without a brand reason use plain white, or if the page gets a surface colour, take a clear one from the brand.']},
  'paper-serif':{ko:['크림색 배경 + 세리프 대형 제목','따뜻한 오프화이트 배경에 세리프 디스플레이 제목은 2025–26년 AI 사이트의 기본 "고급" 룩이다(단독으로는 브랜드 선택일 수 있음).','브랜드 근거가 있으면 유지하되, 서체·배경 중 하나는 브랜드 고유의 것으로. 근거가 없으면 제품 사진·색으로 개성을 만든다.'],ja:['クリーム色の背景＋セリフの大見出し','温かいオフホワイトの背景にセリフ体の大見出しは、2025〜26年のAIサイトの定番「上質」ルック（単独ならブランドの選択の場合もある）。','ブランド上の根拠があれば維持し、書体か背景のどちらかはブランド固有のものにする。'],en:['Cream paper background with serif display type','Warm off-white plus a serif display face is the default "premium" look of 2025–26 AI sites (alone it may be a brand choice).','Keep it only with a brand reason, and make either the typeface or the surface specific to the brand.']},
  'buzzword-copy':{ko:['상투적 마케팅 문구','"잠재력을 깨우세요", "seamless" 같은 문구는 AI 카피의 대표 신호이며 아무 정보도 주지 않는다.','무엇을, 누구를 위해, 얼마나 빨리/싸게 하는지 구체적 사실과 숫자로 다시 쓴다.'],en:['Buzzword copy','"Unlock your potential", "seamless" etc. are classic AI copy and carry no information.','Rewrite with concrete facts: what it does, for whom, with numbers.']},
@@ -206,7 +228,7 @@ export const signalTitle=(id,lang='ko')=>copy[id]?.[langKey(lang)][0];
 // Calibrated on 30 ChatGPT Sites vs 26 human sites (2026-11, scripts/calibrate-scan.mjs):
 // transition: all and repeated generic CTAs fired more on human sites, so they are reported but not scored.
 const UNSCORED=new Set(['transition-all','generic-cta','tinted-page']);
-const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5,nested:3,nestedHosts:3,iconBoxes:3};
+const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5,nested:3,nestedHosts:3,iconBoxes:3,emptyFrames:2};
 
 /** Weighted sum of signals, dampened 15% per craft signal. */
 export function scoreSignals(signals,craft=[]){
@@ -251,6 +273,10 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  // Calibration (2026-11): faint off-white surfaces are ~10% of human sites and 25–40% of AI sites, but scoring it raised holdout human false positives 3%→7%, so it is reported only; refine uses it to keep directions apart.
  const bg=m.rootBackground?.rgb;
  if(bg&&!out.some(x=>x.id==='paper-serif')&&Math.min(...bg)>=236&&!(Math.min(...bg)>=247&&Math.max(...bg)-Math.min(...bg)<=8)&&Math.max(...bg)-Math.min(...bg)<=14)add('tinted-page','weak',{background:`rgb(${bg.join(',')})`});
+ if(m.accentWords&&m.accentWords.count>=1)add('accent-word','moderate',{headings:m.accentWords.count},m.accentWords.targets);
+ if(m.tailSignup&&m.tailSignup.count>=1)add('newsletter-tail','weak',{count:m.tailSignup.count},m.tailSignup.targets);
+ if(m.emptyFrames&&m.emptyFrames.count>=TH.emptyFrames)add('empty-frames','moderate',{frames:m.emptyFrames.count},m.emptyFrames.targets);
+ if(m.heroCta?.below)add('hero-cta-below','weak',{headlineTop:m.heroCta.headlineTop,ctaTop:m.heroCta.ctaTop,fold:m.heroCta.fold});
  if(m.hueBuckets>=5)add('many-hues','weak',{hueBuckets30deg:m.hueBuckets});
  if(m.transitionAll.count)add('transition-all',m.transitionAll.count>=3?'moderate':'weak',{count:m.transitionAll.count},m.transitionAll.targets);
  const lower=m.text.toLowerCase(),found=[...phrases.en,...phrases.ko,...phrases.ja].filter(p=>lower.includes(p));

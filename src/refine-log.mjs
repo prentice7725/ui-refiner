@@ -144,5 +144,7 @@ export async function recordChoice(dir,{pick,page,log}={}){
  if(!item)throw new Error(`--pick must be one of ${sheet.items.map(d=>d.label).join(', ')}`);
  const entries=await readLog(log);
  const entry={date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
- entries.push(entry);return {entry,file:await writeLog(entries.slice(-200),log)};
+ entries.push(entry);
+ await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify(entry,null,1)+'\n');
+ return {entry,file:await writeLog(entries.slice(-200),log)};
 }
