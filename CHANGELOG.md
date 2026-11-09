@@ -5,9 +5,31 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- `ui-refiner directions deal <folder> --kind <kind> --lang <lang>` assigns each of the three mocks four things:
+  - a hero structure, weighted by how often human-made sites of that page kind use it;
+  - a Google Fonts pairing, three different voices from `data/type-pairs.json`;
+  - an accent hue family;
+  - a surface (one non-white at most).
+
+  It avoids what was chosen recently for other projects and deals overused faces (Bricolage Grotesque, Fraunces, IBM Plex Mono) last. `--no-photo` skips structures that need a real photo.
+- `ui-refiner photos "<subject>"` saves openly licensed stand-in photographs from Wikimedia Commons (CC0, public domain, CC BY, CC BY-SA; no stock sites) with `credits.json` and a footer credit line in the page language. Pages mark each one `data-stand-in`, and the refine workflow tells the user what to replace. Human-made sites open with a full-bleed photo a third of the time; pages without imagery read as generated. `directions` and `directions verify` count stand-ins.
+- `ui-refiner keep record <page>` lists what a refine must not lose: link targets, phone and mail links, forms and their fields, and figures (prices, counts, ratings, times), including animated counters at their target value. `keep check <page>` compares the refined page with it and exits 1 on any loss. New figures are listed for the person to confirm. In benchmark round 5 an unchecked refine changed 409,847 to 420,000 and a rating from 4.7 to 4.8.
+- Refine finish gate: a Stop hook (`hooks/hooks.json` for the plugin, added to project settings by `install-agent-skill`) that keeps the agent working while a refine in the project lacks a passing `keep check` or, once a direction is recorded, a passing `directions verify`. It blocks at most three times, never while the agent is waiting for the person to pick a direction, ignores state older than 12 hours, and is turned off with `UI_REFINER_GATE=off`.
+- `ui-refiner directions record <folder> --pick B` keeps the chosen direction in a per-user log (`~/.ui-refiner/refine-log.json`, or `UI_REFINER_HOME`). The log is per user so different clients do not get the same page. Pages of one project may share a direction.
+- `ui-refiner directions verify <folder> <page>` reports when the applied page drifted from the chosen mock's hero structure, surface or type (exit 1). In the benchmark a page whose chosen mock opened with content ended as "left headline, stacked".
+- The directions sheet also warns when a mock ignores its deal (structure, type, accent) or repeats a hero, type pair, surface or accent hue picked for another project. It also shows each mock's accent and how common its hero structure is on human-made sites.
+- `data/hero-reference/human.json`: first-screen structure of 406 human-made sites, overall and per page kind. Only 4% use the AI favourite of a left headline with a side panel. 33% open with a full-bleed photo and 29% with content and no visible headline.
+- `scripts/calibration-small.tsv`: 102 small and mid-size organisations (clinics, food banks, bakeries, cafes, small SaaS, fintech, logistics, hiring pages, inns, studios, local public bodies) in Korean, Japanese and English. 16% of them reach 20 on the AI-look index, mostly developer-tool SaaS pages such as Raycast, Resend and cal.com, the look AI pages copy.
 - `ui-refiner directions` shows each mock's measured page surface and type pair, and warns when two directions share a surface or a type pair, or when all of them sit on faint off-white. The refine workflow redoes the overlapping mock before showing the sheet.
 - Scan collector records the first-screen skeleton (`hero`: headline alignment, a panel or image beside it, a full-bleed photo, a strip of figures). `directions` shows it per direction and warns when two directions share one.
 - `tinted-page` AI-look signal (reported only): a faint grey or cream page surface instead of white. Calibration: 69–87% of human sites use plain white and about 10% off-white, against 23–39% off-white on AI sites. Scoring it raised holdout human false positives from 3% to 7%, so it is not scored.
+- Four more AI-look signals, reported only:
+  - `accent-word`: one word of a heading in a different solid colour;
+  - `newsletter-tail`: a lone e-mail sign-up near the bottom of the page;
+  - `empty-frames`: two or more filled or bordered boxes with nothing in them;
+  - `hero-cta-below`: the headline is on the first screen but its first button is not.
+
+  Calibration on 30–77 AI and 26–209 human sites per set: AI pages have a coloured heading word 30–34% of the time against 3–19% for human pages (16% on small SaaS-heavy sites). Scoring it as a weak signal added 3 points of AI detection but also 1–2 human false positives per set, so none of the four is scored. Empty frames hit human pages as often as AI pages (23% against 10% on the tuning set).
 
 ### Changed
 - Refine guidance: the three directions use three different hero structures (at most one "left headline, panel beside it"), and at most one may use a tinted paper surface; the others use plain white, a dark ground or a clear brand colour.
@@ -16,6 +38,10 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   - Round 4: side-panel heroes went from 4–5 of 8 pages to 0.
   - A new set-level judge sees all eight sites at once. It ranked round 4 the least templated set in both runs (sameness 5–6, against 8 for round 2).
   - The per-page judge still prefers round 2 (mean rank 1.9 against 2.9).
+- Refine benchmark rounds 5 and 7, with sheets of real human-made sites as a control for the set judge (human sets score sameness 2):
+  - Round 5 (dealt directions, shared log): mocks followed their deals but five of eight applied pages fell back to "left headline, stacked", and one changed figures.
+  - Round 7 (plus verify, keep and the finish gate): no drift, no changed figures, six different hero structures across eight pages, AI-look index 0 everywhere. The set judge rated it sameness 3–4 and ranked it second of eight in both runs, behind one human set and ahead of the other.
+  - The per-page judge ranked round 7 below the other refine arms (mean rank 3.6 against 1.8 for round 2). Better single pages without losing the variety is the open problem.
 
 ## 0.6.0 — 2026-11-08
 

@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "measured": "2026-11-08",
+ "sites": 406,
+ "source": "Human-made sites, first desktop screen at 1440x900, deduplicated by host: global and KR/JP brands, public bodies and media (scripts/calibration-sites, -holdout, -extra), small and mid-size organisations (scripts/calibration-small.tsv), and the Japanese reference set (data/ja-reference). robots.txt respected; measurements only.",
+ "note": "below-fold also counts pages with no visible h1 (content, products or news first).",
+ "share": {
+  "full-bleed": 0.333,
+  "below-fold": 0.293,
+  "left+stacked": 0.135,
+  "center+stacked": 0.076,
+  "left+media": 0.071,
+  "left+panel": 0.039,
+  "wide+stacked": 0.02,
+  "right+media": 0.012,
+  "center+media": 0.007,
+  "right+panel": 0.005,
+  "center+panel": 0.005,
+  "right+stacked": 0.002
+ },
+ "sets": {
+  "big": {
+   "sites": 110,
+   "share": {
+    "below-fold": 0.318,
+    "left+panel": 0.036,
+    "center+stacked": 0.109,
+    "full-bleed": 0.273,
+    "left+stacked": 0.127,
+    "left+media": 0.082,
+    "right+panel": 0.009,
+    "center+media": 0.009,
+    "wide+stacked": 0.009,
+    "right+media": 0.018,
+    "right+stacked": 0.009
+   }
+  },
+  "small": {
+   "sites": 91,
+   "share": {
+    "below-fold": 0.231,
+    "left+panel": 0.044,
+    "center+stacked": 0.132,
+    "left+media": 0.055,
+    "full-bleed": 0.385,
+    "center+panel": 0.011,
+    "left+stacked": 0.11,
+    "right+media": 0.011,
+    "wide+stacked": 0.022
+   }
+  },
+  "ja": {
+   "sites": 205,
+   "share": {
+    "full-bleed": 0.341,
+    "below-fold": 0.307,
+    "left+stacked": 0.151,
+    "center+stacked": 0.034,
+    "left+media": 0.073,
+    "center+media": 0.01,
+    "wide+stacked": 0.024,
+    "center+panel": 0.005,
+    "right+media": 0.01,
+    "left+panel": 0.039,
+    "right+panel": 0.005
+   }
+  }
+ },
+ "byKind": {
+  "public": {
+   "sites": 97,
+   "share": {
+    "full-bleed": 0.34,
+    "below-fold": 0.206,
+    "left+stacked": 0.186,
+    "left+media": 0.124,
+    "left+panel": 0.062,
+    "center+stacked": 0.052,
+    "center+media": 0.01,
+    "right+media": 0.01,
+    "wide+stacked": 0.01
+   }
+  },
+  "place": {
+   "sites": 18,
+   "share": {
+    "below-fold": 0.5,
+    "full-bleed": 0.278,
+    "center+stacked": 0.111,
+    "center+panel": 0.056,
+    "left+panel": 0.056
+   }
+  },
+  "software": {
+   "sites": 55,
+   "share": {
+    "full-bleed": 0.4,
+    "below-fold": 0.218,
+    "center+stacked": 0.145,
+    "left+stacked": 0.127,
+    "left+media": 0.055,
+    "wide+stacked": 0.036,
+    "right+media": 0.018
+   }
+  },
+  "service": {
+   "sites": 20,
+   "share": {
+    "full-bleed": 0.5,
+    "left+stacked": 0.25,
+    "below-fold": 0.15,
+    "left+panel": 0.1
+   }
+  },
+  "studio": {
+   "sites": 22,
+   "share": {
+    "below-fold": 0.591,
+    "full-bleed": 0.182,
+    "wide+stacked": 0.091,
+    "right+media": 0.045,
+    "left+panel": 0.045,
+    "center+stacked": 0.045
+   }
+  },
+  "company": {
+   "sites": 74,
+   "share": {
+    "full-bleed": 0.419,
+    "below-fold": 0.324,
+    "left+stacked": 0.135,
+    "left+media": 0.054,
+    "center+stacked": 0.027,
+    "center+media": 0.014,
+    "wide+stacked": 0.014,
+    "center+panel": 0.014
+   }
+  },
+  "media": {
+   "sites": 15,
+   "share": {
+    "below-fold": 0.4,
+    "left+panel": 0.133,
+    "center+stacked": 0.133,
+    "left+stacked": 0.133,
+    "wide+stacked": 0.067,
+    "right+panel": 0.067,
+    "left+media": 0.067
+   }
+  }
+ },
+ "kinds": {
+  "software": "software, SaaS, fintech, startups",
+  "service": "clinics, health, logistics, hiring and other services",
+  "place": "cafes, bakeries, inns, studios people visit",
+  "public": "public bodies, universities, museums, food banks and other non-profits",
+  "company": "large companies (corporate sites)",
+  "studio": "design and architecture studios",
+  "media": "news and magazines"
+ }
+}

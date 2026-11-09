@@ -12,7 +12,7 @@ It renders the page in a real browser, measures what it sees, and writes a repor
 
 ## What it does
 
-- **Refine, not just review.** Before changing anything, `/ui-refine` mocks three clearly different first-screen directions and puts their screenshots side by side (`ui-refiner directions`). You pick one, or a mix. It then rebuilds the page around a signature element taken from the real content: this month's ledger for a budgeting app, today's hours for a clinic. Facts and links stay, and a rescan shows the change. On 8 pages Claude made from one-line prompts, a blind design judge ranked it best (mean rank 1.5). The other versions ranked: plain "make it less AI-generated" prompt 1.9, an earlier refine that only stripped decoration 2.6, original 4.0. The plain prompt moved all 8 pages to the cream-and-serif editorial template ([benchmark](docs/REFINE_BENCHMARK_2026-11-08.md)).
+- **Refine, not just review.** Before changing anything, `/ui-refine` mocks three clearly different first-screen directions and puts their screenshots side by side (`ui-refiner directions`). You pick one, or a mix. It then rebuilds the page around a signature element taken from the real content: this month's ledger for a budgeting app, today's hours for a clinic. Facts and links stay, and a rescan shows the change. On 8 pages Claude made from one-line prompts, a blind design judge ranked it best (mean rank 1.5). The other versions ranked: plain "make it less AI-generated" prompt 1.9, an earlier refine that only stripped decoration 2.6, original 4.0. The plain prompt moved all 8 pages to the cream-and-serif editorial template ([benchmark](docs/REFINE_BENCHMARK_2026-11-08.md)). The three directions are not left to the model's habits. `ui-refiner directions deal` assigns each one a hero structure, a type pairing, an accent family and a surface. Structures are weighted by how 406 human-made sites of the same kind open their first screen. A per-user log keeps the next client from getting the same page.
 - **An AI-look score checked against real sites.** It was tuned on 30 ChatGPT-built sites and 26 human sites, then tested unchanged on 38 Lovable/v0 sites and 29 design-forward studio and editorial sites. At a score of 20 or more it flags 66–70% of the AI-built sites and 0–3% of the human ones; a later, wider sample (77 Replit/Lovable sites, 54 Korean, global-brand, editorial, public and personal sites) gave 74% and 15%, because big SaaS brands share the same marketing patterns. Each signal comes with evidence, the reason it reads as generic, and a concrete fix.
 - **Japanese pages placed among 209 real Japanese sites.** Company, prefecture, public-body, media, startup and design-brand sites were measured once (robots.txt respected, numbers only). The report shows where the page sits on each measure, so "line height 1.3" becomes "lower than 99% of Japanese sites". Excerpt for [`examples/ai-slop-landing-ja.html`](examples/ai-slop-landing-ja.html):
 
@@ -39,7 +39,13 @@ npm link                                   # optional: makes `ui-refiner` availa
 
 ui-refiner scan your-site.example          # review a live page
 ui-refiner scan localhost:5173             # your dev server; run it again after edits to see what changed
+ui-refiner keep record index.html                                  # list links, forms and figures before a refine
+ui-refiner directions deal refine-directions --kind service --lang en   # deal each mock a hero structure, type pair, accent and surface
 ui-refiner directions refine-directions     # three design-direction mocks (.html) side by side, to pick one
+ui-refiner directions record refine-directions --pick B                # remember the pick so other clients get something else
+ui-refiner photos "dentist chair" --out assets/stand-in             # credited stand-in photos (Wikimedia Commons) until the real ones arrive
+ui-refiner directions verify refine-directions index.html             # check the applied page kept the chosen structure
+ui-refiner keep check index.html                                   # exit 1 if the refined page lost any of them
 ```
 
 That is the whole loop. `scan` takes any URL, bare host name or local `.html` file, needs no config and changes nothing in the target project. Without `npm link`, use `node bin/ui-refiner.mjs scan …` instead.

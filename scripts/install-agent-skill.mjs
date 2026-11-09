@@ -19,6 +19,13 @@ try{
  if(!portable){settings.env??={};settings.env.UI_REFINER_HOME=repo;}
  settings.hooks??={};settings.hooks.PostToolUse??=[];
  if(!settings.hooks.PostToolUse.some(x=>x.hooks?.some(h=>h.command===command)))settings.hooks.PostToolUse.push({matcher:'Write|Edit|MultiEdit|apply_patch',hooks:[{type:'command',command,timeout:15}]});
+ // Refine finish gate: a Stop hook that only acts while a refine has recorded state in the project.
+ const gateWrapper=path.join(destination,'scripts/refine-gate-hook.mjs');
+ const gateRelative=relative.replace(/post-edit-hook\.mjs$/,'refine-gate-hook.mjs');
+ await fs.writeFile(gateWrapper,`#!/usr/bin/env node\nimport {pathToFileURL} from 'node:url';\nimport path from 'node:path';\nconst target=process.env.UI_REFINER_HOME?pathToFileURL(path.resolve(process.env.UI_REFINER_HOME,'scripts/refine-gate-hook.mjs')):new URL(${JSON.stringify(gateRelative)},import.meta.url);\nawait import(target.href);\n`);
+ const gateCommand='node "${CLAUDE_PROJECT_DIR}/.agents/skills/ui-refiner-agent/scripts/refine-gate-hook.mjs"';
+ settings.hooks.Stop??=[];
+ if(!settings.hooks.Stop.some(x=>x.hooks?.some(h=>h.command===gateCommand)))settings.hooks.Stop.push({hooks:[{type:'command',command:gateCommand,timeout:15}]});
  await fs.mkdir(path.dirname(settingsPath),{recursive:true});await fs.writeFile(settingsPath,JSON.stringify(settings,null,2)+'\n');
  await fs.writeFile(path.join(destination,'hook-registration.json'),JSON.stringify({event:'PostToolUse',tools:['Write','Edit','MultiEdit','apply_patch'],command:['node','.agents/skills/ui-refiner-agent/scripts/post-edit-hook.mjs'],cwd:'project root',timeoutSeconds:15,source:'bundled suta',...(portable?{}:{note:'External checkout: UI_REFINER_HOME is configured only in settings.local.json; other hosts must supply it locally.'})},null,2)+'\n');
  // Codex reads .agents/skills; Claude Code discovers project skills under .claude/skills.
