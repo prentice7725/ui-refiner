@@ -136,6 +136,16 @@ export function historyWarnings(items,entries,project,deal=null){
  return w;
 }
 
+/**
+ * Pick-time note, not a warning: when the last `run` picks for other projects were all plain white,
+ * point at the dealt non-white directions. Human sites are white 82% of the time, so one white pick is
+ * normal; a run of them is how round 9 put 8 of 8 pages on white and read as one template.
+ */
+export function pickNotes(items,entries,project,run=4){
+ const prev=others(entries,project).filter(e=>e.bg).slice(-run),odd=items.filter(d=>d.bg&&!whiteish(d.bg)).map(d=>d.label);
+ return prev.length===run&&prev.every(e=>whiteish(e.bg))&&odd.length&&odd.length<items.length?[{id:'white-run',n:run,a:odd.join(', ')}]:[];
+}
+
 /** Appends the picked direction (by label) from the last `directions` run to the log. */
 export async function recordChoice(dir,{pick,page,log}={}){
  const root=path.resolve(dir);
