@@ -167,3 +167,53 @@ Reading:
   - square buttons with one saturated accent.
 - The skeleton warning works inside one page's three directions, but it cannot see that the agent picks the same winner on every page: 7 of 8 chosen directions were "left headline, stacked". Fixing that needs memory across pages, for example a project-level record of what was chosen before.
 - Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
+
+## Round 5: dealt directions and a shared log (same 8 pages)
+
+What changed:
+- `directions deal` assigns each of the three mocks a hero structure (weighted by the 406-site human reference for that page kind), a type pair, an accent family and a surface.
+- `directions record` keeps the chosen direction in a per-user log, and the next deal avoids recent choices.
+- The 8 pages ran one after another with one shared log, as one agency would.
+
+The mocks followed their deals, and the directions sheets differed from page to page. The applied pages did not. Five of eight ended as "left headline, stacked" whatever the chosen mock was, and the ko-fintech refine changed published figures (409,847 → 420,000, 4.7 → 4.8).
+
+The set judge now also saw two sheets of real human-made sites for the same kinds of business (human1, human2). On that judge human sets score sameness 2. Round 5 scored 5–6 and ranked with human2, behind human1 and ahead of round 4.
+
+This led to three checks:
+- `directions verify` compares the applied page with the chosen mock (hero, surface, type);
+- `keep record` and `keep check` list links, forms, fields and figures before and after;
+- a Stop hook blocks the end of a refine until both have passed.
+
+Round 6 was stopped because the code changed during the run. Its results are not used.
+
+## Round 7: verify, keep and the finish gate (same 8 pages)
+
+Same as round 5, plus `keep`, `directions verify`, stand-in photos and the Stop gate hook, sequential with a fresh shared log. Cost: $18.96 for 8 pages (37–76 turns each).
+
+- All 8 pages passed `keep check` and `directions verify` with no drift.
+- No figure changed. Two pages reported figures that looked new:
+  - en-foodbank: the original showed animated counters that start at 0, so keep had recorded none of them. `keep` now reads `data-count` and similar targets.
+  - ja-recruit: the figures came from job data that the original only showed in a script-rendered modal.
+- Applied heroes: below-fold 2, left stacked 2, right + panel 1, full-bleed photo 1, centred 1, wide headline 1. Round 5 had five pages left stacked.
+- Surfaces: white 4, dark 3, pale pink 1. Accent families: red, pink, teal, brown, amber, green, orange.
+- Type: eight different families (Source Sans 3 / Schibsted Grotesk, Hanken Grotesk, Commissioner, Atkinson Hyperlegible, Zen Kaku Gothic New, M PLUS Rounded 1c, IBM Plex Sans KR, Gothic A1).
+- AI-look index: 0 on all 8 pages.
+
+Judges:
+
+| Version | Per-page mean rank (1–5) | Per-page AI look | Set sameness (run 1 / 2) | Set rank of 8 (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 2 | 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 | 4 / 3 |
+| Before | 4.8 | 8.9 | 9 / 8 | 8 / 8 |
+| Plain prompt | 2.0 | 3.4 | 8 / 8 | 6 / 5 |
+| Refine, round 2 | **1.8** | 4.0 | 8 / 8 | 7 / 7 |
+| Refine, round 4 | — | — | 6 / 8 | 5 / 6 |
+| Refine, round 5 | 2.9 | 3.5 | 5 / 7 | 3 / 4 |
+| Refine, round 7 | 3.6 | 4.5 | **3 / 4** | **2 / 2** |
+
+Reading:
+- Across the set, round 7 is the closest to human-made work so far: sameness 3–4 against 2 for real sites. Both runs ranked it right behind the first human set and ahead of the second.
+- Page by page, the judge liked it least of the refine arms. Its notes reward a polished, familiar page, which is the quality the set judge counts against a set when every page shares it. A real client sees one page, so this cost is real and is the next thing to work on.
+- Habits the set judge still saw: heavy grotesk headlines, client data (schedules, ledgers, shipment tables) as the hero, hairline-ruled tables, stat rows.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
