@@ -30,6 +30,7 @@ export async function refineGateProblems(cwd,now=Date.now()){
   const page=verify?.target&&!/^https?:/i.test(verify.target)?path.resolve(cwd,verify.target):null,pageTime=page?await mtime(page):null;
   if(!verify)problems.push('run `ui-refiner directions verify refine-directions <page>`: nothing confirms the page kept the chosen direction');
   else if(verify.drift?.length)problems.push(`the page drifted from the chosen direction (${verify.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}); rebuild it in the chosen structure and verify again`);
+  else if(verify.problems?.length)problems.push(`the first screen ${verify.problems.map(x=>x==='no-claim'?'does not say what this is (add a one-line claim and the main action above the fold)':'has its headline but the main button below the fold').join(' and ')}; fix it and verify again`);
   else if(pageTime&&Date.parse(verify.checkedAt)<pageTime)problems.push('the page changed after the last `directions verify`; run it again');
  }
  return problems;

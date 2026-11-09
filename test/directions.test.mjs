@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseDirectionNote,renderDirectionsMarkdown,renderDirectionsHtml,directionWarnings} from '../src/directions.mjs';
+import {parseDirectionNote,renderDirectionsMarkdown,renderDirectionsHtml,directionWarnings,firstScreenProblems} from '../src/directions.mjs';
 
 test('direction note: concept first, then key: value parts', () => {
  const n=parseDirectionNote('<!doctype html>\n<!-- direction: The clinic\'s front desk | type: Bricolage Grotesque + Public Sans | palette: deep green, marigold | signature: today\'s hours board -->\n<h1>x</h1>');
@@ -51,4 +51,15 @@ test('directions sheet: names the hero skeleton and warns when two directions sh
  assert.deepEqual(directionWarnings(items),[{id:'same-hero',a:'A',b:'B',c:'left+panel'}]);
  assert.match(renderDirectionsMarkdown(items,'ja'),/AとBのヒーローの構成が同じです（左寄せの見出し＋横にパネル）。/);
  assert.match(renderDirectionsMarkdown(items,'en'),/- Surface: #ffffff · Measured type: C · Hero layout: full-bleed photo or video/);
+});
+
+test('first screen: warns when nothing says what this is (unless a photo carries it) or the button falls below the fold', () => {
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:false,media:0,action:false}}),['no-claim']);
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:false,media:.8,action:false}}),[],'a full-bleed photo can carry the first screen');
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,media:0,action:true},heroCta:{below:true}}),['cta-below']);
+ assert.deepEqual(firstScreenProblems({}),[]);
+ const w=directionWarnings([{label:'A',first:['no-claim']},{label:'B',first:[]}]);
+ assert.deepEqual(w,[{id:'no-claim',a:'A'}]);
+ for(const lang of ['ko','ja','en'])assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',signals:[],score:0,quality:0,first:['no-claim']}],lang,w),/A/);
+ assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',signals:[],score:0,quality:0}],'ko',w),/첫 화면에 무엇을 하는 곳인지/);
 });
