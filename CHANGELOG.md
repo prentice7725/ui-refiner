@@ -5,6 +5,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- First-screen check: the scan collector records whether the first screen has a one-line claim (outside the navigation), a main action, and how much of it a photo or image covers. `directions` and `directions verify` warn when nothing says what the page is and no large image carries it, or when the headline's button sits below the fold. `verify` exits 1 and the finish gate blocks on it. In benchmark round 7 the two pages that opened with a large board and no claim were judged worst of their sets. Of 33 small human sites, only 1 had neither a claim nor a large photo on the first screen.
 - `ui-refiner directions deal <folder> --kind <kind> --lang <lang>` assigns each of the three mocks four things:
   - a hero structure, weighted by how often human-made sites of that page kind use it;
   - a Google Fonts pairing, three different voices from `data/type-pairs.json`;
@@ -32,6 +33,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   Calibration on 30–77 AI and 26–209 human sites per set: AI pages have a coloured heading word 30–34% of the time against 3–19% for human pages (16% on small SaaS-heavy sites). Scoring it as a weak signal added 3 points of AI detection but also 1–2 human false positives per set, so none of the four is scored. Empty frames hit human pages as often as AI pages (23% against 10% on the tuning set).
 
 ### Changed
+- The `below-fold` deal now asks for real content in place of a big headline while the first screen still says what the page is and shows the main action. Before, its brief ("the name and claim are small or come after it") produced first screens without either.
 - Refine guidance: the three directions use three different hero structures (at most one "left headline, panel beside it"), and at most one may use a tinted paper surface; the others use plain white, a dark ground or a clear brand colour.
 - Refine benchmark rounds 3 and 4 (docs/REFINE_BENCHMARK_2026-11-08.md):
   - Round 3: off-white surfaces went from 7 of 8 pages to 0.

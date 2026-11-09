@@ -153,6 +153,15 @@ export function collectAiTells(){
  const heroCta=(()=>{const h=document.querySelector('h1');if(!h||!visible(h))return null;const top=h.getBoundingClientRect().top+scrollY;if(top>innerHeight*.85)return null;
   const sec=h.closest('section,header,main>div,[class*=hero]')||h.parentElement;const cta=[...(sec?.querySelectorAll('a[href],button')||[])].filter(visible).find(el=>el.compareDocumentPosition(h)&Node.DOCUMENT_POSITION_PRECEDING&&(el.matches('button')||boxy(el)));
   if(!cta)return null;const ct=cta.getBoundingClientRect().top+scrollY;return {headlineTop:Math.round(top),ctaTop:Math.round(ct),fold:innerHeight,below:ct+20>innerHeight};})();
+ // First screen, whatever the layout: a line that says what this is, and a main action outside the header.
+ const firstScreen=(()=>{const fold=innerHeight,inFold=el=>{const r=el.getBoundingClientRect();return r.top+scrollY<fold&&r.bottom+scrollY>0;},chrome=el=>{if(el.closest('nav,[role=navigation]'))return true;const h=el.closest('header,[role=banner]');return !!h&&h.getBoundingClientRect().height<=fold*.35;};
+  const own=el=>[...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').replace(/\s+/g,' ').trim();
+  const says=t=>{const letters=(t.match(/[\p{L}]/gu)||[]).length,cjk=(t.match(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/gu)||[]).length;return cjk>=6||letters>=12;};
+  const claim=[...document.querySelectorAll('h1,h2,p,div,span,strong,a')].filter(el=>!chrome(el)&&visible(el)&&inFold(el)&&parseFloat(css(el).fontSize)>=24&&says(el.innerText||own(el))).sort((a,b)=>parseFloat(css(b).fontSize)-parseFloat(css(a).fontSize))[0];
+  const action=[...document.querySelectorAll('a[href],button')].filter(el=>!chrome(el)&&visible(el)&&!/skip|본문|本文/i.test((el.className||'')+' '+(el.innerText||''))&&el.getBoundingClientRect().bottom+scrollY<=fold&&(el.matches('button')||boxy(el))&&(el.innerText||'').trim().length>=2&&(el.innerText||'').trim().length<=40)[0];
+  const vis=el=>{const r=el.getBoundingClientRect();return Math.max(0,Math.min(r.right,innerWidth)-Math.max(r.left,0))*Math.max(0,Math.min(r.bottom,fold)-Math.max(r.top,0));};
+  const media=Math.min(1,[...document.querySelectorAll('img,video,picture,canvas,svg:not(svg svg)'),...[...document.querySelectorAll('body *')].slice(0,1500).filter(el=>/url\(/.test(css(el).backgroundImage))].filter(el=>visible(el)&&!chrome(el)&&el.getBoundingClientRect().width>=200).reduce((n,el)=>n+vis(el),0)/(innerWidth*fold));
+  return {fold,media:+media.toFixed(2),claim:!!claim,claimText:claim?(claim.innerText||'').trim().slice(0,80):null,action:!!action,actionText:action?(action.innerText||'').trim().slice(0,40):null};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
@@ -171,7 +180,7 @@ export function collectAiTells(){
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   hero,
-  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,
+  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,firstScreen,
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
   editorial:{tracked:tracked.length,numbered:numbered.length,headings:uniqueHeads.length,periodHeadings:periodHeads.length,serifDisplay:bigHeads.length?+(bigHeads.filter(isSerif).length/bigHeads.length).toFixed(2):0,paper:!!rootBg&&(([r,g,b])=>r>=g&&g>=b&&r-b>=6&&r-b<=45&&b>=195)(rootBg),targets:sample([...periodHeads,...tracked,...numbered])},
   text:text.slice(0,20000),labels:labels.slice(0,200)

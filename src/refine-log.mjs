@@ -19,7 +19,7 @@ export const HERO_STRUCTURES={
  'wide+stacked':'One very large headline across the full width; the signature element follows below.',
  'center+stacked':'A short centred headline; the signature element follows below at full width.',
  'left+stacked':'Headline in a narrow left column; the signature element runs full width below it.',
- 'below-fold':'Content first: the signature element (or the products, schedule, news) opens the page; the name and claim are small or come after it.'
+ 'below-fold':'Content first: real content (products, schedule, listings, news) takes most of the first screen instead of a big headline. The first screen still says what this is in one line (it need not be the h1) and shows the main action. Never an empty or mock board.'
 };
 
 export function logPath(file){return file||path.join(process.env.UI_REFINER_HOME||path.join(os.homedir(),'.ui-refiner'),'refine-log.json');}
