@@ -227,7 +227,7 @@ export const signalTitle=(id,lang='ko')=>copy[id]?.[langKey(lang)][0];
 
 // Calibrated on 30 ChatGPT Sites vs 26 human sites (2026-11, scripts/calibrate-scan.mjs):
 // transition: all and repeated generic CTAs fired more on human sites, so they are reported but not scored.
-const UNSCORED=new Set(['transition-all','generic-cta','tinted-page']);
+const UNSCORED=new Set(['transition-all','generic-cta','tinted-page','newsletter-tail','empty-frames','hero-cta-below','accent-word']);
 const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5,nested:3,nestedHosts:3,iconBoxes:3,emptyFrames:2};
 
 /** Weighted sum of signals, dampened 15% per craft signal. */
@@ -273,7 +273,7 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  // Calibration (2026-11): faint off-white surfaces are ~10% of human sites and 25–40% of AI sites, but scoring it raised holdout human false positives 3%→7%, so it is reported only; refine uses it to keep directions apart.
  const bg=m.rootBackground?.rgb;
  if(bg&&!out.some(x=>x.id==='paper-serif')&&Math.min(...bg)>=236&&!(Math.min(...bg)>=247&&Math.max(...bg)-Math.min(...bg)<=8)&&Math.max(...bg)-Math.min(...bg)<=14)add('tinted-page','weak',{background:`rgb(${bg.join(',')})`});
- if(m.accentWords&&m.accentWords.count>=1)add('accent-word','moderate',{headings:m.accentWords.count},m.accentWords.targets);
+ if(m.accentWords&&m.accentWords.count>=1)add('accent-word','weak',{headings:m.accentWords.count},m.accentWords.targets);
  if(m.tailSignup&&m.tailSignup.count>=1)add('newsletter-tail','weak',{count:m.tailSignup.count},m.tailSignup.targets);
  if(m.emptyFrames&&m.emptyFrames.count>=TH.emptyFrames)add('empty-frames','moderate',{frames:m.emptyFrames.count},m.emptyFrames.targets);
  if(m.heroCta?.below)add('hero-cta-below','weak',{headlineTop:m.heroCta.headlineTop,ctaTop:m.heroCta.ctaTop,fold:m.heroCta.fold});
