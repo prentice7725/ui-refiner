@@ -14,6 +14,8 @@ test('deal: three different structures, recent picks for other projects go last'
  assert.ok(dealt.includes('below-fold')&&!dealt.includes('wide+stacked')&&!dealt.includes('full-bleed'),'never-chosen structures first, the latest picks last');
  assert.equal(new Set(dealt.map(k=>k.split('+')[1]??k)).size,3,'spread over structure families');
  assert.deepEqual(new Set(dealStructures(log.map(e=>({...e,project:'/p/a'})),'/p/a',{seed:1})).size,3,'own project history is ignored');
+ for(let seed=0;seed<20;seed++)assert.ok(!dealStructures([],'/p/a',{seed,noPhoto:true}).some(k=>['below-fold','full-bleed','left+media'].includes(k)),'without photos, no image-led structure is dealt');
+ for(let seed=0;seed<20;seed++){const d=dealStructures([],'/p/a',{seed});assert.ok(!(d.includes('below-fold')&&d.includes('full-bleed')),'image-led structures share one family');}
  assert.deepEqual(dealStructures([],'/p/a',{seed:1,human:{'center+stacked':.5,'left+media':.3,'full-bleed':.2}}),['center+stacked','left+media','full-bleed']);
 });
 
@@ -34,6 +36,17 @@ test('deal and record round-trip through DEAL.json, DIRECTIONS.json and the log 
  const r=await recordChoice(dir,{pick:'b',page:'clinic',log});
  assert.equal(r.entry.hero,'full-bleed');assert.equal(r.entry.page,'clinic');assert.equal(r.entry.project,path.join(tmp,'proj'));
  assert.equal((await readLog(log)).length,1);
+});
+
+test('pick note: a run of white picks for other projects points at the non-white directions', async () => {
+ const {pickNotes}=await import('../src/refine-log.mjs');
+ const items=[{label:'A',bg:[255,255,255]},{label:'B',bg:[20,22,24]},{label:'C',bg:[255,255,255]}];
+ const white=i=>({project:'/p/o'+i,page:'p'+i,bg:[255,255,255]});
+ assert.deepEqual(pickNotes(items,[0,1,2,3].map(white),'/p/me'),[{id:'white-run',n:4,a:'B'}]);
+ assert.deepEqual(pickNotes(items,[0,1,2].map(white),'/p/me'),[],'three white picks are normal');
+ assert.deepEqual(pickNotes(items,[...[0,1,2].map(white),{project:'/p/x',bg:[17,17,17]}],'/p/me'),[]);
+ assert.deepEqual(pickNotes(items,[0,1,2,3].map(i=>({...white(i),project:'/p/me'})),'/p/me'),[],'own project is ignored');
+ assert.deepEqual(pickNotes(items.map(d=>({...d,bg:[255,255,255]})),[0,1,2,3].map(white),'/p/me'),[],'nothing to point at');
 });
 
 test('history: warns when the accent hue repeats one picked for another project', async () => {

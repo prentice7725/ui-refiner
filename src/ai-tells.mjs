@@ -161,7 +161,10 @@ export function collectAiTells(){
   const action=[...document.querySelectorAll('a[href],button')].filter(el=>!chrome(el)&&visible(el)&&!/skip|본문|本文/i.test((el.className||'')+' '+(el.innerText||''))&&el.getBoundingClientRect().bottom+scrollY<=fold&&(el.matches('button')||boxy(el))&&(el.innerText||'').trim().length>=2&&(el.innerText||'').trim().length<=40)[0];
   const vis=el=>{const r=el.getBoundingClientRect();return Math.max(0,Math.min(r.right,innerWidth)-Math.max(r.left,0))*Math.max(0,Math.min(r.bottom,fold)-Math.max(r.top,0));};
   const media=Math.min(1,[...document.querySelectorAll('img,video,picture,canvas,svg:not(svg svg)'),...[...document.querySelectorAll('body *')].slice(0,1500).filter(el=>/url\(/.test(css(el).backgroundImage))].filter(el=>visible(el)&&!chrome(el)&&el.getBoundingClientRect().width>=200).reduce((n,el)=>n+vis(el),0)/(innerWidth*fold));
-  return {fold,media:+media.toFixed(2),claim:!!claim,claimText:claim?(claim.innerText||'').trim().slice(0,80):null,action:!!action,actionText:action?(action.innerText||'').trim().slice(0,40):null};})();
+  // Largest text on the first screen (short labels included), to tell whether the claim leads the screen.
+  const big=[...document.querySelectorAll('body *')].slice(0,3000).filter(el=>own(el)&&!chrome(el)&&visible(el)&&inFold(el)).reduce((n,el)=>Math.max(n,parseFloat(css(el).fontSize)||0),0);
+  const claimSize=claim?parseFloat(css(claim).fontSize):0;
+  return {fold,media:+media.toFixed(2),claim:!!claim,claimSize,maxText:big,claimRatio:claim&&big?+(claimSize/big).toFixed(2):null,claimText:claim?(claim.innerText||'').trim().slice(0,80):null,action:!!action,actionText:action?(action.innerText||'').trim().slice(0,40):null};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,

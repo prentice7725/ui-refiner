@@ -5,7 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {scanUrl} from './scan.mjs';
 import {countStandIns} from './photos.mjs';
-import {readLog,readDeal,historyWarnings,projectOf,humanHeroShare,SHEET_JSON} from './refine-log.mjs';
+import {readLog,readDeal,historyWarnings,pickNotes,projectOf,humanHeroShare,SHEET_JSON} from './refine-log.mjs';
 
 
 const SHEET='DIRECTIONS';
@@ -20,9 +20,9 @@ export function parseDirectionNote(html){
 }
 
 const L={
- ko:{noClaim:'{a}의 첫 화면에 무엇을 하는 곳인지 알리는 문장이 없습니다. 구조와 상관없이 첫 화면에는 한 줄 소개와 주요 버튼이 보여야 합니다.',ctaBelow:'{a}의 제목은 첫 화면에 있지만 그 버튼은 스크롤해야 보입니다.',title:'디자인 방향 비교',lead:'시안을 비교하고 하나를 고르세요. 섞어도 됩니다(예: A의 히어로에 B의 색).',concept:'콘셉트',type:'서체',palette:'색',signature:'고유 요소',score:'AI 티 지수',quality:'기본 품질 문제',ja:'일본어 조판 문제',signals:'신호',desktop:'데스크톱',mobile:'모바일',none:'없음',ask:'어느 방향으로 갈지 정해 주세요: ',surface:'바탕색',hero:'히어로 구조',onHuman:'실제 사이트 {n}%',sameHero:'{a}와 {b}의 히어로 구조가 같습니다({c}).',fonts:'측정된 서체',warn:'시안끼리 너무 비슷합니다',sameSurface:'{a}와 {b}의 바탕색이 거의 같습니다({c}).',sameFonts:'{a}와 {b}가 같은 서체 조합을 씁니다({c}).',allTinted:'모든 시안이 옅은 미색 바탕입니다. 사람이 만든 사이트는 대부분 순백이니, 적어도 하나는 순백이나 분명한 색 바탕으로 바꾸세요.',redo:'경고가 있으면 겹치는 시안을 다시 만든 뒤 보여 주세요.',dealMismatch:'{a}는 배정된 구조({c})가 아니라 {d}로 만들어졌습니다.',repeatHero:'{a}의 히어로 구조({c})는 최근 다른 프로젝트({p})에서 고른 것과 같습니다.',repeatFonts:'{a}의 서체 조합({c})은 다른 프로젝트({p})에서 이미 골랐습니다.',repeatSurface:'{a}의 바탕색({c})은 다른 프로젝트({p})에서 고른 것과 거의 같습니다.',repeatAccent:'{a}의 강조색({c})은 다른 프로젝트({p})에서 고른 것과 같은 계열입니다.',accent:'강조색',standIns:'임시 사진',dealType:'{a}는 배정된 서체({c}) 대신 {d}를 씁니다.',dealAccent:'{a}의 강조색 계열이 배정된 {c}가 아니라 {d}입니다.'},
- ja:{noClaim:'{a}のファーストビューに、何のサイトかを伝える一文がありません。構成にかかわらず、最初の画面には一行の説明と主なボタンが必要です。',ctaBelow:'{a}は見出しが最初の画面にあるのに、そのボタンはスクロールしないと見えません。',title:'デザイン方針の比較',lead:'案を見比べて1つ選んでください。組み合わせも可能です（例：Aのヒーローに Bの配色）。',concept:'コンセプト',type:'書体',palette:'配色',signature:'固有の要素',score:'AI感指数',quality:'基本品質の問題',ja:'日本語組版の問題',signals:'サイン',desktop:'デスクトップ',mobile:'モバイル',none:'なし',ask:'どの方針で進めるか選んでください：',surface:'地色',hero:'ヒーローの構成',onHuman:'実在サイトの{n}%',sameHero:'{a}と{b}のヒーローの構成が同じです（{c}）。',fonts:'計測した書体',warn:'案同士が似すぎています',sameSurface:'{a}と{b}の地色がほぼ同じです（{c}）。',sameFonts:'{a}と{b}が同じ書体の組み合わせです（{c}）。',allTinted:'すべての案が薄いオフホワイトの地色です。人が作ったサイトの多くは純白なので、少なくとも1つは純白かはっきりした色の地色にしてください。',redo:'警告があれば、重なっている案を作り直してから見せてください。',dealMismatch:'{a}は割り当てた構成（{c}）ではなく{d}で作られています。',repeatHero:'{a}のヒーローの構成（{c}）は、最近ほかのプロジェクト（{p}）で選んだものと同じです。',repeatFonts:'{a}の書体の組み合わせ（{c}）は、ほかのプロジェクト（{p}）ですでに選んでいます。',repeatSurface:'{a}の地色（{c}）は、ほかのプロジェクト（{p}）で選んだものとほぼ同じです。',repeatAccent:'{a}のアクセント色（{c}）は、ほかのプロジェクト（{p}）で選んだものと同じ系統です。',accent:'アクセント色',standIns:'仮の写真',dealType:'{a}は割り当てた書体（{c}）ではなく{d}を使っています。',dealAccent:'{a}のアクセント色は割り当てた{c}系ではなく{d}系です。'},
- en:{noClaim:'{a} has no line on the first screen that says what this is. Whatever the structure, the first screen needs a one-line claim and the main action.',ctaBelow:'{a} has its headline on the first screen but its button below the fold.',title:'Design directions',lead:'Compare the directions and pick one. Mixing is fine (for example A\'s hero with B\'s palette).',concept:'Concept',type:'Type',palette:'Palette',signature:'Signature element',score:'AI-look index',quality:'Baseline quality issues',ja:'Japanese typesetting issues',signals:'Signals',desktop:'Desktop',mobile:'Mobile',none:'none',ask:'Choose a direction: ',surface:'Surface',hero:'Hero layout',onHuman:'{n}% of human-made sites',sameHero:'{a} and {b} share the same hero layout ({c}).',fonts:'Measured type',warn:'Directions are too alike',sameSurface:'{a} and {b} use nearly the same background ({c}).',sameFonts:'{a} and {b} use the same type pair ({c}).',allTinted:'Every direction sits on a faint off-white surface. Most human-made sites use plain white, so make at least one plain white or a clear colour.',redo:'If there is a warning, redo the overlapping direction before showing the sheet.',dealMismatch:'{a} was dealt {c} but was built as {d}.',repeatHero:'{a} repeats the hero layout ({c}) chosen recently for another project ({p}).',repeatFonts:'{a} repeats the type pair ({c}) already chosen for another project ({p}).',repeatSurface:'{a} repeats the surface ({c}) chosen for another project ({p}).',repeatAccent:'{a} repeats the accent hue ({c}) chosen for another project ({p}).',accent:'Accent',standIns:'Stand-in photos',dealType:'{a} uses {d} instead of the dealt type ({c}).',dealAccent:'{a} uses a {d} accent instead of the dealt {c}.'}
+ ko:{whiteRun:'다른 프로젝트에서 최근 고른 {n}개가 모두 순백 바탕입니다. 브랜드가 흰색을 요구하지 않는다면 이번에는 배정된 다른 바탕의 {a}를 고르세요.',weakClaim:'{a}의 첫 화면에서 한 줄 소개보다 다른 글자(요일, 숫자, 표 제목 등)가 훨씬 큽니다. 사진이 없는 첫 화면에서는 소개 문장이 가장 큰 글자여야 합니다.',noClaim:'{a}의 첫 화면에 무엇을 하는 곳인지 알리는 문장이 없습니다. 구조와 상관없이 첫 화면에는 한 줄 소개와 주요 버튼이 보여야 합니다.',ctaBelow:'{a}의 제목은 첫 화면에 있지만 그 버튼은 스크롤해야 보입니다.',title:'디자인 방향 비교',lead:'시안을 비교하고 하나를 고르세요. 섞어도 됩니다(예: A의 히어로에 B의 색).',concept:'콘셉트',type:'서체',palette:'색',signature:'고유 요소',score:'AI 티 지수',quality:'기본 품질 문제',ja:'일본어 조판 문제',signals:'신호',desktop:'데스크톱',mobile:'모바일',none:'없음',ask:'어느 방향으로 갈지 정해 주세요: ',surface:'바탕색',hero:'히어로 구조',onHuman:'실제 사이트 {n}%',sameHero:'{a}와 {b}의 히어로 구조가 같습니다({c}).',fonts:'측정된 서체',warn:'시안끼리 너무 비슷합니다',sameSurface:'{a}와 {b}의 바탕색이 거의 같습니다({c}).',sameFonts:'{a}와 {b}가 같은 서체 조합을 씁니다({c}).',allTinted:'모든 시안이 옅은 미색 바탕입니다. 사람이 만든 사이트는 대부분 순백이니, 적어도 하나는 순백이나 분명한 색 바탕으로 바꾸세요.',redo:'경고가 있으면 겹치는 시안을 다시 만든 뒤 보여 주세요.',dealMismatch:'{a}는 배정된 구조({c})가 아니라 {d}로 만들어졌습니다.',repeatHero:'{a}의 히어로 구조({c})는 최근 다른 프로젝트({p})에서 고른 것과 같습니다.',repeatFonts:'{a}의 서체 조합({c})은 다른 프로젝트({p})에서 이미 골랐습니다.',repeatSurface:'{a}의 바탕색({c})은 다른 프로젝트({p})에서 고른 것과 거의 같습니다.',repeatAccent:'{a}의 강조색({c})은 다른 프로젝트({p})에서 고른 것과 같은 계열입니다.',accent:'강조색',standIns:'임시 사진',dealType:'{a}는 배정된 서체({c}) 대신 {d}를 씁니다.',dealAccent:'{a}의 강조색 계열이 배정된 {c}가 아니라 {d}입니다.'},
+ ja:{whiteRun:'ほかのプロジェクトで最近選んだ{n}件はすべて純白の地色です。ブランドが白を求めていなければ、今回は別の地色を割り当てた{a}を選んでください。',weakClaim:'{a}のファーストビューで、一行の説明よりほかの文字（曜日、数字、表の見出しなど）のほうがずっと大きくなっています。写真のない最初の画面では、説明の文がいちばん大きな文字であるべきです。',noClaim:'{a}のファーストビューに、何のサイトかを伝える一文がありません。構成にかかわらず、最初の画面には一行の説明と主なボタンが必要です。',ctaBelow:'{a}は見出しが最初の画面にあるのに、そのボタンはスクロールしないと見えません。',title:'デザイン方針の比較',lead:'案を見比べて1つ選んでください。組み合わせも可能です（例：Aのヒーローに Bの配色）。',concept:'コンセプト',type:'書体',palette:'配色',signature:'固有の要素',score:'AI感指数',quality:'基本品質の問題',ja:'日本語組版の問題',signals:'サイン',desktop:'デスクトップ',mobile:'モバイル',none:'なし',ask:'どの方針で進めるか選んでください：',surface:'地色',hero:'ヒーローの構成',onHuman:'実在サイトの{n}%',sameHero:'{a}と{b}のヒーローの構成が同じです（{c}）。',fonts:'計測した書体',warn:'案同士が似すぎています',sameSurface:'{a}と{b}の地色がほぼ同じです（{c}）。',sameFonts:'{a}と{b}が同じ書体の組み合わせです（{c}）。',allTinted:'すべての案が薄いオフホワイトの地色です。人が作ったサイトの多くは純白なので、少なくとも1つは純白かはっきりした色の地色にしてください。',redo:'警告があれば、重なっている案を作り直してから見せてください。',dealMismatch:'{a}は割り当てた構成（{c}）ではなく{d}で作られています。',repeatHero:'{a}のヒーローの構成（{c}）は、最近ほかのプロジェクト（{p}）で選んだものと同じです。',repeatFonts:'{a}の書体の組み合わせ（{c}）は、ほかのプロジェクト（{p}）ですでに選んでいます。',repeatSurface:'{a}の地色（{c}）は、ほかのプロジェクト（{p}）で選んだものとほぼ同じです。',repeatAccent:'{a}のアクセント色（{c}）は、ほかのプロジェクト（{p}）で選んだものと同じ系統です。',accent:'アクセント色',standIns:'仮の写真',dealType:'{a}は割り当てた書体（{c}）ではなく{d}を使っています。',dealAccent:'{a}のアクセント色は割り当てた{c}系ではなく{d}系です。'},
+ en:{whiteRun:'The last {n} picks for other projects were all plain white. Unless the brand calls for white, pick {a}, dealt another surface, this time.',weakClaim:'{a} has other text on the first screen (weekdays, figures, table labels) far larger than its one-line claim. On a first screen without photos, the claim should be the largest text.',noClaim:'{a} has no line on the first screen that says what this is. Whatever the structure, the first screen needs a one-line claim and the main action.',ctaBelow:'{a} has its headline on the first screen but its button below the fold.',title:'Design directions',lead:'Compare the directions and pick one. Mixing is fine (for example A\'s hero with B\'s palette).',concept:'Concept',type:'Type',palette:'Palette',signature:'Signature element',score:'AI-look index',quality:'Baseline quality issues',ja:'Japanese typesetting issues',signals:'Signals',desktop:'Desktop',mobile:'Mobile',none:'none',ask:'Choose a direction: ',surface:'Surface',hero:'Hero layout',onHuman:'{n}% of human-made sites',sameHero:'{a} and {b} share the same hero layout ({c}).',fonts:'Measured type',warn:'Directions are too alike',sameSurface:'{a} and {b} use nearly the same background ({c}).',sameFonts:'{a} and {b} use the same type pair ({c}).',allTinted:'Every direction sits on a faint off-white surface. Most human-made sites use plain white, so make at least one plain white or a clear colour.',redo:'If there is a warning, redo the overlapping direction before showing the sheet.',dealMismatch:'{a} was dealt {c} but was built as {d}.',repeatHero:'{a} repeats the hero layout ({c}) chosen recently for another project ({p}).',repeatFonts:'{a} repeats the type pair ({c}) already chosen for another project ({p}).',repeatSurface:'{a} repeats the surface ({c}) chosen for another project ({p}).',repeatAccent:'{a} repeats the accent hue ({c}) chosen for another project ({p}).',accent:'Accent',standIns:'Stand-in photos',dealType:'{a} uses {d} instead of the dealt type ({c}).',dealAccent:'{a} uses a {d} accent instead of the dealt {c}.'}
 };
 
 const hex=rgb=>rgb?'#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join(''):null;
@@ -51,10 +51,15 @@ const heroText=(key,lang)=>{if(!key)return null;const x=HERO[lang]||HERO.en;retu
 const heroLine=(d,x,lang)=>heroText(d.hero,lang)+(d.heroHuman!=null?` (${x.onHuman.replace('{n}',Math.round(d.heroHuman*100))})`:'');
 
 /** Pairs of directions that share a surface or a type pair, and whether none leaves the off-white default. */
-/** First-screen problems, whatever the structure: nothing says what this is, or the headline's button sits below the fold. */
+/**
+ * First-screen problems, whatever the structure: nothing says what this is, the claim is dwarfed by other text
+ * on a text-led screen, or the headline's button sits below the fold. On 125 human-made sites the claim was the
+ * largest text in 76 of 82 first screens that had one; under 0.6 of the largest text occurred once, on an image-led page.
+ */
 export function firstScreenProblems(m){
  const out=[],f=m?.firstScreen;
  if(f&&!f.claim&&(f.media??0)<.3)out.push('no-claim');
+ if(f?.claim&&(f.media??0)<.3&&f.claimRatio!=null&&f.claimRatio<.6)out.push('weak-claim');
  if(m?.heroCta?.below)out.push('cta-below');
  return out;
 }
@@ -70,12 +75,14 @@ export function directionWarnings(items){
  if(items.length>=2&&items.every(d=>tinted(d.bg)))w.push({id:'all-tinted'});
  return w;
 }
-const MSG={'no-claim':'noClaim','cta-below':'ctaBelow','same-surface':'sameSurface','same-hero':'sameHero','same-fonts':'sameFonts','deal-mismatch':'dealMismatch','repeat-hero':'repeatHero','repeat-fonts':'repeatFonts','repeat-surface':'repeatSurface','repeat-accent':'repeatAccent','deal-type':'dealType','deal-accent':'dealAccent'};
+const MSG={'no-claim':'noClaim','weak-claim':'weakClaim','cta-below':'ctaBelow','same-surface':'sameSurface','same-hero':'sameHero','same-fonts':'sameFonts','deal-mismatch':'dealMismatch','repeat-hero':'repeatHero','repeat-fonts':'repeatFonts','repeat-surface':'repeatSurface','repeat-accent':'repeatAccent','deal-type':'dealType','deal-accent':'dealAccent'};
 const heroish=new Set(['same-hero','deal-mismatch','repeat-hero']);
 const warnText=(x,w,lang)=>w.id==='all-tinted'?x.allTinted:x[MSG[w.id]].replace('{a}',w.a).replace('{b}',w.b??'').replace('{c}',heroish.has(w.id)?heroText(w.c,lang):Array.isArray(w.c)?hex(w.c):w.c).replace('{d}',w.id==='deal-mismatch'?heroText(w.d,lang)??'':w.d??'').replace('{p}',w.page??'');
 
+const noteText=(x,n)=>x.whiteRun.replace('{n}',n.n).replace('{a}',n.a);
+
 /** Markdown sheet for a chat reply or a README-style file. */
-export function renderDirectionsMarkdown(items,lang='en',warnings=directionWarnings(items)){
+export function renderDirectionsMarkdown(items,lang='en',warnings=directionWarnings(items),notes=[]){
  const x=L[lang]||L.en,lines=[`# ${x.title}`,'',x.lead,''];
  if(warnings.length)lines.push(`> **${x.warn}**`,...warnings.map(w=>`> - ${warnText(x,w,lang)}`),`> ${x.redo}`,'');
  for(const d of items){
@@ -86,12 +93,13 @@ export function renderDirectionsMarkdown(items,lang='en',warnings=directionWarni
   if(d.signals.length)lines.push(`- ${x.signals}: ${d.signals.join(', ')}`);
   lines.push(`- ${x.desktop}: [${d.desktop}](${d.desktop}) · ${x.mobile}: [${d.mobile}](${d.mobile})`,'');
  }
+ for(const n of notes)lines.push(noteText(x,n),'');
  lines.push(x.ask+items.map(d=>d.label).join(' / '));
  return lines.join('\n')+'\n';
 }
 
 /** Self-contained HTML sheet with the screenshots side by side (relative image paths). */
-export function renderDirectionsHtml(items,lang='en',warnings=directionWarnings(items)){
+export function renderDirectionsHtml(items,lang='en',warnings=directionWarnings(items),notes=[]){
  const x=L[lang]||L.en;
  const card=d=>`<article><header><b>${esc(d.label)}</b><h2>${esc(d.note?.concept||d.file)}</h2></header>
 <dl>${['type','palette','signature'].filter(k=>d.note?.[k]).map(k=>`<dt>${x[k]}</dt><dd>${esc(d.note[k])}</dd>`).join('')}
@@ -113,7 +121,7 @@ dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:0;font
 .scroll{height:520px;overflow:auto;border:1px solid var(--line);border-radius:6px;background:#fff}.scroll img{display:block;width:100%;height:auto}
 .sw{display:inline-block;width:12px;height:12px;border:1px solid var(--line);border-radius:2px;margin-right:6px;vertical-align:-1px}
 .warn{border:1px solid #c98a00;background:color-mix(in srgb,#f2b400 12%,var(--panel));border-radius:8px;padding:10px 14px;margin:0 0 16px}.warn ul{margin:4px 0;padding-left:20px}</style></head>
-<body><h1>${x.title}</h1><p class="lead">${x.lead}</p>${warnings.length?`<div class="warn" role="note"><b>${x.warn}</b><ul>${warnings.map(w=>`<li>${esc(warnText(x,w,lang))}</li>`).join('')}</ul>${x.redo}</div>`:''}<main>${items.map(card).join('\n')}</main></body></html>
+<body><h1>${x.title}</h1><p class="lead">${x.lead}</p>${warnings.length?`<div class="warn" role="note"><b>${x.warn}</b><ul>${warnings.map(w=>`<li>${esc(warnText(x,w,lang))}</li>`).join('')}</ul>${x.redo}</div>`:''}${notes.map(n=>`<p class="lead"><b>${esc(noteText(x,n))}</b></p>`).join('')}<main>${items.map(card).join('\n')}</main></body></html>
 `;
 }
 
@@ -135,11 +143,11 @@ export async function compareDirections(dir,{lang='auto',timeoutMs=45000,log}={}
    bg:m?.rootBackground?.rgb??null,accent:m?accentOf(m):null,hero:m?heroOf(m):null,first:firstScreenProblems(m),heroHuman:share&&m?(share[heroOf(m)]??0):null,fonts:(m?.typography?.families??[]).filter(f=>f.count>=2).slice(0,2).map(f=>f.name),
    quality:r.quality.reduce((n,q)=>n+(q.count??0),0),ja:r.japanese?.japanese?r.japanese.issues.length:null,desktop:rel('desktop'),mobile:rel('mobile')});
  }
- const sheetLangKey=['ko','ja','en'].includes(sheetLang)?sheetLang:'en',warnings=[...directionWarnings(items),...historyWarnings(items,await readLog(log),projectOf(root),await readDeal(root))];
- await fs.writeFile(path.join(root,`${SHEET}.html`),renderDirectionsHtml(items,sheetLangKey,warnings));
- await fs.writeFile(path.join(root,`${SHEET}.md`),renderDirectionsMarkdown(items,sheetLangKey,warnings));
- await fs.writeFile(path.join(root,SHEET_JSON),JSON.stringify({schemaVersion:1,items,warnings},null,1)+'\n');
- return {items,warnings,lang:sheetLangKey,html:path.join(root,`${SHEET}.html`),markdown:path.join(root,`${SHEET}.md`)};
+ const sheetLangKey=['ko','ja','en'].includes(sheetLang)?sheetLang:'en',entries=await readLog(log),warnings=[...directionWarnings(items),...historyWarnings(items,entries,projectOf(root),await readDeal(root))],notes=pickNotes(items,entries,projectOf(root));
+ await fs.writeFile(path.join(root,`${SHEET}.html`),renderDirectionsHtml(items,sheetLangKey,warnings,notes));
+ await fs.writeFile(path.join(root,`${SHEET}.md`),renderDirectionsMarkdown(items,sheetLangKey,warnings,notes));
+ await fs.writeFile(path.join(root,SHEET_JSON),JSON.stringify({schemaVersion:1,items,warnings,notes},null,1)+'\n');
+ return {items,warnings,notes,lang:sheetLangKey,html:path.join(root,`${SHEET}.html`),markdown:path.join(root,`${SHEET}.md`)};
 }
 
 /**
