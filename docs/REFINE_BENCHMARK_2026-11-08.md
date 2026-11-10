@@ -277,3 +277,41 @@ Reading:
 - The set judge named the shared look: plain white pages, a bold sans headline, then a schedule, table or ledger right under it.
 - The size check worked as a check, but a large claim on white over a data widget became the new template. Every page picked white, which removed the variety the surface deal used to bring.
 - Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output. Round 8's per-page rank moved 3.1 → 2.5 between runs, so differences under about 0.6 are noise.
+
+## Round 10: no headline size, white-run note (same 8 pages)
+
+Same as round 9, with two changes:
+- The skill no longer asks for a 44–64px claim. The dwarfed-claim check stays.
+- The skill says white is the usual surface but not every time. The directions sheet notes a run of four white picks for other projects.
+
+Cost: $20.00 ($18.26 for the 8 refines at 33–77 turns each, $1.74 for the judges).
+
+- All 8 pages passed `keep check` and `directions verify`. The claim is the largest text on all 8.
+- Applied heroes: left stacked 2, left + panel 1, centred 1, full-bleed 1, wide stacked 1, left + media 1, right + panel 1.
+- Surfaces: white 2. The other six are blue, near-black, two off-whites, dark brown and pale green. The white-run note never fired, because the first page already picked blue. The pick changed through the skill text, not through the note.
+
+Judges (same run as the table, so the figures differ from earlier rounds):
+
+| Version | Per-page mean rank (1–5) | Per-page AI look | Set sameness (run 1 / 2) | Set rank of 8 (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 2 | 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 | 4 / 2 |
+| Before | 4.9 | 8.6 | 9 / 9 | 8 / 8 |
+| Plain prompt | 2.3 | 3.4 | 8 / 8 | 7 / 6 |
+| Refine, round 2 | **2.0** | 3.8 | 7 / 9 | 6 / 7 |
+| Refine, round 8 | 2.8 | 3.8 | 4 / 5 | 3 / 3 |
+| Refine, round 9 | — | — | 6 / 6 | 5 / 5 |
+| Refine, round 10 | 3.1 | 4.3 | 4 / 5 | **2** / 4 |
+
+Reading:
+- Round 10 recovered round 9's losses:
+  - Across the set, sameness is back to round 8's level (4–5), and it ranked right behind the first human set in run 1.
+  - Page by page, distinctiveness rose 6.1 → 6.6 and the mean rank 3.5 → 3.1. Round 8's 2.8 is within the noise.
+- It did not beat round 8, and round 2 and the plain prompt still win single pages.
+- Six non-white surfaces out of eight is more than human sites have (about 1 in 5).
+- Habits the set judge still saw:
+  - the same grotesk headline;
+  - weekday hours tables or schedule bars, which recur on the dental, food-bank, clinic and hiring pages;
+  - thin-rule lists;
+  - stat rows.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
