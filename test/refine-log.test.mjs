@@ -69,6 +69,8 @@ test('deal: type pairings by voice and kind, accents by family, one non-white su
  const acc=dealAccents(Object.keys(lib.accents),[{project:'/p/x',accent:[22,120,51]}],'/p/a',{seed:1});
  assert.equal(new Set(acc).size,3);assert.ok(!acc.includes('green')&&!acc.includes('indigo'));
  const surf=dealSurfaces(3,5);assert.equal(surf.filter(s=>s!=='white').length,1);
+ for(let seed=0;seed<30;seed++)assert.ok(!dealSurfaces(3,seed,{kind:'software'}).includes('dark'),'software pages get no dark ground');
+ assert.ok(Array.from({length:30},(_,seed)=>dealSurfaces(3,seed)).flat().includes('dark'));
  await assert.rejects(dealDirections(path.join(os.tmpdir(),'uir-kind'),{kind:'bank'}),/--kind must be one of/);
 });
 

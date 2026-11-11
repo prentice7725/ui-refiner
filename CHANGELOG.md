@@ -10,6 +10,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   - headlines come from a fact only this client has, not a category slogan;
   - the first screen gets one main piece instead of a stacked photo, schedule and cards;
   - stand-in photos show the place or the work itself, never generic office objects.
+- `directions deal` gives software pages no dark ground, and the dark surface brief asks for a photo or type, not a dashboard. The skill and `/ui-refine` warn against the dark dashboard template (navy or black ground, metric cards, neon accent), which all three judges ranked 4th or 5th on both Korean software pages in round 12.
 
 ## 0.7.0 — 2026-11-11
 
