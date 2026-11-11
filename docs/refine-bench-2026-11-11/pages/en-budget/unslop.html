@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pennywise — Budgeting that keeps up with you</title>
+<meta name="description" content="Pennywise is a personal budgeting app that shows where your money goes, plans what's next, and helps you save without spreadsheets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Direction
+     Product: a personal budgeting app that sorts spending, gives every dollar a job and nudges before you overspend
+     Character: steady, frank, a little warm
+     World: the kitchen-table ledger, paper and green ink
+     Moments: the November budget preview in the hero, the savings goals card
+     Signature: a "today" tick on budget bars, showing how far through the month you are */
+  :root {
+    --bg: #faf7f1;
+    --surface: #ffffff;
+    --surface-2: #f2ede3;
+    --fg: #1d2420;
+    --fg-2: #4a544e;
+    --muted: #6a736d;
+    --line: rgba(29,36,32,.10);
+    --line-strong: rgba(29,36,32,.16);
+    --brand: #1f6b4f;
+    --brand-strong: #154d39;
+    --brand-soft: #e1efe7;
+    --accent: #e0992f;
+    --accent-soft: #fbefd9;
+    --danger: #b94b36;
+    --on-brand: #ffffff;
+    --tick: rgba(29,36,32,.55);
+    --shadow-sm: 0 1px 2px rgba(29,36,32,.05);
+    --shadow: 0 1px 2px rgba(29,36,32,.05), 0 12px 32px -12px rgba(29,36,32,.14);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131614;
+      --surface: #1a1e1c;
+      --surface-2: #222724;
+      --fg: #edf0ed;
+      --fg-2: #b4bcb7;
+      --muted: #8f9993;
+      --line: rgba(237,240,237,.08);
+      --line-strong: rgba(237,240,237,.14);
+      --brand: #5cc398;
+      --brand-strong: #82d6b1;
+      --brand-soft: #1e3329;
+      --accent: #eab35e;
+      --accent-soft: #352b1b;
+      --danger: #e2806a;
+      --on-brand: #0d1a14;
+      --tick: rgba(237,240,237,.6);
+      --shadow-sm: none;
+      --shadow: 0 16px 40px -16px rgba(0,0,0,.6);
+      color-scheme: dark;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 16px/1.6 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  .wrap {
+    width: 100%;
+    max-width: 1152px;
+    margin: 0 auto;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--brand); color: var(--on-brand); padding: 8px 16px; border-radius: 8px; z-index: 100; }
+  .skip:focus { left: 8px; }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 6px; }
+
+  /* Icons: one set, one stroke */
+  .i { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; padding: 0 20px; border-radius: 10px;
+    font: 500 15px/1 var(--sans); text-decoration: none; border: 1px solid transparent;
+    transition: background-color .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease), transform .12s var(--ease);
+    cursor: pointer;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-primary { background: var(--brand); color: var(--on-brand); }
+  .btn-primary:hover { background: var(--brand-strong); }
+  .btn-ghost { border-color: var(--line-strong); background: var(--surface); color: var(--fg); }
+  .btn-ghost:hover { background: var(--surface-2); }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .logo { display: inline-flex; align-items: center; gap: 8px; font: 500 20px/1 var(--serif); text-decoration: none; }
+  .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--brand); color: var(--on-brand); display: grid; place-items: center; font: 500 17px/1 var(--serif); }
+  .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { text-decoration: none; color: var(--fg-2); font-weight: 500; font-size: 15px; transition: color .15s var(--ease); }
+  .nav-links a:hover { color: var(--fg); }
+  .nav .btn { min-height: 36px; padding: 0 16px; font-size: 14px; border-radius: 8px; }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero { padding-block: 96px 96px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .hero-grid > * { min-width: 0; }
+  .hero h1 { font-size: 60px; line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance; }
+  h2 { text-wrap: balance; }
+  .hero h1 span { color: var(--brand); }
+  .lede { font-size: 19px; line-height: 30px; color: var(--fg-2); margin-top: 24px; max-width: 34rem; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .fine { margin-top: 16px; font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 20px; }
+
+  /* App preview: the hero moment */
+  .mock {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 20px; box-shadow: var(--shadow); padding: 24px; max-width: 480px; margin-left: auto; width: 100%;
+  }
+  .mock-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--muted); }
+  .mock-total { font: 500 44px/1 var(--serif); margin-top: 12px; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .mock-total small { font: 400 15px var(--sans); color: var(--muted); letter-spacing: 0; margin-left: 4px; }
+
+  /* Budget bar with the signature "today" tick */
+  .bar { position: relative; height: 8px; border-radius: 4px; background: var(--surface-2); margin-top: 20px; }
+  .bar i { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--brand); }
+  .bar[data-today]::after {
+    content: ""; position: absolute; left: var(--today); top: -4px; bottom: -4px; width: 2px; margin-left: -1px;
+    border-radius: 1px; background: var(--tick); box-shadow: 0 0 0 2px var(--surface);
+  }
+  .bar-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-top: 8px; font-variant-numeric: tabular-nums; }
+
+  .cats { list-style: none; padding: 0; margin: 24px 0 0; display: grid; border-top: 1px solid var(--line); }
+  .cat { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--line); }
+  .cat-ico { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--surface-2); color: var(--fg-2); }
+  .cat-name { font-weight: 500; font-size: 14px; line-height: 20px; }
+  .cat .bar { height: 4px; border-radius: 2px; margin-top: 8px; }
+  .cat .bar[data-today]::after { top: -3px; bottom: -3px; }
+  .cat-amt { font-weight: 500; font-size: 14px; line-height: 20px; text-align: right; font-variant-numeric: tabular-nums; }
+  .cat-amt small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; line-height: 16px; }
+  .over .bar i { background: var(--danger); }
+  .over .cat-amt small { color: var(--danger); }
+
+  .nudge { margin-top: 16px; display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: center; padding: 12px; border-radius: 12px; background: var(--accent-soft); }
+  .nudge-ico { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--surface); color: var(--fg-2); }
+  .nudge p { font-size: 13px; line-height: 18px; color: var(--fg-2); }
+  .nudge strong { display: block; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--fg); }
+  .nudge-btn { font: 500 13px/1 var(--sans); padding: 8px 12px; border-radius: 6px; background: var(--surface); color: var(--fg); border: 1px solid var(--line-strong); white-space: nowrap; }
+
+  /* Sections */
+  section { padding-block: 96px; }
+  .section-head { max-width: 40rem; margin-bottom: 48px; }
+  .section-head.center { text-align: center; margin-inline: auto; }
+  .kicker { color: var(--brand); font-weight: 500; font-size: 14px; margin-bottom: 12px; }
+  .section-head h2, .h2 { font-size: 40px; letter-spacing: -0.015em; }
+  .section-head p:not(.kicker) { color: var(--fg-2); margin-top: 16px; font-size: 17px; line-height: 28px; }
+
+  .strip { border-block: 1px solid var(--line); background: var(--surface); padding-block: 24px; }
+  .strip ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 40px; color: var(--fg-2); font-size: 15px; }
+  .strip li { display: flex; align-items: center; gap: 8px; }
+  .strip .i { color: var(--muted); }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; }
+  .feature { border-top: 1px solid var(--line-strong); padding-top: 24px; min-width: 0; }
+  .feature-ico { color: var(--brand); margin-bottom: 16px; }
+  .feature-ico .i { width: 20px; height: 20px; }
+  .feature h3 { font-size: 22px; margin-bottom: 8px; }
+  .feature p { color: var(--fg-2); font-size: 15px; line-height: 24px; }
+  @media (max-width: 900px) { .features { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; gap: 32px; } }
+
+  .steps-bg { background: var(--surface-2); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
+  .steps li { counter-increment: s; background: var(--surface); border-radius: 16px; padding: 24px; border: 1px solid var(--line); min-width: 0; }
+  .steps li::before {
+    content: counter(s); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent); color: #2a1d06; font: 500 16px/1 var(--serif); margin-bottom: 16px;
+  }
+  .steps h3 { font-size: 22px; margin-bottom: 8px; }
+  .steps p { color: var(--fg-2); font-size: 15px; line-height: 24px; }
+  @media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .split > * { min-width: 0; }
+  .checks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
+  .checks li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; }
+  .checks li::before {
+    content: ""; width: 20px; height: 20px; margin-top: 3px; background: var(--brand);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .checks strong { display: block; font-weight: 500; }
+  .checks span { color: var(--fg-2); font-size: 15px; line-height: 24px; }
+
+  .goal-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 24px; display: grid; gap: 24px; }
+  .goal-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--muted); }
+  .goal { display: grid; gap: 8px; }
+  .goal-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 500; font-size: 15px; flex-wrap: wrap; }
+  .goal-row .label { display: inline-flex; align-items: center; gap: 8px; }
+  .goal-row .label .i { color: var(--muted); }
+  .goal-row .amt { color: var(--muted); font-weight: 400; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .goal-row .amt b { color: var(--fg); font-weight: 500; }
+  .goal .bar { margin-top: 0; }
+  .goal.lead .bar i { background: var(--accent); }
+  .goal:not(.lead) .bar i { background: var(--brand); opacity: .55; }
+  .goal-note { font-size: 14px; color: var(--fg-2); border-top: 1px solid var(--line); padding-top: 16px; }
+  @media (max-width: 800px) { .split { grid-template-columns: 1fr; gap: 48px; } }
+
+  /* Pricing */
+  .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 384px)); justify-content: center; gap: 20px; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; }
+  .plan.featured { border-color: var(--brand); box-shadow: var(--shadow), inset 0 0 0 1px var(--brand); }
+  .plan-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .plan h3 { font-size: 24px; }
+  .plan-tag { font-size: 13px; color: var(--brand); font-weight: 500; }
+  .price { font: 500 48px/1 var(--serif); margin: 20px 0 8px; font-variant-numeric: tabular-nums; }
+  .price small { font: 400 15px var(--sans); color: var(--muted); margin-left: 4px; }
+  .plan > p { color: var(--fg-2); font-size: 15px; }
+  .plan .checks { margin: 24px 0 32px; flex: 1; gap: 12px; }
+  @media (max-width: 700px) { .plans { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq { max-width: 768px; margin: 0 auto; border-top: 1px solid var(--line-strong); }
+  details { border-bottom: 1px solid var(--line-strong); }
+  summary { cursor: pointer; list-style: none; padding: 20px 0; font-weight: 500; font-size: 17px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: ""; flex: none; width: 18px; height: 18px; background: var(--muted); transition: transform .2s var(--ease);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  summary:hover::after { background: var(--fg); }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--fg-2); padding-bottom: 20px; max-width: 40rem; }
+
+  /* CTA */
+  .cta-band { background: var(--brand); color: var(--on-brand); border-radius: 24px; padding: 64px 48px; text-align: center; }
+  .cta-band h2 { font-size: 40px; letter-spacing: -0.015em; }
+  .cta-band p { opacity: .88; margin: 16px auto 0; max-width: 34rem; font-size: 17px; line-height: 28px; }
+  .cta-band .btn { margin-top: 32px; background: var(--on-brand); color: var(--brand-strong); }
+  .cta-band .btn:hover { background: var(--brand-soft); }
+  @media (prefers-color-scheme: dark) { .cta-band .btn { background: var(--bg); color: var(--brand-strong); } .cta-band .btn:hover { background: var(--surface); } }
+
+  footer { border-top: 1px solid var(--line); padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 14px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; }
+  .foot .logo { color: var(--fg); }
+  .foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 24px; }
+  .foot a { text-decoration: none; transition: color .15s var(--ease); }
+  .foot a:hover { color: var(--fg); }
+
+  /* One entrance on load */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-grid > * { animation: rise .45s var(--ease) both; }
+    .hero-grid > *:nth-child(2) { animation-delay: .06s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  }
+
+  @media (max-width: 1000px) {
+    .hero h1 { font-size: 52px; }
+  }
+  @media (max-width: 900px) {
+    .hero { padding-block: 56px 64px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .mock { margin: 0 auto; }
+  }
+  @media (max-width: 600px) {
+    section { padding-block: 64px; }
+    .hero h1 { font-size: 40px; line-height: 1.08; }
+    .lede { font-size: 17px; line-height: 28px; }
+    .section-head { margin-bottom: 32px; }
+    .section-head h2, .h2, .cta-band h2 { font-size: 30px; }
+    .mock, .goal-card { padding: 20px; }
+    .mock-total { font-size: 36px; }
+    .nudge { grid-template-columns: 32px 1fr; }
+    .nudge-btn { grid-column: 2; justify-self: start; }
+    .cta-band { padding: 48px 24px; }
+    .plan { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-lifebuoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h6"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  </defs>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Pennywise home"><span class="logo-mark" aria-hidden="true">P</span>Pennywise</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#get-started">Get the app</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="hero-title">Know where every penny goes <span>and where it’s going next</span></h1>
+        <p class="lede">Pennywise sorts your spending automatically, gives every dollar a job, and nudges you before you overspend. Budgeting that takes minutes a week, not hours.</p>
+        <div class="cta-row" id="get-started">
+          <a class="btn btn-primary" href="#pricing">Start free trial</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <p class="fine"><span>30 days free, no card needed</span><span>iOS, Android and web</span><span>Cancel anytime</span></p>
+      </div>
+
+      <div class="mock" role="img" aria-label="Pennywise app preview showing a November budget of $3,200 with $1,148 left, spending by category, and a nudge that Eating out is $14 over.">
+        <div class="mock-top">
+          <span>Left to spend</span>
+          <span>November · day 11 of 30</span>
+        </div>
+        <div class="mock-total">$1,148<small>of $3,200</small></div>
+        <div class="bar" data-today style="--today:37%"><i style="width:64%"></i></div>
+        <div class="bar-meta"><span>$2,052 spent</span><span>19 days left</span></div>
+        <ul class="cats">
+          <li class="cat">
+            <span class="cat-ico" aria-hidden="true"><svg class="i"><use href="#i-cart"/></svg></span>
+            <div><div class="cat-name">Groceries</div><div class="bar" data-today style="--today:37%"><i style="width:58%"></i></div></div>
+            <div class="cat-amt">$348<small>of $600</small></div>
+          </li>
+          <li class="cat">
+            <span class="cat-ico" aria-hidden="true"><svg class="i"><use href="#i-home"/></svg></span>
+            <div><div class="cat-name">Rent and utilities</div><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="cat-amt">$1,420<small>Paid</small></div>
+          </li>
+          <li class="cat over">
+            <span class="cat-ico" aria-hidden="true"><svg class="i"><use href="#i-utensils"/></svg></span>
+            <div><div class="cat-name">Eating out</div><div class="bar" data-today style="--today:37%"><i style="width:100%"></i></div></div>
+            <div class="cat-amt">$214<small>$14 over</small></div>
+          </li>
+        </ul>
+        <div class="nudge">
+          <span class="nudge-ico" aria-hidden="true"><svg class="i"><use href="#i-bell"/></svg></span>
+          <p><strong>Eating out is $14 over</strong>Move $14 from Fun money to cover it?</p>
+          <span class="nudge-btn">Move $14</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <ul>
+        <li><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg>Read-only bank access</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>256-bit encryption</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-ban"/></svg>No ads, never sells your data</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-sync"/></svg>Syncs across all devices</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Features</p>
+        <h2 id="features-title">Sorting, planning and reminders, handled for you</h2>
+        <p>Pennywise does the tedious parts, so you can focus on the decisions that actually matter</p>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <div class="feature-ico"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></div>
+          <h3>Automatic sorting</h3>
+          <p>Connect your accounts and transactions land in the right category on their own. Correct one once and Pennywise remembers.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-ico"><svg class="i" aria-hidden="true"><use href="#i-coins"/></svg></div>
+          <h3>Zero-based budgets</h3>
+          <p>Give every dollar a job before the month starts. See instantly what’s safe to spend, no mental math required.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-ico"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></div>
+          <h3>Gentle nudges</h3>
+          <p>A heads-up when a category runs low or a bill is due, timed so you can still do something about it.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-ico"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg></div>
+          <h3>Savings goals</h3>
+          <p>Name a goal, pick a date, and Pennywise works out the monthly amount. Watch the progress bar fill up.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-ico"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></div>
+          <h3>Bill calendar</h3>
+          <p>Subscriptions and recurring bills, laid out on one calendar. Spot the ones you forgot you were paying for.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-ico"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></div>
+          <h3>Shared budgets</h3>
+          <p>Invite a partner or roommate. Share the categories you split and keep the rest private.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="steps-bg" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head center">
+        <p class="kicker">How it works</p>
+        <h2 id="how-title">Up and running in about ten minutes</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Connect your accounts</h3><p>Link checking, savings and cards securely, or add transactions by hand if you prefer.</p></li>
+        <li><h3>Build your plan</h3><p>Pennywise suggests a starting budget from your last three months. Tweak it until it feels right.</p></li>
+        <li><h3>Check in weekly</h3><p>A five-minute review each week keeps you on track. We’ll remind you when it’s time.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Goals -->
+  <section aria-labelledby="goals-title">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Savings goals</p>
+        <h2 id="goals-title" class="h2">Turn “someday” into a date on the calendar</h2>
+        <ul class="checks">
+          <li><div><strong>Plans that do the math</strong><span>Set a target and deadline, and we’ll tell you what to set aside each month.</span></div></li>
+          <li><div><strong>Round-ups, if you want them</strong><span>Spare change from purchases quietly tops up the goal of your choice.</span></div></li>
+          <li><div><strong>Progress you can feel</strong><span>Milestones at 25%, 50% and 75%, so small wins add up.</span></div></li>
+        </ul>
+      </div>
+      <div class="goal-card" role="img" aria-label="Example savings goals: Emergency fund 72% complete, Lisbon trip 45% complete, New laptop 20% complete.">
+        <div class="goal-head"><span>Savings goals</span><span class="num">$4,980 saved</span></div>
+        <div class="goal">
+          <div class="goal-row"><span class="label"><svg class="i" aria-hidden="true"><use href="#i-lifebuoy"/></svg>Emergency fund</span><span class="amt"><b>$3,600</b> of $5,000</span></div>
+          <div class="bar"><i style="width:72%"></i></div>
+        </div>
+        <div class="goal lead">
+          <div class="goal-row"><span class="label"><svg class="i" aria-hidden="true"><use href="#i-plane"/></svg>Lisbon trip</span><span class="amt"><b>$1,080</b> of $2,400</span></div>
+          <div class="bar"><i style="width:45%"></i></div>
+        </div>
+        <div class="goal">
+          <div class="goal-row"><span class="label"><svg class="i" aria-hidden="true"><use href="#i-laptop"/></svg>New laptop</span><span class="amt"><b>$300</b> of $1,500</span></div>
+          <div class="bar"><i style="width:20%"></i></div>
+        </div>
+        <p class="goal-note">At $220 a month, you’ll hit your Lisbon goal by June</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="steps-bg" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="section-head center">
+        <p class="kicker">Pricing</p>
+        <h2 id="pricing-title">Start free, add bank sync when you want it</h2>
+        <p>Every plan starts with 30 days of Plus. If Pennywise doesn’t pay for itself, you shouldn’t pay for it.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <div class="plan-head"><h3>Basic</h3></div>
+          <div class="price">$0<small>forever</small></div>
+          <p>For getting started with manual tracking</p>
+          <ul class="checks">
+            <li><div><strong>Unlimited categories</strong></div></li>
+            <li><div><strong>Manual transactions</strong></div></li>
+            <li><div><strong>Up to 2 savings goals</strong></div></li>
+          </ul>
+          <a class="btn btn-ghost" href="#get-started">Start free</a>
+        </article>
+        <article class="plan featured">
+          <div class="plan-head"><h3>Plus</h3><span class="plan-tag">Most popular</span></div>
+          <div class="price">$5<small>a month, billed yearly</small></div>
+          <p>Or $7 month to month</p>
+          <ul class="checks">
+            <li><div><strong>Automatic bank sync</strong></div></li>
+            <li><div><strong>Unlimited goals and round-ups</strong></div></li>
+            <li><div><strong>Bill calendar and nudges</strong></div></li>
+            <li><div><strong>Shared budgets</strong></div></li>
+          </ul>
+          <a class="btn btn-primary" href="#get-started">Start 30-day free trial</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head center">
+        <p class="kicker">FAQ</p>
+        <h2 id="faq-title">Questions, answered</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Is my financial data safe?</summary>
+          <p>Yes. Bank connections are read-only, so Pennywise can never move money. Data is encrypted in transit and at rest, and we never sell it or show you ads.</p>
+        </details>
+        <details>
+          <summary>Do I have to connect my bank?</summary>
+          <p>No. You can add transactions manually or import a CSV file. Bank sync is optional and available on the Plus plan.</p>
+        </details>
+        <details>
+          <summary>What happens when my trial ends?</summary>
+          <p>You choose: subscribe to Plus, or drop to the free Basic plan and keep all your data. We’ll remind you three days before the trial ends.</p>
+        </details>
+        <details>
+          <summary>Can I use Pennywise with my partner?</summary>
+          <p>Yes. Shared budgets let you split some categories while keeping others private. Both people get full access on a single Plus subscription.</p>
+        </details>
+        <details>
+          <summary>Which devices does it work on?</summary>
+          <p>iPhone, iPad, Android and any modern web browser. Everything syncs automatically.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-labelledby="cta-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2 id="cta-title">Set up your first budget in about ten minutes</h2>
+        <p>Try Pennywise free for 30 days. No credit card, no commitment, just a clearer picture of your money.</p>
+        <a class="btn" href="#pricing">Start free trial</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true">P</span>Pennywise</a>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+    </ul>
+    <p>© 2026 Pennywise</p>
+  </div>
+</footer>
+</body>
+</html>

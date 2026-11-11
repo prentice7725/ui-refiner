@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>キャリアブリッジ｜ITエンジニアの転職・求人</title>
+<meta name="description" content="ITエンジニア専門の転職支援サービス「キャリアブリッジ」。現役エンジニア出身のアドバイザーが、技術スタックと志向に合った求人をご紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fb;
+    --surface: #ffffff;
+    --surface-2: #eef1f7;
+    --fg: #172033;
+    --muted: #5b6579;
+    --line: #dde2ec;
+    --accent: #2b59ff;
+    --accent-ink: #ffffff;
+    --accent-soft: #e6ecff;
+    --accent-2: #12b886;
+    --warn: #e8590c;
+    --shadow: 0 1px 2px rgba(23,32,51,.06), 0 8px 24px rgba(23,32,51,.06);
+    --radius: 14px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e131d; --surface: #161d2b; --surface-2: #1d2636; --fg: #e8ecf4; --muted: #9aa5ba;
+      --line: #2a3446; --accent: #6d8dff; --accent-ink: #0b1020; --accent-soft: #1f2a4a;
+      --accent-2: #38d9a9; --warn: #ff922b; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e131d; --surface: #161d2b; --surface-2: #1d2636; --fg: #e8ecf4; --muted: #9aa5ba;
+    --line: #2a3446; --accent: #6d8dff; --accent-ink: #0b1020; --accent-soft: #1f2a4a;
+    --accent-2: #38d9a9; --warn: #ff922b; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, system-ui, sans-serif;
+    font-size: 16px; line-height: 1.75;
+    background: var(--bg); color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  a { color: var(--accent); }
+  .wrap {
+    max-width: 1120px; margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+    padding: .8em 1.4em; border-radius: 999px; border: 1px solid transparent;
+    font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+    transition: transform .15s, background .15s, box-shadow .15s;
+  }
+  .btn:focus-visible, input:focus-visible, select:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--accent); outline-offset: 2px;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent); }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+  .btn-ghost:hover { background: var(--surface-2); }
+  .eyebrow { display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+  h1, h2, h3 { line-height: 1.35; margin: 0; }
+  h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 900; margin-top: .3em; }
+  section { padding-block: clamp(56px, 9vw, 96px); }
+  .section-head { max-width: 640px; margin-bottom: 40px; }
+  .section-head p { color: var(--muted); margin: .8em 0 0; }
+
+  /* Header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+  header.site {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; gap: 24px; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; color: var(--fg); text-decoration: none; white-space: nowrap; }
+  .logo-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); display: grid; place-items: center; }
+  .nav-links { display: flex; gap: 22px; margin-left: auto; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--fg); }
+  .nav .btn { padding: .55em 1.1em; font-size: .9rem; }
+  @media (max-width: 860px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
+
+  /* Hero */
+  .hero { padding-block: clamp(48px, 8vw, 88px) clamp(48px, 7vw, 80px); position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; inset: -40% -20% auto auto; width: 640px; height: 640px; border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 18%, transparent), transparent);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+  .hero-grid > * { min-width: 0; }
+  .hero h1 { font-size: clamp(2rem, 5.2vw, 3.3rem); font-weight: 900; letter-spacing: -.01em; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-lead { color: var(--muted); font-size: 1.05rem; margin: 1.2em 0 1.8em; max-width: 34em; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .82rem; font-weight: 700; margin-bottom: 18px; }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); }
+
+  .search {
+    display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px; box-shadow: var(--shadow);
+  }
+  .search label { display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; min-width: 0; }
+  .search label:hover { background: var(--surface-2); }
+  .search span { font-size: .72rem; color: var(--muted); font-weight: 700; }
+  .search input, .search select { border: 0; background: transparent; font: inherit; color: var(--fg); padding: 2px 0; min-width: 0; width: 100%; }
+  .search input:focus, .search select:focus { outline: none; }
+  .search label:focus-within { outline: 2px solid var(--accent); }
+  .search .btn { border-radius: 10px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; font-size: .85rem; color: var(--muted); align-items: center; }
+  .hero-tags button { font: inherit; font-size: .82rem; border: 1px solid var(--line); background: var(--surface); color: var(--fg); padding: 3px 10px; border-radius: 999px; cursor: pointer; }
+  .hero-tags button:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: var(--shadow); }
+  .terminal { background: #0f1524; color: #cfd8ea; border-radius: 12px; padding: 16px 18px; font-size: .82rem; line-height: 1.8; overflow-x: auto; }
+  .terminal .c { color: #6b7a99; } .terminal .k { color: #7aa2ff; } .terminal .s { color: #5fe0b0; } .terminal .n { color: #ffb86b; }
+  .term-bar { display: flex; gap: 6px; margin-bottom: 10px; }
+  .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4560; display: block; }
+  .match { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+  .meter { flex: 1; height: 8px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+  .meter b { display: block; height: 100%; width: 92%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: inherit; }
+  .match strong { font-size: 1.4rem; }
+  .match small { color: var(--muted); display: block; font-size: .78rem; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 620px) { .search { grid-template-columns: 1fr; } .search .btn { padding: .9em; } }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stat { background: var(--surface); padding: 24px 20px; text-align: center; }
+  .stat b { display: block; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 900; color: var(--fg); }
+  .stat b small { font-size: .55em; margin-left: 2px; }
+  .stat span { color: var(--muted); font-size: .85rem; }
+  .note { color: var(--muted); font-size: .75rem; margin-top: 10px; }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Jobs */
+  .alt { background: var(--surface); border-block: 1px solid var(--line); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .chip { font: inherit; font-size: .88rem; font-weight: 500; padding: .45em 1em; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .jobs { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+  @media (max-width: 400px) { .jobs { grid-template-columns: 1fr; } }
+  .job { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 12px; transition: border-color .15s, transform .15s; min-width: 0; }
+  .job:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .job-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+  .co { font-size: .82rem; color: var(--muted); }
+  .job h3 { font-size: 1.08rem; font-weight: 700; }
+  .badge { font-size: .72rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+  .badge.new { background: color-mix(in srgb, var(--accent-2) 18%, transparent); color: var(--accent-2); }
+  .badge.hot { background: color-mix(in srgb, var(--warn) 16%, transparent); color: var(--warn); }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .86rem; color: var(--muted); }
+  .meta strong { color: var(--fg); }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack span { font-size: .75rem; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); color: var(--fg); }
+  .job-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); gap: 10px; flex-wrap: wrap; }
+  .salary { font-weight: 900; font-size: 1.1rem; }
+  .salary small { font-size: .7rem; color: var(--muted); font-weight: 500; }
+  .job-foot button { font: inherit; font-size: .85rem; font-weight: 700; color: var(--accent); background: none; border: 0; cursor: pointer; padding: 4px 0; }
+  .job-foot button[aria-pressed="true"] { color: var(--accent-2); }
+  .empty { padding: 40px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: var(--radius); }
+  .jobs-more { text-align: center; margin-top: 32px; }
+  .jobs-more p { color: var(--muted); font-size: .9rem; margin: 0 0 12px; }
+
+  /* Reasons */
+  .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .reason { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; min-width: 0; }
+  .reason .num { font-size: .8rem; color: var(--accent); font-weight: 700; }
+  .reason h3 { font-size: 1.15rem; margin: 8px 0 10px; }
+  .reason p { color: var(--muted); margin: 0; font-size: .95rem; }
+  .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; }
+  @media (max-width: 860px) { .reasons { grid-template-columns: 1fr; } }
+
+  /* Flow */
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; counter-reset: step; list-style: none; padding: 0; margin: 0; }
+  .flow li { position: relative; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 18px; counter-increment: step; min-width: 0; }
+  .flow li::before { content: "STEP " counter(step); font-family: "JetBrains Mono", monospace; font-size: .72rem; color: var(--accent); font-weight: 700; }
+  .flow h3 { font-size: 1rem; margin: 6px 0; }
+  .flow p { font-size: .85rem; color: var(--muted); margin: 0; }
+  .flow .dur { display: inline-block; margin-top: 10px; font-size: .75rem; background: var(--surface-2); padding: 2px 8px; border-radius: 6px; color: var(--fg); }
+  @media (max-width: 960px) { .flow { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .flow { grid-template-columns: 1fr; } }
+
+  /* Voices */
+  .voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .voice { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .voice blockquote { margin: 0; font-size: .95rem; }
+  .voice-who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #fff; flex: none; }
+  .voice-who b { display: block; font-size: .9rem; }
+  .voice-who small { color: var(--muted); font-size: .78rem; }
+  .change { display: flex; align-items: center; gap: 8px; font-size: .82rem; background: var(--surface-2); padding: 8px 12px; border-radius: 10px; flex-wrap: wrap; }
+  .change b { color: var(--accent-2); }
+  @media (max-width: 900px) { .voices { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq { max-width: 800px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { cursor: pointer; padding: 20px 36px 20px 0; font-weight: 700; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 1.4rem; color: var(--accent); font-weight: 400; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin: 0 0 20px; color: var(--muted); }
+
+  /* Signup */
+  .cta { background: var(--fg); color: var(--bg); border-radius: 24px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .cta > * { min-width: 0; }
+  .cta h2 { color: var(--bg); }
+  .cta p { opacity: .8; }
+  .cta ul { padding: 0; list-style: none; margin: 20px 0 0; display: grid; gap: 10px; }
+  .cta li::before { content: "✓"; color: var(--accent-2); font-weight: 900; margin-right: 10px; }
+  form.signup { background: var(--surface); color: var(--fg); border-radius: 16px; padding: 24px; display: grid; gap: 14px; }
+  .field { display: grid; gap: 4px; }
+  .field label { font-size: .82rem; font-weight: 700; }
+  .field label .req { color: var(--warn); font-size: .72rem; margin-left: 6px; }
+  .field input, .field select {
+    font: inherit; padding: .7em .85em; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); width: 100%;
+  }
+  .field input[aria-invalid="true"] { border-color: var(--warn); }
+  .err { color: var(--warn); font-size: .78rem; min-height: 0; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .consent { font-size: .8rem; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; }
+  .consent input { margin-top: 5px; }
+  .success { text-align: center; padding: 20px 8px; }
+  .success .icon { margin: 0 auto 14px; background: color-mix(in srgb, var(--accent-2) 18%, transparent); color: var(--accent-2); }
+  @media (max-width: 860px) { .cta { grid-template-columns: 1fr; } }
+  @media (max-width: 440px) { .row2 { grid-template-columns: 1fr; } }
+
+  /* Footer */
+  footer { padding-block: 48px calc(32px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); background: var(--surface); }
+  .foot { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; }
+  .foot h4 { color: var(--fg); font-size: .85rem; margin: 0 0 10px; }
+  .foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .foot a { color: var(--muted); text-decoration: none; }
+  .foot a:hover { color: var(--fg); }
+  .legal { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  @media (max-width: 760px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
+
+  .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: .88rem; box-shadow: var(--shadow); z-index: 20; max-width: calc(100% - 32px); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="キャリアブリッジ トップへ">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M3 17c3-6 15-6 18 0"/><path d="M7 13v5M12 11v7M17 13v5"/></svg>
+      </span>
+      キャリアブリッジ
+    </a>
+    <nav class="nav-links" aria-label="メイン">
+      <a href="#jobs">求人を探す</a>
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#flow">ご利用の流れ</a>
+      <a href="#voices">転職成功事例</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" href="#signup">無料で相談する</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span>現在 <span id="jobCount">4,820</span> 件の求人を公開中</span>
+        <h1>技術を、正しく<br>評価される場所へ。<br><em>エンジニアの転職は、<br>エンジニアに相談を。</em></h1>
+        <p class="hero-lead">キャリアブリッジは、ITエンジニア専門の転職支援サービスです。開発経験のあるアドバイザーが、あなたの技術スタックと「次にやりたいこと」を理解したうえで、非公開求人を含む最適なポジションをご提案します。</p>
+        <form class="search" id="heroSearch" role="search" aria-label="求人検索">
+          <label>
+            <span>キーワード・言語</span>
+            <input id="q" type="search" placeholder="例：Go、React、SRE" autocomplete="off">
+          </label>
+          <label>
+            <span>職種</span>
+            <select id="role">
+              <option value="all">すべての職種</option>
+              <option value="backend">バックエンド</option>
+              <option value="frontend">フロントエンド</option>
+              <option value="infra">インフラ / SRE</option>
+              <option value="data">データ / 機械学習</option>
+              <option value="pm">PM / EM</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            検索
+          </button>
+        </form>
+        <div class="hero-tags">人気：
+          <button type="button" data-q="Go">Go</button>
+          <button type="button" data-q="TypeScript">TypeScript</button>
+          <button type="button" data-q="AWS">AWS</button>
+          <button type="button" data-q="フルリモート">フルリモート</button>
+          <button type="button" data-q="Python">Python</button>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="マッチングのイメージ">
+        <div class="terminal mono" role="img" aria-label="プロフィール例：経験6年、Go と TypeScript、AWS、志向はプロダクト開発とフルリモート">
+          <div class="term-bar"><i></i><i></i><i></i></div>
+          <span class="c"># あなたのプロフィール</span><br>
+          <span class="k">const</span> me = {<br>
+          &nbsp;&nbsp;exp: <span class="n">6</span>,<br>
+          &nbsp;&nbsp;stack: [<span class="s">"Go"</span>, <span class="s">"TypeScript"</span>, <span class="s">"AWS"</span>],<br>
+          &nbsp;&nbsp;want: [<span class="s">"自社プロダクト"</span>, <span class="s">"フルリモート"</span>],<br>
+          };<br>
+          <span class="k">await</span> careerBridge.match(me);
+        </div>
+        <div class="match">
+          <div style="flex:1;min-width:0">
+            <small>マッチ度の高い求人が見つかりました</small>
+            <div class="meter" aria-hidden="true"><b></b></div>
+          </div>
+          <strong class="mono">92%</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>4,820<small>件</small></b><span>公開求人数</span></div>
+      <div class="stat"><b>68<small>%</small></b><span>非公開求人の割合</span></div>
+      <div class="stat"><b>+112<small>万円</small></b><span>平均年収アップ額</span></div>
+      <div class="stat"><b>94<small>%</small></b><span>利用者満足度</span></div>
+    </div>
+    <p class="note">※ 2025年10月〜2026年9月に当社経由で転職された方の実績より算出。</p>
+  </div>
+
+  <!-- Jobs -->
+  <section id="jobs" class="alt" style="margin-top:clamp(56px,9vw,96px)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">PICK UP JOBS</span>
+        <h2>注目の求人</h2>
+        <p>技術スタック・働き方・年収レンジを明記した求人のみを掲載しています。気になる求人は「保存」して、面談時にアドバイザーへお伝えください。</p>
+      </div>
+      <div class="filters" role="group" aria-label="職種で絞り込み" id="filters">
+        <button class="chip" type="button" data-role="all" aria-pressed="true">すべて</button>
+        <button class="chip" type="button" data-role="backend" aria-pressed="false">バックエンド</button>
+        <button class="chip" type="button" data-role="frontend" aria-pressed="false">フロントエンド</button>
+        <button class="chip" type="button" data-role="infra" aria-pressed="false">インフラ / SRE</button>
+        <button class="chip" type="button" data-role="data" aria-pressed="false">データ / ML</button>
+        <button class="chip" type="button" data-role="pm" aria-pressed="false">PM / EM</button>
+      </div>
+      <p id="resultInfo" class="note" aria-live="polite" style="margin:-8px 0 16px"></p>
+      <div class="jobs" id="jobList"></div>
+      <div class="jobs-more">
+        <p>掲載中の求人はごく一部です。非公開求人はアドバイザーとの面談でご紹介します。</p>
+        <a class="btn btn-ghost" href="#signup">非公開求人を紹介してもらう →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons -->
+  <section id="reasons">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">WHY CAREER BRIDGE</span>
+        <h2>キャリアブリッジが選ばれる3つの理由</h2>
+      </div>
+      <div class="reasons">
+        <article class="reason">
+          <div class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></div>
+          <span class="num mono">01</span>
+          <h3>エンジニア出身のアドバイザー</h3>
+          <p>アドバイザーの約7割が開発・インフラの実務経験者。設計やチーム体制の話まで通じるので、「技術的に何がやりたいか」をそのまま伝えられます。</p>
+        </article>
+        <article class="reason">
+          <div class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+          <span class="num mono">02</span>
+          <h3>開発現場まで踏み込んだ求人情報</h3>
+          <p>開発体制・コードレビュー文化・技術的負債の状況・オンコール頻度まで、企業へのヒアリングで確認。入社後のギャップを最小限にします。</p>
+        </article>
+        <article class="reason">
+          <div class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></div>
+          <span class="num mono">03</span>
+          <h3>年収交渉・技術面接対策まで伴走</h3>
+          <p>職務経歴書の添削、コーディング試験・システム設計面接の対策、内定後の条件交渉までサポート。在職中でも無理なく進められます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section id="flow" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FLOW</span>
+        <h2>ご利用の流れ</h2>
+        <p>ご登録から内定まで、平均1.5〜2ヶ月。すべて無料、オンラインで完結します。</p>
+      </div>
+      <ol class="flow">
+        <li><h3>無料登録</h3><p>フォームから1分で登録。経歴は簡単でOKです。</p><span class="dur">約1分</span></li>
+        <li><h3>キャリア面談</h3><p>オンラインで技術・志向・希望条件をヒアリング。</p><span class="dur">60分</span></li>
+        <li><h3>求人のご紹介</h3><p>非公開を含む求人を、理由とあわせてご提案。</p><span class="dur">面談後3日以内</span></li>
+        <li><h3>選考・面接対策</h3><p>書類添削や技術面接の模擬練習を実施。</p><span class="dur">2〜6週間</span></li>
+        <li><h3>内定・入社</h3><p>条件交渉や退職手続きの相談もお任せください。</p><span class="dur">入社後もフォロー</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Voices -->
+  <section id="voices">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">SUCCESS STORIES</span>
+        <h2>転職成功事例</h2>
+        <p>実際にキャリアブリッジを利用して転職された方の声です。（ご本人の許諾を得て、一部内容を編集しています）</p>
+      </div>
+      <div class="voices">
+        <article class="voice">
+          <div class="change"><span>SIer 開発</span>→<span>SaaS バックエンド</span><b>年収 +150万円</b></div>
+          <blockquote>受託開発から自社サービスに移りたいと相談したところ、Goの経験が浅いことも踏まえて「伸びしろを評価してくれる会社」を絞り込んでくれました。設計面接の練習が特に役立ちました。</blockquote>
+          <div class="voice-who"><span class="avatar" style="background:#2b59ff">K</span><div><b>K.T. さん（29歳）</b><small>バックエンドエンジニア／経験5年</small></div></div>
+        </article>
+        <article class="voice">
+          <div class="change"><span>Web制作会社</span>→<span>フロントエンド</span><b>フルリモート</b></div>
+          <blockquote>地方在住で、フルリモート前提の求人を探していました。アドバイザーの方がチームの働き方やミーティング時間帯まで確認してくれたので、安心して入社を決められました。</blockquote>
+          <div class="voice-who"><span class="avatar" style="background:#12b886">M</span><div><b>M.S. さん（33歳）</b><small>フロントエンドエンジニア／経験8年</small></div></div>
+        </article>
+        <article class="voice">
+          <div class="change"><span>インフラ運用</span>→<span>SRE</span><b>年収 +90万円</b></div>
+          <blockquote>運用中心のキャリアに不安がありましたが、Terraformや監視基盤の構築経験を「SREとして強み」と言語化してもらえたのが大きかったです。職務経歴書の見え方が変わりました。</blockquote>
+          <div class="voice-who"><span class="avatar" style="background:#e8590c">Y</span><div><b>Y.H. さん（31歳）</b><small>SRE／経験7年</small></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>よくある質問</h2>
+      </div>
+      <div class="faq">
+        <details><summary>本当に無料で利用できますか？</summary><p>はい、求職者の方は登録から入社後のフォローまで、すべて無料でご利用いただけます。費用は採用が決まった企業様からいただく仕組みです。</p></details>
+        <details><summary>まだ転職するか決めていなくても相談できますか？</summary><p>もちろんです。「市場価値を知りたい」「数年後のキャリアを整理したい」といった情報収集目的のご相談も歓迎しています。無理に応募をおすすめすることはありません。</p></details>
+        <details><summary>在職中で忙しいのですが、進められますか？</summary><p>面談は平日夜（21時まで）や土曜日にも対応しています。面接日程の調整や企業とのやりとりはアドバイザーが代行するため、ご負担を最小限に抑えられます。</p></details>
+        <details><summary>未経験・経験の浅いエンジニアでも利用できますか？</summary><p>実務経験1年以上の方を主な対象としていますが、学習状況やポートフォリオによってはご紹介できる求人もあります。まずはお気軽にご登録ください。</p></details>
+        <details><summary>現在の勤務先に転職活動が知られることはありますか？</summary><p>ご登録情報は厳重に管理し、ご本人の同意なく企業へ開示することはありません。応募を避けたい企業（現職・関連会社など）があれば事前にお知らせください。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup -->
+  <section id="signup">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <span class="eyebrow" style="color:var(--accent-2)">FREE CONSULTATION</span>
+          <h2>まずは無料キャリア相談から</h2>
+          <p>登録は1分。担当アドバイザーから2営業日以内にご連絡し、面談日程を調整します。</p>
+          <ul>
+            <li>非公開求人を含むポジションのご紹介</li>
+            <li>あなたの技術スタックでの想定年収レンジ</li>
+            <li>職務経歴書の添削・技術面接対策</li>
+            <li>平日夜・土曜日のオンライン面談に対応</li>
+          </ul>
+        </div>
+        <form class="signup" id="signupForm" novalidate>
+          <div id="formBody" style="display:grid;gap:14px">
+            <div class="row2">
+              <div class="field">
+                <label for="name">お名前<span class="req">必須</span></label>
+                <input id="name" name="name" autocomplete="name" required>
+                <span class="err" id="name-err"></span>
+              </div>
+              <div class="field">
+                <label for="years">エンジニア経験</label>
+                <select id="years" name="years">
+                  <option>1年未満</option><option>1〜3年</option><option selected>3〜5年</option><option>5〜10年</option><option>10年以上</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">メールアドレス<span class="req">必須</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              <span class="err" id="email-err"></span>
+            </div>
+            <div class="field">
+              <label for="stack">主な使用言語・技術</label>
+              <input id="stack" name="stack" placeholder="例：Go, TypeScript, AWS">
+            </div>
+            <div class="field">
+              <label for="timing">転職希望時期</label>
+              <select id="timing" name="timing">
+                <option>すぐにでも</option><option>3ヶ月以内</option><option>半年以内</option><option selected>良い求人があれば</option><option>情報収集のみ</option>
+              </select>
+            </div>
+            <label class="consent"><input type="checkbox" id="agree" required><span><a href="#">利用規約</a>と<a href="#">個人情報の取り扱い</a>に同意します</span></label>
+            <span class="err" id="agree-err"></span>
+            <button class="btn btn-primary" type="submit" style="width:100%">無料で登録する</button>
+          </div>
+          <div class="success" id="formDone" hidden role="status">
+            <div class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+            <h3>ご登録ありがとうございます</h3>
+            <p style="color:var(--muted);margin:.6em 0 0">担当アドバイザーより2営業日以内に<br><span id="doneEmail"></span> 宛てにご連絡します。</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M3 17c3-6 15-6 18 0"/><path d="M7 13v5M12 11v7M17 13v5"/></svg></span>キャリアブリッジ</a>
+        <p style="margin:12px 0 0">ITエンジニア専門の転職支援サービス。<br>有料職業紹介事業許可番号 13-ユ-000000</p>
+      </div>
+      <div><h4>求職者の方へ</h4><ul><li><a href="#jobs">求人を探す</a></li><li><a href="#flow">ご利用の流れ</a></li><li><a href="#faq">よくある質問</a></li></ul></div>
+      <div><h4>企業の方へ</h4><ul><li><a href="#">採用のご相談</a></li><li><a href="#">導入事例</a></li></ul></div>
+      <div><h4>運営情報</h4><ul><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li><li><a href="#">利用規約</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 CareerBridge Inc.</span><span>掲載求人・実績はサンプルです。</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(() => {
+  const JOBS = [
+    { id: 1, role: "backend", title: "シニアバックエンドエンジニア（決済基盤）", co: "フィンテック系 SaaS／従業員 320名", min: 800, max: 1200, loc: "フルリモート", stack: ["Go", "gRPC", "PostgreSQL", "AWS"], badge: "hot" },
+    { id: 2, role: "frontend", title: "フロントエンドエンジニア（デザインシステム）", co: "HR Tech スタートアップ／従業員 85名", min: 600, max: 900, loc: "東京・週1出社", stack: ["TypeScript", "React", "Next.js", "Storybook"], badge: "new" },
+    { id: 3, role: "infra", title: "SRE（マルチリージョン化プロジェクト）", co: "動画配信サービス／従業員 540名", min: 750, max: 1100, loc: "フルリモート", stack: ["Kubernetes", "Terraform", "GCP", "Datadog"], badge: "hot" },
+    { id: 4, role: "data", title: "機械学習エンジニア（レコメンド）", co: "EC プラットフォーム／従業員 1,200名", min: 700, max: 1150, loc: "大阪・リモート併用", stack: ["Python", "PyTorch", "BigQuery", "Vertex AI"], badge: "" },
+    { id: 5, role: "pm", title: "エンジニアリングマネージャー", co: "物流 DX スタートアップ／従業員 140名", min: 900, max: 1400, loc: "東京・週2出社", stack: ["Ruby on Rails", "AWS", "チーム8名"], badge: "new" },
+    { id: 6, role: "backend", title: "バックエンドエンジニア（医療予約 SaaS）", co: "ヘルステック企業／従業員 210名", min: 550, max: 850, loc: "フルリモート", stack: ["Kotlin", "Spring Boot", "MySQL", "AWS"], badge: "" },
+    { id: 7, role: "frontend", title: "モバイルアプリエンジニア（Flutter）", co: "家計簿アプリ運営／従業員 60名", min: 600, max: 950, loc: "福岡・フルリモート可", stack: ["Flutter", "Dart", "Firebase"], badge: "" },
+    { id: 8, role: "data", title: "データエンジニア（分析基盤刷新）", co: "旅行予約サービス／従業員 780名", min: 650, max: 1000, loc: "東京・リモート併用", stack: ["Python", "dbt", "Snowflake", "Airflow"], badge: "new" },
+    { id: 9, role: "infra", title: "クラウドセキュリティエンジニア", co: "BtoB SaaS／従業員 400名", min: 700, max: 1050, loc: "フルリモート", stack: ["AWS", "IAM", "Terraform", "SIEM"], badge: "" }
+  ];
+
+  const $ = s => document.querySelector(s);
+  const list = $("#jobList"), info = $("#resultInfo");
+  let state = { role: "all", q: "" };
+  let saved = new Set();
+  try { saved = new Set(JSON.parse(localStorage.getItem("cb-saved") || "[]")); } catch (e) {}
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  function render() {
+    const q = state.q.trim().toLowerCase();
+    const items = JOBS.filter(j =>
+      (state.role === "all" || j.role === state.role) &&
+      (!q || [j.title, j.co, j.loc, ...j.stack].join(" ").toLowerCase().includes(q))
+    );
+    info.textContent = q ? `「${state.q}」の検索結果：${items.length}件` : "";
+    if (!items.length) {
+      list.innerHTML = `<div class="empty" style="grid-column:1/-1">条件に合う掲載求人が見つかりませんでした。<br>非公開求人にはあるかもしれません。<a href="#signup">アドバイザーに相談する</a></div>`;
+      return;
+    }
+    list.innerHTML = items.map(j => `
+      <article class="job">
+        <div class="job-top">
+          <div style="min-width:0"><div class="co">${esc(j.co)}</div><h3>${esc(j.title)}</h3></div>
+          ${j.badge === "new" ? '<span class="badge new">NEW</span>' : j.badge === "hot" ? '<span class="badge hot">注目</span>' : ""}
+        </div>
+        <div class="meta"><span>勤務地：<strong>${esc(j.loc)}</strong></span></div>
+        <div class="stack">${j.stack.map(s => `<span class="mono">${esc(s)}</span>`).join("")}</div>
+        <div class="job-foot">
+          <span class="salary">${j.min}〜${j.max}<small> 万円 / 年</small></span>
+          <button type="button" data-save="${j.id}" aria-pressed="${saved.has(j.id)}">${saved.has(j.id) ? "✓ 保存済み" : "＋ 保存する"}</button>
+        </div>
+      </article>`).join("");
+  }
+
+  function setRole(role) {
+    state.role = role;
+    document.querySelectorAll("#filters .chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.role === role)));
+    $("#role").value = role;
+  }
+
+  $("#filters").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    setRole(b.dataset.role); render();
+  });
+
+  $("#heroSearch").addEventListener("submit", e => {
+    e.preventDefault();
+    state.q = $("#q").value;
+    setRole($("#role").value);
+    render();
+    $("#jobs").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
+
+  document.querySelectorAll(".hero-tags button").forEach(b => b.addEventListener("click", () => {
+    $("#q").value = b.dataset.q;
+    $("#heroSearch").requestSubmit();
+  }));
+
+  let toastTimer;
+  function toast(msg) {
+    const t = $("#toast"); t.textContent = msg; t.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => (t.hidden = true), 2200);
+  }
+
+  list.addEventListener("click", e => {
+    const b = e.target.closest("[data-save]"); if (!b) return;
+    const id = Number(b.dataset.save);
+    if (saved.has(id)) { saved.delete(id); toast("保存を解除しました"); }
+    else { saved.add(id); toast("求人を保存しました（この端末に保存）"); }
+    try { localStorage.setItem("cb-saved", JSON.stringify([...saved])); } catch (e) {}
+    render();
+  });
+
+  // Signup form
+  const form = $("#signupForm");
+  function setErr(id, msg) {
+    const el = $("#" + id), err = $("#" + id + "-err");
+    err.textContent = msg;
+    if (el.type !== "checkbox") el.setAttribute("aria-invalid", msg ? "true" : "false");
+    if (msg) el.setAttribute("aria-describedby", id + "-err"); else el.removeAttribute("aria-describedby");
+    return !msg;
+  }
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("#name").value.trim(), email = $("#email").value.trim();
+    const ok = [
+      setErr("name", name ? "" : "お名前を入力してください"),
+      setErr("email", !email ? "メールアドレスを入力してください" : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? "" : "メールアドレスの形式が正しくありません"),
+      setErr("agree", $("#agree").checked ? "" : "同意が必要です")
+    ];
+    if (ok.includes(false)) { form.querySelector('[aria-invalid="true"], #agree:not(:checked)')?.focus(); return; }
+    $("#doneEmail").textContent = email;
+    $("#formBody").hidden = true;
+    $("#formDone").hidden = false;
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

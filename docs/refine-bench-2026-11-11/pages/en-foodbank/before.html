@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riverbend Community Food Bank</title>
+<meta name="description" content="Riverbend Community Food Bank provides free groceries to neighbors in need. Find food, volunteer, or donate.">
+<style>
+  :root {
+    --green: #2f6b3f;
+    --green-dark: #1f4a2b;
+    --green-light: #e7f1e9;
+    --orange: #e07a2f;
+    --orange-dark: #b85f1d;
+    --cream: #fbf8f2;
+    --ink: #1f2a24;
+    --muted: #5a665f;
+    --line: #dfe5df;
+    --radius: 14px;
+    --shadow: 0 6px 24px rgba(31, 42, 36, .08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--cream);
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--green); }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 .5em; font-family: Georgia, "Times New Roman", serif; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
+  h3 { font-size: 1.25rem; }
+  p { margin: 0 0 1em; }
+  .container { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 1rem; top: 1rem; background: #fff; padding: .5rem 1rem; z-index: 100; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; padding: .8rem 1.4rem; border-radius: 999px;
+    font-weight: 600; text-decoration: none; border: 2px solid transparent;
+    transition: background .15s, color .15s, transform .15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-primary:hover { background: var(--orange-dark); }
+  .btn-outline { border-color: currentColor; color: var(--green); background: transparent; }
+  .btn-outline:hover { background: var(--green); color: #fff; border-color: var(--green); }
+  .btn-light { background: #fff; color: var(--green-dark); }
+
+  /* Alert bar */
+  .alert { background: var(--green-dark); color: #fff; font-size: .9rem; text-align: center; padding: .5rem 1rem; }
+  .alert a { color: #ffd9b8; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 248, 242, .96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
+  .logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--green-dark); font-weight: 700; line-height: 1.1; }
+  .logo small { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; }
+  .nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+  .nav ul a { text-decoration: none; color: var(--ink); font-weight: 500; }
+  .nav ul a:hover { color: var(--green); }
+  .nav-actions { display: flex; gap: .6rem; align-items: center; }
+  .menu-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; padding: .4rem .6rem; font-size: 1.2rem; cursor: pointer; }
+
+  /* Hero */
+  .hero { padding: 4.5rem 0 4rem; background: linear-gradient(180deg, var(--green-light), var(--cream)); }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; align-items: center; }
+  .eyebrow { display: inline-block; background: #fff; color: var(--green); font-weight: 600; font-size: .85rem; padding: .3rem .8rem; border-radius: 999px; border: 1px solid var(--line); margin-bottom: 1rem; }
+  .hero p.lead { font-size: 1.2rem; color: var(--muted); max-width: 36ch; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+  .hero-art { position: relative; }
+  .hero-art svg { width: 100%; height: auto; }
+  .hero-card {
+    position: absolute; bottom: -1rem; left: -1rem; background: #fff; border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 1rem 1.2rem; max-width: 240px; font-size: .9rem;
+  }
+  .hero-card strong { display: block; color: var(--green); font-size: 1.4rem; font-family: Georgia, serif; }
+
+  /* Quick help */
+  .quick { margin-top: -1.5rem; position: relative; }
+  .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .quick-card {
+    background: #fff; border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow);
+    border-top: 5px solid var(--green); display: flex; flex-direction: column;
+  }
+  .quick-card:nth-child(2) { border-top-color: var(--orange); }
+  .quick-card:nth-child(3) { border-top-color: #c9a227; }
+  .quick-card .icon { width: 48px; height: 48px; border-radius: 12px; background: var(--green-light); display: grid; place-items: center; margin-bottom: 1rem; }
+  .quick-card p { color: var(--muted); flex: 1; }
+  .quick-card a.more { font-weight: 600; text-decoration: none; }
+  .quick-card a.more::after { content: " →"; }
+
+  section { padding: 5rem 0; }
+  .section-head { max-width: 640px; margin-bottom: 2.5rem; }
+  .section-head p { color: var(--muted); font-size: 1.1rem; }
+
+  /* Get food */
+  .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  .hours { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .hours h3 { background: var(--green); color: #fff; margin: 0; padding: 1rem 1.4rem; font-family: inherit; font-size: 1.05rem; }
+  .hours table { width: 100%; border-collapse: collapse; }
+  .hours td { padding: .75rem 1.4rem; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 600; }
+  .hours tr.closed td:last-child { color: var(--muted); font-weight: 400; }
+  .hours tr.today { background: #fff6ee; }
+  .hours .note { padding: 1rem 1.4rem; font-size: .9rem; color: var(--muted); margin: 0; }
+  .checklist { list-style: none; padding: 0; margin: 1.2rem 0 1.5rem; }
+  .checklist li { padding-left: 2rem; position: relative; margin-bottom: .8rem; }
+  .checklist li::before {
+    content: "✓"; position: absolute; left: 0; top: .1rem; width: 1.4rem; height: 1.4rem; border-radius: 50%;
+    background: var(--green-light); color: var(--green); font-weight: 700; font-size: .85rem; display: grid; place-items: center;
+  }
+  .lang { font-size: .9rem; color: var(--muted); border-left: 3px solid var(--orange); padding-left: 1rem; }
+
+  /* Impact */
+  .impact { background: var(--green-dark); color: #fff; }
+  .impact h2 { color: #fff; }
+  .impact .section-head p { color: #cfe0d3; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .stat { border-top: 2px solid rgba(255,255,255,.25); padding-top: 1rem; }
+  .stat strong { display: block; font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 2.8rem); color: #ffd9b8; line-height: 1.1; }
+  .stat span { color: #cfe0d3; }
+
+  /* Programs */
+  .programs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+  .program { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+  .program .tag { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--orange-dark); }
+  .program p { color: var(--muted); margin: 0; }
+
+  /* Donate */
+  .donate { background: var(--green-light); }
+  .donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .donate-box { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; }
+  .freq { display: flex; background: var(--cream); border-radius: 999px; padding: .3rem; margin-bottom: 1.2rem; }
+  .freq button { flex: 1; border: 0; background: none; padding: .6rem; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer; color: var(--muted); }
+  .freq button[aria-pressed="true"] { background: var(--green); color: #fff; }
+  .amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-bottom: 1rem; }
+  .amounts button {
+    border: 2px solid var(--line); background: #fff; border-radius: 10px; padding: .8rem 0;
+    font: inherit; font-weight: 700; cursor: pointer; color: var(--ink);
+  }
+  .amounts button[aria-pressed="true"] { border-color: var(--orange); background: #fff6ee; color: var(--orange-dark); }
+  .meals { background: var(--cream); border-radius: 10px; padding: .9rem 1rem; font-size: .95rem; margin-bottom: 1.2rem; }
+  .meals strong { color: var(--green); }
+  .donate-box .btn { width: 100%; text-align: center; font-size: 1.05rem; }
+  .fine { font-size: .82rem; color: var(--muted); margin: .8rem 0 0; text-align: center; }
+  .other-ways { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .8rem; }
+  .other-ways li { display: flex; gap: .8rem; align-items: flex-start; }
+  .other-ways .dot { flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+
+  /* Volunteer */
+  .volunteer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .shift { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; }
+  .shift .when { font-size: .85rem; color: var(--muted); }
+  .needed { display: inline-block; background: #fff6ee; color: var(--orange-dark); font-size: .8rem; font-weight: 700; padding: .2rem .6rem; border-radius: 999px; margin-top: .6rem; }
+
+  /* Story */
+  .story { display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; background: #fff; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+  .story blockquote { margin: 0; font-family: Georgia, serif; font-size: 1.35rem; line-height: 1.5; }
+  .story cite { display: block; margin-top: 1rem; font-style: normal; color: var(--muted); font-size: .95rem; font-family: system-ui, sans-serif; }
+  .avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--green-light); display: grid; place-items: center; font-family: Georgia, serif; font-size: 2rem; color: var(--green); }
+
+  /* Newsletter */
+  .newsletter { background: var(--orange); color: #fff; border-radius: var(--radius); padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+  .newsletter h2 { color: #fff; margin-bottom: .3rem; }
+  .newsletter p { margin: 0; }
+  .newsletter form { display: flex; gap: .5rem; }
+  .newsletter input { flex: 1; min-width: 0; padding: .8rem 1rem; border-radius: 999px; border: 0; font: inherit; }
+  .newsletter .btn { background: var(--green-dark); color: #fff; border: 0; cursor: pointer; font: inherit; font-weight: 600; }
+  .form-msg { margin-top: .6rem; font-size: .9rem; }
+
+  /* Footer */
+  footer { background: var(--ink); color: #c8d0cb; padding: 4rem 0 2rem; margin-top: 5rem; font-size: .95rem; }
+  footer a { color: #fff; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem; }
+  footer h4 { color: #fff; margin: 0 0 .8rem; font-size: 1rem; }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { margin-bottom: .4rem; }
+  .foot-bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 3rem; padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: .85rem; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-grid, .food-grid, .donate-grid, .newsletter { grid-template-columns: 1fr; }
+    .hero-art { max-width: 460px; }
+    .quick-grid, .volunteer-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .menu-toggle { display: block; }
+    .nav ul {
+      display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--cream); border-bottom: 1px solid var(--line); padding: .5rem 1.25rem 1rem;
+    }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: .7rem 0; }
+    .nav-actions .btn-outline { display: none; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 3.5rem 0; }
+    .story { grid-template-columns: 1fr; padding: 1.8rem; }
+    .amounts { grid-template-columns: repeat(2, 1fr); }
+    .newsletter { padding: 1.8rem; }
+    .newsletter form { flex-direction: column; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .hero-card { position: static; margin-top: 1rem; max-width: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="alert" role="note">
+  🦃 Holiday Food Drive is on through December 20 — <a href="#donate">see what we need most</a>.
+</div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="Riverbend Community Food Bank home">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#2f6b3f"/>
+        <path d="M6 26c4-3 8-3 12 0s8 3 12 0 6-2 6-2" stroke="#9fd0ac" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M20 9c-4 3-5 7-3 11 4-1 6-5 3-11z" fill="#e07a2f"/>
+        <path d="M20 20v-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span>Riverbend<small>Community Food Bank</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a href="#get-food">Get Food</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#impact">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="#get-food" class="btn btn-outline">Find Food</a>
+      <a href="#donate" class="btn btn-primary">Donate</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Serving the Riverbend area since 1987</span>
+        <h1 id="hero-title">No one in our community should go hungry.</h1>
+        <p class="lead">We share free, healthy groceries with neighbors who need them — no paperwork hassles, no judgment, just good food and a warm welcome.</p>
+        <div class="actions">
+          <a href="#get-food" class="btn btn-primary">Get Food This Week</a>
+          <a href="#volunteer" class="btn btn-outline">Volunteer With Us</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 460 380" role="img" aria-label="Illustration of a grocery crate filled with fresh produce and bread">
+          <circle cx="240" cy="190" r="170" fill="#fff"/>
+          <circle cx="240" cy="190" r="170" fill="none" stroke="#dfe5df" stroke-width="2" stroke-dasharray="6 8"/>
+          <!-- leaves -->
+          <path d="M150 170c-10-40 10-70 30-80 5 35-5 65-30 80z" fill="#5c9e6c"/>
+          <path d="M175 165c5-35 30-55 55-55-5 30-25 50-55 55z" fill="#2f6b3f"/>
+          <!-- bread -->
+          <rect x="250" y="95" width="46" height="100" rx="22" fill="#d9a25b" transform="rotate(18 273 145)"/>
+          <path d="M262 112l22 8M258 128l22 8M254 144l22 8" stroke="#b67d3a" stroke-width="3" stroke-linecap="round" transform="rotate(18 273 145)"/>
+          <!-- apples / tomatoes -->
+          <circle cx="205" cy="190" r="30" fill="#d9483b"/>
+          <circle cx="196" cy="180" r="7" fill="#f07a6e"/>
+          <path d="M205 160v-10" stroke="#5a3b1a" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="320" cy="195" r="26" fill="#e07a2f"/>
+          <circle cx="312" cy="186" r="6" fill="#f3a466"/>
+          <!-- carrots -->
+          <path d="M140 205l60-20-50 45z" fill="#ef8a2e"/>
+          <path d="M138 205l-14-12M140 207l-18 0M141 210l-12 12" stroke="#4f8f5d" stroke-width="4" stroke-linecap="round"/>
+          <!-- crate -->
+          <path d="M120 210h240l-22 120H142z" fill="#2f6b3f"/>
+          <rect x="112" y="200" width="256" height="22" rx="6" fill="#1f4a2b"/>
+          <path d="M160 245h160M156 275h168M152 305h176" stroke="#5c9e6c" stroke-width="4" stroke-linecap="round"/>
+          <!-- heart -->
+          <path d="M380 90c-8-14-30-8-26 8 3 10 26 26 26 26s23-16 26-26c4-16-18-22-26-8z" fill="#e07a2f"/>
+        </svg>
+        <div class="hero-card">
+          <strong>1.8M meals</strong>
+          shared with families across Riverbend County last year.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container quick">
+    <div class="quick-grid">
+      <article class="quick-card">
+        <div class="icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2f6b3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3>Need food?</h3>
+        <p>Visit our pantry or one of 30+ partner sites. Everyone is welcome — bring a bag and we'll take care of the rest.</p>
+        <a class="more" href="#get-food">Hours &amp; locations</a>
+      </article>
+      <article class="quick-card">
+        <div class="icon" aria-hidden="true" style="background:#fff1e5">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e07a2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>
+        </div>
+        <h3>Give a meal</h3>
+        <p>Every $1 you give helps provide 3 meals. Your gift goes straight to stocking shelves for local families.</p>
+        <a class="more" href="#donate">Donate now</a>
+      </article>
+      <article class="quick-card">
+        <div class="icon" aria-hidden="true" style="background:#f8f0d4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a5841c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+        </div>
+        <h3>Lend a hand</h3>
+        <p>Sort produce, pack boxes, or deliver groceries to homebound seniors. Shifts for individuals, families, and groups.</p>
+        <a class="more" href="#volunteer">Find a shift</a>
+      </article>
+    </div>
+  </div>
+
+  <section id="get-food" aria-labelledby="food-title">
+    <div class="container food-grid">
+      <div>
+        <h2 id="food-title">Getting food is simple</h2>
+        <p>Our Main Pantry is a client-choice market — you shop for the groceries your household actually wants, including fresh produce, dairy, protein, and pantry staples.</p>
+        <ul class="checklist">
+          <li><strong>No appointment needed.</strong> Just come during open hours.</li>
+          <li><strong>No proof of income required.</strong> We'll ask for your name and household size — that's it.</li>
+          <li><strong>Visit once a week.</strong> Plus fresh produce any day we're open.</li>
+          <li><strong>Can't make it in?</strong> Seniors and people with disabilities can request home delivery.</li>
+        </ul>
+        <p><strong>Main Pantry:</strong> 420 River Road, Riverbend<br>
+        Near the Route 9 bus stop · Free parking · Wheelchair accessible</p>
+        <p class="lang">Hablamos español. Interpreters for other languages are available — just ask. Call <a href="tel:+15555550142">(555) 555-0142</a>.</p>
+      </div>
+      <div class="hours">
+        <h3>Main Pantry Hours</h3>
+        <table>
+          <tbody id="hours-body">
+            <tr data-day="1"><td>Monday</td><td>10 am – 2 pm</td></tr>
+            <tr data-day="2"><td>Tuesday</td><td>2 pm – 7 pm</td></tr>
+            <tr data-day="3"><td>Wednesday</td><td>10 am – 2 pm</td></tr>
+            <tr data-day="4"><td>Thursday</td><td>2 pm – 7 pm</td></tr>
+            <tr data-day="5"><td>Friday</td><td>10 am – 1 pm</td></tr>
+            <tr data-day="6"><td>Saturday</td><td>9 am – 12 pm</td></tr>
+            <tr data-day="0" class="closed"><td>Sunday</td><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Closed Thanksgiving Day (Nov 26). Extra holiday distribution Saturday, Nov 21, 8 am – 1 pm.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="impact" aria-labelledby="impact-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="impact-title">Neighbors helping neighbors</h2>
+        <p>Riverbend Community Food Bank started in a church basement nearly 40 years ago. Today we're the hub of a network that reaches every corner of the county.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>1.8M</strong><span>meals shared last year</span></div>
+        <div class="stat"><strong>14,500</strong><span>people served each month</span></div>
+        <div class="stat"><strong>32</strong><span>partner pantries &amp; meal sites</span></div>
+        <div class="stat"><strong>94¢</strong><span>of every dollar goes to programs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" aria-labelledby="programs-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="programs-title">Our programs</h2>
+        <p>Hunger looks different for everyone. These programs meet people where they are.</p>
+      </div>
+      <div class="programs">
+        <article class="program">
+          <span class="tag">Families</span>
+          <h3>Main Pantry Market</h3>
+          <p>A grocery-store style pantry where households choose their own fresh and shelf-stable foods.</p>
+        </article>
+        <article class="program">
+          <span class="tag">Kids</span>
+          <h3>Weekend Backpacks</h3>
+          <p>Kid-friendly meals sent home every Friday with students at 18 local schools.</p>
+        </article>
+        <article class="program">
+          <span class="tag">Seniors</span>
+          <h3>Home Delivery</h3>
+          <p>Volunteers bring monthly grocery boxes to older adults and neighbors who can't travel.</p>
+        </article>
+        <article class="program">
+          <span class="tag">Neighborhoods</span>
+          <h3>Mobile Pantry</h3>
+          <p>Our truck brings fresh produce to rural towns and apartment complexes twice a week.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="donate" aria-labelledby="donate-title">
+    <div class="container donate-grid">
+      <div>
+        <h2 id="donate-title">Your gift fills plates right here at home</h2>
+        <p>Because we partner with farms, grocers, and regional food networks, every dollar stretches far. Gifts are tax-deductible — Riverbend Community Food Bank is a 501(c)(3) non-profit.</p>
+        <ul class="other-ways">
+          <li><span class="dot" aria-hidden="true">🥫</span><span><strong>Drop off food</strong> — Most needed: peanut butter, canned protein, cereal, cooking oil, and diapers. Mon–Sat at the loading dock.</span></li>
+          <li><span class="dot" aria-hidden="true">🏢</span><span><strong>Host a food drive</strong> at your workplace, school, or place of worship. We'll provide bins and signs.</span></li>
+          <li><span class="dot" aria-hidden="true">🌱</span><span><strong>Share your harvest</strong> — Gardeners and farmers can donate fresh produce.</span></li>
+        </ul>
+      </div>
+      <div class="donate-box">
+        <div class="freq" role="group" aria-label="Donation frequency">
+          <button type="button" data-freq="once" aria-pressed="true">One-time</button>
+          <button type="button" data-freq="monthly" aria-pressed="false">Monthly</button>
+        </div>
+        <div class="amounts" role="group" aria-label="Donation amount">
+          <button type="button" data-amount="25" aria-pressed="false">$25</button>
+          <button type="button" data-amount="50" aria-pressed="true">$50</button>
+          <button type="button" data-amount="100" aria-pressed="false">$100</button>
+          <button type="button" data-amount="250" aria-pressed="false">$250</button>
+        </div>
+        <p class="meals" aria-live="polite">Your <span id="freq-label">gift</span> of <strong id="amt">$50</strong> helps provide <strong id="meal-count">150 meals</strong> for neighbors in need.</p>
+        <a href="#" class="btn btn-primary" id="give-btn">Give $50 today</a>
+        <p class="fine">Secure donation · Tax-deductible · EIN 00-0000000</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="volunteer" aria-labelledby="volunteer-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="volunteer-title">Volunteer this month</h2>
+        <p>Over 2,000 volunteers keep our doors open. No experience needed — ages 10+ welcome with an adult.</p>
+      </div>
+      <div class="volunteer-grid">
+        <article class="shift">
+          <h3>Warehouse Sorting</h3>
+          <p class="when">Tue &amp; Thu · 9 am – 12 pm</p>
+          <p>Inspect and sort donated food so it's ready for families. Great for groups.</p>
+          <span class="needed">12 spots open</span>
+        </article>
+        <article class="shift">
+          <h3>Pantry Market Host</h3>
+          <p class="when">Mon – Sat · various</p>
+          <p>Greet guests, restock shelves, and help shoppers carry groceries.</p>
+          <span class="needed">Most needed</span>
+        </article>
+        <article class="shift">
+          <h3>Senior Delivery Driver</h3>
+          <p class="when">Second Saturday · 9 am – 11 am</p>
+          <p>Deliver grocery boxes to older adults along a planned route. Valid license required.</p>
+          <span class="needed">6 routes open</span>
+        </article>
+      </div>
+      <p style="margin-top:2rem"><a href="#" class="btn btn-outline">See all volunteer shifts</a></p>
+    </div>
+  </section>
+
+  <div class="container">
+    <figure class="story">
+      <div class="avatar" aria-hidden="true">M</div>
+      <div>
+        <blockquote>“When my hours got cut, I didn't know how I'd feed my kids. The folks here treated me like family. Now I volunteer every Saturday so I can pay it forward.”</blockquote>
+        <figcaption><cite>— Maria, Riverbend parent and volunteer</cite></figcaption>
+      </div>
+    </figure>
+  </div>
+
+  <section aria-labelledby="news-title" style="padding-bottom:0">
+    <div class="container">
+      <div class="newsletter">
+        <div>
+          <h2 id="news-title">Stay in the loop</h2>
+          <p>Monthly updates on distributions, volunteer needs, and the difference you're making.</p>
+        </div>
+        <div>
+          <form id="news-form" novalidate>
+            <label for="email" class="skip">Email address</label>
+            <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+            <button class="btn" type="submit">Sign up</button>
+          </form>
+          <p class="form-msg" id="form-msg" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h4>Riverbend Community Food Bank</h4>
+        <p>420 River Road<br>Riverbend, ST 00000</p>
+        <p><a href="tel:+15555550142">(555) 555-0142</a><br><a href="mailto:hello@riverbendfoodbank.org">hello@riverbendfoodbank.org</a></p>
+      </div>
+      <div>
+        <h4>Get Help</h4>
+        <ul>
+          <li><a href="#get-food">Pantry hours</a></li>
+          <li><a href="#programs">Find a partner site</a></li>
+          <li><a href="#programs">Home delivery</a></li>
+          <li><a href="#">SNAP assistance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#donate">Host a food drive</a></li>
+          <li><a href="#">Corporate partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="#impact">Our story</a></li>
+          <li><a href="#">Staff &amp; board</a></li>
+          <li><a href="#">Financials</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Riverbend Community Food Bank. A 501(c)(3) non-profit organization.</span>
+      <span>This institution is an equal opportunity provider.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Highlight today's hours
+  const today = new Date().getDay();
+  const row = document.querySelector(`#hours-body tr[data-day="${today}"]`);
+  if (row) { row.classList.add('today'); row.firstElementChild.textContent += ' (today)'; }
+
+  // Donation widget
+  let amount = 50, freq = 'once';
+  const amtEl = document.getElementById('amt'), mealEl = document.getElementById('meal-count');
+  const giveBtn = document.getElementById('give-btn'), freqLabel = document.getElementById('freq-label');
+  function update() {
+    amtEl.textContent = '$' + amount;
+    mealEl.textContent = (amount * 3).toLocaleString() + ' meals' + (freq === 'monthly' ? ' every month' : '');
+    freqLabel.textContent = freq === 'monthly' ? 'monthly gift' : 'gift';
+    giveBtn.textContent = freq === 'monthly' ? `Give $${amount} monthly` : `Give $${amount} today`;
+  }
+  function pick(groupSel, attr, cb) {
+    document.querySelectorAll(groupSel + ' button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll(groupSel + ' button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      cb(b.dataset[attr]); update();
+    }));
+  }
+  pick('.amounts', 'amount', v => amount = +v);
+  pick('.freq', 'freq', v => freq = v);
+
+  // Newsletter
+  document.getElementById('news-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = document.getElementById('email'), msg = document.getElementById('form-msg');
+    msg.textContent = input.checkValidity() && input.value
+      ? 'Thanks for signing up! Watch your inbox for our next update.'
+      : 'Please enter a valid email address.';
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
