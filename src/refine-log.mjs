@@ -91,9 +91,14 @@ export function dealAccents(families,entries,project,{n=3,seed=0}={}){
  return [...families].sort((x,y)=>score(x)-score(y)||hash(seed,x)-hash(seed,y)).slice(0,n);
 }
 
-/** Surfaces: plain white for most, as on 82% of human sites; one direction gets a dark, brand or paper ground. */
-export function dealSurfaces(n=3,seed=0){
- const odd=['dark','brand','paper'][hash(seed,'surface')%3],at=hash(seed,'slot')%n;
+/**
+ * Surfaces: plain white for most, as on 82% of human sites; one direction gets a dark, brand or paper ground.
+ * Software pages get no dark ground: in benchmark round 12 all three judges read the dark dashboard with a neon
+ * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.
+ */
+export function dealSurfaces(n=3,seed=0,{kind}={}){
+ const pool=kind==='software'?['brand','paper']:['dark','brand','paper'];
+ const odd=pool[hash(seed,'surface')%pool.length],at=hash(seed,'slot')%n;
  return Array.from({length:n},(_,i)=>i===at?odd:'white');
 }
 
@@ -115,7 +120,7 @@ export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noP
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary();
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
- const surf=dealSurfaces(n,seed);
+ const surf=dealSurfaces(n,seed,{kind});
  const deal={schemaVersion:3,kind:kind??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
