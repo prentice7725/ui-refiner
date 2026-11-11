@@ -315,3 +315,42 @@ Reading:
   - thin-rule lists;
   - stat rows.
 - Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output.
+
+## Round 11: a photo or a large product screen on the first screen (same 8 pages)
+
+Same as round 10, with one new check. A first screen fails `directions verify` and the finish gate when:
+- it has neither a photo over 10% of the screen nor a product screen built in code (marked `data-product-shot`) over 25% of it;
+- or that product screen holds more than three bits of text under 12px.
+
+Of 138 human first screens, 21% would fail the photo half.
+
+Cost: $21.19 ($19.42 for the 8 refines at 40–73 turns each, $1.78 for the judges).
+
+- All 8 pages passed `keep check` and `directions verify`. The claim is the largest text on all 8.
+- Images on the first screen:
+  - the four service pages (dental ×2, food bank, hiring) used photos or marked stand-ins;
+  - the four software pages (SaaS, two fintech, logistics) used one product screen each.
+- Applied heroes: left stacked 2, centred 2, full-bleed 1, image-led below-fold 1, wide stacked 1, right + panel 1.
+- Surfaces: white 5, blue 2, warm greige 1.
+
+Judges (same run as the table, so the figures differ from earlier rounds):
+
+| Version | Per-page mean rank (1–5) | Per-page AI look | Set sameness (run 1 / 2) | Set rank of 8 (run 1 / 2) |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 1 | 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 | 5 / 2 |
+| Before | 4.9 | 8.8 | 9 / 8 | 8 / 8 |
+| Plain prompt | 2.0 | 2.9 | 8 / 9 | 6 / 7 |
+| Refine, round 2 | **1.8** | 3.9 | 8 / 8 | 7 / 6 |
+| Refine, round 8 | — | — | 3 / 5 | **2** / 5 |
+| Refine, round 10 | 2.9 | 4.4 | 4 / 4 | 3 / **3** |
+| Refine, round 11 | 3.5 | 4.4 | 4 / 5 | 4 / 4 |
+
+Reading:
+- The check did its job: every page now shows a photo or a product screen, and the wireframe look of round 10 is gone from the screenshots.
+- It did not raise the judged quality:
+  - page by page, round 11 ranked behind round 10 (3.5 vs 2.9), and its typography score fell 6.9 → 6.4;
+  - across the set it held round 10's sameness (4–5) but ranked one place lower in both runs.
+- The plain prompt and round 2 still win single pages, and neither has a photo. Images alone do not explain the gap.
+- Habits the set judge still saw: data-table or schedule heroes, a weekday hours strip on the clinic and food-bank pages, the same blue on two clients, stat rows, two-column feature lists.
+- Same limits as before: 8 pages, one run per arm, and Claude judging Claude's output. Differences under about 0.6 in the per-page rank are noise.
