@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>한길로지스 | B2B 물류·풀필먼트 파트너</title>
+<meta name="description" content="한길로지스는 보관부터 출고, 배송, 반품까지 하나의 흐름으로 연결하는 B2B 물류·풀필먼트 전문 기업입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --bg-soft: #edebe4;
+    --surface: #ffffff;
+    --fg: #1a1c1f;
+    --fg-muted: #5c5f64;
+    --line: #d8d5cb;
+    --line-strong: #1a1c1f;
+    --accent: #c4480a;
+    --accent-fg: #ffffff;
+    --ink: #17191c;
+    --ink-fg: #ecebe6;
+    --ink-muted: #9b9c97;
+    --ink-line: #33363b;
+    --ok: #2e7d47;
+    --error: #b42318;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121315; --bg-soft: #1a1b1e; --surface: #1d1f22; --fg: #ecebe6; --fg-muted: #a09f99;
+      --line: #2f3135; --line-strong: #ecebe6; --accent: #f0803f; --accent-fg: #121315;
+      --ink: #0b0c0d; --ink-fg: #ecebe6; --ink-muted: #8f908b; --ink-line: #2a2c30; --ok: #5bb877; --error: #f97066;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121315; --bg-soft: #1a1b1e; --surface: #1d1f22; --fg: #ecebe6; --fg-muted: #a09f99;
+    --line: #2f3135; --line-strong: #ecebe6; --accent: #f0803f; --accent-fg: #121315;
+    --ink: #0b0c0d; --ink-fg: #ecebe6; --ink-muted: #8f908b; --ink-line: #2a2c30; --ok: #5bb877; --error: #f97066;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--fg);
+    background: var(--bg);
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { line-height: 1.35; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .mono, code { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  section { padding-block: 88px; }
+
+  /* Section heading: label column + title column, ruled on top */
+  .sec-head {
+    display: grid; grid-template-columns: 220px 1fr; gap: 12px 40px;
+    border-top: 2px solid var(--line-strong); padding-top: 18px; margin-bottom: 44px;
+  }
+  .sec-head > * { min-width: 0; }
+  .sec-label { font-size: 14px; font-weight: 600; color: var(--fg-muted); }
+  .sec-head h2 { font-size: clamp(24px, 3vw, 34px); max-width: 640px; }
+  .sec-head p { margin-top: 10px; color: var(--fg-muted); max-width: 600px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 46px; padding: 0 20px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    border: 1px solid transparent; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-fg); }
+  .btn-primary:hover { background: var(--fg); color: var(--bg); }
+  .btn-ghost { border-color: var(--line-strong); color: var(--fg); background: transparent; }
+  .btn-ghost:hover { background: var(--fg); color: var(--bg); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 24px; }
+  .logo { display: flex; align-items: baseline; gap: 10px; font-weight: 700; font-size: 19px; }
+  .logo small { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 11px; color: var(--fg-muted); letter-spacing: .06em; }
+  .nav-links { display: flex; gap: 26px; font-size: 15px; color: var(--fg-muted); }
+  .nav-links a:hover { color: var(--fg); }
+  .nav-cta { display: flex; gap: 18px; align-items: center; }
+  .nav-cta .tel { font-weight: 600; font-size: 15px; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 4px; width: 44px; height: 44px; color: var(--fg); cursor: pointer; }
+  .mobile-menu { border-top: 1px solid var(--line); padding-block: 8px 20px; }
+  .mobile-menu a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .mobile-menu .btn { width: 100%; margin-top: 16px; border-bottom: 0; }
+
+  /* Hero */
+  .hero { padding-block: 72px 88px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .hero-grid > * { min-width: 0; }
+  .notice { font-size: 14px; color: var(--fg-muted); }
+  .notice b { color: var(--accent); font-weight: 600; }
+  .hero h1 { font-size: clamp(32px, 4.6vw, 52px); margin-top: 18px; letter-spacing: -0.025em; line-height: 1.25; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero .lead { font-size: 18px; color: var(--fg-muted); margin-top: 22px; max-width: 520px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .hero-points { margin: 36px 0 0; padding: 16px 0 0; list-style: none; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 0; font-size: 14px; color: var(--fg-muted); }
+  .hero-points li + li::before { content: "·"; margin: 0 12px; color: var(--line); }
+
+  /* Dashboard mock */
+  .dash { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; font-size: 13px; }
+  .dash-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .dash-top strong { font-size: 14px; font-weight: 600; }
+  .dash-top .where { color: var(--fg-muted); margin-left: 8px; }
+  .live { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--ok); }
+  .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .3; } }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+  .kpi { padding: 14px 16px; min-width: 0; }
+  .kpi + .kpi { border-left: 1px solid var(--line); }
+  .kpi span { font-size: 12px; color: var(--fg-muted); display: block; }
+  .kpi b { font-family: "IBM Plex Mono", monospace; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .chart { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .chart-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--fg-muted); margin-bottom: 10px; }
+  .bars { display: flex; align-items: flex-end; gap: 4px; height: 88px; border-bottom: 1px solid var(--line-strong); }
+  .bars i { flex: 1; background: var(--fg); opacity: .18; }
+  .bars i.peak { background: var(--accent); opacity: 1; }
+  .orders { display: grid; }
+  .order { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 9px 16px; }
+  .order + .order { border-top: 1px solid var(--line); }
+  .order code { font-size: 12px; color: var(--fg-muted); }
+  .order .who { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tag { font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .tag::before { content: "● "; font-size: 8px; vertical-align: 2px; }
+  .tag.ship { color: var(--fg); }
+  .tag.pick { color: var(--accent); }
+  .tag.done { color: var(--ok); }
+
+  /* Clients */
+  .clients { padding-block: 22px; border-block: 1px solid var(--line); }
+  .clients .wrap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 32px; }
+  .clients p { font-size: 14px; color: var(--fg-muted); }
+  .logo-row { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+  .logo-row span { font-weight: 600; font-size: 15px; color: var(--fg-muted); }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 4px 24px 4px 0; min-width: 0; }
+  .stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+  .stat b { display: block; font-family: "IBM Plex Mono", monospace; font-size: clamp(28px, 3.4vw, 40px); font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--fg-muted); font-size: 15px; }
+
+  /* Services */
+  .services { background: var(--bg-soft); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .svc { padding: 26px 26px 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; background: var(--bg-soft); }
+  .svc-no { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); }
+  .svc h3 { font-size: 19px; margin-top: 6px; }
+  .svc p { color: var(--fg-muted); margin-top: 8px; font-size: 15px; }
+  .svc ul { margin: 16px 0 0; padding: 0; list-style: none; font-size: 14px; }
+  .svc li { padding: 6px 0; border-top: 1px dashed var(--line); }
+
+  /* Process */
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: s; list-style: none; padding: 0; margin: 0; }
+  .step { position: relative; padding: 18px 20px 0 0; border-top: 1px solid var(--line-strong); counter-increment: s; min-width: 0; }
+  .step::before { content: "0" counter(s); position: absolute; top: -11px; left: 0; background: var(--bg); padding-right: 8px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--fg-muted); }
+  .step h3 { font-size: 17px; margin-top: 4px; }
+  .step p { font-size: 14px; color: var(--fg-muted); margin-top: 6px; }
+  .step .time { display: inline-block; margin-top: 10px; font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: var(--accent); }
+
+  /* Network (dark band) */
+  .network { background: var(--ink); color: var(--ink-fg); }
+  .network .sec-head { border-top-color: var(--ink-fg); }
+  .network .sec-label, .network .sec-head p { color: var(--ink-muted); }
+  .net-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+  .net-grid > * { min-width: 0; }
+  .map svg { width: 100%; max-width: 380px; height: auto; margin: 0 auto; }
+  .centers { display: grid; }
+  .center { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 18px 0; border-bottom: 1px solid var(--ink-line); }
+  .center:first-child { border-top: 1px solid var(--ink-line); }
+  .center b { font-size: 17px; font-weight: 600; }
+  .center .area { font-family: "IBM Plex Mono", monospace; color: var(--ink-fg); font-variant-numeric: tabular-nums; }
+  .center span:last-child { grid-column: 1 / -1; font-size: 14px; color: var(--ink-muted); }
+
+  /* Tech */
+  .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; }
+  .tech { padding: 20px 0 22px; border-top: 1px solid var(--line); min-width: 0; }
+  .tech h3 { font-size: 18px; }
+  .tech p { color: var(--fg-muted); font-size: 15px; margin-top: 6px; }
+  .integrations { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .integrations > span:first-child { font-size: 14px; color: var(--fg-muted); margin-right: 10px; }
+  .chip { font-size: 13px; padding: 4px 10px; border-radius: 3px; border: 1px solid var(--line); background: var(--surface); }
+
+  /* Industries */
+  .industries { background: var(--bg-soft); }
+  .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .ind { min-width: 0; padding-top: 14px; border-top: 3px solid var(--accent); }
+  .ind h3 { font-size: 17px; }
+  .ind p { font-size: 14px; color: var(--fg-muted); margin-top: 6px; }
+
+  /* Cases */
+  .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .case { display: flex; flex-direction: column; min-width: 0; }
+  .case .metric { display: flex; flex-direction: column; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .case .metric b { font-family: "IBM Plex Mono", monospace; font-size: 34px; font-weight: 600; letter-spacing: -0.02em; }
+  .case .metric span { font-size: 14px; color: var(--fg-muted); }
+  .case blockquote { margin: 16px 0 12px; font-size: 16px; flex: 1; }
+  .case .who { font-size: 13px; color: var(--fg-muted); }
+
+  /* FAQ */
+  .faq-grid { display: grid; grid-template-columns: 1fr 1.7fr; gap: 48px; }
+  .faq-grid > * { min-width: 0; }
+  .faq-grid .sec-head { display: block; margin-bottom: 0; }
+  .faq-grid .sec-head h2 { margin-top: 8px; }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-of-type { border-top: 2px solid var(--line-strong); }
+  summary { list-style: none; cursor: pointer; padding: 18px 36px 18px 0; font-weight: 600; font-size: 17px; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-size: 22px; font-weight: 400; color: var(--fg-muted); }
+  details[open] summary::after { content: "−"; }
+  details p { padding-bottom: 20px; color: var(--fg-muted); max-width: 620px; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: start; }
+  .contact-grid > * { min-width: 0; }
+  .contact-grid .sec-head { display: block; margin-bottom: 0; }
+  .contact-grid .sec-head h2 { margin-top: 8px; }
+  .contact-info { margin: 32px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 0 20px; font-size: 15px; }
+  .contact-info dt, .contact-info dd { padding: 12px 0; border-top: 1px solid var(--line); margin: 0; }
+  .contact-info dt { color: var(--fg-muted); font-size: 14px; }
+  .contact-info dd b { font-weight: 600; display: block; }
+  .contact-info dd span { color: var(--fg-muted); font-size: 14px; }
+  form.quote { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: grid; gap: 6px; min-width: 0; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-size: 14px; font-weight: 600; }
+  label .req { color: var(--accent); }
+  input, select, textarea {
+    font: inherit; font-size: 15px; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 4px; padding: 11px 12px; width: 100%; min-height: 46px;
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+  .field-error { font-size: 14px; color: var(--error); margin-top: 12px; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--fg-muted); font-weight: 400; }
+  .consent input { width: 18px; height: 18px; min-height: 0; margin-top: 3px; flex: none; accent-color: var(--accent); }
+  form.quote .btn { width: 100%; margin-top: 16px; }
+  .form-done { padding: 40px 4px; }
+  .form-done h3 { font-size: 22px; padding-left: 14px; border-left: 3px solid var(--ok); }
+  .form-done p { color: var(--fg-muted); margin-top: 10px; }
+
+  /* CTA strip & footer */
+  .cta-band { border-top: 1px solid var(--line); background: var(--bg-soft); padding-block: 40px; }
+  .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .cta-inner h2 { font-size: clamp(20px, 2.4vw, 26px); }
+  .cta-inner p { color: var(--fg-muted); margin-top: 4px; }
+  footer { background: var(--ink); color: var(--ink-muted); padding-block: 56px calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 14px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 32px; }
+  .foot-grid h4 { color: var(--ink-fg); font-size: 14px; font-weight: 600; margin: 0 0 12px; }
+  .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .foot-grid a:hover { color: var(--ink-fg); }
+  footer .logo { color: var(--ink-fg); margin-bottom: 12px; }
+  footer .logo small { color: var(--ink-muted); }
+  .legal { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--ink-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .nav-links, .nav-cta .tel { display: none; }
+    .steps { grid-template-columns: repeat(3, 1fr); row-gap: 36px; }
+    .ind-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    section { padding-block: 68px; }
+    .sec-head { grid-template-columns: 1fr; gap: 6px; }
+    .hero-grid, .net-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .svc-grid { grid-template-columns: 1fr 1fr; }
+    .case-grid { grid-template-columns: 1fr; gap: 32px; }
+    .stats { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+    .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid > :first-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 640px) {
+    section { padding-block: 56px; }
+    .hero { padding-block: 44px 60px; }
+    .nav-cta .btn-primary { display: none; }
+    .menu-btn { display: grid; place-items: center; }
+    .svc-grid, .tech-grid, .ind-grid, .steps, .form-grid { grid-template-columns: 1fr; }
+    .stat { padding-right: 12px; }
+    .stat + .stat { padding-left: 16px; }
+    .stat:nth-child(3) { padding-left: 0; }
+    .kpi { padding: 12px 10px; }
+    .kpi b { font-size: 17px; }
+    form.quote { padding: 20px; }
+    .hero-actions .btn { flex: 1 1 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="한길로지스 홈">한길로지스<small>HANGIL LOGIS</small></a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#services">서비스</a>
+      <a href="#process">운영 프로세스</a>
+      <a href="#network">물류 인프라</a>
+      <a href="#tech">기술</a>
+      <a href="#cases">고객 사례</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="tel mono" href="tel:16000000">1600-0000</a>
+      <a class="btn btn-primary" href="#contact">견적 문의</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="메뉴 열기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="wrap mobile-menu" id="mobileMenu" hidden>
+    <a href="#services">서비스</a>
+    <a href="#process">운영 프로세스</a>
+    <a href="#network">물류 인프라</a>
+    <a href="#tech">기술</a>
+    <a href="#cases">고객 사례</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-primary" href="#contact">무료 견적 문의</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="notice"><b>당일 출고</b> — 오늘 오후 2시 주문까지</p>
+        <h1>입고부터 반품까지,<br>물류는 <em>한길</em>로 이어집니다</h1>
+        <p class="lead">한길로지스는 보관·피킹·포장·배송·반품을 하나의 운영 체계로 연결하는 B2B 풀필먼트 파트너입니다. 브랜드는 판매에만 집중하세요. 나머지는 저희가 책임집니다.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">무료 물류 진단 받기</a>
+          <a class="btn btn-ghost" href="#services">서비스 살펴보기</a>
+        </div>
+        <ul class="hero-points">
+          <li>최소 물량 제한 없음</li>
+          <li>주요 쇼핑몰 자동 연동</li>
+          <li>전담 운영 매니저 배정</li>
+        </ul>
+      </div>
+
+      <div class="dash" role="img" aria-label="한길로지스 실시간 물류 대시보드 예시: 오늘 출고 4,812건, 정시 출고율 99.7%, 재고 정확도 99.98%">
+        <div class="dash-top">
+          <div><strong>한길 WMS</strong><span class="where">이천 메가센터 · 오늘</span></div>
+          <span class="live">LIVE</span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><span>오늘 출고</span><b>4,812</b></div>
+          <div class="kpi"><span>정시 출고율</span><b>99.7%</b></div>
+          <div class="kpi"><span>재고 정확도</span><b>99.98%</b></div>
+        </div>
+        <div class="chart">
+          <div class="chart-label"><span>시간대별 출고량</span><span class="mono">09–18시</span></div>
+          <div class="bars" aria-hidden="true">
+            <i style="height:32%"></i><i style="height:48%"></i><i style="height:62%"></i><i style="height:78%"></i><i class="peak" style="height:100%"></i><i style="height:84%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:26%"></i>
+          </div>
+        </div>
+        <div class="orders" aria-hidden="true">
+          <div class="order"><code>HG-24118</code><span class="who">스킨케어 브랜드 A · 12건</span><span class="tag done">배송완료</span></div>
+          <div class="order"><code>HG-24119</code><span class="who">리빙 브랜드 B · 38건</span><span class="tag ship">출고중</span></div>
+          <div class="order"><code>HG-24120</code><span class="who">식품 브랜드 C · 7건</span><span class="tag pick">피킹중</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <div class="clients">
+    <div class="wrap">
+      <p>패션·뷰티·식품·리빙 분야 <strong>320여 개 브랜드</strong>가 한길로지스와 함께합니다</p>
+      <div class="logo-row" aria-label="고객사 예시">
+        <span>NORDIC HOME</span><span>오늘의뷰티</span><span>GREENTABLE</span><span>모노웨어</span><span>PETPLUS</span><span>데일리랩</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section aria-labelledby="stats-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">운영 지표</span>
+        <div>
+          <h2 id="stats-title">숫자로 증명하는 운영 품질</h2>
+          <p>매일 수만 건의 출고를 처리하면서도 정확도와 속도, 두 가지를 모두 지켜냅니다.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>99.98%</b><span>재고 정확도</span></div>
+        <div class="stat"><b>4.5만 건</b><span>일 최대 출고 처리량</span></div>
+        <div class="stat"><b>7만 ㎡</b><span>전국 센터 운영 면적</span></div>
+        <div class="stat"><b>98%</b><span>고객사 재계약률</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">서비스</span>
+        <div>
+          <h2 id="svc-title">비즈니스에 필요한 물류를 한 곳에서</h2>
+          <p>필요한 서비스만 골라 시작하고, 성장에 맞춰 범위를 넓히세요. 모든 서비스는 하나의 계약과 하나의 시스템으로 관리됩니다.</p>
+        </div>
+      </div>
+      <div class="svc-grid">
+        <article class="svc">
+          <span class="svc-no">01</span>
+          <h3>보관·재고 관리</h3>
+          <p>상온·저온·냉동 구역을 갖춘 센터에서 SKU 단위로 정밀하게 관리합니다.</p>
+          <ul><li>로케이션·로트·유통기한 관리</li><li>정기 및 순환 재고 실사</li><li>안전재고 알림</li></ul>
+        </article>
+        <article class="svc">
+          <span class="svc-no">02</span>
+          <h3>B2C 풀필먼트</h3>
+          <p>주문 수집부터 피킹·패킹·송장 출력까지 자동화된 흐름으로 처리합니다.</p>
+          <ul><li>오후 2시 마감 당일 출고</li><li>합포장·사은품·맞춤 포장</li><li>바코드 검수로 오출고 방지</li></ul>
+        </article>
+        <article class="svc">
+          <span class="svc-no">03</span>
+          <h3>B2B 납품·간선 운송</h3>
+          <p>대형마트·오프라인 매장·도매처 납품을 위한 팔레트 단위 운송을 지원합니다.</p>
+          <ul><li>1톤~25톤 차량 배차</li><li>유통사 납품 기준 대응</li><li>정기 노선 및 긴급 배송</li></ul>
+        </article>
+        <article class="svc">
+          <span class="svc-no">04</span>
+          <h3>반품·리퍼브 처리</h3>
+          <p>회수부터 검수, 등급 분류, 재입고까지 반품 비용을 줄이는 프로세스를 운영합니다.</p>
+          <ul><li>A/B/C 등급 검수 및 사진 기록</li><li>재포장 후 재판매 입고</li><li>폐기·반송 처리 대행</li></ul>
+        </article>
+        <article class="svc">
+          <span class="svc-no">05</span>
+          <h3>크로스보더 물류</h3>
+          <p>해외 직판·역직구를 위한 수출 통관, 국제 특송, 해외 창고 연계를 지원합니다.</p>
+          <ul><li>일본·미국·동남아 주요 노선</li><li>수출 신고 및 서류 대행</li><li>해외 파트너 센터 연계</li></ul>
+        </article>
+        <article class="svc">
+          <span class="svc-no">06</span>
+          <h3>물류 컨설팅</h3>
+          <p>출고 데이터를 분석해 재고 회전율, 포장재, 배송 비용 최적화 방안을 제안합니다.</p>
+          <ul><li>물류비 구조 진단 리포트</li><li>센터 이전·확장 설계</li><li>성수기 운영 계획 수립</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" aria-labelledby="proc-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">운영 프로세스</span>
+        <div>
+          <h2 id="proc-title">상담부터 첫 출고까지, 평균 2주</h2>
+          <p>전담 온보딩 매니저가 상품 특성과 판매 채널에 맞춰 운영 방식을 설계하고 안정화까지 함께합니다.</p>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step"><h3>상담·진단</h3><p>상품군, 월 출고량, 판매 채널을 파악합니다.</p><span class="time">1~2일</span></li>
+        <li class="step"><h3>맞춤 견적</h3><p>보관·작업·배송비를 투명한 단가표로 제안합니다.</p><span class="time">2~3일</span></li>
+        <li class="step"><h3>시스템 연동</h3><p>쇼핑몰·ERP와 주문·재고 데이터를 연결합니다.</p><span class="time">3~5일</span></li>
+        <li class="step"><h3>입고·세팅</h3><p>상품 입고, 로케이션 지정, 포장 기준을 확정합니다.</p><span class="time">2~3일</span></li>
+        <li class="step"><h3>운영 시작</h3><p>첫 출고 후 2주간 집중 모니터링으로 안정화합니다.</p><span class="time">D-Day</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Network -->
+  <section class="network" id="network" aria-labelledby="net-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">물류 인프라</span>
+        <div>
+          <h2 id="net-title">전국 어디든 하루 안에 닿는 거점</h2>
+          <p>수도권 메가센터와 권역별 거점을 연결해 전국 익일 배송률 98% 이상을 유지합니다.</p>
+        </div>
+      </div>
+      <div class="net-grid">
+        <div class="map">
+          <svg viewBox="0 0 300 360" role="img" aria-label="전국 물류 거점 지도: 이천, 김포, 대전, 칠곡, 김해">
+            <path d="M120 20 L175 18 L205 45 L228 95 L240 150 L232 210 L250 260 L222 305 L180 325 L140 318 L110 330 L82 300 L70 255 L88 215 L70 170 L84 120 L72 80 L96 45 Z"
+                  fill="none" stroke="rgba(236,235,230,.35)" stroke-width="1"/>
+            <ellipse cx="112" cy="345" rx="26" ry="9" fill="none" stroke="rgba(236,235,230,.35)" stroke-width="1"/>
+            <g stroke="#ecebe6" stroke-width="1" stroke-dasharray="3 4" opacity=".6" fill="none">
+              <path d="M140 105 L110 92"/><path d="M140 105 L140 185"/><path d="M140 185 L188 228"/><path d="M188 228 L200 290"/>
+            </g>
+            <g font-family="IBM Plex Sans KR, sans-serif" font-size="12" font-weight="500" fill="#ecebe6">
+              <rect x="134" y="99" width="12" height="12" fill="#f0803f"/><text x="152" y="109">이천 메가센터</text>
+              <rect x="106" y="88" width="8" height="8" fill="#ecebe6"/><text x="70" y="84">김포</text>
+              <rect x="136" y="181" width="8" height="8" fill="#ecebe6"/><text x="152" y="189">대전</text>
+              <rect x="184" y="224" width="8" height="8" fill="#ecebe6"/><text x="200" y="232">칠곡</text>
+              <rect x="196" y="286" width="8" height="8" fill="#ecebe6"/><text x="212" y="294">김해</text>
+            </g>
+          </svg>
+        </div>
+        <div class="centers">
+          <div class="center"><b>이천 메가센터</b><span class="area">33,000㎡</span><span>본사 직영 · 상온/저온/냉동 · 자동 분류기 · 일 3만 건 출고</span></div>
+          <div class="center"><b>김포 풀필먼트센터</b><span class="area">14,000㎡</span><span>패션·뷰티 특화 · 크로스보더 출고 거점</span></div>
+          <div class="center"><b>대전 중부 허브</b><span class="area">9,500㎡</span><span>충청·호남권 B2B 납품 및 간선 운송</span></div>
+          <div class="center"><b>칠곡·김해 영남 거점</b><span class="area">13,500㎡</span><span>영남권 익일 배송 및 대형 유통사 납품</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech -->
+  <section id="tech" aria-labelledby="tech-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">기술</span>
+        <div>
+          <h2 id="tech-title">눈에 보이는 물류, 한길 WMS</h2>
+          <p>자체 개발한 창고관리시스템으로 재고와 주문 상태를 실시간으로 확인하고, 데이터로 의사결정하세요.</p>
+        </div>
+      </div>
+      <div class="tech-grid">
+        <div class="tech"><h3>실시간 재고·주문 대시보드</h3><p>SKU별 재고, 입출고 현황, 출고 지연 건을 한 화면에서 확인합니다.</p></div>
+        <div class="tech"><h3>오픈마켓·자사몰 자동 연동</h3><p>주문은 자동으로 수집되고, 송장번호는 판매 채널에 자동으로 반영됩니다.</p></div>
+        <div class="tech"><h3>품절·유통기한 알림</h3><p>안전재고 이하, 유통기한 임박 상품을 미리 알려 판매 기회를 지킵니다.</p></div>
+        <div class="tech"><h3>정산 리포트 자동화</h3><p>보관료·작업비·배송비를 항목별로 투명하게 정산하고 엑셀로 내려받습니다.</p></div>
+      </div>
+      <div class="integrations">
+        <span>연동 채널</span>
+        <span class="chip">자사몰</span><span class="chip">오픈마켓</span><span class="chip">소셜커머스</span><span class="chip">라이브커머스</span><span class="chip">해외 마켓플레이스</span><span class="chip">ERP · Open API</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="industries" aria-labelledby="ind-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">업종</span>
+        <div><h2 id="ind-title">업종별 운영 노하우</h2></div>
+      </div>
+      <div class="ind-grid">
+        <div class="ind"><h3>패션·잡화</h3><p>옵션별 SKU 관리, 시즌 대량 입고와 높은 반품률에 최적화된 검수 체계.</p></div>
+        <div class="ind"><h3>뷰티·화장품</h3><p>로트·유통기한 관리와 샘플·사은품 합포장, 브랜드 맞춤 포장재 운영.</p></div>
+        <div class="ind"><h3>식품·건강기능식품</h3><p>저온·냉동 보관과 선입선출(FEFO) 출고, 보냉 포장 표준화.</p></div>
+        <div class="ind"><h3>리빙·가전</h3><p>대형·중량물 보관과 파손 방지 포장, 설치 배송 파트너 연계.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section id="cases" aria-labelledby="case-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">고객 사례</span>
+        <div><h2 id="case-title">고객사가 경험한 변화</h2></div>
+      </div>
+      <div class="case-grid">
+        <article class="case">
+          <div class="metric"><b>−32%</b><span>건당 물류비 절감</span></div>
+          <blockquote>“성수기마다 직원들이 포장에 매달렸는데, 이전 후에는 마케팅에만 집중할 수 있게 됐습니다.”</blockquote>
+          <span class="who">뷰티 D2C 브랜드 · 월 6만 건</span>
+        </article>
+        <article class="case">
+          <div class="metric"><b>3일 → 1일</b><span>반품 재입고 소요 기간</span></div>
+          <blockquote>“반품 검수 기록이 사진으로 남아서 고객 클레임 대응 시간이 확 줄었습니다.”</blockquote>
+          <span class="who">패션 플랫폼 입점사 · 1,800 SKU</span>
+        </article>
+        <article class="case">
+          <div class="metric"><b>0.02%</b><span>오출고율</span></div>
+          <blockquote>“마트 납품과 온라인 출고를 한 센터에서 처리하니 재고가 하나로 보입니다.”</blockquote>
+          <span class="who">건강식품 제조사 · B2B+B2C</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="services" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div class="sec-head">
+        <span class="sec-label">FAQ</span>
+        <h2 id="faq-title">자주 묻는 질문</h2>
+        <p>더 궁금한 점은 영업일 기준 24시간 내 전담 매니저가 답변드립니다.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>최소 출고 물량 조건이 있나요?</summary>
+          <p>최소 물량 제한은 없습니다. 월 수백 건 규모의 초기 브랜드부터 일 수만 건 규모의 기업까지 출고량에 맞는 단가 구간을 적용합니다.</p>
+        </details>
+        <details>
+          <summary>요금은 어떻게 책정되나요?</summary>
+          <p>보관료(팔레트·선반 단위), 입출고 작업비, 포장재, 배송비로 구성됩니다. 숨은 비용 없이 항목별 단가표를 제공하며, 월 단위로 정산합니다.</p>
+        </details>
+        <details>
+          <summary>기존 물류사에서 이전하는 데 얼마나 걸리나요?</summary>
+          <p>평균 2주가 소요됩니다. 재고 이관 운송, 시스템 연동, 포장 기준 세팅까지 온보딩 매니저가 일정을 관리해 판매 중단 없이 전환할 수 있도록 돕습니다.</p>
+        </details>
+        <details>
+          <summary>냉장·냉동 상품도 보관할 수 있나요?</summary>
+          <p>이천 메가센터에 저온(0~10℃) 및 냉동(-18℃ 이하) 구역을 운영합니다. 온도 기록은 24시간 모니터링되며 WMS에서 이력을 확인할 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>상품 파손이나 분실 시 보상은 어떻게 되나요?</summary>
+          <p>센터 내 보관·작업 중 발생한 파손·분실은 계약 기준에 따라 보상하며, 화물 배상 책임 보험에 가입되어 있습니다.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="sec-head">
+          <span class="sec-label">견적 문의</span>
+          <h2 id="contact-title">우리 브랜드에 맞는 물류,<br>지금 견적 받아보세요</h2>
+          <p>간단한 정보를 남겨 주시면 물류 전문 매니저가 맞춤 견적과 운영 방안을 안내해 드립니다.</p>
+        </div>
+        <dl class="contact-info">
+          <dt>전화</dt><dd><b class="mono">1600-0000</b><span>영업 상담 · 평일 09:00 – 18:00</span></dd>
+          <dt>이메일</dt><dd><b>sales@hangil-logis.example</b><span>견적·제휴 문의</span></dd>
+          <dt>본사</dt><dd><b>이천 메가센터</b><span>경기도 이천시 마장면 물류단지로 00</span></dd>
+        </dl>
+      </div>
+
+      <form class="quote" id="quoteForm" novalidate>
+        <div id="formFields">
+          <div class="form-grid">
+            <div class="field"><label for="company">회사명 <span class="req">*</span></label><input id="company" name="company" autocomplete="organization" required></div>
+            <div class="field"><label for="name">담당자명 <span class="req">*</span></label><input id="name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="phone">연락처 <span class="req">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required></div>
+            <div class="field"><label for="email">이메일 <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="category">상품군</label>
+              <select id="category" name="category">
+                <option value="">선택해 주세요</option><option>패션·잡화</option><option>뷰티·화장품</option><option>식품·건강기능식품</option><option>리빙·가전</option><option>기타</option>
+              </select>
+            </div>
+            <div class="field"><label for="volume">월 예상 출고량</label>
+              <select id="volume" name="volume">
+                <option value="">선택해 주세요</option><option>1,000건 미만</option><option>1,000 – 5,000건</option><option>5,000 – 30,000건</option><option>30,000건 이상</option>
+              </select>
+            </div>
+            <div class="field full"><label for="msg">문의 내용</label><textarea id="msg" name="msg" placeholder="현재 물류 운영 방식, 필요한 서비스 등을 자유롭게 적어 주세요."></textarea></div>
+            <div class="field full"><label class="consent"><input type="checkbox" id="agree" required> <span>개인정보 수집·이용(상담 목적, 상담 완료 후 1년 보관)에 동의합니다. <span class="req">*</span></span></label></div>
+          </div>
+          <p class="field-error" id="formError" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit">무료 견적 요청하기</button>
+        </div>
+        <div class="form-done" id="formDone" hidden>
+          <h3>문의가 접수되었습니다</h3>
+          <p>영업일 기준 24시간 내 담당 매니저가 연락드리겠습니다.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <div class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>물류비, 지금보다 줄일 수 있습니다</h2>
+        <p>현재 출고 데이터를 보내주시면 무료 물류비 진단 리포트를 드립니다.</p>
+      </div>
+      <a class="btn btn-ghost" href="#contact">무료 진단 신청</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">한길로지스<small>HANGIL LOGIS</small></div>
+        <p>(주)한길로지스 · 대표 홍길동<br>사업자등록번호 000-00-00000<br>경기도 이천시 마장면 물류단지로 00</p>
+      </div>
+      <div>
+        <h4>서비스</h4>
+        <ul><li><a href="#services">보관·재고 관리</a></li><li><a href="#services">B2C 풀필먼트</a></li><li><a href="#services">B2B 납품·운송</a></li><li><a href="#services">크로스보더 물류</a></li></ul>
+      </div>
+      <div>
+        <h4>회사</h4>
+        <ul><li><a href="#network">물류 인프라</a></li><li><a href="#tech">한길 WMS</a></li><li><a href="#cases">고객 사례</a></li><li><a href="#contact">채용</a></li></ul>
+      </div>
+      <div>
+        <h4>고객지원</h4>
+        <ul><li><a href="#faq">자주 묻는 질문</a></li><li><a href="#contact">견적 문의</a></li><li>1600-0000</li><li>평일 09:00 – 18:00</li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Hangil Logis Co., Ltd. All rights reserved.</span>
+      <span><a href="#top">개인정보처리방침</a> · <a href="#top">이용약관</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.hidden;
+    mobileMenu.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  });
+  mobileMenu.addEventListener('click', e => {
+    if (e.target.closest('a')) { mobileMenu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Quote form
+  const form = document.getElementById('quoteForm');
+  const errorEl = document.getElementById('formError');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const required = ['company', 'name', 'phone', 'email'];
+    const missing = required.map(id => document.getElementById(id)).filter(el => !el.value.trim());
+    const email = document.getElementById('email');
+    const agree = document.getElementById('agree');
+    let msg = '';
+    if (missing.length) msg = '필수 항목을 모두 입력해 주세요.';
+    else if (!email.validity.valid) msg = '올바른 이메일 주소를 입력해 주세요.';
+    else if (!agree.checked) msg = '개인정보 수집·이용에 동의해 주세요.';
+    if (msg) {
+      errorEl.textContent = msg;
+      errorEl.hidden = false;
+      (missing[0] || (!email.validity.valid ? email : agree)).focus();
+      return;
+    }
+    errorEl.hidden = true;
+    document.getElementById('formFields').hidden = true;
+    document.getElementById('formDone').hidden = false;
+  });
+</script>
+</body>
+</html>

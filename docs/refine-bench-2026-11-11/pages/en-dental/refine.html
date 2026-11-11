@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maple Street Dental</title>
+<meta name="description" content="Maple Street Dental is a family dental clinic in Portland, Oregon offering gentle care for kids, adults, and seniors. New patients welcome.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1b1b1b;
+    --muted: #555555;
+    --line: #e2e2e2;
+    --rule: #1b1b1b;
+    --red: #c8202f;
+    --red-ink: #ffffff;
+    --today: #fbeaec;
+    --map: #f1f1f1;
+    --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+    --sans: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141414; --fg: #f0f0f0; --muted: #b0b0b0; --line: #333333; --rule: #f0f0f0;
+      --red: #ff5a63; --red-ink: #141414; --today: #3a1c1f; --map: #222222;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141414; --fg: #f0f0f0; --muted: #b0b0b0; --line: #333333; --rule: #f0f0f0;
+    --red: #ff5a63; --red-ink: #141414; --today: #3a1c1f; --map: #222222;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+  h1, h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; line-height: .98; margin: 0; }
+  h3 { font-family: var(--sans); font-weight: 600; font-size: 20px; line-height: 1.25; margin: 0; }
+  p { margin: 0; }
+
+  .wrap {
+    max-width: 1280px; margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 900px) { .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
+
+  .skip { position: absolute; left: 12px; top: 8px; transform: translateY(-200%); background: var(--fg); color: var(--bg); padding: 8px 12px; z-index: 100; }
+  .skip:focus { transform: none; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 24px; border-radius: 3px; font-weight: 600; font-size: 17px;
+    text-decoration: none; border: 2px solid transparent; white-space: nowrap;
+    transition: background-color .15s, color .15s, border-color .15s;
+  }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+  .btn-primary { background: var(--red); color: var(--red-ink); }
+  .btn-primary:hover { background: color-mix(in srgb, var(--red) 85%, var(--fg)); }
+  .btn-line { border-color: var(--fg); color: var(--fg); }
+  .btn-line:hover { background: var(--fg); color: var(--bg); }
+
+  /* Header */
+  header.site { border-bottom: 1px solid var(--line); background: var(--bg); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; position: relative; }
+  .brand { font: 700 24px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; text-decoration: none; }
+  nav.primary { display: flex; gap: 26px; align-items: center; }
+  nav.primary a { text-decoration: none; color: var(--muted); font-weight: 500; }
+  nav.primary a:hover { color: var(--fg); }
+  nav.primary a.tel { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+  nav.primary a.btn { color: var(--red-ink); padding: 10px 16px; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 3px; padding: 8px 10px; color: var(--fg); cursor: pointer; }
+
+  /* Hero */
+  .hero { padding-block: 28px 64px; }
+  .hero h1 { font-size: clamp(46px, 7vw, 100px); max-width: 13.5em; }
+  .hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 40px; margin: 22px 0 30px; flex-wrap: wrap; }
+  .hero-row .lede { color: var(--muted); max-width: 40em; min-width: 0; flex: 1 1 28em; }
+  .hero-row .lede strong { color: var(--fg); font-weight: 600; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Signature: family board */
+  .board { border-top: 3px solid var(--rule); }
+  .board-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .board-cols > div { padding: 20px 24px 22px 0; border-right: 1px solid var(--line); min-width: 0; }
+  .board-cols > div + div { padding-left: 24px; }
+  .board-cols > div:last-child { border-right: 0; }
+  .board h2 { font-size: 30px; line-height: 1.05; }
+  .board .who { color: var(--red); font-weight: 600; font-size: 15px; margin-top: 4px; }
+  .board ul { margin: 14px 0 0; padding: 0; list-style: none; }
+  .board li { padding: 8px 0; border-top: 1px solid var(--line); }
+  .board li a { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .board-status { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 16px; }
+  .board-status .state { font-weight: 600; display: inline-flex; align-items: center; gap: 10px; }
+  .board-status .state::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #2f8a4d; flex: none; }
+  .board-status .state.closed::before { background: var(--muted); }
+  .board-status span:last-child { color: var(--muted); }
+
+  /* Sections */
+  section.block { padding-block: 88px; border-top: 1px solid var(--line); }
+  .block h2 { font-size: clamp(38px, 4.4vw, 56px); }
+  .intro { color: var(--muted); margin-top: 14px; max-width: 34em; }
+
+  /* Services: rows, not cards */
+  .services { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 40px 64px; }
+  .services .head { align-self: start; position: sticky; top: 24px; }
+  .svc-list { margin: 0; padding: 0; list-style: none; }
+  .svc-list > li { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 8px 32px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .svc-list > li:first-child { border-top: 3px solid var(--rule); }
+  .svc-list p { color: var(--muted); margin-top: 6px; }
+  .svc-list ul { margin: 0; padding: 0; list-style: none; font-size: 16px; }
+  .svc-list ul li { padding: 3px 0; }
+  .svc-list ul li::before { content: "– "; color: var(--muted); }
+
+  /* About + first visit */
+  .about { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 48px 80px; align-items: start; }
+  .reasons { margin: 36px 0 0; padding: 0; list-style: none; counter-reset: r; }
+  .reasons li { counter-increment: r; display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .reasons li::before { content: counter(r); font: 700 30px/1 var(--display); color: var(--red); }
+  .reasons p { color: var(--muted); margin-top: 4px; }
+  .first-visit { background: var(--fg); color: var(--bg); padding: 36px 36px 32px; }
+  .first-visit h2 { font-size: 40px; }
+  .first-visit .dur { margin-top: 10px; opacity: .85; }
+  .first-visit ol { margin: 24px 0 0; padding: 0; list-style: none; counter-reset: s; }
+  .first-visit ol li { counter-increment: s; display: grid; grid-template-columns: 36px 1fr; padding: 12px 0; border-top: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }
+  .first-visit ol li::before { content: counter(s); font: 700 22px/1.2 var(--display); }
+  .first-visit .plan { margin-top: 22px; }
+
+  /* Team */
+  .team-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 48px; flex-wrap: wrap; margin-bottom: 36px; }
+  .team-head .intro { margin-top: 0; max-width: 30em; }
+  .team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .doc { border-top: 3px solid var(--rule); padding-top: 18px; min-width: 0; }
+  .doc h3 { font: 700 32px/1.05 var(--display); text-transform: uppercase; }
+  .doc .role { color: var(--red); font-size: 15px; font-weight: 600; margin-top: 6px; }
+  .doc p { color: var(--muted); margin-top: 10px; }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px 64px; margin-top: 36px; }
+  .reviews blockquote { margin: 0; }
+  .reviews .lead p { font: 600 clamp(26px, 2.6vw, 36px)/1.2 var(--sans); }
+  .reviews .side { display: grid; gap: 28px; align-content: start; }
+  .reviews .side blockquote { border-top: 1px solid var(--line); padding-top: 18px; }
+  .reviews .side p { font-size: 18px; }
+  .stars { color: #b07a10; letter-spacing: 2px; font-size: 15px; margin-bottom: 10px; }
+  .reviews footer { color: var(--muted); font-size: 15px; margin-top: 12px; }
+  .insurance-block { margin-top: 64px; padding-top: 24px; border-top: 3px solid var(--rule); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px 64px; }
+  .insurance-block p { color: var(--muted); margin-top: 6px; }
+  .insurance { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; font: 600 24px/1.3 var(--display); text-transform: uppercase; }
+  .insurance li:not(:last-child)::after { content: "·"; margin: 0 12px; color: var(--muted); }
+
+  /* Visit */
+  .visit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px 64px; margin-top: 36px; }
+  .visit h3 { font: 700 26px/1 var(--display); text-transform: uppercase; padding-bottom: 12px; border-bottom: 3px solid var(--rule); }
+  .hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hours td { padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; }
+  .hours tr.today td { font-weight: 600; background: var(--today); }
+  .hours tr.today td:first-child { padding-left: 12px; }
+  .hours tr.today td:last-child { padding-right: 12px; }
+  .contact-lines { display: grid; gap: 16px; margin-top: 16px; }
+  .contact-lines > div { min-width: 0; overflow-wrap: anywhere; }
+  .contact-lines .label { display: block; color: var(--muted); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+  .contact-lines small { display: block; color: var(--muted); font-size: 15px; }
+  .contact-lines a { font-weight: 600; }
+  .map { margin-top: 22px; border: 1px solid var(--line); background: var(--map); }
+  .map svg { display: block; width: 100%; height: auto; }
+
+  /* Book */
+  .book { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; }
+  .book h2 { font-size: clamp(42px, 5.4vw, 76px); max-width: 12em; }
+  .book p { color: var(--muted); margin-top: 14px; }
+  .book .btn { font-size: 19px; padding: 16px 28px; }
+
+  /* Footer */
+  footer.site { border-top: 3px solid var(--rule); padding-block: 36px calc(36px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 15px; }
+  footer.site .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer.site strong { color: var(--fg); font: 700 20px var(--display); text-transform: uppercase; }
+  footer.site nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  footer.site a { text-decoration: none; }
+  footer.site a:hover { color: var(--fg); }
+
+  /* Responsive */
+  @media (max-width: 1000px) {
+    .board-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .board-cols > div:nth-child(2) { border-right: 0; }
+    .board-cols > div:nth-child(3) { padding-left: 0; }
+    .board-cols > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .services, .about, .reviews, .visit, .insurance-block { grid-template-columns: 1fr; }
+    .services .head { position: static; }
+    .team { grid-template-columns: 1fr 1fr; }
+    nav.primary { display: none; }
+    nav.primary.open {
+      display: flex; flex-direction: column; align-items: stretch; gap: 0;
+      position: absolute; left: 0; right: 0; top: 100%; z-index: 20;
+      background: var(--bg); border-bottom: 1px solid var(--line);
+      padding: 8px max(20px, env(safe-area-inset-right, 0px)) 16px max(20px, env(safe-area-inset-left, 0px));
+    }
+    nav.primary.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    nav.primary.open a.btn { margin-top: 12px; border-bottom: 0; }
+    .menu-btn { display: inline-flex; }
+  }
+  @media (max-width: 620px) {
+    .board-cols, .team { grid-template-columns: 1fr; }
+    .board-cols > div, .board-cols > div + div { padding: 18px 0; border-right: 0; }
+    .board-cols > div + div { border-top: 1px solid var(--line); }
+    .svc-list > li { grid-template-columns: 1fr; }
+    section.block { padding-block: 60px; }
+    .first-visit { padding: 28px 22px; }
+    .ctas .btn { flex: 1 1 auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Maple Street Dental home">Maple Street Dental</a>
+    <nav class="primary" id="nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#team">Our Team</a>
+      <a href="#visit">Visit</a>
+      <a class="tel" href="tel:+15035550142">(503) 555-0142</a>
+      <a class="btn btn-primary" href="#book">Book a visit</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-controls="nav" aria-expanded="false" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero: claim across the width, the family board below -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <h1 id="hero-title">Gentle dental care for every smile in your family</h1>
+      <div class="hero-row">
+        <p class="lede">From a toddler's first checkup to grandpa's new crown, Maple Street Dental keeps Portland families healthy with unhurried appointments, clear pricing, and a team that actually remembers your name. <strong>New patients welcome — most insurance accepted.</strong></p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#book">Book an appointment</a>
+          <a class="btn btn-line" href="#services">See our services</a>
+        </div>
+      </div>
+
+      <div class="board" data-product-shot role="region" aria-label="Who we see, and who sees them">
+        <div class="board-cols">
+          <div>
+            <h2>Kids</h2>
+            <div class="who">Dr. Jenny Lin, DMD</div>
+            <ul><li>First-tooth visits</li><li>Sealants &amp; fluoride</li><li>Sports mouthguards</li><li>Speaks English and Mandarin</li></ul>
+          </div>
+          <div>
+            <h2>Adults</h2>
+            <div class="who">Dr. Elena Hart, DMD</div>
+            <ul><li>Checkups &amp; cleanings</li><li>Low-radiation digital X-rays</li><li>Whitening, veneers, clear aligners</li><li>Oral cancer screening</li></ul>
+          </div>
+          <div>
+            <h2>Crowns &amp; implants</h2>
+            <div class="who">Dr. Marcus Okafor, DDS</div>
+            <ul><li>Same-day crowns</li><li>Implants &amp; bridges</li><li>Tooth-colored fillings</li><li>Gentle root canals</li></ul>
+          </div>
+          <div>
+            <h2>Emergencies</h2>
+            <div class="who">Call before 11 am for same-day</div>
+            <ul><li>Same-day appointments</li><li>Broken &amp; knocked-out teeth</li><li>After-hours emergencies: press 2</li><li><a href="tel:+15035550142">(503) 555-0142</a></li></ul>
+          </div>
+        </div>
+        <p class="board-status"><span class="state" id="todayStatus">Open Monday–Saturday.</span><span>4.9 ★ from 600+ reviews · 18 yrs serving Portland · Same-day emergency visits</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="block" aria-labelledby="services-title">
+    <div class="wrap services">
+      <div class="head">
+        <h2 id="services-title">Care for every age and every stage</h2>
+        <p class="intro">Everything your family needs under one roof, so you can book the kids and yourself back-to-back.</p>
+      </div>
+      <ul class="svc-list">
+        <li><div><h3>Preventive care</h3><p>Cleanings, exams, and digital X-rays that catch small problems before they become big ones.</p></div>
+          <ul><li>Checkups &amp; cleanings</li><li>Low-radiation digital X-rays</li><li>Oral cancer screening</li></ul></li>
+        <li><div><h3>Kids' dentistry</h3><p>Friendly first visits, sealants, and fluoride — with a treasure chest on the way out.</p></div>
+          <ul><li>First-tooth visits</li><li>Sealants &amp; fluoride</li><li>Sports mouthguards</li></ul></li>
+        <li><div><h3>Restorative</h3><p>Tooth-colored fillings, crowns, bridges, and implants that look and feel natural.</p></div>
+          <ul><li>Same-day crowns</li><li>Implants &amp; bridges</li><li>Gentle root canals</li></ul></li>
+        <li><div><h3>Cosmetic</h3><p>Brighten and straighten with whitening, veneers, and clear aligners.</p></div>
+          <ul><li>Professional whitening</li><li>Porcelain veneers</li><li>Clear aligners</li></ul></li>
+        <li><div><h3>Emergency care</h3><p>Toothache, chipped tooth, or lost filling? Call before 11 am for a same-day visit.</p></div>
+          <ul><li>Same-day appointments</li><li>After-hours advice line</li><li>Broken &amp; knocked-out teeth</li></ul></li>
+        <li><div><h3>Comfort options</h3><p>Nervous about the dentist? Ask about nitrous oxide, noise-cancelling headphones, and weighted blankets.</p></div>
+          <ul><li>Nitrous oxide sedation</li><li>Anxiety-friendly visits</li><li>Extra-time appointments</li></ul></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- About + first visit -->
+  <section id="about" class="block" aria-labelledby="about-title">
+    <div class="wrap about">
+      <div>
+        <h2 id="about-title">A neighborhood practice, not a dental chain</h2>
+        <p class="intro">We've been on Maple Street since 2008. We're independently owned, so our dentists — not a corporate office — decide how long your appointment takes.</p>
+        <ol class="reasons">
+          <li><div><h3>Unhurried appointments</h3><p>Hygiene visits are a full hour, so there's time to answer your questions.</p></div></li>
+          <li><div><h3>Clear, upfront pricing</h3><p>You'll get a written estimate before any treatment — no surprise bills.</p></div></li>
+          <li><div><h3>Whole-family scheduling</h3><p>Book everyone back-to-back in one trip, including early-morning and Saturday slots.</p></div></li>
+        </ol>
+      </div>
+      <aside class="first-visit" aria-labelledby="new-pt-title">
+        <h2 id="new-pt-title">New patient? Here's your first visit</h2>
+        <p class="dur">About 75 minutes, start to finish. No pressure, no upsell.</p>
+        <ol>
+          <li>Quick tour and a chat about your goals</li>
+          <li>Comprehensive exam and digital X-rays</li>
+          <li>Gentle cleaning with your hygienist</li>
+          <li>A written care plan you can take home</li>
+        </ol>
+        <p class="plan"><strong>No insurance?</strong> Ask about our Maple Membership Plan — two cleanings, exams, and X-rays for a flat yearly fee.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="block" aria-labelledby="team-title">
+    <div class="wrap">
+      <div class="team-head">
+        <h2 id="team-title">Meet your dentists</h2>
+        <p class="intro">Three dentists, eight hygienists and assistants, and one very popular front-desk dog named Biscuit.</p>
+      </div>
+      <div class="team">
+        <article class="doc">
+          <h3>Dr. Elena Hart, DMD</h3>
+          <div class="role">Founder · General &amp; family dentistry</div>
+          <p>Opened Maple Street in 2008. Loves first visits, bad puns, and Forest Park trail runs.</p>
+        </article>
+        <article class="doc">
+          <h3>Dr. Marcus Okafor, DDS</h3>
+          <div class="role">Restorative &amp; implant dentistry</div>
+          <p>Specializes in same-day crowns and implants. Coaches youth soccer on weekends.</p>
+        </article>
+        <article class="doc">
+          <h3>Dr. Jenny Lin, DMD</h3>
+          <div class="role">Pediatric-focused dentistry</div>
+          <p>Our go-to for little ones and anxious patients of every age. Speaks English and Mandarin.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews + insurance -->
+  <section class="block" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <h2 id="reviews-title">What our neighbors say</h2>
+      <div class="reviews">
+        <blockquote class="lead">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"My six-year-old actually asks when we're going back. That's never happened at any dentist, ever."</p>
+          <footer>— Parent of a patient, Sellwood</footer>
+        </blockquote>
+        <div class="side">
+          <blockquote>
+            <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"I hadn't been to a dentist in eight years. Nobody lectured me. They just made a plan and got me back on track."</p>
+            <footer>— Adult patient, Hawthorne</footer>
+          </blockquote>
+          <blockquote>
+            <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"Cracked a molar on a Saturday morning and was in the chair by noon. Can't recommend them enough."</p>
+            <footer>— Emergency patient, Richmond</footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="insurance-block">
+        <div>
+          <h3>Insurance we work with</h3>
+          <p>We're in-network with most major PPO plans and happy to file claims for you. Don't see yours? Just call — we'll check.</p>
+        </div>
+        <ul class="insurance">
+          <li>Delta Dental</li><li>Cigna</li><li>Aetna</li><li>MetLife</li><li>Regence</li><li>Moda</li><li>Guardian</li><li>Oregon Health Plan</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section id="visit" class="block" aria-labelledby="visit-title">
+    <div class="wrap">
+      <h2 id="visit-title">Visit us on Maple Street</h2>
+      <p class="intro">Free parking behind the building, a bike rack out front, and two blocks from the bus line.</p>
+      <div class="visit">
+        <div>
+          <h3>Hours</h3>
+          <table class="hours" id="hours">
+            <tbody>
+              <tr data-day="1"><td>Monday</td><td>7:30 am – 6:00 pm</td></tr>
+              <tr data-day="2"><td>Tuesday</td><td>7:30 am – 6:00 pm</td></tr>
+              <tr data-day="3"><td>Wednesday</td><td>7:30 am – 6:00 pm</td></tr>
+              <tr data-day="4"><td>Thursday</td><td>7:30 am – 7:00 pm</td></tr>
+              <tr data-day="5"><td>Friday</td><td>7:30 am – 3:00 pm</td></tr>
+              <tr data-day="6"><td>Saturday</td><td>8:00 am – 1:00 pm</td></tr>
+              <tr data-day="0"><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Contact &amp; location</h3>
+          <div class="contact-lines">
+            <div><span class="label">Address</span>1420 SE Maple Street<br>Portland, OR 97214</div>
+            <div><span class="label">Phone</span><a href="tel:+15035550142">(503) 555-0142</a><small>Text or call · After-hours emergencies: press 2</small></div>
+            <div><span class="label">Email</span>hello@maplestreetdental.example<small>We reply within one business day</small></div>
+          </div>
+          <div class="map" aria-hidden="true">
+            <svg viewBox="0 0 400 150">
+              <rect width="400" height="150" fill="var(--map)"/>
+              <path d="M0 50h400M0 110h400M90 0v150M230 0v150M330 0v150" stroke="var(--bg)" stroke-width="12"/>
+              <circle cx="190" cy="80" r="14" fill="var(--red)"/>
+              <circle cx="190" cy="80" r="5" fill="var(--red-ink)"/>
+              <text x="100" y="40" font-size="13" font-family="Barlow, sans-serif" fill="var(--muted)">SE Maple St</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="book" class="block" aria-labelledby="book-title">
+    <div class="wrap book">
+      <div>
+        <h2 id="book-title">Ready when you are — book your family's next visit</h2>
+        <p>Call, text, or request a time online — we'll confirm within a few hours.</p>
+      </div>
+      <a class="btn btn-primary" href="tel:+15035550142">Call (503) 555-0142</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <strong>Maple Street Dental</strong><br>
+      1420 SE Maple Street, Portland, OR 97214<br>
+      © <span id="yr">2026</span> Maple Street Dental. All rights reserved.
+    </div>
+    <nav aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#about">New patients</a>
+      <a href="#team">Our team</a>
+      <a href="#visit">Hours &amp; location</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const closeMenu = () => { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Open menu'); };
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Highlight today's hours and show today's state on the board
+  const today = new Date().getDay();
+  const row = document.querySelector('#hours tr[data-day="' + today + '"]');
+  if (row) {
+    row.classList.add('today');
+    const hrs = row.cells[1].textContent;
+    const status = document.getElementById('todayStatus');
+    if (hrs === 'Closed') {
+      status.textContent = 'Closed today. Call for emergency advice: press 2.';
+      status.classList.add('closed');
+    } else {
+      status.textContent = 'Open today ' + hrs.replace(/:00/g, '') + '.';
+    }
+  }
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

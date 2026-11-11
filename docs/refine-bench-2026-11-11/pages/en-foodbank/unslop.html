@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riverbend Community Food Bank</title>
+<meta name="description" content="Riverbend Community Food Bank provides free groceries to neighbors in need. Find food, volunteer, or donate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  /* Direction
+     Product   A county food bank that gives free groceries to neighbors and asks others for food, money and time
+     Character plain-spoken, steady, warm
+     World     a community pantry: kraft paper, shelf tags, hours chalked on a church-basement door, river-town green
+     Moment    the pantry's week drawn as an hours timeline in the hero, today in ember
+     Signature a live open-now status dot computed from the real hours */
+  :root {
+    /* warm neutral ramp */
+    --bg: #f7f4ee;
+    --card: #fdfbf7;
+    --raised: #efe9df;
+    --line: rgba(31, 27, 22, .1);
+    --line-strong: rgba(31, 27, 22, .16);
+    --text: #1f1b16;
+    --text-2: #5e554a;
+    --text-3: #6f665a;
+    /* brand */
+    --green: #2f6b3f;
+    --green-deep: #1f4a2b;
+    --green-bar: #c9d6c7;
+    --ember: #b3561c;        /* accent, white text 4.9:1 */
+    --ember-ink: #a84f18;    /* accent as text on light */
+    --ember-tint: #f6e7da;
+    --positive: #2f8a4c;
+
+    --r-sm: 6px;
+    --r-control: 10px;
+    --r-card: 16px;
+    --shadow: 0 1px 2px rgba(31, 27, 22, .05);
+    --shadow-float: 0 8px 24px rgba(31, 27, 22, .06);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 28px;
+    color: var(--text);
+    background: var(--bg);
+    font-variant-numeric: tabular-nums;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--green); text-underline-offset: 3px; }
+  h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; }
+  h1 { font-size: clamp(40px, 4.4vw, 60px); line-height: 1.04; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(32px, 3.4vw, 40px); line-height: 1.12; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; line-height: 24px; font-weight: 600; margin: 0; }
+  p { margin: 0 0 16px; }
+  strong { font-weight: 600; }
+  .container { width: min(1120px, 100% - 48px); margin-inline: auto; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; background: var(--card); padding: 8px 16px; z-index: 100; border-radius: var(--r-control); }
+  :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 48px; padding: 0 20px; border-radius: var(--r-control);
+    font: inherit; font-size: 16px; font-weight: 500; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: background-color .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease), transform .15s var(--ease);
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-sm { height: 36px; padding: 0 16px; font-size: 15px; }
+  .btn-primary { background: var(--ember); color: #fff; }
+  .btn-primary:hover { background: #9b4914; }
+  .btn-secondary { background: var(--card); color: var(--text); border-color: var(--line-strong); }
+  .btn-secondary:hover { background: var(--raised); }
+
+  /* Alert bar */
+  .alert { background: var(--green-deep); color: #eef3ec; font-size: 15px; line-height: 20px; text-align: center; padding: 8px 16px; }
+  .alert a { color: #fff; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247, 244, 238, .96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--green-deep); font-weight: 600; font-size: 17px; line-height: 20px; }
+  .logo svg { width: 36px; height: 36px; }
+  .logo small { display: block; font-weight: 400; color: var(--text-2); font-size: 13px; line-height: 16px; }
+  .nav ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
+  .nav ul a { text-decoration: none; color: var(--text); font-size: 15px; font-weight: 500; transition: color .15s var(--ease); }
+  .nav ul a:hover { color: var(--green); }
+  .nav-actions { display: flex; gap: 8px; align-items: center; }
+  .menu-toggle { display: none; width: 36px; height: 36px; place-items: center; background: none; border: 1px solid var(--line-strong); border-radius: var(--r-control); color: var(--text); cursor: pointer; padding: 0; }
+
+  /* Hero */
+  .hero { padding: 80px 0 80px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .since { font-size: 15px; line-height: 20px; color: var(--text-2); margin-bottom: 20px; }
+  .hero h1 { max-width: 15ch; }
+  .hero p.lead { font-size: 19px; line-height: 30px; color: var(--text-2); max-width: 36rem; margin: 24px 0 0; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+  /* Hero moment: the week at the pantry */
+  .week {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card);
+    box-shadow: var(--shadow-float); padding: 24px;
+  }
+  .week-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .week-head h2 { font-family: var(--sans); font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; line-height: 20px; color: var(--text-2); }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); }
+  .status.open { color: var(--text); }
+  .status.open::before { background: var(--positive); box-shadow: 0 0 0 3px rgba(47, 138, 76, .16); }
+  .timeline { display: grid; grid-template-columns: 48px 1fr; row-gap: 8px; column-gap: 12px; align-items: center; }
+  .timeline .day { font-size: 14px; line-height: 20px; color: var(--text-2); }
+  .timeline .track { position: relative; height: 28px; border-radius: var(--r-sm); background:
+      repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px calc(100% / 6)) , var(--bg); }
+  .timeline .bar {
+    position: absolute; top: 4px; bottom: 4px; border-radius: 4px; background: var(--green-bar);
+    font-size: 12px; line-height: 20px; color: var(--green-deep); padding: 0 8px; white-space: nowrap; overflow: hidden;
+  }
+  .timeline .row-today .day { color: var(--text); font-weight: 600; }
+  .timeline .row-today .bar { background: var(--ember); color: #fff; }
+  .timeline .row-closed .closed-label { position: absolute; left: 8px; top: 4px; font-size: 12px; line-height: 20px; color: var(--text-3); }
+  .now { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--text); border-radius: 1px; }
+  .axis { grid-column: 2; position: relative; height: 16px; font-size: 12px; line-height: 16px; color: var(--text-3); margin-top: 4px; }
+  .axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+  .axis span:first-child { transform: none; }
+  .axis span:last-child { transform: translateX(-100%); }
+  .week-foot { display: grid; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; line-height: 20px; color: var(--text-2); }
+  .week-foot div { display: flex; gap: 8px; align-items: flex-start; }
+  .week-foot .icon { color: var(--text-3); margin-top: 1px; }
+
+  /* Quick help */
+  .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .quick-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px;
+    box-shadow: var(--shadow); display: flex; flex-direction: column;
+  }
+  .quick-card .tile { width: 36px; height: 36px; border-radius: var(--r-control); background: var(--raised); color: var(--text-2); display: grid; place-items: center; margin-bottom: 16px; }
+  .quick-card h3 { margin-bottom: 8px; }
+  .quick-card p { color: var(--text-2); flex: 1; }
+  .more { font-weight: 500; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
+  .more:hover { text-decoration: underline; }
+
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 40px; }
+  .section-head h2 { margin-bottom: 16px; }
+  .section-head p { color: var(--text-2); font-size: 18px; line-height: 28px; margin: 0; }
+
+  /* Get food */
+  .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .food-grid h2 { margin-bottom: 16px; }
+  .hours { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow); overflow: hidden; }
+  .hours-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+  .hours table { width: 100%; border-collapse: collapse; }
+  .hours td { padding: 0 24px; height: 48px; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 500; }
+  .hours tr.closed td:last-child { color: var(--text-3); font-weight: 400; }
+  .hours tr.today td { background: var(--ember-tint); }
+  .hours tr.today td:first-child { box-shadow: inset 3px 0 0 var(--ember); font-weight: 600; }
+  .today-label { font-size: 13px; font-weight: 400; color: var(--ember-ink); margin-left: 8px; }
+  .hours .note { padding: 16px 24px; font-size: 15px; line-height: 24px; color: var(--text-2); margin: 0; }
+  .checklist { list-style: none; padding: 0; margin: 24px 0 32px; display: grid; gap: 12px; }
+  .checklist li { padding-left: 32px; position: relative; }
+  .checklist li .icon { position: absolute; left: 0; top: 5px; color: var(--positive); }
+  .address { display: flex; gap: 12px; }
+  .address .icon { color: var(--text-3); margin-top: 5px; }
+  .lang { font-size: 15px; line-height: 24px; color: var(--text-2); border-left: 2px solid var(--line-strong); padding-left: 16px; margin: 24px 0 0; }
+
+  /* Impact */
+  .impact { background: var(--green-deep); color: #eef3ec; }
+  .impact .section-head p { color: #bfd0c3; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .stat { border-top: 1px solid rgba(238, 243, 236, .2); padding-top: 20px; }
+  .stat strong { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 4vw, 48px); line-height: 1; color: #fbf8f2; margin-bottom: 12px; }
+  .stat span { color: #bfd0c3; font-size: 16px; line-height: 24px; }
+
+  /* Programs */
+  .programs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .program { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px; }
+  .program .tag { display: block; font-size: 14px; line-height: 20px; color: var(--text-3); margin-bottom: 8px; }
+  .program h3 { margin-bottom: 8px; }
+  .program p { color: var(--text-2); margin: 0; }
+
+  /* Donate */
+  .donate { background: var(--raised); }
+  .donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .donate-grid h2 { margin-bottom: 16px; }
+  .donate-box { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow-float); padding: 24px; }
+  .freq { display: flex; background: var(--raised); border-radius: var(--r-control); padding: 4px; margin-bottom: 16px; }
+  .freq button { flex: 1; height: 40px; border: 0; background: none; border-radius: var(--r-sm); font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; color: var(--text-2); transition: background-color .15s var(--ease), color .15s var(--ease); }
+  .freq button[aria-pressed="true"] { background: var(--card); color: var(--text); box-shadow: 0 1px 2px rgba(31, 27, 22, .08); }
+  .amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+  .amounts button {
+    height: 48px; border: 1px solid var(--line-strong); background: var(--card); border-radius: var(--r-control);
+    font: inherit; font-weight: 500; cursor: pointer; color: var(--text);
+    transition: background-color .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease);
+  }
+  .amounts button:hover { background: var(--bg); }
+  .amounts button[aria-pressed="true"] { border-color: var(--ember); box-shadow: inset 0 0 0 1px var(--ember); background: var(--ember-tint); color: var(--ember-ink); }
+  .meals { background: var(--bg); border-radius: var(--r-control); padding: 12px 16px; font-size: 15px; line-height: 24px; margin-bottom: 16px; color: var(--text-2); }
+  .meals strong { color: var(--text); }
+  .donate-box .btn { width: 100%; }
+  .fine { font-size: 13px; line-height: 20px; color: var(--text-3); margin: 12px 0 0; text-align: center; }
+  .other-ways { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
+  .other-ways li { display: flex; gap: 12px; align-items: flex-start; }
+  .other-ways .tile { flex: none; width: 36px; height: 36px; border-radius: var(--r-control); background: var(--card); border: 1px solid var(--line); color: var(--text-2); display: grid; place-items: center; }
+
+  /* Volunteer */
+  .volunteer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .shift { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px; display: flex; flex-direction: column; }
+  .shift h3 { margin-bottom: 4px; }
+  .shift .when { font-size: 15px; line-height: 20px; color: var(--text-3); margin-bottom: 12px; }
+  .shift p:not(.when) { color: var(--text-2); flex: 1; }
+  .needed { font-size: 15px; line-height: 20px; color: var(--text); padding-top: 16px; border-top: 1px solid var(--line); }
+  .needed.priority { color: var(--ember-ink); font-weight: 500; }
+  .more-shifts { margin: 32px 0 0; }
+
+  /* Story */
+  .story { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 40px; margin: 0; }
+  .story blockquote { margin: 0; font-family: var(--serif); font-size: 26px; line-height: 36px; }
+  .story cite { display: block; margin-top: 16px; font-style: normal; color: var(--text-2); font-size: 15px; line-height: 20px; font-family: var(--sans); }
+  .avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--raised); display: grid; place-items: center; font-family: var(--serif); font-size: 32px; color: var(--green-deep); }
+
+  /* Newsletter */
+  .news-section { padding: 0; }
+  .newsletter { background: var(--raised); border-radius: var(--r-card); padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; margin-top: 96px; }
+  .newsletter h2 { margin-bottom: 8px; font-size: 32px; }
+  .newsletter p { margin: 0; color: var(--text-2); }
+  .newsletter form { display: flex; gap: 8px; }
+  .newsletter input { flex: 1; min-width: 0; height: 48px; padding: 0 16px; border-radius: var(--r-control); border: 1px solid var(--line-strong); background: var(--card); font: inherit; color: var(--text); }
+  .newsletter input:focus-visible { outline: 2px solid var(--green); outline-offset: 0; }
+  .newsletter .btn { background: var(--text); color: var(--bg); }
+  .newsletter .btn:hover { background: #3a332b; }
+  .form-msg { margin: 8px 0 0; font-size: 15px; line-height: 20px; color: var(--text-2); min-height: 20px; }
+
+  /* Footer */
+  footer { background: #1f1b16; color: #aaa398; padding: 64px 0 32px; margin-top: 96px; font-size: 15px; line-height: 24px; }
+  footer a { color: #efe9de; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: #efe9de; margin: 0 0 12px; font-size: 15px; font-weight: 600; }
+  footer p { margin: 0 0 12px; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .foot-bottom { border-top: 1px solid rgba(239, 233, 222, .1); margin-top: 48px; padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; line-height: 20px; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { padding: 48px 0 64px; }
+    .hero-grid, .food-grid, .donate-grid, .newsletter { grid-template-columns: 1fr; gap: 40px; }
+    .quick-grid, .volunteer-grid { grid-template-columns: 1fr; gap: 16px; }
+    .stats { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .menu-toggle { display: grid; }
+    .nav ul {
+      display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 24px 16px;
+    }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 12px 0; font-size: 17px; }
+  }
+  @media (max-width: 560px) {
+    .container { width: calc(100% - 32px); }
+    section { padding: 64px 0; }
+    h1 { font-size: 40px; }
+    .hero p.lead { font-size: 18px; line-height: 28px; }
+    .hero .actions .btn { flex: 1 1 100%; }
+    .week { padding: 20px; }
+    .timeline { grid-template-columns: 36px 1fr; column-gap: 8px; }
+    .timeline .bar { font-size: 0; }
+    .story { grid-template-columns: 1fr; padding: 24px; gap: 20px; }
+    .story blockquote { font-size: 22px; line-height: 32px; }
+    .avatar { width: 56px; height: 56px; font-size: 24px; }
+    .amounts { grid-template-columns: repeat(2, 1fr); }
+    .newsletter { padding: 24px; margin-top: 64px; }
+    .newsletter form { flex-direction: column; }
+    .foot-grid { grid-template-columns: 1fr; }
+    footer { margin-top: 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-package" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="alert" role="note">
+  Holiday Food Drive runs through December 20 · <a href="#donate">See what we need most</a>
+</div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="Riverbend Community Food Bank home">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#2f6b3f"/>
+        <path d="M6 26c4-3 8-3 12 0s8 3 12 0 6-2 6-2" stroke="#9fd0ac" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M20 9c-4 3-5 7-3 11 4-1 6-5 3-11z" fill="#e07a2f"/>
+        <path d="M20 20v-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span>Riverbend<small>Community Food Bank</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a href="#get-food">Get food</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#impact">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="#donate" class="btn btn-primary btn-sm">Donate</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div>
+        <p class="since">Serving the Riverbend area since 1987</p>
+        <h1 id="hero-title">Free groceries for every neighbor in Riverbend County</h1>
+        <p class="lead">Shop our pantry for fresh produce, dairy, protein and staples. No appointment, no proof of income, no judgment.</p>
+        <div class="actions">
+          <a href="#get-food" class="btn btn-primary">Get food this week</a>
+          <a href="#volunteer" class="btn btn-secondary">Volunteer with us</a>
+        </div>
+      </div>
+
+      <div class="week" aria-labelledby="week-title">
+        <div class="week-head">
+          <h2 id="week-title">Main Pantry this week</h2>
+          <span class="status" data-status>Checking hours</span>
+        </div>
+        <div class="timeline" id="timeline" role="list"></div>
+        <div class="week-foot">
+          <div><svg class="icon"><use href="#i-pin"/></svg><span>420 River Road · near the Route 9 bus · free parking</span></div>
+          <div><svg class="icon"><use href="#i-calendar"/></svg><span>Extra holiday distribution Sat, Nov 21, 8 am – 1 pm</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="quick-grid">
+      <article class="quick-card">
+        <div class="tile" aria-hidden="true"><svg class="icon"><use href="#i-bag"/></svg></div>
+        <h3>Need food?</h3>
+        <p>Visit our pantry or one of 32 partner sites. Everyone is welcome. Bring a bag and we'll take care of the rest.</p>
+        <a class="more" href="#get-food">Hours and locations <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="quick-card">
+        <div class="tile" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></div>
+        <h3>Give a meal</h3>
+        <p>Every $1 you give helps provide 3 meals. Your gift goes straight to stocking shelves for local families.</p>
+        <a class="more" href="#donate">Donate <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="quick-card">
+        <div class="tile" aria-hidden="true"><svg class="icon"><use href="#i-users"/></svg></div>
+        <h3>Lend a hand</h3>
+        <p>Sort produce, pack boxes, or deliver groceries to homebound seniors. Shifts for individuals, families and groups.</p>
+        <a class="more" href="#volunteer">Find a shift <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+
+  <section id="get-food" aria-labelledby="food-title">
+    <div class="container food-grid">
+      <div>
+        <h2 id="food-title">Getting food is simple</h2>
+        <p>Our Main Pantry is a client-choice market. You shop for the groceries your household actually wants, including fresh produce, dairy, protein and pantry staples.</p>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><strong>No appointment needed.</strong> Just come during open hours.</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><strong>No proof of income required.</strong> We'll ask for your name and household size, and that's it.</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><strong>Visit once a week.</strong> Plus fresh produce any day we're open.</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><strong>Can't make it in?</strong> Seniors and people with disabilities can request home delivery.</li>
+        </ul>
+        <div class="address">
+          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          <p style="margin:0"><strong>Main Pantry</strong>, 420 River Road, Riverbend<br>
+          <span style="color:var(--text-2)">Near the Route 9 bus stop · Free parking · Wheelchair accessible</span></p>
+        </div>
+        <p class="lang">Hablamos español. Interpreters for other languages are available, just ask. Call <a href="tel:+15555550142">(555) 555-0142</a></p>
+      </div>
+      <div class="hours">
+        <div class="hours-head">
+          <h3>Main Pantry hours</h3>
+          <span class="status" data-status>Checking hours</span>
+        </div>
+        <table>
+          <tbody id="hours-body">
+            <tr data-day="1"><td>Monday</td><td>10 am – 2 pm</td></tr>
+            <tr data-day="2"><td>Tuesday</td><td>2 pm – 7 pm</td></tr>
+            <tr data-day="3"><td>Wednesday</td><td>10 am – 2 pm</td></tr>
+            <tr data-day="4"><td>Thursday</td><td>2 pm – 7 pm</td></tr>
+            <tr data-day="5"><td>Friday</td><td>10 am – 1 pm</td></tr>
+            <tr data-day="6"><td>Saturday</td><td>9 am – 12 pm</td></tr>
+            <tr data-day="0" class="closed"><td>Sunday</td><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Closed Thanksgiving Day, Nov 26. Extra holiday distribution Saturday, Nov 21, 8 am – 1 pm.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="impact" aria-labelledby="impact-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="impact-title">Neighbors helping neighbors</h2>
+        <p>Riverbend Community Food Bank started in a church basement nearly 40 years ago. Today we're the hub of a network that reaches every corner of the county.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>1.8M</strong><span>meals shared last year</span></div>
+        <div class="stat"><strong>14,500</strong><span>people served each month</span></div>
+        <div class="stat"><strong>32</strong><span>partner pantries and meal sites</span></div>
+        <div class="stat"><strong>94¢</strong><span>of every dollar goes to programs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" aria-labelledby="programs-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="programs-title">Our programs</h2>
+        <p>Hunger looks different for everyone. These programs meet people where they are.</p>
+      </div>
+      <div class="programs">
+        <article class="program">
+          <span class="tag">For families</span>
+          <h3>Main Pantry Market</h3>
+          <p>A grocery-store style pantry where households choose their own fresh and shelf-stable foods.</p>
+        </article>
+        <article class="program">
+          <span class="tag">For kids</span>
+          <h3>Weekend Backpacks</h3>
+          <p>Kid-friendly meals sent home every Friday with students at 18 local schools.</p>
+        </article>
+        <article class="program">
+          <span class="tag">For seniors</span>
+          <h3>Home Delivery</h3>
+          <p>Volunteers bring monthly grocery boxes to older adults and neighbors who can't travel.</p>
+        </article>
+        <article class="program">
+          <span class="tag">For neighborhoods</span>
+          <h3>Mobile Pantry</h3>
+          <p>Our truck brings fresh produce to rural towns and apartment complexes twice a week.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="donate" aria-labelledby="donate-title">
+    <div class="container donate-grid">
+      <div>
+        <h2 id="donate-title">Your gift fills plates right here at home</h2>
+        <p>Because we partner with farms, grocers and regional food networks, every dollar stretches far. Gifts are tax-deductible. Riverbend Community Food Bank is a 501(c)(3) non-profit.</p>
+        <ul class="other-ways">
+          <li><span class="tile" aria-hidden="true"><svg class="icon"><use href="#i-package"/></svg></span><span><strong>Drop off food.</strong> Most needed: peanut butter, canned protein, cereal, cooking oil and diapers. Mon–Sat at the loading dock.</span></li>
+          <li><span class="tile" aria-hidden="true"><svg class="icon"><use href="#i-building"/></svg></span><span><strong>Host a food drive</strong> at your workplace, school or place of worship. We'll provide bins and signs.</span></li>
+          <li><span class="tile" aria-hidden="true"><svg class="icon"><use href="#i-sprout"/></svg></span><span><strong>Share your harvest.</strong> Gardeners and farmers can donate fresh produce.</span></li>
+        </ul>
+      </div>
+      <div class="donate-box">
+        <div class="freq" role="group" aria-label="Donation frequency">
+          <button type="button" data-freq="once" aria-pressed="true">One-time</button>
+          <button type="button" data-freq="monthly" aria-pressed="false">Monthly</button>
+        </div>
+        <div class="amounts" role="group" aria-label="Donation amount">
+          <button type="button" data-amount="25" aria-pressed="false">$25</button>
+          <button type="button" data-amount="50" aria-pressed="true">$50</button>
+          <button type="button" data-amount="100" aria-pressed="false">$100</button>
+          <button type="button" data-amount="250" aria-pressed="false">$250</button>
+        </div>
+        <p class="meals" aria-live="polite">Your <span id="freq-label">gift</span> of <strong id="amt">$50</strong> helps provide <strong id="meal-count">150 meals</strong> for neighbors in need.</p>
+        <a href="#" class="btn btn-primary" id="give-btn">Give $50 today</a>
+        <p class="fine">Secure donation · Tax-deductible · EIN 00-0000000</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="volunteer" aria-labelledby="volunteer-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="volunteer-title">Volunteer this month</h2>
+        <p>Over 2,000 volunteers keep our doors open. No experience needed. Ages 10 and up are welcome with an adult.</p>
+      </div>
+      <div class="volunteer-grid">
+        <article class="shift">
+          <h3>Warehouse sorting</h3>
+          <p class="when">Tue and Thu · 9 am – 12 pm</p>
+          <p>Inspect and sort donated food so it's ready for families. Great for groups.</p>
+          <span class="needed">12 spots open</span>
+        </article>
+        <article class="shift">
+          <h3>Pantry market host</h3>
+          <p class="when">Mon – Sat · various times</p>
+          <p>Greet guests, restock shelves, and help shoppers carry groceries.</p>
+          <span class="needed priority">Most needed</span>
+        </article>
+        <article class="shift">
+          <h3>Senior delivery driver</h3>
+          <p class="when">Second Saturday · 9 am – 11 am</p>
+          <p>Deliver grocery boxes to older adults along a planned route. Valid license required.</p>
+          <span class="needed">6 routes open</span>
+        </article>
+      </div>
+      <p class="more-shifts"><a href="#" class="btn btn-secondary">See all volunteer shifts</a></p>
+    </div>
+  </section>
+
+  <div class="container">
+    <figure class="story">
+      <div class="avatar" aria-hidden="true">M</div>
+      <div>
+        <blockquote>“When my hours got cut, I didn't know how I'd feed my kids. The folks here treated me like family. Now I volunteer every Saturday so I can pay it forward.”</blockquote>
+        <figcaption><cite>Maria, Riverbend parent and volunteer</cite></figcaption>
+      </div>
+    </figure>
+  </div>
+
+  <section class="news-section" aria-labelledby="news-title">
+    <div class="container">
+      <div class="newsletter">
+        <div>
+          <h2 id="news-title">The monthly pantry update</h2>
+          <p>Distributions, volunteer needs and the difference you're making, once a month.</p>
+        </div>
+        <div>
+          <form id="news-form" novalidate>
+            <label for="email" class="skip">Email address</label>
+            <input id="email" type="email" placeholder="Email address" autocomplete="email" required>
+            <button class="btn" type="submit">Sign up</button>
+          </form>
+          <p class="form-msg" id="form-msg" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h4>Riverbend Community Food Bank</h4>
+        <p>420 River Road<br>Riverbend, ST 00000</p>
+        <p><a href="tel:+15555550142">(555) 555-0142</a><br><a href="mailto:hello@riverbendfoodbank.org">hello@riverbendfoodbank.org</a></p>
+      </div>
+      <div>
+        <h4>Get help</h4>
+        <ul>
+          <li><a href="#get-food">Pantry hours</a></li>
+          <li><a href="#programs">Find a partner site</a></li>
+          <li><a href="#programs">Home delivery</a></li>
+          <li><a href="#">SNAP assistance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <ul>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#donate">Host a food drive</a></li>
+          <li><a href="#">Corporate partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="#impact">Our story</a></li>
+          <li><a href="#">Staff and board</a></li>
+          <li><a href="#">Financials</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Riverbend Community Food Bank. A 501(c)(3) non-profit organization.</span>
+      <span>This institution is an equal opportunity provider.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Pantry hours: one source for the timeline, the table highlight and the open-now status
+  const HOURS = { 1: [10, 14], 2: [14, 19], 3: [10, 14], 4: [14, 19], 5: [10, 13], 6: [9, 12], 0: null };
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const fmt = h => { const s = h >= 12 ? 'pm' : 'am'; const v = h % 12 || 12; return v + ' ' + s; };
+  const now = new Date(), today = now.getDay(), hourNow = now.getHours() + now.getMinutes() / 60;
+  const AX0 = 8, AX1 = 20, pct = h => ((h - AX0) / (AX1 - AX0)) * 100;
+
+  const timeline = document.getElementById('timeline');
+  [1, 2, 3, 4, 5, 6, 0].forEach(d => {
+    const h = HOURS[d];
+    const row = document.createElement('div');
+    row.style.display = 'contents';
+    row.setAttribute('role', 'listitem');
+    row.className = (d === today ? 'row-today ' : '') + (h ? '' : 'row-closed');
+    const label = h ? `${DAYS[d]}, ${fmt(h[0])} to ${fmt(h[1])}` : `${DAYS[d]}, closed`;
+    row.innerHTML = `<span class="day" aria-label="${label}">${DAYS[d].slice(0, 3)}</span>
+      <div class="track" aria-hidden="true">${h
+        ? `<span class="bar" style="left:${pct(h[0])}%;width:${pct(h[1]) - pct(h[0])}%">${fmt(h[0])} – ${fmt(h[1])}</span>`
+        : `<span class="closed-label">Closed</span>`}${d === today && hourNow > AX0 && hourNow < AX1
+        ? `<span class="now" style="left:calc(${pct(hourNow)}% - 1px)"></span>` : ''}</div>`;
+    timeline.appendChild(row);
+  });
+  const axis = document.createElement('div');
+  axis.className = 'axis';
+  axis.setAttribute('aria-hidden', 'true');
+  axis.innerHTML = [8, 12, 16, 20].map(h => `<span style="left:${pct(h)}%">${fmt(h)}</span>`).join('');
+  timeline.appendChild(axis);
+
+  // Open-now status
+  let statusText, open = false;
+  const t = HOURS[today];
+  if (t && hourNow >= t[0] && hourNow < t[1]) { open = true; statusText = `Open now · until ${fmt(t[1])}`; }
+  else if (t && hourNow < t[0]) { statusText = `Closed · opens today at ${fmt(t[0])}`; }
+  else {
+    for (let i = 1; i <= 7; i++) {
+      const d = (today + i) % 7;
+      if (HOURS[d]) { statusText = `Closed · opens ${i === 1 ? 'tomorrow' : DAYS[d]} at ${fmt(HOURS[d][0])}`; break; }
+    }
+  }
+  document.querySelectorAll('[data-status]').forEach(el => { el.textContent = statusText; el.classList.toggle('open', open); });
+
+  // Highlight today's hours in the table
+  const row = document.querySelector(`#hours-body tr[data-day="${today}"]`);
+  if (row) {
+    row.classList.add('today');
+    const tag = document.createElement('span');
+    tag.className = 'today-label';
+    tag.textContent = 'Today';
+    row.firstElementChild.appendChild(tag);
+  }
+
+  // Donation widget
+  let amount = 50, freq = 'once';
+  const amtEl = document.getElementById('amt'), mealEl = document.getElementById('meal-count');
+  const giveBtn = document.getElementById('give-btn'), freqLabel = document.getElementById('freq-label');
+  function update() {
+    amtEl.textContent = '$' + amount;
+    mealEl.textContent = (amount * 3).toLocaleString() + ' meals' + (freq === 'monthly' ? ' every month' : '');
+    freqLabel.textContent = freq === 'monthly' ? 'monthly gift' : 'gift';
+    giveBtn.textContent = freq === 'monthly' ? `Give $${amount} monthly` : `Give $${amount} today`;
+  }
+  function pick(groupSel, attr, cb) {
+    document.querySelectorAll(groupSel + ' button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll(groupSel + ' button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      cb(b.dataset[attr]); update();
+    }));
+  }
+  pick('.amounts', 'amount', v => amount = +v);
+  pick('.freq', 'freq', v => freq = v);
+
+  // Newsletter
+  document.getElementById('news-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = document.getElementById('email'), msg = document.getElementById('form-msg');
+    msg.textContent = input.checkValidity() && input.value
+      ? 'Thanks for signing up. Watch your inbox for the next update.'
+      : 'Enter a valid email address';
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
