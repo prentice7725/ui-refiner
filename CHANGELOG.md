@@ -2,7 +2,7 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.7.0 — 2026-11-11
 
 ### Added
 - First-screen check: the scan collector records whether the first screen has a one-line claim (outside the navigation), a main action, and how much of it a photo or image covers. `directions` and `directions verify` warn when nothing says what the page is and no large image carries it, or when the headline's button sits below the fold. `verify` exits 1 and the finish gate blocks on it. In benchmark round 7 the two pages that opened with a large board and no claim were judged worst of their sets. Of 33 small human sites, only 1 had neither a claim nor a large photo on the first screen.
