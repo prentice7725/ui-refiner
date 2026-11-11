@@ -1,0 +1,706 @@
+{
+ "date": "2026-11-11",
+ "model": "claude-opus-5-5",
+ "note": "글자(A–D)를 방식 이름으로 풀어 둔 평가 원문",
+ "pages": {
+  "en-budget": {
+   "letters": {
+    "A": "plain",
+    "B": "unslop",
+    "C": "refine",
+    "D": "before"
+   },
+   "ranking": [
+    "plain",
+    "refine",
+    "unslop",
+    "before"
+   ],
+   "scores": {
+    "plain": {
+     "hierarchy": 8,
+     "distinctiveness": 7,
+     "typography": 8,
+     "cohesion": 9,
+     "ai_look": 3
+    },
+    "unslop": {
+     "hierarchy": 8,
+     "distinctiveness": 5,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 6
+    },
+    "refine": {
+     "hierarchy": 7,
+     "distinctiveness": 7,
+     "typography": 7,
+     "cohesion": 7,
+     "ai_look": 4
+    },
+    "before": {
+     "hierarchy": 6,
+     "distinctiveness": 3,
+     "typography": 6,
+     "cohesion": 6,
+     "ai_look": 9
+    }
+   },
+   "notes": "A is a restrained editorial layout with a witty, specific headline, consistent serif and sans pairing and hairline structure, so it reads as made by a person and is the one I would ship. C commits to a bold dark green with an orange accent and a wide data-strip hero, but the empty right column above the fold and the contradictory 'Nice — you're on track' next to an overspend make the hero feel unresolved. B is clean and competent, but the two-tone headline, eyebrow labels, icon cards, numbered step badges and green CTA band follow a familiar SaaS template. D piles on AI-template tells (pill badge, italic accent headline, emoji icons, a floating toast that overlaps and hides the card content, and identical icon-card grids), so it is the weakest and most generic."
+  },
+  "en-dental": {
+   "letters": {
+    "A": "plain",
+    "B": "before",
+    "C": "unslop",
+    "D": "refine"
+   },
+   "ranking": [
+    "plain",
+    "unslop",
+    "refine",
+    "before"
+   ],
+   "scores": {
+    "plain": {
+     "hierarchy": 8,
+     "distinctiveness": 8,
+     "typography": 8,
+     "cohesion": 9,
+     "ai_look": 3
+    },
+    "before": {
+     "hierarchy": 6,
+     "distinctiveness": 4,
+     "typography": 6,
+     "cohesion": 6,
+     "ai_look": 8
+    },
+    "unslop": {
+     "hierarchy": 7,
+     "distinctiveness": 5,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 7
+    },
+    "refine": {
+     "hierarchy": 8,
+     "distinctiveness": 7,
+     "typography": 7,
+     "cohesion": 7,
+     "ai_look": 4
+    }
+   },
+   "notes": "A: The specific, warm copy, editorial serif type, quiet list-based services and restrained palette feel designed by a person and suit a neighborhood family practice, though the hero illustration sits low and the dentist placeholders are flat. B: It follows the template formula (pill eyebrow, an italic accent word, stat row, icon-card grid, star-rated testimonial cards), and the 'Book a visit' nav button's label is nearly invisible on its red fill, a visible bug. C: This is a cleaner, fixed version of B with the italic gimmick dropped and better button contrast, polished but still generic SaaS-style cards and section rhythm. D: The bold condensed caps and the hero's four-column services grid that names the dentists are distinctive and useful, but the stark black-and-red signage tone feels harsh for a 'gentle' family dentist and the all-caps headings get heavy across the page."
+  },
+  "en-foodbank": {
+   "letters": {
+    "A": "before",
+    "B": "plain",
+    "C": "refine",
+    "D": "unslop"
+   },
+   "ranking": [
+    "refine",
+    "plain",
+    "unslop",
+    "before"
+   ],
+   "scores": {
+    "before": {
+     "hierarchy": 7,
+     "distinctiveness": 4,
+     "typography": 5,
+     "cohesion": 7,
+     "ai_look": 8
+    },
+    "plain": {
+     "hierarchy": 7,
+     "distinctiveness": 6,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 4
+    },
+    "refine": {
+     "hierarchy": 8,
+     "distinctiveness": 6,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 4
+    },
+    "unslop": {
+     "hierarchy": 7,
+     "distinctiveness": 7,
+     "typography": 8,
+     "cohesion": 7,
+     "ai_look": 5
+    }
+   },
+   "notes": "A: A friendly, typical template with a clip-art basket hero, cards with colored top borders, pill badges, and a big orange newsletter block; it reads as generic AI output, and the default-looking Times-style serif headings weaken it. B: A restrained, editorial layout with a useful 'Coming up' panel, text-link pathways, and a volunteer table; it feels human-made and honest, though the hero is a little plain and the serif headings look like system defaults. C: Its strongest move is putting this week's pantry hours, with a live open/closed status, right in the hero; with a confident geometric sans, a disciplined teal palette, and list and table layouts in place of card grids, it serves people looking for food best. D: The refined serif and the creative timeline chart of hours give it the most character, but it brings back the generic three-card row and then repeats the hours table just below the hero, which adds clutter and weakens cohesion."
+  },
+  "en-saas": {
+   "letters": {
+    "A": "refine",
+    "B": "plain",
+    "C": "before",
+    "D": "unslop"
+   },
+   "ranking": [
+    "plain",
+    "unslop",
+    "refine",
+    "before"
+   ],
+   "scores": {
+    "refine": {
+     "hierarchy": 7,
+     "distinctiveness": 6,
+     "typography": 6,
+     "cohesion": 8,
+     "ai_look": 4
+    },
+    "plain": {
+     "hierarchy": 8,
+     "distinctiveness": 8,
+     "typography": 8,
+     "cohesion": 8,
+     "ai_look": 3
+    },
+    "before": {
+     "hierarchy": 7,
+     "distinctiveness": 3,
+     "typography": 6,
+     "cohesion": 7,
+     "ai_look": 9
+    },
+    "unslop": {
+     "hierarchy": 8,
+     "distinctiveness": 7,
+     "typography": 8,
+     "cohesion": 7,
+     "ai_look": 4
+    }
+   },
+   "notes": "A: The warm brown palette and plain centered hero hold together well and feel calm, but the type is generic and the hero follows a familiar centered template. B: The editorial serif headline set against a split layout, and the real-looking spec content in the product mock, give B the most confident, human-made look, with consistent restraint from top to bottom. C: The centered hero with a two-color headline, the 'New' pill badge, the eyebrow labels on every section, the icon-card grids and the blue CTA band read as a stock AI-built SaaS template. D: The serif headline and the time-zone handoff chart are distinctive and on-message, but mixing a cream editorial look with stock blue buttons and boxed cards makes it a little less cohesive than B."
+  },
+  "ja-clinic": {
+   "letters": {
+    "A": "refine",
+    "B": "before",
+    "C": "unslop",
+    "D": "plain"
+   },
+   "ranking": [
+    "refine",
+    "unslop",
+    "plain",
+    "before"
+   ],
+   "scores": {
+    "refine": {
+     "hierarchy": 8,
+     "distinctiveness": 8,
+     "typography": 8,
+     "cohesion": 8,
+     "ai_look": 3
+    },
+    "before": {
+     "hierarchy": 6,
+     "distinctiveness": 4,
+     "typography": 6,
+     "cohesion": 7,
+     "ai_look": 8
+    },
+    "unslop": {
+     "hierarchy": 7,
+     "distinctiveness": 7,
+     "typography": 7,
+     "cohesion": 7,
+     "ai_look": 5
+    },
+    "plain": {
+     "hierarchy": 7,
+     "distinctiveness": 5,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 4
+    }
+   },
+   "notes": "A: The most clinic-specific design — it puts the map, the weekly hours table with today's closure highlighted, and the news above the fold in a restrained editorial brown palette that reads as Japanese and made by a person, though the hero copy is a little small next to that dense block. B: Competent but generic — pink pill buttons, a clip-art house in a circle, centered English eyebrow labels and icon card grids give it a strongly template/AI feel and make the page long. C: The hand-drawn rounded headline font and the weekly timeline schedule card are a real idea that suits the patient's first question, but the lower page falls back into an ordinary card grid and repeats the hours. D: Calm, practical and well organized, with the key info card and the phone number visible in the header, but its look is safe and close to a standard Japanese clinic template, with little that sets it apart."
+  },
+  "ja-recruit": {
+   "letters": {
+    "A": "refine",
+    "B": "unslop",
+    "C": "plain",
+    "D": "before"
+   },
+   "ranking": [
+    "plain",
+    "unslop",
+    "refine",
+    "before"
+   ],
+   "scores": {
+    "refine": {
+     "hierarchy": 6,
+     "distinctiveness": 6,
+     "typography": 6,
+     "cohesion": 6,
+     "ai_look": 4
+    },
+    "unslop": {
+     "hierarchy": 7,
+     "distinctiveness": 5,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 7
+    },
+    "plain": {
+     "hierarchy": 8,
+     "distinctiveness": 8,
+     "typography": 9,
+     "cohesion": 8,
+     "ai_look": 3
+    },
+    "before": {
+     "hierarchy": 5,
+     "distinctiveness": 3,
+     "typography": 6,
+     "cohesion": 7,
+     "ai_look": 9
+    }
+   },
+   "notes": "A: The saturated blue hero puts the jobs board in five columns right above the fold, which reads like a busy Japanese job portal; the cards are cramped, the hero copy wraps awkwardly, and the code snippet buried in the flow section looks broken. B: It is clean and consistent, with a restrained green and monospace tags that suit an engineer audience, but the code-card hero, card grids and big empty space above the hero are familiar template moves. C: Editorial serif headlines, a rust accent, the fresh-listings sidebar and a ruled list for job postings feel authored and specific to this business, and the hierarchy is calm and clear across the whole page. D: Two stacked headlines compete in the hero, and the gradient blob, pill badges, icon cards, English eyebrow labels and blue-on-navy palette make it look like a generic AI SaaS template."
+  },
+  "ko-fintech": {
+   "letters": {
+    "A": "unslop",
+    "B": "refine",
+    "C": "plain",
+    "D": "before"
+   },
+   "ranking": [
+    "plain",
+    "refine",
+    "unslop",
+    "before"
+   ],
+   "scores": {
+    "unslop": {
+     "hierarchy": 7,
+     "distinctiveness": 3,
+     "typography": 6,
+     "cohesion": 7,
+     "ai_look": 8
+    },
+    "refine": {
+     "hierarchy": 7,
+     "distinctiveness": 8,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 3
+    },
+    "plain": {
+     "hierarchy": 8,
+     "distinctiveness": 6,
+     "typography": 8,
+     "cohesion": 8,
+     "ai_look": 4
+    },
+    "before": {
+     "hierarchy": 7,
+     "distinctiveness": 2,
+     "typography": 6,
+     "cohesion": 6,
+     "ai_look": 9
+    }
+   },
+   "notes": "A: Clean and competent, but it follows the stock fintech template closely: blue-accented headline, phone mockup, icon-card feature grid, eyebrow labels and a rounded CTA box. B: Strongest identity, with a full-bleed blue hero, the dashboard shown as the hero element, a heavy display face and editorial row layouts, though the very heavy display type makes the hero copy feel a bit crowded. C: Restrained warm off-white palette, black CTAs, a tilted phone, a ruled stats band and editorial list rows give it the most confident, considered feel, and it is the safest to ship for a fintech client. D: The most generic of the four, with floating notification chips, emoji icons on the dark security cards, numbered-circle step cards and a gradient-blob CTA panel, all hallmarks of AI-made landing pages."
+  },
+  "ko-logistics": {
+   "letters": {
+    "A": "before",
+    "B": "plain",
+    "C": "refine",
+    "D": "unslop"
+   },
+   "ranking": [
+    "refine",
+    "plain",
+    "unslop",
+    "before"
+   ],
+   "scores": {
+    "before": {
+     "hierarchy": 7,
+     "distinctiveness": 3,
+     "typography": 6,
+     "cohesion": 7,
+     "ai_look": 9
+    },
+    "plain": {
+     "hierarchy": 7,
+     "distinctiveness": 7,
+     "typography": 7,
+     "cohesion": 8,
+     "ai_look": 4
+    },
+    "refine": {
+     "hierarchy": 8,
+     "distinctiveness": 8,
+     "typography": 8,
+     "cohesion": 8,
+     "ai_look": 3
+    },
+    "unslop": {
+     "hierarchy": 6,
+     "distinctiveness": 5,
+     "typography": 6,
+     "cohesion": 6,
+     "ai_look": 7
+    }
+   },
+   "notes": "A is a generic blue SaaS template: pill badge, highlighted keyword, icon card grids, and a dashboard with a random orange bar, so it reads as AI-made. B uses a restrained warm-paper palette, ruled editorial section headers, a monospace data treatment, and one rust accent across the whole page, which makes it feel deliberately designed, although the hero is a conventional split layout. C makes the most confident move: a full-width display headline over a full-width dashboard whose bars meaningfully mark the 2pm same-day cutoff, plus tabular services, table-based infrastructure, and big-number case studies, all tied together by the forest-green palette. D adds one good idea in the shipping-label card and a meaningful cutoff chart, but its light-weight headline is weak, the hero has a lot of empty space, and the rest falls back to stock blue SaaS sections."
+  }
+ },
+ "sets": {
+  "run1": {
+   "ranking": [
+    "refine",
+    "plain",
+    "unslop",
+    "before"
+   ],
+   "sameness": {
+    "unslop": 7,
+    "refine": 3,
+    "before": 8,
+    "plain": 6
+   },
+   "habits": {
+    "unslop": "Warm cream/off-white backgrounds on nearly every site; headline on the left with a floating product card or mockup on the right; serif display headlines reused across unrelated industries; a filled primary button paired with an outline secondary button; small trust/meta rows under the CTAs; same soft rounded cards with thin borders and muted shadows; same nav layout (logo left, small links, pill CTA right)",
+    "refine": "Shared structural bones remain (logo-left nav with CTA button right, filled+outline button pairs, data card beside the headline), but palette, type and layout vary strongly: dark green full-bleed, saturated blue full-bleed, condensed uppercase display type, centered headline, map/hours sidebar, dense job-listing grid, full-width headline above dashboard",
+    "before": "Strongest AI-template signature: pastel gradient/tinted hero washes; eyebrow pill/badge above every headline; accent-colored or italic highlighted words inside headlines; split hero with a floating product card and small overlapping floating badges/toasts; check-mark microcopy row under the CTAs; rounded pill buttons; the same soft-shadow card style and illustration style everywhere; logo strips and stat rows repeated",
+    "plain": "More restrained and editorial, with copy more specific to each client, but still a uniform warm off-white ground; split hero (text left, card/panel right) on most sites; serif headlines across industries; a single accent color on the CTA; thin hairline rules and small gray meta text; stat rows and logo strips; same quiet nav pattern with a dark or accent CTA"
+   }
+  },
+  "run2": {
+   "ranking": [
+    "refine",
+    "plain",
+    "unslop",
+    "before"
+   ],
+   "sameness": {
+    "refine": 3,
+    "plain": 6,
+    "unslop": 8,
+    "before": 9
+   },
+   "habits": {
+    "refine": "Real variety in color (cream, deep green, saturated blue, white), type (condensed all-caps display, centered sans, Japanese mincho and gothic, heavy Korean display) and layout (centered SaaS, dense job board, clinic map plus hours table, food-bank pantry schedule, dental service columns). Habits that still repeat: an operational data panel or dashboard card in most heroes, a two-button CTA pair, a row of small trust or meta text under the hero, and thin-rule cards.",
+    "plain": "All on one warm off-white paper ground with dark ink and a single orange-red or dark-green accent. A literary serif display appears on most Latin sites (Pennywise, Tandem, Maple, Riverbend). Repeated left-aligned hero text with a right-side product card, a solid-plus-outlined button pair, small gray fine print under CTAs, a stats or logo strip below the fold, and an editorial restrained look. Layouts vary somewhat (phone mockup, illustration, two-column copy), but the palette and type voice are shared.",
+    "unslop": "Nearly every site uses the same beige ground, the same serif headline and a left-text / right-floating-white-card hero (schedule bars, budget card, code card, WMS chart, phone, house illustration). Also repeated: the same rounded small buttons as a primary-plus-ghost pair, an eyebrow line above the headline, the same soft-shadow card radius, a three-icon feature card row and a stats row in serif. Accent color is the only per-client change.",
+    "before": "One template with a color swap: pale gradient or tinted hero backgrounds, a pill eyebrow badge above the headline, one word or phrase in the headline set in an accent color or italic serif, pill-shaped CTA pairs, a checkmark trust row under the buttons, a right-side floating card or illustration with a small overlapping callout card, rounded soft-shadow cards, and a stats row. The same playful illustration style is used across the clinic, dental and food bank. The look is generic AI-landing-page polish."
+   }
+  }
+ },
+ "cost": {
+  "gen": {
+   "en-budget": {
+    "usd": 0.42,
+    "turns": 2
+   },
+   "en-dental": {
+    "usd": 0.51,
+    "turns": 4
+   },
+   "en-foodbank": {
+    "usd": 0.45,
+    "turns": 2
+   },
+   "en-saas": {
+    "usd": 0.59,
+    "turns": 2
+   },
+   "ja-clinic": {
+    "usd": 0.52,
+    "turns": 2
+   },
+   "ja-recruit": {
+    "usd": 0.58,
+    "turns": 2
+   },
+   "ko-fintech": {
+    "usd": 0.5,
+    "turns": 6
+   },
+   "ko-logistics": {
+    "usd": 0.7,
+    "turns": 2
+   }
+  },
+  "plain": {
+   "en-budget": {
+    "usd": 0.53,
+    "turns": 5
+   },
+   "en-dental": {
+    "usd": 0.52,
+    "turns": 3
+   },
+   "en-foodbank": {
+    "usd": 0.54,
+    "turns": 3
+   },
+   "en-saas": {
+    "usd": 0.81,
+    "turns": 7
+   },
+   "ja-clinic": {
+    "usd": 1.18,
+    "turns": 10
+   },
+   "ja-recruit": {
+    "usd": 0.75,
+    "turns": 4
+   },
+   "ko-fintech": {
+    "usd": 0.65,
+    "turns": 8
+   },
+   "ko-logistics": {
+    "usd": 0.86,
+    "turns": 3
+   }
+  },
+  "refine": {
+   "en-budget": {
+    "usd": 2.02,
+    "turns": 63
+   },
+   "en-dental": {
+    "usd": 2.22,
+    "turns": 66
+   },
+   "en-foodbank": {
+    "usd": 2.68,
+    "turns": 76
+   },
+   "en-saas": {
+    "usd": 1.93,
+    "turns": 49
+   },
+   "ja-clinic": {
+    "usd": 2.19,
+    "turns": 53
+   },
+   "ja-recruit": {
+    "usd": 3.05,
+    "turns": 77
+   },
+   "ko-fintech": {
+    "usd": 1.57,
+    "turns": 41
+   },
+   "ko-logistics": {
+    "usd": 2.91,
+    "turns": 57
+   }
+  },
+  "unslop": {
+   "en-budget": {
+    "usd": 1.35,
+    "turns": 25
+   },
+   "en-dental": {
+    "usd": 1.65,
+    "turns": 27
+   },
+   "en-foodbank": {
+    "usd": 1.54,
+    "turns": 29
+   },
+   "en-saas": {
+    "usd": 2,
+    "turns": 36
+   },
+   "ja-clinic": {
+    "usd": 1.6,
+    "turns": 31
+   },
+   "ja-recruit": {
+    "usd": 1.65,
+    "turns": 29
+   },
+   "ko-fintech": {
+    "usd": 1.44,
+    "turns": 27
+   },
+   "ko-logistics": {
+    "usd": 2.36,
+    "turns": 44
+   }
+  }
+ },
+ "refineLog": [
+  {
+   "page": "en-saas-tandem",
+   "label": "A",
+   "concept": "the morning digest — what your team did while you slept",
+   "hero": "center+stacked",
+   "fonts": [
+    "hanken grotesk"
+   ],
+   "bg": [
+    244,
+    239,
+    230
+   ],
+   "accent": [
+    125,
+    95,
+    74
+   ]
+  },
+  {
+   "page": "en-budget-pennywise",
+   "label": "A",
+   "concept": "the November envelope, opened on the table — the month's budget is the hero",
+   "hero": "left+stacked",
+   "fonts": [
+    "dm sans",
+    "outfit"
+   ],
+   "bg": [
+    19,
+    58,
+    44
+   ],
+   "accent": [
+    242,
+    107,
+    42
+   ]
+  },
+  {
+   "page": "en-dental",
+   "label": "B",
+   "concept": "one roof for the whole family — who we see, and who sees them",
+   "hero": "wide+stacked",
+   "fonts": [
+    "barlow",
+    "barlow condensed"
+   ],
+   "bg": [
+    255,
+    255,
+    255
+   ],
+   "accent": [
+    200,
+    32,
+    47
+   ]
+  },
+  {
+   "page": "en-foodbank",
+   "label": "A",
+   "concept": "the pantry door — is it open now, and when next",
+   "hero": "left+panel",
+   "fonts": [
+    "albert sans"
+   ],
+   "bg": [
+    226,
+    237,
+    232
+   ],
+   "accent": [
+    8,
+    79,
+    72
+   ]
+  },
+  {
+   "page": "ja-recruit",
+   "label": "B",
+   "concept": "職種ごとに並ぶ求人ボード — 自分の列から探す",
+   "hero": "center+stacked",
+   "fonts": [
+    "biz udpgothic"
+   ],
+   "bg": [
+    29,
+    63,
+    174
+   ],
+   "accent": [
+    242,
+    182,
+    50
+   ]
+  },
+  {
+   "page": "ja-clinic",
+   "label": "B",
+   "concept": "待合室の掲示板 — 今週いつ開いていて、今日はどうか、駅からどう来るか",
+   "hero": "left+stacked",
+   "fonts": [
+    "noto sans jp",
+    "zen kaku gothic new"
+   ],
+   "bg": [
+    255,
+    255,
+    255
+   ],
+   "accent": [
+    138,
+    95,
+    74
+   ]
+  },
+  {
+   "page": "ko-fintech",
+   "label": "A",
+   "concept": "한 장의 자산 명세서 — 모아 홈 화면이 첫 화면을 차지하고, 말은 오른쪽에서 짧게",
+   "hero": "right+panel",
+   "fonts": [
+    "noto sans kr",
+    "black han sans"
+   ],
+   "bg": [
+    29,
+    79,
+    216
+   ],
+   "accent": [
+    11,
+    42,
+    122
+   ]
+  },
+  {
+   "page": "ko-logistics-hangil",
+   "label": "A",
+   "concept": "화물 표지처럼 굵은 한 줄, 그 아래 오늘 이천 센터의 출고 화면",
+   "hero": "wide+stacked",
+   "fonts": [
+    "gothic a1",
+    "do hyeon"
+   ],
+   "bg": [
+    238,
+    241,
+    232
+   ],
+   "accent": [
+    44,
+    122,
+    53
+   ]
+  }
+ ]
+}
