@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maple Street Dental</title>
+<meta name="description" content="Maple Street Dental is a family dental clinic in Portland, Oregon offering gentle care for kids, adults, and seniors. New patients welcome.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf7f1;
+    --surface: #ffffff;
+    --surface-2: #f1ebdf;
+    --fg: #22231f;
+    --muted: #5e6159;
+    --line: #ddd5c6;
+    --accent: #a8402a;        /* maple red */
+    --accent-ink: #ffffff;
+    --accent-soft: #f3e1d8;
+    --green: #2f5d4a;
+    --green-soft: #e1eae3;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161916; --surface: #1d211e; --surface-2: #222823; --fg: #ebe6dc; --muted: #a3aaa2;
+      --line: #343b35; --accent: #e07a5f; --accent-ink: #1b1411; --accent-soft: #3a2620;
+      --green: #8cc3a9; --green-soft: #22312a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161916; --surface: #1d211e; --surface-2: #222823; --fg: #ebe6dc; --muted: #a3aaa2;
+    --line: #343b35; --accent: #e07a5f; --accent-ink: #1b1411; --accent-soft: #3a2620;
+    --green: #8cc3a9; --green-soft: #22312a;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; margin: 0; }
+  p { margin: 0; }
+
+  .wrap {
+    max-width: 1080px; margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--fg); color: var(--bg); padding: 8px 12px; z-index: 100; }
+  .skip:focus { left: 12px; }
+
+  .btn {
+    display: inline-block; padding: 11px 18px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    text-decoration: none; border: 1px solid transparent; white-space: nowrap;
+  }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--fg)); }
+  .link-arrow { font-weight: 600; font-size: 15px; }
+
+  /* Header */
+  header.site { border-bottom: 1px solid var(--line); background: var(--bg); position: relative; z-index: 20; }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+  .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+  .brand span { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+  .brand small { font-size: 13px; color: var(--muted); }
+  nav.primary { display: flex; gap: 24px; align-items: center; font-size: 15px; }
+  nav.primary a { text-decoration: none; color: var(--muted); }
+  nav.primary a:hover { color: var(--fg); }
+  nav.primary .phone { color: var(--fg); font-weight: 600; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; color: var(--fg); cursor: pointer; font: inherit; font-size: 14px; }
+
+  /* Hero */
+  .hero { padding-block: 56px 64px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: end; }
+  .kicker { font-size: 14px; color: var(--muted); }
+  .hero h1 { font-size: clamp(36px, 5vw, 54px); margin-top: 14px; font-weight: 400; letter-spacing: -0.015em; }
+  .hero .lede { font-size: 18px; color: var(--muted); margin-top: 20px; max-width: 32em; }
+  .hero .ctas { display: flex; gap: 20px; margin-top: 28px; flex-wrap: wrap; align-items: center; }
+  .hero .note { margin-top: 28px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; max-width: 32em; }
+
+  .hero-art { min-width: 0; }
+  .hero-art svg { display: block; width: 100%; height: auto; border-radius: 4px; }
+  .hero-art .status { font-size: 14px; color: var(--muted); margin-top: 10px; }
+  .hero-art .status strong { color: var(--green); font-weight: 600; }
+
+  /* Sections */
+  section { padding-block: 72px; }
+  .alt { background: var(--surface-2); }
+  h2 { font-size: clamp(28px, 3.4vw, 36px); }
+  .intro { color: var(--muted); margin-top: 12px; max-width: 36em; }
+
+  /* Services: a plain list, two columns */
+  .services { display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
+  .svc-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--fg); }
+  .svc-list li { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .svc-list h3 { font-size: 19px; }
+  .svc-list p { color: var(--muted); font-size: 16px; }
+  .svc-list .incl { font-size: 14px; margin-top: 6px; color: var(--fg); }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .about-text p + p { margin-top: 16px; }
+  .about-text h3 { font-size: 18px; margin-top: 28px; }
+  .about-text h3 + p { margin-top: 6px; color: var(--muted); }
+  .first-visit { background: var(--surface); border: 1px solid var(--line); padding: 28px; }
+  .first-visit h3 { font-size: 22px; }
+  .first-visit > p { color: var(--muted); margin-top: 6px; font-size: 15px; }
+  .first-visit ol { margin: 20px 0 0; padding: 0; list-style: none; }
+  .first-visit li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 10px 0; border-top: 1px dashed var(--line); font-size: 15px; }
+  .first-visit li span { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 14px; }
+  .first-visit .plan { margin-top: 20px; font-size: 15px; padding-top: 16px; border-top: 1px solid var(--line); }
+
+  /* Team */
+  .team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 36px; }
+  .doc { min-width: 0; }
+  .doc .portrait { aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; }
+  .doc .portrait span { font-family: var(--serif); font-size: 40px; color: var(--fg); opacity: .55; }
+  .doc h3 { font-size: 19px; margin-top: 14px; }
+  .doc .role { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .doc p { font-size: 15px; margin-top: 10px; }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; margin-top: 36px; align-items: start; }
+  .reviews blockquote { margin: 0; }
+  .reviews .big p { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.35; }
+  .reviews .small { display: grid; gap: 28px; }
+  .reviews .small p { font-size: 16px; }
+  .reviews cite { display: block; font-style: normal; color: var(--muted); font-size: 14px; margin-top: 10px; }
+  .rating-note { font-size: 14px; color: var(--muted); margin-top: 32px; }
+  .insurance { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
+  .insurance h3 { font-size: 19px; }
+  .insurance p { font-size: 16px; }
+  .insurance p + p { color: var(--muted); margin-top: 8px; font-size: 15px; }
+
+  /* Visit */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 36px; }
+  .visit h3 { font-size: 19px; }
+  .hours { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 10px; }
+  .hours td { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hours tr.today td { font-weight: 600; color: var(--fg); }
+  .hours tr.today td:first-child::after { content: " (today)"; font-weight: 400; color: var(--muted); }
+  address { font-style: normal; margin-top: 10px; }
+  .contact { margin-top: 18px; display: grid; gap: 10px; font-size: 15px; }
+  .contact small { display: block; color: var(--muted); font-size: 13px; }
+  .map { margin-top: 20px; border: 1px solid var(--line); overflow: hidden; background: var(--green-soft); }
+  .map svg { display: block; width: 100%; height: auto; }
+
+  /* Book */
+  .book { border-top: 1px solid var(--line); padding-block: 56px; }
+  .book .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .book p { color: var(--muted); margin-top: 6px; }
+
+  /* Footer */
+  footer.site { background: var(--green); color: #e9eee9; padding-block: 36px calc(36px + env(safe-area-inset-bottom, 0px)); font-size: 14px; }
+  footer.site .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer.site nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  footer.site a { text-decoration: none; }
+  footer.site a:hover { text-decoration: underline; }
+  footer.site strong { font-family: var(--serif); font-size: 17px; font-weight: 600; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero .wrap, .about, .visit, .reviews, .services, .insurance { grid-template-columns: 1fr; gap: 32px; }
+    .team { grid-template-columns: 1fr 1fr; }
+    nav.primary { display: none; }
+    nav.primary.open {
+      display: flex; flex-direction: column; align-items: stretch; gap: 0;
+      position: absolute; left: 0; right: 0; top: 100%;
+      background: var(--bg); border-bottom: 1px solid var(--line);
+      padding: 4px max(20px, env(safe-area-inset-right, 0px)) 12px max(20px, env(safe-area-inset-left, 0px));
+    }
+    nav.primary.open a { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+    nav.primary.open a:last-child { border-bottom: 0; }
+    .menu-btn { display: inline-flex; }
+  }
+  @media (max-width: 620px) {
+    .team { grid-template-columns: 1fr; }
+    .svc-list li { grid-template-columns: 1fr; gap: 6px; }
+    section { padding-block: 52px; }
+    .hero { padding-block: 36px 48px; }
+    .brand small { display: none; }
+    .doc .portrait { aspect-ratio: 16 / 9; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Maple Street Dental home">
+      <span>Maple Street Dental</span>
+      <small>SE Portland, since 2008</small>
+    </a>
+    <nav class="primary" id="nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#about">New patients</a>
+      <a href="#team">Dentists</a>
+      <a href="#visit">Hours &amp; directions</a>
+      <a class="phone" href="tel:+15035550142">(503) 555-0142</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-controls="nav" aria-expanded="false" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Family dentistry on SE Maple Street, Portland</p>
+        <h1 id="hero-title">Checkups for the kids, a crown for grandpa, and an hour for your cleaning.</h1>
+        <p class="lede">We're a small, independently owned practice. Appointments aren't rushed, you get a written estimate before any work, and the front desk will probably remember your name.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#book">Book an appointment</a>
+          <a class="link-arrow" href="#services">What we do →</a>
+        </div>
+        <p class="note">New patients welcome. In-network with most PPO plans, and we take Oregon Health Plan. Toothache? Call before 11 am and we'll try to see you the same day.</p>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 480 340" role="img" aria-label="Illustration of the clinic on a tree-lined street in autumn">
+          <rect width="480" height="340" fill="var(--green-soft)"/>
+          <circle cx="390" cy="70" r="34" fill="#f2c46d" opacity=".85"/>
+          <rect x="0" y="270" width="480" height="70" fill="var(--surface-2)"/>
+          <rect x="0" y="262" width="480" height="10" fill="var(--line)"/>
+          <rect x="120" y="120" width="240" height="150" rx="2" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+          <path d="M108 124 240 64 372 124z" fill="var(--accent)"/>
+          <rect x="148" y="150" width="56" height="44" rx="2" fill="var(--green-soft)" stroke="var(--line)" stroke-width="2"/>
+          <rect x="276" y="150" width="56" height="44" rx="2" fill="var(--green-soft)" stroke="var(--line)" stroke-width="2"/>
+          <rect x="214" y="200" width="52" height="70" rx="2" fill="var(--green)"/>
+          <circle cx="256" cy="236" r="3" fill="#f2c46d"/>
+          <rect x="196" y="132" width="88" height="20" rx="2" fill="var(--accent-soft)"/>
+          <path d="M232 136c-3 0-5 2-5 5 0 4 2 8 3 9 1 1 2 0 2-2s1-3 2-3 2 1 2 3 1 3 2 2c1-1 3-5 3-9 0-3-2-5-5-5-1 0-2 1-3 1s-1-1-3-1z" fill="var(--accent)" transform="translate(4 -1)"/>
+          <rect x="58" y="200" width="8" height="66" fill="#7a5638"/>
+          <circle cx="62" cy="186" r="38" fill="#c8553a"/>
+          <circle cx="40" cy="200" r="22" fill="#d9763f"/>
+          <circle cx="84" cy="198" r="24" fill="#b5452b"/>
+          <rect x="412" y="206" width="8" height="60" fill="#7a5638"/>
+          <circle cx="416" cy="192" r="34" fill="#d9763f"/>
+          <circle cx="436" cy="206" r="20" fill="#c8553a"/>
+          <circle cx="150" cy="300" r="4" fill="#d9763f"/>
+          <circle cx="300" cy="310" r="3" fill="#c8553a"/>
+          <circle cx="360" cy="296" r="4" fill="#b5452b"/>
+        </svg>
+        <p class="status" id="todayStatus"><strong>Open Monday to Saturday.</strong> 1420 SE Maple St.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="alt" aria-labelledby="services-title">
+    <div class="wrap services">
+      <div>
+        <h2 id="services-title">Services</h2>
+        <p class="intro">Most families book everyone back-to-back in one trip. Ask the front desk to line it up.</p>
+      </div>
+      <ul class="svc-list">
+        <li>
+          <h3>Cleanings &amp; exams</h3>
+          <div><p>Hour-long hygiene visits, low-radiation digital X-rays, and an oral cancer screening at every checkup.</p></div>
+        </li>
+        <li>
+          <h3>Kids</h3>
+          <div><p>First-tooth visits, sealants, fluoride, and sports mouthguards. There's a treasure chest at the front desk, and it's not optional.</p></div>
+        </li>
+        <li>
+          <h3>Fillings, crowns &amp; implants</h3>
+          <div><p>Tooth-colored fillings, bridges, root canals, and implants. Most crowns are milled here and fitted the same day.</p></div>
+        </li>
+        <li>
+          <h3>Whitening &amp; aligners</h3>
+          <div><p>Professional whitening, porcelain veneers, and clear aligners.</p></div>
+        </li>
+        <li>
+          <h3>Emergencies</h3>
+          <div><p>Toothache, chipped tooth, lost filling. Call before 11 am for a same-day slot. After hours, press 2 to reach the dentist on call.</p></div>
+        </li>
+        <li>
+          <h3>If you're nervous</h3>
+          <div><p>Nitrous oxide, noise-cancelling headphones, a weighted blanket, and longer appointments so nobody's in a hurry. Just mention it when you book.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="wrap about">
+      <div class="about-text">
+        <h2 id="about-title">A neighborhood practice, not a chain</h2>
+        <p class="intro">Dr. Hart opened on Maple Street in 2008 and we're still independently owned. That means our dentists, not a corporate office, decide how long your appointment takes.</p>
+        <h3>Time to ask questions</h3>
+        <p>Hygiene visits are booked for a full hour.</p>
+        <h3>Prices before treatment</h3>
+        <p>You'll get a written estimate first. If insurance pays less than expected, we call you before billing.</p>
+        <h3>Early and Saturday hours</h3>
+        <p>We open at 7:30 on weekdays and do Saturday mornings, for school and work schedules.</p>
+      </div>
+      <aside class="first-visit" aria-labelledby="new-pt-title">
+        <h3 id="new-pt-title">Your first visit</h3>
+        <p>About 75 minutes. Nobody will try to sell you anything.</p>
+        <ol>
+          <li><span>0:00</span>A quick look around and a chat about what's bothering you, if anything</li>
+          <li><span>0:15</span>Full exam and digital X-rays</li>
+          <li><span>0:35</span>Cleaning with your hygienist</li>
+          <li><span>1:05</span>We go over a written care plan you can take home</li>
+        </ol>
+        <p class="plan"><strong>No insurance?</strong> The Maple Membership Plan covers two cleanings, exams, and X-rays a year for one flat fee. Ask us for the current price.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="team" class="alt" aria-labelledby="team-title">
+    <div class="wrap">
+      <h2 id="team-title">The dentists</h2>
+      <p class="intro">Three dentists, eight hygienists and assistants, and Biscuit, who works the front desk and accepts treats.</p>
+      <div class="team">
+        <article class="doc">
+          <div class="portrait" style="background:var(--accent-soft)" aria-hidden="true"><span>EH</span></div>
+          <h3>Dr. Elena Hart, DMD</h3>
+          <div class="role">Founder, general &amp; family dentistry</div>
+          <p>Opened the practice in 2008. Likes first visits, bad puns, and running the Forest Park trails.</p>
+        </article>
+        <article class="doc">
+          <div class="portrait" style="background:var(--green-soft)" aria-hidden="true"><span>MO</span></div>
+          <h3>Dr. Marcus Okafor, DDS</h3>
+          <div class="role">Restorative &amp; implants</div>
+          <p>Does most of our same-day crowns and implants. Coaches youth soccer on weekends.</p>
+        </article>
+        <article class="doc">
+          <div class="portrait" style="background:var(--bg)" aria-hidden="true"><span>JL</span></div>
+          <h3>Dr. Jenny Lin, DMD</h3>
+          <div class="role">Kids &amp; anxious patients</div>
+          <p>Sees most of our youngest patients, and plenty of grown-ups who'd rather be anywhere else. Speaks English and Mandarin.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="reviews-title">
+    <div class="wrap">
+      <h2 id="reviews-title">From our patients</h2>
+      <div class="reviews">
+        <blockquote class="big">
+          <p>“My six-year-old actually asks when we're going back. That's never happened at any dentist, ever.”</p>
+          <cite>Parent of a patient, Sellwood</cite>
+        </blockquote>
+        <div class="small">
+          <blockquote>
+            <p>“I hadn't been to a dentist in eight years. Nobody lectured me. They just made a plan and got me back on track.”</p>
+            <cite>Adult patient, Hawthorne</cite>
+          </blockquote>
+          <blockquote>
+            <p>“Cracked a molar on a Saturday morning and was in the chair by noon.”</p>
+            <cite>Emergency patient, Richmond</cite>
+          </blockquote>
+        </div>
+      </div>
+      <p class="rating-note">Rated 4.9 out of 5 across 600+ online reviews.</p>
+
+      <div class="insurance">
+        <h3>Insurance</h3>
+        <div>
+          <p>Delta Dental, Cigna, Aetna, MetLife, Regence, Moda, Guardian, and Oregon Health Plan.</p>
+          <p>We're in-network with most major PPO plans and file the claims for you. Don't see yours? Call and we'll check.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="alt" aria-labelledby="visit-title">
+    <div class="wrap">
+      <h2 id="visit-title">Hours &amp; directions</h2>
+      <p class="intro">Free parking behind the building, a bike rack out front, two blocks from the bus line.</p>
+      <div class="visit">
+        <div>
+          <h3>Hours</h3>
+          <table class="hours" id="hours">
+            <tbody>
+              <tr data-day="1"><td>Monday</td><td>7:30 am – 6:00 pm</td></tr>
+              <tr data-day="2"><td>Tuesday</td><td>7:30 am – 6:00 pm</td></tr>
+              <tr data-day="3"><td>Wednesday</td><td>7:30 am – 6:00 pm</td></tr>
+              <tr data-day="4"><td>Thursday</td><td>7:30 am – 7:00 pm</td></tr>
+              <tr data-day="5"><td>Friday</td><td>7:30 am – 3:00 pm</td></tr>
+              <tr data-day="6"><td>Saturday</td><td>8:00 am – 1:00 pm</td></tr>
+              <tr data-day="0"><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Find us</h3>
+          <address>1420 SE Maple Street<br>Portland, OR 97214</address>
+          <div class="contact">
+            <div><a href="tel:+15035550142">(503) 555-0142</a><small>Call or text. After-hours emergencies: press 2.</small></div>
+            <div>hello@maplestreetdental.example<small>We reply within one business day.</small></div>
+          </div>
+          <div class="map" aria-hidden="true">
+            <svg viewBox="0 0 400 150">
+              <rect width="400" height="150" fill="var(--green-soft)"/>
+              <path d="M0 50h400M0 110h400M90 0v150M230 0v150M330 0v150" stroke="var(--surface)" stroke-width="12"/>
+              <rect x="250" y="64" width="62" height="30" rx="2" fill="var(--surface-2)"/>
+              <circle cx="190" cy="80" r="16" fill="var(--accent)"/>
+              <circle cx="190" cy="80" r="6" fill="var(--accent-ink)"/>
+              <text x="100" y="44" font-size="11" font-family="Work Sans, sans-serif" fill="var(--muted)">SE Maple St</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="book" aria-labelledby="book-title">
+    <div class="wrap">
+      <div>
+        <h2 id="book-title">Book a visit</h2>
+        <p>Call or text and we'll find a time, usually within the week.</p>
+      </div>
+      <a class="btn btn-primary" href="tel:+15035550142">Call (503) 555-0142</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <strong>Maple Street Dental</strong><br>
+      1420 SE Maple Street, Portland, OR 97214<br>
+      © <span id="yr">2026</span> Maple Street Dental
+    </div>
+    <nav aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#about">New patients</a>
+      <a href="#team">Dentists</a>
+      <a href="#visit">Hours &amp; directions</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    btn.textContent = open ? 'Close' : 'Menu';
+  });
+  nav.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Menu';
+    }
+  });
+
+  // Highlight today's hours
+  const today = new Date().getDay();
+  const row = document.querySelector('#hours tr[data-day="' + today + '"]');
+  if (row) {
+    row.classList.add('today');
+    const hrs = row.cells[1].textContent;
+    document.getElementById('todayStatus').innerHTML = hrs === 'Closed'
+      ? '<strong>Closed today.</strong> For emergencies, call and press 2.'
+      : '<strong>Open today, ' + hrs.replace(/:00/g, '') + '.</strong> 1420 SE Maple St.';
+  }
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

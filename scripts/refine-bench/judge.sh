@@ -1,0 +1,11 @@
+#!/bin/bash
+# 가린 스크린샷으로 페이지 평가(8회)와 세트 평가(2회)를 돌린다
+HERE="$(cd "$(dirname "$0")" && pwd)"; R="$(cd "$HERE/../.." && pwd)"; B="${BENCH_DIR:-$PWD/refine-bench-out}"; mkdir -p "$B/logs"; J="$B/judge"; mkdir -p "$B/verdicts"
+opts=(--model claude-opus-5-5 --setting-sources "" --strict-mcp-config --disable-slash-commands --allowed-tools Read --output-format json)
+for d in "$J"/page/*; do id=$(basename "$d"); ( cd "$d"
+ claude -p "You are a senior product designer reviewing four versions (A, B, C, D) of the same web page. For each version there are two screenshots in this folder: <letter>-fold.png (the first screen at 1440x900) and <letter>-full.png (the full page). Read all eight image files before judging. Score each version 1-10 on: hierarchy, distinctiveness, typography, cohesion, and ai_look (10 = obviously AI-generated, 1 = clearly designed by a person). Then rank the four from best (1) to worst (4) as a design you would ship for this client; no ties. Reply with JSON only, no prose and no code fence: {\"scores\":{\"A\":{\"hierarchy\":0,\"distinctiveness\":0,\"typography\":0,\"cohesion\":0,\"ai_look\":0},\"B\":{},\"C\":{},\"D\":{}},\"ranking\":[\"best\",\"second\",\"third\",\"worst\"],\"notes\":\"one sentence per version\"}" "${opts[@]}" > "$B/verdicts/page-$id.json" 2> "$B/verdicts/page-$id.err" ) &
+done
+for run in 1 2; do ( cd "$J/set$run"
+ claude -p "You are a senior product designer. This folder has four contact sheets: set-A.png, set-B.png, set-C.png, set-D.png. Each sheet shows the first screens of eight websites for eight different clients (software, finance, clinics, a food bank, hiring, logistics; in English, Japanese and Korean), all produced by one studio. Read all four image files. For each set, rate sameness 1-10: how much the eight sites look like one template applied eight times (10 = one template, 1 = eight clearly different designs, as you would expect from eight different human studios). Then rank the four sets from least templated and best designed (1) to most templated (4); no ties. Reply with JSON only, no prose and no code fence: {\"sameness\":{\"A\":0,\"B\":0,\"C\":0,\"D\":0},\"ranking\":[\"best\",\"second\",\"third\",\"worst\"],\"habits\":{\"A\":\"repeated habits seen\",\"B\":\"\",\"C\":\"\",\"D\":\"\"}}" "${opts[@]}" > "$B/verdicts/set-$run.json" 2> "$B/verdicts/set-$run.err" ) &
+done
+wait; echo judged

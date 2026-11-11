@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>さくら内科クリニック｜世田谷区の内科・かかりつけ医</title>
+<meta name="description" content="東京都世田谷区のさくら内科クリニック。一般内科・生活習慣病・発熱外来・健康診断・予防接種に対応する地域のかかりつけ医です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #22201e;
+    --muted: #5f5853;
+    --line: #e3dcd6;
+    --rule: #22201e;
+    --accent: #8a5f4a;
+    --accent-strong: #74503e;
+    --accent-soft: #f3ece7;
+    --map-ground: #fbf8f5;
+    --map-road: #ebe3dc;
+    --map-block: #ffffff;
+    --on-accent: #ffffff;
+    --band: #22201e;
+    --on-band: #f6f1ec;
+    --open: #2f7a55;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1a1817; --fg: #f1ece7; --muted: #b9afa7; --line: #3a3532; --rule: #f1ece7;
+      --accent: #d29a7d; --accent-strong: #e2b096; --accent-soft: #33281f; --map-ground: #221f1d; --map-road: #34302c; --map-block: #2a2623;
+      --on-accent: #1a1817; --band: #0f0e0d; --on-band: #f1ece7; --open: #7cc8a0; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1a1817; --fg: #f1ece7; --muted: #b9afa7; --line: #3a3532; --rule: #f1ece7;
+    --accent: #d29a7d; --accent-strong: #e2b096; --accent-soft: #33281f; --map-ground: #221f1d; --map-road: #34302c; --map-block: #2a2623;
+    --on-accent: #1a1817; --band: #0f0e0d; --on-band: #f1ece7; --open: #7cc8a0; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
+    font-size: 16px; line-height: 1.8; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-strong); }
+  h1, h2, h3, .disp { font-family: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Sans", sans-serif; line-height: 1.45; margin: 0; word-break: auto-phrase; }
+  .wrap {
+    max-width: 1240px; margin: 0 auto;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+  .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .skip { position: absolute; top: 8px; left: 8px; transform: translateY(-200%); background: var(--bg); padding: 8px 12px; z-index: 100; border: 2px solid var(--fg); }
+  .skip:focus { transform: none; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* Header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 51; background: var(--bg); }
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bg); }
+  .head-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; border-bottom: 1px solid var(--line); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); }
+  .logo-mark { width: 30px; height: 30px; flex: none; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.25; }
+  .logo-text strong { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; font-size: 1.2rem; }
+  .logo-text small { font-size: .78rem; color: var(--muted); }
+  nav.gnav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+  nav.gnav a { display: block; padding: 8px 0; text-decoration: none; color: var(--fg); font-size: .92rem; }
+  nav.gnav a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 6px; }
+  .head-tel { text-decoration: none; color: var(--fg); font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .head-tel small { font-weight: 400; color: var(--muted); margin-right: 6px; font-size: .8rem; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--fg); border-radius: 4px; padding: 6px 12px; color: var(--fg); font: inherit; font-size: .9rem; cursor: pointer; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 26px; border-radius: 6px; font-weight: 700; text-decoration: none; border: 2px solid var(--accent); transition: background-color .2s, color .2s; }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+  .btn-ghost { color: var(--accent-strong); background: var(--bg); }
+  .btn-ghost:hover { background: var(--accent-soft); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* Hero: headline column, then the board full width */
+  .hero { padding-block: 40px 56px; }
+  .hero-top { display: grid; grid-template-columns: minmax(0, 690px) 1fr; gap: 24px 48px; align-items: end; margin-bottom: 28px; }
+  .hero-top > * { min-width: 0; }
+  .hero h1 { font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 900; }
+  .hero .lead { margin: 0 0 18px; color: var(--muted); }
+
+  .board { display: grid; grid-template-columns: 1fr 1.15fr; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .board > * { min-width: 0; }
+  .board .map { border-right: 1px solid var(--rule); min-height: 300px; background: var(--map-ground); }
+  .board .map svg { display: block; width: 100%; height: 100%; }
+  .week { padding: 20px 24px 18px; }
+  .week-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; margin-bottom: 8px; }
+  .week-head h2 { font-size: 1.15rem; }
+  .now { display: inline-flex; align-items: center; gap: 8px; font-size: .95rem; font-weight: 500; color: var(--accent-strong); }
+  .now .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; flex: none; }
+  .now.open { color: var(--open); }
+  table.hours { width: 100%; border-collapse: collapse; text-align: center; font-variant-numeric: tabular-nums; }
+  table.hours th, table.hours td { padding: 11px 4px; border-bottom: 1px solid var(--line); }
+  table.hours thead th { font-weight: 700; font-family: "Zen Kaku Gothic New", sans-serif; }
+  table.hours tbody th { text-align: left; font-weight: 500; white-space: nowrap; padding-right: 8px; }
+  table.hours .today { background: var(--accent-soft); }
+  table.hours thead .today { background: var(--accent); color: var(--on-accent); }
+  .o { color: var(--accent); font-weight: 700; }
+  .x { color: var(--muted); font-size: .9rem; }
+  .hours-note { list-style: none; margin: 12px 0 0; padding: 0; font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+  /* Sections */
+  section.block { padding-block: 72px; border-top: 1px solid var(--line); }
+  .split { display: grid; grid-template-columns: 280px 1fr; gap: 32px 56px; }
+  .split > * { min-width: 0; }
+  .split > h2, .sec-title { font-size: clamp(1.4rem, 2.4vw, 1.75rem); font-weight: 900; }
+  .sec-title + p { color: var(--muted); margin: 8px 0 0; font-size: .95rem; }
+
+  /* Notice */
+  .notice { padding-block: 0 56px; }
+  .notice .split { grid-template-columns: 280px 1fr; align-items: start; border-top: 2px solid var(--rule); padding-top: 18px; }
+  .notice h2 { font-size: 1.15rem; }
+  .notice-list { list-style: none; margin: 0; padding: 0; }
+  .notice-list li { display: grid; grid-template-columns: 7.5em 5.5em 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .notice-list time { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .tag { color: var(--accent-strong); font-weight: 500; }
+
+  /* Features */
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; margin: 0; }
+  .features div { min-width: 0; }
+  .features dt { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
+  .features dd { margin: 0; color: var(--muted); }
+
+  /* Medical: a reading list, the one in demand first */
+  .med { margin: 0; }
+  .med > div { display: grid; grid-template-columns: 11em 1fr; gap: 8px 32px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .med > div:first-child { border-top: 2px solid var(--rule); }
+  .med dt { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 1.2rem; }
+  .med dd { margin: 0; color: var(--muted); }
+  .med .lead-row dt { font-size: 1.5rem; color: var(--accent-strong); }
+  .med .lead-row dd { color: var(--fg); font-size: 1.05rem; }
+
+  /* Doctor */
+  .doctor-name { font-size: 1.6rem; font-weight: 900; }
+  .doctor .role { color: var(--muted); display: block; margin: 4px 0 24px; font-size: .95rem; }
+  .doctor blockquote { margin: 0 0 28px; font-size: 1.15rem; line-height: 2; max-width: 40em; }
+  .doctor dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; margin: 0; font-size: .95rem; border-top: 1px solid var(--line); padding-top: 16px; }
+  .doctor dt { font-weight: 700; }
+  .doctor dd { margin: 0; color: var(--muted); }
+
+  /* Flow */
+  .flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); counter-reset: step; }
+  .flow li { counter-increment: step; padding: 0 20px 0 0; min-width: 0; }
+  .flow li::before { content: counter(step); display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent-strong); font-weight: 700; margin-bottom: 12px; position: relative; z-index: 1; background: var(--bg); }
+  .flow li { background: linear-gradient(var(--line), var(--line)) no-repeat 0 15px / 100% 2px; }
+  .flow li:last-child { background: none; }
+  .flow h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .flow p { margin: 0; font-size: .95rem; color: var(--muted); }
+
+  /* Access */
+  .info { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+  .info > div { display: grid; grid-template-columns: 5em 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+  .info dt { font-weight: 700; }
+  .info dd { margin: 0; }
+  .tel-big { font-size: 1.5rem; font-weight: 700; color: var(--fg); text-decoration: none; font-variant-numeric: tabular-nums; line-height: 1.3; }
+
+  /* FAQ */
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq details:first-child { border-top: 2px solid var(--rule); }
+  .faq summary { cursor: pointer; padding: 16px 40px 16px 0; font-weight: 500; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 1.3rem; color: var(--accent); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin: 0; padding: 0 0 18px; color: var(--muted); }
+
+  /* Reserve */
+  .reserve { background: var(--band); color: var(--on-band); padding-block: 56px; }
+  .reserve .split { align-items: center; }
+  .reserve h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); font-weight: 900; }
+  .reserve p { margin: 6px 0 0; color: var(--on-band); opacity: .85; }
+  .reserve .acts { display: flex; flex-wrap: wrap; gap: 12px 40px; align-items: center; }
+  .reserve .btn-primary { background: var(--on-band); color: var(--band); border-color: var(--on-band); }
+  .reserve .btn-primary:hover { background: var(--accent-soft); }
+  .reserve .tel-big { color: var(--on-band); }
+  .reserve .tel-big small { display: block; font-size: .8rem; font-weight: 400; opacity: .85; }
+
+  footer.site { padding-block: 40px calc(32px + env(safe-area-inset-bottom, 0px)); font-size: .9rem; color: var(--muted); }
+  .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+  .foot-name { color: var(--fg); font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; font-size: 1.1rem; }
+  footer.site ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer.site a { color: var(--muted); text-decoration: none; }
+  footer.site a:hover { color: var(--accent-strong); }
+  .copy { margin: 24px 0 0; font-size: .8rem; }
+
+  .sp-cta { display: none; }
+
+  @media (max-width: 1000px) {
+    nav.gnav { display: none; }
+    nav.gnav.open { display: block; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--rule); }
+    nav.gnav.open ul { flex-direction: column; gap: 0; padding: 8px max(24px, env(safe-area-inset-left, 0px)) 16px; }
+    nav.gnav.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .menu-btn { display: block; }
+    .head-tel { margin-left: auto; }
+    .hero-top { grid-template-columns: 1fr; }
+    .split, .notice .split { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (max-width: 760px) {
+    .head-tel small { display: none; }
+    .hero { padding-block: 28px 40px; }
+    .board { grid-template-columns: 1fr; }
+    .board .map { order: 2; border-right: 0; border-top: 1px solid var(--rule); min-height: 0; }
+    .week { padding: 16px 14px; }
+    table.hours th, table.hours td { padding: 10px 2px; font-size: .92rem; }
+    section.block { padding-block: 52px; }
+    .features, .info { grid-template-columns: 1fr; }
+    .med > div { grid-template-columns: 1fr; gap: 2px; }
+    .notice-list li { grid-template-columns: auto 1fr; gap: 0 12px; }
+    .notice-list li > span:last-child { grid-column: 1 / -1; }
+    .flow { grid-template-columns: 1fr; gap: 20px; }
+    .flow li, .flow li:last-child { background: none; padding: 0; display: grid; grid-template-columns: 32px 1fr; gap: 0 14px; }
+    .flow li::before { grid-row: span 2; margin: 0; }
+    body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+    .sp-cta {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      background: var(--bg); border-top: 1px solid var(--rule);
+      padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    }
+    .sp-cta .btn { padding: 11px; font-size: .95rem; }
+  }
+  @media (max-width: 420px) { .head-tel { display: none; } .logo-text small { display: none; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top">
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <g fill="var(--accent)">
+          <ellipse cx="20" cy="9" rx="5.5" ry="8"/>
+          <ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/>
+          <ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/>
+          <ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/>
+          <ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/>
+        </g>
+        <circle cx="20" cy="20" r="4" fill="var(--bg)"/>
+      </svg>
+      <span class="logo-text"><strong>さくら内科クリニック</strong><small>世田谷区 ／ 内科・消化器内科</small></span>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#about">当院について</a></li>
+        <li><a href="#medical">診療案内</a></li>
+        <li><a href="#hours">診療時間</a></li>
+        <li><a href="#doctor">医師紹介</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ul>
+    </nav>
+    <a class="head-tel" href="tel:0300000000"><small>お電話</small>03-0000-0000</a>
+    <button class="menu-btn" id="menuBtn" aria-controls="gnav" aria-expanded="false">メニュー</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1 id="hero-title">ちょっとした不調も、気軽に相談できるまちのかかりつけ医。</h1>
+        <div>
+          <p class="lead">風邪や発熱などの急な症状から、高血圧・糖尿病などの生活習慣病、健康診断・予防接種まで。世田谷区 ○○駅 徒歩3分の内科・消化器内科です。</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#reserve">WEB予約（24時間受付）</a>
+            <a class="btn btn-ghost" href="tel:0300000000">電話 03-0000-0000</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="board" id="hours">
+        <div class="map" role="img" aria-label="クリニック周辺の簡易地図。○○駅南口から徒歩3分、○○二丁目バス停から徒歩1分">
+          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="480" height="300" fill="var(--map-ground)"/>
+            <g stroke="var(--map-road)" stroke-width="20"><path d="M0 110h480"/><path d="M0 230h480"/><path d="M150 0v300"/><path d="M360 0v300"/></g>
+            <rect x="0" y="28" width="480" height="18" fill="var(--fg)" opacity=".8"/>
+            <g fill="var(--map-block)" stroke="var(--line)"><rect x="170" y="128" width="170" height="84" rx="4"/><rect x="16" y="128" width="116" height="84" rx="4"/><rect x="380" y="128" width="86" height="84" rx="4"/><rect x="170" y="248" width="170" height="44" rx="4"/></g>
+            <rect x="30" y="54" width="112" height="32" rx="4" fill="var(--fg)"/>
+            <text x="86" y="76" text-anchor="middle" font-size="15" fill="var(--bg)" font-weight="700">○○駅 南口</text>
+            <path d="M142 70 H150 V110 H255 V140" stroke="var(--accent)" stroke-width="4" stroke-dasharray="8 6" fill="none"/>
+            <circle cx="255" cy="164" r="22" fill="var(--accent)"/>
+            <path d="M249 164h12M255 158v12" stroke="var(--on-accent)" stroke-width="4"/>
+            <text x="255" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="var(--fg)">さくらビル 2F</text>
+            <text x="164" y="100" font-size="14" font-weight="700" fill="var(--accent)">徒歩3分</text>
+            <circle cx="372" cy="236" r="8" fill="var(--map-ground)" stroke="var(--fg)" stroke-width="3"/>
+            <text x="352" y="268" font-size="13" fill="var(--fg)">○○二丁目バス停</text>
+          </svg>
+        </div>
+        <div class="week">
+          <div class="week-head">
+            <h2>診療時間</h2>
+            <span class="now" id="now" aria-live="polite"><span class="dot"></span><span id="nowText">休診日：木曜日・土曜午後・日曜日・祝日</span></span>
+          </div>
+          <table class="hours" id="hoursTable">
+            <caption class="vh">診療時間表</caption>
+            <thead>
+              <tr><th scope="col"><span class="vh">時間帯</span></th><th scope="col" data-d="1">月</th><th scope="col" data-d="2">火</th><th scope="col" data-d="3">水</th><th scope="col" data-d="4">木</th><th scope="col" data-d="5">金</th><th scope="col" data-d="6">土</th><th scope="col" data-d="0">日・祝</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">9:00〜12:30</th><td class="o" data-d="1">●<span class="vh">診療</span></td><td class="o" data-d="2">●<span class="vh">診療</span></td><td class="o" data-d="3">●<span class="vh">診療</span></td><td class="x" data-d="4">休</td><td class="o" data-d="5">●<span class="vh">診療</span></td><td class="o" data-d="6">▲<span class="vh">9時から13時まで</span></td><td class="x" data-d="0">休</td></tr>
+              <tr><th scope="row">15:00〜18:30</th><td class="o" data-d="1">●<span class="vh">診療</span></td><td class="o" data-d="2">●<span class="vh">診療</span></td><td class="o" data-d="3">●<span class="vh">診療</span></td><td class="x" data-d="4">休</td><td class="o" data-d="5">●<span class="vh">診療</span></td><td class="x" data-d="6">休</td><td class="x" data-d="0">休</td></tr>
+            </tbody>
+          </table>
+          <ul class="hours-note">
+            <li>▲ 土曜日は 9:00〜13:00 の診療です。</li>
+            <li>休診日：木曜日・土曜午後・日曜日・祝日</li>
+            <li>受付は診療終了の15分前までです。胃カメラ検査は予約制です。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="notice" aria-labelledby="notice-title">
+    <div class="wrap">
+      <div class="split">
+        <h2 id="notice-title">お知らせ</h2>
+        <ul class="notice-list">
+          <li><time datetime="2026-11-01">2026.11.01</time><span class="tag">予防接種</span><span>インフルエンザワクチン接種を受付中です。WEBまたはお電話でご予約ください。</span></li>
+          <li><time datetime="2026-10-20">2026.10.20</time><span class="tag">休診</span><span>年末年始は12月29日（火）〜1月3日（日）まで休診いたします。</span></li>
+          <li><time datetime="2026-10-01">2026.10.01</time><span class="tag">健診</span><span>世田谷区特定健診・区民健診を実施しています（〜2027年3月末）。</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="medical" aria-labelledby="medical-title">
+    <div class="wrap split">
+      <div><h2 class="sec-title" id="medical-title">診療案内</h2><p>どの科を受診すればよいか迷うときも、まずはお気軽にご相談ください。</p></div>
+      <dl class="med">
+        <div class="lead-row"><dt>一般内科</dt><dd>風邪、発熱、咳、喉の痛み、腹痛、頭痛など日常的な体調不良に対応します。</dd></div>
+        <div><dt>生活習慣病</dt><dd>高血圧、糖尿病、脂質異常症、高尿酸血症などを、食事・運動のアドバイスも含めて継続管理します。</dd></div>
+        <div><dt>消化器内科</dt><dd>胃もたれ、胸やけ、便秘・下痢などの症状に。経鼻胃カメラ検査も実施しています。</dd></div>
+        <div><dt>発熱外来</dt><dd>新型コロナ・インフルエンザの検査に対応。事前にお電話またはWEBでご予約ください。</dd></div>
+        <div><dt>健康診断</dt><dd>世田谷区の特定健診・区民健診、企業健診、雇入時健診などを行っています。</dd></div>
+        <div><dt>予防接種</dt><dd>インフルエンザ、新型コロナ、肺炎球菌、帯状疱疹、各種抗体検査・ワクチンに対応します。</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="about" aria-labelledby="about-title">
+    <div class="wrap split">
+      <div><h2 class="sec-title" id="about-title">当院の特徴</h2><p>患者さま一人ひとりのお話にしっかり耳を傾け、わかりやすい説明を心がけています。</p></div>
+      <dl class="features">
+        <div><dt>WEB予約・順番確認で待ち時間を短縮</dt><dd>24時間いつでもスマートフォンから予約可能。院内の混雑状況もご確認いただけます。</dd></div>
+        <div><dt>発熱外来を専用動線で実施</dt><dd>発熱・感染症が疑われる方は、一般の患者さまと分けた時間帯・動線で診察します。</dd></div>
+        <div><dt>胃カメラ・エコーなど検査も充実</dt><dd>経鼻内視鏡、腹部・頸動脈エコー、心電図、血液検査など、院内で多くの検査に対応します。</dd></div>
+        <div><dt>土曜診療・バリアフリー対応</dt><dd>平日お忙しい方も通いやすい土曜午前診療。車いす・ベビーカーでもご来院いただけます。</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="doctor" aria-labelledby="doctor-title">
+    <div class="wrap split doctor">
+      <h2 class="sec-title" id="doctor-title">医師紹介</h2>
+      <div>
+        <p class="doctor-name disp">院長　桜井 ○○</p>
+        <span class="role">日本内科学会 総合内科専門医 ／ 日本消化器病学会 消化器病専門医</span>
+        <blockquote>「病院に行くほどでもないかな」と迷うような症状こそ、早めにご相談いただきたいと考えています。患者さまが安心して帰れるよう、検査結果や治療方針を丁寧にご説明することを大切にしています。世田谷の皆さまの健康に、長く寄り添えるクリニックを目指します。</blockquote>
+        <dl>
+          <dt>経歴</dt><dd>○○大学医学部卒業／都内大学病院 消化器内科、総合病院 内科勤務を経て当院開院</dd>
+          <dt>資格</dt><dd>医学博士、日本内科学会 総合内科専門医、日本消化器内視鏡学会 専門医</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="flow" aria-labelledby="flow-title">
+    <div class="wrap">
+      <h2 class="sec-title" id="flow-title" style="margin-bottom:28px">初診の流れ</h2>
+      <ol class="flow">
+        <li><h3>ご予約</h3><p>WEBまたはお電話でご予約ください。予約なしでも受診いただけます。</p></li>
+        <li><h3>受付・問診</h3><p>保険証（マイナ保険証）・お薬手帳をご提示のうえ、問診票をご記入ください。</p></li>
+        <li><h3>診察・検査</h3><p>症状を伺い、必要に応じて検査を行います。結果は丁寧にご説明します。</p></li>
+        <li><h3>お会計</h3><p>各種クレジットカード・電子マネー・QRコード決済がご利用いただけます。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="access" aria-labelledby="access-title">
+    <div class="wrap split">
+      <div><h2 class="sec-title" id="access-title">アクセス</h2><p>道順は<a href="#top">ページ上部の地図</a>をご覧ください。</p></div>
+      <dl class="info">
+        <div><dt>住所</dt><dd>〒154-0000<br>東京都世田谷区○○ 1-2-3 さくらビル 2F</dd></div>
+        <div><dt>電話</dt><dd><a class="tel-big" href="tel:0300000000">03-0000-0000</a></dd></div>
+        <div><dt>電車</dt><dd>○○線「○○駅」南口より徒歩3分</dd></div>
+        <div><dt>バス</dt><dd>「○○二丁目」バス停より徒歩1分</dd></div>
+        <div><dt>駐車場</dt><dd>提携駐車場あり（2台）／駐輪場あり</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="faq" aria-labelledby="faq-title">
+    <div class="wrap split">
+      <h2 class="sec-title" id="faq-title">よくあるご質問</h2>
+      <div class="faq">
+        <details><summary>予約なしでも受診できますか？</summary><p>はい、予約なしでも受診いただけます。ただし予約の方を優先してご案内するため、お待ちいただく場合があります。</p></details>
+        <details><summary>発熱があるのですが、どうすればよいですか？</summary><p>ご来院前に必ずお電話またはWEBでご予約ください。発熱外来の時間帯と専用の入口をご案内いたします。</p></details>
+        <details><summary>マイナ保険証は使えますか？</summary><p>ご利用いただけます。受付の顔認証付きカードリーダーでお手続きください。</p></details>
+        <details><summary>他院からの紹介状は必要ですか？</summary><p>必須ではありません。お持ちの場合や他院で検査を受けている場合は、結果をお持ちいただくとスムーズです。</p></details>
+        <details><summary>専門的な治療が必要になった場合は？</summary><p>近隣の総合病院・専門医療機関と連携しており、必要に応じて速やかにご紹介いたします。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="reserve" id="reserve" aria-labelledby="reserve-title">
+    <div class="wrap split">
+      <div><h2 id="reserve-title">ご予約・お問い合わせ</h2><p>WEB予約は24時間受付中。お電話は診療時間内にお願いいたします。</p></div>
+      <div class="acts">
+        <a class="btn btn-primary" href="#reserve">WEB予約（24時間受付）</a>
+        <a class="tel-big" href="tel:0300000000"><small>電話する</small>03-0000-0000</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <span class="foot-name">さくら内科クリニック</span><br>
+        東京都世田谷区○○ 1-2-3 さくらビル 2F<br>
+        TEL 03-0000-0000
+      </div>
+      <ul>
+        <li><a href="#about">当院について</a></li>
+        <li><a href="#medical">診療案内</a></li>
+        <li><a href="#hours">診療時間</a></li>
+        <li><a href="#doctor">医師紹介</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 さくら内科クリニック</p>
+  </div>
+</footer>
+
+<div class="sp-cta">
+  <a class="btn btn-ghost" href="tel:0300000000">電話する</a>
+  <a class="btn btn-primary" href="#reserve">WEB予約</a>
+</div>
+
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('gnav');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? '閉じる' : 'メニュー';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'メニュー';
+  }));
+
+  // Today's column and status (Tokyo time)
+  (function () {
+    const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+    const day = now.getDay(); // 0=Sun
+    const min = now.getHours() * 60 + now.getMinutes();
+    const names = ['日', '月', '火', '水', '木', '金', '土'];
+    document.querySelectorAll('#hoursTable [data-d="' + day + '"]').forEach(el => el.classList.add('today'));
+    let slots = [];
+    if ([1, 2, 3, 5].includes(day)) slots = [[540, 750, '9:00〜12:30'], [900, 1110, '15:00〜18:30']];
+    else if (day === 6) slots = [[540, 780, '9:00〜13:00']];
+    const box = document.getElementById('now');
+    const text = document.getElementById('nowText');
+    if (!slots.length) { text.textContent = `本日（${names[day]}）は休診日です`; return; }
+    const current = slots.find(s => min >= s[0] && min < s[1]);
+    const next = slots.find(s => min < s[0]);
+    if (current) { box.classList.add('open'); text.textContent = `ただいま診療中（${current[2]}）`; }
+    else if (next) text.textContent = `本日（${names[day]}）は ${next[2]} の診療`;
+    else text.textContent = `本日（${names[day]}）の診療は終了しました`;
+  })();
+</script>
+</body>
+</html>
