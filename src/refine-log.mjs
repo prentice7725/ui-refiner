@@ -97,15 +97,26 @@ export function dealSurfaces(n=3,seed=0){
  return Array.from({length:n},(_,i)=>i===at?odd:'white');
 }
 
-/** Writes DEAL.json into the directions folder: per direction a hero structure, a type pairing, an accent family and a surface. */
+/** Faces to avoid: the overused ones in data/type-pairs.json and those picked recently for other projects. */
+export function avoidFaces(pairs,entries,project){
+ const out=new Set(pairs.filter(p=>p.overused).flatMap(p=>[p.display,p.text]));
+ for(const e of others(entries,project).slice(-8))for(const f of e.fonts||[])out.add(f);
+ return [...out];
+}
+
+/**
+ * Writes DEAL.json into the directions folder: per direction a hero structure and a surface, plus faces to avoid.
+ * Type and accent are left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
+ * winners were pages that pushed one strong face of their own choosing.
+ */
 export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,lang='en'}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary();
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
- const type=dealType(lib.pairs,entries,project,{n,seed,kind,script}),acc=dealAccents(Object.keys(lib.accents),entries,project,{n,seed}),surf=dealSurfaces(n,seed);
- const deal={schemaVersion:2,kind:kind??null,lang,structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],type:type[i],accent:{family:acc[i],brief:lib.accents[acc[i]]},surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
+ const surf=dealSurfaces(n,seed);
+ const deal={schemaVersion:3,kind:kind??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }

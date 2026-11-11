@@ -2,6 +2,15 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+### Changed
+- `directions deal` deals a hero structure and a surface only, and lists faces to avoid (the overused ones and those picked recently for other projects). Type and accent are left to the agent, with one strong display face per direction. In benchmark round 11, three judges (Claude, Gemini, Grok) put the plain prompt or round 2, each pushing one strong look of its own, first in 21 of 24 page rankings. They called the dealt pairings "plain".
+- Refine guidance:
+  - headlines come from a fact only this client has, not a category slogan;
+  - the first screen gets one main piece instead of a stacked photo, schedule and cards;
+  - stand-in photos show the place or the work itself, never generic office objects.
+
 ## 0.7.0 — 2026-11-11
 
 ### Added

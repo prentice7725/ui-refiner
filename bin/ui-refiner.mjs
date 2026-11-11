@@ -102,7 +102,7 @@ try{
     const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
-   type: ${d.type.display} + ${d.type.text} (${d.type.voice}); accent: ${d.accent.family} — ${d.accent.brief}; surface: ${d.surface.brief}`).join('\n')+`\n[DEAL] ${r.file}`);
+   surface: ${d.surface.brief}`).join('\n')+`\n[TYPE] choose one strong display face per direction for this subject; avoid: ${r.avoidFaces.join(', ')}\n[DEAL] ${r.file}`);
   }
   else if(command==='directions'&&sub==='record'&&args._.length===3){
     if(!args.pick)throw Error('directions record requires --pick');
