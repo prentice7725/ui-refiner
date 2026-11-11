@@ -395,3 +395,44 @@ Reading:
   - food bank: first for all three; Japanese clinic and US clinic: first for two of three;
   - Korean fintech and Korean logistics: 4th or 5th for every judge. All three called the dark navy or black dashboard with a lime or blue accent a familiar crypto or dev-tool template.
 - Same limits: 8 pages, one run per arm. Two outside judges now take Claude-judging-Claude out of the result, but differences under about 0.6 in the per-page rank are still noise.
+
+## Round 13: no dark dashboard for software pages (same 8 pages)
+
+In round 12 all three judges ranked both Korean software pages 4th or 5th of 5, and each called the dark navy or black dashboard with a lime or blue accent a crypto or dev-tool template. Both pages had been dealt a dark ground and took it.
+
+Changes:
+- `directions deal` gives no dark ground to software pages. The non-white direction gets a brand or paper ground.
+- The dark brief asks for a dark ground carried by a photo or by type, not a dashboard.
+- The skill warns against the dark dashboard template for product screens.
+
+Cost: $22.80 ($21.29 for the 8 refines at 54–90 turns each, $1.51 for the Claude judges).
+
+- All 8 pages passed `keep check` and `directions verify`.
+- Surfaces: white 5, paper-green 1 (US fintech), saturated blue 1 (Japanese hiring), dark 1 (food bank, dealt to a public page).
+
+| Version | Mean rank, Claude / Gemini / Grok | Firsts of 24 | Set sameness, Claude / Gemini / Grok | Set rank of 8, Claude / Gemini / Grok |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 1 / 2 | 1 / 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 / 3 | 5 / 2 / 2 |
+| Before | 4.9 / 5.0 / 4.9 | 0 | 9 / 9 / 8 | 8 / 7 / 7 |
+| Plain prompt | 2.5 / 2.3 / 2.4 | 9 | 8 / 10 / 9 | 7 / 8 / 8 |
+| Refine, round 2 | **2.0** / **2.1** / **2.1** | 6 | 8 / 8 / 7 | 6 / 6 / 6 |
+| Refine, round 11 | — | — | 4 / 6 / 4 | 3 / 5 / 3 |
+| Refine, round 12 | 2.8 / 2.8 / 2.9 | 5 | 4 / 4 / 6 | **2** / **3** / 5 |
+| Refine, round 13 | 2.9 / 2.9 / 2.8 | 4 | 4 / 5 / 5 | 4 / 4 / 4 |
+
+Korean software pages, rank of 5, Claude / Gemini / Grok:
+
+| Page | Round 12 (this run) | Round 13 |
+|---|---|---|
+| Korean fintech | 3 / 4 / 5 | 2 / 3 / 2 |
+| Korean logistics | 3 / 4 / 3 | 2 / 2 / 2 |
+
+Reading:
+- The fix worked where it was aimed. Both Korean pages rose to 2nd or 3rd for every judge; Gemini called the logistics page "clean Swiss-style … high-trust light mode".
+- Overall, round 13 did not beat round 12: the per-page means are within 0.1, and across the set it ranked 4th for all three judges against round 12's 2nd–5th. With five of eight pages on white, Gemini saw "light white or warm-cream" pages with bordered tables as the shared habit.
+- New losses came from choices the change did not touch:
+  - the food bank took a dealt dark ground and an image-led structure with a small headline ("cold for a community food bank");
+  - the Japanese hiring page picked an ultra-heavy display face (Dela Gothic One) that two judges said hurt reading in Japanese;
+  - the US fintech headline ran to four lines.
+- Round 12's own means moved from 2.1–2.9 to 2.8–2.9 between the two runs, with the same pages and a different line-up. Single-run differences under about 0.6 are noise; per-page swings like the Korean ones above are the more reliable signal.
