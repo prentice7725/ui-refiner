@@ -164,7 +164,11 @@ export function collectAiTells(){
   // Largest text on the first screen (short labels included), to tell whether the claim leads the screen.
   const big=[...document.querySelectorAll('body *')].slice(0,3000).filter(el=>own(el)&&!chrome(el)&&visible(el)&&inFold(el)).reduce((n,el)=>Math.max(n,parseFloat(css(el).fontSize)||0),0);
   const claimSize=claim?parseFloat(css(claim).fontSize):0;
-  return {fold,media:+media.toFixed(2),claim:!!claim,claimSize,maxText:big,claimRatio:claim&&big?+(claimSize/big).toFixed(2):null,claimText:claim?(claim.innerText||'').trim().slice(0,80):null,action:!!action,actionText:action?(action.innerText||'').trim().slice(0,40):null};})();
+  // A product screen built in code (marked data-product-shot) stands in for a photo on software pages.
+  const shots=[...document.querySelectorAll('[data-product-shot]')].filter(el=>visible(el)&&inFold(el));
+  const shot=Math.min(1,shots.reduce((n,el)=>n+vis(el),0)/(innerWidth*fold));
+  const shotSmall=shots.flatMap(el=>[...el.querySelectorAll('*')]).filter(el=>own(el)&&visible(el)&&inFold(el)&&parseFloat(css(el).fontSize)<12).length;
+  return {fold,media:+media.toFixed(2),shot:+shot.toFixed(2),shotSmall,claim:!!claim,claimSize,maxText:big,claimRatio:claim&&big?+(claimSize/big).toFixed(2):null,claimText:claim?(claim.innerText||'').trim().slice(0,80):null,action:!!action,actionText:action?(action.innerText||'').trim().slice(0,40):null};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,

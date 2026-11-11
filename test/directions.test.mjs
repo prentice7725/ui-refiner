@@ -54,13 +54,17 @@ test('directions sheet: names the hero skeleton and warns when two directions sh
 });
 
 test('first screen: warns when nothing says what this is (unless a photo carries it) or the button falls below the fold', () => {
- assert.deepEqual(firstScreenProblems({firstScreen:{claim:false,media:0,action:false}}),['no-claim']);
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:false,media:0,shot:.3,action:false}}),['no-claim']);
  assert.deepEqual(firstScreenProblems({firstScreen:{claim:false,media:.8,action:false}}),[],'a full-bleed photo can carry the first screen');
- assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,media:0,action:true},heroCta:{below:true}}),['cta-below']);
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,media:0,shot:.3,action:true},heroCta:{below:true}}),['cta-below']);
  assert.deepEqual(firstScreenProblems({}),[]);
- assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:.43,media:0,action:true}}),['weak-claim'],'a board label dwarfs the claim');
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:.43,media:0,shot:.3,action:true}}),['weak-claim'],'a board label dwarfs the claim');
  assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:.43,media:.9,action:true}}),[],'image-led screens may carry a small claim');
- assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:.89,media:0,action:true}}),[]);
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:.89,media:0,shot:.3,action:true}}),[]);
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:1,media:0,action:true}}),['no-image'],'neither a photo nor a product screen');
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:1,media:.05,shot:.1,action:true}}),['no-image'],'a small product card is not enough');
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:1,media:.2,action:true}}),[],'a modest photo is enough');
+ assert.deepEqual(firstScreenProblems({firstScreen:{claim:true,claimRatio:1,media:0,shot:.4,shotSmall:9,action:true}}),['small-shot'],'a product screen full of tiny text');
  const w=directionWarnings([{label:'A',first:['no-claim']},{label:'B',first:[]}]);
  assert.deepEqual(w,[{id:'no-claim',a:'A'}]);
  for(const lang of ['ko','ja','en'])assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',signals:[],score:0,quality:0,first:['no-claim']}],lang,w),/A/);
