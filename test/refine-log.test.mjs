@@ -72,6 +72,16 @@ test('deal: type pairings by voice and kind, accents by family, one non-white su
  await assert.rejects(dealDirections(path.join(os.tmpdir(),'uir-kind'),{kind:'bank'}),/--kind must be one of/);
 });
 
+test('deal: structure and surface only, with faces to avoid', async () => {
+ const {dealDirections}=await import('../src/refine-log.mjs');
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-deal-'));const log=path.join(dir,'log.json');
+ await fs.writeFile(log,JSON.stringify({entries:[{project:'/p/other',page:'x',fonts:['Archivo']}]}));
+ const d=await dealDirections(path.join(dir,'dirs'),{log,seed:3});
+ assert.equal(d.structures.length,3);
+ assert.ok(d.structures.every(s=>s.key&&s.surface&&!s.type&&!s.accent));
+ assert.ok(d.avoidFaces.includes('Bricolage Grotesque')&&d.avoidFaces.includes('Archivo'));
+});
+
 test('history: warns when a mock ignores its dealt type or accent', () => {
  const deal={structures:[{label:'A',key:'full-bleed',type:{display:'Zilla Slab',text:'Work Sans'},accent:{family:'orange'}}]};
  const w=historyWarnings([{label:'A',hero:'full-bleed',fonts:['inter'],accent:[22,59,51]}],[],'/p/me',deal);
