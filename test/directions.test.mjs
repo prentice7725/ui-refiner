@@ -81,3 +81,12 @@ test('first screen: a product screen crowded with text; direction notes need the
  assert.deepEqual(noteWarnings([{label:'A',note:full},{label:'B',note:thin},{label:'C',note:null}]).map(w=>w.a+':'+w.c),['B:tone, world, moment, signature','C:direction, tone, world, moment, signature']);
  assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',note:full,signals:[],score:0,quality:0,desktop:'d.png',mobile:'m.png'}],'en',[]),/- Tone: calm[\s\S]*Rename test/);
 });
+
+test('directions sheet: flags a strip of big figures as a set habit, without failing verify', async () => {
+ const {pageHabits,firstScreenProblems,directionWarnings}=await import('../src/directions.mjs');
+ const m={statStrips:{count:1,targets:['dl.figures']},firstScreen:{claim:true,media:.5,action:true}};
+ assert.deepEqual(pageHabits(m),['stat-strip']);
+ assert.ok(!firstScreenProblems(m).includes('stat-strip'));
+ assert.deepEqual(pageHabits({statStrips:{count:0}}),[]);
+ assert.ok(directionWarnings([{label:'A',first:pageHabits(m)}]).some(w=>w.id==='stat-strip'&&w.a==='A'));
+});

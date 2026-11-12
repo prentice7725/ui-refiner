@@ -76,6 +76,7 @@
   "white": "plain white",
   "dark": "a dark ground carried by a photo or by type, not a dark dashboard of metric cards with a neon or electric accent",
   "brand": "a clear colour ground taken from the brand",
-  "paper": "a tinted paper surface (at most one direction)"
+  "paper": "a tinted paper surface (at most one direction)",
+  "image": "a pure white page (#fff, not cream or off-white) whose first screen is carried by a photo, or on software by a large product screen, across half its width or more"
  }
 }

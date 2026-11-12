@@ -120,10 +120,11 @@ export function dealAccents(families,entries,project,{n=3,seed=0,weights}={}){
 }
 
 /**
- * Surfaces: plain white for most; one direction gets a paper, dark or brand ground, mostly paper. Measured on 548
- * Korean, Japanese and English sites (data/colour-reference), only about 2% of first screens use a full-colour ground
- * and 5% a dark one; the rest are white or a faint tint (58%) or a photo (35%). So a brand ground is dealt on about
- * one page in twenty and a dark one on about one in twelve, where the tone allows it.
+ * Surfaces: plain white for most; one direction gets a white page carried by a photo or product screen, or more
+ * rarely a brand, dark or paper ground. Measured on 548 Korean, Japanese and English sites (data/colour-reference),
+ * only about 2% of first screens use a full-colour ground and 5% a dark one; 35% open on a photo, and 87% of the light
+ * ones are pure white (2% a warm cream). In benchmark round 16, when the odd direction was mostly paper, agents chose
+ * it on 3 of 7 pages and all three set judges named the cream body as the set's shared habit.
  * Software pages get no dark ground: in benchmark round 12 all three judges read the dark dashboard with a neon
  * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.
  * Calm and warm pages get no dark ground either.
@@ -152,7 +153,7 @@ export function toneColours(lib,toneDef,surf,entries,project,{n=3,seed=0,weights
 export function dealSurfaces(n=3,seed=0,{kind,tone}={}){
  // A dark ground also needs a tone that carries it: in round 13 a dark food-bank page read "cold for a community food bank".
  const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold');
- const r=hash(seed,'surface')%20,odd=r<3?'brand':dark&&r<8?'dark':'paper',at=hash(seed,'slot')%n;
+ const r=hash(seed,'surface')%20,odd=r<3?'brand':dark&&r<8?'dark':r<10?'paper':'image',at=hash(seed,'slot')%n;
  return Array.from({length:n},(_,i)=>i===at?odd:'white');
 }
 
