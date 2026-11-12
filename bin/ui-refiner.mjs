@@ -27,7 +27,7 @@ const help=`UI Refiner 0.7.0 — de-AI web design review and UI quality gate
   ui-refiner directions <folder of .html mocks> [--lang auto|ko|ja|en] [--json]
       scans each design-direction mock and writes DIRECTIONS.html and DIRECTIONS.md side by side, so a person can choose one;
       warns when mocks share a surface, type pair or hero layout, ignore their deal, or repeat a choice made for another project
-  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
+  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--tone calm|warm|technical|bold] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
       assigns each of three mocks a hero structure (as common on human-made sites of that kind), a type pairing, an accent family
       and a surface, avoiding what was chosen recently for other projects;
       --no-photo skips structures that need a real photo
@@ -65,7 +65,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--count','--orientation'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--tone','--count','--orientation'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -99,9 +99,10 @@ try{
     else console.log(r.photos.map(p=>`${p.file}  ${p.width}x${p.height}  ${p.author} (${p.licence})  ${p.source}`).join('\n')+`\n[PHOTOS] ${r.photos.length} stand-ins in ${r.dir} (credits.json)\nCredit line for the footer:\n${r.credit}`);
   }
   else if(command==='directions'&&sub==='deal'&&args._.length===3){
-    const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
+    const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
     if(args.json)console.log(JSON.stringify(r,null,2));
-    else console.log(r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
+    else console.log((r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
+`:'')+r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
    surface: ${d.surface.brief}`).join('\n')+`\n[TYPE] choose one strong display face per direction for this subject; avoid: ${r.avoidFaces.join(', ')}\n[DEAL] ${r.file}`);
   }
   else if(command==='directions'&&sub==='record'&&args._.length===3){
@@ -113,7 +114,7 @@ try{
     const r=await verifyApplied(args._[2],args._[3],{pick:args.pick,log:args.log});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(r.drift.length?`[DRIFT] ${r.label}: ${r.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}`:`[VERIFY] ${r.label}: hero ${r.applied.hero}, surface and type kept`);
-    if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim, not dwarfed by other text, the main action, and a photo or a large product screen`);
+    if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim, not dwarfed by other text, the main action, and a photo or a large product screen showing one readable scene`);
     process.exitCode=r.drift.length||r.problems?.length?1:0;
   }
   else if(command==='directions'&&args._.length===2){

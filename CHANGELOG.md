@@ -11,6 +11,10 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   - the first screen gets one main piece instead of a stacked photo, schedule and cards;
   - stand-in photos show the place or the work itself, never generic office objects.
 - `directions deal` gives software pages no dark ground, and the dark surface brief asks for a photo or type, not a dashboard. The skill and `/ui-refine` warn against the dark dashboard template (navy or black ground, metric cards, neon accent), which all three judges ranked 4th or 5th on both Korean software pages in round 12.
+- Refine starts by choosing how much to change: a full refine with three directions at a scan score of 20 or more, a polish that keeps the structure and brand at 8–19 (or with a real brand), and a report only below that.
+- `directions deal --tone calm|warm|technical|bold`: the tone is shared by all three directions. Calm and warm pages get no dark ground, and display faces that fight the tone (condensed, ultra-heavy, mono) join the faces to avoid. DEAL.json is schema 4.
+- Each mock starts with a five-line direction (direction, tone, world, moment, signature); the sheet warns when one is missing and ends with a rename test.
+- `directions verify` and the finish gate fail a product screen with more than 40 pieces of text on the first screen (`busy-shot`): show one scene that proves the claim, not the whole app. The collector reports it as `firstScreen.shotText`.
 
 ## 0.7.0 — 2026-11-11
 

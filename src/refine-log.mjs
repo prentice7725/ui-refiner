@@ -57,6 +57,8 @@ const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','f
 /** Share of each hero structure on human-made sites (data/hero-reference/human.json), overall or for one page kind. */
 export async function humanHeroShare(kind){try{const j=JSON.parse(await fs.readFile(new URL('../data/hero-reference/human.json',import.meta.url),'utf8'));return (kind&&j.byKind?.[kind]?.share)||j.share;}catch{return null;}}
 export const PAGE_KINDS=['software','service','place','public','company','studio','media'];
+/** Page character, chosen before the deal; it narrows the surfaces and faces (data/type-pairs.json "tones"). */
+export const PAGE_TONES=['calm','warm','technical','bold'];
 async function typeLibrary(){return JSON.parse(await fs.readFile(new URL('../data/type-pairs.json',import.meta.url),'utf8'));}
 const hash=(seed,k)=>{let h=seed+7;for(const c of String(k))h=(h*31+c.charCodeAt(0))>>>0;return h%997;};
 const lc=x=>String(x||'').toLowerCase();
@@ -95,16 +97,24 @@ export function dealAccents(families,entries,project,{n=3,seed=0}={}){
  * Surfaces: plain white for most, as on 82% of human sites; one direction gets a dark, brand or paper ground.
  * Software pages get no dark ground: in benchmark round 12 all three judges read the dark dashboard with a neon
  * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.
+ * Calm and warm pages get no dark ground either.
  */
-export function dealSurfaces(n=3,seed=0,{kind}={}){
- const pool=kind==='software'?['brand','paper']:['dark','brand','paper'];
+export function dealSurfaces(n=3,seed=0,{kind,tone}={}){
+ // A dark ground also needs a tone that carries it: in round 13 a dark food-bank page read "cold for a community food bank".
+ const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold');
+ const pool=dark?['dark','brand','paper']:['brand','paper'];
  const odd=pool[hash(seed,'surface')%pool.length],at=hash(seed,'slot')%n;
  return Array.from({length:n},(_,i)=>i===at?odd:'white');
 }
 
-/** Faces to avoid: the overused ones in data/type-pairs.json and those picked recently for other projects. */
-export function avoidFaces(pairs,entries,project){
+/**
+ * Faces to avoid: the overused ones in data/type-pairs.json, those picked recently for other projects, and display
+ * faces that fight the page's tone (condensed or ultra-heavy faces on a calm or warm page: in the November 2026
+ * benchmarks judges called condensed capitals "harsh" on a family dental page and Dela Gothic One hard to read).
+ */
+export function avoidFaces(pairs,entries,project,toneDef){
  const out=new Set(pairs.filter(p=>p.overused).flatMap(p=>[p.display,p.text]));
+ if(toneDef){for(const p of pairs)if(toneDef.avoidVoices.includes(p.voice))out.add(p.display);for(const f of toneDef.avoidFaces)out.add(f);}
  for(const e of others(entries,project).slice(-8))for(const f of e.fonts||[])out.add(f);
  return [...out];
 }
@@ -114,14 +124,15 @@ export function avoidFaces(pairs,entries,project){
  * Type and accent are left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
  * winners were pages that pushed one strong face of their own choosing.
  */
-export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,lang='en'}={}){
+export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,tone,lang='en'}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
+ if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary();
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
- const surf=dealSurfaces(n,seed,{kind});
- const deal={schemaVersion:3,kind:kind??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
+ const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
+ const deal={schemaVersion:4,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }
