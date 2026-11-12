@@ -16,7 +16,7 @@ npm link                                   # 任意：どこからでも`ui-refi
 ui-refiner scan your-site.example          # 公開中のページを点検
 ui-refiner scan localhost:5173             # 開発サーバー。直したあと同じコマンドを再実行すると変化が分かる
 ui-refiner keep record index.html                                  # リファイン前にリンク・フォーム・数値を記録
-ui-refiner directions deal refine-directions --kind service --tone calm --lang ja   # 案ごとにヒーロー構成と地色を割り当て、避ける書体を列挙
+ui-refiner directions deal refine-directions --kind service --tone calm --lang ja   # 案ごとにヒーロー構成・地色・色の系統を割り当て、避ける書体を列挙
 ui-refiner directions refine-directions     # デザイン案（.html）を並べて比較し、1つ選ぶ
 ui-refiner directions record refine-directions --pick B                # 選んだ方針を記録（別のクライアントには別の方針）
 ui-refiner photos "dentist chair" --out assets/stand-in             # 実際の写真が届くまでの出典付き仮写真（Wikimedia Commons）
