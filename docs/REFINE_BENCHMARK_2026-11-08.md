@@ -479,3 +479,40 @@ Reading:
 - Calm went to every consumer-software page. The tone choice itself has no spread across the set.
 - The Japanese hiring page dropped the heavy face but still put a job grid in the hero; Claude called it crowded even at 27 pieces of text, under the `busy-shot` limit.
 - Per-page means are level with round 13 and still behind round 2 and the plain prompt.
+
+## Round 15: a dealt colour family per direction (same 8 pages)
+
+In round 14 the tone narrowed faces and grounds but left colour free, and three of eight pages took the same forest-green ground. The check only looked at button colour, so a green ground behind a yellow button counted as yellow.
+
+Changes:
+- `directions deal` deals each direction a colour family again: the hue of a brand ground, or of the accent on a white or paper page. Families used recently for other projects, ground or accent, are dealt last.
+- The colour a page reads as is its ground when the ground is a clear colour, otherwise its accent. `directions` warns when a mock leaves its family or repeats another project's.
+
+Cost: about $22.20 ($20.66 for the 8 refines at 43–72 turns each, about $1.50 for the Claude judges).
+
+- All 8 pages passed `keep check` and `directions verify`, and every page kept its dealt family: ink, brown, teal, red ground, magenta ground, navy, green and orange. `busy-shot` did not fire; the five product shots held 14–30 pieces of text.
+- Tones chosen: calm 4, technical 3, warm 1. Surfaces: white 5, red brand ground 1 (food bank), magenta brand ground 1 (Japanese hiring), paper 1 (Japanese dental).
+
+| Version | Mean rank, Claude / Gemini / Grok | Firsts of 24 | Set sameness, Claude / Gemini / Grok | Set rank of 8, Claude / Gemini / Grok |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 1 / 3* / 2 | 1 / 1* / 1 |
+| Human sites, set 2 | — | — | 2 / 2 / 2 | 4 / 6 / 2 |
+| Before | 4.9 / 4.9 / 5.0 | 0 | 9 / 9 / 8 | 8 / 7 / 7 |
+| Plain prompt | 2.1 / 2.3 / **1.4** | 12 | 8 / 10 / 9 | 6 / 8 / 8 |
+| Refine, round 2 | **1.8** / **1.8** / 3.0 | 8 | 8 / 7 / 6 | 7 / 5 / 4 |
+| Refine, round 13 | — | — | 4 / 1* / 5 | 3 / 3* / 3 |
+| Refine, round 14 | 2.5 / 2.5 / 3.3 | 3 | 7 / 5 / 8 | 5 / 4 / 6 |
+| Refine, round 15 | 3.8 / 3.6 / 2.4 | 1 | **4 / 3 / 7** | **2 / 2** / 5 |
+
+\* Gemini's notes for the round 13 sheet describe the human sites and its notes for human set 1 describe refined pages, so it likely swapped the two; the round 15 figures are not affected.
+
+Reading:
+- The colour deal did what it was aimed at. The set split into red, magenta, green, orange, brown, teal, navy and black; Claude and Gemini ranked round 15 the most varied refine set so far, second only to human set 1. Grok still saw one serif display face and "one saturated skin on white" across the set.
+- Per page it cost Claude and Gemini more than a rank. Dealt colours that did not fit the subject were the reason most often given:
+  - US fintech in brown with a quirky serif, the reading order reversed;
+  - the food bank's full red hero "feels heavy" (Claude 4th; Gemini and Grok 2nd and 3rd);
+  - the Japanese hiring page in magenta, "a bit heavy";
+  - Korean logistics in Black Han Sans, which two judges called hard to read. The technical tone does not exclude display faces.
+- The Japanese dental page came last for Claude and Gemini over a dated, cluttered treatment-room stand-in photo.
+- Grok went the other way (2.4, from 3.3), but its round 2 mean also moved from 1.9 to 3.0 between the two runs; single-run differences under about 0.6 are noise.
+- Next: deal the colour family within what fits the tone (no full red or magenta ground on a calm or warm page), and keep display faces off Korean and Japanese headings for every tone.
