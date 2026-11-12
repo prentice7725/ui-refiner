@@ -86,9 +86,20 @@ export function dealType(pairs,entries,project,{n=3,seed=0,kind,script='latin'}=
  return out.map(({id,voice,display,text})=>({id,voice,display,text}));
 }
 
-/** Accent hue families for n directions, distinct, avoiding families picked recently elsewhere; indigo last. */
+/**
+ * The colour a direction reads as: its ground when that is a clear colour, otherwise its accent. In benchmark round 14
+ * three pages used the same forest-green ground while their buttons were yellow or blue, so only the accent was checked
+ * and all three set judges named "deep forest green" as the shared habit.
+ */
+export function leadColour(d){
+ const bg=d?.bg;
+ if(bg&&!whiteish(bg)){const f=accentFamily(bg);const [r,g,b]=bg.map(v=>v/255),mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2,s=mx===mn?0:(mx-mn)/(1-Math.abs(2*l-1));if(f&&f!=='ink'&&s>=.2)return bg;}
+ return d?.accent??null;
+}
+
+/** Accent hue families for n directions, distinct, avoiding families picked recently elsewhere (ground or accent); indigo last. */
 export function dealAccents(families,entries,project,{n=3,seed=0}={}){
- const recent=others(entries,project).slice(-4).map(e=>accentFamily(e.accent)).filter(Boolean);
+ const recent=others(entries,project).slice(-4).flatMap(e=>[accentFamily(leadColour(e)),accentFamily(e.accent)]).filter(Boolean);
  const score=k=>(k==='indigo'?4:0)+(recent.includes(k)?2:0);
  return [...families].sort((x,y)=>score(x)-score(y)||hash(seed,x)-hash(seed,y)).slice(0,n);
 }
@@ -120,9 +131,10 @@ export function avoidFaces(pairs,entries,project,toneDef){
 }
 
 /**
- * Writes DEAL.json into the directions folder: per direction a hero structure and a surface, plus faces to avoid.
- * Type and accent are left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
- * winners were pages that pushed one strong face of their own choosing.
+ * Writes DEAL.json into the directions folder: per direction a hero structure, a surface and a colour family, plus
+ * faces to avoid. Type is left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
+ * winners were pages that pushed one strong face of their own choosing. The colour family is dealt again since round
+ * 14, where the tone left colour free and three of eight pages took the same forest green.
  */
 export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,tone,lang='en'}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
@@ -132,7 +144,10 @@ export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noP
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
  const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
- const deal={schemaVersion:4,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
+ const acc=dealAccents(Object.keys(lib.accents),entries,project,{n,seed});
+ // A brand ground needs a hue: swap ink away from the brand-surface direction.
+ const bi=surf.indexOf('brand'),inkAt=acc.indexOf('ink');if(bi>=0&&inkAt===bi){const j=acc.findIndex((f,k)=>k!==bi);[acc[bi],acc[j]]=[acc[j],acc[bi]];}
+ const deal={schemaVersion:5,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]},accent:{family:acc[i],brief:lib.accents[acc[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }
@@ -148,7 +163,8 @@ export function historyWarnings(items,entries,project,deal=null){
   const assigned=deal?.structures?.find(s=>s.label===d.label);
   if(assigned&&d.hero&&assigned.key!==d.hero)w.push({id:'deal-mismatch',a:d.label,c:assigned.key,d:d.hero});
   if(assigned?.type&&d.fonts?.length&&![assigned.type.display,assigned.type.text].some(f=>d.fonts.map(lc).includes(lc(f))))w.push({id:'deal-type',a:d.label,c:assigned.type.display+' + '+assigned.type.text,d:d.fonts.join(' + ')});
-  if(assigned?.accent&&d.accent&&accentFamily(d.accent)!==assigned.accent.family)w.push({id:'deal-accent',a:d.label,c:assigned.accent.family,d:accentFamily(d.accent)});
+  const lead=leadColour(d);
+  if(assigned?.accent&&lead&&accentFamily(lead)!==assigned.accent.family)w.push({id:'deal-accent',a:d.label,c:assigned.accent.family,d:accentFamily(d.accent)});
   const hero=prev.slice(0,3).find(e=>e.hero&&e.hero===d.hero);
   if(hero)w.push({id:'repeat-hero',a:d.label,c:d.hero,page:hero.page});
   const pair=x=>(x||[]).slice(0,2).join(' + ');
@@ -157,8 +173,8 @@ export function historyWarnings(items,entries,project,deal=null){
   const surf=d.bg&&!whiteish(d.bg)&&prev.slice(0,5).find(e=>close(e.bg,d.bg));
   if(surf)w.push({id:'repeat-surface',a:d.label,c:d.bg,page:surf.page});
  const hue=c=>{const [r,g,b]=c.map(v=>v/255),mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(!d)return null;const h=mx===r?((g-b)/d)%6:mx===g?(b-r)/d+2:(r-g)/d+4;return (h*60+360)%360;};
-  const ah=d.accent&&hue(d.accent),acc=ah!=null&&prev.slice(0,3).find(e=>{const eh=e.accent&&hue(e.accent);return eh!=null&&Math.min(Math.abs(eh-ah),360-Math.abs(eh-ah))<=18;});
-  if(acc)w.push({id:'repeat-accent',a:d.label,c:d.accent,page:acc.page});
+  const ah=lead&&hue(lead),acc=ah!=null&&prev.slice(0,3).find(e=>{const el=leadColour(e),eh=el&&hue(el);return eh!=null&&Math.min(Math.abs(eh-ah),360-Math.abs(eh-ah))<=18;});
+  if(acc)w.push({id:'repeat-accent',a:d.label,c:lead,page:acc.page});
  }
  return w;
 }

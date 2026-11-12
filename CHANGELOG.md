@@ -5,6 +5,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Changed
+- `directions deal` deals a colour family again, one per direction: the hue of a brand ground, or of the accent on a white or paper page. It skips families picked recently for other projects, counting a clear colour ground as well as the button colour, and `directions` warns when a mock leaves its family or repeats another project's. In benchmark round 14 the tone left colour free, three of eight pages took the same forest-green ground behind yellow or blue buttons, and all three set judges named the green as the shared habit.
 - `directions deal` deals a hero structure and a surface only, and lists faces to avoid (the overused ones and those picked recently for other projects). Type and accent are left to the agent, with one strong display face per direction. In benchmark round 11, three judges (Claude, Gemini, Grok) put the plain prompt or round 2, each pushing one strong look of its own, first in 21 of 24 page rankings. They called the dealt pairings "plain".
 - Refine guidance:
   - headlines come from a fact only this client has, not a category slogan;

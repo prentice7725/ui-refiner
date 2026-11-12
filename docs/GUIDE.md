@@ -16,7 +16,7 @@ npm link                                   # optional: makes `ui-refiner` availa
 ui-refiner scan your-site.example          # review a live page
 ui-refiner scan localhost:5173             # your dev server; run it again after edits to see what changed
 ui-refiner keep record index.html                                  # list links, forms and figures before a refine
-ui-refiner directions deal refine-directions --kind service --tone calm --lang en   # deal each mock a hero structure and a surface; list faces to avoid
+ui-refiner directions deal refine-directions --kind service --tone calm --lang en   # deal each mock a hero structure, a surface and a colour family; list faces to avoid
 ui-refiner directions refine-directions     # three design-direction mocks (.html) side by side, to pick one
 ui-refiner directions record refine-directions --pick B                # remember the pick so other clients get something else
 ui-refiner photos "dentist chair" --out assets/stand-in             # credited stand-in photos (Wikimedia Commons) until the real ones arrive
