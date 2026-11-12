@@ -67,9 +67,9 @@
   "indigo": "indigo or violet (230–290); the Tailwind default, dealt last"
  },
  "tones": {
-  "calm": {"brief": "quiet and steady: health, care, public services, money people worry about", "avoidVoices": ["condensed", "display", "mono", "handwritten"], "avoidFaces": ["Big Shoulders Display", "Bebas Neue", "Anton", "Archivo Black"]},
-  "warm": {"brief": "friendly and human: neighbourhood places, food, families, community", "avoidVoices": ["condensed", "display", "mono"], "avoidFaces": ["Big Shoulders Display", "Bebas Neue", "Anton", "Archivo Black"]},
-  "technical": {"brief": "precise and exact: tools for engineers, operations and analysts", "avoidVoices": ["handwritten", "rounded", "soft-serif"], "avoidFaces": []},
+  "calm": {"brief": "quiet and steady: health, care, public services, money people worry about", "avoidVoices": ["condensed", "display", "mono", "handwritten"], "avoidFaces": ["Big Shoulders Display", "Bebas Neue", "Anton", "Archivo Black"], "accents": ["blue", "teal", "green", "ink", "indigo"], "brandGround": ["blue", "teal", "green"]},
+  "warm": {"brief": "friendly and human: neighbourhood places, food, families, community", "avoidVoices": ["condensed", "display", "mono"], "avoidFaces": ["Big Shoulders Display", "Bebas Neue", "Anton", "Archivo Black"], "accents": ["orange", "amber", "red", "brown", "green", "teal"], "brandGround": ["orange", "amber", "green", "teal"]},
+  "technical": {"brief": "precise and exact: tools for engineers, operations and analysts", "avoidVoices": ["handwritten", "rounded", "soft-serif"], "avoidFaces": [], "accents": ["blue", "teal", "green", "orange", "amber", "ink", "indigo"], "brandGround": ["blue", "teal", "green", "orange"]},
   "bold": {"brief": "loud and confident: campaigns, youth brands, media, events", "avoidVoices": ["handwritten", "soft-serif"], "avoidFaces": []}
  },
  "surfaces": {

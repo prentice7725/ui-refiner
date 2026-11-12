@@ -111,6 +111,19 @@ test('deal: a brand ground counts as the colour, and repeats across projects are
  assert.deepEqual(w.map(x=>x.id),['deal-accent','repeat-accent'],'a green ground with a red button reads as green');
 });
 
+test('deal: colour families stay within what fits the tone', async () => {
+ const {toneColours}=await import('../src/refine-log.mjs');
+ const lib=JSON.parse(await fs.readFile(new URL('../data/type-pairs.json',import.meta.url),'utf8'));
+ for(const tone of ['calm','warm','technical'])for(let seed=0;seed<40;seed++){
+  const surf=['white','brand','white'],acc=toneColours(lib,lib.tones[tone],surf,[],'/p/a',{seed});
+  assert.equal(new Set(acc).size,3);
+  assert.ok(acc.every(f=>lib.tones[tone].accents.includes(f)),`${tone} keeps to its families`);
+  assert.ok(lib.tones[tone].brandGround.includes(acc[1]),`${tone} brand ground in a suitable family`);
+ }
+ assert.ok(!lib.tones.calm.brandGround.includes('red')&&!lib.tones.warm.brandGround.includes('pink'),'no full red or magenta ground on calm or warm pages');
+ for(let seed=0;seed<20;seed++)assert.notEqual(toneColours(lib,null,['brand','white','white'],[],'/p/a',{seed})[0],'ink','a brand ground needs a hue');
+});
+
 test('deal: the tone narrows surfaces and faces', async () => {
  const {dealSurfaces,dealDirections}=await import('../src/refine-log.mjs');
  for(let seed=0;seed<30;seed++)for(const tone of ['calm','warm'])assert.ok(!dealSurfaces(3,seed,{kind:'public',tone}).includes('dark'),'no dark ground on a calm or warm page');
