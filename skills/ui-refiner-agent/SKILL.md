@@ -29,9 +29,27 @@ Three jobs: **Build** a screen that looks chosen rather than generated, **Review
 
 Use this when the user wants a page they own made less generic, not just reviewed. Removing the tells is not the goal. A page that only lost its gradients and cards is plain, not designed. The goal is a page with a point of view that fits this content.
 
+First decide how much to change, from the scan score and the screenshots:
+- **20 or more** (most AI-made pages; 0–15% of human-made calibration sites): the full refine below, with three directions.
+- **8 to 19**: polish. Keep the structure, palette and type; fix the signals you confirmed and the craft list in step 4. Skip the directions step. Still run `keep record` before and `keep check` after.
+- **Under 8, with no confirmed signal**: say the page does not read as generated, list any craft fixes, and change nothing unless the user asks for a new direction.
+- A real brand (logo files, design tokens, a documented palette or typeface) moves a page one level down: polish it instead of replacing it, unless the user asks for a redesign.
+
 1. Scan and look at both screenshots. Write down what the page is for, its one primary action, and what must survive: every fact, price, name, link target, form field and legal text. Then record it: `ui-refiner keep record <page>` saves the link targets, forms, fields, contact links and figures, so the redesign can be checked against them. Brand assets survive only when the project really has them (logo files, design tokens, a documented palette or typeface). A palette or font that came with a generated page is not a brand, so you may change it.
 2. Explore three directions before touching the page:
-   - Write each as a one-line concept taken from the content ("a ledger you want to keep", "the clinic's front desk: hours and booking first"), never a style word like "minimal and elegant". Give each a type pairing (a display face plus a text face, and a named Japanese or Korean family on those pages), a palette and what carries the hero (the product, a photo, data or typography, never a gradient).
+   - Before the deal, decide the page's tone, one of four, from who visits and why:
+     - `calm`: health, care, public services, money people worry about;
+     - `warm`: neighbourhood places, food, families, community;
+     - `technical`: tools for engineers, operations and analysts;
+     - `bold`: campaigns, youth brands, media, events.
+     The tone is shared by all three directions; they differ inside it. It keeps the type and ground from fighting the subject: judges called condensed capitals on a black-and-red ground "harsh for a family dental practice", an ultra-heavy Japanese face (Dela Gothic One) hard to read on a hiring page, and a dark food-bank page "cold for a community food bank".
+   - Write each direction as five lines, taken from the content, never a style word like "minimal and elegant":
+     - direction: what the product or place is, in this client's words ("the clinic's front desk: hours and booking first");
+     - tone: the shared tone;
+     - world: where the look comes from, a real place, trade or object this client belongs to (a pharmacy counter, a freight yard board, a school notice); take the palette and the type's character from it;
+     - moment: the visitor's moment the first screen serves ("a parent checking tonight's hours on the way home");
+     - signature: the one element only this client would have, built from real content.
+     Then give each a type pairing (a display face plus a text face, and a named Japanese or Korean family on those pages), a palette from its world and what carries the hero (the product, a photo, data or typography, never a gradient).
    - Choose the type yourself, one strong face per direction, picked for this subject and pushed through the whole page: a confident display face at a clear size contrast, one family for every figure, body text 16px or more. In benchmark round 11, three judges (Claude, Gemini, Grok) put the pages that pushed one strong look of their own (a serif editorial or a heavy grotesk) first in 21 of 24 page rankings; the refined pages built from dealt pairings such as Work Sans or Hanken Grotesk were called "plain" and "clunky". Avoid the faces the deal lists: the overused ones (3 of 4 English pages used Bricolage Grotesque + Instrument Sans in the November 2026 benchmark) and those picked recently for other projects.
    - Write the headline from a fact only this client has: an hour, a condition, a number, a place, an origin story ("Orders in by 2 pm leave today", "No ID needed, ever"). A slogan that would fit any business in the category ("Healthy smiles for every member of the family", "Your team, in sync") was the judges' most common complaint against the refined pages.
    - The three must differ in at least three of: structure, typefaces, palette, what carries the hero.
@@ -43,7 +61,7 @@ Use this when the user wants a page they own made less generic, not just reviewe
      - `company`: large corporate sites;
      - `studio`: design and architecture practices;
      - `media`: news and magazines.
-     Then run `ui-refiner directions deal refine-directions --kind <kind> --lang <page language>`. A real brand surface overrides the dealt one.
+     Then run `ui-refiner directions deal refine-directions --kind <kind> --tone <tone> --lang <page language>`. The tone takes the dark ground away from calm and warm pages and adds the display faces that fight it (condensed, ultra-heavy, mono) to the faces to avoid. A real brand surface overrides the dealt one.
    - Photographs. Human-made sites open with a full-bleed photo a third of the time, and pages with no imagery read as generated. Use the client's real photos and product shots first. When there are none and the page kind usually leads with photos (`place`, `service`, `company`), fetch credited stand-ins: `ui-refiner photos "<plain subject>" --out <project>/assets/stand-in --lang <page language>`. It saves only openly licensed Wikimedia Commons files, with `credits.json`.
      - Open each saved photo and keep only those that show this kind of place or this work itself (a pantry shelf, a treatment room, a warehouse floor). An object any office has (a keyboard, a mouse, a handshake, a laptop) reads as stock: all three judges flagged one on the hiring page in round 11. Without a fitting photo, use none. Prefer photos without identifiable faces.
      - Mark every stand-in `data-stand-in` and give it a generic alt ("a dental chair"), never "our clinic" or a staff name.
@@ -56,13 +74,16 @@ Use this when the user wants a page they own made less generic, not just reviewe
    - Show something real on the first screen. On 138 human-made first screens, 66% had a photo or image over 30% of the screen and only 21% had under 10%. In benchmark rounds 9 and 10, six of eight refined pages had no image at all and read as wireframes next to the originals.
      - Places, services, clinics, shops and public bodies: use real photos, or credited stand-ins from `ui-refiner photos` until the real ones arrive. When you choose the direction yourself, prefer the photo direction.
      - Software, finance and logistics: show the product. Build a large, finished product screen in code (a real app view with this client's data, not a hairline table or a floating-card collage), mark its outer element `data-product-shot`, and give it at least a quarter of the first screen. Its text stays readable: 12px or more, 14px for anything the visitor should read. Removing the old phone mockup is not the fix; its shadows and floating badges were the tell, not the product. Do not wrap it in the dark dashboard template: a near-black or navy ground, rows of metric cards and a neon lime or electric blue accent. In round 12 all three judges called it a crypto or dev-tool look and ranked both Korean software pages 4th or 5th of 5; the deal no longer gives software pages a dark ground. Show the screen on the page's own white, brand or paper ground, in the client's colours, as a person would use it.
-     - `directions verify` fails a first screen with neither (image under 10% and no product shot of 25% or more), and one whose product shot is full of text under 12px.
-   - Build each as a quick mock of the first screen plus one content section in `refine-directions/a.html`, `b.html` and `c.html` inside the project; the scan's browser may not open files outside it. Start each file with `<!-- direction: concept | type: … | palette: … | signature: … -->`.
+     - Show one scene that proves the claim, not the whole app: one booked slot, one reviewed change, today's three late shipments. Of 21 refined product screens in rounds 11–13 and the unslop comparison, 19 held 17–35 pieces of text on the first screen; the two over 40, both hiring boards with five columns of cards, were the ones judges called crowded or dense.
+     - `directions verify` fails a first screen with neither (image under 10% and no product shot of 25% or more), one whose product shot is full of text under 12px, and one whose product shot holds more than 40 pieces of text.
+   - Build each as a quick mock of the first screen plus one content section in `refine-directions/a.html`, `b.html` and `c.html` inside the project; the scan's browser may not open files outside it. Start each file with `<!-- direction: … | tone: … | world: … | moment: … | type: … | palette: … | signature: … -->`.
    - Run `ui-refiner directions refine-directions`. It scans each mock and writes `DIRECTIONS.html` (screenshots side by side) and `DIRECTIONS.md`, with the measured surface, type and hero layout of each. It also reads the deal and the choice log. Redo a mock before you show anything when the sheet warns that it:
      - shares a surface, a type pair or a hero layout with another direction;
      - was not built in its dealt structure;
-     - repeats a choice made recently for another project.
+     - repeats a choice made recently for another project;
+     - lacks one of the five lines in its note.
      Also redo when all directions sit on off-white. Look at the screenshots yourself before you present them.
+   - Rename test, last: put a rival's name on each mock. If it still fits, it is not this client's direction yet. Push the world, the moment or the signature further before you show it.
    - **Let the user choose.** Present the three directions (concept, type, palette, signature element, what the scan found) with the path to `DIRECTIONS.html`, give your recommendation and one line on why, then stop and ask which one to apply. Mixing is allowed ("A's hero with B's palette"). Decide yourself only when the user said so or no person is in the loop (CI, a headless run); then say why the other two lost.
    - Once a direction is chosen, record it: `ui-refiner directions record refine-directions --pick B --page <short page name>`. Do this when you decided yourself, too. The log is per user, in `~/.ui-refiner/refine-log.json`. Pages of the same project may share a direction; other clients should not get it again.
    - After applying the direction, run `ui-refiner keep check <page>`. It fails when a link, form, field or figure went missing. It also lists figures that only the new page has. A benchmark refine rounded 409,847 users to 420,000 and 4.7 stars to 4.8. Restore every original figure; never round, update or invent one.

@@ -90,3 +90,17 @@ test('history: warns when a mock ignores its dealt type or accent', () => {
  assert.deepEqual(w.map(x=>x.id),['deal-type','deal-accent']);
  assert.deepEqual(historyWarnings([{label:'A',hero:'full-bleed',fonts:['work sans','zilla slab'],accent:[230,90,40]}],[],'/p/me',deal),[]);
 });
+
+test('deal: the tone narrows surfaces and faces', async () => {
+ const {dealSurfaces,dealDirections}=await import('../src/refine-log.mjs');
+ for(let seed=0;seed<30;seed++)for(const tone of ['calm','warm'])assert.ok(!dealSurfaces(3,seed,{kind:'public',tone}).includes('dark'),'no dark ground on a calm or warm page');
+ assert.ok(Array.from({length:30},(_,seed)=>dealSurfaces(3,seed,{kind:'media',tone:'bold'})).flat().includes('dark'));
+ assert.ok(!Array.from({length:30},(_,seed)=>dealSurfaces(3,seed,{kind:'software',tone:'technical'})).flat().includes('dark'),'software stays light');
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-tone-'));
+ const d=await dealDirections(path.join(dir,'dirs'),{log:path.join(dir,'log.json'),seed:3,kind:'service',tone:'calm',lang:'ja'});
+ assert.equal(d.schemaVersion,4);assert.equal(d.tone,'calm');assert.ok(d.toneBrief);
+ for(const f of ['Dela Gothic One','Black Han Sans','Barlow Condensed','Big Shoulders Display'])assert.ok(d.avoidFaces.includes(f),f);
+ const t=await dealDirections(path.join(dir,'dirs2'),{log:path.join(dir,'log.json'),seed:3,tone:'technical'});
+ assert.ok(!t.avoidFaces.includes('Barlow Condensed')&&t.avoidFaces.includes('Klee One'));
+ await assert.rejects(dealDirections(path.join(dir,'x'),{tone:'cosy'}),/--tone must be one of/);
+});
