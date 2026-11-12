@@ -120,7 +120,10 @@ export function dealAccents(families,entries,project,{n=3,seed=0,weights}={}){
 }
 
 /**
- * Surfaces: plain white for most, as on 82% of human sites; one direction gets a dark, brand or paper ground.
+ * Surfaces: plain white for most; one direction gets a paper, dark or brand ground, mostly paper. Measured on 548
+ * Korean, Japanese and English sites (data/colour-reference), only about 2% of first screens use a full-colour ground
+ * and 5% a dark one; the rest are white or a faint tint (58%) or a photo (35%). So a brand ground is dealt on about
+ * one page in twenty and a dark one on about one in twelve, where the tone allows it.
  * Software pages get no dark ground: in benchmark round 12 all three judges read the dark dashboard with a neon
  * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.
  * Calm and warm pages get no dark ground either.
@@ -149,8 +152,7 @@ export function toneColours(lib,toneDef,surf,entries,project,{n=3,seed=0,weights
 export function dealSurfaces(n=3,seed=0,{kind,tone}={}){
  // A dark ground also needs a tone that carries it: in round 13 a dark food-bank page read "cold for a community food bank".
  const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold');
- const pool=dark?['dark','brand','paper']:['brand','paper'];
- const odd=pool[hash(seed,'surface')%pool.length],at=hash(seed,'slot')%n;
+ const r=hash(seed,'surface')%20,odd=r<3?'brand':dark&&r<8?'dark':'paper',at=hash(seed,'slot')%n;
  return Array.from({length:n},(_,i)=>i===at?odd:'white');
 }
 
