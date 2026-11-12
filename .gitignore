@@ -3,3 +3,4 @@ artifacts/
 *.log
 .DS_Store
 .vendor-sync-*/
+data/colour-reference/sites.jsonl

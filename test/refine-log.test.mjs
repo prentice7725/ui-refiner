@@ -124,6 +124,19 @@ test('deal: colour families stay within what fits the tone', async () => {
  for(let seed=0;seed<20;seed++)assert.notEqual(toneColours(lib,null,['brand','white','white'],[],'/p/a',{seed})[0],'ink','a brand ground needs a hue');
 });
 
+test('deal: colour families lean towards what human sites of the kind use', async () => {
+ const {dealAccents,humanColours}=await import('../src/refine-log.mjs');
+ const fams=['blue','teal','green','brown'],weights={blue:.5,teal:.2,green:.1};
+ const count=w=>{const c={};for(let seed=0;seed<400;seed++){const f=dealAccents(fams,[],'/p/a',{n:1,seed,weights:w})[0];c[f]=(c[f]||0)+1;}return c;};
+ const flat=count(null),lean=count(weights);
+ assert.ok(lean.blue>flat.blue&&(lean.brown||0)<flat.brown,'common families come up more, unused ones less');
+ assert.ok((lean.brown||0)>0,'a family human sites rarely use still comes up now and then');
+ const recent=[{project:'/p/b',accent:[30,90,200]}];
+ for(let seed=0;seed<20;seed++)assert.notEqual(dealAccents(fams,recent,'/p/a',{n:1,seed,weights})[0],'blue','a family used recently still waits its turn');
+ const ko=await humanColours('software','ko'),any=await humanColours('software');
+ assert.ok(ko&&any&&ko!==any,'Korean pages use the Korean figures when enough sites were measured');
+});
+
 test('deal: the tone narrows surfaces and faces', async () => {
  const {dealSurfaces,dealDirections}=await import('../src/refine-log.mjs');
  for(let seed=0;seed<30;seed++)for(const tone of ['calm','warm'])assert.ok(!dealSurfaces(3,seed,{kind:'public',tone}).includes('dark'),'no dark ground on a calm or warm page');

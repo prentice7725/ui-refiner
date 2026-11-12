@@ -56,6 +56,18 @@ const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','f
 
 /** Share of each hero structure on human-made sites (data/hero-reference/human.json), overall or for one page kind. */
 export async function humanHeroShare(kind){try{const j=JSON.parse(await fs.readFile(new URL('../data/hero-reference/human.json',import.meta.url),'utf8'));return (kind&&j.byKind?.[kind]?.share)||j.share;}catch{return null;}}
+/**
+ * Accent families human sites of this kind use (data/colour-reference/human.json, measured on 548 Korean, Japanese
+ * and English sites in November 2026), as weights for the colour deal. Korean and Japanese pages use their own
+ * country's figures when 15 or more sites of that kind were measured.
+ */
+export async function humanColours(kind,lang){
+ try{
+  const j=JSON.parse(await fs.readFile(new URL('../data/colour-reference/human.json',import.meta.url),'utf8'));
+  const c=lang==='ko'?'KR':lang==='ja'?'JP':null,local=c&&kind&&j.byKind?.[`${kind}/${c}`];
+  return ((local?.sites>=15&&local)||(kind&&j.byKind?.[kind])||(c&&j.byCountry?.[c])||j.all).accent;
+ }catch{return null;}
+}
 export const PAGE_KINDS=['software','service','place','public','company','studio','media'];
 /** Page character, chosen before the deal; it narrows the surfaces and faces (data/type-pairs.json "tones"). */
 export const PAGE_TONES=['calm','warm','technical','bold'];
@@ -98,10 +110,13 @@ export function leadColour(d){
 }
 
 /** Accent hue families for n directions, distinct, avoiding families picked recently elsewhere (ground or accent); indigo last. */
-export function dealAccents(families,entries,project,{n=3,seed=0}={}){
+export function dealAccents(families,entries,project,{n=3,seed=0,weights}={}){
  const recent=others(entries,project).slice(-4).flatMap(e=>[accentFamily(leadColour(e)),accentFamily(e.accent)]).filter(Boolean);
  const score=k=>(k==='indigo'?4:0)+(recent.includes(k)?2:0);
- return [...families].sort((x,y)=>score(x)-score(y)||hash(seed,x)-hash(seed,y)).slice(0,n);
+ // Within the same penalty, families human sites of the kind use more often come first more often (a weighted draw:
+ // u^(1/w)). The square root and the floor keep rarer families in play, so a set does not all go blue.
+ const draw=k=>weights?((hash(seed,k)+1)/998)**(1/(Math.sqrt(weights[k]||0)+.15)):1-hash(seed,k)/997;
+ return [...families].sort((x,y)=>score(x)-score(y)||draw(y)-draw(x)).slice(0,n);
 }
 
 /**
@@ -116,16 +131,16 @@ export function dealAccents(families,entries,project,{n=3,seed=0}={}){
  * could be dealt: a budgeting app came out brown, and a full red food-bank hero and a magenta hiring page read heavy,
  * so per-page ranks fell by more than one place for Claude and Gemini.
  */
-export function toneColours(lib,toneDef,surf,entries,project,{n=3,seed=0}={}){
+export function toneColours(lib,toneDef,surf,entries,project,{n=3,seed=0,weights}={}){
  const all=Object.keys(lib.accents),pool=toneDef?.accents?.length?toneDef.accents.filter(f=>all.includes(f)):all;
- const acc=dealAccents(pool,entries,project,{n,seed});
+ const acc=dealAccents(pool,entries,project,{n,seed,weights});
  const bi=surf.indexOf('brand');
  if(bi>=0){
   const ground=(toneDef?.brandGround??pool).filter(f=>f!=='ink');
   if(!ground.includes(acc[bi])){
    const j=acc.findIndex(f=>ground.includes(f));
    if(j>=0)[acc[bi],acc[j]]=[acc[j],acc[bi]];
-   else acc[bi]=dealAccents(ground.filter(f=>!acc.includes(f)),entries,project,{n:1,seed})[0]??acc[bi];
+   else acc[bi]=dealAccents(ground.filter(f=>!acc.includes(f)),entries,project,{n:1,seed,weights})[0]??acc[bi];
   }
  }
  return acc;
@@ -157,7 +172,7 @@ export function avoidFaces(pairs,entries,project,toneDef){
  * winners were pages that pushed one strong face of their own choosing. The colour family is dealt again since round
  * 14, where the tone left colour free and three of eight pages took the same forest green.
  */
-export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,tone,lang='en'}={}){
+export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en'}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
  if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
@@ -165,7 +180,7 @@ export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noP
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
  const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
- const acc=toneColours(lib,toneDef,surf,entries,project,{n,seed});
+ const acc=toneColours(lib,toneDef,surf,entries,project,{n,seed,weights:colours===undefined?await humanColours(kind,lang):colours});
  const deal={schemaVersion:5,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]},accent:{family:acc[i],brief:lib.accents[acc[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
