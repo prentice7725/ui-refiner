@@ -116,6 +116,7 @@ try{
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(r.drift.length?`[DRIFT] ${r.label}: ${r.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}`:`[VERIFY] ${r.label}: hero ${r.applied.hero}, surface and type kept`);
     if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim, not dwarfed by other text, the main action, and a photo or a large product screen showing one readable scene`);
+    if(r.habits?.includes('stat-strip'))console.log('[HABIT] stat-strip: a row of big figures side by side. In benchmark round 16 all three set judges named it as a habit shared across unrelated clients; keep a figure only where it is the client’s point, as a sentence, a table or a timetable');
     process.exitCode=r.drift.length||r.problems?.length?1:0;
   }
   else if(command==='directions'&&args._.length===2){

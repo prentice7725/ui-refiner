@@ -171,6 +171,16 @@ export function collectAiTells(){
   // How busy the product screen is: text pieces shown inside it on the first screen.
   const shotText=shots.flatMap(el=>[el,...el.querySelectorAll('*')]).filter(el=>own(el)&&visible(el)&&inFold(el)).length;
   return {fold,media:+media.toFixed(2),shot:+shot.toFixed(2),shotSmall,shotText,claim:!!claim,claimSize,maxText:big,claimRatio:claim&&big?+(claimSize/big).toFixed(2):null,claimText:claim?(claim.innerText||'').trim().slice(0,80):null,action:!!action,actionText:action?(action.innerText||'').trim().slice(0,40):null};})();
+ // Rows of three or more big figures side by side (the "stat strip"). In benchmark round 16 all three set judges named the
+ // four-number strip as a habit shared across unrelated clients.
+ const statStrips=(()=>{const base=parseFloat(css(document.body).fontSize)||16,fig=/^[^\p{L}\d\s]{0,2}\d[\d,.:]*\s*[\p{L}%+]{0,4}$/u;
+  const ownText=el=>[...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').replace(/\s+/g,' ').trim();
+  const figs=[...document.querySelectorAll('body *')].slice(0,4000).filter(el=>{const t=ownText(el);return t&&t.length<=10&&fig.test(t)&&visible(el)&&parseFloat(css(el).fontSize)>=base*1.6;});
+  const rows=new Set();
+  for(const f of figs)for(let a=f,i=0;a&&a.parentElement&&i<4;a=a.parentElement,i++){const kids=[...a.parentElement.children].filter(visible);if(kids.length<3||kids.length>6)continue;
+   // A stat cell is a figure and a short label; price plans (tall cards with lists and buttons) do not count.
+   const cells=kids.filter(k=>figs.some(x=>k.contains(x))&&k.getBoundingClientRect().height<=200&&(k.innerText||'').trim().length<=90&&!k.querySelector('a[href],button,li'));if(cells.length<3)continue;const t0=cells[0].getBoundingClientRect().top;if(cells.filter(k=>Math.abs(k.getBoundingClientRect().top-t0)<=12).length<3)continue;rows.add(a.parentElement);break;}
+  const list=[...rows].filter(r=>![...rows].some(o=>o!==r&&r.contains(o)));return {count:list.length,targets:sample(list)};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
@@ -189,7 +199,7 @@ export function collectAiTells(){
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   hero,
-  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,firstScreen,
+  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,firstScreen,statStrips,
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
   editorial:{tracked:tracked.length,numbered:numbered.length,headings:uniqueHeads.length,periodHeadings:periodHeads.length,serifDisplay:bigHeads.length?+(bigHeads.filter(isSerif).length/bigHeads.length).toFixed(2):0,paper:!!rootBg&&(([r,g,b])=>r>=g&&g>=b&&r-b>=6&&r-b<=45&&b>=195)(rootBg),targets:sample([...periodHeads,...tracked,...numbered])},
   text:text.slice(0,20000),labels:labels.slice(0,200)

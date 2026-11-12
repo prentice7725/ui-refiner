@@ -72,7 +72,7 @@ test('deal: type pairings by voice and kind, accents by family, one non-white su
  for(let seed=0;seed<30;seed++)assert.ok(!dealSurfaces(3,seed,{kind:'software'}).includes('dark'),'software pages get no dark ground');
  assert.ok(Array.from({length:30},(_,seed)=>dealSurfaces(3,seed)).flat().includes('dark'));
  const many=Array.from({length:600},(_,seed)=>dealSurfaces(3,seed)).flat(),share=k=>many.filter(s=>s===k).length/many.length;
- assert.ok(share('brand')>0&&share('brand')<.08&&share('dark')<.12&&share('paper')>share('brand')+share('dark'),'full-colour grounds stay rare, as on human sites');
+ assert.ok(share('brand')>0&&share('brand')<.08&&share('dark')<.12&&share('paper')<.06&&share('image')>share('dark')&&share('image')>share('brand')+share('paper'),'full-colour and cream grounds stay rare; the odd direction is mostly a white page carried by a photo');
  await assert.rejects(dealDirections(path.join(os.tmpdir(),'uir-kind'),{kind:'bank'}),/--kind must be one of/);
 });
 
