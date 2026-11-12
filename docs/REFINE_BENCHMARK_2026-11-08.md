@@ -436,3 +436,46 @@ Reading:
   - the Japanese hiring page picked an ultra-heavy display face (Dela Gothic One) that two judges said hurt reading in Japanese;
   - the US fintech headline ran to four lines.
 - Round 12's own means moved from 2.1–2.9 to 2.8–2.9 between the two runs, with the same pages and a different line-up. Single-run differences under about 0.6 are noise; per-page swings like the Korean ones above are the more reliable signal.
+
+## Round 14: tone before the deal, five-line directions, one-scene product shots (same 8 pages)
+
+Round 13 lost pages on choices the deal did not touch: a dark ground on the food bank, an ultra-heavy face on the Japanese hiring page, and (in the unslop comparison) harsh condensed capitals on the family dental page. This round borrowed the direction-setting idea from [unslop](REFINE_BENCHMARK_UNSLOP_2026-11-11_KO.md).
+
+Changes:
+- The agent picks a page tone (calm, warm, technical, bold) before the deal. `directions deal --tone` narrows surfaces and faces: calm and warm pages get no dark ground and avoid condensed, display and mono voices.
+- Each direction is written as five lines: direction, tone, world, moment, signature. `directions compare` warns when a line is missing.
+- A new first-screen check, `busy-shot`, flags a product screen with more than 40 pieces of text.
+- Polish levels by scan score, and a rename test at the end.
+
+Cost: about $23.50 ($21.97 for the 8 refines at 53–82 turns each, about $1.50 for the Claude judges).
+
+- All 8 pages passed `keep check` and `directions verify`. Every direction note had all five lines. `busy-shot` did not fire; the five product shots held 16–29 pieces of text.
+- Tones chosen: calm 5 (all three consumer-software pages and both dental pages), warm 2 (food bank, Japanese hiring), technical 1 (Korean logistics), bold 0.
+- Surfaces: white or paper 5, forest-green brand ground 3 (US fintech, Japanese hiring, Korean fintech).
+
+| Version | Mean rank, Claude / Gemini / Grok | Firsts of 24 | Set sameness, Claude / Gemini / Grok | Set rank of 8, Claude / Gemini / Grok |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 1 / 2 | 1 / 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 / 2 | 2 / 5 / 2 |
+| Before | 5.0 / 4.9 / 5.0 | 0 | 10 / 9 / 8 | 8 / 7 / 7 |
+| Plain prompt | 2.1 / 2.1 / 2.8 | 5 | 9 / 10 / 9 | 7 / 8 / 8 |
+| Refine, round 2 | **2.0** / **1.6** / **1.9** | 12 | 8 / 8 / 7 | 6 / 6 / 5 |
+| Refine, round 12 | — | — | 4 / 6 / 6 | 3 / 4 / 4 |
+| Refine, round 13 | 3.0 / 3.4 / 2.6 | 3 | 5 / 4 / 5 | 4 / **2** / **3** |
+| Refine, round 14 | 2.9 / 3.0 / 2.8 | 4 | 6 / 5 / 8 | 5 / 3 / 6 |
+
+Round 13 losses, rank of 5, Claude / Gemini / Grok:
+
+| Page | Round 13 (this run) | Round 14 |
+|---|---|---|
+| US food bank | 4 / 4 / 3 | **1 / 1 / 2** |
+| US dental | 4 / 4 / 1 | 1 / 3 / 4 |
+| Japanese hiring | 3 / 4 / 2 | 4 / 2 / 4 |
+| US fintech | 4 / 4 / 4 | 3 / 3 / 3 |
+
+Reading:
+- The tone fixed the food bank. Warm, with photos of the pantry and an open-or-closed strip, it ranked first for Claude and Gemini ("warm, grounded … authentic photography").
+- The tone did not lift the set. With five of eight pages calm and three on the same forest green, the set judges named the green as the shared habit ("deep forest green as the main color on most sites"; Grok: "every page is either white or the same forest green"). Grok rated the set 8 of 10 for sameness, against 5 for round 13. The tone narrows faces and grounds but leaves the accent hue free, and the agent reached for the same calm green each time.
+- Calm went to every consumer-software page. The tone choice itself has no spread across the set.
+- The Japanese hiring page dropped the heavy face but still put a job grid in the hero; Claude called it crowded even at 27 pieces of text, under the `busy-shot` limit.
+- Per-page means are level with round 13 and still behind round 2 and the plain prompt.
