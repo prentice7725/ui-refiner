@@ -516,3 +516,38 @@ Reading:
 - The Japanese dental page came last for Claude and Gemini over a dated, cluttered treatment-room stand-in photo.
 - Grok went the other way (2.4, from 3.3), but its round 2 mean also moved from 1.9 to 3.0 between the two runs; single-run differences under about 0.6 are noise.
 - Next: deal the colour family within what fits the tone (no full red or magenta ground on a calm or warm page), and keep display faces off Korean and Japanese headings for every tone.
+
+## Round 16: colour weighted by human sites, rare brand and dark grounds (same 8 pages)
+
+Before this round, colour was measured on 548 human first screens (189 Korean, 320 Japanese, 39 English; `data/colour-reference`). Only about 2% use a full-colour ground and 5% a dark one; 58% are white or faintly tinted and 35% open on a photo. Blue is the most common accent, and a quarter of the sites use no clear accent hue.
+
+Changes since round 15:
+- The colour family is dealt only among those that fit the tone, and a brand ground only in a hue that carries one (no red or magenta ground on a calm or warm page).
+- Within those, the deal leans towards the families sites of the same kind and country use.
+- A brand ground is dealt on about one page in twenty and a dark one on about one in twelve. The odd direction is mostly a paper ground.
+
+Cost: about $21.90 ($20.41 for the 8 refines at 41–73 turns each, about $1.50 for the Claude judges).
+
+- 7 of 8 pages passed `keep check` and `directions verify` and kept their dealt family. The US dental page ran without a deal: the agent wrote no directions folder.
+- Tones chosen: calm 6, technical 1, warm 1. Built surfaces: white 5, paper or tint 3 (US product, US fintech, Korean fintech). No brand or dark ground. Accents: ink 3, teal, green, blue, orange, and one page without a dealt family.
+- The paper direction was picked on 3 of the 7 deals although it was one of three directions in each.
+
+| Version | Mean rank, Claude / Gemini / Grok | Firsts of 24 | Set sameness, Claude / Gemini / Grok | Set rank of 8, Claude / Gemini / Grok |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 1 / 2 | 1 / 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 1 / 3 | 2 / 3 / 5 |
+| Before | 4.8 / 4.8 / 5.0 | 0 | 9 / 9 / 8 | 8 / 7 / 7 |
+| Plain prompt | 2.1 / 2.4 / **1.6** | 10 | 9 / 10 / 9 | 7 / 8 / 8 |
+| Refine, round 2 | **1.5** / **1.4** / 2.4 | 14 | 8 / 8 / 7 | 6 / 6 / 6 |
+| Refine, round 14 | — | — | 7 / 8 / 6 | 5 / 5 / 4 |
+| Refine, round 15 | 3.1 / 3.6 / 2.9 | 0 | **4 / 4 / 4** | **3 / 2 / 2** |
+| Refine, round 16 | 3.5 / 2.9 / 3.1 | 0 | 5 / 7 / 5 | 4 / 4 / 3 |
+
+Reading:
+- Per page, round 16 is level with round 15 (3.2 against 3.2, mean of the three judges in this run). The colour complaints of round 15 are gone: no judge mentioned a heavy or off-subject colour. What lost places now:
+  - dim or dated stand-in photos (US dental, Japanese dental again, the food-bank shelves);
+  - a repeated four-number stat strip and a "muted single-tone" page (US fintech, Japanese hiring);
+  - on Korean fintech, the transaction table to the left of a right-aligned headline, which split the reading order.
+- As a set, round 16 reads more alike than round 15 (sameness 5 / 7 / 5 against 4 / 4 / 4). All three set judges named the same habits: a warm off-white or cream body, a near-monochrome palette with black buttons, and the four-number stat strip.
+- The cream is the cause, not the measured colours. Taking brand grounds away left paper as the usual odd surface, and agents chose it more often than it was dealt. But on the measured human sites, 87% of the light first screens are mostly pure white, and only 2% have a warm cream body. Cream is the plain prompt's default: it turns all eight pages cream.
+- Next: deal the odd direction as white with a photo or product image instead of paper, keep paper rare, and flag a repeated four-number stat strip.
