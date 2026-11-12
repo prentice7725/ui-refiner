@@ -110,6 +110,27 @@ export function dealAccents(families,entries,project,{n=3,seed=0}={}){
  * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.
  * Calm and warm pages get no dark ground either.
  */
+/**
+ * Colour families for n directions, within what fits the tone (data/type-pairs.json tones.*.accents), and a brand
+ * ground only in a family that suits a full-colour ground (tones.*.brandGround). In benchmark round 15 any family
+ * could be dealt: a budgeting app came out brown, and a full red food-bank hero and a magenta hiring page read heavy,
+ * so per-page ranks fell by more than one place for Claude and Gemini.
+ */
+export function toneColours(lib,toneDef,surf,entries,project,{n=3,seed=0}={}){
+ const all=Object.keys(lib.accents),pool=toneDef?.accents?.length?toneDef.accents.filter(f=>all.includes(f)):all;
+ const acc=dealAccents(pool,entries,project,{n,seed});
+ const bi=surf.indexOf('brand');
+ if(bi>=0){
+  const ground=(toneDef?.brandGround??pool).filter(f=>f!=='ink');
+  if(!ground.includes(acc[bi])){
+   const j=acc.findIndex(f=>ground.includes(f));
+   if(j>=0)[acc[bi],acc[j]]=[acc[j],acc[bi]];
+   else acc[bi]=dealAccents(ground.filter(f=>!acc.includes(f)),entries,project,{n:1,seed})[0]??acc[bi];
+  }
+ }
+ return acc;
+}
+
 export function dealSurfaces(n=3,seed=0,{kind,tone}={}){
  // A dark ground also needs a tone that carries it: in round 13 a dark food-bank page read "cold for a community food bank".
  const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold');
@@ -144,9 +165,7 @@ export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noP
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
  const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
- const acc=dealAccents(Object.keys(lib.accents),entries,project,{n,seed});
- // A brand ground needs a hue: swap ink away from the brand-surface direction.
- const bi=surf.indexOf('brand'),inkAt=acc.indexOf('ink');if(bi>=0&&inkAt===bi){const j=acc.findIndex((f,k)=>k!==bi);[acc[bi],acc[j]]=[acc[j],acc[bi]];}
+ const acc=toneColours(lib,toneDef,surf,entries,project,{n,seed});
  const deal={schemaVersion:5,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]},accent:{family:acc[i],brief:lib.accents[acc[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
