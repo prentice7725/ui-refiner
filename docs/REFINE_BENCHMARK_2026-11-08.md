@@ -551,3 +551,39 @@ Reading:
 - As a set, round 16 reads more alike than round 15 (sameness 5 / 7 / 5 against 4 / 4 / 4). All three set judges named the same habits: a warm off-white or cream body, a near-monochrome palette with black buttons, and the four-number stat strip.
 - The cream is the cause, not the measured colours. Taking brand grounds away left paper as the usual odd surface, and agents chose it more often than it was dealt. But on the measured human sites, 87% of the light first screens are mostly pure white, and only 2% have a warm cream body. Cream is the plain prompt's default: it turns all eight pages cream.
 - Next: deal the odd direction as white with a photo or product image instead of paper, keep paper rare, and flag a repeated four-number stat strip.
+
+## Round 17: white with a photo instead of paper, stat strips flagged (same 8 pages)
+
+Changes since round 16:
+- The odd direction is mostly a pure white page carried by a photo or a product screen (new surface `image`); paper comes up on about one page in thirty.
+- The scan measures strips of big figures side by side. The directions sheet and `directions verify` flag them as `stat-strip`; verify does not fail on it.
+
+Cost: about $21 ($19.47 for the 8 refines at 47–76 turns each, about $1.50 for the Claude judges).
+
+- 6 of 8 pages ran the deal and kept their dealt family. The US dental page skipped the deal again, and so did the food bank.
+- The `image` direction was picked on 2 of 6 deals (US product, Japanese dental); paper on 1 (Korean fintech).
+- Built surfaces: pure white 7, cream 1 (round 16: white 5, cream or tint 3).
+- Stat strips on the final pages: 0 of 8 (round 16: 4 of 8).
+
+| Version | Mean rank, Claude / Gemini / Grok | Firsts of 24 | Set sameness, Claude / Gemini / Grok | Set rank of 8, Claude / Gemini / Grok |
+|---|---:|---:|---:|---:|
+| Human sites, set 1 | — | — | 2 / 1 / 2 | 1 / 1 / 1 |
+| Human sites, set 2 | — | — | 2 / 2 / 3 | 5 / 5 / 2 |
+| Before | 4.9 / 4.8 / 5.0 | 0 | 9 / 10 / 9 | 8 / 8 / 8 |
+| Plain prompt | 2.5 / 2.3 / 2.0 | 9 | 8 / 9 / 8 | 7 / 7 / 7 |
+| Refine, round 2 | **1.4** / **1.5** / 2.5 | 12 | 8 / 9 / 7 | 6 / 6 / 6 |
+| Refine, round 15 | — | — | **4 / 5 / 4** | **2 / 2 / 3** |
+| Refine, round 16 | 3.3 / 3.5 / 3.0 | 0 | 5 / 8 / 6 | 3 / 4 / 5 |
+| Refine, round 17 | 3.0 / 3.0 / **2.5** | 3 | 6 / 7 / 5 | 4 / 3 / 4 |
+
+Reading:
+- Per page, round 17 is the best refine round since round 14 in this run: 2.8 against 3.3 for round 16 (mean of the three judges). Grok put round 17 first on three pages (food bank, Japanese hiring, Korean fintech); Claude and Gemini put the Korean logistics page second, behind the plain prompt only.
+- The two habits aimed at are gone: no stat strip on any final page, and seven of eight pages on pure white.
+- The set is not more varied. Judges now name a different shared habit:
+  - white pages with thin 1px hairline rules everywhere;
+  - a schedule, hours table or ledger as the hero element on most pages;
+  - the same grotesk (Claude) or serif-and-sans pairing (Gemini, Grok);
+  - green buttons for unrelated clients (Claude).
+- Two consumer fintech pages dealt an ink accent were called "monochrome", "wireframe-like" and "more like a literary newsletter than a 20s finance app". Ink is common on human sites (a quarter), but those are mostly studios and companies, not consumer apps.
+- Lost places: the operatory photo on the US dental hero again ("reads as clinical equipment"), Western stock photos on the Japanese dental page, a reversed hero column order on two software pages.
+- Round 15, with dealt full-colour grounds, is still the most varied refine set for all three judges. Each fix since then has removed one shared habit, and the agent has filled the gap with the next most comfortable one.
