@@ -181,6 +181,26 @@ export function collectAiTells(){
    // A stat cell is a figure and a short label; price plans (tall cards with lists and buttons) do not count.
    const cells=kids.filter(k=>figs.some(x=>k.contains(x))&&k.getBoundingClientRect().height<=200&&(k.innerText||'').trim().length<=90&&!k.querySelector('a[href],button,li'));if(cells.length<3)continue;const t0=cells[0].getBoundingClientRect().top;if(cells.filter(k=>Math.abs(k.getBoundingClientRect().top-t0)<=12).length<3)continue;rows.add(a.parentElement);break;}
   const list=[...rows].filter(r=>![...rows].some(o=>o!==r&&r.contains(o)));return {count:list.length,targets:sample(list)};})();
+ // Design tokens of the page, so the site's other pages can keep the same design (ui-refiner system).
+ const system=(()=>{const fam=el=>el?(css(el).fontFamily||'').split(',')[0].replace(/["']/g,'').trim().toLowerCase():null;
+  const first=s=>[...document.querySelectorAll(s)].find(visible);
+  // Body text: the paragraph style that carries the most characters, so one large quote or lead does not count.
+  const ps=[...document.querySelectorAll('p,li,dd,td')].filter(el=>visible(el)&&!el.closest('nav,header,footer')),byStyle=new Map();
+  for(const el of ps){const k=css(el).fontFamily+'|'+css(el).fontSize;const e=byStyle.get(k)||{el,n:0};e.n+=(el.innerText||'').trim().length;byStyle.set(k,e);}
+  const h1=first('h1'),h2=first('h2'),h3=first('h3'),p=[...byStyle.values()].sort((a,b)=>b.n-a.n)[0]?.el;
+  const px=el=>el?Math.round(parseFloat(css(el).fontSize)):null,wt=el=>el?Number(css(el).fontWeight):null,col=el=>{const c=el&&rgba(css(el).color);return c?c.slice(0,3):null;};
+  const btn=[...document.querySelectorAll('a[href],button,input[type=submit]')].filter(el=>visible(el)&&!el.closest('nav')).find(el=>{const b=rgba(css(el).backgroundColor);return b&&b[3]>.5&&(el.innerText||el.value||'').trim().length>=2;});
+  const bs=btn&&css(btn);
+  const button=btn?{bg:rgba(bs.backgroundColor).slice(0,3),color:col(btn),radius:Math.round(parseFloat(bs.borderTopLeftRadius)||0),weight:Number(bs.fontWeight),height:Math.round(btn.getBoundingClientRect().height)}:null;
+  // The radius most boxed containers (cards, panels) use.
+  const rad=new Map();for(const el of els){if(!boxy(el))continue;const r=Math.round(parseFloat(css(el).borderTopLeftRadius)||0);rad.set(r,(rad.get(r)||0)+1);}
+  const radius=[...rad].sort((a,b)=>b[1]-a[1])[0]?.[0]??null;
+  const hairlines=els.filter(el=>{const s=css(el);return ['Top','Bottom'].some(k=>{const w=parseFloat(s['border'+k+'Width']);return w>0&&w<=1.5&&s['border'+k+'Style']!=='none';});}).length;
+  // Content width: the most common width of centred containers.
+  const widths=new Map();for(const el of els){const s=css(el),ml=parseFloat(s.marginLeft);if(ml>8&&Math.abs(ml-parseFloat(s.marginRight))<=1){const w=Math.round(el.getBoundingClientRect().width/10)*10;if(w>=480)widths.set(w,(widths.get(w)||0)+1);}}
+  const content=[...widths].sort((a,b)=>b[1]-a[1])[0]?.[0]??null;
+  const photos=[...document.querySelectorAll('img,picture,video')].filter(el=>visible(el)&&!el.closest('picture:not(:scope)')&&el.getBoundingClientRect().width>=300).length;
+  return {photos,fonts:{display:fam(h1),heading:fam(h2||h1),body:fam(p||document.body)},sizes:{h1:px(h1),h2:px(h2),h3:px(h3),body:px(p)},weights:{h1:wt(h1),h2:wt(h2)},colours:{text:col(p||document.body),heading:col(h2||h1)},button,radius,hairlines,content};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
@@ -199,7 +219,7 @@ export function collectAiTells(){
   typography:{families:[...families].sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>({name,count})),sizes:sizes.size,weights:weights.size,body,h1:h1Size,display,ratio:display?display/body:null},
   accents:accents.slice(0,60),hueBuckets:hues.size,craft:{loadedFonts:loadedFonts.slice(0,12),imagery,fontSizes:sizes.size},
   hero,
-  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,firstScreen,statStrips,
+  accentWords:{count:accentWords.length,targets:sample(accentWords)},tailSignup:{count:tailSignup.length,targets:sample(tailSignup)},emptyFrames:{count:emptyFrames.length,targets:sample(emptyFrames)},heroCta,firstScreen,statStrips,system,
   rootBackground:rootBg?{rgb:rootBg.slice(0,3),dark:lum(rootBg)<.05}:null,
   editorial:{tracked:tracked.length,numbered:numbered.length,headings:uniqueHeads.length,periodHeadings:periodHeads.length,serifDisplay:bigHeads.length?+(bigHeads.filter(isSerif).length/bigHeads.length).toFixed(2):0,paper:!!rootBg&&(([r,g,b])=>r>=g&&g>=b&&r-b>=6&&r-b<=45&&b>=195)(rootBg),targets:sample([...periodHeads,...tracked,...numbered])},
   text:text.slice(0,20000),labels:labels.slice(0,200)

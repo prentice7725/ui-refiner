@@ -21,6 +21,8 @@ ui-refiner directions refine-directions     # 디자인 시안(.html) 여러 개
 ui-refiner directions record refine-directions --pick B                # 고른 방향 기록(다른 고객에겐 다른 방향)
 ui-refiner photos "dentist chair" --out assets/stand-in             # 실제 사진이 오기 전까지 쓸 출처 표기 임시 사진(Wikimedia Commons)
 ui-refiner directions verify refine-directions index.html             # 완성본이 고른 구조를 지켰는지 확인
+ui-refiner system extract index.html                                  # 고른 디자인을 사이트의 다른 페이지용 규칙으로 저장
+ui-refiner system check about.html pricing.html                       # 다른 페이지가 그 디자인을 지켰는지 확인
 ui-refiner keep check index.html                                   # 리파인한 페이지가 그중 하나라도 잃으면 exit 1
 ```
 

@@ -14,6 +14,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 - **Checks that keep a refine honest.**
   - `keep check` fails when a link, form field or figure was lost or changed. An unchecked refine once turned 409,847 into 420,000.
   - `directions verify` fails when the page drifted from the chosen structure, surface or type. It also fails when the first screen lacks a one-line claim, the main action, or a photo or large product screen, or when other text dwarfs the claim.
+  - `system extract` saves the picked main page's design (type, colours, button, radius, width) as `DESIGN_SYSTEM.md`, and `system check` fails when another page of the site leaves it. Directions vary between clients; pages of one site stay one design.
   - A finish gate (a Stop hook) keeps the agent working until both pass.
 - **A scan that says why a page looks generic.**
   - `ui-refiner scan <url | file>` needs no config.
