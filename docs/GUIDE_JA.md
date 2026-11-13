@@ -21,6 +21,8 @@ ui-refiner directions refine-directions     # デザイン案（.html）を並�
 ui-refiner directions record refine-directions --pick B                # 選んだ方針を記録（別のクライアントには別の方針）
 ui-refiner photos "dentist chair" --out assets/stand-in             # 実際の写真が届くまでの出典付き仮写真（Wikimedia Commons）
 ui-refiner directions verify refine-directions index.html             # 仕上がりが選んだ構成を保っているか確認
+ui-refiner system extract index.html                                  # 選んだデザインをサイトの他のページ用に保存
+ui-refiner system check about.html pricing.html                       # 他のページがそのデザインを保っているか確認
 ui-refiner keep check index.html                                   # リファイン後のページで一つでも失われたら exit 1
 ```
 
