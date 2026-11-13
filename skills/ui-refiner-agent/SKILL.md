@@ -88,6 +88,7 @@ First decide how much to change, from the scan score and the screenshots:
    - Once a direction is chosen, record it: `ui-refiner directions record refine-directions --pick B --page <short page name>`. Do this when you decided yourself, too. The log is per user, in `~/.ui-refiner/refine-log.json`. Pages of the same project may share a direction; other clients should not get it again.
    - After applying the direction, run `ui-refiner keep check <page>`. It fails when a link, form, field or figure went missing. It also lists figures that only the new page has. A benchmark refine rounded 409,847 users to 420,000 and 4.7 stars to 4.8. Restore every original figure; never round, update or invent one.
    - After applying the direction to the real page, run `ui-refiner directions verify refine-directions <page>`. Models drift back to their habit while building the full page: in the benchmark a page whose chosen mock opened with content ended as "left headline, stacked". If the check reports drift, rebuild the hero in the chosen structure, then check again. It also fails when the first screen lacks a claim or its main button, or when other text dwarfs the claim on a screen without photos. Keep the drift only when the user asked for the change.
+   - Once the main page passes `keep check` and `directions verify`, run `ui-refiner system extract <page>`. It measures the page's type, sizes, colours, main button, box radius, rules and content width, and writes `ui-refiner-system.json` and `DESIGN_SYSTEM.md` next to it, so the site's other pages can be built in the same design (see **The site's other pages**).
    - Then delete `refine-directions/` unless the user wants to keep it.
 3. Give the page one **signature element**: something only this subject would have, built from the page's real content and made the most memorable thing on the page. Examples: a ledger-style table of this month's spending for a budgeting app, today's opening hours and the next free slot for a clinic, which pantries are open right now for a food bank. Never invent data for it.
 4. Apply the chosen direction to the whole page, fixing by root cause in this order:
@@ -106,6 +107,16 @@ First decide how much to change, from the scan score and the screenshots:
    - **Details.** Tabular numbers where they line up, real states (open/closed, sold out, selected), no placeholder text.
 7. Rescan into the same folder; the report opens with the before/after comparison. The AI-look score is a guard, not the target: no new scored signals and no quality issue or Japanese typesetting issue that got worse. You are done when the direction and the craft checklist show in the screenshots, not when the score reaches 0. At most three rounds.
 8. Report: the chosen direction (and who chose it), the signature element, score before → after, resolved and remaining signals (with the reason each remaining one stays), the changes by root cause, what was preserved, and the screenshot paths. Look at the final screenshots before you say it is done.
+
+## The site's other pages
+
+Variety belongs in two places: between the three directions for the main page, so the person has a real choice, and between clients. Within one site the pages should look like one site. So the directions step runs once, for the main page; every other page of the site follows the picked design.
+
+1. Read `DESIGN_SYSTEM.md` (from `ui-refiner system extract <main page>`). If it is missing, run that first.
+2. Build or refine the other page with the same type, sizes, colours, main button, box radius, rules and content width. Do not deal or pick new directions for it.
+3. Give it its own structure from its own content. If the main page is photo-led (the system notes say so), the inner page carries photos too, from the same set: in the inner-page benchmark, text-only inner pages of photo-led clinic and hiring sites lost to plain copies of the home page. An inner page opens with its title and what the visitor came for (the price table, the form, the team, the article), not a second landing hero. Keep the main page's signature element only where it carries this page's content too.
+4. Run `ui-refiner keep check` when an existing page was changed, then `ui-refiner system check <page>`. It fails when the page leaves the design (another heading or body face, surface, accent family, button radius or colour, box radius, body or heading size, content width), or when its AI-look index is 15 or more above the main page's. Fix the drift and check again.
+5. Report which pages were built or changed, what each keeps from the system, and the screenshot paths.
 
 ## Build a new screen
 

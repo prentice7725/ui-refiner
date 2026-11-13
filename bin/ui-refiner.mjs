@@ -19,6 +19,7 @@ import {compareDirections,verifyApplied} from '../src/directions.mjs';
 import {dealDirections,recordChoice} from '../src/refine-log.mjs';
 import {fetchStandIns} from '../src/photos.mjs';
 import {recordKeep,checkKeep} from '../src/keep.mjs';
+import {extractSystem,checkSystem} from '../src/site-system.mjs';
 
 const help=`UI Refiner 0.7.0 — de-AI web design review and UI quality gate
   ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang auto|ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json | --no-compare] [--json]
@@ -35,6 +36,11 @@ const help=`UI Refiner 0.7.0 — de-AI web design review and UI quality gate
       remembers the picked direction (default log: ~/.ui-refiner/refine-log.json, or UI_REFINER_HOME)
   ui-refiner directions verify <folder> <applied page> [--pick A|B|C] [--json]
       checks that the applied page kept the chosen mock's hero structure, surface and type (exit 1 on drift)
+  ui-refiner system extract <main page> [--dir folder] [--json]
+      measures the picked main page (type, sizes, colours, main button, box radius, rules, content width) and writes
+      ui-refiner-system.json and DESIGN_SYSTEM.md next to it (or in --dir), to build the site's other pages from
+  ui-refiner system check <page> [more pages] [--system ui-refiner-system.json] [--json]
+      lists where other pages of the site leave that design (exit 1 on drift)
   ui-refiner photos "<subject>" [--out assets/stand-in] [--count 6] [--orientation landscape|portrait|any] [--lang en|ja|ko] [--json]
       saves openly licensed stand-in photographs from Wikimedia Commons with credits.json and a footer credit line;
       mark each on the page with data-stand-in, never present it as the client's own, replace it with real photos
@@ -65,7 +71,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--tone','--count','--orientation'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--tone','--count','--orientation','--system'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -110,6 +116,17 @@ try{
     if(!args.pick)throw Error('directions record requires --pick');
     const r=await recordChoice(args._[2],{pick:args.pick,page:args.page,log:args.log});
     console.log(`[RECORD] ${r.entry.label} ${r.entry.hero??'-'} ${(r.entry.fonts||[]).join(' + ')||'-'} → ${r.file}`);
+  }
+  else if(command==='system'&&sub==='extract'&&args._.length===3){
+    const r=await extractSystem(args._[2],{dir:args.dir});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else console.log(`[SYSTEM] ${r.system.fonts.heading??'-'} / ${r.system.fonts.body??'-'}, accent ${r.system.accentFamily??'ink'}, button radius ${r.system.button?.radius??'-'}px, width ${r.system.content??'-'}px → ${r.markdown}`);
+  }
+  else if(command==='system'&&sub==='check'&&args._.length>=3){
+    const r=await checkSystem(args._.slice(2),{system:args.system});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else for(const x of r.results)console.log(x.drift.length?`[DRIFT] ${x.page}: ${x.drift.map(d=>`${d.id} ${d.want} → ${d.got}`).join('; ')}`:`[SYSTEM] ${x.page}: keeps the design`);
+    process.exitCode=r.results.some(x=>x.drift.length)?1:0;
   }
   else if(command==='directions'&&sub==='verify'&&args._.length===4){
     const r=await verifyApplied(args._[2],args._[3],{pick:args.pick,log:args.log});

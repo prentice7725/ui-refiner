@@ -21,6 +21,8 @@ ui-refiner directions refine-directions     # three design-direction mocks (.htm
 ui-refiner directions record refine-directions --pick B                # remember the pick so other clients get something else
 ui-refiner photos "dentist chair" --out assets/stand-in             # credited stand-in photos (Wikimedia Commons) until the real ones arrive
 ui-refiner directions verify refine-directions index.html             # check the applied page kept the chosen structure
+ui-refiner system extract index.html                                  # save the picked design for the site's other pages
+ui-refiner system check about.html pricing.html                       # check other pages keep that design
 ui-refiner keep check index.html                                   # exit 1 if the refined page lost any of them
 ```
 
