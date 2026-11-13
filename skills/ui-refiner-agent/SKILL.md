@@ -114,7 +114,7 @@ Variety belongs in two places: between the three directions for the main page, s
 
 1. Read `DESIGN_SYSTEM.md` (from `ui-refiner system extract <main page>`). If it is missing, run that first.
 2. Build or refine the other page with the same type, sizes, colours, main button, box radius, rules and content width. Do not deal or pick new directions for it.
-3. Give it its own structure from its own content. An inner page opens with its title and what the visitor came for (the price table, the form, the team, the article), not a second landing hero. Keep the main page's signature element only where it carries this page's content too.
+3. Give it its own structure from its own content. If the main page is photo-led (the system notes say so), the inner page carries photos too, from the same set: in the inner-page benchmark, text-only inner pages of photo-led clinic and hiring sites lost to plain copies of the home page. An inner page opens with its title and what the visitor came for (the price table, the form, the team, the article), not a second landing hero. Keep the main page's signature element only where it carries this page's content too.
 4. Run `ui-refiner keep check` when an existing page was changed, then `ui-refiner system check <page>`. It fails when the page leaves the design (another heading or body face, surface, accent family, button radius or colour, box radius, body or heading size, content width), or when its AI-look index is 15 or more above the main page's. Fix the drift and check again.
 5. Report which pages were built or changed, what each keeps from the system, and the screenshot paths.
 

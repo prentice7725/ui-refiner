@@ -20,7 +20,9 @@ async function measure(page,{out,lang='auto',timeoutMs=45000}={}){
  const m=r.raw?.find(v=>v.viewport==='desktop')?.metrics??r.raw?.[0]?.metrics;
  if(!m?.system)throw new Error(`Could not measure ${page}.`);
  const accent=accentOf(m);
- return {...m.system,bg:m.rootBackground?.rgb??null,accent,accentFamily:accent?accentFamily(accent):null,aiLook:r.aiLook.score,lang:r.lang};
+ // Photo-led: a photo covers 30% or more of the first screen. In the inner-page benchmark, inner pages of photo-led
+ // sites built from the system without photos lost to the plain arm ("text-heavy … no imagery").
+ return {...m.system,photoLed:(m.firstScreen?.media??0)>=.3,bg:m.rootBackground?.rgb??null,accent,accentFamily:accent?accentFamily(accent):null,aiLook:r.aiLook.score,lang:r.lang};
 }
 
 /** Short notes an agent reads before building another page of the site. */
@@ -33,6 +35,7 @@ export function renderSystemMarkdown(s,page){
   `- Main button: ${b?`${hex(b.bg)} with ${hex(b.color)} text, radius ${b.radius}px, weight ${b.weight}, height ${b.height}px`:'none measured'}`,
   `- Boxes: radius ${s.radius??'-'}px; ${s.hairlines>20?'thin rules carry the structure':'few rules'} (${s.hairlines} ruled elements)`,
   `- Content width: ${s.content?`${s.content}px`:'-'}`,
+  `- Imagery: ${s.photoLed?`photo-led (a photo carries the first screen; ${s.photos} large image${s.photos===1?"":"s"} on the page). Inner pages carry photos too: a photo header or photos beside the content, from the same set.`:`led by type or the product (${s.photos??0} large images on the page).`}`,
   '','Inner pages keep the type, colours, button, radius and width. They may drop the hero treatment of the main page: an inner page opens with its own title and content, not a second landing hero.',''].join('\n');
 }
 
@@ -61,6 +64,7 @@ export function systemDrift(s,p){
  if(s.sizes?.body&&p.sizes?.body&&Math.abs(s.sizes.body-p.sizes.body)>1)add('body-size',`${s.sizes.body}px`,`${p.sizes.body}px`);
  if(s.sizes?.h2&&p.sizes?.h2&&(p.sizes.h2/s.sizes.h2<.8||p.sizes.h2/s.sizes.h2>1.25))add('heading-size',`${s.sizes.h2}px`,`${p.sizes.h2}px`);
  if(s.content&&p.content&&Math.abs(p.content-s.content)/s.content>.12)add('width',`${s.content}px`,`${p.content}px`);
+ if(s.photoLed&&p.photos===0)add('no-photos',`${s.photos} large image${s.photos===1?'':'s'}`,'none');
  if(s.aiLook!=null&&p.aiLook!=null&&p.aiLook-s.aiLook>=15)add('ai-look',s.aiLook,p.aiLook);
  return out;
 }
