@@ -70,3 +70,23 @@ test('first screen: warns when nothing says what this is (unless a photo carries
  for(const lang of ['ko','ja','en'])assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',signals:[],score:0,quality:0,first:['no-claim']}],lang,w),/A/);
  assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',signals:[],score:0,quality:0}],'ko',w),/첫 화면에 무엇을 하는 곳인지/);
 });
+
+test('first screen: a product screen crowded with text; direction notes need the five lines', async () => {
+ const {noteWarnings,parseDirectionNote}=await import('../src/directions.mjs');
+ const fs0={claim:true,claimRatio:1,media:0,action:true,shot:.3,shotSmall:0};
+ assert.deepEqual(firstScreenProblems({firstScreen:{...fs0,shotText:35}}),[]);
+ assert.deepEqual(firstScreenProblems({firstScreen:{...fs0,shotText:77}}),['busy-shot']);
+ const full=parseDirectionNote('<!-- direction: The front desk | tone: calm | world: a clinic counter | moment: checking tonight\'s hours | signature: hours board -->');
+ const thin=parseDirectionNote('<!-- direction: The front desk | type: Archivo -->');
+ assert.deepEqual(noteWarnings([{label:'A',note:full},{label:'B',note:thin},{label:'C',note:null}]).map(w=>w.a+':'+w.c),['B:tone, world, moment, signature','C:direction, tone, world, moment, signature']);
+ assert.match(renderDirectionsMarkdown([{label:'A',file:'a.html',note:full,signals:[],score:0,quality:0,desktop:'d.png',mobile:'m.png'}],'en',[]),/- Tone: calm[\s\S]*Rename test/);
+});
+
+test('directions sheet: flags a strip of big figures as a set habit, without failing verify', async () => {
+ const {pageHabits,firstScreenProblems,directionWarnings}=await import('../src/directions.mjs');
+ const m={statStrips:{count:1,targets:['dl.figures']},firstScreen:{claim:true,media:.5,action:true}};
+ assert.deepEqual(pageHabits(m),['stat-strip']);
+ assert.ok(!firstScreenProblems(m).includes('stat-strip'));
+ assert.deepEqual(pageHabits({statStrips:{count:0}}),[]);
+ assert.ok(directionWarnings([{label:'A',first:pageHabits(m)}]).some(w=>w.id==='stat-strip'&&w.a==='A'));
+});

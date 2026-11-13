@@ -16,7 +16,7 @@ npm link                                   # 선택: 어디서든 `ui-refiner` �
 ui-refiner scan your-site.example          # 운영 중인 페이지 점검
 ui-refiner scan localhost:5173             # 개발 서버. 고친 뒤 같은 명령을 다시 실행하면 변화가 보임
 ui-refiner keep record index.html                                  # 리파인 전에 링크·폼·수치 목록 저장
-ui-refiner directions deal refine-directions --kind service --lang ko   # 시안마다 히어로 구조·서체·강조색·바탕 배정
+ui-refiner directions deal refine-directions --kind service --tone calm --lang ko   # 시안마다 히어로 구조·바탕·색 계열 배정, 피할 서체 목록
 ui-refiner directions refine-directions     # 디자인 시안(.html) 여러 개를 나란히 비교해 하나 고르기
 ui-refiner directions record refine-directions --pick B                # 고른 방향 기록(다른 고객에겐 다른 방향)
 ui-refiner photos "dentist chair" --out assets/stand-in             # 실제 사진이 오기 전까지 쓸 출처 표기 임시 사진(Wikimedia Commons)
