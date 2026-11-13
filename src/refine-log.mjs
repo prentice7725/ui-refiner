@@ -56,7 +56,21 @@ const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','f
 
 /** Share of each hero structure on human-made sites (data/hero-reference/human.json), overall or for one page kind. */
 export async function humanHeroShare(kind){try{const j=JSON.parse(await fs.readFile(new URL('../data/hero-reference/human.json',import.meta.url),'utf8'));return (kind&&j.byKind?.[kind]?.share)||j.share;}catch{return null;}}
+/**
+ * Accent families human sites of this kind use (data/colour-reference/human.json, measured on 548 Korean, Japanese
+ * and English sites in November 2026), as weights for the colour deal. Korean and Japanese pages use their own
+ * country's figures when 15 or more sites of that kind were measured.
+ */
+export async function humanColours(kind,lang){
+ try{
+  const j=JSON.parse(await fs.readFile(new URL('../data/colour-reference/human.json',import.meta.url),'utf8'));
+  const c=lang==='ko'?'KR':lang==='ja'?'JP':null,local=c&&kind&&j.byKind?.[`${kind}/${c}`];
+  return ((local?.sites>=15&&local)||(kind&&j.byKind?.[kind])||(c&&j.byCountry?.[c])||j.all).accent;
+ }catch{return null;}
+}
 export const PAGE_KINDS=['software','service','place','public','company','studio','media'];
+/** Page character, chosen before the deal; it narrows the surfaces and faces (data/type-pairs.json "tones"). */
+export const PAGE_TONES=['calm','warm','technical','bold'];
 async function typeLibrary(){return JSON.parse(await fs.readFile(new URL('../data/type-pairs.json',import.meta.url),'utf8'));}
 const hash=(seed,k)=>{let h=seed+7;for(const c of String(k))h=(h*31+c.charCodeAt(0))>>>0;return h%997;};
 const lc=x=>String(x||'').toLowerCase();
@@ -84,44 +98,93 @@ export function dealType(pairs,entries,project,{n=3,seed=0,kind,script='latin'}=
  return out.map(({id,voice,display,text})=>({id,voice,display,text}));
 }
 
-/** Accent hue families for n directions, distinct, avoiding families picked recently elsewhere; indigo last. */
-export function dealAccents(families,entries,project,{n=3,seed=0}={}){
- const recent=others(entries,project).slice(-4).map(e=>accentFamily(e.accent)).filter(Boolean);
+/**
+ * The colour a direction reads as: its ground when that is a clear colour, otherwise its accent. In benchmark round 14
+ * three pages used the same forest-green ground while their buttons were yellow or blue, so only the accent was checked
+ * and all three set judges named "deep forest green" as the shared habit.
+ */
+export function leadColour(d){
+ const bg=d?.bg;
+ if(bg&&!whiteish(bg)){const f=accentFamily(bg);const [r,g,b]=bg.map(v=>v/255),mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2,s=mx===mn?0:(mx-mn)/(1-Math.abs(2*l-1));if(f&&f!=='ink'&&s>=.2)return bg;}
+ return d?.accent??null;
+}
+
+/** Accent hue families for n directions, distinct, avoiding families picked recently elsewhere (ground or accent); indigo last. */
+export function dealAccents(families,entries,project,{n=3,seed=0,weights}={}){
+ const recent=others(entries,project).slice(-4).flatMap(e=>[accentFamily(leadColour(e)),accentFamily(e.accent)]).filter(Boolean);
  const score=k=>(k==='indigo'?4:0)+(recent.includes(k)?2:0);
- return [...families].sort((x,y)=>score(x)-score(y)||hash(seed,x)-hash(seed,y)).slice(0,n);
+ // Within the same penalty, families human sites of the kind use more often come first more often (a weighted draw:
+ // u^(1/w)). The square root and the floor keep rarer families in play, so a set does not all go blue.
+ const draw=k=>weights?((hash(seed,k)+1)/998)**(1/(Math.sqrt(weights[k]||0)+.15)):1-hash(seed,k)/997;
+ return [...families].sort((x,y)=>score(x)-score(y)||draw(y)-draw(x)).slice(0,n);
 }
 
 /**
- * Surfaces: plain white for most, as on 82% of human sites; one direction gets a dark, brand or paper ground.
+ * Surfaces: plain white for most; one direction gets a white page carried by a photo or product screen, or more
+ * rarely a brand, dark or paper ground. Measured on 548 Korean, Japanese and English sites (data/colour-reference),
+ * only about 2% of first screens use a full-colour ground and 5% a dark one; 35% open on a photo, and 87% of the light
+ * ones are pure white (2% a warm cream). In benchmark round 16, when the odd direction was mostly paper, agents chose
+ * it on 3 of 7 pages and all three set judges named the cream body as the set's shared habit.
  * Software pages get no dark ground: in benchmark round 12 all three judges read the dark dashboard with a neon
  * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.
+ * Calm and warm pages get no dark ground either.
  */
-export function dealSurfaces(n=3,seed=0,{kind}={}){
- const pool=kind==='software'?['brand','paper']:['dark','brand','paper'];
- const odd=pool[hash(seed,'surface')%pool.length],at=hash(seed,'slot')%n;
+/**
+ * Colour families for n directions, within what fits the tone (data/type-pairs.json tones.*.accents), and a brand
+ * ground only in a family that suits a full-colour ground (tones.*.brandGround). In benchmark round 15 any family
+ * could be dealt: a budgeting app came out brown, and a full red food-bank hero and a magenta hiring page read heavy,
+ * so per-page ranks fell by more than one place for Claude and Gemini.
+ */
+export function toneColours(lib,toneDef,surf,entries,project,{n=3,seed=0,weights}={}){
+ const all=Object.keys(lib.accents),pool=toneDef?.accents?.length?toneDef.accents.filter(f=>all.includes(f)):all;
+ const acc=dealAccents(pool,entries,project,{n,seed,weights});
+ const bi=surf.indexOf('brand');
+ if(bi>=0){
+  const ground=(toneDef?.brandGround??pool).filter(f=>f!=='ink');
+  if(!ground.includes(acc[bi])){
+   const j=acc.findIndex(f=>ground.includes(f));
+   if(j>=0)[acc[bi],acc[j]]=[acc[j],acc[bi]];
+   else acc[bi]=dealAccents(ground.filter(f=>!acc.includes(f)),entries,project,{n:1,seed,weights})[0]??acc[bi];
+  }
+ }
+ return acc;
+}
+
+export function dealSurfaces(n=3,seed=0,{kind,tone}={}){
+ // A dark ground also needs a tone that carries it: in round 13 a dark food-bank page read "cold for a community food bank".
+ const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold');
+ const r=hash(seed,'surface')%20,odd=r<3?'brand':dark&&r<8?'dark':r<10?'paper':'image',at=hash(seed,'slot')%n;
  return Array.from({length:n},(_,i)=>i===at?odd:'white');
 }
 
-/** Faces to avoid: the overused ones in data/type-pairs.json and those picked recently for other projects. */
-export function avoidFaces(pairs,entries,project){
+/**
+ * Faces to avoid: the overused ones in data/type-pairs.json, those picked recently for other projects, and display
+ * faces that fight the page's tone (condensed or ultra-heavy faces on a calm or warm page: in the November 2026
+ * benchmarks judges called condensed capitals "harsh" on a family dental page and Dela Gothic One hard to read).
+ */
+export function avoidFaces(pairs,entries,project,toneDef){
  const out=new Set(pairs.filter(p=>p.overused).flatMap(p=>[p.display,p.text]));
+ if(toneDef){for(const p of pairs)if(toneDef.avoidVoices.includes(p.voice))out.add(p.display);for(const f of toneDef.avoidFaces)out.add(f);}
  for(const e of others(entries,project).slice(-8))for(const f of e.fonts||[])out.add(f);
  return [...out];
 }
 
 /**
- * Writes DEAL.json into the directions folder: per direction a hero structure and a surface, plus faces to avoid.
- * Type and accent are left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
- * winners were pages that pushed one strong face of their own choosing.
+ * Writes DEAL.json into the directions folder: per direction a hero structure, a surface and a colour family, plus
+ * faces to avoid. Type is left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
+ * winners were pages that pushed one strong face of their own choosing. The colour family is dealt again since round
+ * 14, where the tone left colour free and three of eight pages took the same forest green.
  */
-export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,lang='en'}={}){
+export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en'}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
+ if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary();
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
- const surf=dealSurfaces(n,seed,{kind});
- const deal={schemaVersion:3,kind:kind??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]}}))};
+ const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
+ const acc=toneColours(lib,toneDef,surf,entries,project,{n,seed,weights:colours===undefined?await humanColours(kind,lang):colours});
+ const deal={schemaVersion:5,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]},accent:{family:acc[i],brief:lib.accents[acc[i]]}}))};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }
@@ -137,7 +200,8 @@ export function historyWarnings(items,entries,project,deal=null){
   const assigned=deal?.structures?.find(s=>s.label===d.label);
   if(assigned&&d.hero&&assigned.key!==d.hero)w.push({id:'deal-mismatch',a:d.label,c:assigned.key,d:d.hero});
   if(assigned?.type&&d.fonts?.length&&![assigned.type.display,assigned.type.text].some(f=>d.fonts.map(lc).includes(lc(f))))w.push({id:'deal-type',a:d.label,c:assigned.type.display+' + '+assigned.type.text,d:d.fonts.join(' + ')});
-  if(assigned?.accent&&d.accent&&accentFamily(d.accent)!==assigned.accent.family)w.push({id:'deal-accent',a:d.label,c:assigned.accent.family,d:accentFamily(d.accent)});
+  const lead=leadColour(d);
+  if(assigned?.accent&&lead&&accentFamily(lead)!==assigned.accent.family)w.push({id:'deal-accent',a:d.label,c:assigned.accent.family,d:accentFamily(d.accent)});
   const hero=prev.slice(0,3).find(e=>e.hero&&e.hero===d.hero);
   if(hero)w.push({id:'repeat-hero',a:d.label,c:d.hero,page:hero.page});
   const pair=x=>(x||[]).slice(0,2).join(' + ');
@@ -146,8 +210,8 @@ export function historyWarnings(items,entries,project,deal=null){
   const surf=d.bg&&!whiteish(d.bg)&&prev.slice(0,5).find(e=>close(e.bg,d.bg));
   if(surf)w.push({id:'repeat-surface',a:d.label,c:d.bg,page:surf.page});
  const hue=c=>{const [r,g,b]=c.map(v=>v/255),mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(!d)return null;const h=mx===r?((g-b)/d)%6:mx===g?(b-r)/d+2:(r-g)/d+4;return (h*60+360)%360;};
-  const ah=d.accent&&hue(d.accent),acc=ah!=null&&prev.slice(0,3).find(e=>{const eh=e.accent&&hue(e.accent);return eh!=null&&Math.min(Math.abs(eh-ah),360-Math.abs(eh-ah))<=18;});
-  if(acc)w.push({id:'repeat-accent',a:d.label,c:d.accent,page:acc.page});
+  const ah=lead&&hue(lead),acc=ah!=null&&prev.slice(0,3).find(e=>{const el=leadColour(e),eh=el&&hue(el);return eh!=null&&Math.min(Math.abs(eh-ah),360-Math.abs(eh-ah))<=18;});
+  if(acc)w.push({id:'repeat-accent',a:d.label,c:lead,page:acc.page});
  }
  return w;
 }
