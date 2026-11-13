@@ -71,7 +71,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--tone','--count','--orientation'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--tone','--count','--orientation','--system'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
