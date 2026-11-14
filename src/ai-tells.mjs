@@ -200,7 +200,10 @@ export function collectAiTells(){
   const widths=new Map();for(const el of els){const s=css(el),ml=parseFloat(s.marginLeft);if(ml>8&&Math.abs(ml-parseFloat(s.marginRight))<=1){const w=Math.round(el.getBoundingClientRect().width/10)*10;if(w>=480)widths.set(w,(widths.get(w)||0)+1);}}
   const content=[...widths].sort((a,b)=>b[1]-a[1])[0]?.[0]??null;
   const photos=[...document.querySelectorAll('img,picture,video')].filter(el=>visible(el)&&!el.closest('picture:not(:scope)')&&el.getBoundingClientRect().width>=300).length;
-  return {photos,fonts:{display:fam(h1),heading:fam(h2||h1),body:fam(p||document.body)},sizes:{h1:px(h1),h2:px(h2),h3:px(h3),body:px(p)},weights:{h1:wt(h1),h2:wt(h2)},colours:{text:col(p||document.body),heading:col(h2||h1)},button,radius,hairlines,content};})();
+  // Header navigation: the link labels of the first navigation near the top of the page.
+  const navBox=[...document.querySelectorAll('header nav,nav,[role=navigation],header')].find(el=>visible(el)&&el.getBoundingClientRect().top+scrollY<240);
+  const nav=navBox?[...new Set([...navBox.querySelectorAll('a[href]')].filter(visible).map(a=>(a.innerText||'').replace(/\s+/g,' ').trim()).filter(t=>t&&t.length<=40))].slice(0,12):[];
+  return {photos,nav,fonts:{display:fam(h1),heading:fam(h2||h1),body:fam(p||document.body)},sizes:{h1:px(h1),h2:px(h2),h3:px(h3),body:px(p)},weights:{h1:wt(h1),h2:wt(h2)},colours:{text:col(p||document.body),heading:col(h2||h1)},button,radius,hairlines,content};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
   url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
