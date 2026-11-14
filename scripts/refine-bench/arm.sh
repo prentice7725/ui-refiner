@@ -24,6 +24,6 @@ case "$arm" in
   claude -p "First read the skill at $R/skills/ui-refiner-agent/SKILL.md (the \`ui-refiner-agent\` skill; \`ui-refiner\` means \`node $R/bin/ui-refiner.mjs\`). Then:
 
 $body" "${common[@]}" --setting-sources project --add-dir "$R" \
-    --allowed-tools Read Edit Write Glob Grep "Bash(node:*)" > "$B/logs/$arm-$id.json" 2> "$B/logs/$arm-$id.err";;
+    --allowed-tools Read Edit Write Glob Grep "Bash(node:*)" Task Agent > "$B/logs/$arm-$id.json" 2> "$B/logs/$arm-$id.err";;
 esac
 echo "$arm $id done"
