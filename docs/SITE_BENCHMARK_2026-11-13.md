@@ -74,4 +74,22 @@ Reading:
   - **Repeated stacks:** a long numbered list or a repeated job-spec stack on one inner page.
 - The screenshot-only pages did not change between the two runs, but Gemini's pick flipped on two of the three sites. With three sites, a swing of one or two verdicts is noise.
 - Next: record the main page's header navigation in the system and have `system check` flag an inner page whose header drops or renames its links.
-- Done: the system now records the header links. On the re-check pages, `system check` flags both dental sites' inner pages (US dental: no About, Our Team, FAQ, Contact; Japanese dental: no 当院の特徴, 院長紹介, 初診の流れ, よくある質問). The hiring site and the screenshot-only pages keep their headers. Not yet re-judged.
+- Done: the system now records the header links. On the re-check pages, `system check` flags both dental sites' inner pages (US dental: no About, Our Team, FAQ, Contact; Japanese dental: no 当院の特徴, 院長紹介, 初診の流れ, よくある質問). The hiring site and the screenshot-only pages keep their headers.
+
+## Re-check: dental sites after the navigation fix (2026-11-14)
+
+The US and Japanese dental inner pages were rebuilt from systems that now include the header navigation, and judged against the same screenshot-only pages. Cost: about $2.65 for the builds.
+
+- All 4 inner pages keep the design and the full header navigation.
+- Picked by judges on the two dental sites:
+
+| Judge | First run | Photo fix | Navigation fix |
+|---|---:|---:|---:|
+| Claude | 1 / 2 | 2 / 2 | 2 / 2 |
+| Gemini | 2 / 2 | 0 / 2 | 2 / 2 |
+| Grok | 0 / 2 | 1 / 2 | 1 / 2 |
+| All | 3 / 6 | 3 / 6 | **5 / 6** |
+
+- No judge mentioned the header this time. Gemini wrote that the system pages keep "the exact … navbar", and that the screenshot-only services page "alters the navbar items".
+- The one loss (Grok, US dental) was over the content: "services becomes repeated bullet blocks" and the hours table redrawn as a plain list.
+- Two sites are too few for a firm figure, but the complaint the fix aimed at is gone.
