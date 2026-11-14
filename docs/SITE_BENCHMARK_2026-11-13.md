@@ -74,3 +74,4 @@ Reading:
   - **Repeated stacks:** a long numbered list or a repeated job-spec stack on one inner page.
 - The screenshot-only pages did not change between the two runs, but Gemini's pick flipped on two of the three sites. With three sites, a swing of one or two verdicts is noise.
 - Next: record the main page's header navigation in the system and have `system check` flag an inner page whose header drops or renames its links.
+- Done: the system now records the header links. On the re-check pages, `system check` flags both dental sites' inner pages (US dental: no About, Our Team, FAQ, Contact; Japanese dental: no 当院の特徴, 院長紹介, 初診の流れ, よくある質問). The hiring site and the screenshot-only pages keep their headers. Not yet re-judged.
