@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {systemDrift,renderSystemMarkdown} from '../src/site-system.mjs';
 
 const main={fonts:{display:'gowun batang',heading:'gowun batang',body:'pretendard'},sizes:{h1:53,h2:40,h3:15,body:18},weights:{h1:700,h2:700},colours:{text:[90,88,82],heading:[27,27,27]},
- button:{bg:[27,27,27],color:[247,245,239],radius:6,weight:700,height:44},radius:0,hairlines:50,content:1100,bg:[255,255,255],accent:[15,118,110],accentFamily:'teal',aiLook:20,measured:'2026-11-13',photoLed:false,photos:0};
+ button:{bg:[27,27,27],color:[247,245,239],radius:6,weight:700,height:44},radius:0,hairlines:50,content:1100,bg:[255,255,255],accent:[15,118,110],accentFamily:'teal',aiLook:20,measured:'2026-11-13',photoLed:false,photos:0,nav:['Services','Team','Hours','Book']};
 
 test('system: an inner page in the same design keeps it, even with a smaller h1', () => {
  assert.deepEqual(systemDrift(main,{...main,sizes:{...main.sizes,h1:36},content:1060,aiLook:28}),[]);
@@ -19,6 +19,13 @@ test('system: inner pages of a photo-led site need photos too', () => {
  assert.deepEqual(systemDrift(photo,{...photo,photoLed:false,photos:0}).map(d=>d.id),['no-photos']);
  assert.deepEqual(systemDrift(photo,{...photo,photoLed:false,photos:2}),[]);
  assert.ok(renderSystemMarkdown(photo,'index.html').includes('Inner pages carry photos too'));
+});
+
+test('system: inner pages keep the header navigation', () => {
+ assert.deepEqual(systemDrift(main,{...main,nav:['services','Team','Hours','Book','FAQ']}),[]);
+ const d=systemDrift(main,{...main,nav:['Services','Home']});
+ assert.deepEqual(d.map(x=>x.id),['nav']);assert.equal(d[0].got,'no Team, no Hours, no Book');
+ assert.ok(renderSystemMarkdown(main,'index.html').includes('Services · Team · Hours · Book'));
 });
 
 test('system: notes name the measured tokens', () => {
