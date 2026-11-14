@@ -29,8 +29,9 @@ const help=`UI Refiner 0.7.0 — de-AI web design review and UI quality gate
       scans each design-direction mock and writes DIRECTIONS.html and DIRECTIONS.md side by side, so a person can choose one;
       warns when mocks share a surface, type pair or hero layout, ignore their deal, or repeat a choice made for another project
   ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--tone calm|warm|technical|bold] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
-      assigns each of three mocks a hero structure (as common on human-made sites of that kind), a surface and a colour family
-      (for a brand ground or the accent), avoiding what was chosen recently for other projects, and lists faces to avoid;
+      assigns each of three mocks a hero structure (as common on human-made sites of that kind) and a material
+      (a finished look: ground, colours, faces, surfaces, controls) that fits the tone and kind, avoiding what was chosen
+      recently for other projects;
       --no-photo skips structures that need a real photo
   ui-refiner directions record <folder> --pick A|B|C [--page name] [--log file]
       remembers the picked direction (default log: ~/.ui-refiner/refine-log.json, or UI_REFINER_HOME)
@@ -109,8 +110,9 @@ try{
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log((r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
 `:'')+r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
-   surface: ${d.surface.brief}
-   colour: ${d.accent.brief} (a brand ground takes this hue; on white, the accent does)`).join('\n')+`\n[TYPE] choose one strong display face per direction for this subject; avoid: ${r.avoidFaces.join(', ')}\n[DEAL] ${r.file}`);
+   material: ${d.material.name} — ${d.material.brief}
+   faces: ${d.type.display}${d.type.text!==d.type.display?' + '+d.type.text:''}
+   read: ${d.material.file}`).join('\n')+`\n[MATERIAL] read each file before building its mock; build every surface and control as it says\n[DEAL] ${r.file}`);
   }
   else if(command==='directions'&&sub==='record'&&args._.length===3){
     if(!args.pick)throw Error('directions record requires --pick');
