@@ -36,6 +36,7 @@ export function renderSystemMarkdown(s,page){
   `- Boxes: radius ${s.radius??'-'}px; ${s.hairlines>20?'thin rules carry the structure':'few rules'} (${s.hairlines} ruled elements)`,
   `- Content width: ${s.content?`${s.content}px`:'-'}`,
   `- Imagery: ${s.photoLed?`photo-led (a photo carries the first screen; ${s.photos} large image${s.photos===1?"":"s"} on the page). Inner pages carry photos too: a photo header or photos beside the content, from the same set.`:`led by type or the product (${s.photos??0} large images on the page).`}`,
+  `- Header navigation: ${s.nav?.length?s.nav.join(' · ')+'. Keep the same links, in the same order and wording, on every page; mark the current page instead of dropping links.':'none measured'}`,
   '','Inner pages keep the type, colours, button, radius and width. They may drop the hero treatment of the main page: an inner page opens with its own title and content, not a second landing hero.',''].join('\n');
 }
 
@@ -64,6 +65,9 @@ export function systemDrift(s,p){
  if(s.sizes?.body&&p.sizes?.body&&Math.abs(s.sizes.body-p.sizes.body)>1)add('body-size',`${s.sizes.body}px`,`${p.sizes.body}px`);
  if(s.sizes?.h2&&p.sizes?.h2&&(p.sizes.h2/s.sizes.h2<.8||p.sizes.h2/s.sizes.h2>1.25))add('heading-size',`${s.sizes.h2}px`,`${p.sizes.h2}px`);
  if(s.content&&p.content&&Math.abs(p.content-s.content)/s.content>.12)add('width',`${s.content}px`,`${p.content}px`);
+ // Navigation: in the photo-led re-check, inner pages that cut the header down to their own links lost to plain copies.
+ const norm=t=>String(t).toLowerCase().replace(/s+/g,' ').trim(),missing=(s.nav??[]).filter(t=>!(p.nav??[]).map(norm).includes(norm(t)));
+ if((s.nav?.length??0)>=2&&p.nav&&missing.length)add('nav',s.nav.join(' · '),missing.map(t=>'no '+t).join(', '));
  if(s.photoLed&&p.photos===0)add('no-photos',`${s.photos} large image${s.photos===1?'':'s'}`,'none');
  if(s.aiLook!=null&&p.aiLook!=null&&p.aiLook-s.aiLook>=15)add('ai-look',s.aiLook,p.aiLook);
  return out;
