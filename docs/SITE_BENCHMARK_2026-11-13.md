@@ -53,3 +53,24 @@ Reading:
 - Part of the win comes from the skill's guidance, not only the measured tokens: "an inner page opens with its own title and content, not a second landing hero".
 - Where the system arm lost (Japanese dental and hiring for Grok, Japanese dental for Claude), the main page was photo-led. The system pages were "text-heavy … no imagery" or used "the same repeated two-column text template". The measured system says nothing about imagery, and the inner pages dropped the photos.
 - Next: say in the system notes whether the main page is photo-led. Ask inner pages of a photo-led site to carry photos too.
+
+## Re-check: photo-led sites after the `photoLed` fix (2026-11-14)
+
+The system notes now say whether the main page is photo-led, and `system check` flags an inner page without photos. On the 8 main pages, three are photo-led: US dental, Japanese hiring, Japanese dental. Their inner pages were rebuilt from the new notes and judged against the same screenshot-only pages. Cost: about $5.10 for the builds and a few cents for the Claude judges.
+
+- All 6 rebuilt inner pages keep the design. Large images went up on the Japanese pages (hiring 5 → 7, dental 8 → 10) and stayed at 7 on the US dental pages.
+- Picked by judges on these three sites:
+
+| Judge | Before the fix | After |
+|---|---:|---:|
+| Claude | 2 / 3 | 3 / 3 |
+| Gemini | 3 / 3 | 1 / 3 |
+| Grok | 0 / 3 | 1 / 3 |
+| All | 5 / 9 | 5 / 9 |
+
+Reading:
+- No net change. The complaint moved from "no imagery" to two other things:
+  - **Navigation:** on both dental sites the system arm cut the header navigation down to the inner pages (US dental: "Services, Plan your visit and Home"), so the header no longer matched the main page. Gemini and Claude both named it.
+  - **Repeated stacks:** a long numbered list or a repeated job-spec stack on one inner page.
+- The screenshot-only pages did not change between the two runs, but Gemini's pick flipped on two of the three sites. With three sites, a swing of one or two verdicts is noise.
+- Next: record the main page's header navigation in the system and have `system check` flag an inner page whose header drops or renames its links.
