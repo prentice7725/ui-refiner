@@ -1,0 +1,98 @@
+{
+ "en-budget": {
+  "refine-a.1": {
+   "tables": 1,
+   "rowGroups": 1,
+   "times": 0,
+   "hairlines": 17
+  },
+  "refine-b.1": {
+   "tables": 1,
+   "rowGroups": 0,
+   "times": 0,
+   "hairlines": 16
+  },
+  "refine-c.1": {
+   "tables": 1,
+   "rowGroups": 0,
+   "times": 0,
+   "hairlines": 7
+  },
+  "refine-d.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 0,
+   "hairlines": 11
+  },
+  "refine-e.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 0,
+   "hairlines": 0
+  }
+ },
+ "en-saas": {
+  "refine-a.1": {
+   "tables": 0,
+   "rowGroups": 2,
+   "times": 5,
+   "hairlines": 4
+  },
+  "refine-b.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 4,
+   "hairlines": 7
+  },
+  "refine-c.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 4,
+   "hairlines": 6
+  },
+  "refine-d.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 4,
+   "hairlines": 5
+  },
+  "refine-e.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 4,
+   "hairlines": 3
+  }
+ },
+ "ko-fintech": {
+  "refine-a.1": {
+   "tables": 1,
+   "rowGroups": 0,
+   "times": 0,
+   "hairlines": 16
+  },
+  "refine-b.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 1,
+   "hairlines": 1
+  },
+  "refine-c.1": {
+   "tables": 1,
+   "rowGroups": 0,
+   "times": 0,
+   "hairlines": 8
+  },
+  "refine-d.1": {
+   "tables": 0,
+   "rowGroups": 2,
+   "times": 0,
+   "hairlines": 12
+  },
+  "refine-e.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 1,
+   "hairlines": 3
+  }
+ }
+}

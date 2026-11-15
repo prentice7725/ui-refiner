@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tandem — Collaboration for remote product teams</title>
+<meta name="description" content="Tandem keeps remote product teams in sync: specs, decisions, and async standups in one shared workspace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #101712;
+    --muted: #535c55;
+    --rule: #e2e6e1;
+    --soft: #f5f7f4;
+    --green: #177a33;
+    --green-ink: #12632a;
+    --green-wash: #eaf5ec;
+    --amber: #a34b07;
+    --amber-wash: #fdf1e3;
+    color-scheme: light;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 17px/1.55 Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  p, h1, h2, h3, h4 { margin: 0; }
+  .wrap {
+    max-width: 1320px; margin: 0 auto;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 60; }
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bg); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 1rem; }
+  .logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; font-weight: 800; font-size: 1.2rem; font-stretch: 112%; letter-spacing: -.01em; }
+  .logo svg { display: block; }
+  .nav ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: .95rem; }
+  .nav ul a:hover { color: var(--ink); }
+  .nav-r { display: flex; align-items: center; gap: 1.25rem; }
+  .nav-r .signin { text-decoration: none; color: var(--muted); font-weight: 500; font-size: .95rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem; height: 48px; padding: 0 1.4rem;
+    border-radius: 6px; font: 600 1rem/1 Archivo, sans-serif; text-decoration: none; border: 1.5px solid transparent; cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .btn-go { background: var(--green); color: #fff; }
+  .btn-go:hover { background: var(--green-ink); }
+  .btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+  .btn-line:hover { background: var(--soft); }
+  .btn-sm { height: 40px; padding: 0 1rem; font-size: .92rem; }
+  a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+
+  /* hero */
+  .hero { padding-block: 1.6rem 0; }
+  .hero h1 {
+    padding-top: 1.2rem; border-top: 1.5px solid var(--ink);
+    font-size: clamp(2.4rem, 6.15vw, 5.9rem); font-weight: 800; font-stretch: 125%;
+    line-height: .92; letter-spacing: -.04em;
+  }
+  .hero-row {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 1.5rem 3rem;
+    margin-top: 1.8rem; padding-bottom: 2rem;
+  }
+  .hero-row .lede { max-width: 40rem; font-size: 1.15rem; color: var(--muted); min-width: 0; }
+  .hero-row .lede b { color: var(--ink); font-weight: 600; }
+  .act { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; }
+  .act-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .act small { font-size: .88rem; color: var(--muted); }
+
+  /* product shot */
+  .shot { border: 1.5px solid var(--ink); border-radius: 10px 10px 0 0; border-bottom: 0; overflow: hidden; background: #fff; }
+  .shot-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem 1.1rem; border-bottom: 1px solid var(--rule); font-size: .88rem; color: var(--muted); }
+  .shot-bar b { color: var(--ink); font-weight: 600; }
+  .shot-body { display: grid; grid-template-columns: 190px minmax(0, 1fr); min-height: 440px; }
+  .side { border-right: 1px solid var(--rule); padding: 1rem .75rem; background: var(--soft); }
+  .side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .15rem; }
+  .side li { padding: .5rem .7rem; border-radius: 5px; font-size: .95rem; color: var(--muted); font-weight: 500; }
+  .side li.on { background: #fff; color: var(--ink); font-weight: 600; box-shadow: inset 3px 0 0 var(--green); }
+  .main { padding: 1.4rem 1.6rem 1.6rem; min-width: 0; }
+  .doc-head { display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; }
+  .doc-head h2 { font-size: 1.6rem; font-weight: 700; font-stretch: 108%; letter-spacing: -.02em; }
+  .tag { display: inline-block; font-size: .8rem; font-weight: 600; padding: .2rem .55rem; border-radius: 4px; }
+  .tag.green { background: var(--green-wash); color: var(--green-ink); }
+  .tag.amber { background: var(--amber-wash); color: var(--amber); }
+  .meta { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
+
+  /* signature: handover relay */
+  .relay { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 1.5rem; }
+  .relay::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: var(--ink); }
+  .leg { position: relative; padding: 1.6rem 1.25rem 0 0; min-width: 0; }
+  .leg::before { content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid var(--ink); }
+  .leg.done::before { background: var(--green); border-color: var(--green); }
+  .leg.stop::before { background: var(--amber); border-color: var(--amber); }
+  .leg .city { font-size: 1.05rem; font-weight: 700; font-stretch: 108%; }
+  .leg .city time { font-weight: 500; color: var(--muted); margin-left: .35rem; font-size: .95rem; }
+  .leg .who { font-size: .9rem; color: var(--muted); margin-top: .1rem; }
+  .leg .what { font-size: 1rem; margin-top: .5rem; }
+  .decision { margin-top: 1.8rem; padding: 1rem 1.2rem; border-radius: 6px; background: var(--green-wash); }
+  .decision strong { display: block; font-size: 1.1rem; font-weight: 700; }
+  .decision span { font-size: .92rem; color: var(--green-ink); }
+
+  /* reach line */
+  .reach { border-top: 1.5px solid var(--ink); padding-block: 1.4rem; display: flex; flex-wrap: wrap; gap: .5rem 2.2rem; align-items: baseline; font-size: .98rem; color: var(--muted); }
+  .reach p { color: var(--ink); font-weight: 600; margin-right: .5rem; }
+  .reach span { font-weight: 600; font-stretch: 110%; }
+
+  /* sections */
+  section.block { padding-block: 6rem; border-top: 1.5px solid var(--ink); }
+  .h2 { font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 800; font-stretch: 112%; line-height: 1.02; letter-spacing: -.03em; }
+  .kicker { font-size: 1rem; font-weight: 600; color: var(--green-ink); margin-bottom: .8rem; }
+  .copy > p { margin-top: 1.2rem; color: var(--muted); font-size: 1.1rem; max-width: 32rem; }
+  .dots { margin: 1.6rem 0 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+  .dots li { padding-left: 1.3rem; position: relative; }
+  .dots li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 5rem; align-items: start; }
+
+  /* problem: three questions as a ruled list */
+  .problem-intro { max-width: 46rem; }
+  .problem-intro p { margin-top: 1.2rem; color: var(--muted); font-size: 1.15rem; }
+  .questions { list-style: none; margin: 3rem 0 0; padding: 0; }
+  .questions li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: .5rem 5rem; padding-block: 1.4rem; border-top: 1px solid var(--rule); }
+  .questions li:last-child { border-bottom: 1px solid var(--rule); }
+  .questions q { font-size: 1.45rem; font-weight: 700; font-stretch: 108%; letter-spacing: -.015em; line-height: 1.25; quotes: "“" "”"; }
+  .questions p { color: var(--muted); font-size: 1.05rem; }
+
+  /* standups */
+  .standup { border: 1.5px solid var(--ink); border-radius: 10px; overflow: hidden; }
+  .standup-head { display: flex; justify-content: space-between; padding: .8rem 1.2rem; border-bottom: 1px solid var(--rule); font-size: .9rem; color: var(--muted); }
+  .standup-head b { color: var(--ink); }
+  .standup-row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1.25rem; padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--rule); }
+  .standup-row:last-child { border-bottom: 0; }
+  .standup-row .place { font-weight: 700; font-stretch: 108%; }
+  .standup-row .place small { display: block; font-weight: 500; color: var(--muted); font-size: .9rem; font-stretch: 100%; }
+  .standup-row p { font-size: 1rem; }
+
+  /* decision table */
+  .table-wrap { overflow-x: auto; min-width: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th { text-align: left; font-size: .85rem; font-weight: 600; color: var(--muted); padding: 0 1rem .7rem 0; border-bottom: 1.5px solid var(--ink); }
+  td { padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td:first-child { white-space: nowrap; color: var(--muted); }
+  td.dec { font-weight: 600; }
+  td.n { white-space: nowrap; }
+  td.n::before { content: "\2713"; color: var(--green); font-weight: 700; margin-right: .4rem; }
+
+  /* roadmap: full width */
+  .roadmap-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin-bottom: 2.5rem; }
+  .roadmap-head .copy > p { max-width: 36rem; }
+  .roadmap { min-width: 640px; display: grid; gap: .55rem; font-size: .95rem; }
+  .rm-head, .rm-row { display: grid; grid-template-columns: 11rem repeat(4, 1fr); gap: .4rem; align-items: center; }
+  .rm-head span { color: var(--muted); font-size: .88rem; font-weight: 600; padding-bottom: .4rem; border-bottom: 1.5px solid var(--ink); }
+  .rm-head span:first-child { border: 0; }
+  .rm-row > span:first-child { font-weight: 600; }
+  .bar { height: 34px; border-radius: 4px; display: flex; align-items: center; padding: 0 .7rem; font-size: .88rem; font-weight: 600; white-space: nowrap; overflow: hidden; }
+  .bar.prog { background: var(--ink); color: #fff; }
+  .bar.done { background: var(--green-wash); color: var(--green-ink); }
+  .bar.next { background: var(--amber-wash); color: var(--amber); }
+  .bar.plan { border: 1.5px dashed var(--muted); color: var(--muted); }
+
+  /* also in tandem */
+  .also { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 5rem; margin-top: 2.5rem; }
+  .also div { padding-block: 1.2rem; border-top: 1px solid var(--rule); }
+  .also h3 { font-size: 1.15rem; font-weight: 700; font-stretch: 108%; }
+  .also p { color: var(--muted); margin-top: .25rem; }
+
+  /* customers */
+  .lead-quote { font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight: 700; font-stretch: 108%; line-height: 1.2; letter-spacing: -.02em; max-width: 52rem; margin: 0; }
+  .cite { margin-top: 1.2rem; font-size: 1rem; color: var(--muted); }
+  .cite b { color: var(--ink); }
+  .more-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 5rem; margin-top: 3.5rem; }
+  .more-quotes figure { margin: 0; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+  .more-quotes blockquote { margin: 0; font-size: 1.1rem; }
+  .results { margin-top: 3.5rem; font-size: 1.15rem; max-width: 52rem; color: var(--muted); }
+  .results b { color: var(--ink); font-weight: 700; }
+
+  /* pricing */
+  .pricing-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .pricing-head p { color: var(--muted); font-size: 1.1rem; margin-top: .8rem; }
+  .toggle { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 6px; overflow: hidden; }
+  .toggle button { border: 0; background: transparent; color: var(--ink); font: 600 .95rem Archivo, sans-serif; padding: .6rem 1.1rem; cursor: pointer; }
+  .toggle button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .toggle small { font-size: .88rem; }
+  .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
+  .plan { padding: 1.8rem 2rem 2rem 0; display: flex; flex-direction: column; min-width: 0; }
+  .plan + .plan { padding-left: 2rem; border-left: 1px solid var(--rule); }
+  .plan.team { box-shadow: inset 0 4px 0 var(--green); }
+  .plan h3 { font-size: 1.3rem; font-weight: 800; font-stretch: 112%; }
+  .plan .desc { color: var(--muted); margin: .25rem 0 1.25rem; }
+  .price { font-size: 2.8rem; font-weight: 800; font-stretch: 112%; letter-spacing: -.03em; line-height: 1; }
+  .price small { font-size: .95rem; font-weight: 500; color: var(--muted); letter-spacing: 0; font-stretch: 100%; }
+  .plan .btn { margin: 1.5rem 0; align-self: flex-start; }
+
+  /* faq */
+  .faq details { border-top: 1px solid var(--rule); padding: 1.2rem 0; }
+  .faq details:last-child { border-bottom: 1px solid var(--rule); }
+  summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--muted); }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); margin-top: .75rem; max-width: 42rem; }
+
+  /* start */
+  .start h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); font-weight: 800; font-stretch: 125%; line-height: .95; letter-spacing: -.04em; }
+  .start .copy > p { font-size: 1.15rem; }
+  .cta-form { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.8rem; max-width: 34rem; }
+  .cta-form input { flex: 1 1 240px; min-width: 0; height: 48px; padding: 0 1rem; border-radius: 6px; border: 1.5px solid var(--ink); font: inherit; background: #fff; color: var(--ink); }
+  .cta-msg { margin-top: 1rem; font-size: .95rem; font-weight: 600; min-height: 1.4em; color: var(--green-ink); }
+
+  /* footer */
+  footer { border-top: 1.5px solid var(--ink); padding-block: 3.5rem 2.5rem; color: var(--muted); font-size: .95rem; }
+  .foot-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 2rem; }
+  .foot-grid h4 { color: var(--ink); font-size: .95rem; margin: 0 0 .75rem; }
+  .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+  .foot-grid a { text-decoration: none; }
+  .foot-grid a:hover { color: var(--ink); }
+  .foot-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .foot-bottom a { text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .nav ul, .nav-r .signin { display: none; }
+    .hero h1 br { display: none; }
+    .hero h1 { line-height: .98; }
+    .shot-body { grid-template-columns: 1fr; }
+    .side { display: none; }
+    .relay { grid-template-columns: 1fr 1fr; row-gap: 1.5rem; }
+    .relay::before { display: none; }
+    .hero-row, .split, .questions li, .also, .more-quotes, .plans { grid-template-columns: 1fr; }
+    .plan, .plan + .plan { padding: 1.6rem 0; border-left: 0; border-top: 1px solid var(--rule); }
+    .standup-row { grid-template-columns: 1fr; gap: .3rem; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid > div:first-child { grid-column: 1 / -1; }
+    section.block { padding-block: 4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#" class="logo" aria-label="Tandem home">
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="9" fill="none" stroke="#101712" stroke-width="3.5"/><circle cx="20" cy="16" r="9" fill="none" stroke="#177a33" stroke-width="3.5"/></svg>
+      Tandem
+    </a>
+    <ul>
+      <li><a href="#features">Product</a></li>
+      <li><a href="#teams">Customers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-r">
+      <a href="#" class="signin">Sign in</a>
+      <a href="#start" class="btn btn-go btn-sm">Start free</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Nobody has to be online<br> at the same time.</h1>
+      <div class="hero-row">
+        <p class="lede"><b>Tandem is the shared workspace for remote product teams.</b> Specs, decisions, roadmaps and standups live in one place — so nobody has to be online at the same time to stay in sync.</p>
+        <div class="act">
+          <div class="act-btns">
+            <a href="#start" class="btn btn-go">Start free for 14 days</a>
+            <a href="#features" class="btn btn-line">See how it works</a>
+          </div>
+          <small>Free for teams up to 5 · No credit card required</small>
+        </div>
+      </div>
+
+      <div class="shot" data-product-shot role="img" aria-label="Tandem workspace: the checkout v2 spec handed from Lisbon to Austin to Singapore to Lagos, ending in a decision agreed async">
+        <div class="shot-bar"><span>tandem.app / mobile-team / <b>checkout-redesign</b></span><span>Today's updates</span></div>
+        <div class="shot-body">
+          <aside class="side">
+            <ul>
+              <li>Standups</li>
+              <li class="on">Specs</li>
+              <li>Decisions</li>
+              <li>Roadmap</li>
+            </ul>
+          </aside>
+          <div class="main">
+            <div class="doc-head">
+              <h2>Checkout redesign — v2 spec</h2>
+              <span class="tag green">In review</span>
+            </div>
+            <p class="meta">Owner: Priya · 4 reviewers · updated 2h ago</p>
+            <div class="relay">
+              <div class="leg done">
+                <p class="city">Lisbon <time>09:12</time></p>
+                <p class="who">Priya Shah</p>
+                <p class="what">Shipped the payment sheet prototype.</p>
+              </div>
+              <div class="leg done">
+                <p class="city">Austin <time>07:40</time></p>
+                <p class="who">Jonah Ortiz</p>
+                <p class="what">Left 3 comments on the spec.</p>
+              </div>
+              <div class="leg stop">
+                <p class="city">Singapore <time>22:05</time></p>
+                <p class="who">Mei Kato <span class="tag amber">Blocked</span></p>
+                <p class="what">Waiting on sandbox API keys from Platform.</p>
+              </div>
+              <div class="leg done">
+                <p class="city">Lagos <time>10:30</time></p>
+                <p class="who">Ade</p>
+                <p class="what">Approved the decision.</p>
+              </div>
+            </div>
+            <div class="decision">
+              <strong>Decision: Ship Apple Pay before saved cards</strong>
+              <span>Agreed async by Design, Eng &amp; PM · linked to Q3 roadmap</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="reach">
+      <p>Trusted by distributed product teams in 40+ countries</p>
+      <span>Northwind</span><span>Lumen&nbsp;Labs</span><span>Fieldkit</span><span>Orbital</span><span>Quarry</span><span>Halcyon</span>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="problem-intro">
+        <h2 class="h2">Remote work broke the way product teams talk</h2>
+        <p>When your team spans eight time zones, context gets scattered across chat, docs, tickets and meetings nobody can attend.</p>
+      </div>
+      <ul class="questions">
+        <li><q>Wait, when did we decide that?</q><p>Key decisions get buried in a thread from three weeks ago — or were never written down at all.</p></li>
+        <li><q>Can we find a time that works?</q><p>Someone always takes the 6am call. Status meetings eat the only overlap hours you have.</p></li>
+        <li><q>Which doc is the latest?</q><p>Specs live in four tools, roadmaps in a fifth, and the newest hire has no idea where to look.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="features">
+    <div class="wrap split">
+      <div class="copy">
+        <p class="kicker">Async standups</p>
+        <h2 class="h2">Stay in sync without the 9am call</h2>
+        <p>Teammates post updates on their own schedule. Tandem rolls them into a digest for each person's morning, flags blockers, and pings the right owner.</p>
+        <ul class="dots">
+          <li>Text, voice or short video updates</li>
+          <li>Timezone-aware digests and reminders</li>
+          <li>Blockers surface automatically</li>
+        </ul>
+      </div>
+      <div class="standup" aria-hidden="true">
+        <div class="standup-head"><b>#mobile standup</b><span>3 updates</span></div>
+        <div class="standup-row"><p class="place">Priya Shah<small>Lisbon</small></p><p>Finished payment sheet prototype. Next: usability test with 5 users.</p></div>
+        <div class="standup-row"><p class="place">Mei Kato<small>Singapore</small></p><p><span class="tag amber">Blocked</span> Waiting on sandbox API keys from Platform.</p></div>
+        <div class="standup-row"><p class="place">Jonah Ortiz<small>Austin</small></p><p>Reviewed v2 spec. Picking up the analytics events today.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap split">
+      <div class="copy">
+        <p class="kicker">Decision log</p>
+        <h2 class="h2">Every “why” is one search away</h2>
+        <p>Turn any comment or thread into a recorded decision with owners, context and alternatives considered. Six months later, the reasoning is still there.</p>
+        <ul class="dots">
+          <li>Async approvals with clear deadlines</li>
+          <li>Linked to specs, tickets and roadmap items</li>
+          <li>Instant onboarding for new teammates</li>
+        </ul>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>Decision</th><th>Approved</th><th>Area</th></tr></thead>
+          <tbody>
+            <tr><td>Aug 14</td><td class="dec">Ship Apple Pay before saved cards</td><td class="n">by 3</td><td>Checkout v2</td></tr>
+            <tr><td>Jul 30</td><td class="dec">Move onboarding to a 3-step flow</td><td class="n">by 4</td><td>Activation</td></tr>
+            <tr><td>Jul 12</td><td class="dec">Deprecate legacy export API in Q4</td><td class="n">by 5</td><td>Platform</td></tr>
+            <tr><td>Jun 28</td><td class="dec">Use feature flags for all mobile releases</td><td class="n">by 6</td><td>Mobile</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="roadmap-head">
+        <div class="copy">
+          <p class="kicker">Living roadmaps</p>
+          <h2 class="h2">A roadmap that updates itself</h2>
+          <p>Roadmap items pull status straight from specs, standups and your issue tracker — so leadership sees real progress, not last month's slide.</p>
+        </div>
+        <ul class="dots">
+          <li>Now / Next / Later and timeline views</li>
+          <li>Two-way sync with Jira, Linear and GitHub</li>
+          <li>Shareable, read-only links for stakeholders</li>
+        </ul>
+      </div>
+      <div class="table-wrap" aria-hidden="true">
+        <div class="roadmap">
+          <div class="rm-head"><span></span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div>
+          <div class="rm-row"><span>Checkout v2</span><div class="bar prog" style="grid-column: span 2">In progress</div></div>
+          <div class="rm-row"><span>Onboarding</span><div class="bar done" style="grid-column: 2 / span 1">Done</div></div>
+          <div class="rm-row"><span>Saved cards</span><div class="bar next" style="grid-column: 4 / span 2">Next</div></div>
+          <div class="rm-row"><span>Export API</span><div class="bar plan" style="grid-column: 3 / span 3">Planned</div></div>
+          <div class="rm-row"><span>Dark mode</span><div class="bar done" style="grid-column: 2 / span 2">Done</div></div>
+        </div>
+      </div>
+
+      <h3 class="h2" style="font-size:clamp(1.5rem,2.4vw,2rem);margin-top:6rem">Also in Tandem</h3>
+      <div class="also">
+        <div><h3>Spec templates</h3><p>PRDs, RFCs and one-pagers with built-in review flows and comments.</p></div>
+        <div><h3>Overlap finder</h3><p>See everyone's working hours at a glance and book meetings fairly.</p></div>
+        <div><h3>Threaded feedback</h3><p>Comment on any paragraph, design or screenshot. Resolve without a meeting.</p></div>
+        <div><h3>AI summaries</h3><p>Catch up on a week of activity in 60 seconds, written for your role.</p></div>
+        <div><h3>50+ integrations</h3><p>Slack, Figma, Jira, Linear, GitHub, Notion, Google Drive and more.</p></div>
+        <div><h3>Enterprise security</h3><p>SSO, SCIM, audit logs, data residency and granular permissions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="teams">
+    <div class="wrap">
+      <p class="kicker">From teams using Tandem</p>
+      <figure style="margin:0">
+        <blockquote class="lead-quote">“We killed our daily standup meeting in week one. Our engineers in Manila finally stopped working nights to stay in the loop.”</blockquote>
+        <figcaption class="cite"><b>Lena Ruiz</b>, VP Product, Fieldkit</figcaption>
+      </figure>
+      <div class="more-quotes">
+        <figure><blockquote>“The decision log alone is worth it. New PMs ramp in days instead of weeks because the ‘why’ behind everything is right there.”</blockquote><figcaption class="cite"><b>Tomás Nakamura</b>, Head of Product, Orbital</figcaption></figure>
+        <figure><blockquote>“Our roadmap used to be a lie by Friday. Now it's live, and execs stopped asking for status decks.”</blockquote><figcaption class="cite"><b>Amara Keita</b>, Engineering Manager, Quarry</figcaption></figure>
+      </div>
+      <p class="results">Teams in Tandem report <b>−42%</b> fewer recurring meetings, <b>3.1×</b> faster new-hire ramp-up and <b>6 hrs</b> saved per person, per week.</p>
+    </div>
+  </section>
+
+  <section class="block" id="pricing">
+    <div class="wrap">
+      <div class="pricing-head">
+        <div>
+          <h2 class="h2">Pricing</h2>
+          <p>Start free. Upgrade when your team grows.</p>
+        </div>
+        <div class="toggle" role="group" aria-label="Billing period">
+          <button type="button" data-period="monthly" aria-pressed="false">Monthly</button>
+          <button type="button" data-period="yearly" aria-pressed="true">Yearly <small>−20%</small></button>
+        </div>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Starter</h3>
+          <p class="desc">For small teams getting started.</p>
+          <div class="price">$0 <small>/ forever</small></div>
+          <a href="#start" class="btn btn-line">Start on Starter</a>
+          <ul class="dots" style="margin-top:0">
+            <li>Up to 5 members</li>
+            <li>Async standups &amp; specs</li>
+            <li>90-day history</li>
+            <li>3 integrations</li>
+          </ul>
+        </div>
+        <div class="plan team">
+          <h3>Team</h3>
+          <p class="desc">For growing product orgs.</p>
+          <div class="price"><span data-price data-monthly="12" data-yearly="10">$10</span> <small>/ user / month</small></div>
+          <a href="#start" class="btn btn-go">Start 14-day trial</a>
+          <ul class="dots" style="margin-top:0">
+            <li>Unlimited members</li>
+            <li>Decision log &amp; living roadmaps</li>
+            <li>AI summaries</li>
+            <li>Unlimited history &amp; integrations</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Enterprise</h3>
+          <p class="desc">For security-conscious companies.</p>
+          <div class="price">Custom</div>
+          <a href="#start" class="btn btn-line">Talk to sales</a>
+          <ul class="dots" style="margin-top:0">
+            <li>Everything in Team</li>
+            <li>SSO, SCIM &amp; audit logs</li>
+            <li>EU / US data residency</li>
+            <li>Dedicated success manager</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap split">
+      <h2 class="h2">Questions</h2>
+      <div class="faq">
+        <details><summary>Does Tandem replace Slack or Jira?</summary><p>No — it connects them. Keep chatting in Slack and tracking tickets in Jira or Linear. Tandem is where specs, decisions and plans live, with two-way sync so nothing gets duplicated.</p></details>
+        <details><summary>How long does setup take?</summary><p>Most teams are running their first async standup within 15 minutes. You can import existing docs from Notion, Confluence or Google Drive in a few clicks.</p></details>
+        <details><summary>What happens when my free trial ends?</summary><p>You'll move to the free Starter plan automatically. Nothing is deleted, and you can upgrade any time.</p></details>
+        <details><summary>Is my data secure?</summary><p>Tandem is SOC 2 Type II compliant, encrypts data in transit and at rest, and offers EU or US data residency on Enterprise plans.</p></details>
+        <details><summary>Do you offer discounts for startups or non-profits?</summary><p>Yes. Eligible early-stage startups and registered non-profits get 50% off the Team plan for the first year.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block start" id="start">
+    <div class="wrap">
+      <div class="copy">
+        <h2>Give your team its mornings back.</h2>
+        <p>Try Tandem free for 14 days. Set up in minutes, cancel anytime.</p>
+        <form class="cta-form" novalidate>
+          <label for="email" class="sr-only">Work email</label>
+          <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+          <button type="submit" class="btn btn-go">Start free</button>
+        </form>
+        <p class="cta-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="logo" style="color:var(--ink)">
+          <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="9" fill="none" stroke="#101712" stroke-width="3.5"/><circle cx="20" cy="16" r="9" fill="none" stroke="#177a33" stroke-width="3.5"/></svg>
+          Tandem
+        </a>
+        <p style="margin-top:.75rem; max-width:22rem">The shared workspace for remote product teams. Made by a fully distributed team across 11 countries.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Integrations</a></li><li><a href="#">Changelog</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="#">Remote playbook</a></li><li><a href="#">Help center</a></li><li><a href="#">Security</a></li><li><a href="#">Status</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Tandem Labs, Inc.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Billing toggle
+  const toggleBtns = document.querySelectorAll('.toggle button');
+  toggleBtns.forEach(btn => btn.addEventListener('click', () => {
+    toggleBtns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    const period = btn.dataset.period;
+    document.querySelectorAll('[data-price]').forEach(el => {
+      el.textContent = '$' + el.dataset[period];
+    });
+  }));
+
+  // Signup form
+  const form = document.querySelector('.cta-form');
+  const msg = document.querySelector('.cta-msg');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = form.querySelector('input');
+    if (!input.value || !input.checkValidity()) {
+      msg.textContent = 'Please enter a valid work email.';
+      input.focus();
+      return;
+    }
+    msg.textContent = "Thanks! Check your inbox to finish setting up your workspace.";
+    form.reset();
+  });
+</script>
+</body>
+</html>
