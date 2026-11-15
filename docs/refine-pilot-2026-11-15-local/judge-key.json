@@ -1,0 +1,474 @@
+{
+ "arms": [
+  "refine-a",
+  "refine-b",
+  "refine-e",
+  "refine-f"
+ ],
+ "reps": [
+  "1"
+ ],
+ "orders": 2,
+ "page": {
+  "ja-clinic@1@1": {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "letters": {
+    "A": "refine-b",
+    "B": "refine-f",
+    "C": "refine-e",
+    "D": "refine-a"
+   }
+  },
+  "ja-clinic@1@2": {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "letters": {
+    "A": "refine-a",
+    "B": "refine-e",
+    "C": "refine-f",
+    "D": "refine-b"
+   }
+  },
+  "ja-recruit@1@1": {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "letters": {
+    "A": "refine-b",
+    "B": "refine-a",
+    "C": "refine-f",
+    "D": "refine-e"
+   }
+  },
+  "ja-recruit@1@2": {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "letters": {
+    "A": "refine-e",
+    "B": "refine-f",
+    "C": "refine-a",
+    "D": "refine-b"
+   }
+  },
+  "ko-logistics@1@1": {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "letters": {
+    "A": "refine-a",
+    "B": "refine-b",
+    "C": "refine-e",
+    "D": "refine-f"
+   }
+  },
+  "ko-logistics@1@2": {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "letters": {
+    "A": "refine-f",
+    "B": "refine-e",
+    "C": "refine-b",
+    "D": "refine-a"
+   }
+  }
+ },
+ "set": {
+  "1@1": {
+   "rep": "1",
+   "order": 1,
+   "pages": 3,
+   "letters": {
+    "A": "refine-e",
+    "B": "refine-b",
+    "C": "refine-a",
+    "D": "refine-f"
+   }
+  },
+  "1@2": {
+   "rep": "1",
+   "order": 2,
+   "pages": 3,
+   "letters": {
+    "A": "refine-f",
+    "B": "refine-a",
+    "C": "refine-b",
+    "D": "refine-e"
+   }
+  }
+ },
+ "stage": {
+  "ja-clinic@refine-a.1@first@1": {
+   "id": "ja-clinic",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-clinic@refine-a.1@first@2": {
+   "id": "ja-clinic",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-clinic@refine-a.1@mock@1": {
+   "id": "ja-clinic",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-clinic@refine-a.1@mock@2": {
+   "id": "ja-clinic",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-clinic@refine-b.1@first@1": {
+   "id": "ja-clinic",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-clinic@refine-b.1@first@2": {
+   "id": "ja-clinic",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-clinic@refine-b.1@mock@1": {
+   "id": "ja-clinic",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-clinic@refine-b.1@mock@2": {
+   "id": "ja-clinic",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-clinic@refine-e.1@first@1": {
+   "id": "ja-clinic",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-clinic@refine-e.1@first@2": {
+   "id": "ja-clinic",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-clinic@refine-e.1@mock@1": {
+   "id": "ja-clinic",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-clinic@refine-e.1@mock@2": {
+   "id": "ja-clinic",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-clinic@refine-f.1@first@1": {
+   "id": "ja-clinic",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-clinic@refine-f.1@first@2": {
+   "id": "ja-clinic",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-clinic@refine-f.1@mock@1": {
+   "id": "ja-clinic",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-clinic@refine-f.1@mock@2": {
+   "id": "ja-clinic",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-recruit@refine-a.1@first@1": {
+   "id": "ja-recruit",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-recruit@refine-a.1@first@2": {
+   "id": "ja-recruit",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-recruit@refine-a.1@mock@1": {
+   "id": "ja-recruit",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-recruit@refine-a.1@mock@2": {
+   "id": "ja-recruit",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-recruit@refine-b.1@first@1": {
+   "id": "ja-recruit",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-recruit@refine-b.1@first@2": {
+   "id": "ja-recruit",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-recruit@refine-b.1@mock@1": {
+   "id": "ja-recruit",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-recruit@refine-b.1@mock@2": {
+   "id": "ja-recruit",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-recruit@refine-e.1@first@1": {
+   "id": "ja-recruit",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-recruit@refine-e.1@first@2": {
+   "id": "ja-recruit",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-recruit@refine-e.1@mock@1": {
+   "id": "ja-recruit",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-recruit@refine-e.1@mock@2": {
+   "id": "ja-recruit",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ja-recruit@refine-f.1@first@1": {
+   "id": "ja-recruit",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ja-recruit@refine-f.1@first@2": {
+   "id": "ja-recruit",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ja-recruit@refine-f.1@mock@1": {
+   "id": "ja-recruit",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ja-recruit@refine-f.1@mock@2": {
+   "id": "ja-recruit",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ko-logistics@refine-a.1@mock@1": {
+   "id": "ko-logistics",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ko-logistics@refine-a.1@mock@2": {
+   "id": "ko-logistics",
+   "arm": "refine-a",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ko-logistics@refine-b.1@first@1": {
+   "id": "ko-logistics",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ko-logistics@refine-b.1@first@2": {
+   "id": "ko-logistics",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ko-logistics@refine-b.1@mock@1": {
+   "id": "ko-logistics",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ko-logistics@refine-b.1@mock@2": {
+   "id": "ko-logistics",
+   "arm": "refine-b",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ko-logistics@refine-e.1@first@1": {
+   "id": "ko-logistics",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ko-logistics@refine-e.1@first@2": {
+   "id": "ko-logistics",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ko-logistics@refine-e.1@mock@1": {
+   "id": "ko-logistics",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ko-logistics@refine-e.1@mock@2": {
+   "id": "ko-logistics",
+   "arm": "refine-e",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  },
+  "ko-logistics@refine-f.1@first@1": {
+   "id": "ko-logistics",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "first",
+   "X": "first",
+   "Y": "final"
+  },
+  "ko-logistics@refine-f.1@first@2": {
+   "id": "ko-logistics",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "first",
+   "X": "final",
+   "Y": "first"
+  },
+  "ko-logistics@refine-f.1@mock@1": {
+   "id": "ko-logistics",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "mock",
+   "X": "mock",
+   "Y": "final"
+  },
+  "ko-logistics@refine-f.1@mock@2": {
+   "id": "ko-logistics",
+   "arm": "refine-f",
+   "rep": "1",
+   "from": "mock",
+   "X": "final",
+   "Y": "mock"
+  }
+ }
+}
