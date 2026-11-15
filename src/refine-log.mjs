@@ -5,6 +5,7 @@
 // clients should not. Default location: ~/.ui-refiner/refine-log.json (UI_REFINER_HOME overrides).
 import fs from 'node:fs/promises';
 import os from 'node:os';
+import {loadMaterials,dealMaterials} from './materials.mjs';
 import path from 'node:path';
 
 export const DEAL_FILE='DEAL.json';
@@ -170,21 +171,32 @@ export function avoidFaces(pairs,entries,project,toneDef){
 }
 
 /**
- * Writes DEAL.json into the directions folder: per direction a hero structure, a surface and a colour family, plus
- * faces to avoid. Type is left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
- * winners were pages that pushed one strong face of their own choosing. The colour family is dealt again since round
- * 14, where the tone left colour free and three of eight pages took the same forest green.
+ * Writes DEAL.json into the directions folder: per direction a hero structure and a material (src/materials.mjs),
+ * with the material's faces for the page's script. Rounds 5–17 dealt a surface, a colour family and faces to avoid
+ * as separate parts; the pages built from them were called plain, and each habit that was ruled out gave way to the
+ * next. A material fixes ground, colour, type, surfaces and controls together. The sheet warns when a mock leaves
+ * its material's faces.
  */
-export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en'}={}){
+export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noPhoto=false,kind,tone,lang='en',materials}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
  if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary();
  const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
  const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
- const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
- const acc=toneColours(lib,toneDef,surf,entries,project,{n,seed,weights:colours===undefined?await humanColours(kind,lang):colours});
- const deal={schemaVersion:5,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]},accent:{family:acc[i],brief:lib.accents[acc[i]]}}))};
+ const dealt=dealMaterials(materials??await loadMaterials(),entries,project,{n,seed,kind,tone,noPhoto});
+ // Pair each structure with a material that can carry it: photo-led structures go to materials that use
+ // photographs, and a material that rarely uses them (a receipt, a widget grid) gets a structure without one.
+ const mats=[],left=[...dealt];
+ for(const key of keys){
+  const led=PHOTO.has(key),i=left.findIndex(m=>led?m.photo==='required':m.photo==='rare'),j=i>=0?i:left.findIndex(m=>led?m.photo!=='rare':m.photo!=='required');
+  mats.push(left.splice(j>=0?j:0,1)[0]);
+ }
+ if(mats.length<keys.length)throw new Error('No materials found; expected skills/ui-refiner-agent/reference/materials/*.md');
+ const deal={schemaVersion:6,kind:kind??null,tone:tone??null,toneBrief:tone?lib.tones[tone]?.brief??null:null,lang,script,structures:keys.map((key,i)=>{
+  const m=mats[i];
+  return {label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],material:{slug:m.slug,name:m.name,brief:m.brief,ground:m.ground,file:m.file},type:m.faces[script]??m.faces.latin};
+ })};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }
@@ -232,8 +244,8 @@ export async function recordChoice(dir,{pick,page,log}={}){
  let sheet;try{sheet=JSON.parse(await fs.readFile(path.join(root,SHEET_JSON),'utf8'));}catch{throw new Error(`Run "ui-refiner directions ${dir}" first; ${SHEET_JSON} is missing.`);}
  const item=sheet.items.find(d=>d.label===String(pick||'').toUpperCase());
  if(!item)throw new Error(`--pick must be one of ${sheet.items.map(d=>d.label).join(', ')}`);
- const entries=await readLog(log);
- const entry={date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
+ const entries=await readLog(log),deal=await readDeal(root);
+ const entry={material:deal?.structures?.find(x=>x.label===item.label)?.material?.slug??null,date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
  entries.push(entry);
  await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify(entry,null,1)+'\n');
  return {entry,file:await writeLog(entries.slice(-200),log)};
