@@ -206,7 +206,7 @@ export function collectAiTells(){
   return {photos,nav,fonts:{display:fam(h1),heading:fam(h2||h1),body:fam(p||document.body)},sizes:{h1:px(h1),h2:px(h2),h3:px(h3),body:px(p)},weights:{h1:wt(h1),h2:wt(h2)},colours:{text:col(p||document.body),heading:col(h2||h1)},button,radius,hairlines,content};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
-  url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
+  url:location.href,direction:document.querySelector('meta[name="ui-refiner-direction"]')?.content?.trim().toLowerCase()||null,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
   gradients:{count:gradients.length,large:largeGradients.length,purple:purpleGradients.length,coverage:Math.min(1,largeGradients.reduce((n,el)=>n+area(el),0)/page),targets:sample(largeGradients.length?largeGradients:gradients)},
   gradientText:{count:gradientText.length,headings:gradientHeadings.length,targets:sample(gradientText)},
   glass:{count:glass.length,targets:sample(glass)},
@@ -326,7 +326,7 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if(m.iconBoxes&&m.iconBoxes.count>=TH.iconBoxes)add('boxed-icons','moderate',{boxes:m.iconBoxes.count},m.iconBoxes.targets);
  const fams=m.typography.families,top=fams[0]?.name;
  // Japanese pages with a real Japanese stack (Hiragino, Noto Sans JP …) follow local convention, not a template default.
- if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)});
+ if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name),...(m.direction==='familiar'?{direction:'familiar'}:{})},[],m.direction==='familiar'?0:null); // the familiar direction uses a plain family on purpose: reported, not scored
  // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
  if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)});
  const hits=new Map();for(const c of m.accents)for(const [name,ref] of Object.entries(defaultAccents))if(dist(c,ref)<14)hits.set(name,(hits.get(name)||0)+1);
