@@ -142,3 +142,11 @@ test('score breakdown: whole points per signal add up to the score, and the verd
  const md=renderScan({url:'http://x/',lang:'ko',aiLook:evaluateAiTells({...quiet(),emoji:{count:6,icons:6,targets:['span']}}),quality:[],japanese:{japanese:false,issues:[]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
  assert.match(md,/## 1\. 왜 이 점수인가/);assert.match(md,/\| \*\*합계\*\* \| \*\*\d+\*\* \|/);assert.match(md,/판정: AI가 만든/);
 });
+
+test('familiar direction: a single plain typeface is reported but not scored', () => {
+ const m=quiet();m.typography={...m.typography,families:[{name:'noto sans kr',count:40}]};
+ const plain=evaluateAiTells(m),fam=evaluateAiTells({...m,direction:'familiar'});
+ const g=r=>r.signals.find(s=>s.id==='generic-type');
+ assert.ok(g(plain)?.weight>0,'scored on an ordinary page');
+ assert.equal(g(fam)?.weight,0);assert.equal(g(fam)?.points,0);assert.ok(fam.score<plain.score);
+});
