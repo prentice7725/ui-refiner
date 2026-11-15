@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>さくら内科クリニック｜世田谷区の内科・かかりつけ医</title>
+<meta name="description" content="東京都世田谷区のさくら内科クリニック。一般内科・生活習慣病・発熱外来・健康診断・予防接種に対応する地域のかかりつけ医です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Material: Tile — glazed squares on pale grout, one blue-green glaze, one yellow tile (today) */
+  :root {
+    --ground: #ffffff; --grout: #d9e2e6; --tile: #ffffff; --tile-shade: #f2f6f8;
+    --glaze: #1f6f8b; --glaze-deep: #134e63; --yellow: #f2c230;
+    --ink: #13293a; --muted: #4b5f6c; --off: #5a6c77; --on-glaze: #ffffff; --on-glaze-soft: #e3f0f5;
+    --cols: 15; --gap: 3px;
+    --cell: calc((100vw - 15px - (var(--cols) - 1) * var(--gap)) / var(--cols));
+    --radius-tile: 4px;
+    --glaze-light-edge: linear-gradient(135deg, rgba(255,255,255,.55) 0, rgba(255,255,255,0) 36px);
+    --glaze-foot: inset 0 -3px 0 rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.7);
+    --wet-floor: 0 24px 40px -30px rgba(19,78,99,.5);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0f1b22; --grout: #2a3a43; --tile: #17262f; --tile-shade: #1c2d37;
+      --glaze: #2b86a6; --glaze-deep: #8fd0e6; --yellow: #f2c230;
+      --ink: #e8f0f3; --muted: #a9bac3; --off: #8fa1ab; --on-glaze: #ffffff; --on-glaze-soft: #e3f0f5;
+      --glaze-light-edge: linear-gradient(135deg, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 36px);
+      --glaze-foot: inset 0 -3px 0 rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
+      --wet-floor: 0 24px 40px -30px rgba(0,0,0,.8); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0f1b22; --grout: #2a3a43; --tile: #17262f; --tile-shade: #1c2d37;
+    --glaze: #2b86a6; --glaze-deep: #8fd0e6; --yellow: #f2c230;
+    --ink: #e8f0f3; --muted: #a9bac3; --off: #8fa1ab; --on-glaze: #ffffff; --on-glaze-soft: #e3f0f5;
+    --glaze-light-edge: linear-gradient(135deg, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 36px);
+    --glaze-foot: inset 0 -3px 0 rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
+    --wet-floor: 0 24px 40px -30px rgba(0,0,0,.8); color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif; font-size: 17px; line-height: 1.8; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--glaze-deep); }
+  h1, h2, h3 { font-family: "M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-weight: 800; line-height: 1.3; margin: 0; word-break: auto-phrase; text-wrap: balance; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 0; box-shadow: 0 0 0 5px var(--ink); }
+  .skip { position: absolute; left: 16px; top: -100px; background: var(--tile); padding: 8px 12px; z-index: 100; }
+  .skip:focus { top: 16px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* a tile */
+  /* the light edge only shows on glaze; white tiles keep the inset highlight of --glaze-foot */
+  .t { border-radius: var(--radius-tile); background: var(--tile); box-shadow: var(--glaze-foot); min-width: 0; }
+  .t.g { background: var(--glaze-light-edge), var(--glaze); color: var(--on-glaze); }
+  .t.y { background: var(--glaze-light-edge), var(--yellow); color: #13293a; }
+  .grout { display: grid; gap: var(--gap); background: var(--grout); padding: var(--gap); border-radius: var(--radius-tile); }
+
+  /* buttons are tiles */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; padding: 0 26px; border-radius: var(--radius-tile); font-weight: 700; text-decoration: none; }
+  .btn-main { background: var(--glaze-light-edge), var(--glaze); color: var(--on-glaze); box-shadow: var(--glaze-foot); }
+  .btn-main:hover { background: var(--glaze-light-edge), var(--glaze-deep); }
+  :root:not([data-theme="light"]) .btn-main:hover { color: var(--on-glaze); }
+  .btn-main:active { background: var(--glaze); box-shadow: inset 0 3px 0 rgba(0,0,0,.18); }
+  .btn-sub { background: var(--tile); color: var(--glaze-deep); border: 2px solid var(--glaze); }
+  .btn-sub:hover { background: var(--tile-shade); }
+
+  /* header */
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--ground); border-bottom: 3px solid var(--grout); }
+  .head-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; max-width: none; }
+  .mark { text-decoration: none; color: var(--ink); line-height: 1.3; }
+  .mark strong { display: block; font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: 1.25rem; }
+  .mark small { font-size: .8rem; color: var(--muted); }
+  nav.gnav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+  nav.gnav a { display: block; padding: 8px 10px; text-decoration: none; color: var(--ink); font-size: .93rem; border-radius: var(--radius-tile); }
+  nav.gnav a:hover { background: var(--tile-shade); }
+  .head-tel { min-height: 44px; padding: 0 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .menu-btn { display: none; min-height: 44px; background: var(--tile); border: 2px solid var(--grout); border-radius: var(--radius-tile); padding: 0 14px; color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+
+  /* hero wall */
+  .wall { display: grid; grid-template-columns: repeat(var(--cols), 1fr); grid-auto-rows: var(--cell); gap: var(--gap); background: var(--grout); padding-block: var(--gap); box-shadow: var(--wet-floor); }
+  .photo { grid-column: 1 / -1; grid-row: 1 / span 5; position: relative; overflow: hidden; border-radius: var(--radius-tile); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
+  .photo::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(to right, transparent var(--cell), var(--grout) var(--cell)) 0 0 / calc(var(--cell) + var(--gap)) 100%,
+      linear-gradient(to bottom, transparent var(--cell), var(--grout) var(--cell)) 0 0 / 100% calc(var(--cell) + var(--gap)); }
+  .claim { grid-column: 2 / span 6; grid-row: 1 / span 5; z-index: 1; padding: clamp(20px, 2.6vw, 36px); display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .claim h1 { font-size: clamp(1.9rem, 3.1vw, 2.9rem); line-height: 1.22; }
+  .claim p { margin: 0; color: var(--muted); }
+  .acts { display: flex; flex-wrap: wrap; gap: 12px; }
+  [data-r="6"] { grid-row: 6; } [data-r="7"] { grid-row: 7; } [data-r="8"] { grid-row: 8; }
+  .lab { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; padding: 0 14px; line-height: 1.35; }
+  .lab b { font-family: "M PLUS Rounded 1c", sans-serif; font-size: 1.05rem; }
+  .lab span { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .9rem; }
+  .day { display: grid; place-content: center; font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: calc(var(--cell) * .36); font-variant-numeric: tabular-nums; line-height: 1; text-align: center; }
+  .day small { display: block; font-size: .8rem; font-weight: 700; margin-top: 4px; }
+  .day.off { color: var(--off); font-size: max(14px, calc(var(--cell) * .2)); }
+  .fill { grid-column: span 1; }
+  .side { grid-column: 10 / span 6; grid-row: 7 / span 2; padding: 12px 22px; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+  .side .now { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .dot { width: 12px; height: 12px; border-radius: 2px; background: var(--off); flex: none; }
+  .dot.open { background: var(--glaze); }
+  .side .tel { font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--ink); text-decoration: none; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .side p { margin: 0; font-size: .92rem; color: var(--muted); }
+  .side .hrs { display: none; }
+
+  /* a single course of tiles opens each section */
+  .course { display: grid; grid-template-columns: repeat(30, 1fr); gap: var(--gap); background: var(--grout); padding-block: var(--gap); min-height: 20px; }
+  .course .t { aspect-ratio: 1; }
+  section.block { padding-block: 0 88px; }
+  section.block > .wrap { padding-top: 56px; }
+  .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px 48px; align-items: end; margin-bottom: 32px; }
+  .sec-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+  .sec-head p { margin: 0; color: var(--muted); }
+
+  /* notices: list on white with a glazed header course */
+  .notice { padding-block: 56px 0; }
+  .board { grid-template-columns: 1fr; }
+  .board .head { padding: 12px 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .board .head h2 { font-size: 1.2rem; }
+  .board .head span { font-size: .85rem; color: var(--on-glaze-soft); }
+  .board ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); }
+  .board li { display: grid; grid-template-columns: 7.5em 6.5em minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 14px 22px; }
+  .board time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .92rem; }
+  .tag { font-size: .8rem; font-weight: 700; color: var(--glaze-deep); border: 2px solid var(--glaze); border-radius: var(--radius-tile); padding: 0 8px; justify-self: start; white-space: nowrap; }
+
+  /* about: features beside the waiting-room photo */
+  .about { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .about .pic { grid-column: span 2; grid-row: span 2; overflow: hidden; min-height: 320px; }
+  .about .pic img { width: 100%; height: 100%; object-fit: cover; }
+  .about .f { padding: 22px 24px; }
+  .about .f h3 { font-size: 1.12rem; margin-bottom: 8px; }
+  .about .f p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* medical: one large glazed tile, the rest white */
+  .svc { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .svc > div { padding: 22px 24px; }
+  .svc .big { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; min-height: 260px; }
+  .svc h3 { font-size: 1.2rem; margin-bottom: 6px; }
+  .svc .big h3 { font-size: 2rem; }
+  .svc p { margin: 0; font-size: .95rem; color: var(--muted); }
+  .svc .big p { color: var(--on-glaze-soft); font-size: 1.05rem; max-width: 30em; }
+
+  /* hours: a tile table, header course glazed */
+  .table-scroll { position: relative; }
+  table.htable { width: 100%; border-collapse: separate; border-spacing: var(--gap); background: var(--grout); border-radius: var(--radius-tile); table-layout: fixed; }
+  .htable th, .htable td { height: 64px; padding: 6px; text-align: center; font-variant-numeric: tabular-nums; position: relative; }
+  .htable .rh { width: 9em; text-align: left; padding-left: 18px; font-weight: 700; }
+  .htable .ch { font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: 1.15rem; }
+  .htable .o { font-size: 1.3rem; color: var(--glaze); }
+  .htable .x { color: var(--off); font-size: .95rem; }
+  .htable .tri { color: var(--glaze-deep); font-size: .95rem; font-weight: 700; line-height: 1.3; }
+  .hours-note { list-style: none; padding: 0; margin: 20px 0 0; color: var(--muted); font-size: .95rem; display: grid; gap: 2px; }
+  .table-scroll { overflow-x: auto; }
+  .table-scroll .htable { min-width: 560px; }
+
+  /* doctor: one statement on a glazed course */
+  .statement { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .statement .say { grid-column: 1 / -1; padding: clamp(28px, 4vw, 56px); }
+  .statement blockquote { margin: 0; font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 700; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.75; max-width: 44em; word-break: auto-phrase; text-wrap: pretty; }
+  .statement .who { grid-column: span 2; padding: 22px 24px; }
+  .statement .who h3 { font-size: 1.4rem; }
+  .statement .who span { color: var(--muted); font-size: .92rem; display: block; margin-top: 6px; }
+  .statement .cv { grid-column: span 4; padding: 22px 24px; }
+  .statement dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; margin: 0; font-size: .95rem; }
+  .statement dt { font-weight: 700; color: var(--glaze-deep); }
+  .statement dd { margin: 0; color: var(--muted); }
+
+  /* flow: numbered tiles with text beneath */
+  .flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; counter-reset: step; }
+  .flow li { counter-increment: step; min-width: 0; }
+  .flow li::before { content: counter(step); display: grid; place-content: center; width: 88px; height: 88px; margin-bottom: 16px; border-radius: var(--radius-tile); background: var(--glaze-light-edge), var(--glaze); box-shadow: var(--glaze-foot), 0 0 0 3px var(--grout); color: var(--on-glaze); font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: 2.6rem; font-variant-numeric: tabular-nums; }
+  .flow h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .flow p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* access */
+  .access { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .map { overflow: hidden; min-height: 320px; }
+  .map svg { width: 100%; height: 100%; display: block; }
+  .info { padding: 8px 24px; }
+  .info dl { margin: 0; }
+  .info dl > div { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 12px; padding: 14px 0; border-top: 3px solid var(--grout); }
+  .info dl > div:first-child { border-top: 0; }
+  .info dt { font-weight: 700; color: var(--glaze-deep); }
+  .info dd { margin: 0; }
+  .tel-big { font-size: 1.6rem; font-weight: 800; color: var(--ink); text-decoration: none; font-family: "M PLUS Rounded 1c", sans-serif; font-variant-numeric: tabular-nums; }
+
+  /* faq */
+  .faq { grid-template-columns: 1fr; max-width: 860px; }
+  .faq details { border-radius: var(--radius-tile); background: var(--tile); box-shadow: var(--glaze-foot); }
+  .faq summary { cursor: pointer; padding: 18px 56px 18px 22px; font-weight: 700; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; display: grid; place-content: center; border-radius: var(--radius-tile); background: var(--glaze); color: var(--on-glaze); font-size: 1.2rem; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin: 0; padding: 0 22px 20px; color: var(--muted); }
+
+  /* reserve: a small wall */
+  .reserve { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .reserve .ask { grid-column: span 4; padding: clamp(24px, 3.4vw, 44px); display: flex; flex-direction: column; gap: 14px; }
+  .reserve .ask h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+  .reserve .ask p { margin: 0; color: var(--muted); }
+  .reserve .call { grid-column: span 2; padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+  .reserve .call span { color: var(--on-glaze-soft); font-size: .92rem; }
+  .reserve .call a { color: var(--on-glaze); font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: 1.7rem; text-decoration: none; font-variant-numeric: tabular-nums; }
+
+  footer.site { padding-block: 0 calc(32px + env(safe-area-inset-bottom, 0px)); font-size: .92rem; color: var(--muted); }
+  footer.site > .wrap { padding-top: 40px; }
+  .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+  .foot-name { color: var(--ink); font-family: "M PLUS Rounded 1c", sans-serif; font-weight: 800; font-size: 1.15rem; }
+  footer.site ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer.site a { color: var(--muted); }
+  .copy { margin: 24px 0 0; font-size: .85rem; }
+  .stand-in-credits { margin: 8px 0 0; font-size: .8rem; }
+
+  .sp-cta { display: none; }
+
+  @media (max-width: 1000px) {
+    nav.gnav { display: none; }
+    nav.gnav.open { display: block; position: absolute; top: 100%; left: 0; right: 0; background: var(--ground); border-bottom: 3px solid var(--grout); }
+    nav.gnav.open ul { flex-direction: column; padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+    nav.gnav.open a { padding: 12px; }
+    .menu-btn { display: block; }
+    .about { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    :root { --cols: 8; --cell: calc((100vw - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
+    .head-tel { display: none; }
+    .photo { grid-row: 1 / span 5; }
+    .claim { grid-column: 1 / -1; grid-row: 6 / span 9; padding: 20px; }
+    .claim h1 { font-size: 1.85rem; }
+    .claim p { font-size: .95rem; }
+    [data-r="6"] { grid-row: 15; } [data-r="7"] { grid-row: 16; } [data-r="8"] { grid-row: 17; }
+    .fill { display: none; }
+    .lab { grid-column: span 1; padding: 0 2px; align-items: center; text-align: center; }
+    .lab b { font-size: .82rem; } .lab span { display: none; }
+    .day { font-size: 1.05rem; }
+    .day small { font-size: .7rem; margin-top: 2px; }
+    .day.off { font-size: .85rem; }
+    .side { grid-column: 1 / -1; grid-row: 18 / span 4; padding: 14px 18px; }
+    .side .hrs { display: block; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .course { grid-template-columns: repeat(16, 1fr); }
+    .course .t:nth-child(n+17) { display: none; }
+    .sec-head { grid-template-columns: 1fr; }
+    section.block { padding-block: 0 64px; }
+    section.block > .wrap { padding-top: 40px; }
+    .board li { grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; }
+    .board li > span:last-child { grid-column: 1 / -1; }
+    .about, .svc, .access { grid-template-columns: 1fr; }
+    .about .pic { grid-column: auto; grid-row: auto; min-height: 220px; }
+    .svc .big { grid-column: auto; grid-row: auto; min-height: 200px; }
+    .svc .big h3 { font-size: 1.6rem; }
+    .statement .who, .statement .cv { grid-column: 1 / -1; }
+    .statement dl { grid-template-columns: 1fr; gap: 0; }
+    .statement dd { margin-bottom: 8px; }
+    .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+    .flow li::before { width: 64px; height: 64px; font-size: 1.9rem; }
+    .info dl > div { grid-template-columns: 1fr; gap: 2px; }
+    .reserve .ask, .reserve .call { grid-column: 1 / -1; }
+    body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+    .sp-cta {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap);
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      background: var(--grout);
+      padding: var(--gap) max(var(--gap), env(safe-area-inset-right, 0px)) calc(var(--gap) + env(safe-area-inset-bottom, 0px)) max(var(--gap), env(safe-area-inset-left, 0px));
+    }
+    .sp-cta .btn { min-height: 56px; padding: 0 12px; }
+    .sp-cta .btn-sub { border: 0; box-shadow: var(--glaze-foot); }
+  }
+  @media (max-width: 420px) {
+    .acts .btn { flex: 1 1 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="mark" href="#top"><strong>さくら内科クリニック</strong><small>世田谷区 ／ 内科・消化器内科</small></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#about">当院について</a></li>
+        <li><a href="#medical">診療案内</a></li>
+        <li><a href="#hours">診療時間</a></li>
+        <li><a href="#doctor">医師紹介</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-sub head-tel" href="tel:0300000000">TEL 03-0000-0000</a>
+    <button class="menu-btn" id="menuBtn" aria-controls="gnav" aria-expanded="false">メニュー</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wall" id="top" aria-labelledby="hero-title">
+    <div class="photo"><img data-stand-in src="assets/stand-in/clinic-examination-room-03.jpg" alt="診察室の診察台とエコー装置"></div>
+    <div class="t claim">
+      <h1 id="hero-title">土曜も9:00〜13:00、<br>○○駅から徒歩3分の<br>まちの内科</h1>
+      <p>風邪や発熱などの急な症状から、高血圧・糖尿病などの生活習慣病、健康診断・予防接種まで。地域の皆さまの健康を、丁寧な診療で支えます。</p>
+      <div class="acts"><a class="btn btn-main" href="#reserve">WEB予約はこちら</a><a class="btn btn-sub" href="#hours">診療時間を見る</a></div>
+    </div>
+
+    <div class="t lab" data-r="6"><b>曜日</b></div>
+    <div class="t day" data-r="6" data-d="1">月</div><div class="t day" data-r="6" data-d="2">火</div><div class="t day" data-r="6" data-d="3">水</div><div class="t day" data-r="6" data-d="4">木</div><div class="t day" data-r="6" data-d="5">金</div><div class="t day" data-r="6" data-d="6">土</div><div class="t day" data-r="6" data-d="0">日</div>
+    <div class="t fill" data-r="6"></div><div class="t fill" data-r="6"></div><div class="t g fill" data-r="6"></div><div class="t fill" data-r="6"></div><div class="t fill" data-r="6"></div><div class="t fill" data-r="6"></div>
+    <div class="t lab" data-r="7"><b>午前</b><span>9:00〜12:30</span></div>
+    <div class="t g day" data-r="7" role="img" aria-label="月曜午前 診療">●</div><div class="t g day" data-r="7" role="img" aria-label="火曜午前 診療">●</div><div class="t g day" data-r="7" role="img" aria-label="水曜午前 診療">●</div><div class="t day off" data-r="7" role="img" aria-label="木曜午前 休診">休</div><div class="t g day" data-r="7" role="img" aria-label="金曜午前 診療">●</div><div class="t g day" data-r="7" role="img" aria-label="土曜 9時から13時まで">▲<small>〜13:00</small></div><div class="t day off" data-r="7" role="img" aria-label="日曜午前 休診">休</div>
+    <div class="t lab" data-r="8"><b>午後</b><span>15:00〜18:30</span></div>
+    <div class="t g day" data-r="8" role="img" aria-label="月曜午後 診療">●</div><div class="t g day" data-r="8" role="img" aria-label="火曜午後 診療">●</div><div class="t g day" data-r="8" role="img" aria-label="水曜午後 診療">●</div><div class="t day off" data-r="8" role="img" aria-label="木曜午後 休診">休</div><div class="t g day" data-r="8" role="img" aria-label="金曜午後 診療">●</div><div class="t day off" data-r="8" role="img" aria-label="土曜午後 休診">休</div><div class="t day off" data-r="8" role="img" aria-label="日曜午後 休診">休</div>
+    <div class="t side">
+      <span class="now" aria-live="polite"><span class="dot" id="todayDot"></span><span id="todayText">本日の診療時間を確認中…</span></span>
+      <a class="tel" href="tel:0300000000">03-0000-0000</a>
+      <p class="hrs">午前 9:00〜12:30 ／ 午後 15:00〜18:30</p>
+      <p>○○線「○○駅」南口より徒歩3分</p>
+    </div>
+  </section>
+
+  <section class="notice" aria-labelledby="notice-title">
+    <div class="wrap">
+      <div class="grout board">
+        <div class="t g head"><h2 id="notice-title">お知らせ</h2></div>
+        <ul>
+          <li class="t"><time datetime="2026-11-01">2026.11.01</time><span class="tag">予防接種</span><span>インフルエンザワクチン接種を受付中です。WEBまたはお電話でご予約ください。</span></li>
+          <li class="t"><time datetime="2026-10-20">2026.10.20</time><span class="tag">休診</span><span>年末年始は12月29日（火）〜1月3日（日）まで休診いたします。</span></li>
+          <li class="t"><time datetime="2026-10-01">2026.10.01</time><span class="tag">健診</span><span>世田谷区特定健診・区民健診を実施しています（〜2027年3月末）。</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="course" data-g="12,27" aria-hidden="true" style="margin-top:72px"></div>
+  <section class="block" id="about"aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="about-title">当院の特徴</h2><p>患者さま一人ひとりのお話にしっかり耳を傾け、わかりやすい説明を心がけています。</p></div>
+      <div class="grout about">
+        <div class="t pic"><img data-stand-in src="assets/stand-in/clinic-waiting-room-07.jpg" alt="クリニックの待合室" loading="lazy"></div>
+        <div class="t f"><h3>WEB予約・順番確認で待ち時間を短縮</h3><p>24時間いつでもスマートフォンから予約可能。院内の混雑状況もご確認いただけます。</p></div>
+        <div class="t f"><h3>発熱外来を専用動線で実施</h3><p>発熱・感染症が疑われる方は、一般の患者さまと分けた時間帯・動線で診察します。</p></div>
+        <div class="t f"><h3>胃カメラ・エコーなど検査も充実</h3><p>経鼻内視鏡、腹部・頸動脈エコー、心電図、血液検査など、院内で多くの検査に対応します。</p></div>
+        <div class="t f"><h3>土曜診療・バリアフリー対応</h3><p>平日お忙しい方も通いやすい土曜午前診療。車いす・ベビーカーでもご来院いただけます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="course" data-g="7,22" aria-hidden="true"></div>
+  <section class="block" id="medical" aria-labelledby="medical-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="medical-title">診療案内</h2><p>どの科を受診すればよいか迷うときも、まずはお気軽にご相談ください。</p></div>
+      <div class="grout svc">
+        <article class="t g big"><h3>一般内科</h3><p>風邪、発熱、咳、喉の痛み、腹痛、頭痛など日常的な体調不良に対応します。</p></article>
+        <article class="t"><h3>生活習慣病</h3><p>高血圧、糖尿病、脂質異常症、高尿酸血症などを、食事・運動のアドバイスも含めて継続管理します。</p></article>
+        <article class="t"><h3>消化器内科</h3><p>胃もたれ、胸やけ、便秘・下痢などの症状に。経鼻胃カメラ検査も実施しています。</p></article>
+        <article class="t"><h3>発熱外来</h3><p>新型コロナ・インフルエンザの検査に対応。事前にお電話またはWEBでご予約ください。</p></article>
+        <article class="t"><h3>健康診断</h3><p>世田谷区の特定健診・区民健診、企業健診、雇入時健診などを行っています。</p></article>
+        <article class="t"><h3>予防接種</h3><p>インフルエンザ、新型コロナ、肺炎球菌、帯状疱疹、各種抗体検査・ワクチンに対応します。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="course" data-g="3,4,19" aria-hidden="true"></div>
+  <section class="block" id="hours" aria-labelledby="hours-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="hours-title">診療時間</h2><p>休診日：木曜日・土曜午後・日曜日・祝日</p></div>
+      <div class="table-scroll">
+        <table class="htable">
+          <caption class="sr">診療時間表</caption>
+          <thead>
+            <tr><th scope="col" class="t g rh">診療時間</th><th scope="col" class="t g ch">月</th><th scope="col" class="t g ch">火</th><th scope="col" class="t g ch">水</th><th scope="col" class="t g ch">木</th><th scope="col" class="t g ch">金</th><th scope="col" class="t g ch">土</th><th scope="col" class="t g ch">日・祝</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" class="t rh">9:00〜12:30</th><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t x">休診</td><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t tri">▲<br>〜13:00</td><td class="t x">休診</td></tr>
+            <tr><th scope="row" class="t rh">15:00〜18:30</th><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t x">休診</td><td class="t o"><span aria-hidden="true">●</span><span class="sr">診療</span></td><td class="t x">休診</td><td class="t x">休診</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="hours-note">
+        <li>▲ 土曜日は 9:00〜13:00 の診療です。</li>
+        <li>受付は診療終了の15分前までです。胃カメラ検査は予約制です。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="course" data-g="11,26" aria-hidden="true"></div>
+  <section class="block" id="doctor" aria-labelledby="doctor-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="doctor-title">医師紹介</h2><p>日本内科学会 総合内科専門医 ／ 日本消化器病学会 消化器病専門医</p></div>
+      <div class="grout statement">
+        <div class="t g say"><blockquote>「病院に行くほどでもないかな」と迷うような症状こそ、早めにご相談いただきたいと考えています。患者さまが安心して帰れるよう、検査結果や治療方針を丁寧にご説明することを大切にしています。世田谷の皆さまの健康に、長く寄り添えるクリニックを目指します。</blockquote></div>
+        <div class="t who"><h3>院長　桜井 ○○</h3><span>日本内科学会 総合内科専門医 ／ 日本消化器病学会 消化器病専門医</span></div>
+        <div class="t cv"><dl>
+          <dt>経歴</dt><dd>○○大学医学部卒業／都内大学病院 消化器内科、総合病院 内科勤務を経て当院開院</dd>
+          <dt>資格</dt><dd>医学博士、日本内科学会 総合内科専門医、日本消化器内視鏡学会 専門医</dd>
+        </dl></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="course" data-g="5,6,20" aria-hidden="true"></div>
+  <section class="block" id="flow" aria-labelledby="flow-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="flow-title">初診の流れ</h2><p>保険証（マイナ保険証）とお薬手帳をお持ちください。</p></div>
+      <ol class="flow">
+        <li><h3>ご予約</h3><p>WEBまたはお電話でご予約ください。予約なしでも受診いただけます。</p></li>
+        <li><h3>受付・問診</h3><p>保険証（マイナ保険証）・お薬手帳をご提示のうえ、問診票をご記入ください。</p></li>
+        <li><h3>診察・検査</h3><p>症状を伺い、必要に応じて検査を行います。結果は丁寧にご説明します。</p></li>
+        <li><h3>お会計</h3><p>各種クレジットカード・電子マネー・QRコード決済がご利用いただけます。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="course" data-g="14,28" aria-hidden="true"></div>
+  <section class="block" id="access" aria-labelledby="access-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="access-title">アクセス</h2><p>○○線「○○駅」南口より徒歩3分。</p></div>
+      <div class="grout access">
+        <div class="t map" role="img" aria-label="クリニック周辺の簡易地図。○○駅南口から徒歩3分">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="300" fill="var(--tile-shade)"/>
+            <g stroke="var(--grout)" stroke-width="14" fill="none"><path d="M0 90h400"/><path d="M0 210h400"/><path d="M120 0v300"/><path d="M290 0v300"/></g>
+            <rect x="0" y="30" width="400" height="16" fill="var(--off)" opacity=".45"/>
+            <g fill="var(--tile)" stroke="var(--grout)"><rect x="140" y="105" width="130" height="90" rx="4"/><rect x="20" y="105" width="85" height="90" rx="4"/><rect x="305" y="225" width="80" height="60" rx="4"/><rect x="20" y="225" width="85" height="60" rx="4"/></g>
+            <rect x="40" y="52" width="70" height="26" rx="4" fill="var(--ink)"/>
+            <text x="75" y="70" text-anchor="middle" font-size="13" fill="var(--ground)" font-weight="700">○○駅</text>
+            <path d="M110 70 C150 70 160 90 200 135" stroke="var(--glaze)" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+            <rect x="187" y="132" width="36" height="36" rx="4" fill="var(--glaze)"/>
+            <text x="205" y="156" text-anchor="middle" font-size="16" fill="#fff" font-weight="700">✚</text>
+            <text x="205" y="188" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="700">さくら内科クリニック</text>
+          </svg>
+        </div>
+        <div class="t info">
+          <dl>
+            <div><dt>住所</dt><dd>〒154-0000<br>東京都世田谷区○○ 1-2-3 さくらビル 2F</dd></div>
+            <div><dt>電話</dt><dd><a class="tel-big" href="tel:0300000000">03-0000-0000</a></dd></div>
+            <div><dt>電車</dt><dd>○○線「○○駅」南口より徒歩3分</dd></div>
+            <div><dt>バス</dt><dd>「○○二丁目」バス停より徒歩1分</dd></div>
+            <div><dt>駐車場</dt><dd>提携駐車場あり（2台）／駐輪場あり</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="course" data-g="9,24" aria-hidden="true"></div>
+  <section class="block" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="faq-title">よくあるご質問</h2><p>このほかのご質問はお電話でどうぞ。</p></div>
+      <div class="grout faq">
+        <details><summary>予約なしでも受診できますか？</summary><p>はい、予約なしでも受診いただけます。ただし予約の方を優先してご案内するため、お待ちいただく場合があります。</p></details>
+        <details><summary>発熱があるのですが、どうすればよいですか？</summary><p>ご来院前に必ずお電話またはWEBでご予約ください。発熱外来の時間帯と専用の入口をご案内いたします。</p></details>
+        <details><summary>マイナ保険証は使えますか？</summary><p>ご利用いただけます。受付の顔認証付きカードリーダーでお手続きください。</p></details>
+        <details><summary>他院からの紹介状は必要ですか？</summary><p>必須ではありません。お持ちの場合や他院で検査を受けている場合は、結果をお持ちいただくとスムーズです。</p></details>
+        <details><summary>専門的な治療が必要になった場合は？</summary><p>近隣の総合病院・専門医療機関と連携しており、必要に応じて速やかにご紹介いたします。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reserve" aria-labelledby="reserve-title">
+    <div class="wrap">
+      <div class="grout reserve">
+        <div class="t ask">
+          <h2 id="reserve-title">ご予約・お問い合わせ</h2>
+          <p>WEB予約は24時間受付中。お電話は診療時間内にお願いいたします。</p>
+          <div class="acts"><a class="btn btn-main" href="#reserve">WEB予約（24時間受付）</a></div>
+        </div>
+        <div class="t g call"><span>電話する</span><a href="tel:0300000000">03-0000-0000</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="course" data-g="2,17" aria-hidden="true"></div>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <span class="foot-name">さくら内科クリニック</span><br>
+        東京都世田谷区○○ 1-2-3 さくらビル 2F<br>
+        TEL 03-0000-0000
+      </div>
+      <ul>
+        <li><a href="#about">当院について</a></li>
+        <li><a href="#medical">診療案内</a></li>
+        <li><a href="#hours">診療時間</a></li>
+        <li><a href="#doctor">医師紹介</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 さくら内科クリニック</p>
+    <p class="stand-in-credits">仮の写真（実際の写真に差し替え予定）: <a href="https://commons.wikimedia.org/wiki/File%3AModern_medical_examination_room.jpg">Shixart1985</a> (CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File%3AA_waiting_room_at_a_medical_healthcare_clinic%2C_doctor's_office%2C_hospital.jpg">Harrison Keely</a> (CC BY 4.0), via Wikimedia Commons</p>
+  </div>
+</footer>
+
+<div class="sp-cta">
+  <a class="btn btn-sub" href="tel:0300000000">電話する</a>
+  <a class="btn btn-main" href="#reserve">WEB予約</a>
+</div>
+
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('gnav');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? '閉じる' : 'メニュー';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'メニュー';
+  }));
+
+  // One course of tiles opening each section; data-g lists the glazed ones
+  document.querySelectorAll('.course').forEach(c => {
+    const glazed = (c.dataset.g || '').split(',').map(Number);
+    for (let i = 1; i <= 30; i++) {
+      const t = document.createElement('div');
+      t.className = glazed.includes(i) ? 't g' : 't';
+      c.appendChild(t);
+    }
+  });
+
+  // Today's status (Tokyo time); today's tile turns yellow
+  (function () {
+    const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+    const day = now.getDay(); // 0=Sun
+    const min = now.getHours() * 60 + now.getMinutes();
+    const names = ['日', '月', '火', '水', '木', '金', '土'];
+    document.querySelectorAll('.wall .day[data-d="' + day + '"]').forEach(el => { el.classList.add('y'); el.setAttribute('aria-current', 'date'); });
+    let slots = [];
+    if ([1, 2, 3, 5].includes(day)) slots = [[540, 750, '9:00〜12:30'], [900, 1110, '15:00〜18:30']];
+    else if (day === 6) slots = [[540, 780, '9:00〜13:00']];
+    const dot = document.getElementById('todayDot');
+    const text = document.getElementById('todayText');
+    if (!slots.length) { text.textContent = `本日（${names[day]}）は休診日です`; return; }
+    const current = slots.find(s => min >= s[0] && min < s[1]);
+    if (current) {
+      dot.classList.add('open');
+      text.textContent = `ただいま診療中（本日 ${slots.map(s => s[2]).join(' ／ ')}）`;
+    } else {
+      text.textContent = `本日（${names[day]}）の診療：${slots.map(s => s[2]).join(' ／ ')}`;
+    }
+  })();
+</script>
+</body>
+</html>

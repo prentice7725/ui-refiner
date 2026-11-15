@@ -1,0 +1,80 @@
+{
+ "ja-clinic": {
+  "refine-a.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 0,
+   "hairlines": 3
+  },
+  "refine-b.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 1,
+   "hairlines": 1
+  },
+  "refine-e.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 12,
+   "hairlines": 2
+  },
+  "refine-f.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 5,
+   "hairlines": 0
+  }
+ },
+ "ja-recruit": {
+  "refine-a.1": {
+   "tables": 1,
+   "rowGroups": 0,
+   "times": 0,
+   "hairlines": 25
+  },
+  "refine-b.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 1,
+   "hairlines": 0
+  },
+  "refine-e.1": {
+   "tables": 0,
+   "rowGroups": 2,
+   "times": 1,
+   "hairlines": 6
+  },
+  "refine-f.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 0,
+   "hairlines": 3
+  }
+ },
+ "ko-logistics": {
+  "refine-a.1": {
+   "tables": 0,
+   "rowGroups": 2,
+   "times": 1,
+   "hairlines": 13
+  },
+  "refine-b.1": {
+   "tables": 0,
+   "rowGroups": 2,
+   "times": 1,
+   "hairlines": 11
+  },
+  "refine-e.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 1,
+   "hairlines": 4
+  },
+  "refine-f.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 2,
+   "hairlines": 3
+  }
+ }
+}
