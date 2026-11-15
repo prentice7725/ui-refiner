@@ -40,8 +40,8 @@ The glaze colour covers whole tiles or nothing. White text on `--glaze`, `--ink`
 
 - The tile grid: a CSS grid of `--cell` squares with `--gap` between them on a `--grout` backing, so the grout shows as thin lines. Every tile has `--radius-tile`, `--glaze-light-edge` on top and `--glaze-foot`.
 - The hero is a wall: the grid runs the full container width, at least four rows high. A course of glazed tiles runs along its lower third. The claim and the main button sit on one large white tile spanning several cells; a photo or the signature element sits on another.
-- Large tiles span whole cells (2×1, 3×2, 4×3). Nothing sits between cells or overlaps a grout line.
-- Below the hero the grout backing stops. Sections sit on plain white, each opened by a single course of tiles (one row, full width, one or two glazed).
+- Large tiles span whole cells (2×1, 3×2, 4×3). Nothing sits between cells or overlaps a grout line. Every tile in a wall either carries content or is a plain white tile inside the wall's rectangle; a glazed tile is part of the continuous course or carries a figure, never a lone square beside empty cells. The wall ends in a straight edge.
+- Below the hero the grout backing stops and sections sit on plain white.
 - A wet-floor shadow is the only shadow: none on tiles; the wall as a whole casts `0 24px 40px -30px rgba(10,92,87,.5)`.
 
 ## Controls
@@ -58,10 +58,16 @@ The glaze colour covers whole tiles or nothing. White text on `--glaze`, `--ink`
 - A price list on white with a glazed header course.
 - One statement set large on a full course of glazed tiles, three rows high.
 
+## Rhythm
+
+- The wall appears twice at most: the hero, and one mosaic (the timetable) or one glazed statement.
+- Between them the page is plain white with the tile's type and controls. Sections are separated by space and a heading, not by a course of tiles.
+- A wall is as wide as its content needs and no wider: do not pad it with empty tiles to reach the container edge.
+
 ## Photos
 
-Natural colour inside tiles that span whole cells, with the same radius. A photo may be cut by the grout into a grid of tiles once per page (the hero).
+Natural colour inside one tile that spans whole cells, with the same radius. The grout never runs across a photograph: in the round-18 pilot a grid laid over the hero photo was read as cutting it up.
 
 ## Never
 
-Rounded cards, pill shapes, soft drop shadows under tiles, a teal gradient band, tiles tilted or scattered, more than two glaze colours, text crossing a grout line.
+A grid drawn over a photo, lone glazed tiles, rows of tiles used as section dividers, rounded cards, pill shapes, soft drop shadows under tiles, a teal gradient band, tiles tilted or scattered, more than two glaze colours, text crossing a grout line.

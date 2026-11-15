@@ -58,6 +58,12 @@ Text is `--ink` on black and on vermilion. Gold is a line and a small figure, ne
 - Hours and the address on the vermilion inside.
 - One sentence in display type alone on black, with a gold rule above.
 
+## Rhythm
+
+- One tray per screen. Between trays the page is black with text and a gold rule, and a lot of room.
+- The vermilion inside appears once on the page.
+- The sheen is on the first screen only.
+
 ## Photos
 
 Central to this material. Warm, low-key, slightly darkened (`filter: brightness(.92) saturate(1.05)`), on trays with the tray radius. Use real photographs of the food, the room or the object; without a fitting photograph, choose another material.

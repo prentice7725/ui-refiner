@@ -5,7 +5,7 @@ import {parseMaterial,loadMaterials,dealMaterials} from '../src/materials.mjs';
 
 const TONES=['calm','warm','technical','bold'],KINDS=['software','service','place','public','company','studio','media'];
 
-test('materials: every file has complete front matter and all seven sections', async () => {
+test('materials: every file has complete front matter and all eight sections', async () => {
  const all=await loadMaterials();
  assert.ok(all.length>=9,'at least nine materials');
  const pairs=JSON.parse(await fs.readFile(new URL('../data/type-pairs.json',import.meta.url),'utf8'));
@@ -17,7 +17,7 @@ test('materials: every file has complete front matter and all seven sections', a
   assert.ok(m.accent in pairs.accents,`${m.slug}: accent family`);
   for(const script of ['latin','ko','ja'])assert.ok(m.faces[script]?.display&&m.faces[script].text,`${m.slug}: ${script} faces`);
   const src=(await fs.readFile(m.file,'utf8')).replace(/\r\n/g,'\n');
-  for(const h of ['Tokens','Type','Surfaces','Controls','Range','Photos','Never'])assert.ok(src.includes(`\n## ${h}\n`),`${m.slug}: section ${h}`);
+  for(const h of ['Tokens','Type','Surfaces','Controls','Range','Rhythm','Photos','Never'])assert.ok(src.includes(`\n## ${h}\n`),`${m.slug}: section ${h}`);
   assert.ok(/```css\s*\n:root\s*\{/.test(src),`${m.slug}: token block`);
  }
  assert.equal(parseMaterial('# no front matter'),null);

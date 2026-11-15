@@ -55,6 +55,12 @@ The signs of a railway station: a solid band in the line's colour with white let
 - Hours or a timetable as a departures board: white rows on `--ink`, tabular figures, the next one first.
 - A map or a route as one horizontal line with roundels.
 
+## Rhythm
+
+- Bands lead and then stop: one heading band or band stack in the hero, one stack of bands for the main routes, and the departures board once. In the round-18 pilot the judge liked the system and found the numbered green bars repetitive further down.
+- Other sections have a plain `--ink` heading on white with a roundel beside it at most, and text beneath.
+- The station strip appears once, the platform strip once per screen.
+
 ## Photos
 
 Natural colour, full container width, 21:9, with a band laid along the foot carrying the caption.

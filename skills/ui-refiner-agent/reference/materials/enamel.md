@@ -38,7 +38,7 @@ Cobalt does the rims, the lettering of headings and the main button. Red appears
 
 ## Surfaces
 
-- A plate is the only container: white, `--rim` solid cobalt border, `--radius-plate`, a second 1px cobalt line 5px inside the rim (an inset `box-shadow` or an `::after` border), `--gloss` across the top-left corner and `--shadow-plate` below.
+- A plate is white with a `--rim` solid cobalt border, `--radius-plate`, `--gloss` across the top-left corner and `--shadow-plate` below. A sign plate adds a second 1px cobalt line 5px inside the rim (an inset `box-shadow` or an `::after` border). Sign plates are the hero plate, the number plates and the inverse plate, and nothing else.
 - The hero plate carries four screw holes: 8px circles with a 2px `--muted` ring, 14px in from each corner. Only the hero plate has them.
 - An inverse plate is filled `--cobalt` with white lettering and a white inner line. Use it for one statement or one notice per page.
 - Number plates: small square plates (88 to 120px) holding one big figure and one word, set in a row like house numbers. Use them for hours, room numbers, steps or prices.
@@ -54,9 +54,15 @@ Cobalt does the rims, the lettering of headings and the main button. Red appears
 ## Range
 
 - Hours as a row of number plates, one per day, today's plate inverse.
-- Services as a column of long plates, each with its name left and its fact (price, minutes, doctor) right.
+- Services as ruled rows on plain white, each with its name left and its fact (price, minutes, doctor) right, under one small sign plate that names the list.
 - One notice as an inverse plate across the full container.
 - Directions as a street-sign plate: the street name large, the building and floor beneath.
+
+## Rhythm
+
+- The enamel is the sign, not the wall. Full sign plates (double rim, gloss, screws) appear in the hero and in two other places at most: the number-plate row and one inverse notice.
+- Everything else sits on plain white: headings in cobalt, text in ink, lists as rows with a 1px `--rule` between them, no box around them. In the round-18 pilot a clinic page rimmed every block, and the judge called it heavy and templated under both letter orders.
+- Never two rimmed plates nested, and never more than one row of plates on a screen.
 
 ## Photos
 
