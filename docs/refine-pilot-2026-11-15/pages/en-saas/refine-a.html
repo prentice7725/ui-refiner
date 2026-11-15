@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tandem — Collaboration for remote product teams</title>
+<meta name="description" content="Tandem keeps remote product teams in sync: specs, decisions, and async standups in one shared workspace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #14201f;
+    --muted: #4e5b5a;
+    --line: #d9e0df;
+    --accent: #0f766e;
+    --accent-fg: #ffffff;
+    --soft: #e3f1ef;
+    --block: #9a4a07;
+    --block-soft: #fdf0e6;
+    --max: 1240px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1514; --fg: #e8efee; --muted: #a3b1af; --line: #2a3634;
+      --accent: #4fc3b4; --accent-fg: #06201d; --soft: #16302d; --block: #f0a865; --block-soft: #33251a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1514; --fg: #e8efee; --muted: #a3b1af; --line: #2a3634;
+    --accent: #4fc3b4; --accent-fg: #06201d; --soft: #16302d; --block: #f0a865; --block-soft: #33251a;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 17px/1.6 Archivo, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+  .wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.1; }
+  p { margin: 0; }
+  .display { font-stretch: 125%; font-weight: 800; letter-spacing: -0.02em; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: .8rem 1.35rem; border-radius: 4px; font: inherit; font-weight: 700; font-size: 1rem;
+    text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--accent); outline-offset: 2px;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-fg); }
+  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 85%, var(--fg)); }
+  .btn-line { border-color: var(--fg); color: var(--fg); background: transparent; }
+  .btn-line:hover { background: var(--soft); }
+  .muted { color: var(--muted); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* Header */
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    background: var(--bg); z-index: 60;
+  }
+  header.site {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1rem; }
+  .logo { display: flex; align-items: center; gap: .5rem; font-weight: 800; font-stretch: 125%; font-size: 1.25rem; text-decoration: none; }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a, .signin { text-decoration: none; color: var(--muted); font-weight: 500; }
+  .nav-links a:hover, .signin:hover { color: var(--fg); }
+  .nav-cta { display: flex; gap: 1rem; align-items: center; }
+  @media (max-width: 860px) { .nav-links, .signin { display: none; } }
+
+  /* Hero */
+  .hero { padding-block: 3.5rem 4.5rem; }
+  .hero-top { display: grid; grid-template-columns: minmax(0, 650px) minmax(0, 1fr); gap: 3rem; align-items: end; }
+  .hero h1 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); line-height: 1.02; }
+  .lede { color: var(--muted); font-size: 1.15rem; margin-bottom: 1.25rem; max-width: 34rem; }
+  .hero-note { margin-top: .75rem; font-size: .875rem; color: var(--muted); }
+  @media (max-width: 860px) { .hero-top { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* Signature: follow-the-sun standup strip */
+  .strip { margin-top: 2.75rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+  .strip-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1.5rem; padding: .8rem 1.25rem; border-bottom: 1px solid var(--line); font-size: .875rem; color: var(--muted); }
+  .strip-head b { color: var(--fg); }
+  .hours, .lane { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); }
+  .hours { padding: .6rem 1.25rem 0; font-size: .75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hours span { grid-column: span 3; }
+  .lanes { padding: .4rem 1.25rem 1.25rem; display: grid; gap: .6rem; }
+  .lane { align-items: center; min-height: 3.4rem; border-top: 1px dashed var(--line); padding-top: .6rem; }
+  .post { background: var(--soft); border-left: 3px solid var(--accent); padding: .4rem .75rem; font-size: .875rem; line-height: 1.35; min-width: 0; }
+  .post small { display: block; color: var(--muted); font-size: .8125rem; font-variant-numeric: tabular-nums; }
+  .post.blocked { background: var(--block-soft); border-color: var(--block); }
+  .post .state { font-weight: 700; color: var(--block); }
+  @media (max-width: 760px) {
+    .hours { display: none; }
+    .lane { display: block; min-height: 0; }
+  }
+
+  /* Sections */
+  section.block { padding-block: 5rem; border-top: 1px solid var(--line); }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 4rem; align-items: start; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 2rem; } }
+  h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); font-stretch: 112%; font-weight: 800; letter-spacing: -0.015em; }
+  .intro { color: var(--muted); font-size: 1.1rem; margin-top: 1rem; max-width: 34rem; }
+
+  /* Problem */
+  .asks { list-style: none; margin: 0; padding: 0; }
+  .asks li { padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
+  .asks li:first-child { padding-top: 0; }
+  .asks q { display: block; font-size: 1.3rem; font-weight: 700; quotes: "“" "”"; margin-bottom: .3rem; }
+  .asks p { color: var(--muted); }
+
+  /* Standup digest: three columns on a rule */
+  .digest { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+  .digest > div { border-top: 3px solid var(--accent); padding-top: .9rem; }
+  .digest > div.is-blocked { border-color: var(--block); }
+  .digest b { display: block; font-size: 1.1rem; }
+  .digest .tz { float: right; color: var(--muted); font-size: .9rem; }
+  .digest p { color: var(--muted); margin-top: .3rem; }
+  .digest .state { font-weight: 700; color: var(--block); }
+  .points.inline { list-style: none; padding: 0; margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; color: var(--muted); }
+  .points.inline li::before { content: "— "; color: var(--accent); }
+  @media (max-width: 760px) { .digest { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* Decision log: large feature */
+  .log { border-top: 3px solid var(--fg); }
+  .log-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .log-row time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .9rem; }
+  .log-row b { display: block; font-size: 1.05rem; }
+  .log-row span { color: var(--muted); font-size: .9rem; }
+  .log-row .ok { color: var(--accent); font-weight: 700; font-size: .9rem; white-space: nowrap; }
+  .points { margin: 1.5rem 0 0; padding-left: 1.1rem; display: grid; gap: .4rem; }
+  .points li::marker { color: var(--accent); }
+
+  /* Roadmap: full-width */
+  .roadmap-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .roadmap-head .points { margin: 0; }
+  .rm-scroll { overflow-x: auto; }
+  .roadmap { min-width: 640px; display: grid; gap: .5rem; font-size: .9rem; }
+  .rm-head, .rm-row { display: grid; grid-template-columns: 9rem repeat(4, 1fr); gap: .4rem; align-items: center; }
+  .rm-head span { color: var(--muted); font-size: .85rem; }
+  .rm-row { border-top: 1px solid var(--line); padding-top: .5rem; }
+  .rm-row > span:first-child { font-weight: 700; }
+  .bar { height: 2rem; border-radius: 3px; display: flex; align-items: center; padding: 0 .65rem; font-size: .85rem; font-weight: 600; white-space: nowrap; overflow: hidden; }
+  .bar.prog { background: var(--accent); color: var(--accent-fg); }
+  .bar.done { background: var(--soft); color: var(--fg); }
+  .bar.next { border: 1px dashed var(--muted); color: var(--fg); }
+
+  /* More: definition list */
+  .defs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; margin: 0; }
+  .defs div { padding-block: 1rem; border-bottom: 1px solid var(--line); }
+  .defs dt { font-weight: 700; }
+  .defs dd { margin: .2rem 0 0; color: var(--muted); }
+  @media (max-width: 700px) { .defs { grid-template-columns: 1fr; } }
+
+  /* Customers */
+  .lead-quote { font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.3; font-weight: 600; margin: 0; max-width: 46rem; }
+  .who { margin-top: 1rem; color: var(--muted); }
+  .who b { color: var(--fg); }
+  .quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  .quotes figure { margin: 0; }
+  .quotes blockquote { margin: 0; }
+  .results { margin-top: 3rem; font-size: 1.15rem; max-width: 46rem; }
+  .results strong { font-variant-numeric: tabular-nums; }
+  .customers-line { margin-top: 1rem; color: var(--muted); font-size: .95rem; }
+  @media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+
+  /* Pricing */
+  .toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; margin-top: 1.5rem; }
+  .toggle button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: .95rem; font-weight: 600; padding: .5rem 1rem; cursor: pointer; }
+  .toggle button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+  .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px solid var(--fg); margin-top: 2.5rem; }
+  .plan { padding: 1.75rem 1.75rem 0 0; display: flex; flex-direction: column; }
+  .plan + .plan { padding-left: 1.75rem; border-left: 1px solid var(--line); }
+  .plan h3 { font-size: 1.2rem; }
+  .plan .desc { color: var(--muted); margin: .25rem 0 1.25rem; }
+  .price { font-size: 2.6rem; font-weight: 800; font-stretch: 112%; line-height: 1; font-variant-numeric: tabular-nums; }
+  .price small { font-size: .95rem; font-weight: 500; color: var(--muted); font-stretch: 100%; }
+  .plan .btn { margin: 1.5rem 0; align-self: flex-start; }
+  .plan ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; }
+  .plan li::marker { color: var(--accent); }
+  @media (max-width: 860px) {
+    .plans { grid-template-columns: 1fr; }
+    .plan, .plan + .plan { padding: 1.75rem 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  }
+
+  /* FAQ */
+  details { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+  details:first-child { padding-top: 0; }
+  summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--muted); }
+  details[open] summary::after { content: "−"; }
+  details p { color: var(--muted); margin-top: .6rem; }
+
+  /* Start */
+  .start h2 { font-size: clamp(2rem, 4vw, 3rem); font-stretch: 125%; }
+  .cta-form { display: flex; gap: .6rem; max-width: 480px; flex-wrap: wrap; margin-top: 1.5rem; }
+  .cta-form input { flex: 1 1 240px; min-width: 0; padding: .8rem 1rem; border-radius: 4px; border: 1px solid var(--muted); font: inherit; background: var(--bg); color: var(--fg); }
+  .cta-msg { margin-top: 1rem; font-weight: 600; min-height: 1.4em; }
+
+  /* Footer */
+  footer { padding-block: 4rem 3rem; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--line); }
+  .foot-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 2rem; }
+  .foot-grid h4 { color: var(--fg); font-size: .95rem; margin: 0 0 .75rem; }
+  .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+  .foot-grid a { text-decoration: none; }
+  .foot-grid a:hover { color: var(--fg); }
+  .foot-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .foot-bottom a { text-decoration: none; }
+  @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > div:first-child { grid-column: 1 / -1; } }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#" class="logo" aria-label="Tandem home">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="12" cy="16" r="9" fill="none" stroke="var(--accent)" stroke-width="3.5"/>
+        <circle cx="20" cy="16" r="9" fill="none" stroke="var(--fg)" stroke-width="3.5"/>
+      </svg>
+      Tandem
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Product</a></li>
+      <li><a href="#teams">Customers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="signin">Sign in</a>
+      <a href="#start" class="btn btn-primary">Start free</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1 class="display">The standup that spans eight time zones, with no 6am call</h1>
+        <div>
+          <p class="lede">Tandem is the shared workspace for remote product teams. Specs, decisions, roadmaps and standups live in one place — so nobody has to be online at the same time to stay in sync.</p>
+          <a href="#start" class="btn btn-primary">Start free for 14 days</a>
+          <p class="hero-note">Free for teams up to 5 · No credit card required</p>
+        </div>
+      </div>
+
+      <div class="strip" data-product-shot role="img" aria-label="Tandem's update feed for the mobile squad: four teammates in Austin, Lisbon, Lagos and Singapore posted updates at their own local times">
+        <div class="strip-head"><span><b>#mobile · Today's updates</b> · Checkout redesign — v2 spec</span><span>Each update at the teammate's local time</span></div>
+        <div class="hours" aria-hidden="true"><span>00</span><span>03</span><span>06</span><span>09</span><span>12</span><span>15</span><span>18</span><span>21</span></div>
+        <div class="lanes">
+          <div class="lane"><div class="post" style="grid-column:8/14"><b>Jonah</b> left 3 comments on the spec<small>Austin · 07:40</small></div></div>
+          <div class="lane"><div class="post" style="grid-column:10/17"><b>Priya</b> shipped the payment sheet prototype<small>Lisbon · 09:12</small></div></div>
+          <div class="lane"><div class="post" style="grid-column:11/17"><b>Ade</b> approved the decision<small>Lagos · 10:30</small></div></div>
+          <div class="lane"><div class="post blocked" style="grid-column:18/25"><b>Mei</b> <span class="state">is blocked</span> on API keys<small>Singapore · 22:05</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="block">
+    <div class="wrap split">
+      <div>
+        <h2>What remote work did to the way product teams talk</h2>
+        <p class="intro">When your team spans eight time zones, context gets scattered across chat, docs, tickets and meetings nobody can attend.</p>
+      </div>
+      <ul class="asks">
+        <li><q>Wait, when did we decide that?</q><p>Key decisions get buried in a thread from three weeks ago — or were never written down at all.</p></li>
+        <li><q>Can we find a time that works?</q><p>Someone always takes the 6am call. Status meetings eat the only overlap hours you have.</p></li>
+        <li><q>Which doc is the latest?</q><p>Specs live in four tools, roadmaps in a fifth, and the newest hire has no idea where to look.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="block" id="features">
+    <div class="wrap">
+      <h2 style="max-width:22ch">Async standups: stay in sync without the 9am call</h2>
+      <p class="intro">Teammates post updates on their own schedule. Tandem rolls them into a digest for each person's morning, flags blockers, and pings the right owner.</p>
+      <div class="digest">
+        <div><span class="tz">Lisbon</span><b>Priya Shah</b><p>Finished payment sheet prototype. Next: usability test with 5 users.</p></div>
+        <div class="is-blocked"><span class="tz">Singapore</span><b>Mei Kato</b><p><span class="state">Blocked</span> — waiting on sandbox API keys from Platform.</p></div>
+        <div><span class="tz">Austin</span><b>Jonah Ortiz</b><p>Reviewed v2 spec. Picking up the analytics events today.</p></div>
+      </div>
+      <ul class="points inline">
+        <li>Text, voice or short video updates</li>
+        <li>Timezone-aware digests and reminders</li>
+        <li>Blockers surface automatically</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap split">
+      <div>
+        <h2>Every “why” is one search away</h2>
+        <p class="intro">Turn any comment or thread into a recorded decision with owners, context and alternatives considered. Six months later, the reasoning is still there.</p>
+        <ul class="points">
+          <li>Async approvals with clear deadlines</li>
+          <li>Linked to specs, tickets and roadmap items</li>
+          <li>Instant onboarding for new teammates</li>
+        </ul>
+      </div>
+      <div class="log" role="img" aria-label="Decision log with four recorded decisions">
+        <div class="log-row"><time>Aug 14</time><div><b>Ship Apple Pay before saved cards</b><span>Checkout v2 · agreed async by Design, Eng &amp; PM</span></div><span class="ok">Approved by 3</span></div>
+        <div class="log-row"><time>Jul 30</time><div><b>Move onboarding to a 3-step flow</b><span>Activation</span></div><span class="ok">Approved by 4</span></div>
+        <div class="log-row"><time>Jul 12</time><div><b>Deprecate legacy export API in Q4</b><span>Platform</span></div><span class="ok">Approved by 5</span></div>
+        <div class="log-row"><time>Jun 28</time><div><b>Use feature flags for all mobile releases</b><span>Mobile</span></div><span class="ok">Approved by 6</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="roadmap-head">
+        <div>
+          <h2>A roadmap that updates itself</h2>
+          <p class="intro">Roadmap items pull status straight from specs, standups and your issue tracker — so leadership sees real progress, not last month's slide.</p>
+        </div>
+        <ul class="points">
+          <li>Now / Next / Later and timeline views</li>
+          <li>Two-way sync with Jira, Linear and GitHub</li>
+          <li>Shareable, read-only links for stakeholders</li>
+        </ul>
+      </div>
+      <div class="rm-scroll">
+        <div class="roadmap" role="img" aria-label="Roadmap timeline from July to October">
+          <div class="rm-head"><span></span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div>
+          <div class="rm-row"><span>Checkout v2</span><div class="bar prog" style="grid-column: 2 / span 2">In progress</div></div>
+          <div class="rm-row"><span>Onboarding</span><div class="bar done" style="grid-column: 2 / span 1">Done</div></div>
+          <div class="rm-row"><span>Saved cards</span><div class="bar next" style="grid-column: 4 / span 2">Next</div></div>
+          <div class="rm-row"><span>Export API</span><div class="bar next" style="grid-column: 3 / span 3">Planned</div></div>
+          <div class="rm-row"><span>Dark mode</span><div class="bar done" style="grid-column: 2 / span 2">Done</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More features -->
+  <section class="block">
+    <div class="wrap split">
+      <h2>Also in the workspace</h2>
+      <dl class="defs">
+        <div><dt>Spec templates</dt><dd>PRDs, RFCs and one-pagers with built-in review flows and comments.</dd></div>
+        <div><dt>Overlap finder</dt><dd>See everyone's working hours at a glance and book meetings fairly.</dd></div>
+        <div><dt>Threaded feedback</dt><dd>Comment on any paragraph, design or screenshot. Resolve without a meeting.</dd></div>
+        <div><dt>AI summaries</dt><dd>Catch up on a week of activity in 60 seconds, written for your role.</dd></div>
+        <div><dt>50+ integrations</dt><dd>Slack, Figma, Jira, Linear, GitHub, Notion, Google Drive and more.</dd></div>
+        <div><dt>Enterprise security</dt><dd>SSO, SCIM, audit logs, data residency and granular permissions.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Customers -->
+  <section class="block" id="teams">
+    <div class="wrap">
+      <figure style="margin:0">
+        <blockquote class="lead-quote">“We killed our daily standup meeting in week one. Our engineers in Manila finally stopped working nights to stay in the loop.”</blockquote>
+        <figcaption class="who"><b>Lena Ruiz</b>, VP Product, Fieldkit</figcaption>
+      </figure>
+      <div class="quotes">
+        <figure><blockquote>“The decision log alone is worth it. New PMs ramp in days instead of weeks because the 'why' behind everything is right there.”</blockquote><figcaption class="who"><b>Tomás Nakamura</b>, Head of Product, Orbital</figcaption></figure>
+        <figure><blockquote>“Our roadmap used to be a lie by Friday. Now it's live, and execs stopped asking for status decks.”</blockquote><figcaption class="who"><b>Amara Keita</b>, Engineering Manager, Quarry</figcaption></figure>
+      </div>
+      <p class="results">Teams on Tandem report <strong>−42%</strong> fewer recurring meetings, <strong>3.1×</strong> faster new-hire ramp-up and <strong>6 hrs</strong> saved per person, per week.</p>
+      <p class="customers-line">Trusted by distributed product teams in 40+ countries, including Northwind, Lumen Labs, Fieldkit, Orbital, Quarry and Halcyon.</p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="block" id="pricing">
+    <div class="wrap">
+      <h2>Pricing</h2>
+      <p class="intro">Start free. Upgrade when your team grows.</p>
+      <div class="toggle" role="group" aria-label="Billing period">
+        <button type="button" data-period="monthly" aria-pressed="false">Monthly</button>
+        <button type="button" data-period="yearly" aria-pressed="true">Yearly −20%</button>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Starter</h3>
+          <p class="desc">For small teams getting started.</p>
+          <div class="price">$0 <small>/ forever</small></div>
+          <a href="#start" class="btn btn-line">Start on Starter</a>
+          <ul>
+            <li>Up to 5 members</li>
+            <li>Async standups &amp; specs</li>
+            <li>90-day history</li>
+            <li>3 integrations</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Team</h3>
+          <p class="desc">For growing product orgs.</p>
+          <div class="price"><span data-price data-monthly="12" data-yearly="10">$10</span> <small>/ user / month</small></div>
+          <a href="#start" class="btn btn-primary">Start 14-day trial</a>
+          <ul>
+            <li>Unlimited members</li>
+            <li>Decision log &amp; living roadmaps</li>
+            <li>AI summaries</li>
+            <li>Unlimited history &amp; integrations</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Enterprise</h3>
+          <p class="desc">For security-conscious companies.</p>
+          <div class="price">Custom</div>
+          <a href="#start" class="btn btn-line">Talk to sales</a>
+          <ul>
+            <li>Everything in Team</li>
+            <li>SSO, SCIM &amp; audit logs</li>
+            <li>EU / US data residency</li>
+            <li>Dedicated success manager</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap split">
+      <h2>Questions teams ask before switching</h2>
+      <div>
+        <details><summary>Does Tandem replace Slack or Jira?</summary><p>No — it connects them. Keep chatting in Slack and tracking tickets in Jira or Linear. Tandem is where specs, decisions and plans live, with two-way sync so nothing gets duplicated.</p></details>
+        <details><summary>How long does setup take?</summary><p>Most teams are running their first async standup within 15 minutes. You can import existing docs from Notion, Confluence or Google Drive in a few clicks.</p></details>
+        <details><summary>What happens when my free trial ends?</summary><p>You'll move to the free Starter plan automatically. Nothing is deleted, and you can upgrade any time.</p></details>
+        <details><summary>Is my data secure?</summary><p>Tandem is SOC 2 Type II compliant, encrypts data in transit and at rest, and offers EU or US data residency on Enterprise plans.</p></details>
+        <details><summary>Do you offer discounts for startups or non-profits?</summary><p>Yes. Eligible early-stage startups and registered non-profits get 50% off the Team plan for the first year.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start -->
+  <section class="block start" id="start">
+    <div class="wrap">
+      <h2>Give your team its mornings back</h2>
+      <p class="intro">Try Tandem free for 14 days. Set up in minutes, cancel anytime.</p>
+      <form class="cta-form" novalidate>
+        <label for="email" class="sr-only">Work email</label>
+        <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+        <button type="submit" class="btn btn-primary">Start free for 14 days</button>
+      </form>
+      <p class="cta-msg" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="logo" style="color:var(--fg)">
+          <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="9" fill="none" stroke="var(--accent)" stroke-width="3.5"/><circle cx="20" cy="16" r="9" fill="none" stroke="var(--fg)" stroke-width="3.5"/></svg>
+          Tandem
+        </a>
+        <p style="margin-top:.75rem; max-width:22rem">The shared workspace for remote product teams. Made by a fully distributed team across 11 countries.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Integrations</a></li><li><a href="#">Changelog</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="#">Remote playbook</a></li><li><a href="#">Help center</a></li><li><a href="#">Security</a></li><li><a href="#">Status</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Tandem Labs, Inc.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Billing toggle
+  const toggleBtns = document.querySelectorAll('.toggle button');
+  toggleBtns.forEach(btn => btn.addEventListener('click', () => {
+    toggleBtns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    const period = btn.dataset.period;
+    document.querySelectorAll('[data-price]').forEach(el => {
+      el.textContent = '$' + el.dataset[period];
+    });
+  }));
+
+  // Signup form
+  const form = document.querySelector('.cta-form');
+  const msg = document.querySelector('.cta-msg');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = form.querySelector('input');
+    if (!input.value || !input.checkValidity()) {
+      msg.textContent = 'Please enter a valid work email.';
+      input.focus();
+      return;
+    }
+    msg.textContent = "Thanks! Check your inbox to finish setting up your workspace.";
+    form.reset();
+  });
+</script>
+</body>
+</html>
