@@ -19,7 +19,7 @@ Three jobs: **Build** a screen that looks chosen rather than generated, **Review
 2. Open `scan-desktop.png` and `scan-mobile.png` yourself and look before you read the signals. Write down: what the page is for, what it asks the user to do, where the eye lands first, and what feels generic.
 3. Read `DESIGN_REVIEW.md`. Signals are heuristics. Confirm each against the screenshot; drop the ones that are deliberate brand choices or wrong for the surface (dashboards and settings may rightly use system fonts and dense layouts).
 4. Report to the user, in this order:
-   - **Verdict** in one or two sentences (what makes it look generated or not).
+   - **Verdict**: the report's verdict line and score, then its points table ("Why this score": which signal added how many points, what a deliberate-design sign took off). The verdict follows the score: 20 or more reads as AI-made, 8–19 as some traces, under 8 as not AI-made. When you reject a signal as a deliberate brand choice, say so and say what the score would be without it.
    - **2–3 root causes**, not a list of signals. Example: "decoration stands in for hierarchy" covers gradient hero + glows + pill badge + gradient headline.
    - **Proposed direction** per cause: concrete changes (type pairing and scale, one accent color, layout structure, imagery, copy rewrite with facts), and what must be preserved (factual copy, link targets, form fields, brand color/typeface).
    - **Baseline quality issues** from the scan table that a user would actually hit (contrast, unlabeled controls, mobile overflow).
@@ -36,13 +36,13 @@ First decide how much to change, from the scan score and the screenshots:
 - A real brand (logo files, design tokens, a documented palette or typeface) moves a page one level down: polish it instead of replacing it, unless the user asks for a redesign.
 
 1. Scan and look at both screenshots. Write down what the page is for, its one primary action, and what must survive: every fact, price, name, link target, form field and legal text. Then record it: `ui-refiner keep record <page>` saves the link targets, forms, fields, contact links and figures, so the redesign can be checked against them. Brand assets survive only when the project really has them (logo files, design tokens, a documented palette or typeface). A palette or font that came with a generated page is not a brand, so you may change it.
-2. Explore three directions before touching the page:
-   - Decide the page's tone, one of four, from who visits and why:
-     - `calm`: health, care, public services, money people worry about;
-     - `warm`: neighbourhood places, food, families, community;
-     - `technical`: tools for engineers, operations and analysts;
-     - `bold`: campaigns, youth brands, media, events.
-     The tone is shared by all three directions.
+2. Offer three directions before touching the page. They are built from three different sources, so they start apart ([reference/lanes/README.md](reference/lanes/README.md)):
+   - **A · familiar**: what human-made sites of this kind do, as measured. Reads as a real site of its kind; the least surprising.
+   - **B · tailored**: colour, type and look decided from this client's own content (the method of benchmark round 12).
+   - **C · bold**: one material, a finished look taken from a physical thing, from the first screen to the footer.
+
+   Through benchmark round 17 the three directions were built from one set of guidance and differed only in dealt parts; they came out alike, and every habit that was ruled out gave way to the next. In the round-18 pilot no single method was best on every page: the tailored method gave the most varied sets, the material pages were the most distinctive and the most disputed. So the person chooses.
+
    - Decide the page kind:
      - `software`: software, SaaS, fintech, startups;
      - `service`: clinics, logistics, hiring and other services;
@@ -51,61 +51,42 @@ First decide how much to change, from the scan score and the screenshots:
      - `company`: large corporate sites;
      - `studio`: design and architecture practices;
      - `media`: news and magazines.
-   - Run `ui-refiner directions deal refine-directions --kind <kind> --tone <tone> --lang <page language>` (add `--no-photo` when there are no real photos and stand-ins do not fit). It gives each of A, B and C a hero structure and a **material**, and puts what was picked recently for other projects last. Do not pick either yourself.
-     - A material is one finished look taken from a physical thing (an enamel sign, a tiled wall, a till receipt). It fixes the ground, the colours, the faces, the surfaces, the controls and how a photo is treated. See [reference/materials/README.md](reference/materials/README.md).
-     - Read each dealt material's file before you build its mock. Take its tokens as written, build every surface and control the way it says, use the faces listed for the page's language, and keep out what it lists under Never. A page that only borrows a material's palette is not in the material. Follow its Rhythm section too: the material's own surfaces go at full strength in a few places, and the rest of the page rests on a plain ground.
-     - A real brand colour replaces the material's accent, and a real brand typeface replaces its faces. Nothing else in the material changes.
-     - Until November 2026 the deal handed out a surface, a colour family and faces to avoid as separate parts, and the skill ruled out one habit per benchmark round (cream grounds, forest green, stat strips, hairline tables). The pages passed every check and were still called plain or "wireframe-like", and each habit that was ruled out gave way to the next. A material decides those things together, so do not add or remove surface treatments on your own judgement.
-   - Write each direction as five lines, taken from the content, never a style word like "minimal and elegant":
-     - direction: what the product or place is, in this client's words ("the clinic's front desk: hours and booking first");
-     - tone: the shared tone;
-     - world: the real place, trade or object this client's content comes from (a pharmacy counter, a freight yard board, a school notice);
-     - moment: the visitor's moment the first screen serves ("a parent checking tonight's hours on the way home");
-     - signature: the one element only this client would have, built from real content and made in the material (in Tile, the week's hours as a mosaic; in Receipt, this month's spending as one slip).
-   - Write the headline from a fact only this client has: an hour, a condition, a number, a place, an origin story ("Orders in by 2 pm leave today", "No ID needed, ever"). A slogan that would fit any business in the category ("Healthy smiles for every member of the family", "Your team, in sync") was the judges' most common complaint against refined pages.
-   - Photographs. Use the client's real photos and product shots first. When there are none and the page kind usually leads with photos (`place`, `service`, `company`), fetch credited stand-ins: `ui-refiner photos "<plain subject>" --out <project>/assets/stand-in --lang <page language>`. It saves only openly licensed Wikimedia Commons files, with `credits.json`.
-     - Open each saved photo and keep only those that show this kind of place or this work itself (a pantry shelf, a treatment room, a warehouse floor). An object any office has (a keyboard, a handshake, a laptop) reads as stock. Without a fitting photo, use none. Prefer photos without identifiable faces.
-     - Mark every stand-in `data-stand-in`, give it a generic alt ("a dental chair"), put the printed credit line in the footer, and tell the user which images to replace.
-     - Treat every photo the way the material's Photos section says. Never use stock sites, invent photos or present a stand-in as the client's own.
-   - The first screen, whatever the structure and material:
-     - At 1440×900 it says what this is in one line and shows the main action. On a first screen without photos, no other text dwarfs that line.
-     - It has one main piece: the photo, the product scene or the signature element, at a size that lets it carry the screen. A photo, a schedule, three cards and two buttons in one screen read as cramped.
-     - It shows something real. Places, services and public bodies show photos. Software, finance and logistics show the product: one scene that proves the claim (one booked slot, one transfer, today's three late shipments), built in the material's own surfaces with this client's data, marked `data-product-shot`, a quarter of the screen or more, text 12px or larger, 40 pieces of text at most. Never a drawn phone or browser frame.
-     - A signature element is filled with real content at the size that content needs. Never invent data for it.
-   - Build each direction as a mock of the first screen plus one content section in `refine-directions/a.html`, `b.html` and `c.html` inside the project. Start each file with `<!-- direction: … | tone: … | world: … | moment: … | type: … | palette: <the material's name> | signature: … -->`.
-   - Run `ui-refiner directions refine-directions`. It scans each mock and writes `DIRECTIONS.html` (screenshots side by side) and `DIRECTIONS.md`. Redo a mock before you show anything when the sheet warns that it:
-     - was not built in its dealt structure, or does not use its material's faces;
-     - shares a surface, a type pair or a hero layout with another direction;
-     - repeats a choice made recently for another project;
-     - lacks one of the five lines in its note, a claim, the main action, or a photo or product scene.
-     Look at the screenshots yourself before you present them: each mock should be recognisable as its material at a glance.
-   - Rename test: put a rival's name on each mock. If it still fits, push the world, the moment or the signature further before you show it.
-   - **Let the user choose.** Present the three directions (concept, material, signature element) with the path to `DIRECTIONS.html`, give your recommendation and one line on why, then stop and ask which one to apply. Decide yourself only when the user said so or no person is in the loop (CI, a headless run); then say why the other two lost. Do not mix materials: "A's structure in B's material" is fine, half of each material is not.
-   - Record the choice: `ui-refiner directions record refine-directions --pick B --page <short page name>`. Do this when you decided yourself, too. The log is per user, in `~/.ui-refiner/refine-log.json`.
-   - **Hero review.** Before building the rest of the page, have the chosen mock reviewed in fresh context ([reference/review.md](reference/review.md)). Fix what the review finds in the mock, then carry the mock's first screen into the page.
-   - After applying the direction to the whole page:
-     - Run `ui-refiner keep check <page>`. It fails when a link, form, field or figure went missing, and lists figures only the new page has. Restore every original figure; never round, update or invent one.
-     - Run `ui-refiner directions verify refine-directions <page>`. Models drift back to their habit while building the full page. If it reports drift, rebuild the hero in the chosen structure and check again. It also fails when the first screen lacks a claim or its main button, when other text dwarfs the claim on a screen without photos, and when there is neither a photo nor a product scene.
-     - Run the **finish review** in fresh context ([reference/review.md](reference/review.md)), fix what is real, and run both checks again if the page changed.
-     - Run `ui-refiner system extract <page>`. It writes `ui-refiner-system.json` and `DESIGN_SYSTEM.md` next to the page, so the site's other pages can be built in the same design (see **The site's other pages**).
-   - Then delete `refine-directions/` unless the user wants to keep it.
-3. Give the page one **signature element**: something only this subject would have, built from the page's real content, made in the material and made the most memorable thing on the page. Examples: a ledger-style table of this month's spending for a budgeting app, today's opening hours and the next free slot for a clinic, which pantries are open right now for a food bank. Never invent data for it.
-4. Apply the chosen direction to the whole page, fixing by root cause in this order:
+   - Decide the page's tone, one of four, from who visits and why. It keeps a dark ground and harsh display faces away from subjects that cannot carry them:
+     - `calm`: health, care, public services, money people worry about;
+     - `warm`: neighbourhood places, food, families, community;
+     - `technical`: tools for engineers, operations and analysts;
+     - `bold`: campaigns, youth brands, media, events.
+   - Photographs. Use the client's real photos and product shots first. When there are none and the page kind usually leads with photos (`place`, `service`, `company`), fetch credited stand-ins before the deal: `ui-refiner photos "<plain subject>" --out <project>/assets/stand-in --lang <page language>`. It saves only openly licensed Wikimedia Commons files, with `credits.json`. Open each saved photo and delete those that do not show this kind of place or this work itself. Tell the user which images are stand-ins to replace. When stand-ins do not fit (software pages, or the user declines them), pass `--no-photo` to the deal. Never use stock sites, invent photos or present a stand-in as the client's own.
+   - Run `ui-refiner directions deal refine-directions --kind <kind> --tone <tone> --lang <page language>`. It writes `DEAL.json`: for each of A, B and C a hero structure, its lane file and what that lane needs (A: a white surface and a colour family common on human-made sites of this kind; B: a surface; C: one material and an alternate), plus the faces to avoid. Do not pick any of these yourself.
+   - **Build each direction in its own subagent**, all three in one message so they run at the same time. Give each only:
+     - the path of [reference/lanes/README.md](reference/lanes/README.md) and of its own lane file, to read first;
+     - the path of the page, the page kind, tone and language;
+     - its own entry from `DEAL.json` and the faces to avoid;
+     - the file to write: `refine-directions/a.html`, `b.html` or `c.html`.
+
+     Do not tell a subagent what the other two are, and do not suggest a concept, a typeface, a palette or a signature element. Do not build a mock yourself. Without a subagent tool, build the three one after another, re-reading only that lane's file before each, and say so in the report.
+   - Run `ui-refiner directions refine-directions`. It scans each mock and writes `DIRECTIONS.html` (screenshots side by side) and `DIRECTIONS.md`. Look at the screenshots yourself. When the sheet warns about a mock (not built in its dealt structure, a missing line in its note, no claim or main action on the first screen, no photo or product scene, the same hero layout or faces as another direction), send that mock back to a new subagent with its lane file and the warning text only, then run the sheet again.
+   - **Let the user choose.** Present the three directions by name (familiar, tailored, bold) with one line each on what it is and its signature element, the path to `DIRECTIONS.html`, your recommendation and one line on why. Then stop and ask which one to apply. Mixing structure is fine ("B's look in A's structure"); do not mix two looks. Decide yourself only when the user said so or no person is in the loop (CI, a headless run); then say why the other two lost.
+   - Record the choice: `ui-refiner directions record refine-directions --pick B --page <short page name>`. Do this when you decided yourself, too. The log is per user, in `~/.ui-refiner/refine-log.json`; the next client's bold direction will not be dealt the material picked here.
+3. Apply the chosen direction to the whole page. Read its lane file yourself first (and the material's file for the bold direction): what it says about ground, colour, type and surfaces holds from the first screen to the footer. Carry the mock's first screen into the page, then fix by root cause in this order:
    - **Structure.** The stock section recipe is the strongest tell: pill badge → hero with a two-tone headline → row of logo names → three feature cards with icons in rounded squares → stats trio → testimonial trio → three-tier pricing with "Most popular" → FAQ → colored CTA band. Keep only sections that carry real content, merge thin ones, and vary the rhythm (a list or table instead of cards, one large feature instead of three equal ones).
-   - **Type.** The material's faces, with real size contrast and no tracked uppercase eyebrow over every section.
-   - **Color and surface.** The material's tokens, surfaces and controls from the first screen to the footer. Nothing decorative from outside it: no gradient text, glow or glass unless the material's file calls for it, and no boxes inside boxes.
+   - **Type.** The direction's faces, with real size contrast and no tracked uppercase eyebrow over every section.
+   - **Color and surface.** The direction's ground and accent throughout. No gradient text, glow or glass unless a material's file calls for it, and no boxes inside boxes.
    - **Copy.** Replace stock phrases with the page's own facts. Never invent numbers, quotes, customers or logos; when the page already has invented ones, flag them instead of polishing them.
-5. Do not trade one template for another. Cream paper with a serif display face, tiny tracked labels, "01 /" numbering and short headlines ending in a period is the 2025–26 editorial AI template, not an escape from it. A white page with thin rules and one blue accent is the other common fallback, and it is where a page lands when the material is dropped below the first screen.
-6. Check the craft on the screenshots, not only the score:
-   - **Scale.** The display type is clearly bigger than the body (about 3× or more on a persuasive page; Japanese pages may stay smaller, judged against 日本のサイトとの比較). There are a few deliberate sizes, not many near-identical ones.
-   - **Faces.** The material's families only.
-   - **Hero.** The first screen is carried by the signature element, the product, a photo or the type itself.
-   - **Rhythm.** No three sections in a row share the same layout; section widths, density and alignment change with the content.
-   - **Accent.** The material's accent, used where its file says and nowhere else.
+4. Check that nothing was lost and that the direction held:
+   - Run `ui-refiner keep check <page>`. It fails when a link, form, field or figure went missing, and lists figures only the new page has. Restore every original figure; never round, update or invent one.
+   - Run `ui-refiner directions verify refine-directions <page>`. Models drift back to their habit while building the full page. If it reports drift, rebuild the hero in the chosen structure and check again. It also fails when the first screen lacks a claim or its main button, when other text dwarfs the claim on a screen without photos, and when there is neither a photo nor a product scene.
+   - For the **bold** direction, run the finish review in fresh context ([reference/review.md](reference/review.md)), fix what is real once, and run both checks again if the page changed. In the pilot the review made material pages clearer in most comparisons; on pages without a material it changed little and is not needed.
+5. Check the craft on the screenshots, not only the score:
+   - **Scale.** A few deliberate sizes, not many near-identical ones. The display type is clearly bigger than the body; how much bigger follows the direction (modest for the familiar one, about 3× on a persuasive tailored page; Japanese pages are judged against 日本のサイトとの比較).
+   - **Hero.** The first screen is carried by one thing: a photo, the product, the signature element or the type itself.
+   - **Rhythm.** No three sections in a row share the same layout, and no surface repeats in every section.
+   - **Accent.** One accent, used for the primary action and the signature element, not sprinkled everywhere.
    - **Space and alignment.** One spacing scale, a visible grid, aligned edges and baselines.
    - **Details.** Tabular numbers where they line up, real states (open/closed, sold out, selected), no placeholder text.
-7. Rescan into the same folder; the report opens with the before/after comparison. The AI-look score is a guard, not the target: no quality issue or Japanese typesetting issue that got worse, and no new scored signal except one the material's file calls for (a tinted ground, a sheen, a shadow), which you name in the report as deliberate. You are done when the direction and the craft checklist show in the screenshots, not when the score reaches 0. At most three rounds.
-8. Report: the chosen direction and material (and who chose it), the signature element, both reviews' findings with their outcome, score before → after, resolved and remaining signals (with the reason each remaining one stays), the changes by root cause, what was preserved, and the screenshot paths. Look at the final screenshots before you say it is done.
+6. Rescan into the same folder; the report opens with the before/after comparison. The AI-look score is a guard, not the target: no quality issue or Japanese typesetting issue that got worse, and no new scored signal except one the direction calls for (a material's gradient or tinted ground, the familiar direction's plain typeface). You are done when the direction and the craft list show in the screenshots, not when the score reaches 0. At most three rounds.
+7. Once the page passes `keep check` and `directions verify`, run `ui-refiner system extract <page>`. It writes `ui-refiner-system.json` and `DESIGN_SYSTEM.md` next to the page, so the site's other pages can be built in the same design (see **The site's other pages**). Then delete `refine-directions/` unless the user wants to keep it.
+8. Report: the chosen direction (familiar, tailored or bold; the material if bold) and who chose it, the signature element, score and verdict before → after, resolved and remaining signals (with the reason each remaining one stays), the changes by root cause, what was preserved, which images are stand-ins, and the screenshot paths. Look at the final screenshots before you say it is done.
 
 ## The site's other pages
 

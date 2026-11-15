@@ -109,10 +109,13 @@ try{
     const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log((r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
-`:'')+r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
+`:'')+r.structures.map(d=>`${d.label} · ${d.lane}: ${d.key} — ${d.brief}${d.humanShare!=null?` (${Math.round(d.humanShare*100)}% of human-made sites of this kind)`:''}${d.surface?`
+   surface: ${d.surface.brief}`:''}${d.accent?`
+   colour: ${d.accent.family} — ${d.accent.brief}`:''}${d.material?`
    material: ${d.material.name} — ${d.material.brief}
-   faces: ${d.type.display}${d.type.text!==d.type.display?' + '+d.type.text:''}
-   read: ${d.material.file}`).join('\n')+`\n[MATERIAL] read each file before building its mock; build every surface and control as it says\n[DEAL] ${r.file}`);
+   material file: ${d.material.file}${d.alternate?`
+   alternate, if that one does not suit this client: ${d.alternate.name} — ${d.alternate.file}`:''}`:''}
+   read: ${d.file}`).join('\n')+`\n[AVOID FACES] ${r.avoidFaces.join(', ')}\n[LANES] build each direction in its own subagent, which reads only its lane file\n[DEAL] ${r.file}`);
   }
   else if(command==='directions'&&sub==='record'&&args._.length===3){
     if(!args.pick)throw Error('directions record requires --pick');

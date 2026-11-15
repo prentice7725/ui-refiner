@@ -33,22 +33,22 @@ export async function loadMaterials(dir=MATERIALS_DIR){
 const hash=(seed,k)=>{let h=seed+7;for(const c of String(k))h=(h*31+c.charCodeAt(0))>>>0;return h%997;};
 
 /**
- * Picks `n` different materials. Those that fit the tone come first, then those that fit the page kind; materials
- * picked recently for other projects go last; `seed` breaks ties so a re-deal can differ. A material whose ground
- * is dark is never dealt to a software page (in benchmark round 12 all three judges read dark software pages as
- * crypto or dev-tool pages), and one that needs photographs is left out when there are none.
+ * Picks `n` different materials for the bold direction (the first is dealt, the rest are alternates).
+ * - A material picked for one of the last four other projects is left out, not just put last: in the round-18 pilot,
+ *   pages whose tone and kind fitted only two or three materials were dealt the same one every time and picked it,
+ *   and the set judges named the repeated receipt.
+ * - A material that fits the tone or the kind stays in the pool; the pool widens only as far as needed to reach n.
+ * A dark ground is never dealt to a software page (in benchmark round 12 all three judges read dark software pages as
+ * crypto or dev-tool pages), and a material that needs photographs is left out when there are none.
+ * `seed` orders the pool, so a re-deal can differ.
  */
 export function dealMaterials(materials,entries=[],project=null,{n=3,seed=0,kind,tone,noPhoto=false}={}){
- const recent=entries.filter(e=>e.project!==project&&e.material).slice(-8).map(e=>e.material);
- const pool=materials.filter(m=>!(kind==='software'&&m.ground==='dark')&&!(noPhoto&&m.photo==='required'));
- const rank=m=>{
-  const age=recent.lastIndexOf(m.slug);
-  return [tone&&!m.tones.includes(tone)?1:0,kind&&!m.kinds.includes(kind)?1:0,age<0?0:age+1,hash(seed,m.slug)];
- };
- const sorted=pool.map(m=>({m,r:rank(m)})).sort((a,b)=>{for(let i=0;i<4;i++)if(a.r[i]!==b.r[i])return a.r[i]-b.r[i];return 0;}).map(x=>x.m);
- // Spread over grounds where the fit allows: take the best of each ground first among those that fit tone and kind.
- const fits=sorted.filter(m=>(!tone||m.tones.includes(tone))&&(!kind||m.kinds.includes(kind))),picked=[];
- for(const m of fits)if(picked.length<n&&!picked.some(p=>p.ground===m.ground))picked.push(m);
- for(const m of sorted)if(picked.length<n&&!picked.includes(m))picked.push(m);
+ const recent=new Set(entries.filter(e=>e.project!==project&&e.material).slice(-4).map(e=>e.material));
+ const hard=materials.filter(m=>!(kind==='software'&&m.ground==='dark')&&!(noPhoto&&m.photo==='required'));
+ const fit=m=>(tone&&m.tones.includes(tone)?1:0)+(kind&&m.kinds.includes(kind)?1:0);
+ const byHash=a=>[...a].sort((x,y)=>fit(y)-fit(x)||hash(seed,x.slug)-hash(seed,y.slug));
+ const fresh=hard.filter(m=>!recent.has(m.slug)),tiers=[fresh.filter(m=>fit(m)>0||(!tone&&!kind)),fresh,hard],picked=[];
+ for(const t of tiers)for(const m of byHash(t))if(picked.length<n&&!picked.includes(m))picked.push(m);
  return picked;
 }
+
