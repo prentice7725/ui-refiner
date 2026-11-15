@@ -2,7 +2,7 @@
 
 A material is one finished look taken from a physical thing: an enamel sign, a tiled wall, a till receipt. It fixes the ground, the colours, the faces, the surfaces, the controls and how a photo is treated, so a page built in it has one hand behind it. It never says what the page contains or in what order: that comes from the client's content and the dealt hero structure.
 
-`ui-refiner directions deal` picks three materials that fit the page's tone and kind and puts those picked recently for other projects last. Read the file of each dealt material before you build its mock.
+`ui-refiner directions deal` picks one material for the bold direction, and one alternate. A material that fits the page's tone or kind comes first, and one picked for any of the last four other projects is left out. Read the dealt material's file before you build the mock ([the bold lane](../lanes/bold.md) says when to take the alternate).
 
 ## Rules for using one
 

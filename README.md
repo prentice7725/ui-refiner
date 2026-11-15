@@ -94,7 +94,7 @@ After installing, ask your agent in plain words, or use the slash commands:
 
 For a refine, the agent:
 1. scans the page and records what must be kept;
-2. deals and mocks three directions, then shows them side by side (`refine-directions/DIRECTIONS.html`) and waits for your pick;
+2. builds three directions from three sources, each in its own subagent (familiar: what human-made sites of the kind do, as measured; tailored: colour and type from this client's content; bold: one material throughout), then shows them side by side (`refine-directions/DIRECTIONS.html`) and waits for your pick;
 3. rebuilds the page, verifies it and rescans.
 
 The report follows the page language: English, Korean or Japanese.

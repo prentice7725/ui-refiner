@@ -23,14 +23,20 @@ test('materials: every file has complete front matter and all eight sections', a
  assert.equal(parseMaterial('# no front matter'),null);
 });
 
-test('materials: every tone and kind can be dealt three that fit the tone', async () => {
+test('materials: every tone and kind can be dealt three; fitting ones first, recent picks left out', async () => {
  const all=await loadMaterials();
  for(const tone of TONES)for(const kind of KINDS)for(let seed=0;seed<10;seed++){
   const d=dealMaterials(all,[],null,{seed,kind,tone});
   assert.equal(new Set(d.map(m=>m.slug)).size,3,`${tone}/${kind}: three different`);
-  assert.ok(d.every(m=>m.tones.includes(tone)),`${tone}/${kind}: all fit the tone (${d.map(m=>m.slug)})`);
+  const fits=all.filter(m=>m.tones.includes(tone)&&m.kinds.includes(kind)&&!(kind==='software'&&m.ground==='dark'));
+  if(fits.length)assert.ok(d[0].tones.includes(tone)&&d[0].kinds.includes(kind),`${tone}/${kind}: the dealt material fits both when one does (${d[0].slug})`);
   if(kind==='software')assert.ok(d.every(m=>m.ground!=='dark'),'no dark ground on software pages');
  }
+ // A material picked for one of the last four other projects is not dealt again, however well it fits.
+ const log=[{project:'a',material:'receipt'},{project:'b',material:'widget'}];
+ for(let seed=0;seed<20;seed++){const d=dealMaterials(all,log,'c',{seed,kind:'software',tone:'calm',noPhoto:true});assert.ok(!d.some(m=>['receipt','widget'].includes(m.slug)),d.map(m=>m.slug).join());}
+ // The same project may get its own material again.
+ assert.ok(Array.from({length:20},(_,seed)=>dealMaterials(all,log,'a',{seed,kind:'software',tone:'calm',noPhoto:true})).flat().some(m=>m.slug==='receipt'));
 });
 
 test('materials: recent picks for other projects go last, photo-only materials need photos', async () => {

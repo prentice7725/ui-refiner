@@ -1,6 +1,6 @@
 # Reviews in fresh context
 
-The thread that built a page is its weakest reviewer: it knows why everything is the way it is. A refine has two reviews by a reviewer that did not build the page. Run each as a subagent with no inherited conversation, in the foreground, and give it only the inputs listed. If no subagent tool is available, re-read the screenshots cold, answer the same questions yourself, and write `in-thread` in the report.
+The thread that built a page is its weakest reviewer: it knows why everything is the way it is. There are two reviews by a reviewer that did not build the page. The refine workflow runs the finish review for the bold direction (a page built in a material); the hero review is optional. In the round-18 pilot the reviews made material pages clearer in most comparisons and changed little on pages without a material. Run each as a subagent with no inherited conversation, in the foreground, and give it only the inputs listed. If no subagent tool is available, re-read the screenshots cold, answer the same questions yourself, and write `in-thread` in the report.
 
 The reviewer does not edit anything. It answers in one word and at most five findings, worst first, one line each. A finding names what is on the screen and where, not a rule.
 
