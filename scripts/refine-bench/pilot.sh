@@ -6,6 +6,7 @@
 #   refine-d  refine-c + 시안 세 개를 서로 못 보는 서브에이전트가 따로 만든다
 #   refine-e  재료 배정 (origin/feat/refine-materials: 시안마다 재료 하나, 새 맥락의 히어로·마무리 리뷰). ARMS에 e를 넣을 때만 돈다
 #   refine-f  refine-e에서 색과 서체 고정만 푼 것 (variants/materials-free.patch): 재료는 만드는 법만 정하고, 색과 서체는 고객에 맞춰 고른다. ARMS에 f를 넣을 때만 돈다
+#   refine-g  refine-e에서 재료 배정만 바꾼 것 (variants/materials-deal.patch): 최근 네 프로젝트에서 고른 재료는 빼고, 성격·종류 중 하나만 맞아도 후보에 넣는다. ARMS에 g를 넣을 때만 돈다
 # 폴더 이름을 a–d로 둔 것은 에이전트가 경로에서 조건을 읽지 못하게 하려는 것이다.
 # 환경변수: PAGES (기본 4개), REPS (기본 "1 2 3"), ARMS (기본 "a b c d")
 HERE="$(cd "$(dirname "$0")" && pwd)"; R="$(cd "$HERE/../.." && pwd)"; export BENCH_DIR="${BENCH_DIR:-$PWD/refine-bench-out}"; B="$BENCH_DIR"
@@ -14,6 +15,7 @@ for id in $PAGES; do [ -f "$B/pages/$id/before/index.html" ] || { mkdir -p "$B/p
 [ -d "$B/roots/r17" ] && [ -d "$B/roots/r12" ] || "$HERE/roots.sh" r17=origin/main r12=de170f6 || exit 1
 case " $ARMS " in *" e "*) [ -d "$B/roots/mat" ] || "$HERE/roots.sh" mat="${MATERIALS_REF:-origin/feat/refine-materials}" || exit 1;; esac
 case " $ARMS " in *" f "*) [ -d "$B/roots/matf" ] || { "$HERE/roots.sh" matf="${MATERIALS_REF:-origin/feat/refine-materials}" && git -C "$B/roots/matf" apply "$HERE/variants/materials-free.patch"; } || exit 1;; esac
+case " $ARMS " in *" g "*) [ -d "$B/roots/matg" ] || { "$HERE/roots.sh" matg="${MATERIALS_REF:-origin/feat/refine-materials}" && git -C "$B/roots/matg" apply "$HERE/variants/materials-deal.patch"; } || exit 1;; esac
 one(){ # 한 조건의 한 반복: 페이지를 순서대로 돌려 앞 페이지의 선택이 다음 배정에 반영되게 한다
   local arm="$1" rep="$2"
   for id in $PAGES; do
@@ -25,6 +27,7 @@ one(){ # 한 조건의 한 반복: 페이지를 순서대로 돌려 앞 페이�
       d) REP=$rep EXTRA_PROMPT="$HERE/variants/isolated.md" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-d "$id";;
       e) REP=$rep REFINER_ROOT="$B/roots/mat" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-e "$id";;
       f) REP=$rep REFINER_ROOT="$B/roots/matf" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-f "$id";;
+      g) REP=$rep REFINER_ROOT="$B/roots/matg" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-g "$id";;
     esac
   done
 }
