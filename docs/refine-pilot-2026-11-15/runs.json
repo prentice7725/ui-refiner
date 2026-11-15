@@ -1,0 +1,167 @@
+[
+ {
+  "arm": "refine-a",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "99ae8d09c222ed1ff7f3dcefe1583aac66f0b885",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:23:40.617Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-a",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "99ae8d09c222ed1ff7f3dcefe1583aac66f0b885",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:16:59.161Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-a",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "99ae8d09c222ed1ff7f3dcefe1583aac66f0b885",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:09:36.627Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-b",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "de170f69fcceb02913e8668cf8b55bd0bd4149b1",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:23:58.616Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-b",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "de170f69fcceb02913e8668cf8b55bd0bd4149b1",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:16:05.536Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-b",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "de170f69fcceb02913e8668cf8b55bd0bd4149b1",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:09:36.616Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-c",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "dad525a0a12dc437150c20c8f2477c44bee62779",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:23:20.557Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-c",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "dad525a0a12dc437150c20c8f2477c44bee62779",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:16:28.546Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-c",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "dad525a0a12dc437150c20c8f2477c44bee62779",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:09:35.902Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-d",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "dad525a0a12dc437150c20c8f2477c44bee62779",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:27:33.765Z",
+  "extraPrompt": "variants/isolated.md"
+ },
+ {
+  "arm": "refine-d",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "dad525a0a12dc437150c20c8f2477c44bee62779",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:18:41.840Z",
+  "extraPrompt": "variants/isolated.md"
+ },
+ {
+  "arm": "refine-d",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "e25c8e06f9324d305d3f5bfc31140583652010ac",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T02:10:35.770Z",
+  "extraPrompt": "variants/isolated.md"
+ },
+ {
+  "arm": "refine-e",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:30:27.006Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-e",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:18:41.839Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-e",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T04:06:31.683Z",
+  "extraPrompt": null
+ }
+]

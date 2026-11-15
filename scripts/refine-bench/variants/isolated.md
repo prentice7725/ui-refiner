@@ -1,0 +1,6 @@
+One change to the skill's process for this run: the three direction mocks are built apart, so that none borrows from another.
+
+- Do the scan, the keep record, the tone and kind, and the deal yourself, as the skill says. Do not write any direction's five lines and do not build any mock yourself.
+- Then start three subagents, one per dealt direction (A, B, C), in one message so they run at the same time. Give each one only: the path of the skill file to read, the path of the page, the page's tone and kind, its own entry from `DEAL.json` (structure, surface, colour family) with the faces to avoid, and the file it must write (`refine-directions/a.html`, `b.html` or `c.html`). Do not tell it what the other two were dealt, and do not suggest a concept, a world, a signature element, a typeface or a palette.
+- Each subagent reads the page, writes its own five lines and builds its one mock (the first screen plus one content section), then stops. It does not run `directions`, pick, or touch `index.html`.
+- When all three are done, continue yourself from `ui-refiner directions refine-directions`. If the sheet tells you to redo a mock, send that back to a new subagent with the warning text only.
