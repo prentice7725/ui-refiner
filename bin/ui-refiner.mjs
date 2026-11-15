@@ -85,7 +85,7 @@ try{
     const lang=args.lang||process.env.UI_REFINER_LANG||'auto';
     if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`${args.lang?'--lang':'UI_REFINER_LANG'} must be auto or one of ${scanLangs.join(', ')}`);
     if(args.compare&&args.noCompare)throw Error('Use either --compare or --no-compare');
-    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang,locale:args.locale||null,source:args.source||null,compare:args.noCompare?null:args.compare||'auto'});
+    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang,locale:args.locale||null,source:args.source||null,compare:args.noCompare?null:args.compare||'auto',grade:true});
     const c=result.comparison,delta=n=>n>0?`+${n}`:`${n}`;
     if(args.json)console.log(JSON.stringify(result,null,2));
     else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); verdict=${result.aiLook.verdict==='ai'?'looks AI-made':result.aiLook.verdict==='traces'?'some AI traces':'does not look AI-made'}; signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''} report=${result.lang};${c?` vs ${c.mode==='auto'?'last scan':'previous'} ${c.previous.score}→${c.current.score} (${delta(c.scoreDelta)}), resolved=${c.signals.resolved.length}, new=${c.signals.added.length}${c.warnings.length?`, warnings=${c.warnings.join(',')}`:''};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);

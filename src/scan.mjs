@@ -11,6 +11,7 @@ import {spawnBounded} from './execute.mjs';
 import {collectJaTypography,evaluateJaTypography} from './ja-typography.mjs';
 import {compactSite,compareToReference,loadJaReference,renderReference} from './reference.mjs';
 import {jaReport} from './ja-copy.mjs';
+import {gradeScreenshot} from './scan-grade.mjs';
 import {compareScans,findAutoPrevious,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
 
 // Universal checks only. Font/size/copy/contract rules depend on a project policy, and content-clipping is
@@ -61,7 +62,7 @@ export function detectLang(view){
  return ['ja','ko'].includes(declared)?declared:'en';
 }
 
-export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000,screenshots=true,keepRaw=false}={}){
+export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000,screenshots=true,keepRaw=false,grade=false}={}){
  if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`Unsupported report language: ${lang}`);
  const url=scanTarget(input),dir=path.resolve(out),browserLoc=locale||(lang==='auto'?hintLocale(url):browserLocale[lang]);
  // Load the previous scan and keep its screenshots before this run can overwrite them in the same folder.
@@ -109,6 +110,8 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
  // Japanese pages: place the measurements among the bundled Japanese reference sites.
  if(japanese.japanese){const ref=await loadJaReference();if(ref){const cmp=compareToReference(compactSite({...result,raw:ok.map(v=>({viewport:v.viewport,metrics:v.metrics,ja:v.ja}))}),ref,url);if(cmp.rows.length)result.reference={set:'ja-reference',...cmp};}}
  if(previous)result.comparison={...compareScans(previous.scan,result,{lang}),mode:compare==='auto'?'auto':'explicit',images:Object.keys(beforeImages).length?beforeImages:null};
+ // The desktop screenshot marked up like a graded paper: where each scored signal was found, and the score.
+ if(screenshots&&grade){const g=await gradeScreenshot(url,tells,{dir,locale:browserLoc,verdict:tells.verdict?t[scanLangs.includes(lang)?lang:'ko'].verdicts[tells.verdict]:'',timeoutMs});if(g)result.graded=g;}
  await fs.writeFile(path.join(dir,'scan.json'),JSON.stringify(result,null,2)+'\n');
  await fs.writeFile(path.join(dir,'DESIGN_REVIEW.md'),renderScan(result));
  return {result,dir};
@@ -161,7 +164,7 @@ const severity={ko:{high:'높음',medium:'중간',low:'낮음'},ja:{high:'高',m
 
 export function renderScan(r){
  const L=scanLangs.includes(r.lang)?r.lang:'ko',x=t[L],a=r.aiLook;let n=0;const h=title=>`## ${++n}. ${title}`;
- const lines=[`# ${x.title}: ${r.url}`,'',`- **${x.index}: ${a.score}/100 (${x.bands[a.band]})** — ${x.note}`,...(a.verdict?[`- **${x.verdicts[a.verdict]}**`]:[]),...(a.craft?.length?[`- ${x.craft}: ${a.craft.map(c=>x.crafts[c]).join(', ')} (${x.craftNote})`]:[]),`- ${x.shots}: ${r.views.map(v=>v.screenshot?`[${v.viewport} ${v.width}px](${v.screenshot})`:v.error?`${v.viewport}: ${x.error} — ${v.error}`:`${v.viewport} ${v.width}px`).join(' · ')}`,''];
+ const lines=[`# ${x.title}: ${r.url}`,'',`- **${x.index}: ${a.score}/100 (${x.bands[a.band]})** — ${x.note}`,...(a.verdict?[`- **${x.verdicts[a.verdict]}**`]:[]),...(a.craft?.length?[`- ${x.craft}: ${a.craft.map(c=>x.crafts[c]).join(', ')} (${x.craftNote})`]:[]),`- ${x.shots}: ${r.views.map(v=>v.screenshot?`[${v.viewport} ${v.width}px](${v.screenshot})`:v.error?`${v.viewport}: ${x.error} — ${v.error}`:`${v.viewport} ${v.width}px`).join(' · ')}${r.graded?` · [${{ko:'채점본',ja:'採点済み',en:'marked up'}[L]}](${r.graded})`:''}`,''];
  if(r.comparison)lines.push(...renderComparison(r.comparison,L,h));
  if(a.breakdown){
   // The score, row by row: what each signal added, what deliberate design took off, and the verdict it leads to.
