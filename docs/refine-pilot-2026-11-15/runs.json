@@ -163,5 +163,38 @@
   "claude": "2.1.325 (Claude Code)",
   "startedAt": "2026-11-15T04:06:31.683Z",
   "extraPrompt": null
+ },
+ {
+  "arm": "refine-f",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T06:35:36.279Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-f",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T06:23:06.852Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-f",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T06:11:34.234Z",
+  "extraPrompt": null
  }
 ]
