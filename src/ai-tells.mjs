@@ -206,7 +206,7 @@ export function collectAiTells(){
   return {photos,nav,fonts:{display:fam(h1),heading:fam(h2||h1),body:fam(p||document.body)},sizes:{h1:px(h1),h2:px(h2),h3:px(h3),body:px(p)},weights:{h1:wt(h1),h2:wt(h2)},colours:{text:col(p||document.body),heading:col(h2||h1)},button,radius,hairlines,content};})();
  const rootBg=[document.body,document.documentElement].map(el=>rgba(getComputedStyle(el).backgroundColor)).find(c=>c?.[3]>.5)||[255,255,255,1];
  return {
-  url:location.href,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
+  url:location.href,direction:document.querySelector('meta[name="ui-refiner-direction"]')?.content?.trim().toLowerCase()||null,viewport:{width:innerWidth,height:innerHeight},inspected:Math.min(all.length,limit),total:all.length,
   gradients:{count:gradients.length,large:largeGradients.length,purple:purpleGradients.length,coverage:Math.min(1,largeGradients.reduce((n,el)=>n+area(el),0)/page),targets:sample(largeGradients.length?largeGradients:gradients)},
   gradientText:{count:gradientText.length,headings:gradientHeadings.length,targets:sample(gradientText)},
   glass:{count:glass.length,targets:sample(glass)},
@@ -287,6 +287,24 @@ export function scoreSignals(signals,craft=[]){
  return {score,band:score>=60?'high':score>=30?'medium':signals.some(s=>s.weight>0)?'low':'none'};
 }
 
+/**
+ * Splits the score into whole points per signal that add up to it: each scored signal's share, then what each
+ * deliberate-design sign took off, then the cap at 100. Rounding is spread by largest remainder so the rows sum.
+ */
+export function scoreBreakdown(signals,craft=[]){
+ const scored=signals.filter(s=>s.weight>0),exact=scored.map(s=>s.weight*100/18),sum=Math.round(exact.reduce((a,b)=>a+b,0));
+ const whole=exact.map(Math.floor);let left=sum-whole.reduce((a,b)=>a+b,0);
+ for(const i of exact.map((v,i)=>[v-Math.floor(v),i]).sort((a,b)=>b[0]-a[0]).map(v=>v[1])){if(left<=0)break;whole[i]++;left--;}
+ const damped=Math.round(exact.reduce((a,b)=>a+b,0)*(1-.15*craft.length)),off=sum-damped,score=Math.min(100,damped);
+ return {rows:scored.map((s,i)=>({id:s.id,title:s.title,points:whole[i]})),craft:craft.map((id,i)=>({id,points:-(Math.floor(off/craft.length)+(i<off%craft.length?1:0))})),sum,cap:score-damped,score};
+}
+/**
+ * What the score says about the page. 20 is where a refine starts and where calibration separates the two groups:
+ * 66–73% of AI-made sites and 0–15% of human-made sites score 20 or more (1% of the Japanese reference sites).
+ */
+export const AI_VERDICT_AT=20,AI_TRACES_AT=8;
+export const aiVerdict=score=>score>=AI_VERDICT_AT?'ai':score>=AI_TRACES_AT?'traces':'none';
+
 /** Turns raw page metrics into ranked, explained signals. Pure; safe to unit-test. */
 export function evaluateAiTells(m,{lang='ko'}={}){
  const L=langKey(lang),out=[];
@@ -308,7 +326,7 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if(m.iconBoxes&&m.iconBoxes.count>=TH.iconBoxes)add('boxed-icons','moderate',{boxes:m.iconBoxes.count},m.iconBoxes.targets);
  const fams=m.typography.families,top=fams[0]?.name;
  // Japanese pages with a real Japanese stack (Hiragino, Noto Sans JP …) follow local convention, not a template default.
- if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)});
+ if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name),...(m.direction==='familiar'?{direction:'familiar'}:{})},[],m.direction==='familiar'?0:null); // the familiar direction uses a plain family on purpose: reported, not scored
  // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
  if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)});
  const hits=new Map();for(const c of m.accents)for(const [name,ref] of Object.entries(defaultAccents))if(dist(c,ref)<14)hits.set(name,(hits.get(name)||0)+1);
@@ -343,5 +361,6 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if((c.imagery||0)>=3)craft.push('imagery');
  const {score,band}=scoreSignals(out,craft);
  const absent=Object.keys(copy).filter(id=>!out.some(s=>s.id===id)&&!(id==='large-gradient'&&out.some(s=>s.id==='purple-gradient')));
- return {heuristic:true,blocking:false,score,band,craft,signals:out,absent,measures:e?{tracked:e.tracked,numbered:e.numbered,periodHeadings:e.periodHeadings,headings:e.headings,serifDisplay:e.serifDisplay,paper:e.paper,...(m.nestedCards?{nestedCards:m.nestedCards.count,nestedHosts:m.nestedCards.hosts}:{}),...(m.iconBoxes?{iconBoxes:m.iconBoxes.count}:{})}:null};
+ const breakdown=scoreBreakdown(out,craft);for(const s of out)s.points=breakdown.rows.find(r=>r.id===s.id)?.points??0;
+ return {heuristic:true,blocking:false,score,band,verdict:aiVerdict(score),breakdown,craft,signals:out,absent,measures:e?{tracked:e.tracked,numbered:e.numbered,periodHeadings:e.periodHeadings,headings:e.headings,serifDisplay:e.serifDisplay,paper:e.paper,...(m.nestedCards?{nestedCards:m.nestedCards.count,nestedHosts:m.nestedCards.hosts}:{}),...(m.iconBoxes?{iconBoxes:m.iconBoxes.count}:{})}:null};
 }

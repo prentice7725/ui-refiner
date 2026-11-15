@@ -5,6 +5,7 @@
 // clients should not. Default location: ~/.ui-refiner/refine-log.json (UI_REFINER_HOME overrides).
 import fs from 'node:fs/promises';
 import os from 'node:os';
+import {loadMaterials,dealMaterials} from './materials.mjs';
 import path from 'node:path';
 
 export const DEAL_FILE='DEAL.json';
@@ -170,21 +171,59 @@ export function avoidFaces(pairs,entries,project,toneDef){
 }
 
 /**
- * Writes DEAL.json into the directions folder: per direction a hero structure, a surface and a colour family, plus
- * faces to avoid. Type is left to the agent: in benchmark round 11 dealt pairings read as plain, and the per-page
- * winners were pages that pushed one strong face of their own choosing. The colour family is dealt again since round
- * 14, where the tone left colour free and three of eight pages took the same forest green.
+ * The three directions a refine offers, each built from a different source so they start apart:
+ * - familiar: what human-made sites of this kind do, from the measurements in data/ (hero structures of 406 sites,
+ *   colours of 548 Korean, Japanese and English sites). Reads as a real site of its kind; the least surprising.
+ * - tailored: benchmark round 12. A structure and a ground are dealt; colour, type and the look come from this
+ *   client's own content. In the round-18 pilot it gave the most varied sets and ranked at or near the top per page.
+ * - bold: one material (src/materials.mjs), a finished look taken from a physical thing. The most distinctive per
+ *   page in the pilot, and the one judges were most split on.
+ * Through round 17 all three directions were built from the same guidance and differed only in dealt parts; in the
+ * pilot, three subagents that could not see each other still chose the same world and the same faces.
  */
-export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en'}={}){
+export const LANES={familiar:'reference/lanes/familiar.md',tailored:'reference/lanes/tailored.md',bold:'reference/lanes/bold.md'};
+const LANE_DIR=new URL('../skills/ui-refiner-agent/',import.meta.url);
+const laneFile=lane=>path.resolve(decodeURIComponent(new URL(LANES[lane],LANE_DIR).pathname.replace(/^\/(?=[A-Za-z]:)/,'')));
+
+/** The hero structure most human sites of the kind use, drawn by share so clients do not all get the top one. */
+export function familiarStructure(human,{seed=0,noPhoto=false}={}){
+ const keys=Object.keys(HERO_STRUCTURES).filter(k=>!(noPhoto&&PHOTO.has(k))),w=k=>Math.max(human?.[k]??0,.02)**2; // squared: lean towards the most common structures
+ const total=keys.reduce((n,k)=>n+w(k),0);let r=(hash(seed,'familiar')/997)*total;
+ for(const k of keys.sort((a,b)=>w(b)-w(a))){r-=w(k);if(r<=0)return k;}
+ return keys[0];
+}
+/** Ground for the tailored direction: white half the time, otherwise brand, paper or dark. */
+export function tailoredSurface(seed=0,{kind,tone}={}){
+ // Dark needs a subject that carries it: not software (round 12) and not a calm or warm page (round 13).
+ const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold'),r=hash(seed,'tailored')%10;
+ return r<5?'white':r<7?'brand':r<8?'paper':dark?'dark':'brand';
+}
+
+/** Writes DEAL.json into the directions folder: one familiar, one tailored and one bold direction (see LANES). */
+export async function dealDirections(dir,{log,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en',materials}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
  if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
- const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary();
- const keys=dealStructures(entries,project,{n,seed,human:human===undefined?await humanHeroShare(kind):human,noPhoto});
- const script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
- const surf=dealSurfaces(n,seed,{kind,tone}),toneDef=tone?lib.tones[tone]:null;
- const acc=toneColours(lib,toneDef,surf,entries,project,{n,seed,weights:colours===undefined?await humanColours(kind,lang):colours});
- const deal={schemaVersion:5,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures:keys.map((key,i)=>({label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],surface:{key:surf[i],brief:lib.surfaces[surf[i]]},accent:{family:acc[i],brief:lib.accents[acc[i]]}}))};
+ const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary(),toneDef=tone?lib.tones[tone]:null;
+ const share=human===undefined?await humanHeroShare(kind):human,script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
+ // Familiar: the common structure, plain white (carried by a photo when photos are allowed), a common accent.
+ const fKey=familiarStructure(share,{seed,noPhoto});
+ const weights=colours===undefined?await humanColours(kind,lang):colours,pool=toneDef?.accents?.length?toneDef.accents.filter(a=>lib.accents[a]):Object.keys(lib.accents);
+ const fAccent=dealAccents(pool,entries,project,{n:1,seed,weights})[0];
+ // Tailored and bold: two more structures, not recently chosen for other projects and not the familiar one's.
+ const rest=dealStructures(entries,project,{n:8,seed,human:share,noPhoto}).filter(k=>k!==fKey),otherFam=rest.filter(k=>FAMILY[k]!==FAMILY[fKey]);
+ const mats=dealMaterials(materials??await loadMaterials(),entries,project,{n:2,seed,kind,tone,noPhoto});
+ if(!mats.length)throw new Error('No materials found; expected skills/ui-refiner-agent/reference/materials/*.md');
+ // The bold structure suits its material: photo-led for one that needs photographs, no photo for one that rarely uses them.
+ const m=mats[0],suits=k=>m.photo==='required'?PHOTO.has(k):m.photo==='rare'?!PHOTO.has(k):true;
+ const bKey=otherFam.find(suits)??rest.find(suits)??otherFam[0]??rest[0],tKey=otherFam.find(k=>k!==bKey&&FAMILY[k]!==FAMILY[bKey])??rest.find(k=>k!==bKey);
+ const surf=tailoredSurface(seed,{kind,tone}),at=(lane,key,extra)=>({lane,file:laneFile(lane),key,brief:HERO_STRUCTURES[key],humanShare:share?.[key]??null,...extra});
+ const structures=[
+  at('familiar',fKey,{surface:{key:noPhoto?'white':'image',brief:lib.surfaces[noPhoto?'white':'image']},accent:{family:fAccent,brief:lib.accents[fAccent]}}),
+  at('tailored',tKey,{surface:{key:surf,brief:lib.surfaces[surf]}}),
+  at('bold',bKey,{material:{slug:m.slug,name:m.name,brief:m.brief,ground:m.ground,file:m.file},alternate:mats[1]?{slug:mats[1].slug,name:mats[1].name,brief:mats[1].brief,file:mats[1].file}:null})
+ ].map((d,i)=>({label:String.fromCharCode(65+i),...d}));
+ const deal={schemaVersion:7,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }
@@ -232,8 +271,9 @@ export async function recordChoice(dir,{pick,page,log}={}){
  let sheet;try{sheet=JSON.parse(await fs.readFile(path.join(root,SHEET_JSON),'utf8'));}catch{throw new Error(`Run "ui-refiner directions ${dir}" first; ${SHEET_JSON} is missing.`);}
  const item=sheet.items.find(d=>d.label===String(pick||'').toUpperCase());
  if(!item)throw new Error(`--pick must be one of ${sheet.items.map(d=>d.label).join(', ')}`);
- const entries=await readLog(log);
- const entry={date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
+ const entries=await readLog(log),deal=await readDeal(root);
+ const dealt=deal?.structures?.find(x=>x.label===item.label);
+ const entry={lane:dealt?.lane??null,material:dealt?.material?(item.material??dealt.material.slug):null,date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
  entries.push(entry);
  await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify(entry,null,1)+'\n');
  return {entry,file:await writeLog(entries.slice(-200),log)};

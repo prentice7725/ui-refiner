@@ -1,0 +1,816 @@
+{
+ "arms": [
+  "refine-a",
+  "refine-b",
+  "refine-e",
+  "refine-f"
+ ],
+ "reps": [
+  "1"
+ ],
+ "orders": 2,
+ "page": {
+  "refine-a": {
+   "rank": 2.6666666666666665,
+   "perRep": [
+    2.6666666666666665
+   ],
+   "spread": 0,
+   "first": 0,
+   "n": 6,
+   "hierarchy": 7.333333333333333,
+   "distinctiveness": 5.333333333333333,
+   "typography": 6.833333333333333,
+   "cohesion": 8,
+   "ai_look": 4.833333333333333
+  },
+  "refine-b": {
+   "rank": 1.8333333333333333,
+   "perRep": [
+    1.8333333333333333
+   ],
+   "spread": 0,
+   "first": 3,
+   "n": 6,
+   "hierarchy": 7.833333333333333,
+   "distinctiveness": 6.166666666666667,
+   "typography": 7.5,
+   "cohesion": 7.666666666666667,
+   "ai_look": 4.5
+  },
+  "refine-e": {
+   "rank": 2.6666666666666665,
+   "perRep": [
+    2.6666666666666665
+   ],
+   "spread": 0,
+   "first": 2,
+   "n": 6,
+   "hierarchy": 7,
+   "distinctiveness": 6.666666666666667,
+   "typography": 6.666666666666667,
+   "cohesion": 7.166666666666667,
+   "ai_look": 4.833333333333333
+  },
+  "refine-f": {
+   "rank": 2.8333333333333335,
+   "perRep": [
+    2.8333333333333335
+   ],
+   "spread": 0,
+   "first": 1,
+   "n": 6,
+   "hierarchy": 6.166666666666667,
+   "distinctiveness": 7.5,
+   "typography": 6.5,
+   "cohesion": 6.166666666666667,
+   "ai_look": 4.333333333333333
+  }
+ },
+ "orderAgree": 0.6666666666666666,
+ "slot": {
+  "A": 1.8333333333333333,
+  "D": 2,
+  "C": 2.8333333333333335,
+  "B": 3.3333333333333335
+ },
+ "set": {
+  "refine-a": {
+   "sameness": 6,
+   "rank": 3,
+   "n": 1
+  },
+  "refine-b": {
+   "sameness": 5,
+   "rank": 2,
+   "n": 1
+  },
+  "refine-e": {
+   "sameness": 4,
+   "rank": 1,
+   "n": 1
+  },
+  "refine-f": {
+   "sameness": 7,
+   "rank": 4,
+   "n": 1
+  }
+ },
+ "habits": [
+  {
+   "unit": "1@2",
+   "arm": "refine-f",
+   "habits": "Every hero leans on one paper or print prop: a tiled grid over the clinic photo, a receipt card with a red 'free' stamp, and a kraft-paper background with a yellow round sticker. All three put a white card over or beside the photo with the headline inside it. All three use small label/value rows separated by hairlines. All three pair a dark or teal filled button with an outlined button. All three use dense small type and a thin nav with an outlined CTA at the right."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-a",
+   "habits": "All three use the same restrained, editorial grid. Each has a left-aligned bold headline with a gray paragraph underneath and one filled accent button beside a secondary link or outlined button. Each adds one data module: an hours strip with a news list, a job search table, and a map with a site-list panel. All three use hairline rules, small gray meta text, a white or cream background with one accent color, and a thin nav with a filled CTA chip. The layouts differ, but the typographic system is the same everywhere."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-b",
+   "habits": "Two of the three use a full-bleed photo hero with a dark scrim, a large white headline, body text, a solid colored CTA, and an underlined text link with an arrow. Logistics breaks the pattern with a white headline area over a black-header dashboard card, but it keeps the same pairing of solid primary and secondary button. All three have a thin top nav with a right-aligned phone number or CTA chip. All three end with a one-line strip of facts or hours. The accent color changes per client (orange, crimson, green)."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-e",
+   "habits": "Each site commits to its own strong visual theme: hiring uses green and black blocks with numbered CTA tiles, logistics uses kraft paper with a shipping-label card and a yellow sticker, and the clinic uses navy outlined rounded cards with stitched corners and day tiles. What repeats underneath is a bordered card holding label/value rows, round badges or bullets, a small all-caps meta line above the headline, and a filled button paired with an outlined one. The kraft background and yellow sticker are also reused from set A."
+  }
+ ],
+ "stage": {
+  "refine-a": {
+   "first": {
+    "direction": {
+     "final": 1,
+     "earlier": 0,
+     "same": 3
+    },
+    "ship": {
+     "final": 2,
+     "earlier": 2,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-a.1@first@1",
+      "text": "Neither version has weaker direction: both share the same fold, warm off-white palette, sakura mark and hours-led headline, so a rival's name would fit either one equally well. The only real difference is that X's tall feature photo stretches the 当院の特徴 section into a lopsided block of empty space, while Y crops it to a balanced landscape frame."
+     },
+     {
+      "unit": "ja-clinic@refine-a.1@first@2",
+      "text": "Neither version has weaker direction: both share the same restrained warm-neutral clinic look with the same hours-led headline and tight Japanese typography, so they can't be told apart on direction. X is the one to ship because Y's dedicated-fever-entrance photo is cropped extremely tall, which stretches the features section and leaves a large empty gap."
+     },
+     {
+      "unit": "ja-recruit@refine-a.1@first@1",
+      "text": "X drops the developer-flavoured touches that make Y feel built for engineers, namely the code-style matching line above the job table and the numbered reasons, so it reads as a cleaner but more generic job-board template."
+     },
+     {
+      "unit": "ja-recruit@refine-a.1@first@2",
+      "text": "Neither version is weaker on direction: both share the same data-table look built around salary ranges and tech stacks for IT engineers, and differ only in small polish details such as X's out-of-order 02/01/03 numbering in the reasons section and its vaguer table caption."
+     }
+    ]
+   },
+   "mock": {
+    "direction": {
+     "final": 6,
+     "earlier": 0,
+     "same": 0
+    },
+    "ship": {
+     "final": 6,
+     "earlier": 0,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-a.1@mock@1",
+      "text": "X drops the sakura logo mark, the Setagaya and specialty line, the live 'today' clinic status and the dated notices, so it reads as a generic clinic template that any rival could put their name on."
+     },
+     {
+      "unit": "ja-clinic@refine-a.1@mock@2",
+      "text": "Y removes the sakura logo mark, the Setagaya and internal-medicine/gastroenterology line under the name, and the news strip, so its header and first screen fall back to a plain wordmark and a generic layout that would work for any clinic."
+     },
+     {
+      "unit": "ja-recruit@refine-a.1@mock@1",
+      "text": "X has the same headline and job table, but it lacks a logo mark and the keyword and role search built into the table, which make Y's table feel like this agency's own tool; X's version reads like a generic template block, and its logo and section heading don't line up with the content edge."
+     },
+     {
+      "unit": "ja-recruit@refine-a.1@mock@2",
+      "text": "Y removes the keyword and job-type search bar that X joins directly onto the salary and tech-stack table, so its job list reads as a generic boxed table instead of a search tool built for engineers, and it adds polish slips: no logo mark, a misaligned wordmark and section heading, an orphaned 'す。' line, and a doubled '年収' header."
+     },
+     {
+      "unit": "ko-logistics@refine-a.1@mock@1",
+      "text": "X uses the same map-and-depot concept but leaves the dashboard panel with a dead empty strip and no live operational figures (today's Icheon outbound count, on-time rate, inventory accuracy), so it reads more like a generic template than a working logistics console."
+     },
+     {
+      "unit": "ko-logistics@refine-a.1@mock@2",
+      "text": "Y drops the live WMS stats strip (Icheon's daily shipments of 4,812, 99.7% on-time) and the same-day 2pm cutoff line, which leaves a dead gap in the hub panel and weakens the operational dashboard identity that ties the page to Hangil's actual network."
+     }
+    ]
+   }
+  },
+  "refine-b": {
+   "first": {
+    "direction": {
+     "final": 2,
+     "earlier": 0,
+     "same": 4
+    },
+    "ship": {
+     "final": 2,
+     "earlier": 0,
+     "same": 4
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-b.1@first@1",
+      "text": "Neither version is weaker: X and Y are byte-for-byte identical in both the fold and full-page screenshots, so they share the same clinic-specific direction (the real exam-room photo, the serif headline naming the endoscopy, ultrasound and station distance, and the sakura-red accents)."
+     },
+     {
+      "unit": "ja-clinic@refine-b.1@first@2",
+      "text": "Neither version has weaker direction: X and Y are byte-for-byte identical files (same fold and full-page hashes), so they share the same clinic-specific look of a muted exam-room photo, a serif headline about the nasal endoscopy and the station, a sakura mark and a deep rose accent."
+     },
+     {
+      "unit": "ja-recruit@refine-b.1@first@1",
+      "text": "X is nearly identical but drops Y's engineer-specific touches, the stack-matching code snippet in the job search and the numbered reasons, so its sections read more like a generic recruitment template."
+     },
+     {
+      "unit": "ja-recruit@refine-b.1@first@2",
+      "text": "Y drops the engineer-flavoured touches X has, namely the code-style matching snippet next to job search and the numbered 01–03 reasons, and its job titles wrap awkwardly, so it reads as a more generic recruiting template."
+     },
+     {
+      "unit": "ko-logistics@refine-b.1@first@1",
+      "text": "Neither version is weaker: X and Y are byte-identical, fold and full page alike, and both share the same art direction (the 2pm same-day cutoff headline, the WMS dashboard with its 14:00 cutoff chart, and the map of the client's Korean warehouse sites)."
+     },
+     {
+      "unit": "ko-logistics@refine-b.1@first@2",
+      "text": "Neither version is weaker: X and Y are byte-for-byte identical in both the fold and full-page screenshots, so they share the same art direction (the 2pm same-day cutoff chart and the dashboard-led logistics look) and the same polish."
+     }
+    ]
+   },
+   "mock": {
+    "direction": {
+     "final": 5,
+     "earlier": 1,
+     "same": 0
+    },
+    "ship": {
+     "final": 5,
+     "earlier": 1,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-b.1@mock@1",
+      "text": "X has the same photo and serif headline but no sakura mark, no Setagaya/digestive-medicine line and no service subline, so nothing ties it to this clinic, and its hours strip reads rough, with missing tildes and a contradictory closed-days note."
+     },
+     {
+      "unit": "ja-clinic@refine-b.1@mock@2",
+      "text": "Y removes the sakura logo mark, the Setagaya and gastroenterology tagline, the navigation and the service lead line, so the clinic's identity rests only on a generic photo and headline; its hours bar is also garbled, with missing '〜' separators and a muddled '本日' note."
+     },
+     {
+      "unit": "ja-recruit@refine-b.1@mock@1",
+      "text": "X uses the same photo and headline but drops Y's small engineer-specific touches, such as the monospaced job count and the fuller nav with a header CTA, and it sets the headline over the busiest part of the image with weaker contrast, so it reads more like a generic staffing template."
+     },
+     {
+      "unit": "ja-recruit@refine-b.1@mock@2",
+      "text": "Y uses the same hackathon photo and headline but drops X's small engineer-specific touches, such as the monospace job count and the fuller recruiting nav, and its lighter overlay lets the headline run into the subjects' faces, so it reads as a generic recruiting hero."
+     },
+     {
+      "unit": "ko-logistics@refine-b.1@mock@1",
+      "text": "Y waters down the 2 PM same-day cutoff idea: it packs the fold with a recent-orders table, a feature-tag row, a longer intro and a busier nav, so the chart split at the 14:00 deadline becomes one of many generic dashboard pieces instead of the hero."
+     },
+     {
+      "unit": "ko-logistics@refine-b.1@mock@2",
+      "text": "Y drops the live recent-orders panel, with its HG order IDs, client brand types and picking-to-delivered statuses, and cuts the nav, so its WMS dashboard reads more like a generic chart than proof of Hangil's own fulfillment operation."
+     }
+    ]
+   }
+  },
+  "refine-e": {
+   "first": {
+    "direction": {
+     "final": 5,
+     "earlier": 1,
+     "same": 0
+    },
+    "ship": {
+     "final": 5,
+     "earlier": 1,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-e.1@first@1",
+      "text": "Y swaps the solid navy お知らせ band for another white outlined box, so the page loses its one strong color block below the hero and becomes a run of identical double-outlined boxes with no anchor for urgent clinic announcements."
+     },
+     {
+      "unit": "ja-clinic@refine-e.1@first@2",
+      "text": "Y fills the お知らせ news panel with solid blue, which competes with the highlighted 本日休診 tile right above it, so the hours-first hierarchy that makes this clinic's page its own loses its single point of emphasis."
+     },
+     {
+      "unit": "ja-recruit@refine-e.1@first@1",
+      "text": "X drops Y's engineer-specific details, such as the green numbered section bars that echo the hero's step tiles and the code-style matching panel by the signup form, and it splits the headline awkwardly at 全求／人に明記, so it reads like a generic job board."
+     },
+     {
+      "unit": "ja-recruit@refine-e.1@first@2",
+      "text": "Y drops the green numbered section bars that X carries down the whole page as a wayfinding system, so below the hero its sections are generic headings, and it also breaks words awkwardly in the headline (全求/人) and in the job titles."
+     },
+     {
+      "unit": "ko-logistics@refine-e.1@first@1",
+      "text": "X shares the kraft-cardboard and shipping-label language, but its WMS section is only plain text where Y shows an actual dashboard mockup, and its taller hero image pushes the CTAs to the bottom edge of the fold and the intro copy below it, which weakens the logistics-operator feel."
+     },
+     {
+      "unit": "ko-logistics@refine-e.1@first@2",
+      "text": "Y drops the WMS dashboard mock with its live-looking inventory figures and order rows, so that section turns into generic feature text, and its taller hero photo pushes the CTAs and intro copy down to the edge of the first screen."
+     }
+    ]
+   },
+   "mock": {
+    "direction": {
+     "final": 3,
+     "earlier": 3,
+     "same": 0
+    },
+    "ship": {
+     "final": 4,
+     "earlier": 2,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-e.1@mock@1",
+      "text": "Y's hero opens with a generic symptom list under a 'closed Thursday' headline, so it loses X's pointed weekday-until-18:30 promise for commuters, the one claim that made the page belong to this clinic."
+     },
+     {
+      "unit": "ja-clinic@refine-e.1@mock@2",
+      "text": "Y leads with generic weekday hours instead of X's clinic-specific '木曜休診' headline, and it drops the dashed Thursday-closure card, the live 'today' status line and the fuller navigation, so its schedule-first look could belong to any neighborhood clinic."
+     },
+     {
+      "unit": "ja-recruit@refine-e.1@mock@1",
+      "text": "Y opens with a generic transparency promise (salary, stack and work style listed on every job) that any rival job board could claim; it moves X's ownable hook, that about 70% of the advisers have hands-on dev or infra experience, into body copy, and it drops the yellow salary accent that gave X's job board its own character."
+     },
+     {
+      "unit": "ja-recruit@refine-e.1@mock@2",
+      "text": "X opens on a generic promise that every job's salary, tech stack and work style are listed, which any rival recruiter could claim, so the client's real edge (about 70% of its advisors are working developers and infrastructure engineers) is pushed down into the body text; its plain white salary figures also don't pick up the brand's yellow accent the way Y's do."
+     },
+     {
+      "unit": "ko-logistics@refine-e.1@mock@1",
+      "text": "X makes the same kraft-box, shipping-label look generic by dropping the Icheon origin from its headline and the HANGIL LOGIS wordmark next to the logo, and its header has no phone number."
+     },
+     {
+      "unit": "ko-logistics@refine-e.1@mock@2",
+      "text": "Y drops the Icheon location from the headline and the HANGIL LOGIS wordmark with the phone number, so its cleaner 14:00 cut-off message reads more like a generic same-day fulfillment pitch than this particular Icheon-based operator."
+     }
+    ]
+   }
+  },
+  "refine-f": {
+   "first": {
+    "direction": {
+     "final": 5,
+     "earlier": 0,
+     "same": 1
+    },
+    "ship": {
+     "final": 5,
+     "earlier": 1,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-f.1@first@1",
+      "text": "Neither is weaker: both use the same tiled-grid motif, teal-and-yellow hours board and layout, and differ only in Y's hero card sitting flush under the header with a slightly warmer headline ('まちの内科'), which reads tidier than X's floating offset card."
+     },
+     {
+      "unit": "ja-clinic@refine-f.1@first@2",
+      "text": "Y cuts the headline from 'まちの内科' to just '内科', which drops the neighbourhood-clinic voice that tied the page to this Setagaya practice and leaves a generic clinic tagline, though the rest of the page (the tile-grid motif, the teal and yellow palette and the layout) is almost identical between the two."
+     },
+     {
+      "unit": "ja-recruit@refine-f.1@first@1",
+      "text": "X uses the receipt motif less fully: its two hero receipts leave an empty gap on the right, the flow section repeats the hero's text-left layout, and the contact section has no receipt-style match card, so the 'itemized, transparent, free' idea trails off as you scroll."
+     },
+     {
+      "unit": "ja-recruit@refine-f.1@first@2",
+      "text": "Y leaves out the closing match-score receipt in the consultation section, so the receipt idea stops before the final call to action, and its narrower stats receipt wraps the footnote awkwardly."
+     },
+     {
+      "unit": "ko-logistics@refine-f.1@first@1",
+      "text": "X fills the nationwide-network section with a generic stock warehouse photo where Y draws a custom route map running from the Icheon mega-center through Daejeon, Chilgok and Gimhae, so X loses the one visual that ties the page to this client's own locations."
+     },
+     {
+      "unit": "ko-logistics@refine-f.1@first@2",
+      "text": "Y swaps X's hand-drawn Korea network map, which plots the Icheon, Daejeon, Chilgok and Gimhae hubs, for a generic stock warehouse photo, so the coverage section no longer shows this company's own routes and would fit any rival."
+     }
+    ]
+   },
+   "mock": {
+    "direction": {
+     "final": 4,
+     "earlier": 2,
+     "same": 0
+    },
+    "ship": {
+     "final": 3,
+     "earlier": 3,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-f.1@mock@1",
+      "text": "X uses the same tiled timetable but drops Y's live '本日（日）は休診日です' status and header phone button, so its grid reads more as decoration and less as the clinic's real-time schedule, even though Y's stray teal tile in the day-header row makes it look less finished."
+     },
+     {
+      "unit": "ja-clinic@refine-f.1@mock@2",
+      "text": "Y removes the live 'today (Sunday) is closed' status that tied the schedule grid to the visitor's actual day, plus the neighbourhood-clinic 'まちの内科' framing and the header phone button, so it reads more like a generic clinic template, even though it fixes X's stray empty and blue tiles in the weekday row."
+     },
+     {
+      "unit": "ja-recruit@refine-f.1@mock@1",
+      "text": "Y drops the job-listing receipt (Go, gRPC, PostgreSQL, AWS, ¥8–12M salary) that made the receipt concept speak directly to IT engineers, so the stamped-receipt look turns into generic stats panels, and its two mismatched receipts leave the lower half of the fold empty and unbalanced."
+     },
+     {
+      "unit": "ja-recruit@refine-f.1@mock@2",
+      "text": "X uses the receipt idea only for the process and stats. It lacks Y's job-listing receipt (Go, gRPC, PostgreSQL, AWS, salary range) and the ledger-style codes, so X's receipts could belong to any agency rather than an IT-engineer recruiter."
+     },
+     {
+      "unit": "ko-logistics@refine-f.1@mock@1",
+      "text": "X shows the hero copy in a plain white card, without the shipping-label rows (보내는 곳, 내용물, 조건) and the Icheon-specific headline that make Y read as a waybill for this particular logistics client, and its tape strip just floats across the top of the photo."
+     },
+     {
+      "unit": "ko-logistics@refine-f.1@mock@2",
+      "text": "Y removes the shipping-label rows (보내는 곳 / 내용물 / 조건) and the Icheon place name from the headline, so its card is a generic headline-plus-paragraph that any 3PL could use; it also drops the header quote button, leaving only the parcel tape and cardboard texture as the concept."
+     }
+    ]
+   }
+  }
+ },
+ "runs": {
+  "refine-a": {
+   "cost": 7.2922706,
+   "turns": 57.333333333333336,
+   "n": 3
+  },
+  "refine-b": {
+   "cost": 7.958965800000001,
+   "turns": 62.333333333333336,
+   "n": 3
+  },
+  "refine-e": {
+   "cost": 13.556062800000003,
+   "turns": 83.33333333333333,
+   "n": 3
+  },
+  "refine-f": {
+   "cost": 13.8423478,
+   "turns": 92.66666666666667,
+   "n": 3
+  }
+ },
+ "forms": {
+  "refine-a": {
+   "n": 3,
+   "withTable": 1,
+   "times": 0.3333333333333333,
+   "hairlines": 13.666666666666666
+  },
+  "refine-b": {
+   "n": 3,
+   "withTable": 0.3333333333333333,
+   "times": 1,
+   "hairlines": 4
+  },
+  "refine-e": {
+   "n": 3,
+   "withTable": 1,
+   "times": 4.666666666666667,
+   "hairlines": 4
+  },
+  "refine-f": {
+   "n": 3,
+   "withTable": 0.3333333333333333,
+   "times": 2.3333333333333335,
+   "hairlines": 2
+  }
+ },
+ "failed": [
+  "set1@1"
+ ],
+ "ranks": [
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-b",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-a",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-e",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 5,
+    "typography": 6,
+    "cohesion": 7,
+    "ai_look": 7
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-f",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 5,
+    "distinctiveness": 6,
+    "typography": 5,
+    "cohesion": 4,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-b",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-a",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-e",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 6,
+    "typography": 6,
+    "cohesion": 7,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-f",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 5,
+    "distinctiveness": 5,
+    "typography": 5,
+    "cohesion": 4,
+    "ai_look": 7
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-e",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-b",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-f",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 9,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-a",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 4,
+    "typography": 6,
+    "cohesion": 8,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-e",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-a",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 4,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-f",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 9,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-b",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 5,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-f",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 8,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-b",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-a",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-e",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-b",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-f",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-a",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-e",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 6,
+    "ai_look": 4
+   }
+  }
+ ]
+}

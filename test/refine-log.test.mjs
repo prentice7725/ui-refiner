@@ -76,15 +76,34 @@ test('deal: type pairings by voice and kind, accents by family, one non-white su
  await assert.rejects(dealDirections(path.join(os.tmpdir(),'uir-kind'),{kind:'bank'}),/--kind must be one of/);
 });
 
-test('deal: structure, surface and colour family, with faces to avoid', async () => {
- const {dealDirections}=await import('../src/refine-log.mjs');
+test('deal: a familiar, a tailored and a bold direction, each with its own lane file', async () => {
+ const {dealDirections,recordChoice,readLog}=await import('../src/refine-log.mjs');
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-deal-'));const log=path.join(dir,'log.json');
- await fs.writeFile(log,JSON.stringify({entries:[{project:'/p/other',page:'x',fonts:['Archivo']}]}));
- const d=await dealDirections(path.join(dir,'dirs'),{log,seed:3});
- assert.equal(d.structures.length,3);
- assert.ok(d.structures.every(s=>s.key&&s.surface&&!s.type&&s.accent?.family&&s.accent.brief));
- assert.equal(new Set(d.structures.map(s=>s.accent.family)).size,3,'three colour families');
- assert.ok(d.avoidFaces.includes('Bricolage Grotesque')&&d.avoidFaces.includes('Archivo'));
+ const d=await dealDirections(path.join(dir,'p','dirs'),{log,seed:3,kind:'service',tone:'calm',lang:'ko'});
+ assert.equal(d.schemaVersion,7);assert.deepEqual(d.structures.map(s=>s.lane),['familiar','tailored','bold']);assert.deepEqual(d.structures.map(s=>s.label),['A','B','C']);
+ assert.equal(new Set(d.structures.map(s=>s.key)).size,3,'three different hero structures');
+ for(const s of d.structures)await fs.access(s.file);
+ const [fam,tai,bold]=d.structures;
+ assert.ok(fam.surface&&fam.accent?.family&&!fam.material,'familiar: a surface and a common colour');
+ assert.ok(tai.surface&&!tai.accent&&!tai.material,'tailored: a surface only; colour and type are the agent\'s');
+ assert.ok(bold.material?.slug&&bold.material.file&&bold.alternate?.slug&&bold.alternate.slug!==bold.material.slug&&!bold.surface,'bold: one material and an alternate');
+ assert.ok(d.avoidFaces.length>0);
+ await fs.writeFile(path.join(dir,'p','dirs','DIRECTIONS.json'),JSON.stringify({items:d.structures.map(s=>({label:s.label,hero:s.key,fonts:['a'],bg:[255,255,255]}))}));
+ const r=await recordChoice(path.join(dir,'p','dirs'),{pick:'C',log});
+ assert.equal(r.entry.lane,'bold');assert.equal(r.entry.material,bold.material.slug);assert.equal((await readLog(log))[0].material,bold.material.slug,'a bold pick remembers its material');
+ const t=await recordChoice(path.join(dir,'p','dirs'),{pick:'B',log});
+ assert.equal(t.entry.lane,'tailored');assert.equal(t.entry.material,null,'other lanes record no material');
+ const led=k=>['full-bleed','left+media','below-fold'].includes(k);
+ for(let seed=0;seed<20;seed++){
+  const x=await dealDirections(path.join(dir,'q'+seed,'dirs'),{log:path.join(dir,'none.json'),seed,kind:'software',tone:'calm',noPhoto:true});
+  assert.ok(x.structures.every(s=>!led(s.key)),'no photo-led structure without photos');
+  assert.equal(x.structures[0].surface.key,'white');assert.notEqual(x.structures[1].surface.key,'dark','no dark ground on a calm software page');
+ }
+ for(let seed=0;seed<20;seed++){
+  const x=await dealDirections(path.join(dir,'r'+seed,'dirs'),{log:path.join(dir,'none.json'),seed,kind:'place',tone:'warm'});
+  const b=x.structures[2];
+  if(['receipt','widget','panel'].includes(b.material.slug))assert.ok(!led(b.key),'a material that rarely uses photos gets a structure without one');
+ }
 });
 
 test('history: warns when a mock ignores its dealt type or accent', () => {
@@ -94,20 +113,12 @@ test('history: warns when a mock ignores its dealt type or accent', () => {
  assert.deepEqual(historyWarnings([{label:'A',hero:'full-bleed',fonts:['work sans','zilla slab'],accent:[230,90,40]}],[],'/p/me',deal),[]);
 });
 
-test('deal: a brand ground counts as the colour, and repeats across projects are dealt later', async () => {
- const {dealDirections,leadColour}=await import('../src/refine-log.mjs');
+test('lead colour: a clear colour ground leads, a paper tint does not', async () => {
+ const {leadColour}=await import('../src/refine-log.mjs');
  const forest=[29,90,67],yellow=[240,200,40];
  assert.deepEqual(leadColour({bg:forest,accent:yellow}),forest,'a clear colour ground leads');
  assert.deepEqual(leadColour({bg:[255,255,255],accent:yellow}),yellow);
  assert.deepEqual(leadColour({bg:[243,241,234],accent:yellow}),yellow,'a paper tint does not lead');
- const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-colour-'));const log=path.join(dir,'log.json');
- await fs.writeFile(log,JSON.stringify({entries:[{project:'/p/other',page:'fintech',bg:forest,accent:yellow}]}));
- for(let seed=0;seed<20;seed++){
-  const d=await dealDirections(path.join(dir,'dirs'+seed),{log,seed});
-  const fams=d.structures.map(s=>s.accent.family);
-  assert.ok(!fams.includes('teal')&&!fams.includes('amber'),'the ground and the accent of another project are both dealt later');
-  const brand=d.structures.find(s=>s.surface.key==='brand');if(brand)assert.notEqual(brand.accent.family,'ink','a brand ground needs a hue');
- }
  const deal={structures:[{label:'A',key:'left+stacked',accent:{family:'red'}}]};
  const w=historyWarnings([{label:'A',hero:'left+stacked',bg:forest,accent:[220,40,30]}],[{project:'/p/other',page:'fintech',bg:[31,74,59]}],'/p/me',deal);
  assert.deepEqual(w.map(x=>x.id),['deal-accent','repeat-accent'],'a green ground with a red button reads as green');
@@ -139,16 +150,15 @@ test('deal: colour families lean towards what human sites of the kind use', asyn
  assert.ok(ko&&any&&ko!==any,'Korean pages use the Korean figures when enough sites were measured');
 });
 
-test('deal: the tone narrows surfaces and faces', async () => {
- const {dealSurfaces,dealDirections}=await import('../src/refine-log.mjs');
- for(let seed=0;seed<30;seed++)for(const tone of ['calm','warm'])assert.ok(!dealSurfaces(3,seed,{kind:'public',tone}).includes('dark'),'no dark ground on a calm or warm page');
- assert.ok(Array.from({length:30},(_,seed)=>dealSurfaces(3,seed,{kind:'media',tone:'bold'})).flat().includes('dark'));
- assert.ok(!Array.from({length:30},(_,seed)=>dealSurfaces(3,seed,{kind:'software',tone:'technical'})).flat().includes('dark'),'software stays light');
+test('deal: the tone narrows grounds, materials and faces', async () => {
+ const {tailoredSurface,dealDirections}=await import('../src/refine-log.mjs');
+ for(let seed=0;seed<40;seed++)for(const tone of ['calm','warm'])assert.notEqual(tailoredSurface(seed,{kind:'public',tone}),'dark','no dark ground on a calm or warm page');
+ assert.ok(Array.from({length:40},(_,seed)=>tailoredSurface(seed,{kind:'media',tone:'bold'})).includes('dark'));
+ assert.ok(!Array.from({length:40},(_,seed)=>tailoredSurface(seed,{kind:'software',tone:'technical'})).includes('dark'),'software stays light');
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-tone-'));
  const d=await dealDirections(path.join(dir,'dirs'),{log:path.join(dir,'log.json'),seed:3,kind:'service',tone:'calm',lang:'ja'});
- assert.equal(d.schemaVersion,5);assert.equal(d.tone,'calm');assert.ok(d.toneBrief);
- for(const f of ['Dela Gothic One','Black Han Sans','Barlow Condensed','Big Shoulders Display'])assert.ok(d.avoidFaces.includes(f),f);
- const t=await dealDirections(path.join(dir,'dirs2'),{log:path.join(dir,'log.json'),seed:3,tone:'technical'});
- assert.ok(!t.avoidFaces.includes('Barlow Condensed')&&t.avoidFaces.includes('Klee One'));
+ assert.equal(d.schemaVersion,7);assert.equal(d.tone,'calm');assert.ok(d.toneBrief);
+ assert.ok(d.structures[2].material.ground!=='dark','no dark material on a calm page when a fitting one exists');
+ assert.ok(d.avoidFaces.includes('Dela Gothic One'),'faces that fight a calm page are listed to avoid');
  await assert.rejects(dealDirections(path.join(dir,'x'),{tone:'cosy'}),/--tone must be one of/);
 });

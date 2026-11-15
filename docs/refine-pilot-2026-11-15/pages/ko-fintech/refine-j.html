@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>모아 — 흩어진 돈을 한곳에</title>
+<meta name="description" content="모아는 은행·카드·증권 계좌를 한 화면에 모아 보고, 수수료 없이 송금하는 개인 자산관리 앱입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700;800&family=Gothic+A1:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #121a33;
+    --muted: #59627a;
+    --line: #e3e7f0;
+    --tint: #f1f5ff;
+    --card: #ffffff;
+    --accent: #1f4bd0;
+    --accent-strong: #173ba6;
+    --on-accent: #ffffff;
+    --b1: #1f4bd0;   /* 입출금·예적금 */
+    --b2: #5b82e8;   /* 투자 */
+    --b3: #93b0f7;   /* 연금·보험 */
+    --b4: #cfdcfc;   /* 포인트·기타 */
+    --shadow: 0 1px 0 var(--line), 0 24px 48px -32px rgba(18, 26, 51, .28);
+    --display: "Hahmlet", "Nanum Myeongjo", "Noto Serif KR", serif;
+    --text: "Gothic A1", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1222; --ink: #eef1f8; --muted: #a3abc0; --line: #252d45; --tint: #141b31; --card: #121932;
+      --accent: #7a9bff; --accent-strong: #9bb4ff; --on-accent: #0d1222;
+      --b1: #4f7cf0; --b2: #7a9bff; --b3: #a9c0ff; --b4: #d6e1ff;
+      --shadow: 0 24px 48px -32px rgba(0, 0, 0, .8); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1222; --ink: #eef1f8; --muted: #a3abc0; --line: #252d45; --tint: #141b31; --card: #121932;
+    --accent: #7a9bff; --accent-strong: #9bb4ff; --on-accent: #0d1222;
+    --b1: #4f7cf0; --b2: #7a9bff; --b3: #a9c0ff; --b4: #d6e1ff;
+    --shadow: 0 24px 48px -32px rgba(0, 0, 0, .8); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--text); font-size: 17px; line-height: 1.7;
+    word-break: keep-all; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; }
+  .wrap {
+    max-width: 1280px; margin: 0 auto;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+  .num { font-family: var(--display); font-variant-numeric: tabular-nums lining-nums; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  h1, h2, h3 { margin: 0; }
+  h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.3; }
+  section { padding-block: 112px; }
+
+  /* header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 21; }
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .logo { font-family: var(--display); font-weight: 800; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .logo i { display: inline-flex; gap: 2px; height: 14px; width: 30px; }
+  .logo i b { flex: 1; border-radius: 2px; }
+  .nav-links { display: flex; gap: 32px; color: var(--muted); font-size: 1rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .head-link { font-weight: 700; font-size: .95rem; border: 1.5px solid var(--ink); border-radius: 999px; padding: 8px 18px; white-space: nowrap; }
+  .head-link:hover { background: var(--ink); color: var(--bg); }
+  @media (max-width: 820px) { .nav-links { display: none; } }
+
+  /* hero */
+  .hero { padding-block: 56px 72px; }
+  .hero-top { display: grid; grid-template-columns: minmax(0, 540px) minmax(0, 1fr); gap: 40px 96px; align-items: end; }
+  .hero-top > * { min-width: 0; }
+  .eyebrow { margin: 0 0 18px; font-weight: 700; font-size: .95rem; color: var(--accent); }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 4.4vw, 3.9rem); line-height: 1.22; letter-spacing: -0.01em; }
+  .hero-side { padding-bottom: 6px; max-width: 520px; justify-self: end; }
+  .hero-side p { margin: 0; color: var(--muted); font-size: 1.1rem; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+  .btn {
+    display: inline-flex; align-items: center; background: var(--accent); color: var(--on-accent);
+    font-weight: 700; font-size: 1.05rem; padding: 15px 28px; border-radius: 999px; transition: background-color .15s;
+  }
+  .btn:hover { background: var(--accent-strong); }
+  .text-link { font-weight: 700; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+  .notes { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 18px; font-size: .9rem; color: var(--muted); }
+  .notes span::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); margin-right: 8px; vertical-align: middle; }
+  @media (max-width: 900px) {
+    .hero { padding-block: 40px 56px; }
+    .hero-top { grid-template-columns: 1fr; }
+    .hero-side { justify-self: start; }
+  }
+
+  /* product scene + signature strip */
+  .scene { margin-top: 44px; border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px 24px; background: var(--card); box-shadow: var(--shadow); }
+  .scene-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .who { font-size: .95rem; color: var(--muted); }
+  .total { font-size: clamp(1.9rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-top: 2px; }
+  .delta { font-size: .9rem; font-weight: 700; color: var(--accent); margin-left: 14px; font-family: var(--text); white-space: nowrap; display: inline-block; }
+  .acts { display: flex; gap: 8px; }
+  .acts span { font-size: .9rem; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--line); }
+  .acts span:first-child { border-color: var(--accent); color: var(--accent); }
+  .strip { display: flex; gap: 4px; margin-top: 22px; }
+  .seg { min-width: 0; }
+  .seg .bar { height: 56px; border-radius: 6px; }
+  .seg:first-child .bar { border-radius: 14px 6px 6px 14px; }
+  .seg:last-child .bar { border-radius: 6px 14px 14px 6px; }
+  .seg .lab { font-size: .82rem; color: var(--muted); margin-top: 10px; line-height: 1.4; white-space: nowrap; }
+  .seg .amt { font-size: 1.1rem; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+  .s1 { flex: 0 0 calc(45.90% - 3px); } .s1 .bar { background: var(--b1); }
+  .s2 { flex: 0 0 calc(30.28% - 3px); } .s2 .bar { background: var(--b2); }
+  .s3 { flex: 0 0 calc(16.37% - 3px); } .s3 .bar { background: var(--b3); }
+  .s4 { flex: 1 1 0; } .s4 .bar { background: var(--b4); }
+  .scene-foot { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 22px; border-top: 1px solid var(--line); }
+  .scene-foot > div { padding: 14px 18px 2px 0; font-size: .9rem; line-height: 1.5; min-width: 0; }
+  .scene-foot > div + div { padding-left: 18px; border-left: 1px solid var(--line); }
+  .scene-foot .k { color: var(--muted); }
+  .scene-foot .v { font-weight: 700; font-size: 1.05rem; }
+  .scene-note { margin: 14px 0 0; font-size: .82rem; color: var(--muted); }
+  @media (max-width: 900px) {
+    .scene { padding: 22px 18px 18px; }
+    .strip { flex-wrap: wrap; row-gap: 14px; }
+    .s1, .s2, .s3, .s4 { flex: 1 1 40%; }
+    .s1 .bar, .s2 .bar, .s3 .bar, .s4 .bar { border-radius: 8px; height: 40px; }
+    .scene-foot { grid-template-columns: 1fr 1fr; }
+    .scene-foot > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  }
+
+  /* features: ruled index, one lead row */
+  .f-head { display: grid; grid-template-columns: minmax(0, 540px) minmax(0, 1fr); gap: 24px 96px; align-items: end; margin-bottom: 48px; }
+  .f-head p { margin: 0; color: var(--muted); max-width: 520px; justify-self: end; }
+  .f-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  .f-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1.1fr) minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px 32px; padding: 30px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .f-row > * { min-width: 0; }
+  .f-row .idx { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--muted); }
+  .f-row h3 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; line-height: 1.35; }
+  .f-row p { margin: 0; color: var(--muted); }
+  .f-row ul { margin: 0; padding: 0; list-style: none; font-size: .95rem; display: grid; gap: 4px; }
+  .f-row li::before { content: "— "; color: var(--muted); }
+  .f-row.lead { padding-block: 40px; }
+  .f-row.lead h3 { font-size: 1.9rem; }
+  .f-row.lead p { color: var(--ink); font-size: 1.1rem; }
+  @media (max-width: 900px) {
+    .f-head { grid-template-columns: 1fr; }
+    .f-head p { justify-self: start; }
+    .f-row { grid-template-columns: 2.5rem minmax(0, 1fr); }
+    .f-row p, .f-row ul { grid-column: 2; }
+    .f-row.lead h3 { font-size: 1.6rem; }
+  }
+
+  /* transfer */
+  .transfer { background: var(--tint); }
+  .t-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 72px; align-items: center; }
+  .t-grid > * { min-width: 0; }
+  .ledger { background: var(--card); border-radius: 24px; padding: 36px 40px; }
+  .ledger h3 { margin: 0 0 24px; font-size: 1rem; font-weight: 500; color: var(--muted); }
+  .row { display: grid; grid-template-columns: 6em minmax(0, 1fr) 6.5em; gap: 18px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+  .row .who2 { font-weight: 500; }
+  .row .track { height: 14px; border-radius: 7px; background: var(--tint); overflow: hidden; }
+  .row .fill { height: 100%; border-radius: 7px; background: var(--b4); }
+  .row .fee { text-align: right; font-size: 1.25rem; font-weight: 700; }
+  .row.moa .who2 { font-family: var(--display); font-weight: 800; font-size: 1.15rem; }
+  .row.moa .fee { color: var(--accent); font-size: 1.6rem; }
+  .row.moa .fill { background: var(--accent); width: 1.5%; }
+  .ledger small { display: block; margin-top: 18px; font-size: .82rem; color: var(--muted); line-height: 1.6; }
+  .t-copy > p { color: var(--muted); margin: 18px 0 0; }
+  .checks { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 18px; }
+  .checks li { padding-left: 22px; position: relative; }
+  .checks li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px; height: 10px; border-radius: 3px; background: var(--ink); }
+  .checks b { display: block; }
+  .checks span { color: var(--muted); font-size: .95rem; }
+  @media (max-width: 900px) {
+    .t-grid { grid-template-columns: 1fr; gap: 40px; }
+    .t-copy { order: -1; }
+    .ledger { padding: 24px 20px; }
+    .row { grid-template-columns: 5em minmax(0, 1fr) 5.5em; gap: 12px; }
+  }
+
+  /* steps: one line, three stops */
+  .steps-sec { padding-bottom: 72px; }
+  .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; counter-reset: step; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 0; right: 0; top: 1.6rem; height: 2px; background: var(--line); }
+  .steps li { position: relative; counter-increment: step; min-width: 0; background: var(--bg); }
+  .steps h3, .steps p { position: relative; background: var(--bg); }
+  .steps li::before {
+    content: counter(step); display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--ink); font-family: var(--display); font-weight: 800; font-size: 1.3rem; margin-bottom: 20px; position: relative;
+  }
+  .steps h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
+  .steps p { margin: 0; color: var(--muted); font-size: .95rem; }
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; gap: 28px; }
+    .steps::before { left: calc(1.6rem - 1px); right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+    .steps li { padding-left: 4.4rem; }
+    .steps li::before { position: absolute; left: 0; top: 0; margin: 0; }
+  }
+
+  /* security: two columns of plain facts */
+  .security { padding-top: 72px; }
+  .sec-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 40px 96px; border-top: 2px solid var(--ink); padding-top: 48px; }
+  .sec-grid > * { min-width: 0; }
+  .sec-grid .intro p { color: var(--muted); margin: 18px 0 0; }
+  .sec-list { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 40px; margin: 0; }
+  .sec-list div { min-width: 0; }
+  .sec-list dt { font-weight: 700; font-size: 1.1rem; }
+  .sec-list dd { margin: 6px 0 0; color: var(--muted); font-size: .95rem; }
+  @media (max-width: 900px) { .sec-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .sec-list { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq-sec { background: var(--tint); }
+  .faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 32px 96px; align-items: start; }
+  .faq-grid > * { min-width: 0; }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-child { border-top: 1px solid var(--line); }
+  summary {
+    list-style: none; cursor: pointer; padding: 22px 0; font-weight: 700; font-size: 1.05rem;
+    display: flex; justify-content: space-between; gap: 16px; align-items: center;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.5rem; font-weight: 400; color: var(--muted); transition: transform .2s; flex: none; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 0 0 22px; color: var(--muted); }
+  @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; } }
+
+  /* download */
+  .download { padding-block: 112px 96px; }
+  .dl { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px 96px; align-items: end; }
+  .dl > * { min-width: 0; }
+  .dl-strip { display: flex; gap: 4px; height: 14px; margin-bottom: 32px; max-width: 520px; }
+  .dl-strip b { border-radius: 4px; }
+  .dl h2 { text-wrap: balance; }
+  .dl p { margin: 16px 0 0; color: var(--muted); font-size: 1.1rem; }
+  .store { display: flex; flex-wrap: wrap; gap: 12px; justify-self: end; }
+  .store a {
+    display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bg); padding: 12px 22px; border-radius: 14px;
+    font-size: .8rem; line-height: 1.3; text-align: left;
+  }
+  .store a b { display: block; font-size: 1rem; }
+  .store a svg { width: 24px; height: 24px; fill: currentColor; }
+  @media (max-width: 900px) { .dl { grid-template-columns: 1fr; } .store { justify-self: start; } }
+
+  /* footer */
+  footer { padding-block: 56px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .foot-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
+  .foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .foot-cols h4 { color: var(--ink); margin: 0 0 12px; font-size: .95rem; }
+  .foot-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .foot-cols a:hover { color: var(--ink); }
+  .legal { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); font-size: .85rem; line-height: 1.8; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="#" class="logo"><i aria-hidden="true"><b style="background:var(--b1)"></b><b style="background:var(--b2)"></b><b style="background:var(--b3)"></b><b style="background:var(--b4)"></b></i>모아</a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#features">기능</a>
+      <a href="#transfer">송금</a>
+      <a href="#security">보안</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </nav>
+    <a href="#download" class="head-link">앱 다운로드</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <div>
+          <p class="eyebrow">개인 자산관리 · 송금</p>
+          <h1><span class="num">350</span>곳이 넘는 금융기관,<br>한 화면에 모아.</h1>
+        </div>
+        <div class="hero-side">
+          <p>은행, 카드, 증권, 보험까지 모든 계좌를 한 화면에 모아 보세요. 송금은 몇 번의 터치로, 수수료 걱정 없이.</p>
+          <div class="cta">
+            <a href="#download" class="btn">무료로 시작하기</a>
+            <a href="#features" class="text-link">기능 둘러보기</a>
+          </div>
+          <div class="notes"><span>가입비·월 이용료 없음</span><span>1분 만에 계좌 연결</span><span>마이데이터 기반</span></div>
+        </div>
+      </div>
+
+      <div class="scene" data-product-shot role="img" aria-label="모아 홈 화면 예시: 지은님의 총 자산 48,320,500원이 입출금·예적금, 투자, 연금·보험, 포인트·기타로 나뉘어 한 줄에 보입니다.">
+        <div class="scene-top">
+          <div>
+            <div class="who">지은님의 총 자산</div>
+            <div class="total num">48,320,500원<span class="delta">▲ 지난달보다 1,240,000원</span></div>
+          </div>
+          <div class="acts"><span>송금</span><span>자산 분석</span></div>
+        </div>
+        <div class="strip">
+          <div class="seg s1"><div class="bar"></div><div class="lab">입출금·예적금</div><div class="amt num">22,180,000</div></div>
+          <div class="seg s2"><div class="bar"></div><div class="lab">투자</div><div class="amt num">14,630,500</div></div>
+          <div class="seg s3"><div class="bar"></div><div class="lab">연금·보험</div><div class="amt num">7,910,000</div></div>
+          <div class="seg s4"><div class="bar"></div><div class="lab">포인트·기타</div><div class="amt num">3,600,000</div></div>
+        </div>
+        <div class="scene-foot">
+          <div><div class="k">이번 달 소비</div><div class="v num">1,382,400원</div></div>
+          <div><div class="k">카드 결제 예정</div><div class="v num">11월 14일</div></div>
+          <div><div class="k">민수님께 30,000원</div><div class="v">보냈어요 · 수수료 0원</div></div>
+          <div><div class="k">구독 결제 3건이</div><div class="v">이번 주에 빠져나가요</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <div class="f-head">
+        <h2>돈 관리에 필요한 건<br>모아 하나로 충분해요</h2>
+        <p>여러 앱을 오가며 잔액을 확인하던 시간은 이제 그만. 모아가 정리하고, 알려주고, 대신 챙겨드려요. 연결 가능한 금융기관은 <b class="num">350+</b>곳이에요.</p>
+      </div>
+      <ol class="f-list">
+        <li class="f-row lead">
+          <span class="idx">01</span>
+          <h3>모든 자산을 한 화면에</h3>
+          <p>은행·카드·증권·보험·연금·포인트까지. 한 번 연결하면 자동으로 최신 잔액을 불러와요.</p>
+          <ul><li>순자산 추이 그래프</li><li>계좌별 수익률 비교</li></ul>
+        </li>
+        <li class="f-row">
+          <span class="idx">02</span>
+          <h3>수수료 없는 간편 송금</h3>
+          <p>계좌번호만 알면 어느 은행이든 바로. 연락처로 보내면 받는 사람이 계좌를 직접 입력해요.</p>
+          <ul><li>자주 보내는 사람 즐겨찾기</li><li>예약·자동이체 설정</li></ul>
+        </li>
+        <li class="f-row">
+          <span class="idx">03</span>
+          <h3>똑똑한 소비 분석</h3>
+          <p>카드 내역을 카테고리별로 자동 분류하고, 지난달과 비교해 어디서 더 썼는지 알려드려요.</p>
+          <ul><li>월별 예산 설정과 알림</li><li>잊고 있던 정기 구독 찾기</li></ul>
+        </li>
+        <li class="f-row">
+          <span class="idx">04</span>
+          <h3>목표 저축 '모으기'</h3>
+          <p>여행, 비상금, 내 집 마련까지. 목표 금액과 기간을 정하면 매주 얼마씩 모을지 계산해 드려요.</p>
+          <ul><li>잔돈 자동 저축</li><li>친구와 함께 모으는 공동 목표</li></ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Transfer -->
+  <section id="transfer" class="transfer">
+    <div class="wrap t-grid">
+      <div class="ledger" role="img" aria-label="월 10회 송금 시 수수료 비교 예시: 일반 이체 5,000원, ATM 이체 3,500원, 모아 0원">
+        <h3>월 10회 타행 송금 시 수수료 (예시)</h3>
+        <div class="row"><span class="who2">일반 이체</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="fee num">5,000원</span></div>
+        <div class="row"><span class="who2">ATM 이체</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="fee num">3,500원</span></div>
+        <div class="row moa"><span class="who2">모아</span><div class="track"><div class="fill"></div></div><span class="fee num">0원</span></div>
+        <small>* 건당 500원(일반), 350원(ATM) 수수료를 가정한 예시이며, 실제 수수료는 금융기관별로 다를 수 있어요.</small>
+      </div>
+      <div class="t-copy">
+        <h2>보내는 데 드는 돈,<br>이제 0원이에요</h2>
+        <p>모아 송금은 횟수 제한 없이 수수료가 무료예요. 받는 사람이 모아를 쓰지 않아도 괜찮아요.</p>
+        <ul class="checks">
+          <li><b>모든 은행으로 즉시 이체</b><span>평일·주말·공휴일 상관없이 24시간</span></li>
+          <li><b>더치페이 요청</b><span>금액을 나누고 링크 하나로 정산 요청</span></li>
+          <li><b>보내기 전 한 번 더 확인</b><span>처음 보내는 계좌나 큰 금액은 안전 확인을 거쳐요</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="steps-sec" aria-labelledby="steps-title">
+    <div class="wrap">
+      <h2 id="steps-title">3단계면 충분해요</h2>
+      <ol class="steps">
+        <li><h3>앱 설치 후 본인인증</h3><p>휴대폰 번호와 간편 인증으로 1분이면 가입이 끝나요.</p></li>
+        <li><h3>금융기관 선택</h3><p>쓰고 있는 은행·카드·증권사를 고르면 마이데이터로 한 번에 연결돼요.</p></li>
+        <li><h3>자산 확인 &amp; 송금</h3><p>홈 화면에서 전체 자산을 확인하고, 바로 송금을 시작해 보세요.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security" class="security">
+    <div class="wrap sec-grid">
+      <div class="intro">
+        <h2>내 돈이 오가는 곳이니까,<br>보안은 가장 먼저</h2>
+        <p>모아는 금융 데이터를 다루는 서비스로서 필요한 보안 체계를 갖추고 꾸준히 점검하고 있어요.</p>
+      </div>
+      <dl class="sec-list">
+        <div><dt>종단간 암호화</dt><dd>모든 통신과 저장 데이터를 암호화해 보호해요.</dd></div>
+        <div><dt>생체 인증</dt><dd>송금과 민감한 정보 확인 시 지문·얼굴 인증을 사용해요.</dd></div>
+        <div><dt>이상거래 탐지</dt><dd>평소와 다른 접속이나 거래를 24시간 감지하고 알려드려요.</dd></div>
+        <div><dt>내 정보는 내가 관리</dt><dd>연결한 기관과 정보 제공 동의를 언제든 확인하고 철회할 수 있어요.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-sec">
+    <div class="wrap faq-grid">
+      <h2>자주 묻는 질문</h2>
+      <div>
+        <details>
+          <summary>정말 송금 수수료가 무료인가요?</summary>
+          <p>네. 모아 앱에서 국내 모든 은행 계좌로 보내는 송금은 횟수 제한 없이 수수료가 없어요. 해외 송금 등 일부 서비스는 별도 요금이 있을 수 있으며, 앱에서 미리 안내해 드려요.</p>
+        </details>
+        <details>
+          <summary>계좌를 연결하면 제 금융 정보가 안전한가요?</summary>
+          <p>모아는 마이데이터 표준 방식으로 정보를 불러오며, 금융기관 비밀번호를 저장하지 않아요. 모든 데이터는 암호화되어 보관되고, 연결 해제 시 관련 정보는 삭제돼요.</p>
+        </details>
+        <details>
+          <summary>어떤 금융기관을 연결할 수 있나요?</summary>
+          <p>국내 주요 은행, 카드사, 증권사, 보험사, 저축은행, 상호금융과 일부 포인트·전자금융 서비스까지 연결할 수 있어요. 연결 가능한 기관 목록은 앱에서 확인할 수 있어요.</p>
+        </details>
+        <details>
+          <summary>이용 요금이 있나요?</summary>
+          <p>자산 조회, 소비 분석, 국내 송금 등 핵심 기능은 모두 무료예요.</p>
+        </details>
+        <details>
+          <summary>휴대폰을 잃어버리면 어떻게 하나요?</summary>
+          <p>고객센터나 웹에서 즉시 '앱 사용 정지'를 요청할 수 있어요. 새 기기에서 본인인증 후 다시 로그인하면 기존 기기는 자동으로 로그아웃돼요.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download" class="download">
+    <div class="wrap dl">
+      <div>
+        <div class="dl-strip" aria-hidden="true"><b style="flex:45.9;background:var(--b1)"></b><b style="flex:30.28;background:var(--b2)"></b><b style="flex:16.37;background:var(--b3)"></b><b style="flex:7.45;background:var(--b4)"></b></div>
+        <h2>오늘부터 내 돈, 모아에서 모아 보세요</h2>
+        <p>가입은 1분, 이용료는 0원.</p>
+      </div>
+      <div class="store">
+        <a href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+          <span>Download on the<b>App Store</b></span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7-9.5-9.7zm10.5 10.7 2.7 2.8-11.6 6.6 8.9-9.4zm0-2L5.2 1.6l11.6 6.6-2.7 2.8zm3.9-2.1 3 1.7c.9.5.9 1.3 0 1.8l-3 1.7-3-3 3-2.2z"/></svg>
+          <span>GET IT ON<b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="logo"><i aria-hidden="true"><b style="background:var(--b1)"></b><b style="background:var(--b2)"></b><b style="background:var(--b3)"></b><b style="background:var(--b4)"></b></i>모아</a>
+        <p style="margin:12px 0 0">흩어진 돈을 한곳에.</p>
+      </div>
+      <div class="foot-cols">
+        <div><h4>서비스</h4><ul><li><a href="#features">자산 관리</a></li><li><a href="#transfer">송금</a></li><li><a href="#features">소비 분석</a></li></ul></div>
+        <div><h4>회사</h4><ul><li><a href="#">회사 소개</a></li><li><a href="#">채용</a></li><li><a href="#">보도자료</a></li></ul></div>
+        <div><h4>고객지원</h4><ul><li><a href="#faq">자주 묻는 질문</a></li><li><a href="#">공지사항</a></li><li>고객센터 1588-0000</li></ul></div>
+      </div>
+    </div>
+    <div class="legal">
+      <a href="#"><b>개인정보처리방침</b></a> · <a href="#">이용약관</a> · <a href="#">전자금융거래 이용약관</a><br>
+      (주)모아 · 대표 홍길동 · 사업자등록번호 000-00-00000 · 서울특별시 강남구 테헤란로 000<br>
+      본 페이지의 화면과 수치는 서비스 이해를 돕기 위한 예시입니다.<br>
+      © 2026 Moa Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

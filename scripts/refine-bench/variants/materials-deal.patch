@@ -1,0 +1,44 @@
+diff --git a/src/materials.mjs b/src/materials.mjs
+index 40f1db1..3804eda 100644
+--- a/src/materials.mjs
++++ b/src/materials.mjs
+@@ -33,22 +33,25 @@ export async function loadMaterials(dir=MATERIALS_DIR){
+ const hash=(seed,k)=>{let h=seed+7;for(const c of String(k))h=(h*31+c.charCodeAt(0))>>>0;return h%997;};
+ 
+ /**
+- * Picks `n` different materials. Those that fit the tone come first, then those that fit the page kind; materials
+- * picked recently for other projects go last; `seed` breaks ties so a re-deal can differ. A material whose ground
+- * is dark is never dealt to a software page (in benchmark round 12 all three judges read dark software pages as
+- * crypto or dev-tool pages), and one that needs photographs is left out when there are none.
++ * Picks `n` different materials. Experimental deal (round 18 pilot, arm g):
++ * - A material picked for one of the last four other projects is left out, not just put last. In the pilot, pages
++ *   whose tone and kind fitted only two or three materials were dealt the same one every time and picked it.
++ * - Tone and kind no longer rank the pool. A material that fits either stays in; the agent drops what does not suit
++ *   the client (in the pilot it turned down a bathhouse tile wall for a money app on its own).
++ * A dark ground is never dealt to a software page, and a material that needs photographs is left out when there
++ * are none. `seed` orders the rest, and the three are spread over grounds where possible.
+  */
+ export function dealMaterials(materials,entries=[],project=null,{n=3,seed=0,kind,tone,noPhoto=false}={}){
+- const recent=entries.filter(e=>e.project!==project&&e.material).slice(-8).map(e=>e.material);
+- const pool=materials.filter(m=>!(kind==='software'&&m.ground==='dark')&&!(noPhoto&&m.photo==='required'));
+- const rank=m=>{
+-  const age=recent.lastIndexOf(m.slug);
+-  return [tone&&!m.tones.includes(tone)?1:0,kind&&!m.kinds.includes(kind)?1:0,age<0?0:age+1,hash(seed,m.slug)];
+- };
+- const sorted=pool.map(m=>({m,r:rank(m)})).sort((a,b)=>{for(let i=0;i<4;i++)if(a.r[i]!==b.r[i])return a.r[i]-b.r[i];return 0;}).map(x=>x.m);
+- // Spread over grounds where the fit allows: take the best of each ground first among those that fit tone and kind.
+- const fits=sorted.filter(m=>(!tone||m.tones.includes(tone))&&(!kind||m.kinds.includes(kind))),picked=[];
+- for(const m of fits)if(picked.length<n&&!picked.some(p=>p.ground===m.ground))picked.push(m);
++ const recent=new Set(entries.filter(e=>e.project!==project&&e.material).slice(-4).map(e=>e.material));
++ const hard=materials.filter(m=>!(kind==='software'&&m.ground==='dark')&&!(noPhoto&&m.photo==='required'));
++ const loose=hard.filter(m=>(!tone||m.tones.includes(tone))||(!kind||m.kinds.includes(kind)));
++ const byHash=a=>[...a].sort((x,y)=>hash(seed,x.slug)-hash(seed,y.slug));
++ // Widen the pool only as far as needed to reach n: fresh and loosely fitting, then fresh, then anything allowed.
++ const tiers=[loose.filter(m=>!recent.has(m.slug)),hard.filter(m=>!recent.has(m.slug)),hard],sorted=[];
++ for(const t of tiers)for(const m of byHash(t))if(!sorted.includes(m))sorted.push(m);
++ const picked=[];
++ for(const m of sorted.slice(0,Math.max(n,tiers[0].length)))if(picked.length<n&&!picked.some(p=>p.ground===m.ground))picked.push(m);
+  for(const m of sorted)if(picked.length<n&&!picked.includes(m))picked.push(m);
+  return picked;
+ }
++
