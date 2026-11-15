@@ -62,6 +62,12 @@ Text on the metal is `--ink`; `--muted` only at 16px or larger. Amber appears on
 - A limit or a plan as a scale with a marker.
 - Three functions as three panels of different widths in one rack row, each with one window.
 
+## Rhythm
+
+- Panels with windows appear in the hero and in one rack row. Other sections are engraved text straight on the metal, ruled by 1px `--metal-shade` lines.
+- One window per panel, three windows on the page at most.
+- Screws are on raised panels only, never on text blocks.
+
 ## Photos
 
 Natural colour, slightly desaturated, set into a panel like a window with `--recess`. Good subjects: the device, the bench, hands on the controls.

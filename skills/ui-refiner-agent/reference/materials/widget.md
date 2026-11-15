@@ -56,6 +56,12 @@ Text on tangerine, lilac and mint is `--ink`; on `--ink-tile` it is white. Tange
 - A comparison as two tall tiles side by side, one `--quiet`, one mint.
 - A statement on the ink band in display type.
 
+## Rhythm
+
+- Tiles appear in the hero cluster and in two rows at most below it. Between them the page is plain white text with pills.
+- Never a full page of tiles: when every section is a grid of coloured squares the tiles stop reading as the product.
+- The ink band appears once.
+
 ## Photos
 
 Rare on software pages. A photo fills a whole tile, cropped to its radius.

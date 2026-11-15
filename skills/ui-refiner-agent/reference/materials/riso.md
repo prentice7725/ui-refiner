@@ -59,6 +59,12 @@ All text is `--ink` on white or white on `--indigo`. Coral is for shapes, underl
 - Three facts as three shapes of different kinds (a circle, a bar, a half round), each holding one line.
 - A statement on the indigo flood.
 
+## Rhythm
+
+- Shapes belong to the hero, the poster figure and the indigo flood. Other sections are indigo text on grained white with 3px rules and no shapes.
+- The off-register shadow is on the main heading and the main button only.
+- One halftone block per screen at most.
+
 ## Photos
 
 Duotone only: `filter: grayscale(1) contrast(1.15)` on the image, an `--indigo` layer over it with `mix-blend-mode: screen`, and `--dots-indigo` at 25% on top. Never natural colour.

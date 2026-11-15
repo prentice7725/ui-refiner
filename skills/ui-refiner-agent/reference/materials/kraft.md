@@ -39,6 +39,7 @@ On the board, text is `--ink` only, 17px or larger, weight 500 or more. Smaller 
 ## Surfaces
 
 - The board: `--ground` with faint corrugation, `repeating-linear-gradient(90deg, var(--flute) 0 2px, transparent 2px 9px)`. One horizontal seam may cross the page as a 2px `--ground-deep` line.
+- In a photo-led hero the claim and the main button go on a white label laid over the lower part of the photograph, so both stay inside the first screen. A photograph never pushes the claim below the fold.
 - A label is the container for anything detailed: white, `--radius-label`, `--shadow-label`, a 3px `--label-ink` bar across its top, then rows separated by 1px `--label-ink` lines like a waybill (from, to, contents, date). Labels sit square, never tilted.
 - Handling marks: simple black line pictograms (two arrows up, a glass, an umbrella, a hand), 48 to 72px, printed on the board in a row. Use only the ones that are true for this client, as real information.
 - Tape: a 64px band of `--tape` across the full container width with torn ends (a jagged `clip-path`), crossing behind one label. At most once per screen.
@@ -58,6 +59,12 @@ On the board, text is `--ink` only, 17px or larger, weight 500 or more. Smaller 
 - Today's status as a row of three labels (packed, on the way, arrived), each with a time.
 - Hours or a route as one long label with ruled rows.
 - A statement printed large on the board between two seam lines.
+
+## Rhythm
+
+- The board is the ground from top to bottom, but its furniture is rationed: one waybill label in the hero, one row of labels, one tape strip and one sticker on the page as a whole.
+- Long sections (process, cases, questions) turn the carton inside out: plain white with the seam line, text only, so the page has a rhythm of brown and white.
+- Handling marks appear once, in one row.
 
 ## Photos
 
