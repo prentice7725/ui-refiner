@@ -20,6 +20,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
   - `ui-refiner scan <url | file>` needs no config.
   - It checks about two dozen rendered signals: purple gradients, icon-card grids, eyebrow pills, glass, stock copy in English, Korean and Japanese, and more. Each one comes with evidence, the reason it reads as generic, and a fix.
   - It was calibrated on about 250 AI-built and human-made sites. At a score of 20 or more it flags 66–74% of AI-built sites and 0–15% of human ones.
+  - It also saves the screenshot marked up like a graded paper (`scan-graded.png`): each scored signal circled in red where it was found, with its points, and the score at the top.
   - A rescan opens with a before/after comparison.
 - **Japanese pages placed among 209 real Japanese sites.**
   - Typesetting checks: missing Japanese fonts, cramped line height, heading orphans (泣き別れ), bad breaks and fake italics.
@@ -29,7 +30,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 
 ![Three benchmark pages: the original on the left, after /ui-refine on the right.](docs/assets/as-is-to-be.jpg)
 
-Three of the benchmark pages as Claude first built them (left) and after the current refine with three directions (right, unreleased). The agent picked the direction where a person normally would. The clinic photo is a credited stand-in.
+Three of the benchmark pages as Claude first built them (left) and after the current refine with three directions (right, unreleased). The agent picked the direction where a person normally would. The clinic photo is a credited stand-in. The red marks are the scan's own (`scan-graded.png`): each scored signal circled where it was found, with its points, and the AI-look score at the top right. The originals score 52, 43 and 56; the refined pages score 0, which is expected, because a refine keeps working until its own scan finds nothing. It says the listed signals are gone, not that the design is good.
 
 | 3 Korean and Japanese pages, one run each | Round 17 | Round 12 | Materials only | Three directions |
 |---|---:|---:|---:|---:|
