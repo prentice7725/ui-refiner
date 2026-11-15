@@ -90,3 +90,11 @@ test('directions sheet: flags a strip of big figures as a set habit, without fai
  assert.deepEqual(pageHabits({statStrips:{count:0}}),[]);
  assert.ok(directionWarnings([{label:'A',first:pageHabits(m)}]).some(w=>w.id==='stat-strip'&&w.a==='A'));
 });
+
+test('directions: two mocks in one colour family are flagged; no hue may repeat', async () => {
+ const {directionWarnings}=await import('../src/directions.mjs');
+ const mock=(label,accent,hero)=>({label,bg:[255,255,255],accent,hero,fonts:[label]});
+ const w=directionWarnings([mock('A',[29,78,216],'center+stacked'),mock('B',[37,99,235],'left+stacked'),mock('C',[217,65,30],'right+panel')]);
+ assert.deepEqual(w.filter(x=>x.id==='same-accent').map(x=>x.a+x.b+':'+x.c),['AB:blue']);
+ assert.equal(directionWarnings([mock('A',[20,20,20],'center+stacked'),mock('B',[30,30,30],'left+stacked')]).filter(x=>x.id==='same-accent').length,0);
+});

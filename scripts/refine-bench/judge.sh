@@ -5,7 +5,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"; B="${BENCH_DIR:-$PWD/refine-bench-out}"; 
 opts=(--model "${JUDGE_MODEL:-claude-opus-5-5}" --setting-sources "" --strict-mcp-config --disable-slash-commands --allowed-tools Read --output-format json)
 n=0
 run(){ # run <폴더> <결과 이름> <프롬프트>
-  local out="$B/verdicts/$2.json"; [ -s "$out" ] && grep -q '"result"' "$out" && return
+  local out="$B/verdicts/$2.json"; [ -s "$out" ] && grep -q '"is_error":false' "$out" && return  # 오류로 끝난 평가(사용량 한도 등)는 다시 돌린다
   ( cd "$1" && claude -p "$3" "${opts[@]}" > "$out" 2> "$B/verdicts/$2.err" ) &
   n=$((n+1)); [ $((n%JOBS)) -eq 0 ] && wait
 }

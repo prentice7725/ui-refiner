@@ -163,5 +163,137 @@
   "claude": "2.1.325 (Claude Code)",
   "startedAt": "2026-11-15T04:06:31.683Z",
   "extraPrompt": null
+ },
+ {
+  "arm": "refine-f",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T06:35:36.279Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-f",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T06:23:06.852Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-f",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T06:11:34.234Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-g",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T08:16:34.614Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-g",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T08:03:04.678Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-g",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "f4684f55ece1afb6db4832d8037c58d769a3e33b",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T07:51:35.599Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-h",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "de170f69fcceb02913e8668cf8b55bd0bd4149b1",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T10:28:36.599Z",
+  "extraPrompt": "variants/review.md"
+ },
+ {
+  "arm": "refine-h",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "de170f69fcceb02913e8668cf8b55bd0bd4149b1",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T10:17:57.251Z",
+  "extraPrompt": "variants/review.md"
+ },
+ {
+  "arm": "refine-h",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "de170f69fcceb02913e8668cf8b55bd0bd4149b1",
+  "dirty": false,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T10:08:06.052Z",
+  "extraPrompt": "variants/review.md"
+ },
+ {
+  "arm": "refine-i",
+  "rep": "1",
+  "page": "en-budget",
+  "model": "claude-opus-5-5",
+  "commit": "7eca68bb6660c572d9ac40232791e9efee39f778",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T10:35:48.828Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-i",
+  "rep": "1",
+  "page": "en-saas",
+  "model": "claude-opus-5-5",
+  "commit": "7eca68bb6660c572d9ac40232791e9efee39f778",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T10:23:09.358Z",
+  "extraPrompt": null
+ },
+ {
+  "arm": "refine-i",
+  "rep": "1",
+  "page": "ko-fintech",
+  "model": "claude-opus-5-5",
+  "commit": "7eca68bb6660c572d9ac40232791e9efee39f778",
+  "dirty": true,
+  "claude": "2.1.325 (Claude Code)",
+  "startedAt": "2026-11-15T10:08:06.035Z",
+  "extraPrompt": null
  }
 ]

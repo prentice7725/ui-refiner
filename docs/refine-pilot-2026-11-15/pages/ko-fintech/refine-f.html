@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>모아 — 흩어진 돈을 한곳에</title>
+<meta name="description" content="모아는 은행·카드·증권 계좌를 한 화면에 모아 보고, 수수료 없이 송금하는 개인 자산관리 앱입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Material: Receipt — white thermal slips on a cool grey counter, mono figures, dashed rules, one red stamp */
+  :root {
+    --ground: #e6e9ee; --paper: #ffffff; --print: #1b1d22; --faded: #5a5f68; --dash: #b3b8c2;
+    --stamp: #d23a1c;
+    --text: "Nanum Gothic", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --mono: "Nanum Gothic Coding", ui-monospace, "SFMono-Regular", monospace;
+    --rc: 6px;
+    --tear: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
+    --shadow-slip: 0 1px 1px rgba(27, 29, 34, .10), 0 18px 30px -20px rgba(27, 29, 34, .45);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #16181c; --paper: #f4f5f7; --print: #1b1d22; --faded: #555a63; --dash: #a9aeb8; --stamp: #d23a1c;
+      --shadow-slip: 0 1px 1px rgba(0, 0, 0, .4), 0 18px 30px -20px rgba(0, 0, 0, .9); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #16181c; --paper: #f4f5f7; --print: #1b1d22; --faded: #555a63; --dash: #a9aeb8; --stamp: #d23a1c;
+    --shadow-slip: 0 1px 1px rgba(0, 0, 0, .4), 0 18px 30px -20px rgba(0, 0, 0, .9); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--ground); color: var(--print);
+    font-family: var(--text); font-size: 16px; line-height: 1.8; word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* On the dark counter, text that sits on the ground (not on a slip) turns light */
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .on-ground { --print: #eceef2; --faded: #a4a9b3; --dash: #444851; } }
+  :root[data-theme="dark"] .on-ground { --print: #eceef2; --faded: #a4a9b3; --dash: #444851; }
+  .on-ground { color: var(--print); }
+
+  a { color: var(--print); text-decoration: underline dashed 1px; text-underline-offset: 4px; }
+  a:hover { text-decoration-style: solid; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--stamp); outline-offset: 2px; }
+  .wrap {
+    max-width: 1160px; margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  h1, h2, h3 { margin: 0; }
+  h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 800; line-height: 1.25; }
+  .lead { color: var(--faded); font-size: 1.06rem; margin: 18px 0 0; max-width: 32em; }
+  section { padding-block: 88px; border-top: 1px dashed var(--dash); }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  /* Controls */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 0 24px; border-radius: var(--rc);
+    font-weight: 700; font-size: 1rem; text-decoration: none; transition: background-color .15s;
+  }
+  .btn-main { background: var(--print); color: var(--ground); }
+  .btn-main:hover { opacity: .88; }
+  .btn-alt { background: var(--paper); color: #1b1d22; border: 1.5px solid #1b1d22; }
+  .btn-alt:hover { background: #f1f2f4; }
+  .btn-sm { min-height: 42px; padding: 0 16px; font-size: .9rem; }
+
+  /* Slip */
+  .slip {
+    position: relative; background: var(--paper); color: #1b1d22; box-shadow: var(--shadow-slip);
+    padding: 28px 30px 38px; --print: #1b1d22; --faded: #5a5f68; --dash: #b3b8c2;
+  }
+  .slip::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 10px; background: var(--paper);
+    -webkit-mask: var(--tear); mask: var(--tear);
+  }
+  .slip-hd { text-align: center; padding-bottom: 14px; margin-bottom: 8px; border-bottom: 1px dashed var(--dash); }
+  .slip-hd b { display: block; font-size: 1.12rem; }
+  .slip-hd span { font-family: var(--mono); font-size: .86rem; color: var(--faded); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; padding: 8px 0; }
+  .row > :last-child { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; margin-left: auto; }
+  .row.faded { color: var(--faded); font-size: .92rem; }
+  .row.faded > :last-child { font-family: var(--text); }
+  .brk { border-top: 1px dashed var(--dash); margin: 6px 0; }
+  .total {
+    display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 12px;
+    border-top: 3px double var(--dash); margin-top: 12px; padding-top: 14px;
+  }
+  .total > :last-child { font-family: var(--mono); font-weight: 700; font-size: 1.6rem; line-height: 1.2; }
+  .fine { font-size: .8rem; color: var(--faded); margin: 14px 0 0; line-height: 1.6; }
+  .stamp {
+    width: 96px; height: 96px; border: 3px solid var(--stamp); border-radius: 50%; color: var(--stamp);
+    display: grid; place-content: center; text-align: center; font-weight: 800; font-size: .92rem; line-height: 1.25;
+    transform: rotate(-8deg); mix-blend-mode: multiply; opacity: .85; margin: -14px 0;
+  }
+  .stamp small { display: block; font-family: var(--mono); font-size: .74rem; font-weight: 700; }
+
+  /* Header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--ground); z-index: 21; }
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ground); border-bottom: 1px dashed var(--dash); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .logo { font-weight: 800; font-size: 1.35rem; text-decoration: none; letter-spacing: -.01em; }
+  .nav-links { display: flex; gap: 26px; font-weight: 700; font-size: .95rem; }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { text-decoration: underline dashed 1px; }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero { border-top: 0; padding-block: 48px 88px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 540px); gap: 64px; align-items: stretch; }
+  .hero-copy { display: flex; flex-direction: column; justify-content: center; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.3rem); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; }
+  .hero h1 .num { font-weight: 700; letter-spacing: -.04em; }
+  .hero .lead { font-size: 1.1rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .facts { list-style: none; padding: 0; margin: 34px 0 0; border-top: 1px dashed var(--dash); max-width: 30em; }
+  .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px dashed var(--dash); color: var(--faded); font-size: .95rem; }
+  .facts li b { color: var(--print); font-family: var(--mono); font-weight: 700; }
+  .hero .slip { padding: 38px 42px 46px; }
+  .hero .slip .row { font-size: 1.08rem; padding: 11px 0; }
+  .hero .slip .row.faded { font-size: .95rem; padding: 7px 0; }
+  .hero .total > :last-child { font-size: 2.6rem; }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding-block: 32px 72px; }
+  }
+  @media (max-width: 480px) {
+    .hero .slip { padding: 28px 22px 36px; }
+    .hero .total > :last-child { font-size: 2rem; }
+    .stamp { width: 80px; height: 80px; font-size: .8rem; }
+  }
+
+  /* Features: slips of different lengths hanging from one line */
+  .head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-bottom: 44px; }
+  .head .lead { margin: 0; }
+  .hang { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; align-items: start; border-top: 2px solid var(--print); }
+  .stack { display: grid; gap: 34px; }
+  .hang .slip { padding: 24px 24px 32px; }
+  .hang h3 { font-size: 1.15rem; font-weight: 800; line-height: 1.4; }
+  .hang p { margin: 8px 0 10px; color: var(--faded); font-size: .95rem; }
+  .hang .row { font-size: .95rem; padding: 6px 0; }
+  .hang .total > :last-child { font-size: 1.3rem; }
+  .tag { font-family: var(--mono); font-size: .8rem; color: var(--faded); }
+  @media (max-width: 1020px) { .hang { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hang > .stack { grid-column: span 2; grid-template-columns: 1fr 1fr; align-items: start; } }
+  @media (max-width: 640px) { .hang > .stack { grid-column: auto; grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .hang { grid-template-columns: 1fr; } .head { grid-template-columns: 1fr; } }
+
+  /* Transfer */
+  .split { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 80px; align-items: center; }
+  .split > .slip { order: -1; }
+  .checks { list-style: none; padding: 0; margin: 30px 0 0; border-top: 1px dashed var(--dash); }
+  .checks li { padding: 14px 0; border-bottom: 1px dashed var(--dash); display: grid; grid-template-columns: 13em minmax(0, 1fr); gap: 4px 24px; }
+  .checks li span { color: var(--faded); }
+  .transfer .slip { transform: rotate(1.2deg); }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 48px; } .split > .slip { order: 0; } .transfer .slip { transform: none; } }
+  @media (max-width: 560px) { .checks li { grid-template-columns: 1fr; } }
+
+  /* Steps: one long slip, a timeline */
+  .steps-slip { max-width: 560px; margin-left: auto; }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li { display: grid; grid-template-columns: 4.5em minmax(0, 1fr); gap: 16px; padding: 18px 0; }
+  .timeline li + li { border-top: 1px dashed var(--dash); }
+  .timeline .t { font-family: var(--mono); color: var(--faded); padding-top: 2px; }
+  .timeline h3 { font-size: 1.1rem; font-weight: 800; }
+  .timeline p { margin: 4px 0 0; color: var(--faded); font-size: .95rem; }
+  @media (max-width: 900px) { .steps-slip { margin-left: 0; } }
+
+  /* Security: two slips of different lengths hanging from one line */
+  .sec-hang { margin-top: 44px; display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 440px); justify-content: space-between; gap: 28px; align-items: start; border-top: 2px solid var(--print); }
+  .sec-hang dl { margin: 0; }
+  .sec-hang dl > div { padding: 14px 0; }
+  .sec-hang dl > div + div { border-top: 1px dashed var(--dash); }
+  .sec-hang dt { font-weight: 800; display: flex; justify-content: space-between; gap: 12px; }
+  .sec-hang dd { margin: 4px 0 0; color: var(--faded); }
+  @media (max-width: 860px) { .sec-hang { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 32px 64px; align-items: start; }
+  .faq-list { border-top: 2px solid var(--print); }
+  details { border-bottom: 1px dashed var(--dash); }
+  summary { list-style: none; cursor: pointer; padding: 20px 0; font-weight: 700; font-size: 1.05rem; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-family: var(--mono); font-size: 1.3rem; color: var(--faded); flex: none; line-height: 1.4; }
+  details[open] summary::after { content: "−"; }
+  details p { margin: 0 0 22px; color: var(--faded); max-width: 40em; }
+  @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
+
+  /* Download */
+  .dl-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 72px; align-items: center; }
+  .dl-grid > div:first-child { order: 1; }
+  .store { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .store .btn { min-height: 56px; line-height: 1.25; text-align: left; }
+  .store .btn small { display: block; font-size: .74rem; font-weight: 400; }
+  .store svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+  @media (min-width: 901px) { .dl-grid { grid-template-columns: minmax(0, 420px) minmax(0, 1fr); } }
+  @media (max-width: 900px) { .dl-grid { grid-template-columns: 1fr; gap: 40px; } .dl-grid > div:first-child { order: 0; } }
+
+  /* Footer */
+  footer { padding-block: 56px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px dashed var(--dash); color: var(--faded); font-size: .9rem; }
+  .foot-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
+  .foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .foot-cols h4 { color: var(--print); margin: 0 0 10px; font-size: .92rem; }
+  .foot-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .foot-cols a { color: var(--faded); }
+  .legal { margin-top: 40px; padding-top: 22px; border-top: 1px dashed var(--dash); font-size: .82rem; line-height: 1.9; }
+  .legal a { color: var(--faded); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body class="on-ground">
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#" class="logo">모아</a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#features">기능</a>
+      <a href="#transfer">송금</a>
+      <a href="#security">보안</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </nav>
+    <a href="#download" class="btn btn-alt btn-sm">앱 다운로드</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero: the claim beside one transfer statement -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>열 번 보내면<br><span class="num">5,000원</span>이던 수수료,<br>모아에선 <span class="num">0원</span></h1>
+        <p class="lead">모아는 은행·카드·증권·보험 계좌를 한 화면에 모아 보고, 국내 모든 은행으로 횟수 제한 없이 무료로 송금하는 개인 자산관리 앱이에요.</p>
+        <div class="cta">
+          <a href="#download" class="btn btn-main">무료로 시작하기</a>
+          <a href="#features" class="btn btn-alt">기능 둘러보기</a>
+        </div>
+        <ul class="facts">
+          <li>가입비·월 이용료 <b>없음</b></li>
+          <li>첫 계좌 연결 <b>1분</b></li>
+          <li>연결 방식 <b>마이데이터</b></li>
+        </ul>
+      </div>
+
+      <div class="slip" data-product-shot role="img" aria-label="월 10회 타행 송금 시 수수료 비교 예시: 일반 타행 이체 5,000원, 모아 0원">
+        <div class="slip-hd"><b>모아 송금 명세</b><span>월 10회 타행 송금 · 예시</span></div>
+        <div class="row faded"><span>받는 곳</span><span>국내 모든 은행</span></div>
+        <div class="row faded"><span>이체 가능 시간</span><span>24시간</span></div>
+        <div class="brk"></div>
+        <div class="row"><span>일반 이체 500원 × 10</span><span>5,000원</span></div>
+        <div class="row"><span>ATM 이체 350원 × 10</span><span>3,500원</span></div>
+        <div class="brk"></div>
+        <div class="row"><span>모아 송금 × 10</span><span>0원</span></div>
+        <div class="total"><span>모아 수수료 합계</span><span class="stamp" aria-hidden="true">수수료<br>0원<small>무제한</small></span><span>0원</span></div>
+        <p class="fine">* 건당 500원(일반), 350원(ATM) 수수료를 가정한 예시이며, 실제 수수료는 금융기관별로 다를 수 있어요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <div class="head">
+        <h2>돈 관리에 필요한 건<br>모아 하나로 충분해요</h2>
+        <p class="lead">여러 앱을 오가며 잔액을 확인하던 시간은 이제 그만. 모아가 정리하고, 알려주고, 대신 챙겨드려요.</p>
+      </div>
+      <div class="hang">
+        <article class="slip">
+          <h3>모든 자산을 한 화면에</h3>
+          <p>은행·카드·증권·보험·연금·포인트까지. 한 번 연결하면 자동으로 최신 잔액을 불러와요.</p>
+          <div class="row faded"><span>지은님의 총 자산</span><span class="tag">예시</span></div>
+          <div class="row"><span>입출금·예적금</span><span>22,180,000</span></div>
+          <div class="row"><span>투자</span><span>14,630,500</span></div>
+          <div class="row"><span>연금·보험</span><span>7,910,000</span></div>
+          <div class="row"><span>포인트·기타</span><span>3,600,000</span></div>
+          <div class="total"><span>합계</span><span></span><span>48,320,500원</span></div>
+          <div class="row faded"><span>지난달보다</span><span class="num">▲ 1,240,000원</span></div>
+          <div class="brk"></div>
+          <div class="row faded"><span>순자산 추이 그래프</span><span>✓</span></div>
+          <div class="row faded"><span>계좌별 수익률 비교</span><span>✓</span></div>
+          <div class="row faded"><span>연결 가능한 금융기관</span><span class="num">350+</span></div>
+        </article>
+        <article class="slip">
+          <h3>똑똑한 소비 분석</h3>
+          <p>카드 내역을 카테고리별로 자동 분류하고, 지난달과 비교해 어디서 더 썼는지 알려드려요.</p>
+          <div class="row"><span>이번 달 소비</span><span>1,382,400원</span></div>
+          <div class="row"><span>카드 결제 예정</span><span>11월 14일</span></div>
+          <div class="row"><span>이번 주 구독 결제</span><span>3건</span></div>
+          <div class="brk"></div>
+          <div class="row faded"><span>월별 예산 설정과 알림</span><span>✓</span></div>
+          <div class="row faded"><span>잊고 있던 정기 구독 찾기</span><span>✓</span></div>
+        </article>
+        <div class="stack">
+        <article class="slip">
+          <h3>수수료 없는 간편 송금</h3>
+          <p>계좌번호만 알면 어느 은행이든 바로. 연락처로 보내면 받는 사람이 계좌를 직접 입력해요.</p>
+          <div class="row faded"><span>자주 보내는 사람 즐겨찾기</span><span>✓</span></div>
+          <div class="row faded"><span>예약·자동이체 설정</span><span>✓</span></div>
+        </article>
+        <article class="slip">
+          <h3>목표 저축 '모으기'</h3>
+          <p>여행, 비상금, 내 집 마련까지. 목표 금액과 기간을 정하면 매주 얼마씩 모을지 계산해 드려요.</p>
+          <div class="row faded"><span>잔돈 자동 저축</span><span>✓</span></div>
+          <div class="row faded"><span>친구와 함께 모으는 공동 목표</span><span>✓</span></div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transfer -->
+  <section id="transfer" class="transfer">
+    <div class="wrap split">
+      <div>
+        <h2>보내는 데 드는 돈,<br>이제 0원이에요</h2>
+        <p class="lead">모아 송금은 횟수 제한 없이 수수료가 무료예요. 받는 사람이 모아를 쓰지 않아도 괜찮아요.</p>
+        <ul class="checks">
+          <li><b>모든 은행으로 즉시 이체</b><span>평일·주말·공휴일 상관없이 24시간</span></li>
+          <li><b>더치페이 요청</b><span>금액을 나누고 링크 하나로 정산 요청</span></li>
+          <li><b>보내기 전 한 번 더 확인</b><span>처음 보내는 계좌나 큰 금액은 안전 확인을 거쳐요</span></li>
+        </ul>
+      </div>
+      <div class="slip" role="img" aria-label="송금 완료 예시: 민수님께 30,000원, 수수료 0원">
+        <div class="slip-hd"><b>송금 완료</b><span>예시</span></div>
+        <div class="row"><span>받는 분</span><span>민수님</span></div>
+        <div class="row"><span>보낸 금액</span><span>30,000원</span></div>
+        <div class="row"><span>수수료</span><span>0원</span></div>
+        <div class="total"><span>출금 합계</span><span></span><span>30,000원</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <h2>3단계면 충분해요</h2>
+        <p class="lead">설치부터 첫 송금까지, 순서대로 적어 두었어요.</p>
+      </div>
+      <div class="slip steps-slip">
+        <div class="slip-hd"><b>시작하기</b><span>3단계</span></div>
+        <ol class="timeline">
+          <li><span class="t">1단계</span><div><h3>앱 설치 후 본인인증</h3><p>휴대폰 번호와 간편 인증으로 1분이면 가입이 끝나요.</p></div></li>
+          <li><span class="t">2단계</span><div><h3>금융기관 선택</h3><p>쓰고 있는 은행·카드·증권사를 고르면 마이데이터로 한 번에 연결돼요.</p></div></li>
+          <li><span class="t">3단계</span><div><h3>자산 확인 &amp; 송금</h3><p>홈 화면에서 전체 자산을 확인하고, 바로 송금을 시작해 보세요.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:0">
+        <h2>내 돈이 오가는 곳이니까,<br>보안은 가장 먼저</h2>
+        <p class="lead">모아는 금융 데이터를 다루는 서비스로서 필요한 보안 체계를 갖추고 꾸준히 점검하고 있어요.</p>
+      </div>
+      <div class="sec-hang">
+        <div class="slip">
+          <div class="slip-hd"><b>보호</b><span>통신 · 저장 · 인증</span></div>
+          <dl>
+            <div><dt>종단간 암호화</dt><dd>모든 통신과 저장 데이터를 암호화해 보호해요.</dd></div>
+            <div><dt>생체 인증</dt><dd>송금과 민감한 정보 확인 시 지문·얼굴 인증을 사용해요.</dd></div>
+            <div><dt>내 정보는 내가 관리</dt><dd>연결한 기관과 정보 제공 동의를 언제든 확인하고 철회할 수 있어요.</dd></div>
+          </dl>
+        </div>
+        <div class="slip">
+          <div class="slip-hd"><b>감시</b><span>이상거래 모니터링</span></div>
+          <dl>
+            <div><dt>이상거래 탐지 <span class="num">24시간</span></dt><dd>평소와 다른 접속이나 거래를 24시간 감지하고 알려드려요.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap faq-grid">
+      <h2>자주 묻는 질문</h2>
+      <div class="faq-list">
+        <details>
+          <summary>정말 송금 수수료가 무료인가요?</summary>
+          <p>네. 모아 앱에서 국내 모든 은행 계좌로 보내는 송금은 횟수 제한 없이 수수료가 없어요. 해외 송금 등 일부 서비스는 별도 요금이 있을 수 있으며, 앱에서 미리 안내해 드려요.</p>
+        </details>
+        <details>
+          <summary>계좌를 연결하면 제 금융 정보가 안전한가요?</summary>
+          <p>모아는 마이데이터 표준 방식으로 정보를 불러오며, 금융기관 비밀번호를 저장하지 않아요. 모든 데이터는 암호화되어 보관되고, 연결 해제 시 관련 정보는 삭제돼요.</p>
+        </details>
+        <details>
+          <summary>어떤 금융기관을 연결할 수 있나요?</summary>
+          <p>국내 주요 은행, 카드사, 증권사, 보험사, 저축은행, 상호금융과 일부 포인트·전자금융 서비스까지 연결할 수 있어요. 연결 가능한 기관 목록은 앱에서 확인할 수 있어요.</p>
+        </details>
+        <details>
+          <summary>이용 요금이 있나요?</summary>
+          <p>자산 조회, 소비 분석, 국내 송금 등 핵심 기능은 모두 무료예요.</p>
+        </details>
+        <details>
+          <summary>휴대폰을 잃어버리면 어떻게 하나요?</summary>
+          <p>고객센터나 웹에서 즉시 '앱 사용 정지'를 요청할 수 있어요. 새 기기에서 본인인증 후 다시 로그인하면 기존 기기는 자동으로 로그아웃돼요.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download">
+    <div class="wrap dl-grid">
+      <div>
+        <h2>오늘부터 내 돈,<br>모아에서 모아 보세요</h2>
+        <div class="store">
+          <a href="#" class="btn btn-main">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+            <span><small>Download on the</small>App Store</span>
+          </a>
+          <a href="#" class="btn btn-alt">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7-9.5-9.7zm10.5 10.7 2.7 2.8-11.6 6.6 8.9-9.4zm0-2L5.2 1.6l11.6 6.6-2.7 2.8zm3.9-2.1 3 1.7c.9.5.9 1.3 0 1.8l-3 1.7-3-3 3-2.2z"/></svg>
+            <span><small>GET IT ON</small>Google Play</span>
+          </a>
+        </div>
+      </div>
+      <div class="slip">
+        <div class="slip-hd"><b>모아 이용 요금</b><span>가입 안내</span></div>
+        <div class="row"><span>가입</span><span>1분</span></div>
+        <div class="row"><span>이용료</span><span>0원</span></div>
+        <div class="total"><span>가입은 1분, 이용료는 0원.</span><span></span><span>0원</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="logo">모아</a>
+        <p style="margin:10px 0 0">흩어진 돈을 한곳에.</p>
+      </div>
+      <div class="foot-cols">
+        <div><h4>서비스</h4><ul><li><a href="#features">자산 관리</a></li><li><a href="#transfer">송금</a></li><li><a href="#features">소비 분석</a></li></ul></div>
+        <div><h4>회사</h4><ul><li><a href="#">회사 소개</a></li><li><a href="#">채용</a></li><li><a href="#">보도자료</a></li></ul></div>
+        <div><h4>고객지원</h4><ul><li><a href="#faq">자주 묻는 질문</a></li><li><a href="#">공지사항</a></li><li>고객센터 <span class="num">1588-0000</span></li></ul></div>
+      </div>
+    </div>
+    <div class="legal">
+      <a href="#"><b>개인정보처리방침</b></a> · <a href="#">이용약관</a> · <a href="#">전자금융거래 이용약관</a><br>
+      (주)모아 · 대표 홍길동 · 사업자등록번호 000-00-00000 · 서울특별시 강남구 테헤란로 000<br>
+      본 페이지의 화면과 수치는 서비스 이해를 돕기 위한 예시입니다.<br>
+      © 2026 Moa Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

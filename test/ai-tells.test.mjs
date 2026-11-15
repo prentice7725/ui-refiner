@@ -69,7 +69,7 @@ test('Japanese pages: stock phrases and CTAs count, a proper Japanese stack is n
 
 test('Japanese report renders its own section and numbering without gaps',()=>{
  const md=renderScan({url:'http://x/',lang:'ja',aiLook:evaluateAiTells(quiet(),{lang:'ja'}),quality:[],japanese:{japanese:true,issues:[{...evaluateJaTypography(jaMetrics({italic:{count:1,targets:['p']}}),{lang:'ja'}).issues[0],viewports:['mobile']}]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
- assert.match(md,/AI感指数/);assert.match(md,/## 3\. 日本語タイポグラフィ/);assert.match(md,/日本語の斜体 \(mobile\)/);assert.match(md,/## 5\. エージェントが続けて行うこと/);
+ assert.match(md,/AI感指数/);assert.match(md,/## 1\. この点数の理由/);assert.match(md,/判定：AIが作ったサイトには見えません。/);assert.match(md,/## 4\. 日本語タイポグラフィ/);assert.match(md,/日本語の斜体 \(mobile\)/);assert.match(md,/## 6\. エージェントが続けて行うこと/);
 });
 
 test('Japanese typesetting: words broken in short titles and links are reported with the break point',()=>{
@@ -127,4 +127,26 @@ test('cards inside cards and icons in tinted rounded squares are reported; old s
  assert.deepEqual([r.measures.nestedCards,r.measures.nestedHosts,r.measures.iconBoxes],[4,3,3]);
  m.nestedCards={count:5,hosts:2,targets:[]};m.iconBoxes={count:2,targets:[]};
  assert.ok(!evaluateAiTells(m).signals.some(s=>['nested-cards','boxed-icons'].includes(s.id)),'inner boxes in only two cards, or two icon boxes, are normal');
+});
+
+test('score breakdown: whole points per signal add up to the score, and the verdict follows the score',async()=>{
+ const {scoreBreakdown,scoreSignals,aiVerdict}=await import('../src/ai-tells.mjs');
+ const sig=(id,weight)=>({id,title:id,weight});
+ for(const [signals,craft] of [[[sig('a',3),sig('b',2),sig('c',1),sig('d',0)],[]],[[sig('a',3),sig('b',3),sig('c',2),sig('d',1)],['custom-webfont','imagery']],[Array.from({length:9},(_,i)=>sig('s'+i,3)),['imagery']],[[],[]]]){
+  const b=scoreBreakdown(signals,craft),{score}=scoreSignals(signals,craft);
+  assert.equal(b.score,score);
+  assert.equal(b.rows.reduce((n,r)=>n+r.points,0)+b.craft.reduce((n,c)=>n+c.points,0)+b.cap,score);
+  assert.ok(b.rows.every(r=>r.points>0)&&!b.rows.some(r=>r.id==='d'&&signals.find(s=>s.id==='d')?.weight===0));
+ }
+ assert.deepEqual([0,7,8,19,20,100].map(aiVerdict),['none','none','traces','traces','ai','ai']);
+ const md=renderScan({url:'http://x/',lang:'ko',aiLook:evaluateAiTells({...quiet(),emoji:{count:6,icons:6,targets:['span']}}),quality:[],japanese:{japanese:false,issues:[]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
+ assert.match(md,/## 1\. 왜 이 점수인가/);assert.match(md,/\| \*\*합계\*\* \| \*\*\d+\*\* \|/);assert.match(md,/판정: AI가 만든/);
+});
+
+test('familiar direction: a single plain typeface is reported but not scored', () => {
+ const m=quiet();m.typography={...m.typography,families:[{name:'noto sans kr',count:40}]};
+ const plain=evaluateAiTells(m),fam=evaluateAiTells({...m,direction:'familiar'});
+ const g=r=>r.signals.find(s=>s.id==='generic-type');
+ assert.ok(g(plain)?.weight>0,'scored on an ordinary page');
+ assert.equal(g(fam)?.weight,0);assert.equal(g(fam)?.points,0);assert.ok(fam.score<plain.score);
 });
