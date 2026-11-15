@@ -29,6 +29,12 @@
    "rowGroups": 1,
    "times": 0,
    "hairlines": 0
+  },
+  "refine-f.1": {
+   "tables": 0,
+   "rowGroups": 1,
+   "times": 0,
+   "hairlines": 3
   }
  },
  "en-saas": {
@@ -61,6 +67,12 @@
    "rowGroups": 0,
    "times": 4,
    "hairlines": 3
+  },
+  "refine-f.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 5,
+   "hairlines": 2
   }
  },
  "ko-fintech": {
@@ -93,6 +105,12 @@
    "rowGroups": 0,
    "times": 1,
    "hairlines": 3
+  },
+  "refine-f.1": {
+   "tables": 0,
+   "rowGroups": 0,
+   "times": 1,
+   "hairlines": 2
   }
  }
 }

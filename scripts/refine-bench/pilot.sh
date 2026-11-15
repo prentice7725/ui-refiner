@@ -17,7 +17,7 @@ case " $ARMS " in *" f "*) [ -d "$B/roots/matf" ] || { "$HERE/roots.sh" matf="${
 one(){ # 한 조건의 한 반복: 페이지를 순서대로 돌려 앞 페이지의 선택이 다음 배정에 반영되게 한다
   local arm="$1" rep="$2"
   for id in $PAGES; do
-    [ -s "$B/logs/refine-$arm.$rep-$id.json" ] && grep -q '"result"' "$B/logs/refine-$arm.$rep-$id.json" && continue  # 끝난 실행은 건너뛴다
+    [ -s "$B/logs/refine-$arm.$rep-$id.json" ] && grep -q '"is_error":false' "$B/logs/refine-$arm.$rep-$id.json" && continue  # 정상으로 끝난 실행은 건너뛴다
     case "$arm" in
       a) REP=$rep REFINER_ROOT="$B/roots/r17" "$HERE/arm.sh" refine-a "$id";;
       b) REP=$rep REFINER_ROOT="$B/roots/r12" "$HERE/arm.sh" refine-b "$id";;
