@@ -162,3 +162,24 @@ test('deal: the tone narrows grounds, materials and faces', async () => {
  assert.ok(d.avoidFaces.includes('Dela Gothic One'),'faces that fight a calm page are listed to avoid');
  await assert.rejects(dealDirections(path.join(dir,'x'),{tone:'cosy'}),/--tone must be one of/);
 });
+
+test('a trade draws the familiar direction from sites of that trade in the page\'s country',async()=>{
+ const {dealDirections,humanTrade}=await import('../src/refine-log.mjs');
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-trade-')),log=path.join(dir,'none.json');
+ const genre={trades:['inn','salon'],entry:{country:'KR',sites:9,hero:{sites:8,share:{'below-fold':1}},colour:{sites:9,ground:{image:.8,light:.2},accent:{green:1}},type:{body:15,displayRatio:2.8,lineHeight:null,serifDisplay:.1}}};
+ let green=0;
+ for(const seed of Array.from({length:30},(_,i)=>i+1)){
+  const d=await dealDirections(path.join(dir,'p'+seed,'dirs'),{log,seed,kind:'place',tone:'warm',lang:'ko',trade:'inn',genre});
+  assert.equal(d.trade,'inn');assert.equal(d.tradeMeasured,true);
+  assert.equal(d.structures[0].key,'below-fold');green+=d.structures[0].accent.family==='green';
+  assert.deepEqual(d.structures[0].measured.type,genre.entry.type);assert.equal(d.structures[0].measured.country,'KR');
+  assert.equal(d.structures[1].measured,undefined);
+ }
+ assert.ok(green>=12,`the trade's colour family leads the draw (${green} of 30)`);
+ // Too few sites measured: the deal falls back to the page kind and says so.
+ const f=await dealDirections(path.join(dir,'f','dirs'),{log,seed:3,kind:'place',lang:'ko',trade:'salon',genre:{trades:['inn','salon'],entry:null}});
+ assert.equal(f.tradeMeasured,false);assert.equal(f.structures[0].measured,undefined);
+ await assert.rejects(dealDirections(path.join(dir,'x','dirs'),{log,kind:'place',lang:'ko',trade:'bank',genre}),/--trade must be one of/);
+ // The shipped data: Japanese inns are measured, and an English page has no trade figures.
+ assert.ok((await humanTrade('inn','ja')).entry.sites>=8);assert.equal((await humanTrade('inn','en')).entry,null);
+});

@@ -1,0 +1,781 @@
+{
+ "arms": [
+  "refine-a",
+  "refine-b",
+  "refine-e",
+  "refine-f",
+  "refine-j"
+ ],
+ "reps": [
+  "1"
+ ],
+ "orders": 2,
+ "page": {
+  "refine-a": {
+   "rank": 3.5,
+   "perRep": [
+    3.5
+   ],
+   "spread": 0,
+   "first": 0,
+   "n": 6,
+   "hierarchy": 7.166666666666667,
+   "distinctiveness": 5,
+   "typography": 6.666666666666667,
+   "cohesion": 7.333333333333333,
+   "ai_look": 5
+  },
+  "refine-b": {
+   "rank": 2.5,
+   "perRep": [
+    2.5
+   ],
+   "spread": 0,
+   "first": 2,
+   "n": 6,
+   "hierarchy": 7.5,
+   "distinctiveness": 6,
+   "typography": 7.5,
+   "cohesion": 7.333333333333333,
+   "ai_look": 4.5
+  },
+  "refine-e": {
+   "rank": 4,
+   "perRep": [
+    4
+   ],
+   "spread": 0,
+   "first": 0,
+   "n": 6,
+   "hierarchy": 6.166666666666667,
+   "distinctiveness": 6.5,
+   "typography": 6.333333333333333,
+   "cohesion": 6,
+   "ai_look": 5.166666666666667
+  },
+  "refine-f": {
+   "rank": 3.6666666666666665,
+   "perRep": [
+    3.6666666666666665
+   ],
+   "spread": 0,
+   "first": 0,
+   "n": 6,
+   "hierarchy": 5.666666666666667,
+   "distinctiveness": 7.333333333333333,
+   "typography": 6.333333333333333,
+   "cohesion": 5.833333333333333,
+   "ai_look": 4.666666666666667
+  },
+  "refine-j": {
+   "rank": 1.3333333333333333,
+   "perRep": [
+    1.3333333333333333
+   ],
+   "spread": 0,
+   "first": 4,
+   "n": 6,
+   "hierarchy": 8.166666666666666,
+   "distinctiveness": 7.333333333333333,
+   "typography": 7.333333333333333,
+   "cohesion": 8.166666666666666,
+   "ai_look": 3.6666666666666665
+  }
+ },
+ "orderAgree": 1,
+ "slot": {
+  "E": 2.5,
+  "C": 3,
+  "A": 2.3333333333333335,
+  "B": 3.6666666666666665,
+  "D": 3.5
+ },
+ "set": {
+  "refine-a": {
+   "sameness": 5,
+   "rank": 3.5,
+   "n": 2
+  },
+  "refine-b": {
+   "sameness": 5,
+   "rank": 3.5,
+   "n": 2
+  },
+  "refine-e": {
+   "sameness": 3.5,
+   "rank": 1.5,
+   "n": 2
+  },
+  "refine-f": {
+   "sameness": 3.5,
+   "rank": 1.5,
+   "n": 2
+  },
+  "refine-j": {
+   "sameness": 7,
+   "rank": 5,
+   "n": 2
+  }
+ },
+ "habits": [
+  {
+   "unit": "1@1",
+   "arm": "refine-f",
+   "habits": "Each site is built around a different metaphor: a cardboard and tape texture for logistics, a tiled photo grid with a weekday timetable for the clinic, and a receipt slip with a red stamp for hiring. The shared habits are a dark filled button paired with an outlined one, label/value rows split by hairline rules, a yellow circular badge for a key time, and bold display headlines in a dense sans font."
+  },
+  {
+   "unit": "1@1",
+   "arm": "refine-a",
+   "habits": "All three sites sit on a white background with a thin top nav and a phone number or filled CTA at the right. Each has a large bold headline, a paragraph of grey body text, and a filled accent button beside an outlined button or text link. Each also has a bordered data panel: a hub map with a list, a job table, or a 'today's hours' and notices strip. The layouts vary (map left, text only, photo with a card on top), but the details are generic and match from site to site."
+  },
+  {
+   "unit": "1@1",
+   "arm": "refine-j",
+   "habits": "All three use the same template: a big black headline on the left with a small kicker line above it, grey body text, then a filled accent CTA next to an underlined text link. A product or data mockup card sits on the right or below, and a strip of bold stat numbers (4,812 / 68% / 99.7%) follows. Only the accent colour changes from site to site (rose, orange, green). Each card has bordered tables with check or status chips and a thin accent rule at the bottom."
+  },
+  {
+   "unit": "1@1",
+   "arm": "refine-e",
+   "habits": "The styles differ: a blue double-outline boxy look with hour tiles for the clinic, a dark job table with a green header and numbered green nav tiles for hiring, and cardboard photography with a taped card for logistics. Still, each site pairs a heavy condensed headline with a boxed data panel of rows, uses a filled button next to an outlined one, shows round chips or badges (a yellow '2 PM cutoff' circle, initials circles), and puts a coloured rule or bar under the hero."
+  },
+  {
+   "unit": "1@1",
+   "arm": "refine-b",
+   "habits": "The hiring and clinic sites are the same template: a full-bleed darkened photo, a white headline in the lower left, a short paragraph, a filled red or orange button next to an underlined text link, and a white nav laid over the photo. Logistics breaks from this with a white page and a dashboard card holding a bar chart and stats. The repeated stat figures (4,812 / 99.7%), the filled-plus-outline CTA pair and the timetable strip under the hero show up across the studio's work."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-b",
+   "habits": "Two of the three heroes use the same full-bleed photo with a dark overlay, a large bold headline lower-left, a short paragraph, one solid button and a text link. All three use a thin top nav with the CTA at the top right. Each puts a stat or data strip under the hero copy (shift counts, KPIs, hours bar). Headlines lean on exact figures: 7割, 2시, 3分."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-e",
+   "habits": "Each hero is built around a structured data object: a kraft shipping-label table, a grid of tiles for clinic hours, a dark job-listing table. Every site pairs a solid button with an outlined one. Each has one loud accent: a yellow sticker, a blue frame, a green band with a yellow rule. Strong outlines and boxy cards run through all three, though the color, texture and layout are clearly different from site to site."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-j",
+   "habits": "All three use the same split: headline on the left, a card or photo on the right. Each has a small kicker line above a heavy multi-line headline, then a gray paragraph, a solid button and a text link. Every right-hand panel is a mock UI card (schedule table, hiring checklist, WMS dashboard). The top navs are thin white bars of the same size. Stat strips or footnotes sit below the CTA. Only the palette changes, so it reads as one template."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-a",
+   "habits": "The top navs are the same white bar with the phone number or CTA at the right. Two sites set the headline next to a data card (the map card, the search table), and the clinic floats a white card over its photo. Each has a solid plus outline button pair or a solid button plus a link. Every site shows small tabular data such as hours, sites or job rows, and each uses one accent color: black, mustard or blue."
+  },
+  {
+   "unit": "1@2",
+   "arm": "refine-f",
+   "habits": "Every hero ends in an information table: a grid of clinic hours, receipt-style service cards, label rows over a warehouse photo. All three use the solid plus outline button pair, and the navs are thin bars with a boxed CTA. The logistics site repeats the kraft texture and yellow round sticker seen in set B. The headlines are numeric (9:00〜13:00, 7割, 2시). The compositions differ, but the 'data card as hero' habit is in every site."
+  }
+ ],
+ "stage": {
+  "refine-j": {
+   "first": {
+    "direction": {
+     "final": 2,
+     "earlier": 0,
+     "same": 4
+    },
+    "ship": {
+     "final": 2,
+     "earlier": 2,
+     "same": 2
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-j.1@first@1",
+      "text": "Neither version is weaker: both use the same plum-and-blush palette, Setagaya-specific headline, weekly schedule widget, photos and section structure, and they differ only by a few pixels of caption and label placement."
+     },
+     {
+      "unit": "ja-clinic@refine-j.1@first@2",
+      "text": "I can't separate them: both use the same sakura-plum palette, Japanese headline, weekly schedule widget and section layout, and the only difference is a few pixels of spacing in the schedule caption and total page height, so neither has weaker direction."
+     },
+     {
+      "unit": "ja-recruit@refine-j.1@first@1",
+      "text": "Neither version has weaker direction: both share the same client-specific hero, with the on-call headline and the 'hearing record' job card with confirmed checkmarks, and the same palette and layout; the one real difference is that Y puts the success-story stats into a run-on sentence, while X shows them as a scannable figure strip."
+     },
+     {
+      "unit": "ja-recruit@refine-j.1@first@2",
+      "text": "The two share the same hiring-record card, the same navy and rust palette and the same engineer-specific copy, so neither has weaker direction; X only falls behind on polish, with its success-story stats buried in a sentence instead of laid out as a stat row and no step labels on its process timeline."
+     },
+     {
+      "unit": "ko-logistics@refine-j.1@first@1",
+      "text": "X uses a round logo badge and generic service-card grids below the fold, so the green dock-signage bars and numbered labels from the hero dispatch board don't carry through the page the way Y's square badge and numbered green service rows do."
+     },
+     {
+      "unit": "ko-logistics@refine-j.1@first@2",
+      "text": "Y swaps X's square, dispatch-board look (square logo mark, numbered service rows, a compact page that keeps the WMS feel) for a round logo, generic two-column service cards, a taller stock warehouse photo and a form success message that appears to show while the form is still there, so beyond the shared hero it reads like any logistics template."
+     }
+    ]
+   },
+   "mock": {
+    "direction": {
+     "final": 2,
+     "earlier": 4,
+     "same": 0
+    },
+    "ship": {
+     "final": 6,
+     "earlier": 0,
+     "same": 0
+    },
+    "lost": [
+     {
+      "unit": "ja-clinic@refine-j.1@mock@1",
+      "text": "Y drops the accent-colored emphasis on 経鼻の胃カメラ and replaces the director's specific board-certified internal-medicine and gastroenterology credentials with generic 'supporting the community's health' copy that any neighborhood clinic could use, though it fixes X's orphaned 医。 line break and spells out the Saturday hours as ~13:00."
+     },
+     {
+      "unit": "ja-clinic@refine-j.1@mock@2",
+      "text": "X sets every word of the headline in the same black and uses generic 'local clinic' body copy, so its signature service (transnasal endoscopy) and the director's specialist credentials don't stand out the way Y's accent-colored headline and copy make them; but Y leaves 「医。」 alone on the last headline line and drops the 〜 from the Saturday 13:00 slot, so X is the cleaner page to ship."
+     },
+     {
+      "unit": "ja-recruit@refine-j.1@mock@1",
+      "text": "Y renders the whole headline in flat navy and drops the orange highlight on 聞いてから and on the オンコール頻度 row, so nothing ties the promise of a company interview to the proof card, and the hero reads like any agency's generic layout."
+     },
+     {
+      "unit": "ja-recruit@refine-j.1@mock@2",
+      "text": "X never links its headline to its proof: it doesn't pick out 聞いてから in the accent color or echo it on the オンコール頻度 row, so the 'we ask first' promise reads as plain copy and not as the page's signature idea."
+     },
+     {
+      "unit": "ko-logistics@refine-j.1@mock@1",
+      "text": "X runs the same dispatch-board concept less fully: it has a round generic logo badge, no hourly outbound bar chart and no quote link in the nav, so it reads more like a template than a live Icheon warehouse board."
+     },
+     {
+      "unit": "ko-logistics@refine-j.1@mock@2",
+      "text": "Y removes the hourly dispatch bar chart, swaps the square road-sign-style logo for a generic circle, and cuts the line 물류는 한길로 이어집니다 to a small eyebrow; that line puns on the client's name, so Y has less that belongs only to this client."
+     }
+    ]
+   }
+  }
+ },
+ "runs": {
+  "refine-a": {
+   "cost": 7.2922706,
+   "turns": 57.333333333333336,
+   "n": 3
+  },
+  "refine-b": {
+   "cost": 7.958965800000001,
+   "turns": 62.333333333333336,
+   "n": 3
+  },
+  "refine-e": {
+   "cost": 13.556062800000003,
+   "turns": 83.33333333333333,
+   "n": 3
+  },
+  "refine-f": {
+   "cost": 13.8423478,
+   "turns": 92.66666666666667,
+   "n": 3
+  },
+  "refine-j": {
+   "cost": 17.214775,
+   "turns": 38,
+   "n": 3
+  }
+ },
+ "forms": {
+  "refine-a": {
+   "n": 3,
+   "withTable": 1,
+   "times": 0.3333333333333333,
+   "hairlines": 13.666666666666666
+  },
+  "refine-b": {
+   "n": 3,
+   "withTable": 0.3333333333333333,
+   "times": 1,
+   "hairlines": 4
+  },
+  "refine-e": {
+   "n": 3,
+   "withTable": 1,
+   "times": 4.666666666666667,
+   "hairlines": 4
+  },
+  "refine-f": {
+   "n": 3,
+   "withTable": 0.3333333333333333,
+   "times": 2.3333333333333335,
+   "hairlines": 2
+  },
+  "refine-j": {
+   "n": 0,
+   "withTable": null,
+   "times": null,
+   "hairlines": null
+  }
+ },
+ "failed": [
+  "stage-ja-clinic@refine-a.1@first@1",
+  "stage-ja-clinic@refine-a.1@first@2",
+  "stage-ja-clinic@refine-a.1@mock@1",
+  "stage-ja-clinic@refine-a.1@mock@2",
+  "stage-ja-clinic@refine-b.1@first@1",
+  "stage-ja-clinic@refine-b.1@first@2",
+  "stage-ja-clinic@refine-b.1@mock@1",
+  "stage-ja-clinic@refine-b.1@mock@2",
+  "stage-ja-clinic@refine-e.1@first@1",
+  "stage-ja-clinic@refine-e.1@first@2",
+  "stage-ja-clinic@refine-e.1@mock@1",
+  "stage-ja-clinic@refine-e.1@mock@2",
+  "stage-ja-clinic@refine-f.1@first@1",
+  "stage-ja-clinic@refine-f.1@first@2",
+  "stage-ja-clinic@refine-f.1@mock@1",
+  "stage-ja-clinic@refine-f.1@mock@2",
+  "stage-ja-recruit@refine-a.1@first@1",
+  "stage-ja-recruit@refine-a.1@first@2",
+  "stage-ja-recruit@refine-a.1@mock@1",
+  "stage-ja-recruit@refine-a.1@mock@2",
+  "stage-ja-recruit@refine-b.1@first@1",
+  "stage-ja-recruit@refine-b.1@first@2",
+  "stage-ja-recruit@refine-b.1@mock@1",
+  "stage-ja-recruit@refine-b.1@mock@2",
+  "stage-ja-recruit@refine-e.1@first@1",
+  "stage-ja-recruit@refine-e.1@first@2",
+  "stage-ja-recruit@refine-e.1@mock@1",
+  "stage-ja-recruit@refine-e.1@mock@2",
+  "stage-ja-recruit@refine-f.1@first@1",
+  "stage-ja-recruit@refine-f.1@first@2",
+  "stage-ja-recruit@refine-f.1@mock@1",
+  "stage-ja-recruit@refine-f.1@mock@2",
+  "stage-ko-logistics@refine-a.1@mock@1",
+  "stage-ko-logistics@refine-a.1@mock@2",
+  "stage-ko-logistics@refine-b.1@first@1",
+  "stage-ko-logistics@refine-b.1@first@2",
+  "stage-ko-logistics@refine-b.1@mock@1",
+  "stage-ko-logistics@refine-b.1@mock@2",
+  "stage-ko-logistics@refine-e.1@first@1",
+  "stage-ko-logistics@refine-e.1@first@2",
+  "stage-ko-logistics@refine-e.1@mock@1",
+  "stage-ko-logistics@refine-e.1@mock@2",
+  "stage-ko-logistics@refine-f.1@first@1",
+  "stage-ko-logistics@refine-f.1@first@2",
+  "stage-ko-logistics@refine-f.1@mock@1",
+  "stage-ko-logistics@refine-f.1@mock@2"
+ ],
+ "ranks": [
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-b",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-j",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-a",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-e",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 5,
+    "typography": 6,
+    "cohesion": 6,
+    "ai_look": 7
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-f",
+   "rank": 5,
+   "scores": {
+    "hierarchy": 5,
+    "distinctiveness": 5,
+    "typography": 5,
+    "cohesion": 3,
+    "ai_look": 7
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-b",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-j",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-a",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 5,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-e",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 6,
+    "typography": 6,
+    "cohesion": 6,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-clinic",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-f",
+   "rank": 5,
+   "scores": {
+    "hierarchy": 4,
+    "distinctiveness": 5,
+    "typography": 5,
+    "cohesion": 3,
+    "ai_look": 7
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-j",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-f",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 9,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-a",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 4,
+    "typography": 6,
+    "cohesion": 7,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-e",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 6,
+    "typography": 6,
+    "cohesion": 6,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-b",
+   "rank": 5,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 5,
+    "typography": 7,
+    "cohesion": 6,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-j",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 9,
+    "distinctiveness": 8,
+    "typography": 8,
+    "cohesion": 9,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-f",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 9,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-e",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 7,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-b",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 5,
+    "typography": 7,
+    "cohesion": 6,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ja-recruit",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-a",
+   "rank": 5,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 3,
+    "typography": 6,
+    "cohesion": 7,
+    "ai_look": 6
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-j",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 3
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-b",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-f",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-a",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 1,
+   "arm": "refine-e",
+   "rank": 5,
+   "scores": {
+    "hierarchy": 5,
+    "distinctiveness": 7,
+    "typography": 6,
+    "cohesion": 5,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-j",
+   "rank": 1,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 7,
+    "typography": 7,
+    "cohesion": 8,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-b",
+   "rank": 2,
+   "scores": {
+    "hierarchy": 8,
+    "distinctiveness": 6,
+    "typography": 8,
+    "cohesion": 8,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-a",
+   "rank": 3,
+   "scores": {
+    "hierarchy": 7,
+    "distinctiveness": 6,
+    "typography": 7,
+    "cohesion": 7,
+    "ai_look": 5
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-e",
+   "rank": 4,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 6,
+    "ai_look": 4
+   }
+  },
+  {
+   "id": "ko-logistics",
+   "rep": "1",
+   "order": 2,
+   "arm": "refine-f",
+   "rank": 5,
+   "scores": {
+    "hierarchy": 6,
+    "distinctiveness": 8,
+    "typography": 7,
+    "cohesion": 6,
+    "ai_look": 4
+   }
+  }
+ ]
+}
