@@ -9,6 +9,7 @@
 #   refine-g  refine-e에서 재료 배정만 바꾼 것 (variants/materials-deal.patch): 최근 네 프로젝트에서 고른 재료는 빼고, 성격·종류 중 하나만 맞아도 후보에 넣는다. ARMS에 g를 넣을 때만 돈다
 #   refine-h  refine-b(12차) + 새 맥락의 히어로·마무리 리뷰 (variants/review.md). 재료는 쓰지 않는다. ARMS에 h를 넣을 때만 돈다
 #   refine-i  Rhythm 절이 들어간 재료(7eca68b)에 refine-g의 배정 패치를 얹은 것. ARMS에 i를 넣을 때만 돈다
+#   refine-j  이 체크아웃: 익숙한 안·맞춤 안·과감한 안을 각각 다른 서브에이전트가 만든다. ARMS에 j를 넣을 때만 돈다
 # 폴더 이름을 a–d로 둔 것은 에이전트가 경로에서 조건을 읽지 못하게 하려는 것이다.
 # 환경변수: PAGES (기본 4개), REPS (기본 "1 2 3"), ARMS (기본 "a b c d")
 HERE="$(cd "$(dirname "$0")" && pwd)"; R="$(cd "$HERE/../.." && pwd)"; export BENCH_DIR="${BENCH_DIR:-$PWD/refine-bench-out}"; B="$BENCH_DIR"
@@ -33,6 +34,7 @@ one(){ # 한 조건의 한 반복: 페이지를 순서대로 돌려 앞 페이�
       g) REP=$rep REFINER_ROOT="$B/roots/matg" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-g "$id";;
       h) REP=$rep REFINER_ROOT="$B/roots/r12" EXTRA_PROMPT="$HERE/variants/review.md" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-h "$id";;
       i) REP=$rep REFINER_ROOT="$B/roots/mati" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-i "$id";;
+      j) REP=$rep EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-j "$id";;
     esac
   done
 }
