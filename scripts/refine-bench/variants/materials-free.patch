@@ -1,0 +1,115 @@
+diff --git a/bin/ui-refiner.mjs b/bin/ui-refiner.mjs
+index 02afdca..835f29a 100644
+--- a/bin/ui-refiner.mjs
++++ b/bin/ui-refiner.mjs
+@@ -111,8 +111,7 @@ try{
+     else console.log((r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
+ `:'')+r.structures.map(d=>`${d.label}: ${d.key} — ${d.brief}
+    material: ${d.material.name} — ${d.material.brief}
+-   faces: ${d.type.display}${d.type.text!==d.type.display?' + '+d.type.text:''}
+-   read: ${d.material.file}`).join('\n')+`\n[MATERIAL] read each file before building its mock; build every surface and control as it says\n[DEAL] ${r.file}`);
++   read: ${d.material.file}`).join('\n')+`\n[MATERIAL] read each file before building its mock; build every surface and control as it says; colours and faces are yours to choose for this client\n[AVOID FACES] ${r.avoidFaces.join(', ')}\n[DEAL] ${r.file}`);
+   }
+   else if(command==='directions'&&sub==='record'&&args._.length===3){
+     if(!args.pick)throw Error('directions record requires --pick');
+diff --git a/commands/ui-refine.md b/commands/ui-refine.md
+index 70601c2..e971343 100644
+--- a/commands/ui-refine.md
++++ b/commands/ui-refine.md
+@@ -10,7 +10,7 @@ Follow the **Refine** workflow of the `ui-refiner-agent` skill:
+ 1. Find the source that renders the target (the `.html` file itself, or the project files behind the dev server). If you cannot edit it, stop and run the **Review** workflow instead.
+ 2. Run `node <UI_REFINER>/bin/ui-refiner.mjs scan <target>` (the skill explains where `<UI_REFINER>` is), then open `ui-refiner-scan/scan-desktop.png` and `scan-mobile.png` before reading `DESIGN_REVIEW.md`. Decide how much to change from the score: 20 or more, the full refine below; 8–19, or any page with a real brand, polish it (keep structure, palette and type, fix the confirmed signals and craft issues, skip the directions, still run `keep record` and `keep check`); under 8 with no confirmed signal, report and change nothing unless asked.
+ 3. Write down what must be preserved and record it with `node <UI_REFINER>/bin/ui-refiner.mjs keep record <target>`. Pick the tone from who visits and why (calm: health, care, public, money; warm: local places, food, families, community; technical: tools for engineers and operations; bold: campaigns, youth brands, media), then run `node <UI_REFINER>/bin/ui-refiner.mjs directions deal refine-directions --kind <software|service|place|public|company|studio|media> --tone <calm|warm|technical|bold> --lang <page language>` (with `--no-photo` when there are no real photos and stand-ins do not fit; otherwise fetch credited stand-ins with `node <UI_REFINER>/bin/ui-refiner.mjs photos "<subject>" --out assets/stand-in`, mark them `data-stand-in`, keep the credit line in the footer and tell the user to replace them).
+-   The deal gives each direction a hero structure and a material: one finished look (ground, colours, faces, surfaces, controls) taken from a physical thing. Read each dealt material's file before building its mock, take its tokens as written, build every surface and control the way it says, and keep out what it lists under Never. Only a real brand colour or typeface replaces the material's accent or faces.
++   The deal gives each direction a hero structure and a material: a way of making surfaces, controls and type, taken from a physical thing. Read each dealt material's file before building its mock, build every surface and control the way it says, and keep out what it lists under Never. The hex values and the faces in the file show one instance of the material; they are not the material. Choose the colours and the faces for this client, keeping each token's role, and avoid the faces the deal lists.
+    Mock the first screen and one section in `refine-directions/a.html`, `b.html` and `c.html`, each in its dealt structure and material. Start each with `<!-- direction: … | tone: … | world: … | moment: … | type: … | palette: <material name> | signature: … -->`. Write each headline from a fact only this client has (an hour, a condition, a number, a place), never a category slogan. Each first screen says what this is in one line, shows the main action above the fold, has one main piece (a photo, a product scene or the signature element) and shows something real: photos for places and services, or for software one product scene that proves the claim, built in the material's surfaces and marked `data-product-shot` (a quarter of the screen or more, text 12px or larger, 40 pieces of text at most).
+    Run `node <UI_REFINER>/bin/ui-refiner.mjs directions refine-directions`. If the sheet warns, redo that mock first. Then put a rival's name on each mock: if it still fits, push its world, moment or signature further.
+    Show the user the three directions, the `DIRECTIONS.html` path and your recommendation, then stop and ask which to apply. Decide yourself only if the extra instructions say so.
+diff --git a/skills/ui-refiner-agent/SKILL.md b/skills/ui-refiner-agent/SKILL.md
+index 100b32a..e49595e 100644
+--- a/skills/ui-refiner-agent/SKILL.md
++++ b/skills/ui-refiner-agent/SKILL.md
+@@ -53,8 +53,8 @@ First decide how much to change, from the scan score and the screenshots:
+      - `media`: news and magazines.
+    - Run `ui-refiner directions deal refine-directions --kind <kind> --tone <tone> --lang <page language>` (add `--no-photo` when there are no real photos and stand-ins do not fit). It gives each of A, B and C a hero structure and a **material**, and puts what was picked recently for other projects last. Do not pick either yourself.
+      - A material is one finished look taken from a physical thing (an enamel sign, a tiled wall, a till receipt). It fixes the ground, the colours, the faces, the surfaces, the controls and how a photo is treated. See [reference/materials/README.md](reference/materials/README.md).
+-     - Read each dealt material's file before you build its mock. Take its tokens as written, build every surface and control the way it says, use the faces listed for the page's language, and keep out what it lists under Never. A page that only borrows a material's palette is not in the material.
+-     - A real brand colour replaces the material's accent, and a real brand typeface replaces its faces. Nothing else in the material changes.
++     - Read each dealt material's file before you build its mock. Build every surface and control the way it says, set the type the way it says, and keep out what it lists under Never. The hex values and the faces in the file show one instance of the material; they are not the material. Choose the colours and the faces for this client, keeping each token's role and the relations between them (see the README), and avoid the faces the deal lists. A page that only borrows a material's palette is not in the material.
++     - A real brand colour and a real brand typeface come first. How surfaces and controls are made does not change.
+      - Until November 2026 the deal handed out a surface, a colour family and faces to avoid as separate parts, and the skill ruled out one habit per benchmark round (cream grounds, forest green, stat strips, hairline tables). The pages passed every check and were still called plain or "wireframe-like", and each habit that was ruled out gave way to the next. A material decides those things together, so do not add or remove surface treatments on your own judgement.
+    - Write each direction as five lines, taken from the content, never a style word like "minimal and elegant":
+      - direction: what the product or place is, in this client's words ("the clinic's front desk: hours and booking first");
+@@ -74,7 +74,7 @@ First decide how much to change, from the scan score and the screenshots:
+      - A signature element is filled with real content at the size that content needs. Never invent data for it.
+    - Build each direction as a mock of the first screen plus one content section in `refine-directions/a.html`, `b.html` and `c.html` inside the project. Start each file with `<!-- direction: … | tone: … | world: … | moment: … | type: … | palette: <the material's name> | signature: … -->`.
+    - Run `ui-refiner directions refine-directions`. It scans each mock and writes `DIRECTIONS.html` (screenshots side by side) and `DIRECTIONS.md`. Redo a mock before you show anything when the sheet warns that it:
+-     - was not built in its dealt structure, or does not use its material's faces;
++     - was not built in its dealt structure, or uses a face the deal lists to avoid;
+      - shares a surface, a type pair or a hero layout with another direction;
+      - repeats a choice made recently for another project;
+      - lacks one of the five lines in its note, a claim, the main action, or a photo or product scene.
+@@ -92,7 +92,7 @@ First decide how much to change, from the scan score and the screenshots:
+ 3. Give the page one **signature element**: something only this subject would have, built from the page's real content, made in the material and made the most memorable thing on the page. Examples: a ledger-style table of this month's spending for a budgeting app, today's opening hours and the next free slot for a clinic, which pantries are open right now for a food bank. Never invent data for it.
+ 4. Apply the chosen direction to the whole page, fixing by root cause in this order:
+    - **Structure.** The stock section recipe is the strongest tell: pill badge → hero with a two-tone headline → row of logo names → three feature cards with icons in rounded squares → stats trio → testimonial trio → three-tier pricing with "Most popular" → FAQ → colored CTA band. Keep only sections that carry real content, merge thin ones, and vary the rhythm (a list or table instead of cards, one large feature instead of three equal ones).
+-   - **Type.** The material's faces, with real size contrast and no tracked uppercase eyebrow over every section.
++   - **Type.** Your chosen faces, set as the material says, with real size contrast and no tracked uppercase eyebrow over every section.
+    - **Color and surface.** The material's tokens, surfaces and controls from the first screen to the footer. Nothing decorative from outside it: no gradient text, glow or glass unless the material's file calls for it, and no boxes inside boxes.
+    - **Copy.** Replace stock phrases with the page's own facts. Never invent numbers, quotes, customers or logos; when the page already has invented ones, flag them instead of polishing them.
+ 5. Do not trade one template for another. Cream paper with a serif display face, tiny tracked labels, "01 /" numbering and short headlines ending in a period is the 2025–26 editorial AI template, not an escape from it. A white page with thin rules and one blue accent is the other common fallback, and it is where a page lands when the material is dropped below the first screen.
+diff --git a/skills/ui-refiner-agent/reference/materials/README.md b/skills/ui-refiner-agent/reference/materials/README.md
+index 1560f5c..d9b84ac 100644
+--- a/skills/ui-refiner-agent/reference/materials/README.md
++++ b/skills/ui-refiner-agent/reference/materials/README.md
+@@ -6,9 +6,10 @@ A material is one finished look taken from a physical thing: an enamel sign, a t
+ 
+ ## Rules for using one
+ 
+-- Take the tokens as written. Change a colour only for a real brand colour, and then replace the accent, not the ground.
++- A material fixes how things are made: its surfaces, its controls, how type is set, how a photo is treated and what stays out. The hex values and the faces in the file show one instance of the material; they are not the material.
++- Choose the colours for this client, from the client's own world and content. Keep each token's role and the relations between them: which is the ground and which the surface on it, how light or dark each is against the other, and that one colour is the loud one and is used as sparingly as the file says. Keep the kind of ground in the front matter (white, tint, colour or dark); its hue is yours. A real brand colour comes first.
+ - Build every surface and control the way the file says. A page that only borrows the palette is not in the material.
+-- Use the faces listed for the page's language. On Korean and Japanese pages the Latin display face still sets Latin words and figures.
++- Choose the faces yourself: one strong display face picked for this subject and this language, and a text face. Set them the way the Type section says (weights, case, line height, where a mono or tabular face is used). A real brand typeface comes first, and the faces the deal lists to avoid stay out.
+ - What the file lists under **Never** stays out, even when the page had it before.
+ - A gradient, a shadow or a tinted ground that the file calls for is deliberate. Say so when the scan reports it.
+ 
+diff --git a/skills/ui-refiner-agent/reference/review.md b/skills/ui-refiner-agent/reference/review.md
+index 9f07ca3..59ba6d6 100644
+--- a/skills/ui-refiner-agent/reference/review.md
++++ b/skills/ui-refiner-agent/reference/review.md
+@@ -13,7 +13,7 @@ Inputs: the mock's desktop and mobile screenshots, the mock's direction note (it
+ Prompt for the reviewer:
+ 
+ > You are looking at the first screen of a page that is still being built. You did not build it. Read the material file, then look at the two screenshots. First word: `ship` or `fix`. Then at most five findings, worst first. Ask:
+-> - Is this screen built in the material, or does it only borrow its colours? Name any surface or control that is not made the way the file says, and anything from its Never list.
++> - Is this screen built in the material? Name any surface or control that is not made the way the file says, and anything from its Never list. The file's hex values and faces are one instance; this page chose its own, so do not report a different colour or face.
+ > - Does the headline say something only this client could say? Would it fit a rival unchanged?
+ > - Is there one main piece (a photograph, a product scene or the signature element), large enough to carry the screen? Is anything competing with it?
+ > - Does the screen stop early over an empty band, or leave a hole beside the main piece?
+@@ -33,7 +33,7 @@ Inputs: the full-page desktop and mobile screenshots after the refine, the full-
+ Prompt for the reviewer:
+ 
+ > You are looking at a finished redesign and the page it replaced. You did not build it. Read the material file, then look at the screenshots. First word: `ship`, `fix` or `rebuild` (rebuild only when the page as a whole is not in the material or is worse than the page it replaced). Then at most five findings, worst first. Ask:
+-> - Does the material hold from the first screen to the footer, or does the page fall back to plain boxes and rules below the fold?
++> - (The file's hex values and faces are one instance; this page chose its own.) Does the material hold from the first screen to the footer, or does the page fall back to plain boxes and rules below the fold?
+ > - Do three sections in a row share one layout? Is any section only a heading and a grid of equal cards?
+ > - Is there empty space that reads as unfinished, or a section crowded beyond what its content needs?
+ > - Are alignments, spacing and type sizes consistent? Name the place where they are not.
+diff --git a/src/refine-log.mjs b/src/refine-log.mjs
+index 1b451f6..75ad356 100644
+--- a/src/refine-log.mjs
++++ b/src/refine-log.mjs
+@@ -193,9 +193,9 @@ export async function dealDirections(dir,{log,n=3,seed=Date.now()%9973,human,noP
+   mats.push(left.splice(j>=0?j:0,1)[0]);
+  }
+  if(mats.length<keys.length)throw new Error('No materials found; expected skills/ui-refiner-agent/reference/materials/*.md');
+- const deal={schemaVersion:6,kind:kind??null,tone:tone??null,toneBrief:tone?lib.tones[tone]?.brief??null:null,lang,script,structures:keys.map((key,i)=>{
++ const deal={schemaVersion:6,kind:kind??null,tone:tone??null,toneBrief:tone?lib.tones[tone]?.brief??null:null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,tone?lib.tones[tone]:null),structures:keys.map((key,i)=>{
+   const m=mats[i];
+-  return {label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],material:{slug:m.slug,name:m.name,brief:m.brief,ground:m.ground,file:m.file},type:m.faces[script]??m.faces.latin};
++  return {label:String.fromCharCode(65+i),key,brief:HERO_STRUCTURES[key],material:{slug:m.slug,name:m.name,brief:m.brief,ground:m.ground,file:m.file}};
+  })};
+  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
+  return {...deal,file:path.join(root,DEAL_FILE)};
