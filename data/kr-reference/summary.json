@@ -1,0 +1,943 @@
+{
+  "generatedAt": "2026-11-15T12:48:33.102Z",
+  "attempted": 235,
+  "ok": 180,
+  "skippedRobots": [
+    "https://www.lghnh.com/",
+    "https://www.musinsa.com/",
+    "https://www.nongshim.com/",
+    "https://www.posco.com/",
+    "https://imnews.imbc.com/",
+    "https://www.aladin.co.kr/",
+    "https://www.megabox.co.kr/",
+    "https://www.tlj.co.kr/",
+    "https://www.epost.go.kr/",
+    "https://www.jeju.go.kr/",
+    "https://www.kfhi.or.kr/",
+    "https://www.mapo.go.kr/",
+    "https://www.sejong.go.kr/",
+    "https://www.etoos.com/",
+    "https://www.hallym.or.kr/",
+    "https://www.ibk.co.kr/",
+    "https://www.snudh.org/",
+    "https://www.cjlogistics.com/ko/main",
+    "https://www.gangnamunni.com/",
+    "https://www.kakaobank.com/"
+  ],
+  "errors": [
+    {
+      "url": "https://www.krafton.com/",
+      "error": "Could not load https://www.krafton.com/: HTTP 403 at https://www.krafton.com/; HTTP 403 at https://www.krafton.com/"
+    },
+    {
+      "url": "https://www.lguplus.com/",
+      "error": "Could not load https://www.lguplus.com/: HTTP 403 at https://www.lguplus.com/; HTTP 403 at https://www.lguplus.com/"
+    },
+    {
+      "url": "https://www.ottogi.co.kr/",
+      "error": "Could not load https://ottogi.co.kr/: page.goto: Timeout 45000ms exceeded."
+    },
+    {
+      "url": "https://www.sktelecom.com/",
+      "error": "Could not load https://www.sktelecom.com/: HTTP 403 at https://www.sktelecom.com/; HTTP 403 at https://www.sktelecom.com/"
+    },
+    {
+      "url": "https://www.woowahan.com/",
+      "error": "Could not load https://www.woowahan.com/: HTTP 403 at https://www.woowahan.com/; HTTP 403 at https://www.woowahan.com/"
+    },
+    {
+      "url": "https://platum.kr/",
+      "error": "Could not load https://platum.kr/: HTTP 403 at https://platum.kr/; HTTP 403 at https://platum.kr/"
+    },
+    {
+      "url": "https://www.khan.co.kr/",
+      "error": "Could not load https://www.khan.co.kr/: HTTP 403 at https://www.khan.co.kr/; HTTP 403 at https://www.khan.co.kr/"
+    },
+    {
+      "url": "https://www.cgv.co.kr/",
+      "error": "Could not load https://www.cgv.co.kr/: HTTP 403 at https://www.cgv.co.kr/; HTTP 403 at https://www.cgv.co.kr/"
+    },
+    {
+      "url": "https://www.ddp.or.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.oliveyoung.co.kr/",
+      "error": "Could not load https://www.oliveyoung.co.kr/: HTTP 403 at https://www.oliveyoung.co.kr/; HTTP 403 at https://www.oliveyoung.co.kr/"
+    },
+    {
+      "url": "https://www.twosome.co.kr/",
+      "error": "Could not load https://www.twosome.co.kr/: HTTP 403 at https://www.twosome.co.kr/; HTTP 403 at https://www.twosome.co.kr/"
+    },
+    {
+      "url": "https://www.beautifulstore.org/",
+      "error": "Could not load https://www.beautifulstore.org/: HTTP 403 at https://www.beautifulstore.org/; HTTP 403 at https://www.beautifulstore.org/"
+    },
+    {
+      "url": "https://www.hanyang.ac.kr/",
+      "error": "Could not load https://www.hanyang.ac.kr/: HTTP 403 at https://www.hanyang.ac.kr/; HTTP 403 at https://www.hanyang.ac.kr/"
+    },
+    {
+      "url": "https://www.nl.go.kr/",
+      "error": "Could not load https://www.nl.go.kr/: page.evaluate: TypeError: style.has is not a function"
+    },
+    {
+      "url": "https://www.amc.seoul.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.catch.co.kr/",
+      "error": "Could not load https://www.catch.co.kr/: HTTP 403 at https://www.catch.co.kr/; HTTP 403 at https://www.catch.co.kr/"
+    },
+    {
+      "url": "https://www.hanwhalife.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.kimchang.com/ko/",
+      "error": "Could not load https://www.kimchang.com/ko/: HTTP 404 at https://www.kimchang.com/ko/; HTTP 404 at https://www.kimchang.com/ko/"
+    },
+    {
+      "url": "https://www.saramin.co.kr/",
+      "error": "Could not load https://www.saramin.co.kr/: page.goto: net::ERR_CONNECTION_RESET at https://www.saramin.co.kr/"
+    },
+    {
+      "url": "https://www.udental.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.wanted.co.kr/",
+      "error": "Could not load https://www.wanted.co.kr/: HTTP 403 at https://www.wanted.co.kr/; HTTP 403 at https://www.wanted.co.kr/"
+    },
+    {
+      "url": "https://www.yesdental.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://ohou.se/",
+      "error": "Could not load https://ohou.se/: HTTP 403 at https://ohou.se/; HTTP 403 at https://ohou.se/"
+    },
+    {
+      "url": "https://www.barogo.com/",
+      "error": "Could not load https://www.barogo.com/: page.goto: Timeout 45000ms exceeded."
+    },
+    {
+      "url": "https://www.cashnote.kr/",
+      "error": "Could not load https://cashnote.kr/: HTTP 403 at https://cashnote.kr/; HTTP 403 at https://cashnote.kr/"
+    },
+    {
+      "url": "https://www.gabia.com/",
+      "error": "Could not load https://www.gabia.com/: HTTP 520 at https://www.gabia.com/; HTTP 520 at https://www.gabia.com/"
+    },
+    {
+      "url": "https://www.inflearn.com/",
+      "error": "Could not load https://www.inflearn.com/: HTTP 403 at https://www.inflearn.com/; HTTP 403 at https://www.inflearn.com/"
+    },
+    {
+      "url": "https://www.kakaopay.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.pantos.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.rememberapp.co.kr/",
+      "error": "Could not load https://www.rememberapp.co.kr/: HTTP 403 at https://www.rememberapp.co.kr/; HTTP 403 at https://www.rememberapp.co.kr/"
+    },
+    {
+      "url": "https://www.teamfresh.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.yanolja.com/",
+      "error": "Could not load https://www.yanolja.com/: HTTP 403 at https://nol.yanolja.com/; HTTP 403 at https://nol.yanolja.com/"
+    },
+    {
+      "url": "https://workroom.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.cfcseoul.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.propaganda.co.kr/",
+      "error": "unreachable"
+    }
+  ],
+  "split": {
+    "tune": 133,
+    "holdout": 47
+  },
+  "all": {
+    "n": 180,
+    "score": {
+      "n": 180,
+      "p10": 0,
+      "p50": 6,
+      "p90": 24,
+      "flagged20": 0.11,
+      "flagged30": 0.07
+    },
+    "signals": {
+      "transition-all": 0.69,
+      "flat-scale": 0.43,
+      "generic-type": 0.29,
+      "generic-cta": 0.27,
+      "many-hues": 0.18,
+      "empty-frames": 0.12,
+      "default-accent": 0.11,
+      "centered": 0.08,
+      "large-gradient": 0.08,
+      "buzzword-copy": 0.07,
+      "accent-word": 0.06,
+      "emoji-icons": 0.05,
+      "gradient-text": 0.05,
+      "nested-cards": 0.04,
+      "card-grid": 0.03,
+      "eyebrow-pill": 0.03,
+      "glass": 0.03,
+      "numbered-labels": 0.03,
+      "purple-gradient": 0.03,
+      "boxed-icons": 0.02,
+      "hero-cta-below": 0.02,
+      "over-rounded": 0.02,
+      "period-headlines": 0.02,
+      "tinted-page": 0.02,
+      "tracked-labels": 0.01
+    },
+    "type": {
+      "bodySize": {
+        "n": 180,
+        "p10": 12,
+        "p50": 16,
+        "p90": 20
+      },
+      "displayRatio": {
+        "n": 180,
+        "p10": 1.44,
+        "p50": 2.67,
+        "p90": 5
+      },
+      "sizes": {
+        "n": 180,
+        "p10": 6,
+        "p50": 9,
+        "p90": 15
+      },
+      "weights": {
+        "n": 180,
+        "p10": 2,
+        "p50": 4,
+        "p90": 5
+      },
+      "webfontShare": 0.97
+    },
+    "color": {
+      "hues": {
+        "n": 180,
+        "p10": 1,
+        "p50": 2,
+        "p90": 5
+      },
+      "darkShare": 0.04
+    },
+    "layout": {
+      "centered": {
+        "n": 180,
+        "p10": 0,
+        "p50": 0.05,
+        "p90": 0.5
+      },
+      "rounded": {
+        "n": 180,
+        "p10": 0,
+        "p50": 0,
+        "p90": 0.42
+      },
+      "trackedAny": 0.01,
+      "tracked": {
+        "n": 180,
+        "p10": 0,
+        "p50": 0,
+        "p90": 0
+      }
+    },
+    "japanese": {
+      "n": 2,
+      "lineHeight": {
+        "n": 1,
+        "p10": 1.57,
+        "p50": 1.57,
+        "p90": 1.57
+      },
+      "bodySize": {
+        "n": 1,
+        "p10": 14,
+        "p50": 14,
+        "p90": 14
+      },
+      "noJaFontShare": 0,
+      "tightShare": 0,
+      "phraseAware": 0,
+      "topFamilies": [
+        [
+          "notosansjp",
+          1
+        ],
+        [
+          "notosans-regular-jp",
+          1
+        ]
+      ],
+      "issues": {
+        "ja-tracking": 0.5
+      }
+    }
+  },
+  "byCategory": {
+    "company": {
+      "n": 26,
+      "score": {
+        "n": 26,
+        "p10": 0,
+        "p50": 4,
+        "p90": 19,
+        "flagged20": 0.08,
+        "flagged30": 0.04
+      },
+      "signals": {
+        "transition-all": 0.81,
+        "flat-scale": 0.42,
+        "generic-cta": 0.19,
+        "generic-type": 0.12,
+        "numbered-labels": 0.12,
+        "accent-word": 0.08,
+        "empty-frames": 0.08,
+        "glass": 0.08,
+        "buzzword-copy": 0.04,
+        "card-grid": 0.04,
+        "default-accent": 0.04,
+        "emoji-icons": 0.04,
+        "gradient-text": 0.04,
+        "hero-cta-below": 0.04,
+        "large-gradient": 0.04,
+        "over-rounded": 0.04
+      },
+      "type": {
+        "bodySize": {
+          "n": 26,
+          "p10": 12,
+          "p50": 15,
+          "p90": 22
+        },
+        "displayRatio": {
+          "n": 26,
+          "p10": 1.78,
+          "p50": 2.92,
+          "p90": 5.45
+        },
+        "sizes": {
+          "n": 26,
+          "p10": 6,
+          "p50": 9,
+          "p90": 15
+        },
+        "weights": {
+          "n": 26,
+          "p10": 1,
+          "p50": 3,
+          "p90": 5
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 26,
+          "p10": 1,
+          "p50": 1,
+          "p90": 3
+        },
+        "darkShare": 0.04
+      },
+      "layout": {
+        "centered": {
+          "n": 26,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.43
+        },
+        "rounded": {
+          "n": 26,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.28
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 26,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": {
+        "n": 1,
+        "lineHeight": {
+          "n": 0,
+          "p10": null,
+          "p50": null,
+          "p90": null
+        },
+        "bodySize": {
+          "n": 0,
+          "p10": null,
+          "p50": null,
+          "p90": null
+        },
+        "noJaFontShare": 0,
+        "tightShare": 0,
+        "phraseAware": 0,
+        "topFamilies": [
+          [
+            "notosansjp",
+            1
+          ]
+        ],
+        "issues": {
+          "ja-tracking": 1
+        }
+      }
+    },
+    "media": {
+      "n": 12,
+      "score": {
+        "n": 12,
+        "p10": 4,
+        "p50": 8,
+        "p90": 12,
+        "flagged20": 0.08,
+        "flagged30": 0.08
+      },
+      "signals": {
+        "transition-all": 0.75,
+        "flat-scale": 0.67,
+        "generic-type": 0.33,
+        "many-hues": 0.25,
+        "generic-cta": 0.17,
+        "purple-gradient": 0.17,
+        "emoji-icons": 0.08,
+        "empty-frames": 0.08,
+        "gradient-text": 0.08,
+        "large-gradient": 0.08
+      },
+      "type": {
+        "bodySize": {
+          "n": 12,
+          "p10": 13,
+          "p50": 16,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 12,
+          "p10": 1.5,
+          "p50": 2.12,
+          "p90": 2.77
+        },
+        "sizes": {
+          "n": 12,
+          "p10": 8,
+          "p50": 10,
+          "p90": 15
+        },
+        "weights": {
+          "n": 12,
+          "p10": 3,
+          "p50": 4,
+          "p90": 7
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 12,
+          "p10": 2,
+          "p50": 4,
+          "p90": 7
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.02
+        },
+        "rounded": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.07
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    },
+    "place": {
+      "n": 33,
+      "score": {
+        "n": 33,
+        "p10": 0,
+        "p50": 5,
+        "p90": 19,
+        "flagged20": 0,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.67,
+        "flat-scale": 0.52,
+        "generic-type": 0.24,
+        "default-accent": 0.21,
+        "generic-cta": 0.18,
+        "centered": 0.15,
+        "empty-frames": 0.15,
+        "glass": 0.06,
+        "large-gradient": 0.06,
+        "many-hues": 0.06,
+        "tinted-page": 0.06,
+        "accent-word": 0.03,
+        "emoji-icons": 0.03,
+        "eyebrow-pill": 0.03,
+        "tracked-labels": 0.03
+      },
+      "type": {
+        "bodySize": {
+          "n": 33,
+          "p10": 12,
+          "p50": 14,
+          "p90": 20
+        },
+        "displayRatio": {
+          "n": 33,
+          "p10": 1.33,
+          "p50": 2.5,
+          "p90": 4.32
+        },
+        "sizes": {
+          "n": 33,
+          "p10": 3,
+          "p50": 8,
+          "p90": 12
+        },
+        "weights": {
+          "n": 33,
+          "p10": 2,
+          "p50": 3,
+          "p90": 5
+        },
+        "webfontShare": 0.97
+      },
+      "color": {
+        "hues": {
+          "n": 33,
+          "p10": 0,
+          "p50": 2,
+          "p90": 3
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 33,
+          "p10": 0,
+          "p50": 0.1,
+          "p90": 0.42
+        },
+        "rounded": {
+          "n": 33,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.08
+        },
+        "trackedAny": 0.06,
+        "tracked": {
+          "n": 33,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": {
+        "n": 1,
+        "lineHeight": {
+          "n": 1,
+          "p10": 1.57,
+          "p50": 1.57,
+          "p90": 1.57
+        },
+        "bodySize": {
+          "n": 1,
+          "p10": 14,
+          "p50": 14,
+          "p90": 14
+        },
+        "noJaFontShare": 0,
+        "tightShare": 0,
+        "phraseAware": 0,
+        "topFamilies": [
+          [
+            "notosans-regular-jp",
+            1
+          ]
+        ],
+        "issues": {}
+      }
+    },
+    "public": {
+      "n": 36,
+      "score": {
+        "n": 36,
+        "p10": 0,
+        "p50": 8,
+        "p90": 14,
+        "flagged20": 0.06,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.78,
+        "flat-scale": 0.42,
+        "generic-type": 0.39,
+        "generic-cta": 0.36,
+        "many-hues": 0.25,
+        "accent-word": 0.14,
+        "default-accent": 0.14,
+        "large-gradient": 0.11,
+        "nested-cards": 0.08,
+        "eyebrow-pill": 0.06,
+        "card-grid": 0.03,
+        "centered": 0.03,
+        "emoji-icons": 0.03,
+        "empty-frames": 0.03,
+        "over-rounded": 0.03
+      },
+      "type": {
+        "bodySize": {
+          "n": 36,
+          "p10": 14,
+          "p50": 16,
+          "p90": 20
+        },
+        "displayRatio": {
+          "n": 36,
+          "p10": 1.41,
+          "p50": 2.45,
+          "p90": 5.63
+        },
+        "sizes": {
+          "n": 36,
+          "p10": 7,
+          "p50": 11,
+          "p90": 16
+        },
+        "weights": {
+          "n": 36,
+          "p10": 2,
+          "p50": 4,
+          "p90": 6
+        },
+        "webfontShare": 0.94
+      },
+      "color": {
+        "hues": {
+          "n": 36,
+          "p10": 1,
+          "p50": 3,
+          "p90": 6
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 36,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.33
+        },
+        "rounded": {
+          "n": 36,
+          "p10": 0,
+          "p50": 0.07,
+          "p90": 0.48
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 36,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    },
+    "service": {
+      "n": 21,
+      "score": {
+        "n": 21,
+        "p10": 0,
+        "p50": 8,
+        "p90": 16,
+        "flagged20": 0,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.62,
+        "flat-scale": 0.52,
+        "many-hues": 0.33,
+        "centered": 0.29,
+        "generic-cta": 0.29,
+        "generic-type": 0.19,
+        "default-accent": 0.14,
+        "accent-word": 0.05,
+        "nested-cards": 0.05,
+        "over-rounded": 0.05
+      },
+      "type": {
+        "bodySize": {
+          "n": 21,
+          "p10": 13,
+          "p50": 16,
+          "p90": 20
+        },
+        "displayRatio": {
+          "n": 21,
+          "p10": 1.57,
+          "p50": 2.5,
+          "p90": 4.5
+        },
+        "sizes": {
+          "n": 21,
+          "p10": 7,
+          "p50": 9,
+          "p90": 13
+        },
+        "weights": {
+          "n": 21,
+          "p10": 2,
+          "p50": 4,
+          "p90": 5
+        },
+        "webfontShare": 0.95
+      },
+      "color": {
+        "hues": {
+          "n": 21,
+          "p10": 1,
+          "p50": 3,
+          "p90": 5
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 21,
+          "p10": 0,
+          "p50": 0.27,
+          "p90": 1
+        },
+        "rounded": {
+          "n": 21,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.14
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 21,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    },
+    "software": {
+      "n": 45,
+      "score": {
+        "n": 45,
+        "p10": 0,
+        "p50": 12,
+        "p90": 39,
+        "flagged20": 0.31,
+        "flagged30": 0.22
+      },
+      "signals": {
+        "transition-all": 0.6,
+        "generic-type": 0.4,
+        "generic-cta": 0.36,
+        "flat-scale": 0.29,
+        "buzzword-copy": 0.24,
+        "empty-frames": 0.22,
+        "many-hues": 0.22,
+        "gradient-text": 0.16,
+        "large-gradient": 0.16,
+        "emoji-icons": 0.11,
+        "card-grid": 0.09,
+        "purple-gradient": 0.09,
+        "boxed-icons": 0.07,
+        "centered": 0.07,
+        "default-accent": 0.07,
+        "hero-cta-below": 0.07,
+        "nested-cards": 0.07,
+        "period-headlines": 0.07,
+        "eyebrow-pill": 0.04,
+        "glass": 0.04,
+        "numbered-labels": 0.04,
+        "tinted-page": 0.04,
+        "accent-word": 0.02,
+        "over-rounded": 0.02
+      },
+      "type": {
+        "bodySize": {
+          "n": 45,
+          "p10": 12,
+          "p50": 16,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 45,
+          "p10": 1.75,
+          "p50": 3.29,
+          "p90": 5
+        },
+        "sizes": {
+          "n": 45,
+          "p10": 6,
+          "p50": 10,
+          "p90": 16
+        },
+        "weights": {
+          "n": 45,
+          "p10": 2,
+          "p50": 4,
+          "p90": 5
+        },
+        "webfontShare": 0.98
+      },
+      "color": {
+        "hues": {
+          "n": 45,
+          "p10": 1,
+          "p50": 2,
+          "p90": 6
+        },
+        "darkShare": 0.09
+      },
+      "layout": {
+        "centered": {
+          "n": 45,
+          "p10": 0,
+          "p50": 0.1,
+          "p90": 0.35
+        },
+        "rounded": {
+          "n": 45,
+          "p10": 0,
+          "p50": 0.05,
+          "p90": 0.63
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 45,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    },
+    "studio": {
+      "n": 7,
+      "score": {
+        "n": 7,
+        "p10": 0,
+        "p50": 0,
+        "p90": 11,
+        "flagged20": 0,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.57,
+        "flat-scale": 0.43,
+        "empty-frames": 0.29,
+        "generic-type": 0.14,
+        "many-hues": 0.14
+      },
+      "type": {
+        "bodySize": {
+          "n": 7,
+          "p10": 11,
+          "p50": 16,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 7,
+          "p10": 1,
+          "p50": 3,
+          "p90": 6
+        },
+        "sizes": {
+          "n": 7,
+          "p10": 1,
+          "p50": 6,
+          "p90": 9
+        },
+        "weights": {
+          "n": 7,
+          "p10": 2,
+          "p50": 2,
+          "p90": 3
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 7,
+          "p10": 0,
+          "p50": 1,
+          "p90": 5
+        },
+        "darkShare": 0.43
+      },
+      "layout": {
+        "centered": {
+          "n": 7,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.5
+        },
+        "rounded": {
+          "n": 7,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 7,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    }
+  }
+}
