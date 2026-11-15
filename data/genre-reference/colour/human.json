@@ -1,0 +1,934 @@
+{
+ "schemaVersion": 1,
+ "measured": "2026-11-15",
+ "sites": 571,
+ "skipped": 103,
+ "all": {
+  "sites": 571,
+  "ground": {
+   "light": 0.501,
+   "image": 0.399,
+   "dark": 0.07,
+   "blue": 0.018,
+   "orange": 0.005,
+   "amber": 0.004,
+   "red": 0.002,
+   "green": 0.002
+  },
+  "accent": {
+   "ink": 0.342,
+   "blue": 0.229,
+   "indigo": 0.11,
+   "red": 0.105,
+   "orange": 0.051,
+   "amber": 0.047,
+   "teal": 0.039,
+   "green": 0.033,
+   "pink": 0.026,
+   "brown": 0.018
+  }
+ },
+ "byCountry": {
+  "KR": {
+   "sites": 162,
+   "ground": {
+    "light": 0.481,
+    "image": 0.42,
+    "dark": 0.093,
+    "green": 0.006
+   },
+   "accent": {
+    "ink": 0.389,
+    "blue": 0.191,
+    "red": 0.111,
+    "indigo": 0.111,
+    "amber": 0.056,
+    "orange": 0.049,
+    "green": 0.031,
+    "brown": 0.025,
+    "teal": 0.019,
+    "pink": 0.019
+   }
+  },
+  "JP": {
+   "sites": 409,
+   "ground": {
+    "light": 0.509,
+    "image": 0.391,
+    "dark": 0.061,
+    "blue": 0.024,
+    "orange": 0.007,
+    "amber": 0.005,
+    "red": 0.002
+   },
+   "accent": {
+    "ink": 0.323,
+    "blue": 0.244,
+    "indigo": 0.11,
+    "red": 0.103,
+    "orange": 0.051,
+    "teal": 0.046,
+    "amber": 0.044,
+    "green": 0.034,
+    "pink": 0.029,
+    "brown": 0.015
+   }
+  },
+  "EN": {
+   "sites": 0,
+   "ground": {},
+   "accent": {}
+  }
+ },
+ "byKind": {
+  "company": {
+   "sites": 150,
+   "ground": {
+    "light": 0.553,
+    "image": 0.347,
+    "dark": 0.067,
+    "orange": 0.02,
+    "blue": 0.007,
+    "green": 0.007
+   },
+   "accent": {
+    "ink": 0.447,
+    "blue": 0.233,
+    "indigo": 0.113,
+    "red": 0.1,
+    "orange": 0.04,
+    "amber": 0.033,
+    "pink": 0.013,
+    "green": 0.013,
+    "brown": 0.007
+   }
+  },
+  "company/JP": {
+   "sites": 110,
+   "ground": {
+    "light": 0.509,
+    "image": 0.382,
+    "dark": 0.073,
+    "orange": 0.027,
+    "blue": 0.009
+   },
+   "accent": {
+    "ink": 0.427,
+    "blue": 0.255,
+    "indigo": 0.127,
+    "red": 0.082,
+    "amber": 0.036,
+    "orange": 0.036,
+    "pink": 0.018,
+    "green": 0.009,
+    "brown": 0.009
+   }
+  },
+  "company/KR": {
+   "sites": 40,
+   "ground": {
+    "light": 0.675,
+    "image": 0.25,
+    "dark": 0.05,
+    "green": 0.025
+   },
+   "accent": {
+    "ink": 0.5,
+    "blue": 0.175,
+    "red": 0.15,
+    "indigo": 0.075,
+    "orange": 0.05,
+    "amber": 0.025,
+    "green": 0.025
+   }
+  },
+  "media": {
+   "sites": 38,
+   "ground": {
+    "light": 0.447,
+    "image": 0.395,
+    "dark": 0.105,
+    "blue": 0.026,
+    "amber": 0.026
+   },
+   "accent": {
+    "blue": 0.289,
+    "ink": 0.211,
+    "red": 0.184,
+    "indigo": 0.158,
+    "amber": 0.053,
+    "orange": 0.053,
+    "green": 0.026,
+    "pink": 0.026
+   }
+  },
+  "media/JP": {
+   "sites": 24,
+   "ground": {
+    "image": 0.458,
+    "light": 0.417,
+    "dark": 0.042,
+    "blue": 0.042,
+    "amber": 0.042
+   },
+   "accent": {
+    "blue": 0.417,
+    "red": 0.167,
+    "ink": 0.125,
+    "amber": 0.083,
+    "indigo": 0.083,
+    "green": 0.042,
+    "orange": 0.042,
+    "pink": 0.042
+   }
+  },
+  "media/KR": {
+   "sites": 14,
+   "ground": {
+    "light": 0.5,
+    "image": 0.286,
+    "dark": 0.214
+   },
+   "accent": {
+    "ink": 0.357,
+    "indigo": 0.286,
+    "red": 0.214,
+    "orange": 0.071,
+    "blue": 0.071
+   }
+  },
+  "place": {
+   "sites": 180,
+   "ground": {
+    "light": 0.478,
+    "image": 0.444,
+    "dark": 0.067,
+    "amber": 0.006,
+    "blue": 0.006
+   },
+   "accent": {
+    "ink": 0.383,
+    "blue": 0.117,
+    "red": 0.111,
+    "indigo": 0.094,
+    "teal": 0.067,
+    "orange": 0.061,
+    "amber": 0.05,
+    "green": 0.044,
+    "brown": 0.039,
+    "pink": 0.033
+   }
+  },
+  "place/JP": {
+   "sites": 138,
+   "ground": {
+    "light": 0.493,
+    "image": 0.42,
+    "dark": 0.072,
+    "amber": 0.007,
+    "blue": 0.007
+   },
+   "accent": {
+    "ink": 0.355,
+    "blue": 0.13,
+    "red": 0.116,
+    "indigo": 0.101,
+    "orange": 0.08,
+    "teal": 0.065,
+    "amber": 0.051,
+    "green": 0.043,
+    "pink": 0.036,
+    "brown": 0.022
+   }
+  },
+  "place/KR": {
+   "sites": 42,
+   "ground": {
+    "image": 0.524,
+    "light": 0.429,
+    "dark": 0.048
+   },
+   "accent": {
+    "ink": 0.476,
+    "red": 0.095,
+    "brown": 0.095,
+    "teal": 0.071,
+    "indigo": 0.071,
+    "blue": 0.071,
+    "green": 0.048,
+    "amber": 0.048,
+    "pink": 0.024
+   }
+  },
+  "public": {
+   "sites": 60,
+   "ground": {
+    "image": 0.5,
+    "light": 0.383,
+    "dark": 0.083,
+    "blue": 0.017,
+    "red": 0.017
+   },
+   "accent": {
+    "blue": 0.45,
+    "ink": 0.2,
+    "indigo": 0.1,
+    "red": 0.067,
+    "amber": 0.067,
+    "green": 0.033,
+    "orange": 0.033,
+    "brown": 0.017,
+    "pink": 0.017,
+    "teal": 0.017
+   }
+  },
+  "public/JP": {
+   "sites": 35,
+   "ground": {
+    "image": 0.457,
+    "light": 0.429,
+    "dark": 0.057,
+    "blue": 0.029,
+    "red": 0.029
+   },
+   "accent": {
+    "blue": 0.4,
+    "ink": 0.143,
+    "indigo": 0.114,
+    "red": 0.086,
+    "amber": 0.086,
+    "green": 0.057,
+    "brown": 0.029,
+    "orange": 0.029,
+    "pink": 0.029,
+    "teal": 0.029
+   }
+  },
+  "public/KR": {
+   "sites": 25,
+   "ground": {
+    "image": 0.56,
+    "light": 0.32,
+    "dark": 0.12
+   },
+   "accent": {
+    "blue": 0.52,
+    "ink": 0.28,
+    "indigo": 0.08,
+    "red": 0.04,
+    "amber": 0.04,
+    "orange": 0.04
+   }
+  },
+  "service": {
+   "sites": 143,
+   "ground": {
+    "light": 0.538,
+    "image": 0.357,
+    "dark": 0.063,
+    "blue": 0.042
+   },
+   "accent": {
+    "ink": 0.273,
+    "blue": 0.259,
+    "indigo": 0.119,
+    "red": 0.098,
+    "teal": 0.063,
+    "orange": 0.056,
+    "amber": 0.049,
+    "green": 0.042,
+    "pink": 0.035,
+    "brown": 0.007
+   }
+  },
+  "service/JP": {
+   "sites": 102,
+   "ground": {
+    "light": 0.578,
+    "image": 0.324,
+    "blue": 0.059,
+    "dark": 0.039
+   },
+   "accent": {
+    "blue": 0.294,
+    "ink": 0.275,
+    "indigo": 0.108,
+    "red": 0.098,
+    "teal": 0.088,
+    "orange": 0.039,
+    "green": 0.039,
+    "pink": 0.029,
+    "amber": 0.02,
+    "brown": 0.01
+   }
+  },
+  "service/KR": {
+   "sites": 41,
+   "ground": {
+    "image": 0.439,
+    "light": 0.439,
+    "dark": 0.122
+   },
+   "accent": {
+    "ink": 0.268,
+    "blue": 0.171,
+    "indigo": 0.146,
+    "amber": 0.122,
+    "orange": 0.098,
+    "red": 0.098,
+    "green": 0.049,
+    "pink": 0.049
+   }
+  }
+ },
+ "byTrade": {
+  "academy/JP": {
+   "sites": 23,
+   "ground": {
+    "light": 0.478,
+    "image": 0.391,
+    "blue": 0.087,
+    "dark": 0.043
+   },
+   "accent": {
+    "blue": 0.435,
+    "teal": 0.174,
+    "indigo": 0.13,
+    "ink": 0.087,
+    "red": 0.087,
+    "orange": 0.043,
+    "green": 0.043
+   }
+  },
+  "beauty/JP": {
+   "sites": 10,
+   "ground": {
+    "image": 0.6,
+    "light": 0.3,
+    "dark": 0.1
+   },
+   "accent": {
+    "ink": 0.7,
+    "red": 0.2,
+    "blue": 0.1
+   }
+  },
+  "builder/JP": {
+   "sites": 22,
+   "ground": {
+    "light": 0.591,
+    "image": 0.318,
+    "blue": 0.045,
+    "dark": 0.045
+   },
+   "accent": {
+    "ink": 0.5,
+    "blue": 0.227,
+    "red": 0.136,
+    "brown": 0.045,
+    "green": 0.045,
+    "pink": 0.045
+   }
+  },
+  "builder/KR": {
+   "sites": 8,
+   "ground": {
+    "image": 0.5,
+    "dark": 0.375,
+    "light": 0.125
+   },
+   "accent": {
+    "blue": 0.25,
+    "ink": 0.25,
+    "amber": 0.125,
+    "green": 0.125,
+    "red": 0.125,
+    "orange": 0.125
+   }
+  },
+  "car/JP": {
+   "sites": 10,
+   "ground": {
+    "light": 0.9,
+    "image": 0.1
+   },
+   "accent": {
+    "ink": 0.5,
+    "blue": 0.3,
+    "indigo": 0.1,
+    "amber": 0.1
+   }
+  },
+  "cosmetics/JP": {
+   "sites": 10,
+   "ground": {
+    "image": 0.7,
+    "light": 0.3
+   },
+   "accent": {
+    "blue": 0.6,
+    "indigo": 0.2,
+    "red": 0.1,
+    "ink": 0.1
+   }
+  },
+  "cosmetics/KR": {
+   "sites": 9,
+   "ground": {
+    "light": 0.889,
+    "image": 0.111
+   },
+   "accent": {
+    "ink": 0.556,
+    "indigo": 0.222,
+    "blue": 0.111,
+    "red": 0.111
+   }
+  },
+  "ec/JP": {
+   "sites": 18,
+   "ground": {
+    "light": 0.667,
+    "image": 0.222,
+    "amber": 0.056,
+    "dark": 0.056
+   },
+   "accent": {
+    "ink": 0.444,
+    "red": 0.167,
+    "teal": 0.111,
+    "blue": 0.111,
+    "green": 0.056,
+    "indigo": 0.056,
+    "orange": 0.056
+   }
+  },
+  "ec/KR": {
+   "sites": 8,
+   "ground": {
+    "light": 0.75,
+    "dark": 0.125,
+    "image": 0.125
+   },
+   "accent": {
+    "ink": 0.875,
+    "red": 0.125
+   }
+  },
+  "event/JP": {
+   "sites": 12,
+   "ground": {
+    "light": 0.417,
+    "image": 0.333,
+    "dark": 0.167,
+    "blue": 0.083
+   },
+   "accent": {
+    "blue": 0.5,
+    "indigo": 0.333,
+    "brown": 0.083,
+    "red": 0.083
+   }
+  },
+  "event/KR": {
+   "sites": 12,
+   "ground": {
+    "image": 0.667,
+    "dark": 0.167,
+    "light": 0.167
+   },
+   "accent": {
+    "ink": 0.417,
+    "blue": 0.417,
+    "red": 0.083,
+    "indigo": 0.083
+   }
+  },
+  "farm/JP": {
+   "sites": 25,
+   "ground": {
+    "light": 0.68,
+    "image": 0.28,
+    "dark": 0.04
+   },
+   "accent": {
+    "ink": 0.52,
+    "amber": 0.16,
+    "indigo": 0.12,
+    "blue": 0.08,
+    "red": 0.04,
+    "orange": 0.04,
+    "teal": 0.04
+   }
+  },
+  "farm/KR": {
+   "sites": 9,
+   "ground": {
+    "image": 0.556,
+    "light": 0.444
+   },
+   "accent": {
+    "ink": 0.333,
+    "green": 0.222,
+    "teal": 0.222,
+    "amber": 0.111,
+    "red": 0.111
+   }
+  },
+  "fashion/JP": {
+   "sites": 20,
+   "ground": {
+    "light": 0.55,
+    "image": 0.35,
+    "dark": 0.1
+   },
+   "accent": {
+    "ink": 0.45,
+    "blue": 0.25,
+    "indigo": 0.2,
+    "orange": 0.1
+   }
+  },
+  "fashion/KR": {
+   "sites": 9,
+   "ground": {
+    "light": 0.667,
+    "image": 0.333
+   },
+   "accent": {
+    "ink": 0.778,
+    "red": 0.111,
+    "blue": 0.111
+   }
+  },
+  "finance/JP": {
+   "sites": 12,
+   "ground": {
+    "light": 0.667,
+    "image": 0.167,
+    "dark": 0.083,
+    "blue": 0.083
+   },
+   "accent": {
+    "ink": 0.5,
+    "blue": 0.25,
+    "indigo": 0.167,
+    "green": 0.083
+   }
+  },
+  "fitness/JP": {
+   "sites": 22,
+   "ground": {
+    "image": 0.5,
+    "light": 0.409,
+    "dark": 0.091
+   },
+   "accent": {
+    "blue": 0.227,
+    "ink": 0.136,
+    "amber": 0.136,
+    "red": 0.136,
+    "green": 0.091,
+    "indigo": 0.091,
+    "orange": 0.091,
+    "pink": 0.045,
+    "teal": 0.045
+   }
+  },
+  "food/JP": {
+   "sites": 22,
+   "ground": {
+    "light": 0.409,
+    "image": 0.409,
+    "orange": 0.136,
+    "dark": 0.045
+   },
+   "accent": {
+    "ink": 0.364,
+    "red": 0.227,
+    "blue": 0.227,
+    "indigo": 0.091,
+    "pink": 0.045,
+    "orange": 0.045
+   }
+  },
+  "food/KR": {
+   "sites": 9,
+   "ground": {
+    "light": 0.556,
+    "image": 0.333,
+    "green": 0.111
+   },
+   "accent": {
+    "ink": 0.222,
+    "blue": 0.222,
+    "red": 0.222,
+    "amber": 0.111,
+    "orange": 0.111,
+    "green": 0.111
+   }
+  },
+  "game/JP": {
+   "sites": 24,
+   "ground": {
+    "image": 0.458,
+    "light": 0.417,
+    "dark": 0.042,
+    "blue": 0.042,
+    "amber": 0.042
+   },
+   "accent": {
+    "blue": 0.417,
+    "red": 0.167,
+    "ink": 0.125,
+    "amber": 0.083,
+    "indigo": 0.083,
+    "green": 0.042,
+    "orange": 0.042,
+    "pink": 0.042
+   }
+  },
+  "game/KR": {
+   "sites": 14,
+   "ground": {
+    "light": 0.5,
+    "image": 0.286,
+    "dark": 0.214
+   },
+   "accent": {
+    "ink": 0.357,
+    "indigo": 0.286,
+    "red": 0.214,
+    "orange": 0.071,
+    "blue": 0.071
+   }
+  },
+  "inn/JP": {
+   "sites": 25,
+   "ground": {
+    "image": 0.48,
+    "light": 0.44,
+    "dark": 0.08
+   },
+   "accent": {
+    "ink": 0.36,
+    "blue": 0.16,
+    "indigo": 0.12,
+    "green": 0.12,
+    "orange": 0.08,
+    "pink": 0.08,
+    "brown": 0.04,
+    "teal": 0.04
+   }
+  },
+  "interior/JP": {
+   "sites": 11,
+   "ground": {
+    "light": 0.818,
+    "image": 0.182
+   },
+   "accent": {
+    "ink": 0.636,
+    "blue": 0.091,
+    "amber": 0.091,
+    "red": 0.091,
+    "indigo": 0.091
+   }
+  },
+  "kids/JP": {
+   "sites": 10,
+   "ground": {
+    "light": 0.7,
+    "image": 0.2,
+    "blue": 0.1
+   },
+   "accent": {
+    "blue": 0.3,
+    "teal": 0.2,
+    "ink": 0.2,
+    "red": 0.2,
+    "pink": 0.1
+   }
+  },
+  "maker/JP": {
+   "sites": 27,
+   "ground": {
+    "light": 0.444,
+    "image": 0.37,
+    "dark": 0.148,
+    "blue": 0.037
+   },
+   "accent": {
+    "ink": 0.37,
+    "blue": 0.259,
+    "indigo": 0.148,
+    "amber": 0.074,
+    "green": 0.037,
+    "brown": 0.037,
+    "orange": 0.037,
+    "pink": 0.037
+   }
+  },
+  "maker/KR": {
+   "sites": 13,
+   "ground": {
+    "light": 0.615,
+    "image": 0.231,
+    "dark": 0.154
+   },
+   "accent": {
+    "ink": 0.462,
+    "blue": 0.231,
+    "red": 0.154,
+    "orange": 0.077,
+    "indigo": 0.077
+   }
+  },
+  "realestate/JP": {
+   "sites": 8,
+   "ground": {
+    "image": 0.5,
+    "light": 0.5
+   },
+   "accent": {
+    "blue": 0.375,
+    "indigo": 0.125,
+    "orange": 0.125,
+    "teal": 0.125,
+    "green": 0.125,
+    "ink": 0.125
+   }
+  },
+  "restaurant/JP": {
+   "sites": 12,
+   "ground": {
+    "image": 0.417,
+    "light": 0.417,
+    "dark": 0.167
+   },
+   "accent": {
+    "red": 0.5,
+    "indigo": 0.167,
+    "ink": 0.083,
+    "teal": 0.083,
+    "orange": 0.083,
+    "blue": 0.083
+   }
+  },
+  "salon/JP": {
+   "sites": 13,
+   "ground": {
+    "image": 0.692,
+    "light": 0.231,
+    "dark": 0.077
+   },
+   "accent": {
+    "ink": 0.385,
+    "indigo": 0.154,
+    "red": 0.154,
+    "orange": 0.077,
+    "teal": 0.077,
+    "pink": 0.077,
+    "blue": 0.077
+   }
+  },
+  "skin/JP": {
+   "sites": 8,
+   "ground": {
+    "image": 0.625,
+    "light": 0.375
+   },
+   "accent": {
+    "indigo": 0.25,
+    "amber": 0.25,
+    "blue": 0.125,
+    "ink": 0.125,
+    "pink": 0.125,
+    "red": 0.125
+   }
+  },
+  "skin/KR": {
+   "sites": 13,
+   "ground": {
+    "image": 0.462,
+    "light": 0.462,
+    "dark": 0.077
+   },
+   "accent": {
+    "amber": 0.231,
+    "indigo": 0.231,
+    "ink": 0.231,
+    "pink": 0.154,
+    "green": 0.077,
+    "red": 0.077
+   }
+  },
+  "tax/JP": {
+   "sites": 10,
+   "ground": {
+    "light": 0.6,
+    "image": 0.3,
+    "blue": 0.1
+   },
+   "accent": {
+    "blue": 0.4,
+    "indigo": 0.2,
+    "teal": 0.2,
+    "ink": 0.1,
+    "orange": 0.1
+   }
+  },
+  "tourism/JP": {
+   "sites": 23,
+   "ground": {
+    "image": 0.522,
+    "light": 0.435,
+    "red": 0.043
+   },
+   "accent": {
+    "blue": 0.348,
+    "ink": 0.217,
+    "amber": 0.13,
+    "green": 0.087,
+    "red": 0.087,
+    "orange": 0.043,
+    "pink": 0.043,
+    "teal": 0.043
+   }
+  },
+  "tourism/KR": {
+   "sites": 13,
+   "ground": {
+    "light": 0.462,
+    "image": 0.462,
+    "dark": 0.077
+   },
+   "accent": {
+    "blue": 0.615,
+    "ink": 0.154,
+    "amber": 0.077,
+    "indigo": 0.077,
+    "orange": 0.077
+   }
+  },
+  "wedding/JP": {
+   "sites": 23,
+   "ground": {
+    "light": 0.478,
+    "image": 0.435,
+    "dark": 0.043,
+    "blue": 0.043
+   },
+   "accent": {
+    "ink": 0.435,
+    "orange": 0.13,
+    "blue": 0.13,
+    "teal": 0.087,
+    "brown": 0.087,
+    "red": 0.043,
+    "indigo": 0.043,
+    "pink": 0.043
+   }
+  }
+ }
+}

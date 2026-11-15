@@ -109,7 +109,9 @@ const out=latest.filter(r=>!r.skipped),skipped=latest.filter(r=>r.skipped).map(r
 const dist=list=>{const g={},a={};for(const s of list){g[s.ground]=(g[s.ground]||0)+1;a[s.accent]=(a[s.accent]||0)+1;}const norm=o=>Object.fromEntries(Object.entries(o).sort((x,y)=>y[1]-x[1]).map(([k,v])=>[k,Math.round(v/list.length*1000)/1000]));return {sites:list.length,ground:norm(g),accent:norm(a)};};
 const byKind={};
 for(const s of out){for(const key of [s.kind,`${s.kind}/${s.country}`]){(byKind[key]=byKind[key]||[]).push(s);}}
-const summary={schemaVersion:1,measured:new Date().toISOString().slice(0,10),sites:out.length,skipped:skipped.length,all:dist(out),byCountry:Object.fromEntries(['KR','JP','EN'].map(c=>[c,dist(out.filter(s=>s.country===c))])),byKind:Object.fromEntries(Object.entries(byKind).sort().map(([k,v])=>[k,dist(v)]))};
+const summary={schemaVersion:1,measured:new Date().toISOString().slice(0,10),sites:out.length,skipped:skipped.length,all:dist(out),byCountry:Object.fromEntries(['KR','JP','EN'].map(c=>[c,dist(out.filter(s=>s.country===c))])),byKind:Object.fromEntries(Object.entries(byKind).sort().map(([k,v])=>[k,dist(v)])),
+ // By trade and country (for example "salon/JP"), only where at least eight sites were measured.
+ byTrade:Object.fromEntries(Object.entries(Object.groupBy(out,s=>`${s.trade}/${s.country}`)).filter(([,v])=>v.length>=8).sort().map(([k,v])=>[k,dist(v)]))};
 await fs.writeFile(path.join(outDir,'sites.json'),JSON.stringify(out.sort((a,b)=>a.host.localeCompare(b.host)),null,0).replace(/\},\{/g,'},\n{')+'\n');
 await fs.writeFile(path.join(outDir,'human.json'),JSON.stringify(summary,null,1)+'\n');
 console.log(`\nmeasured ${out.length}, skipped ${skipped.length}`);
