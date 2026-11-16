@@ -5,8 +5,33 @@ import crypto from 'node:crypto';
 /** Fixed split from the host (www ignored): ~70% tune, ~30% holdout. Stable across runs and machines. */
 export const splitOf=host=>parseInt(crypto.createHash('sha1').update(String(host).replace(/^www\./,'')).digest('hex').slice(0,8),16)%10<7?'tune':'holdout';
 
-/** robots.txt for the "*" group: the longest matching Allow/Disallow wins, Allow wins ties; * and $ supported. */
-export function robotsAllows(txt,pathname='/'){
+/**
+ * What a robots.txt response means for a collector: 'allow', 'block' or 'retry'.
+ * No file (404, 410 and other 4xx) allows; 401 and 403 block, since the site is refusing this client; 429, 5xx
+ * and a failed request (status null) are not an answer, so the site is held for a later run instead of measured.
+ */
+export function robotsPolicy(status,txt='',pathname='/',agent){
+ if(status==null||status===429||status>=500)return 'retry';
+ if(status===401||status===403)return 'block';
+ if(status>=400)return 'allow';
+ return robotsAllows(txt,pathname,agent)?'allow':'block';
+}
+
+/**
+ * Rows a resumed run still has to do: ones never tried, and ones whose last try failed for a passing reason
+ * (`done` is false) and that have been tried fewer than `attempts` times. `records` is the run log, oldest first.
+ */
+export function pendingRows(rows,records,{rowKey,recKey,done,attempts=3}){
+ const tries=new Map(),last=new Map();
+ for(const r of records){const k=recKey(r);tries.set(k,(tries.get(k)||0)+1);last.set(k,r);}
+ return rows.filter(row=>{const k=rowKey(row);return !last.has(k)||(!done(last.get(k))&&tries.get(k)<attempts);});
+}
+
+/**
+ * robots.txt: the longest matching Allow/Disallow wins, Allow wins ties; * and $ supported. A group that names
+ * `agent` (a product token such as "ui-refiner-reference") is used when there is one, otherwise the "*" group.
+ */
+export function robotsAllows(txt,pathname='/',agent){
  const groups=[];let cur=null,lastWasAgent=false;
  for(const raw of String(txt).split(/\r?\n/)){
   const line=raw.replace(/#.*/,'').trim(),m=line.match(/^([a-z-]+)\s*:\s*(.*)$/i);if(!m)continue;
@@ -16,7 +41,8 @@ export function robotsAllows(txt,pathname='/'){
  }
  const toRe=p=>new RegExp('^'+p.replace(/[.+?^{}()|[\]\\]/g,'\\$&').replace(/\*/g,'.*'));
  let best=null;
- for(const r of groups.filter(g=>g.agents.includes('*')).flatMap(g=>g.rules))
+ const own=agent?groups.filter(g=>g.agents.includes(agent.toLowerCase())):[];
+ for(const r of (own.length?own:groups.filter(g=>g.agents.includes('*'))).flatMap(g=>g.rules))
   if(toRe(r.path).test(pathname)&&(!best||r.path.length>best.path.length||(r.path.length===best.path.length&&r.allow)))best=r;
  return !best||best.allow;
 }
