@@ -97,6 +97,8 @@ For a refine, the agent:
 2. builds three directions from three sources, each in its own subagent (familiar: what human-made sites of the kind do, as measured; tailored: colour and type from this client's content; bold: one material throughout), then shows them side by side (`refine-directions/DIRECTIONS.html`) and waits for your pick;
 3. rebuilds the page, verifies it and rescans.
 
+After the pick, "a little bolder" or "quieter on the pricing section" does not start over: it turns up or down the type, colour and elements the page already has.
+
 The report follows the page language: English, Korean or Japanese.
 
 ## Learn more
