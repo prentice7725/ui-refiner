@@ -66,3 +66,26 @@ test('bundled Japanese reference data loads', async () => {
  const {loadJaReference}=await import('../src/reference.mjs');
  const sites=await loadJaReference();assert.ok(sites.filter(s=>s.status==='ok').length>=150);
 });
+
+test('a robots.txt that could not be read is not permission',async()=>{
+ const {robotsPolicy,robotsAllows}=await import('../src/reference.mjs');
+ assert.equal(robotsPolicy(404),'allow');assert.equal(robotsPolicy(410),'allow');
+ assert.equal(robotsPolicy(401),'block');assert.equal(robotsPolicy(403),'block');
+ for(const s of [null,undefined,429,500,503])assert.equal(robotsPolicy(s),'retry',`status ${s} holds the site`);
+ assert.equal(robotsPolicy(200,'User-agent: *\nDisallow: /'),'block');
+ assert.equal(robotsPolicy(200,'User-agent: *\nDisallow: /admin'),'allow');
+ // A group that names this collector replaces the "*" group, either way.
+ const own='User-agent: ui-refiner-reference\nDisallow: /\n\nUser-agent: *\nAllow: /';
+ assert.equal(robotsAllows(own,'/'),true);assert.equal(robotsAllows(own,'/','ui-refiner-reference'),false);
+ assert.equal(robotsPolicy(200,own,'/','UI-Refiner-Reference'),'block');
+ assert.equal(robotsAllows('User-agent: ui-refiner-reference\nAllow: /\n\nUser-agent: *\nDisallow: /','/','ui-refiner-reference'),true);
+});
+
+test('a resumed run does new rows and passing failures, up to the attempt limit',async()=>{
+ const {pendingRows}=await import('../src/reference.mjs');
+ const rows=['a','b','c','d','e'].map(h=>({h})),opt={rowKey:r=>r.h,recKey:r=>r.host,done:r=>!r.skipped||r.skipped==='robots',attempts:3};
+ const log=[{host:'a'},{host:'b',skipped:'robots'},{host:'c',skipped:'timeout'},{host:'d',skipped:'timeout'},{host:'d',skipped:'timeout'},{host:'d',skipped:'timeout'}];
+ assert.deepEqual(pendingRows(rows,log,opt).map(r=>r.h),['c','e'],'measured and blocked are final, three failures give up');
+ assert.deepEqual(pendingRows(rows,[...log,{host:'c'}],opt).map(r=>r.h),['e'],'a later success settles it');
+ assert.deepEqual(pendingRows(rows,[],opt).length,5);
+});

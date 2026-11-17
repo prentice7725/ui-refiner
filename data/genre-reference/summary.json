@@ -1,16 +1,31 @@
 {
-  "generatedAt": "2026-11-15T15:09:11.472Z",
-  "attempted": 674,
-  "ok": 598,
+  "generatedAt": "2026-11-17T08:51:39.380Z",
+  "attempted": 1025,
+  "ok": 857,
   "skippedRobots": [
+    "https://www.kawai-juku.ac.jp/",
     "https://truekindskincare.com/",
+    "https://www.misawa.co.jp/",
     "https://oci.madebybuzzworthy.com/",
+    "https://gengoseikastu.jimdoweb.com/",
+    "http://www.bell-shika.com/",
+    "https://www.belluna.jp/",
+    "https://jinsholdings.com/jp/ja",
+    "https://info.monex.co.jp/introduction/",
+    "https://www.cygames.co.jp/",
     "https://www.apamanshop.com/",
+    "https://www.chester-tax.com/",
     "https://www.sdij.com/",
     "https://www.casamia.co.kr/",
     "https://www.hyundailivart.co.kr/",
+    "https://www.drjart.co.kr/",
     "https://www.hera.com/kr/ko/",
     "https://www.laneige.com/kr/ko/",
+    "http://landing.sundent.co.kr/",
+    "http://www.gndental.net/",
+    "http://www.hanarodent.com/",
+    "http://www.opendent.co.kr/",
+    "http://www.ortho-song.com/",
     "https://www.hmall.com/",
     "https://www.idus.com/",
     "https://www.thehyundai.com/",
@@ -23,18 +38,23 @@
     "https://www.cjenm.com/",
     "https://www.lakaisandpine.co.kr/",
     "https://www.stayfolio.com/",
+    "http://www.821075.com/",
+    "http://www.jejung.net/",
+    "http://www.seungsan.kr/",
+    "https://healim.com/",
     "https://www.coway.com/",
     "https://hogangnono.com/",
     "https://kbland.kr/",
     "https://www.raemian.co.kr/",
     "https://www.xi.co.kr/",
+    "http://www.airoskin.com/",
+    "http://www.f-skin.com/",
+    "http://www.joaskin.co.kr/",
+    "http://www.skin-today.com/",
+    "https://reorbskin.com/",
     "https://www.ssem.kr/"
   ],
   "errors": [
-    {
-      "url": "https://www.kawai-juku.ac.jp/",
-      "error": "Could not load https://www.kawai-juku.ac.jp/: HTTP 403 at https://www.kawai-juku.ac.jp/; HTTP 403 at https://www.kawai-juku.ac.jp/"
-    },
     {
       "url": "https://www.yozemi.ac.jp/",
       "error": "Could not load https://www.yozemi.ac.jp/: HTTP 403 at https://www.yozemi.ac.jp/; HTTP 403 at https://www.yozemi.ac.jp/"
@@ -48,15 +68,7 @@
       "error": "unreachable"
     },
     {
-      "url": "https://www.leandra-isler.ch/en",
-      "error": "Could not load https://www.leandra-isler.ch/en: page.goto: Timeout 45000ms exceeded."
-    },
-    {
       "url": "https://www.moooor.com/",
-      "error": "unreachable"
-    },
-    {
-      "url": "https://www.asahi-kasei.co.jp/hebel/",
       "error": "unreachable"
     },
     {
@@ -64,28 +76,52 @@
       "error": "unreachable"
     },
     {
-      "url": "https://www.misawa.co.jp/",
-      "error": "Could not load https://www.misawa.co.jp/: HTTP 403 at https://www.misawa.co.jp/; HTTP 403 at https://www.misawa.co.jp/"
-    },
-    {
       "url": "https://www.muji.net/ie/",
       "error": "unreachable"
     },
     {
-      "url": "https://www.decorte.com/",
-      "error": "Could not load https://www.decorte.com/: page.goto: Timeout 45000ms exceeded."
+      "url": "http://chezmoi-nishidai.jp/",
+      "error": "unreachable"
     },
     {
-      "url": "https://www.fancl.co.jp/",
+      "url": "http://www.jikoukai.or.jp/",
+      "error": "Could not load http://www.jikoukai.or.jp/: HTTP 404 at https://www.jikoukai.or.jp/; HTTP 404 at https://www.jikoukai.or.jp/"
+    },
+    {
+      "url": "http://www.okagawah.com/",
       "error": "unreachable"
+    },
+    {
+      "url": "http://yuuyuu.in.coocan.jp/",
+      "error": "Could not load http://yuuyuu.in.coocan.jp/: HTTP 404 at http://yuuyuu.in.coocan.jp/; HTTP 404 at http://yuuyuu.in.coocan.jp/"
+    },
+    {
+      "url": "https://www.poiinc.jp/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.xn--welfarekumamoto-6s9h.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://nagatadc.wp.xdomain.jp/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://nkg-dent.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.shishido-dc.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.sudou-shika.jp/",
+      "error": "Could not load http://www.sudou-shika.jp/: HTTP 410 at http://www.sudou-shika.jp/; HTTP 410 at http://www.sudou-shika.jp/"
     },
     {
       "url": "https://hokuohkurashi.com/",
       "error": "Could not load https://hokuohkurashi.com/: HTTP 403 at https://hokuohkurashi.com/; HTTP 403 at https://hokuohkurashi.com/"
-    },
-    {
-      "url": "https://www.belluna.jp/",
-      "error": "Could not load https://www.belluna.jp/: HTTP 403 at https://www.belluna.jp/; HTTP 403 at https://www.belluna.jp/"
     },
     {
       "url": "https://www.monotaro.com/",
@@ -104,14 +140,6 @@
       "error": "Could not load https://setouchi-artfest.jp/: HTTP 403 at https://setouchi-artfest.jp/; HTTP 403 at https://setouchi-artfest.jp/"
     },
     {
-      "url": "https://www.expo2025.or.jp/",
-      "error": "unreachable"
-    },
-    {
-      "url": "https://jinsholdings.com/jp/ja",
-      "error": "Could not load https://jinsholdings.com/jp/ja: HTTP 403 at https://jinsholdings.com/jp/ja; HTTP 403 at https://jinsholdings.com/jp/ja"
-    },
-    {
       "url": "https://www.beams.co.jp/",
       "error": "unreachable"
     },
@@ -120,20 +148,28 @@
       "error": "Could not load https://www.yohjiyamamoto.co.jp/: HTTP 403 at https://www.yohjiyamamoto.co.jp/; HTTP 403 at https://www.yohjiyamamoto.co.jp/"
     },
     {
-      "url": "https://info.monex.co.jp/introduction/",
-      "error": "Could not load https://info.monex.co.jp/introduction/: HTTP 403 at https://info.monex.co.jp/introduction/; HTTP 403 at https://info.monex.co.jp/introduction/"
-    },
-    {
-      "url": "https://www.cygames.co.jp/",
-      "error": "Could not load https://www.cygames.co.jp/: HTTP 403 at https://www.cygames.co.jp/; HTTP 403 at https://www.cygames.co.jp/"
-    },
-    {
       "url": "https://www.fratellisimonetti.com/",
-      "error": "Could not load https://www.fratellisimonetti.com/: page.goto: Timeout 45000ms exceeded."
+      "error": "Could not load https://www.fratellisimonetti.com/: page.screenshot: Protocol error (Page.captureScreenshot): Unable to capture screenshot"
     },
     {
       "url": "https://www.athome.co.jp/",
       "error": "Could not load https://www.athome.co.jp/: HTTP 405 at https://www.athome.co.jp/; HTTP 405 at https://www.athome.co.jp/"
+    },
+    {
+      "url": "http://hifuka.wp.xdomain.jp/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.hara-hifuka.jp/",
+      "error": "Could not load http://www.hara-hifuka.jp/: HTTP 403 at http://www.hara-hifuka.jp/; HTTP 403 at http://www.hara-hifuka.jp/"
+    },
+    {
+      "url": "http://www.skin.or.jp/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://kobayashi-deruma..com/",
+      "error": "unreachable"
     },
     {
       "url": "https://www.s-b-c.net/",
@@ -146,10 +182,6 @@
     {
       "url": "https://www.tbc.co.jp/",
       "error": "Could not load https://www.tbc.co.jp/: HTTP 403 at https://www.tbc.co.jp/; HTTP 403 at https://www.tbc.co.jp/"
-    },
-    {
-      "url": "https://www.chester-tax.com/",
-      "error": "Could not load https://www.chester-tax.com/: HTTP 403 at https://www.chester-tax.com/; HTTP 403 at https://www.chester-tax.com/"
     },
     {
       "url": "https://www.tkc.jp/",
@@ -168,8 +200,108 @@
       "error": "Could not load https://www.wasoumaedori.com/: HTTP 403 at https://www.wasoumaedori.com/; HTTP 403 at https://www.wasoumaedori.com/"
     },
     {
-      "url": "https://www.drjart.co.kr/",
-      "error": "Could not load https://www.drjart.co.kr/: HTTP 403 at https://www.drjart.co.kr/; HTTP 403 at https://www.drjart.co.kr/"
+      "url": "http://bupyeong.yongplant.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.a-plantia.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.askdent.co.kr/",
+      "error": "Could not load http://www.askdent.co.kr/: page.goto: Timeout 45000ms exceeded."
+    },
+    {
+      "url": "http://www.dentalbanobagi.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.dmcseoul.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.eplusdent.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.ewellness.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.faceline.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.geonchi.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.jinjuye.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.jkboston.net/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.jsdental.net/",
+      "error": "robots.txt HTTP 500"
+    },
+    {
+      "url": "http://www.mkpdent.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.newami.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.phildental.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.seesun.co.kr/",
+      "error": "Could not load http://www.seesun.co.kr/: page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.seesun.co.kr/"
+    },
+    {
+      "url": "http://www.seojung.ne.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.seoul-plant.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.seoulmi.com/",
+      "error": "Could not load http://www.seoulmi.com/: HTTP 403 at https://www.hugedomains.com/domain_profile.cfm?d=seoulmi.com; HTTP 403 at https://www.hugedomains.com/domain"
+    },
+    {
+      "url": "http://www.seoulsdental.pe.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.sldental.net/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.snudental.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.sr8.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.stardentist.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.withdent.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.xn--vb0bp64duzea.com/",
+      "error": "unreachable"
     },
     {
       "url": "https://kream.co.kr/",
@@ -180,20 +312,8 @@
       "error": "Could not load https://www.danawa.com/: HTTP 403 at https://www.danawa.com/; HTTP 403 at https://www.danawa.com/"
     },
     {
-      "url": "https://www.bifan.kr/",
-      "error": "Could not load https://www.bifan.kr/: page.goto: Timeout 45000ms exceeded."
-    },
-    {
       "url": "https://www.sulseam.com/",
       "error": "Could not load https://www.sulseam.com/: page.goto: Timeout 45000ms exceeded."
-    },
-    {
-      "url": "https://www.crown.co.kr/",
-      "error": "Could not load https://www.crown.co.kr/: page.goto: Timeout 45000ms exceeded."
-    },
-    {
-      "url": "https://www.hy.co.kr/",
-      "error": "Could not load https://www.hy.co.kr/: page.goto: Timeout 45000ms exceeded."
     },
     {
       "url": "https://www.sempio.com/",
@@ -208,6 +328,142 @@
       "error": "Could not load https://www.yongpyong.co.kr/: page.goto: Timeout 45000ms exceeded."
     },
     {
+      "url": "http://gungilhani.site/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://jounclinic.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.1075love.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.ayamiclinic.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.beautimiz.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.bhsoa.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.chungmedical.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.daejinclinic.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.dodamhani.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.dr-nabee.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.egraceclinic.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.happybogam.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.happyhan.net/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.heakwang.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.herbalclinic.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.juntong.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.khbogam.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.maumgreen.net/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.migaramomclinic.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.namu911.com/",
+      "error": "Could not load http://www.namu911.com/: page.goto: net::ERR_EMPTY_RESPONSE at http://www.namu911.com/"
+    },
+    {
+      "url": "http://www.nohgamin.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.nromd.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.schroth.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.sejongomd.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.seoul1075.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.sonwontaek.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.sytbubu.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.tntnimom.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.wellhani.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.whiteheart.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.xn--v42bw8twlaa350p.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://misoro.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://morif.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "https://www.pilomc.com/",
+      "error": "unreachable"
+    },
+    {
       "url": "https://www.desker.co.kr/",
       "error": "Could not load https://www.desker.co.kr/: page.goto: Download is starting"
     },
@@ -216,12 +472,52 @@
       "error": "Could not load https://www.kdnavien.co.kr/: HTTP 403 at https://www.kdnavien.co.kr/; HTTP 403 at https://www.kdnavien.co.kr/"
     },
     {
-      "url": "https://www.prugio.com/",
-      "error": "Could not load https://www.prugio.com/: page.goto: Timeout 45000ms exceeded."
+      "url": "http://www.allforskin.co.kr/",
+      "error": "unreachable"
     },
     {
-      "url": "https://www.thesharp.co.kr/",
-      "error": "Could not load https://www.thesharp.co.kr/: page.goto: Timeout 45000ms exceeded."
+      "url": "http://www.catholicskin.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.goun-skin.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.hdhskin.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.klasse4u.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.ktwskin.com/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.maxwellhair.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.mimoreskin.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.poyan.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.seoderma.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.shinpibu.co.kr/",
+      "error": "unreachable"
+    },
+    {
+      "url": "http://www.soye.co.kr/",
+      "error": "unreachable"
     },
     {
       "url": "https://www.taxnet.co.kr/",
@@ -233,175 +529,175 @@
     }
   ],
   "split": {
-    "tune": 428,
-    "holdout": 170
+    "tune": 595,
+    "holdout": 262
   },
   "all": {
-    "n": 598,
+    "n": 857,
     "score": {
-      "n": 598,
+      "n": 857,
       "p10": 0,
       "p50": 4,
-      "p90": 17,
-      "flagged20": 0.07,
-      "flagged30": 0.02
+      "p90": 16,
+      "flagged20": 0.06,
+      "flagged30": 0.03
     },
     "signals": {
-      "transition-all": 0.66,
-      "generic-cta": 0.19,
-      "flat-scale": 0.14,
-      "empty-frames": 0.11,
-      "many-hues": 0.11,
-      "generic-type": 0.09,
-      "large-gradient": 0.09,
-      "tinted-page": 0.08,
-      "default-accent": 0.07,
-      "tracked-labels": 0.07,
-      "accent-word": 0.05,
-      "centered": 0.05,
-      "buzzword-copy": 0.04,
-      "gradient-text": 0.04,
+      "transition-all": 0.65,
+      "generic-cta": 0.17,
+      "flat-scale": 0.15,
+      "many-hues": 0.13,
+      "empty-frames": 0.12,
+      "accent-word": 0.08,
+      "generic-type": 0.08,
+      "large-gradient": 0.08,
+      "centered": 0.07,
+      "tinted-page": 0.07,
+      "default-accent": 0.06,
+      "tracked-labels": 0.06,
+      "buzzword-copy": 0.03,
       "card-grid": 0.03,
+      "emoji-icons": 0.03,
       "glass": 0.03,
+      "gradient-text": 0.03,
       "hero-cta-below": 0.03,
       "nested-cards": 0.03,
-      "period-headlines": 0.03,
-      "emoji-icons": 0.02,
-      "newsletter-tail": 0.02,
       "numbered-labels": 0.02,
-      "over-rounded": 0.02,
+      "period-headlines": 0.02,
       "purple-gradient": 0.02,
       "boxed-icons": 0.01,
       "eyebrow-pill": 0.01,
       "glow": 0.01,
+      "newsletter-tail": 0.01,
+      "over-rounded": 0.01,
       "paper-serif": 0.01
     },
     "type": {
       "bodySize": {
-        "n": 598,
+        "n": 857,
         "p10": 12,
         "p50": 15,
         "p90": 18
       },
       "displayRatio": {
-        "n": 590,
-        "p10": 1.49,
-        "p50": 2.92,
-        "p90": 8.42
+        "n": 837,
+        "p10": 1.4,
+        "p50": 2.7,
+        "p90": 7.5
       },
       "sizes": {
-        "n": 598,
-        "p10": 5,
-        "p50": 10,
-        "p90": 17
+        "n": 857,
+        "p10": 4,
+        "p50": 9,
+        "p90": 16
       },
       "weights": {
-        "n": 598,
+        "n": 857,
         "p10": 2,
         "p50": 3,
         "p90": 5
       },
-      "webfontShare": 0.91
+      "webfontShare": 0.85
     },
     "color": {
       "hues": {
-        "n": 598,
+        "n": 857,
         "p10": 0,
         "p50": 2,
         "p90": 5
       },
-      "darkShare": 0.06
+      "darkShare": 0.05
     },
     "layout": {
       "centered": {
-        "n": 598,
+        "n": 857,
         "p10": 0,
-        "p50": 0.04,
-        "p90": 0.41
+        "p50": 0.05,
+        "p90": 0.48
       },
       "rounded": {
-        "n": 598,
+        "n": 857,
         "p10": 0,
         "p50": 0,
-        "p90": 0.3
+        "p90": 0.28
       },
-      "trackedAny": 0.14,
+      "trackedAny": 0.13,
       "tracked": {
-        "n": 598,
+        "n": 857,
         "p10": 0,
         "p50": 0,
         "p90": 1
       }
     },
     "japanese": {
-      "n": 368,
+      "n": 516,
       "lineHeight": {
-        "n": 300,
+        "n": 425,
         "p10": 1.5,
-        "p50": 1.8,
+        "p50": 1.77,
         "p90": 2
       },
       "bodySize": {
-        "n": 301,
-        "p10": 12,
+        "n": 431,
+        "p10": 12.25,
         "p50": 15,
-        "p90": 17.28
+        "p90": 17
       },
-      "noJaFontShare": 0.15,
-      "tightShare": 0.06,
+      "noJaFontShare": 0.14,
+      "tightShare": 0.07,
       "phraseAware": 0.01,
       "topFamilies": [
         [
           "noto sans jp",
-          80
+          100
+        ],
+        [
+          "ヒラギノ角ゴ pro w3",
+          19
         ],
         [
           "zen kaku gothic new",
-          14
-        ],
-        [
-          "yakuhanjp",
-          12
+          18
         ],
         [
           "メイリオ",
-          7
-        ],
-        [
-          "zen old mincho",
-          7
-        ],
-        [
-          "inter",
-          7
+          18
         ],
         [
           "游ゴシック体",
-          6
+          13
+        ],
+        [
+          "yakuhanjp",
+          13
+        ],
+        [
+          "arial",
+          10
+        ],
+        [
+          "-apple-system",
+          9
         ],
         [
           "helvetica neue",
-          6
+          8
         ],
         [
-          "noto serif jp",
-          6
-        ],
-        [
-          "hiragino sans",
-          6
+          "zen old mincho",
+          8
         ]
       ],
       "issues": {
-        "ja-tiny": 0.49,
-        "ja-orphans": 0.33,
-        "ja-font-fallback": 0.16,
-        "ja-tracking": 0.15,
-        "ja-line-height": 0.11,
-        "ja-bad-break": 0.1,
-        "ja-break-all": 0.07,
-        "ja-full-alnum": 0.02,
-        "ja-italic": 0.02,
+        "ja-tiny": 0.44,
+        "ja-orphans": 0.31,
+        "ja-font-fallback": 0.15,
+        "ja-tracking": 0.12,
+        "ja-line-height": 0.12,
+        "ja-bad-break": 0.08,
+        "ja-break-all": 0.06,
+        "ja-full-alnum": 0.04,
+        "ja-italic": 0.01,
         "ja-half-kana": 0.01
       }
     }
@@ -564,48 +860,49 @@
       }
     },
     "JP-beauty": {
-      "n": 9,
+      "n": 10,
       "score": {
-        "n": 9,
+        "n": 10,
         "p10": 0,
         "p50": 0,
         "p90": 27,
-        "flagged20": 0.11,
+        "flagged20": 0.1,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.56,
-        "buzzword-copy": 0.22,
-        "generic-cta": 0.22,
-        "tracked-labels": 0.22,
-        "default-accent": 0.11,
-        "empty-frames": 0.11,
-        "newsletter-tail": 0.11,
-        "numbered-labels": 0.11,
-        "tinted-page": 0.11
+        "transition-all": 0.6,
+        "buzzword-copy": 0.2,
+        "generic-cta": 0.2,
+        "numbered-labels": 0.2,
+        "tracked-labels": 0.2,
+        "default-accent": 0.1,
+        "empty-frames": 0.1,
+        "hero-cta-below": 0.1,
+        "newsletter-tail": 0.1,
+        "tinted-page": 0.1
       },
       "type": {
         "bodySize": {
-          "n": 9,
-          "p10": 12,
+          "n": 10,
+          "p10": 13,
           "p50": 15,
-          "p90": 16
+          "p90": 18
         },
         "displayRatio": {
-          "n": 9,
-          "p10": 2.29,
-          "p50": 4.96,
+          "n": 10,
+          "p10": 2.8,
+          "p50": 6.56,
           "p90": 16.43
         },
         "sizes": {
-          "n": 9,
-          "p10": 7,
+          "n": 10,
+          "p10": 9,
           "p50": 13,
           "p90": 20
         },
         "weights": {
-          "n": 9,
-          "p10": 1,
+          "n": 10,
+          "p10": 2,
           "p50": 3,
           "p90": 5
         },
@@ -613,29 +910,29 @@
       },
       "color": {
         "hues": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 1,
           "p90": 3
         },
-        "darkShare": 0.22
+        "darkShare": 0.2
       },
       "layout": {
         "centered": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 0,
           "p90": 0.07
         },
         "rounded": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 0,
           "p90": 0.28
         },
-        "trackedAny": 0.22,
+        "trackedAny": 0.2,
         "tracked": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 0,
           "p90": 74
@@ -683,9 +980,9 @@
       }
     },
     "JP-builder": {
-      "n": 21,
+      "n": 22,
       "score": {
-        "n": 21,
+        "n": 22,
         "p10": 0,
         "p50": 0,
         "p90": 14,
@@ -693,16 +990,16 @@
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.52,
-        "generic-cta": 0.19,
-        "tinted-page": 0.19,
+        "transition-all": 0.55,
+        "generic-cta": 0.23,
+        "tinted-page": 0.18,
         "buzzword-copy": 0.14,
         "hero-cta-below": 0.14,
-        "accent-word": 0.1,
-        "default-accent": 0.1,
-        "empty-frames": 0.1,
-        "large-gradient": 0.1,
-        "many-hues": 0.1,
+        "accent-word": 0.09,
+        "default-accent": 0.09,
+        "empty-frames": 0.09,
+        "large-gradient": 0.09,
+        "many-hues": 0.09,
         "centered": 0.05,
         "generic-type": 0.05,
         "gradient-text": 0.05,
@@ -711,25 +1008,25 @@
       },
       "type": {
         "bodySize": {
-          "n": 21,
+          "n": 22,
           "p10": 11,
           "p50": 14,
           "p90": 16
         },
         "displayRatio": {
-          "n": 21,
+          "n": 22,
           "p10": 1.87,
           "p50": 3.5,
           "p90": 8.33
         },
         "sizes": {
-          "n": 21,
+          "n": 22,
           "p10": 7,
           "p50": 12,
-          "p90": 14
+          "p90": 16
         },
         "weights": {
-          "n": 21,
+          "n": 22,
           "p10": 2,
           "p50": 3,
           "p90": 4
@@ -738,7 +1035,7 @@
       },
       "color": {
         "hues": {
-          "n": 21,
+          "n": 22,
           "p10": 0,
           "p50": 2,
           "p90": 4
@@ -747,40 +1044,40 @@
       },
       "layout": {
         "centered": {
-          "n": 21,
+          "n": 22,
           "p10": 0,
-          "p50": 0,
+          "p50": 0.02,
           "p90": 0.2
         },
         "rounded": {
-          "n": 21,
+          "n": 22,
           "p10": 0,
           "p50": 0,
           "p90": 0.33
         },
         "trackedAny": 0,
         "tracked": {
-          "n": 21,
+          "n": 22,
           "p10": 0,
           "p50": 0,
           "p90": 0
         }
       },
       "japanese": {
-        "n": 17,
+        "n": 18,
         "lineHeight": {
-          "n": 14,
+          "n": 15,
           "p10": 1.5,
-          "p50": 1.8,
+          "p50": 1.75,
           "p90": 2
         },
         "bodySize": {
-          "n": 14,
+          "n": 15,
           "p10": 14,
           "p50": 15,
           "p90": 16
         },
-        "noJaFontShare": 0.12,
+        "noJaFontShare": 0.11,
         "tightShare": 0,
         "phraseAware": 0.06,
         "topFamilies": [
@@ -821,18 +1118,18 @@
             1
           ],
           [
-            "yakuhanjp",
+            "yu-gothic-pr6n",
             1
           ]
         ],
         "issues": {
-          "ja-orphans": 0.47,
-          "ja-tiny": 0.41,
-          "ja-tracking": 0.29,
-          "ja-bad-break": 0.24,
-          "ja-break-all": 0.12,
-          "ja-font-fallback": 0.12,
-          "ja-line-height": 0.06,
+          "ja-orphans": 0.44,
+          "ja-tiny": 0.39,
+          "ja-tracking": 0.28,
+          "ja-bad-break": 0.22,
+          "ja-line-height": 0.11,
+          "ja-break-all": 0.11,
+          "ja-font-fallback": 0.11,
           "ja-italic": 0.06
         }
       }
@@ -968,169 +1265,210 @@
       }
     },
     "JP-care": {
-      "n": 6,
+      "n": 54,
       "score": {
-        "n": 6,
+        "n": 54,
         "p10": 0,
-        "p50": 23,
-        "p90": 39,
-        "flagged20": 0.5,
-        "flagged30": 0.17
+        "p50": 0,
+        "p90": 12,
+        "flagged20": 0.06,
+        "flagged30": 0.02
       },
       "signals": {
-        "transition-all": 0.83,
-        "large-gradient": 0.5,
-        "buzzword-copy": 0.33,
-        "period-headlines": 0.33,
-        "boxed-icons": 0.17,
-        "card-grid": 0.17,
-        "empty-frames": 0.17,
-        "flat-scale": 0.17,
-        "glow": 0.17,
-        "newsletter-tail": 0.17,
-        "numbered-labels": 0.17,
-        "over-rounded": 0.17
+        "transition-all": 0.59,
+        "many-hues": 0.28,
+        "empty-frames": 0.15,
+        "generic-cta": 0.15,
+        "accent-word": 0.13,
+        "centered": 0.07,
+        "tinted-page": 0.07,
+        "large-gradient": 0.06,
+        "buzzword-copy": 0.04,
+        "card-grid": 0.04,
+        "generic-type": 0.04,
+        "period-headlines": 0.04,
+        "boxed-icons": 0.02,
+        "default-accent": 0.02,
+        "emoji-icons": 0.02,
+        "flat-scale": 0.02,
+        "glass": 0.02,
+        "glow": 0.02,
+        "newsletter-tail": 0.02,
+        "numbered-labels": 0.02,
+        "over-rounded": 0.02,
+        "paper-serif": 0.02
       },
       "type": {
         "bodySize": {
-          "n": 6,
+          "n": 54,
           "p10": 12,
           "p50": 15,
-          "p90": 32
+          "p90": 16
         },
         "displayRatio": {
-          "n": 6,
-          "p10": 3.13,
-          "p50": 8.23,
-          "p90": 15
+          "n": 54,
+          "p10": 1.2,
+          "p50": 2.22,
+          "p90": 4.17
         },
         "sizes": {
-          "n": 6,
-          "p10": 8,
-          "p50": 15,
-          "p90": 20
+          "n": 54,
+          "p10": 4,
+          "p50": 8,
+          "p90": 13
         },
         "weights": {
-          "n": 6,
+          "n": 54,
           "p10": 2,
-          "p50": 4,
-          "p90": 5
+          "p50": 3,
+          "p90": 4
         },
-        "webfontShare": 1
+        "webfontShare": 0.78
       },
       "color": {
         "hues": {
-          "n": 6,
+          "n": 54,
           "p10": 1,
           "p50": 2,
-          "p90": 4
+          "p90": 6
         },
         "darkShare": 0
       },
       "layout": {
         "centered": {
-          "n": 6,
+          "n": 54,
           "p10": 0,
-          "p50": 0.07,
-          "p90": 0.18
+          "p50": 0.1,
+          "p90": 0.57
         },
         "rounded": {
-          "n": 6,
-          "p10": 0,
-          "p50": 0.47,
-          "p90": 0.76
-        },
-        "trackedAny": 0,
-        "tracked": {
-          "n": 6,
+          "n": 54,
           "p10": 0,
           "p50": 0,
-          "p90": 0
+          "p90": 0.4
+        },
+        "trackedAny": 0.11,
+        "tracked": {
+          "n": 54,
+          "p10": 0,
+          "p50": 0,
+          "p90": 1
         }
       },
       "japanese": {
-        "n": 4,
+        "n": 52,
         "lineHeight": {
-          "n": 4,
-          "p10": 1.75,
-          "p50": 2,
-          "p90": 2.2
+          "n": 41,
+          "p10": 1.5,
+          "p50": 1.8,
+          "p90": 2
         },
         "bodySize": {
-          "n": 4,
-          "p10": 14,
+          "n": 43,
+          "p10": 12,
           "p50": 15,
           "p90": 16
         },
-        "noJaFontShare": 0.5,
-        "tightShare": 0,
+        "noJaFontShare": 0.19,
+        "tightShare": 0.06,
         "phraseAware": 0,
         "topFamilies": [
           [
-            "zen-kaku-gothic-new",
-            1
-          ],
-          [
-            "游ゴシック",
-            1
-          ],
-          [
-            "ゴシックmb101 db jis2004",
-            1
-          ],
-          [
             "noto sans jp",
+            11
+          ],
+          [
+            "arial",
+            4
+          ],
+          [
+            "meiryo",
+            4
+          ],
+          [
+            "ヒラギノ角ゴ pro w3",
+            3
+          ],
+          [
+            "メイリオ",
+            3
+          ],
+          [
+            "zen kaku gothic new",
+            2
+          ],
+          [
+            "kosugi maru",
+            1
+          ],
+          [
+            "verdana",
+            1
+          ],
+          [
+            "mairyo ui",
+            1
+          ],
+          [
+            "�q���m�m�p�s pro w3",
             1
           ]
         ],
         "issues": {
-          "ja-tiny": 0.75,
-          "ja-font-fallback": 0.5,
-          "ja-orphans": 0.5,
-          "ja-break-all": 0.25,
-          "ja-tracking": 0.25
+          "ja-tiny": 0.35,
+          "ja-orphans": 0.21,
+          "ja-font-fallback": 0.19,
+          "ja-line-height": 0.08,
+          "ja-full-alnum": 0.08,
+          "ja-tracking": 0.08,
+          "ja-break-all": 0.06,
+          "ja-bad-break": 0.06,
+          "ja-half-kana": 0.04
         }
       }
     },
     "JP-cosmetics": {
-      "n": 11,
+      "n": 13,
       "score": {
-        "n": 11,
+        "n": 13,
         "p10": 0,
         "p50": 0,
-        "p90": 8,
+        "p90": 12,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.91,
-        "generic-cta": 0.55,
-        "default-accent": 0.36,
-        "accent-word": 0.09,
-        "purple-gradient": 0.09,
-        "tracked-labels": 0.09
+        "transition-all": 0.77,
+        "generic-cta": 0.62,
+        "default-accent": 0.38,
+        "accent-word": 0.15,
+        "tracked-labels": 0.15,
+        "centered": 0.08,
+        "emoji-icons": 0.08,
+        "empty-frames": 0.08,
+        "purple-gradient": 0.08
       },
       "type": {
         "bodySize": {
-          "n": 11,
+          "n": 13,
           "p10": 14,
           "p50": 14,
           "p90": 16
         },
         "displayRatio": {
-          "n": 11,
+          "n": 13,
           "p10": 1.43,
           "p50": 2.29,
-          "p90": 2.63
+          "p90": 4
         },
         "sizes": {
-          "n": 11,
+          "n": 13,
           "p10": 7,
           "p50": 9,
-          "p90": 12
+          "p90": 15
         },
         "weights": {
-          "n": 11,
+          "n": 13,
           "p10": 2,
           "p50": 3,
           "p90": 5
@@ -1139,7 +1477,7 @@
       },
       "color": {
         "hues": {
-          "n": 11,
+          "n": 13,
           "p10": 1,
           "p50": 2,
           "p90": 3
@@ -1148,46 +1486,46 @@
       },
       "layout": {
         "centered": {
-          "n": 11,
+          "n": 13,
           "p10": 0.03,
           "p50": 0.09,
-          "p90": 0.21
+          "p90": 0.31
         },
         "rounded": {
-          "n": 11,
+          "n": 13,
           "p10": 0,
           "p50": 0,
           "p90": 0.07
         },
-        "trackedAny": 0.09,
+        "trackedAny": 0.15,
         "tracked": {
-          "n": 11,
+          "n": 13,
           "p10": 0,
           "p50": 0,
-          "p90": 0
+          "p90": 8
         }
       },
       "japanese": {
-        "n": 11,
+        "n": 13,
         "lineHeight": {
-          "n": 10,
+          "n": 12,
           "p10": 1.4,
           "p50": 1.57,
-          "p90": 2
+          "p90": 1.8
         },
         "bodySize": {
-          "n": 10,
-          "p10": 14,
+          "n": 12,
+          "p10": 13,
           "p50": 14,
           "p90": 16
         },
-        "noJaFontShare": 0.18,
-        "tightShare": 0.18,
-        "phraseAware": 0.09,
+        "noJaFontShare": 0.15,
+        "tightShare": 0.15,
+        "phraseAware": 0.08,
         "topFamilies": [
           [
             "noto sans jp",
-            2
+            3
           ],
           [
             "ヒラギノ角ゴシック",
@@ -1206,6 +1544,10 @@
             1
           ],
           [
+            "ヒラギノ角ゴ pron w3",
+            1
+          ],
+          [
             "mfw-hirakakupron-w3",
             1
           ],
@@ -1220,20 +1562,175 @@
           [
             "inter",
             1
+          ]
+        ],
+        "issues": {
+          "ja-tiny": 0.77,
+          "ja-line-height": 0.31,
+          "ja-break-all": 0.23,
+          "ja-font-fallback": 0.15,
+          "ja-orphans": 0.15,
+          "ja-bad-break": 0.15,
+          "ja-tracking": 0.08,
+          "ja-full-alnum": 0.08
+        }
+      }
+    },
+    "JP-dental": {
+      "n": 55,
+      "score": {
+        "n": 55,
+        "p10": 0,
+        "p50": 0,
+        "p90": 12,
+        "flagged20": 0.05,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.64,
+        "many-hues": 0.18,
+        "accent-word": 0.15,
+        "empty-frames": 0.15,
+        "centered": 0.09,
+        "generic-cta": 0.07,
+        "tinted-page": 0.05,
+        "large-gradient": 0.04,
+        "tracked-labels": 0.04,
+        "card-grid": 0.02,
+        "emoji-icons": 0.02,
+        "eyebrow-pill": 0.02,
+        "glass": 0.02,
+        "gradient-text": 0.02,
+        "hero-cta-below": 0.02,
+        "nested-cards": 0.02,
+        "numbered-labels": 0.02,
+        "paper-serif": 0.02
+      },
+      "type": {
+        "bodySize": {
+          "n": 55,
+          "p10": 13,
+          "p50": 15,
+          "p90": 16
+        },
+        "displayRatio": {
+          "n": 54,
+          "p10": 1,
+          "p50": 2.4,
+          "p90": 8.13
+        },
+        "sizes": {
+          "n": 55,
+          "p10": 2,
+          "p50": 8,
+          "p90": 22
+        },
+        "weights": {
+          "n": 55,
+          "p10": 1,
+          "p50": 2,
+          "p90": 4
+        },
+        "webfontShare": 0.65
+      },
+      "color": {
+        "hues": {
+          "n": 55,
+          "p10": 1,
+          "p50": 3,
+          "p90": 6
+        },
+        "darkShare": 0.02
+      },
+      "layout": {
+        "centered": {
+          "n": 55,
+          "p10": 0,
+          "p50": 0.17,
+          "p90": 0.56
+        },
+        "rounded": {
+          "n": 55,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.17
+        },
+        "trackedAny": 0.13,
+        "tracked": {
+          "n": 55,
+          "p10": 0,
+          "p50": 0,
+          "p90": 1
+        }
+      },
+      "japanese": {
+        "n": 55,
+        "lineHeight": {
+          "n": 49,
+          "p10": 1.43,
+          "p50": 1.7,
+          "p90": 2
+        },
+        "bodySize": {
+          "n": 50,
+          "p10": 13,
+          "p50": 15,
+          "p90": 16.32
+        },
+        "noJaFontShare": 0.07,
+        "tightShare": 0.09,
+        "phraseAware": 0,
+        "topFamilies": [
+          [
+            "noto sans jp",
+            6
           ],
           [
-            "akzidenz-grotesk",
+            "ヒラギノ角ゴ pro w3",
+            6
+          ],
+          [
+            "ｍｓ ｐゴシック",
+            5
+          ],
+          [
+            "メイリオ",
+            4
+          ],
+          [
+            "arial",
+            2
+          ],
+          [
+            "游ゴシック体",
+            2
+          ],
+          [
+            "times new roman",
+            2
+          ],
+          [
+            "-apple-system",
+            2
+          ],
+          [
+            "游明朝",
+            2
+          ],
+          [
+            "helvetica neue",
             1
           ]
         ],
         "issues": {
-          "ja-tiny": 0.73,
-          "ja-line-height": 0.27,
-          "ja-break-all": 0.18,
-          "ja-font-fallback": 0.18,
-          "ja-orphans": 0.18,
-          "ja-bad-break": 0.18,
-          "ja-tracking": 0.09
+          "ja-tiny": 0.35,
+          "ja-orphans": 0.35,
+          "ja-line-height": 0.15,
+          "ja-full-alnum": 0.11,
+          "ja-font-fallback": 0.07,
+          "ja-tracking": 0.02,
+          "ja-break-all": 0.02,
+          "ja-bad-break": 0.02
         }
       }
     },
@@ -1392,107 +1889,108 @@
       }
     },
     "JP-event": {
-      "n": 12,
+      "n": 13,
       "score": {
-        "n": 12,
+        "n": 13,
         "p10": 0,
-        "p50": 6,
+        "p50": 4,
         "p90": 14,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.83,
-        "generic-cta": 0.17,
-        "generic-type": 0.17,
-        "tracked-labels": 0.17,
+        "transition-all": 0.85,
+        "generic-cta": 0.15,
+        "generic-type": 0.15,
+        "tracked-labels": 0.15,
         "card-grid": 0.08,
         "flat-scale": 0.08,
         "large-gradient": 0.08,
         "many-hues": 0.08,
+        "over-rounded": 0.08,
         "paper-serif": 0.08
       },
       "type": {
         "bodySize": {
-          "n": 12,
+          "n": 13,
           "p10": 13,
           "p50": 14,
           "p90": 20
         },
         "displayRatio": {
-          "n": 12,
+          "n": 13,
           "p10": 1.33,
           "p50": 2.46,
           "p90": 2.86
         },
         "sizes": {
-          "n": 12,
+          "n": 13,
           "p10": 6,
           "p50": 8,
           "p90": 12
         },
         "weights": {
-          "n": 12,
+          "n": 13,
           "p10": 2,
           "p50": 3,
           "p90": 4
         },
-        "webfontShare": 0.83
+        "webfontShare": 0.85
       },
       "color": {
         "hues": {
-          "n": 12,
+          "n": 13,
           "p10": 1,
           "p50": 3,
           "p90": 4
         },
-        "darkShare": 0.17
+        "darkShare": 0.15
       },
       "layout": {
         "centered": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
-          "p50": 0.03,
+          "p50": 0,
           "p90": 0.14
         },
         "rounded": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
           "p50": 0.06,
-          "p90": 0.36
+          "p90": 0.43
         },
-        "trackedAny": 0.25,
+        "trackedAny": 0.23,
         "tracked": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
           "p50": 0,
           "p90": 14
         }
       },
       "japanese": {
-        "n": 10,
+        "n": 11,
         "lineHeight": {
-          "n": 8,
+          "n": 9,
           "p10": 1.4,
           "p50": 1.75,
           "p90": 2
         },
         "bodySize": {
-          "n": 8,
+          "n": 9,
           "p10": 11,
           "p50": 14,
           "p90": 18.51
         },
-        "noJaFontShare": 0.4,
-        "tightShare": 0.1,
+        "noJaFontShare": 0.36,
+        "tightShare": 0.09,
         "phraseAware": 0,
         "topFamilies": [
           [
-            "noto sans jp",
-            2
+            "zen kaku gothic new",
+            3
           ],
           [
-            "zen kaku gothic new",
+            "noto sans jp",
             2
           ],
           [
@@ -1521,13 +2019,13 @@
           ]
         ],
         "issues": {
-          "ja-font-fallback": 0.4,
-          "ja-orphans": 0.3,
-          "ja-tiny": 0.3,
-          "ja-full-alnum": 0.1,
-          "ja-bad-break": 0.1,
-          "ja-line-height": 0.1,
-          "ja-break-all": 0.1
+          "ja-font-fallback": 0.36,
+          "ja-orphans": 0.27,
+          "ja-tiny": 0.27,
+          "ja-full-alnum": 0.09,
+          "ja-bad-break": 0.09,
+          "ja-line-height": 0.09,
+          "ja-break-all": 0.09
         }
       }
     },
@@ -3441,133 +3939,160 @@
       }
     },
     "JP-skin": {
-      "n": 8,
+      "n": 49,
       "score": {
-        "n": 8,
+        "n": 49,
         "p10": 0,
         "p50": 0,
-        "p90": 16,
-        "flagged20": 0,
-        "flagged30": 0
+        "p90": 14,
+        "flagged20": 0.02,
+        "flagged30": 0.02
       },
       "signals": {
-        "transition-all": 0.75,
-        "accent-word": 0.25,
-        "generic-cta": 0.25,
-        "default-accent": 0.13,
-        "glow": 0.13,
-        "gradient-text": 0.13,
-        "large-gradient": 0.13,
-        "nested-cards": 0.13
+        "transition-all": 0.69,
+        "many-hues": 0.2,
+        "accent-word": 0.18,
+        "generic-cta": 0.14,
+        "large-gradient": 0.12,
+        "centered": 0.08,
+        "tinted-page": 0.06,
+        "tracked-labels": 0.06,
+        "empty-frames": 0.04,
+        "gradient-text": 0.04,
+        "nested-cards": 0.04,
+        "boxed-icons": 0.02,
+        "default-accent": 0.02,
+        "emoji-icons": 0.02,
+        "eyebrow-pill": 0.02,
+        "glass": 0.02,
+        "glow": 0.02
       },
       "type": {
         "bodySize": {
-          "n": 8,
-          "p10": 12,
-          "p50": 14,
-          "p90": 18
+          "n": 49,
+          "p10": 13,
+          "p50": 15,
+          "p90": 17
         },
         "displayRatio": {
-          "n": 8,
-          "p10": 1.57,
-          "p50": 2.25,
-          "p90": 8
+          "n": 49,
+          "p10": 1.23,
+          "p50": 2.13,
+          "p90": 6.29
         },
         "sizes": {
-          "n": 8,
-          "p10": 7,
-          "p50": 15,
-          "p90": 34
+          "n": 49,
+          "p10": 3,
+          "p50": 10,
+          "p90": 16
         },
         "weights": {
-          "n": 8,
+          "n": 49,
           "p10": 2,
-          "p50": 3,
-          "p90": 5
-        },
-        "webfontShare": 0.88
-      },
-      "color": {
-        "hues": {
-          "n": 8,
-          "p10": 0,
           "p50": 3,
           "p90": 4
         },
-        "darkShare": 0
+        "webfontShare": 0.76
+      },
+      "color": {
+        "hues": {
+          "n": 49,
+          "p10": 1,
+          "p50": 3,
+          "p90": 6
+        },
+        "darkShare": 0.02
       },
       "layout": {
         "centered": {
-          "n": 8,
-          "p10": 0.06,
-          "p50": 0.16,
+          "n": 49,
+          "p10": 0,
+          "p50": 0.11,
           "p90": 0.44
         },
         "rounded": {
-          "n": 8,
+          "n": 49,
           "p10": 0,
           "p50": 0,
-          "p90": 0.25
+          "p90": 0.26
         },
-        "trackedAny": 0,
+        "trackedAny": 0.14,
         "tracked": {
-          "n": 8,
+          "n": 49,
           "p10": 0,
           "p50": 0,
-          "p90": 0
+          "p90": 1
         }
       },
       "japanese": {
-        "n": 8,
+        "n": 49,
         "lineHeight": {
-          "n": 8,
-          "p10": 1.5,
-          "p50": 1.8,
+          "n": 43,
+          "p10": 1.4,
+          "p50": 1.78,
           "p90": 2
         },
         "bodySize": {
-          "n": 8,
-          "p10": 12,
-          "p50": 14,
-          "p90": 18
+          "n": 45,
+          "p10": 13.6,
+          "p50": 16,
+          "p90": 17
         },
-        "noJaFontShare": 0.13,
-        "tightShare": 0,
-        "phraseAware": 0.13,
+        "noJaFontShare": 0.1,
+        "tightShare": 0.12,
+        "phraseAware": 0.02,
         "topFamilies": [
           [
             "noto sans jp",
-            3
-          ],
-          [
-            "notosansjp",
-            1
-          ],
-          [
-            "ms pゴシック",
-            1
-          ],
-          [
-            "メイリオ",
-            1
-          ],
-          [
-            "ヒラギノ角ゴ pron w3",
-            1
+            6
           ],
           [
             "ヒラギノ角ゴ pro w3",
+            5
+          ],
+          [
+            "メイリオ",
+            5
+          ],
+          [
+            "helvetica",
+            4
+          ],
+          [
+            "游ゴシック体",
+            4
+          ],
+          [
+            "-apple-system",
+            2
+          ],
+          [
+            "ibm plex sans jp",
+            2
+          ],
+          [
+            "times new roman",
+            2
+          ],
+          [
+            "arial",
+            2
+          ],
+          [
+            "a-otf-ud-shin-go-pr6n",
             1
           ]
         ],
         "issues": {
-          "ja-tiny": 0.75,
-          "ja-orphans": 0.5,
-          "ja-line-height": 0.25,
-          "ja-tracking": 0.25,
-          "ja-bad-break": 0.25,
-          "ja-font-fallback": 0.13,
-          "ja-break-all": 0.13
+          "ja-orphans": 0.33,
+          "ja-tiny": 0.33,
+          "ja-line-height": 0.18,
+          "ja-font-fallback": 0.1,
+          "ja-break-all": 0.08,
+          "ja-tracking": 0.08,
+          "ja-full-alnum": 0.06,
+          "ja-bad-break": 0.06,
+          "ja-half-kana": 0.02
         }
       }
     },
@@ -4404,6 +4929,96 @@
         }
       }
     },
+    "KR-dental": {
+      "n": 34,
+      "score": {
+        "n": 34,
+        "p10": 0,
+        "p50": 4,
+        "p90": 12,
+        "flagged20": 0.09,
+        "flagged30": 0.09
+      },
+      "signals": {
+        "transition-all": 0.74,
+        "flat-scale": 0.35,
+        "accent-word": 0.18,
+        "centered": 0.18,
+        "empty-frames": 0.18,
+        "generic-type": 0.18,
+        "many-hues": 0.15,
+        "default-accent": 0.06,
+        "generic-cta": 0.06,
+        "glass": 0.06,
+        "gradient-text": 0.06,
+        "large-gradient": 0.06,
+        "nested-cards": 0.06,
+        "card-grid": 0.03,
+        "emoji-icons": 0.03,
+        "glow": 0.03,
+        "over-rounded": 0.03,
+        "tinted-page": 0.03,
+        "tracked-labels": 0.03
+      },
+      "type": {
+        "bodySize": {
+          "n": 34,
+          "p10": 13,
+          "p50": 16,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 30,
+          "p10": 1.17,
+          "p50": 2.8,
+          "p90": 7
+        },
+        "sizes": {
+          "n": 34,
+          "p10": 0,
+          "p50": 9,
+          "p90": 15
+        },
+        "weights": {
+          "n": 34,
+          "p10": 0,
+          "p50": 3,
+          "p90": 6
+        },
+        "webfontShare": 0.76
+      },
+      "color": {
+        "hues": {
+          "n": 34,
+          "p10": 0,
+          "p50": 2,
+          "p90": 4
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 34,
+          "p10": 0,
+          "p50": 0.08,
+          "p90": 0.74
+        },
+        "rounded": {
+          "n": 34,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.52
+        },
+        "trackedAny": 0.12,
+        "tracked": {
+          "n": 34,
+          "p10": 0,
+          "p50": 0,
+          "p90": 1
+        }
+      },
+      "japanese": null
+    },
     "KR-ec": {
       "n": 7,
       "score": {
@@ -4484,52 +5099,52 @@
       "japanese": null
     },
     "KR-event": {
-      "n": 13,
+      "n": 14,
       "score": {
-        "n": 13,
+        "n": 14,
         "p10": 0,
         "p50": 5,
         "p90": 28,
-        "flagged20": 0.15,
-        "flagged30": 0.08
+        "flagged20": 0.14,
+        "flagged30": 0.07
       },
       "signals": {
-        "transition-all": 0.85,
-        "flat-scale": 0.54,
-        "generic-type": 0.31,
-        "default-accent": 0.23,
-        "large-gradient": 0.23,
-        "empty-frames": 0.15,
-        "many-hues": 0.15,
-        "accent-word": 0.08,
-        "centered": 0.08,
-        "emoji-icons": 0.08,
-        "generic-cta": 0.08,
-        "glass": 0.08,
-        "glow": 0.08,
-        "tracked-labels": 0.08
+        "transition-all": 0.79,
+        "flat-scale": 0.5,
+        "generic-type": 0.29,
+        "default-accent": 0.21,
+        "large-gradient": 0.21,
+        "empty-frames": 0.14,
+        "many-hues": 0.14,
+        "accent-word": 0.07,
+        "centered": 0.07,
+        "emoji-icons": 0.07,
+        "generic-cta": 0.07,
+        "glass": 0.07,
+        "glow": 0.07,
+        "tracked-labels": 0.07
       },
       "type": {
         "bodySize": {
-          "n": 13,
+          "n": 14,
           "p10": 14,
           "p50": 16,
           "p90": 18
         },
         "displayRatio": {
-          "n": 13,
+          "n": 14,
           "p10": 1.67,
-          "p50": 2.29,
+          "p50": 2.67,
           "p90": 3.75
         },
         "sizes": {
-          "n": 13,
+          "n": 14,
           "p10": 3,
-          "p50": 6,
+          "p50": 7,
           "p90": 9
         },
         "weights": {
-          "n": 13,
+          "n": 14,
           "p10": 1,
           "p50": 3,
           "p90": 5
@@ -4538,29 +5153,29 @@
       },
       "color": {
         "hues": {
-          "n": 13,
+          "n": 14,
           "p10": 0,
-          "p50": 1,
+          "p50": 2,
           "p90": 3
         },
-        "darkShare": 0.31
+        "darkShare": 0.36
       },
       "layout": {
         "centered": {
-          "n": 13,
+          "n": 14,
           "p10": 0,
           "p50": 0.21,
           "p90": 1
         },
         "rounded": {
-          "n": 13,
+          "n": 14,
           "p10": 0,
           "p50": 0,
           "p90": 0.11
         },
-        "trackedAny": 0.08,
+        "trackedAny": 0.07,
         "tracked": {
-          "n": 13,
+          "n": 14,
           "p10": 0,
           "p50": 0,
           "p90": 0
@@ -4832,74 +5447,75 @@
       "japanese": null
     },
     "KR-food": {
-      "n": 10,
+      "n": 12,
       "score": {
-        "n": 10,
+        "n": 12,
         "p10": 0,
         "p50": 0,
-        "p90": 11,
+        "p90": 9,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.7,
-        "generic-type": 0.4,
-        "flat-scale": 0.3,
-        "generic-cta": 0.2,
-        "tinted-page": 0.1
+        "transition-all": 0.67,
+        "generic-type": 0.33,
+        "flat-scale": 0.25,
+        "generic-cta": 0.17,
+        "gradient-text": 0.08,
+        "tinted-page": 0.08
       },
       "type": {
         "bodySize": {
-          "n": 10,
+          "n": 12,
           "p10": 14,
-          "p50": 17,
-          "p90": 23
-        },
-        "displayRatio": {
-          "n": 10,
-          "p10": 2,
-          "p50": 4.27,
-          "p90": 12.94
-        },
-        "sizes": {
-          "n": 10,
-          "p10": 5,
-          "p50": 9,
+          "p50": 16,
           "p90": 20
         },
+        "displayRatio": {
+          "n": 12,
+          "p10": 2,
+          "p50": 4.27,
+          "p90": 8.7
+        },
+        "sizes": {
+          "n": 12,
+          "p10": 5,
+          "p50": 9,
+          "p90": 15
+        },
         "weights": {
-          "n": 10,
+          "n": 12,
           "p10": 2,
           "p50": 4,
-          "p90": 6
+          "p90": 5
         },
-        "webfontShare": 0.9
+        "webfontShare": 0.92
       },
       "color": {
         "hues": {
-          "n": 10,
+          "n": 12,
           "p10": 0,
-          "p50": 1,
+          "p50": 2,
           "p90": 2
         },
         "darkShare": 0
       },
       "layout": {
         "centered": {
-          "n": 10,
-          "p10": 0.05,
+          "n": 12,
+          "p10": 0,
           "p50": 0.4,
           "p90": 1
         },
         "rounded": {
-          "n": 10,
+          "n": 12,
           "p10": 0,
           "p50": 0,
-          "p90": 0.54
+          "p90": 0.29
         },
         "trackedAny": 0,
         "tracked": {
-          "n": 10,
+          "n": 12,
           "p10": 0,
           "p50": 0,
           "p90": 0
@@ -5095,6 +5711,100 @@
       },
       "japanese": null
     },
+    "KR-kmed": {
+      "n": 43,
+      "score": {
+        "n": 43,
+        "p10": 0,
+        "p50": 5,
+        "p90": 33,
+        "flagged20": 0.16,
+        "flagged30": 0.14
+      },
+      "signals": {
+        "flat-scale": 0.44,
+        "transition-all": 0.44,
+        "centered": 0.16,
+        "generic-type": 0.16,
+        "card-grid": 0.14,
+        "accent-word": 0.12,
+        "emoji-icons": 0.09,
+        "large-gradient": 0.09,
+        "many-hues": 0.09,
+        "empty-frames": 0.07,
+        "generic-cta": 0.07,
+        "tinted-page": 0.07,
+        "eyebrow-pill": 0.05,
+        "glow": 0.05,
+        "numbered-labels": 0.05,
+        "paper-serif": 0.05,
+        "tracked-labels": 0.05,
+        "default-accent": 0.02,
+        "glass": 0.02,
+        "gradient-text": 0.02,
+        "hero-cta-below": 0.02,
+        "nested-cards": 0.02,
+        "purple-gradient": 0.02
+      },
+      "type": {
+        "bodySize": {
+          "n": 43,
+          "p10": 12,
+          "p50": 16,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 38,
+          "p10": 1,
+          "p50": 2.38,
+          "p90": 4.67
+        },
+        "sizes": {
+          "n": 43,
+          "p10": 0,
+          "p50": 7,
+          "p90": 15
+        },
+        "weights": {
+          "n": 43,
+          "p10": 0,
+          "p50": 3,
+          "p90": 6
+        },
+        "webfontShare": 0.63
+      },
+      "color": {
+        "hues": {
+          "n": 43,
+          "p10": 0,
+          "p50": 2,
+          "p90": 4
+        },
+        "darkShare": 0.07
+      },
+      "layout": {
+        "centered": {
+          "n": 43,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.6
+        },
+        "rounded": {
+          "n": 43,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.39
+        },
+        "trackedAny": 0.07,
+        "tracked": {
+          "n": 43,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    },
     "KR-maker": {
       "n": 13,
       "score": {
@@ -5175,9 +5885,9 @@
       "japanese": null
     },
     "KR-realestate": {
-      "n": 6,
+      "n": 8,
       "score": {
-        "n": 6,
+        "n": 8,
         "p10": 0,
         "p50": 5,
         "p90": 19,
@@ -5185,42 +5895,43 @@
         "flagged30": 0
       },
       "signals": {
+        "transition-all": 0.63,
         "flat-scale": 0.5,
-        "transition-all": 0.5,
-        "eyebrow-pill": 0.17,
-        "generic-type": 0.17,
-        "nested-cards": 0.17
+        "generic-type": 0.25,
+        "buzzword-copy": 0.13,
+        "eyebrow-pill": 0.13,
+        "nested-cards": 0.13
       },
       "type": {
         "bodySize": {
-          "n": 6,
+          "n": 8,
           "p10": 11,
-          "p50": 18,
+          "p50": 16,
           "p90": 34
         },
         "displayRatio": {
-          "n": 6,
+          "n": 8,
           "p10": 1,
           "p50": 3.22,
           "p90": 8.05
         },
         "sizes": {
-          "n": 6,
+          "n": 8,
           "p10": 2,
           "p50": 8,
           "p90": 15
         },
         "weights": {
-          "n": 6,
+          "n": 8,
           "p10": 1,
-          "p50": 3,
+          "p50": 4,
           "p90": 5
         },
         "webfontShare": 1
       },
       "color": {
         "hues": {
-          "n": 6,
+          "n": 8,
           "p10": 0,
           "p50": 2,
           "p90": 4
@@ -5229,20 +5940,20 @@
       },
       "layout": {
         "centered": {
-          "n": 6,
+          "n": 8,
           "p10": 0,
-          "p50": 0,
+          "p50": 0.2,
           "p90": 0.5
         },
         "rounded": {
-          "n": 6,
+          "n": 8,
           "p10": 0,
           "p50": 0,
           "p90": 0.14
         },
         "trackedAny": 0,
         "tracked": {
-          "n": 6,
+          "n": 8,
           "p10": 0,
           "p50": 0,
           "p90": 0
@@ -5327,81 +6038,85 @@
       "japanese": null
     },
     "KR-skin": {
-      "n": 14,
+      "n": 42,
       "score": {
-        "n": 14,
+        "n": 42,
         "p10": 0,
         "p50": 5,
-        "p90": 14,
+        "p90": 12,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.71,
+        "transition-all": 0.67,
         "flat-scale": 0.29,
-        "generic-cta": 0.21,
-        "centered": 0.14,
-        "generic-type": 0.14,
-        "numbered-labels": 0.14,
-        "card-grid": 0.07,
-        "default-accent": 0.07,
-        "empty-frames": 0.07,
-        "hero-cta-below": 0.07,
+        "centered": 0.24,
+        "empty-frames": 0.12,
+        "generic-cta": 0.12,
+        "default-accent": 0.1,
+        "generic-type": 0.07,
         "large-gradient": 0.07,
-        "purple-gradient": 0.07
+        "accent-word": 0.05,
+        "numbered-labels": 0.05,
+        "card-grid": 0.02,
+        "emoji-icons": 0.02,
+        "hero-cta-below": 0.02,
+        "nested-cards": 0.02,
+        "purple-gradient": 0.02,
+        "tracked-labels": 0.02
       },
       "type": {
         "bodySize": {
-          "n": 14,
-          "p10": 14,
+          "n": 42,
+          "p10": 12,
           "p50": 15,
-          "p90": 17
+          "p90": 18
         },
         "displayRatio": {
-          "n": 14,
-          "p10": 1.88,
-          "p50": 3.57,
-          "p90": 8
+          "n": 40,
+          "p10": 1.33,
+          "p50": 2.75,
+          "p90": 6.14
         },
         "sizes": {
-          "n": 14,
-          "p10": 4,
-          "p50": 11,
+          "n": 42,
+          "p10": 2,
+          "p50": 10,
           "p90": 17
         },
         "weights": {
-          "n": 14,
+          "n": 42,
           "p10": 2,
-          "p50": 5,
+          "p50": 3,
           "p90": 6
         },
-        "webfontShare": 1
+        "webfontShare": 0.88
       },
       "color": {
         "hues": {
-          "n": 14,
-          "p10": 1,
+          "n": 42,
+          "p10": 0,
           "p50": 2,
-          "p90": 4
+          "p90": 3
         },
         "darkShare": 0
       },
       "layout": {
         "centered": {
-          "n": 14,
+          "n": 42,
           "p10": 0,
-          "p50": 0.29,
-          "p90": 1
+          "p50": 0.19,
+          "p90": 0.92
         },
         "rounded": {
-          "n": 14,
+          "n": 42,
           "p10": 0,
-          "p50": 0.03,
-          "p90": 0.13
+          "p50": 0,
+          "p90": 0.22
         },
-        "trackedAny": 0.14,
+        "trackedAny": 0.12,
         "tracked": {
-          "n": 14,
+          "n": 42,
           "p10": 0,
           "p50": 0,
           "p90": 1

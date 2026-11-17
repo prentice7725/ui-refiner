@@ -8,7 +8,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 
 - **Refine with three directions from three sources.** `/ui-refine` does not leave the design to the model's habits.
   - Three first-screen mocks are built apart, each by its own subagent: familiar (what human-made sites of the kind do, as measured), tailored (colour and type from this client's content) and bold (one material, a finished look taken from a physical thing).
-  - The familiar direction follows measurements: how 406 human-made sites open their first screen and which colours 548 use. On a Korean or Japanese page, `--trade` narrows it to sites of the client's own trade (512 sites in 26 trades: salons, inns, restaurants, academies and more).
+  - The familiar direction follows measurements: how 406 human-made sites open their first screen and which colours 548 use. On a Korean or Japanese page, `--trade` narrows it to sites of the client's own trade (750 sites in 28 trades: salons, inns, restaurants, clinics, academies and more).
   - A per-user log keeps the next client from getting the same page.
   - You pick a direction, or a mix. The page is rebuilt around a signature element taken from the real content: this month's ledger for a budgeting app, a day in the team for a hiring page.
 - **Checks that keep a refine honest.**
@@ -123,7 +123,7 @@ The report follows the page language: English, Korean or Japanese.
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-0.7.0-1b1e24)
-![Tests](https://img.shields.io/badge/tests-174%20passing-555555)
+![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
 ## License
