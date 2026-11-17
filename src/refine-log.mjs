@@ -6,6 +6,7 @@
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import {loadMaterials,dealMaterials} from './materials.mjs';
+import {ALLOW_FILE,addAllow} from './allow.mjs';
 import path from 'node:path';
 
 export const DEAL_FILE='DEAL.json';
@@ -265,7 +266,13 @@ export function pickNotes(items,entries,project,run=4){
  return prev.length===run&&prev.every(e=>whiteish(e.bg))&&odd.length&&odd.length<items.length?[{id:'white-run',n:run,a:odd.join(', ')}]:[];
 }
 
-/** Appends the picked direction (by label) from the last `directions` run to the log. */
+/** What a familiar page is allowed: its one plain typeface is the direction, not a tell. */
+export const FAMILIAR_TYPE={signal:'generic-type',reason:'familiar direction: one plain, widely used family on purpose'};
+
+/**
+ * Appends the picked direction (by label) from the last `directions` run to the log. Picking the familiar direction
+ * also writes its plain typeface into the project's ui-refiner-allow.json, so later scans report it without scoring it.
+ */
 export async function recordChoice(dir,{pick,page,log}={}){
  const root=path.resolve(dir);
  let sheet;try{sheet=JSON.parse(await fs.readFile(path.join(root,SHEET_JSON),'utf8'));}catch{throw new Error(`Run "ui-refiner directions ${dir}" first; ${SHEET_JSON} is missing.`);}
@@ -276,5 +283,6 @@ export async function recordChoice(dir,{pick,page,log}={}){
  const entry={lane:dealt?.lane??null,material:dealt?.material?(item.material??dealt.material.slug):null,date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
  entries.push(entry);
  await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify(entry,null,1)+'\n');
- return {entry,file:await writeLog(entries.slice(-200),log)};
+ const allowed=entry.lane==='familiar'?(await addAllow(path.join(projectOf(root),ALLOW_FILE),FAMILIAR_TYPE)).file:null;
+ return {entry,allowed,file:await writeLog(entries.slice(-200),log)};
 }

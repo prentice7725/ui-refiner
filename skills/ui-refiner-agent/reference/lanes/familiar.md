@@ -22,7 +22,7 @@ Read [README.md](README.md) first; this file adds what is particular to this lan
 
 ## What keeps it from reading as generated
 
-A familiar page built by a model drifts into the generated look: three equal cards with icons, a pill badge over the headline, a strip of big figures, a tinted ground, a two-tone headline. None of those belongs here. If the scan scores a signal on your mock, remove its cause. The one exception is the plain typeface: a neutral family is right for this lane. Put `<meta name="ui-refiner-direction" content="familiar">` in the mock's `<head>`, and keep it when the direction is applied to the page; the scan then reports a single plain typeface without scoring it.
+A familiar page built by a model drifts into the generated look: three equal cards with icons, a pill badge over the headline, a strip of big figures, a tinted ground, a two-tone headline. None of those belongs here. If the scan scores a signal on your mock, remove its cause. The one exception is the plain typeface: a neutral family is right for this lane. The directions sheet does not mark this mock down for a single plain typeface, and when this direction is picked, `directions record` writes that into the project's `ui-refiner-allow.json`, so later scans report it without scoring it. Put nothing about the tool in the page itself.
 
 ## The direction note
 
