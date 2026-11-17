@@ -672,3 +672,505 @@
 {"host":"theraum.co.kr","trade":"wedding","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.836,"white":0.074,"tint":0.089},"rootBg":[255,255,255]}
 {"host":"weddingbook.com","trade":"wedding","kind":"place","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.833,"image":0.146,"white":0.021},"rootBg":[255,255,255]}
 {"host":"weddingcity.co.kr","trade":"wedding","kind":"place","country":"KR","ground":"image","accent":"brown","share":{"white":0.101,"image":0.899},"rootBg":[255,255,255]}
+{"host":"seoulmi.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"teal","share":{"image":0.964,"tint":0.036},"rootBg":[255,255,255]}
+{"host":"e-jemo.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.893,"orange":0.107},"rootBg":[255,255,255]}
+{"host":"hdhskin.com","skipped":"robots.txt unreachable"}
+{"host":"seoderma.co.kr","skipped":"robots.txt unreachable"}
+{"host":"skinkim.net","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.208,"image":0.792},"rootBg":[255,255,255]}
+{"host":"oarocnn.com","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":0.997,"image":0.003},"rootBg":[255,255,255]}
+{"host":"maxwellhair.co.kr","skipped":"robots.txt unreachable"}
+{"host":"allforskin.co.kr","skipped":"robots.txt unreachable"}
+{"host":"skin8275.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"pink","share":{"white":0.268,"image":0.664,"tint":0.068},"rootBg":[255,255,255]}
+{"host":"louiskin.com","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"dark":0.131,"image":0.661,"white":0.208},"rootBg":[255,255,255]}
+{"host":"skin-today.com","skipped":"robots"}
+{"host":"soye.co.kr","skipped":"robots.txt unreachable"}
+{"host":"f-skin.com","skipped":"robots"}
+{"host":"bomsskin.com","trade":"skin","kind":"service","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.821,"image":0.161,"white":0.018},"rootBg":[255,255,255]}
+{"host":"beautyforever.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"teal","share":{"image":0.801,"white":0.199},"rootBg":[255,255,255]}
+{"host":"oganacell-magok.com","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"orange","share":{"white":0.851,"image":0.143,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"blcli.com","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"siloamskin.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.387,"image":0.613},"rootBg":[255,255,255]}
+{"host":"flowerskin.co.kr","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"indigo","share":{"white":0.637,"image":0.363},"rootBg":[255,255,255]}
+{"host":"ehanaskin.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.613,"white":0.321,"tint":0.065},"rootBg":[255,255,255]}
+{"host":"juneskin.com","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"cleann.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.327,"image":0.664,"pink":0.009},"rootBg":[255,255,255]}
+{"host":"skin114.co.kr","trade":"skin","kind":"service","country":"KR","ground":"dark","accent":"orange","share":{"dark":0.506,"image":0.375,"white":0.119},"rootBg":[255,255,255]}
+{"host":"beauskin.co.kr","trade":"skin","kind":"service","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.762,"image":0.238},"rootBg":[255,255,255]}
+{"host":"severanceskin.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.744,"white":0.19,"tint":0.06,"dark":0.006},"rootBg":[255,255,255]}
+{"host":"jwderma.mobidoc.us","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"tint":1},"rootBg":[255,255,255]}
+{"host":"airoskin.com","skipped":"robots"}
+{"host":"ktwskin.com","skipped":"robots.txt unreachable"}
+{"host":"mimoreskin.co.kr","skipped":"robots.txt unreachable"}
+{"host":"poyan.co.kr","skipped":"robots.txt unreachable"}
+{"host":"reorbskin.com","skipped":"robots"}
+{"host":"bykim.co.kr","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"orange","share":{"white":0.661,"image":0.304,"tint":0.036},"rootBg":[255,255,255]}
+{"host":"catholicskin.com","skipped":"robots.txt unreachable"}
+{"host":"goun-skin.co.kr","skipped":"robots.txt unreachable"}
+{"host":"bcskin.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"dark":0.262,"image":0.658,"orange":0.012,"white":0.068},"rootBg":[255,255,255]}
+{"host":"paulline.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.128,"image":0.786,"tint":0.071,"dark":0.015},"rootBg":[255,255,255]}
+{"host":"shinpibu.co.kr","skipped":"robots.txt unreachable"}
+{"host":"joaskin.co.kr","skipped":"robots"}
+{"host":"klasse4u.com","skipped":"robots.txt unreachable"}
+{"host":"skinnew.co.kr","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"indigo","share":{"tint":0.387,"white":0.187,"image":0.363,"red":0.048,"teal":0.015},"rootBg":[255,255,255]}
+{"host":"grantskin.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"gounmi.net","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"orange","share":{"white":0.065,"image":0.357,"tint":0.577},"rootBg":[255,255,255]}
+{"host":"npibu.co.kr","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"white":0.19,"image":0.72,"indigo":0.015,"tint":0.024,"dark":0.051},"rootBg":[255,255,255]}
+{"host":"skin-1004.com","skipped":"robots.txt unreachable"}
+{"host":"yonseifeel.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"image":0.905,"tint":0.095},"rootBg":[255,255,255]}
+{"host":"ny-dental.net","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.545,"image":0.452,"blue":0.003},"rootBg":[255,255,255]}
+{"host":"dmcseoul.com","skipped":"robots.txt unreachable"}
+{"host":"eplusdent.co.kr","skipped":"robots.txt unreachable"}
+{"host":"narane.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"brown","share":{"dark":0.357,"white":0.357,"image":0.286},"rootBg":[255,255,255]}
+{"host":"seoulmi.com","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"indigo","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"misowide.com","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"opendent.co.kr","skipped":"robots"}
+{"host":"hanarodent.com","skipped":"robots"}
+{"host":"ldc3852002.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"image":0.857,"white":0.14,"blue":0.003},"rootBg":[255,255,255]}
+{"host":"gndental.net","skipped":"robots"}
+{"host":"stardentist.co.kr","skipped":"robots.txt unreachable"}
+{"host":"gooddent.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.795,"image":0.205},"rootBg":[255,255,255]}
+{"host":"bupyeong.yongplant.com","skipped":"robots.txt unreachable"}
+{"host":"xn--vb0bp64duzea.com","skipped":"robots.txt unreachable"}
+{"host":"swdent.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"amber","share":{"white":0.958,"image":0.042},"rootBg":[255,255,255]}
+{"host":"sldental.net","skipped":"robots.txt unreachable"}
+{"host":"mizskin.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"landing.sundent.co.kr","skipped":"robots"}
+{"host":"ondh.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"image":0.015,"white":0.982,"blue":0.003},"rootBg":[255,255,255]}
+{"host":"smartden.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"teal","share":{"image":0.818,"white":0.074,"tint":0.107},"rootBg":[255,255,255]}
+{"host":"beautifulsmile.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"orange","share":{"image":0.077,"white":0.869,"dark":0.054},"rootBg":[255,255,255]}
+{"host":"ezalan.net","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.562,"image":0.414,"tint":0.024},"rootBg":[255,255,255]}
+{"host":"sm.prettymiso.com","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"red","share":{"white":0.926,"image":0.039,"tint":0.03,"red":0.006},"rootBg":[255,255,255]}
+{"host":"seoulsdental.pe.kr","skipped":"robots.txt unreachable"}
+{"host":"dier.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.202,"image":0.756,"blue":0.042},"rootBg":[255,255,255]}
+{"host":"seojung.ne.kr","skipped":"robots.txt unreachable"}
+{"host":"esmileworld.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"tint":0.122,"dark":0.003,"image":0.702,"blue":0.03,"white":0.143},"rootBg":[245,245,245]}
+{"host":"jsdental.net","skipped":"robots.txt unreachable"}
+{"host":"geonchi.com","skipped":"robots.txt unreachable"}
+{"host":"dentalbanobagi.com","skipped":"robots.txt unreachable"}
+{"host":"withdent.co.kr","skipped":"robots.txt unreachable"}
+{"host":"mokpoye.net","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.244,"image":0.708,"dark":0.021,"tint":0.027},"rootBg":[255,255,255]}
+{"host":"littleone.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.131,"image":0.67,"tint":0.054,"amber":0.146},"rootBg":[255,255,255]}
+{"host":"jungdamplant.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.262,"image":0.667,"blue":0.071},"rootBg":[255,255,255]}
+{"host":"a-plantia.com","skipped":"robots.txt unreachable"}
+{"host":"ortho-song.com","skipped":"robots"}
+{"host":"toplant.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.848,"white":0.116,"dark":0.036},"rootBg":[255,255,255]}
+{"host":"ahndental.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"image":0.375,"white":0.625},"rootBg":[255,255,255]}
+{"host":"askdent.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"lamplant.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"image":0.673,"white":0.315,"indigo":0.012},"rootBg":[255,255,255]}
+{"host":"e28.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"jinjuye.co.kr","skipped":"robots.txt unreachable"}
+{"host":"jplant.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.131,"image":0.869},"rootBg":[255,255,255]}
+{"host":"maumgreen.net","skipped":"robots.txt unreachable"}
+{"host":"minplant.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"teal","share":{"white":0.116,"image":0.884},"rootBg":[255,255,255]}
+{"host":"nydental.kr","trade":"dental","kind":"service","country":"KR","ground":"indigo","accent":"indigo","share":{"indigo":0.354,"image":0.557,"white":0.048,"tint":0.042},"rootBg":[255,255,255]}
+{"host":"seoul1075.co.kr","skipped":"robots.txt unreachable"}
+{"host":"daegu.soricheong.net","trade":"kmed","kind":"service","country":"KR","ground":"dark","accent":"ink","share":{"dark":1},"rootBg":[16,28,54]}
+{"host":"herbalclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"coreadr.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"red","share":{"dark":0.024,"white":0.661,"image":0.289,"indigo":0.024,"red":0.003},"rootBg":[255,255,255]}
+{"host":"soomedi.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"songamclinic.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":0.92,"image":0.08},"rootBg":[255,255,255]}
+{"host":"xn--9i2bo6ia056gotaffw01hfsb.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"brown","share":{"dark":0.083,"tint":0.738,"image":0.176,"green":0.003},"rootBg":[246,242,234]}
+{"host":"jejung.net","skipped":"robots"}
+{"host":"janghs.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.307,"image":0.244,"tint":0.443,"dark":0.006},"rootBg":[255,255,255]}
+{"host":"nowonhani.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.06,"image":0.935,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"healim.com","skipped":"robots"}
+{"host":"morningnara.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"tint":0.83,"image":0.17},"rootBg":[251,247,240]}
+{"host":"821075.com","skipped":"robots"}
+{"host":"1075love.com","skipped":"robots.txt unreachable"}
+{"host":"heakwang.com","skipped":"robots.txt unreachable"}
+{"host":"thyroid.uriclinic.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"chukchukdisk.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"amber","share":{"white":0.182,"image":0.807,"pink":0.012},"rootBg":[255,255,255]}
+{"host":"egraceclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"sonwontaek.co.kr","skipped":"robots.txt unreachable"}
+{"host":"yunnsong.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"saha.soricheong.net","trade":"kmed","kind":"service","country":"KR","ground":"dark","accent":"ink","share":{"dark":1},"rootBg":[16,28,54]}
+{"host":"jounclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"danaa.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"teal","share":{"image":0.851,"white":0.113,"tint":0.036},"rootBg":[255,255,255]}
+{"host":"whiteheart.co.kr","skipped":"robots.txt unreachable"}
+{"host":"hegun.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"teal","share":{"tint":0.979,"white":0.003,"green":0.009,"amber":0.009},"rootBg":[247,244,237]}
+{"host":"beautimiz.co.kr","skipped":"robots.txt unreachable"}
+{"host":"ayamiclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"misoro.kr","skipped":"robots.txt unreachable"}
+{"host":"sejongomd.co.kr","skipped":"robots.txt unreachable"}
+{"host":"dowoni.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"daehwadang.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.929,"white":0.071},"rootBg":[255,255,255]}
+{"host":"fixports.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"image":0.509,"white":0.455,"blue":0.036},"rootBg":[255,255,255]}
+{"host":"inimedi.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"amber","share":{"tint":0.774,"image":0.006,"teal":0.211,"amber":0.009},"rootBg":[245,241,232]}
+{"host":"anapn.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"wellhani.com","skipped":"robots.txt unreachable"}
+{"host":"3samdae.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"daejinclinic.com","skipped":"robots.txt unreachable"}
+{"host":"heojisung.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.908,"tint":0.068,"blue":0.024},"rootBg":[247,248,250]}
+{"host":"jegaclinic.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"sytbubu.co.kr","skipped":"robots.txt unreachable"}
+{"host":"365danaseul.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.97,"image":0.006,"green":0.006,"blue":0.009,"amber":0.009},"rootBg":[255,255,255]}
+{"host":"nromd.com","skipped":"robots.txt unreachable"}
+{"host":"dodamhani.com","skipped":"robots.txt unreachable"}
+{"host":"cheonji.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"phildental.co.kr","skipped":"robots.txt unreachable"}
+{"host":"mkpdent.co.kr","skipped":"robots.txt unreachable"}
+{"host":"i2875.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"snudental.com","skipped":"robots.txt unreachable"}
+{"host":"iaandc.com","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"faceline.kr","skipped":"robots.txt unreachable"}
+{"host":"drko.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.119,"image":0.866,"blue":0.015},"rootBg":[255,255,255]}
+{"host":"yaplant.com","trade":"dental","kind":"service","country":"KR","ground":"dark","accent":"blue","share":{"white":0.116,"tint":0.286,"dark":0.595,"amber":0.003},"rootBg":[255,255,255]}
+{"host":"ewellness.co.kr","skipped":"robots.txt unreachable"}
+{"host":"newami.co.kr","skipped":"robots.txt unreachable"}
+{"host":"sr8.co.kr","skipped":"robots.txt unreachable"}
+{"host":"seoul-plant.com","skipped":"robots.txt unreachable"}
+{"host":"seesun.co.kr","skipped":"page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.seesun.co.kr/"}
+{"host":"itto.moredental.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.429,"blue":0.048,"image":0.524},"rootBg":[255,255,255]}
+{"host":"juniorjj.com","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"teal":0.077,"image":0.86,"white":0.063},"rootBg":[255,255,255]}
+{"host":"okimplant.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"image":0.673,"white":0.315,"indigo":0.012},"rootBg":[255,255,255]}
+{"host":"joydentist.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.071,"image":0.929},"rootBg":[255,255,255]}
+{"host":"youngjuraon.com","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.583,"image":0.384,"dark":0.033},"rootBg":[255,255,255]}
+{"host":"gjunior.co.kr","trade":"dental","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"teal":0.077,"image":0.851,"white":0.06,"green":0.006,"amber":0.006},"rootBg":[255,255,255]}
+{"host":"jkboston.net","skipped":"robots.txt unreachable"}
+{"host":"bhsoa.co.kr","skipped":"robots.txt unreachable"}
+{"host":"pilomc.com","skipped":"robots.txt unreachable"}
+{"host":"amiclinic.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"image":0.982,"dark":0.018},"rootBg":[255,255,255]}
+{"host":"kyungheeryu.com","trade":"kmed","kind":"service","country":"KR","ground":"dark","accent":"red","share":{"dark":0.613,"tint":0.351,"red":0.036},"rootBg":[255,255,255]}
+{"host":"skin.kyurim.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":0.598,"image":0.36,"dark":0.042},"rootBg":[255,255,255]}
+{"host":"kh-joon.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"indigo","share":{"dark":0.173,"image":0.158,"amber":0.223,"tint":0.42,"green":0.018,"orange":0.009},"rootBg":[255,255,255]}
+{"host":"indang.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"gungilhani.site","skipped":"robots.txt unreachable"}
+{"host":"sehwa1.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.283,"image":0.699,"blue":0.018},"rootBg":[255,255,255]}
+{"host":"nohgamin.kr","skipped":"robots.txt unreachable"}
+{"host":"myongwon.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":0.381,"image":0.119,"tint":0.5},"rootBg":[255,255,255]}
+{"host":"meerkj.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.792,"image":0.131,"red":0.012,"tint":0.065},"rootBg":[250,247,242]}
+{"host":"happybogam.com","skipped":"robots.txt unreachable"}
+{"host":"drsasang.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"teal","share":{"white":0.592,"image":0.375,"teal":0.021,"tint":0.003,"dark":0.003,"green":0.003,"amber":0.003},"rootBg":[255,255,255]}
+{"host":"chungmedical.com","skipped":"robots.txt unreachable"}
+{"host":"ssysuperheal.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"tint":0.631,"image":0.232,"dark":0.012,"white":0.125},"rootBg":[251,250,246]}
+{"host":"tntnimom.com","skipped":"robots.txt unreachable"}
+{"host":"yaksonbubu.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"brown","share":{"white":0.289,"image":0.711},"rootBg":[255,255,255]}
+{"host":"morif.co.kr","skipped":"robots.txt unreachable"}
+{"host":"jssc.pibro.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"3qclinic.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":0.958,"image":0.024,"dark":0.006,"green":0.012},"rootBg":[255,255,255]}
+{"host":"khbogam.kr","skipped":"robots.txt unreachable"}
+{"host":"s-car-net.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"chongtong.co.kr","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.134,"image":0.866},"rootBg":[255,255,255]}
+{"host":"happyhan.net","skipped":"robots.txt unreachable"}
+{"host":"migaramomclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"juntong.co.kr","skipped":"robots.txt unreachable"}
+{"host":"drharang.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"blue":0.071,"white":0.223,"image":0.705},"rootBg":[255,255,255]}
+{"host":"seungsan.kr","skipped":"robots"}
+{"host":"schroth.kr","skipped":"robots.txt unreachable"}
+{"host":"ganshinhwan.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"pohang.soricheong.net","trade":"kmed","kind":"service","country":"KR","ground":"dark","accent":"ink","share":{"dark":1},"rootBg":[16,28,54]}
+{"host":"namu911.com","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.071,"image":0.929},"rootBg":[255,255,255]}
+{"host":"dr-nabee.com","skipped":"robots.txt unreachable"}
+{"host":"311-0001.com","trade":"kmed","kind":"service","country":"KR","ground":"light","accent":"amber","share":{"image":0.452,"white":0.533,"tint":0.015},"rootBg":[255,255,255]}
+{"host":"xn--v42bw8twlaa350p.kr","trade":"kmed","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"tint":0.071,"white":0.345,"image":0.583},"rootBg":[255,255,255]}
+{"host":"spanoirstudio.com","skipped":"robots.txt unreachable"}
+{"host":"moooor.com","skipped":"robots.txt unreachable"}
+{"host":"gakuen.toyota-shokki.co.jp","trade":"academy","kind":"service","country":"JP","ground":"blue","accent":"indigo","share":{"white":0.262,"blue":0.738},"rootBg":[255,255,255]}
+{"host":"asahi-kasei.co.jp","trade":"builder","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"white":0.146,"image":0.723,"blue":0.131},"rootBg":[255,255,255]}
+{"host":"muji.net","skipped":"robots.txt unreachable"}
+{"host":"tamahome.jp","trade":"builder","kind":"service","country":"JP","ground":"image","accent":"red","share":{"image":0.937,"red":0.003,"white":0.06},"rootBg":[255,255,255]}
+{"host":"toyota-battery.com","trade":"car","kind":"company","country":"JP","ground":"dark","accent":"red","share":{"dark":0.967,"image":0.009,"red":0.024},"rootBg":[215,225,231]}
+{"host":"recruit-diversity.jreast.co.jp","trade":"car","kind":"company","country":"JP","ground":"light","accent":"green","share":{"green":0.018,"white":0.595,"image":0.387},"rootBg":[255,255,255]}
+{"host":"leandra-isler.ch","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"cow-aka.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"red","share":{"white":0.071,"image":0.741,"red":0.187},"rootBg":[255,255,255]}
+{"host":"clicktherapeutics.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.458,"image":0.345,"tint":0.182,"teal":0.015},"rootBg":[255,255,255]}
+{"host":"decorte.com","trade":"cosmetics","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"dark":0.134,"image":0.664,"white":0.202},"rootBg":[255,255,255]}
+{"host":"shiseido.co.jp","trade":"cosmetics","kind":"company","country":"JP","ground":"image","accent":"red","share":{"white":0.321,"image":0.679},"rootBg":[255,255,255]}
+{"host":"orbis.co.jp","trade":"cosmetics","kind":"company","country":"JP","ground":"light","accent":"ink","share":{"white":0.601,"image":0.324,"tint":0.074},"rootBg":[255,255,255]}
+{"host":"hands.net","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"teal","share":{"green":0.176,"dark":0.003,"tint":0.107,"white":0.479,"image":0.235},"rootBg":[255,255,255]}
+{"host":"minne.com","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"orange","share":{"white":0.402,"image":0.399,"tint":0.17,"teal":0.03},"rootBg":[255,255,255]}
+{"host":"askul.co.jp","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"blue","share":{"image":0.491,"white":0.405,"tint":0.095,"orange":0.009},"rootBg":[255,255,255]}
+{"host":"felissimo.co.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"white":0.342,"image":0.658},"rootBg":[255,255,255]}
+{"host":"nitori-net.jp","skipped":"robots.txt unreachable"}
+{"host":"yodobashi.com","skipped":"robots.txt unreachable"}
+{"host":"kyotographie.jp","trade":"event","kind":"public","country":"JP","ground":"image","accent":"ink","share":{"image":0.988,"dark":0.006,"white":0.006},"rootBg":[250,250,250]}
+{"host":"beams.co.jp","skipped":"robots.txt unreachable"}
+{"host":"nanouniverse.jp","skipped":"page.evaluate: Execution context was destroyed, most likely because of a navigat"}
+{"host":"marathon.tokyo","trade":"event","kind":"public","country":"JP","ground":"image","accent":"indigo","share":{"image":0.854,"white":0.054,"amber":0.009,"dark":0.083},"rootBg":[26,26,26]}
+{"host":"shipsltd.co.jp","trade":"fashion","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.795,"white":0.205},"rootBg":[255,255,255]}
+{"host":"saison-am.co.jp","trade":"finance","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.592,"white":0.312,"tint":0.095},"rootBg":[255,255,255]}
+{"host":"shinkin.co.jp","trade":"finance","kind":"service","country":"JP","ground":"red","accent":"red","share":{"tint":0.006,"white":0.065,"red":0.661,"image":0.268},"rootBg":[246,245,240]}
+{"host":"s-re.jp","trade":"fitness","kind":"place","country":"JP","ground":"red","accent":"pink","share":{"white":0.589,"image":0.054,"red":0.357},"rootBg":[255,255,255]}
+{"host":"kewpie.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"red","share":{"white":0.399,"image":0.518,"red":0.024,"tint":0.06},"rootBg":[255,255,255]}
+{"host":"curves.co.jp","trade":"fitness","kind":"place","country":"JP","ground":"image","accent":"pink","share":{"image":0.515,"white":0.467,"pink":0.003,"tint":0.015},"rootBg":[255,255,255]}
+{"host":"fratellisimonetti.com","skipped":"robots.txt unreachable"}
+{"host":"shirahone.org","trade":"inn","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"tint":0.31,"white":0.006,"image":0.685},"rootBg":[242,242,240]}
+{"host":"eis-lab.de","skipped":"robots.txt unreachable"}
+{"host":"shinagawa.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"pink","share":{"white":0.232,"tint":0.545,"image":0.22,"pink":0.003},"rootBg":[255,255,255]}
+{"host":"livable.co.jp","trade":"realestate","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.991,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"tax-startup.jp","skipped":"robots.txt unreachable"}
+{"host":"zeiri4.com","skipped":"robots.txt unreachable"}
+{"host":"socie.jp","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"white":0.137,"image":0.863},"rootBg":[255,255,255]}
+{"host":"slim.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"virgiinity.wedding","skipped":"robots.txt unreachable"}
+{"host":"osaka-info.jp","trade":"tourism","kind":"public","country":"JP","ground":"light","accent":"orange","share":{"image":0.443,"white":0.539,"tint":0.006,"orange":0.012},"rootBg":[255,255,255]}
+{"host":"happo-en.com","trade":"wedding","kind":"place","country":"JP","ground":"light","accent":"ink","share":{"white":0.991,"image":0.009},"rootBg":[255,255,250]}
+{"host":"zexy.net","skipped":"robots.txt unreachable"}
+{"host":"watabe-wedding.co.jp","trade":"wedding","kind":"place","country":"JP","ground":"light","accent":"red","share":{"white":0.485,"image":0.44,"red":0.074},"rootBg":[255,255,255]}
+{"host":"go-nagano.net","trade":"tourism","kind":"public","country":"JP","ground":"image","accent":"indigo","share":{"white":0.321,"image":0.583,"tint":0.095},"rootBg":[255,255,255]}
+{"host":"integratedbiosciences.com","trade":"wellness","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"tint":0.982,"white":0.018},"rootBg":[247,247,245]}
+{"host":"radiatinghope.org","trade":"wellness","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"tint":0.071,"white":0.926,"image":0.003},"rootBg":[255,255,255]}
+{"host":"chungdahm.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"kumon.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"pagoda21.com","trade":"academy","kind":"service","country":"KR","ground":"light","accent":"red","share":{"tint":0.223,"white":0.408,"image":0.369},"rootBg":[255,255,255]}
+{"host":"hanssem.com","skipped":"robots.txt unreachable"}
+{"host":"kccworld.co.kr","skipped":"robots.txt unreachable"}
+{"host":"ybmedu.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"jakomo.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"lxhausys.co.kr","trade":"builder","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"bifan.kr","skipped":"robots.txt unreachable"}
+{"host":"innisfree.com","trade":"cosmetics","kind":"company","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.893,"image":0.086,"white":0.021},"rootBg":[255,255,255]}
+{"host":"10x10.co.kr","trade":"ec","kind":"place","country":"KR","ground":"dark","accent":"red","share":{"dark":0.81,"image":0.19},"rootBg":[255,255,255]}
+{"host":"sulseam.com","skipped":"robots.txt unreachable"}
+{"host":"jeonjufest.kr","trade":"event","kind":"public","country":"KR","ground":"light","accent":"red","share":{"image":0.006,"tint":0.994},"rootBg":[48,46,47]}
+{"host":"wooyoungmi.com","skipped":"robots.txt unreachable"}
+{"host":"blackyak.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"mardimercredi.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"crown.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"dongsuh.co.kr","trade":"food","kind":"company","country":"KR","ground":"light","accent":"amber","share":{"white":0.732,"image":0.268},"rootBg":[255,255,255]}
+{"host":"shiftup.co.kr","trade":"game","kind":"media","country":"KR","ground":"dark","accent":"green","share":{"white":0.071,"dark":0.81,"image":0.119},"rootBg":[255,255,255]}
+{"host":"high1.com","skipped":"robots.txt unreachable"}
+{"host":"southcape.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"hy.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sempio.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"desker.co.kr","skipped":"page.goto: Download is starting"}
+{"host":"thepinx.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"image":0.798,"white":0.202},"rootBg":[255,255,255]}
+{"host":"yongpyong.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"helinox.co.kr","trade":"maker","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"tint":0.071,"white":0.199,"image":0.726,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"banobagi.com","trade":"skin","kind":"service","country":"KR","ground":"light","accent":"orange","share":{"white":0.732,"image":0.262,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"thesharp.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"taxnet.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"hdhskin.com","skipped":"robots.txt unreachable"}
+{"host":"seoderma.co.kr","skipped":"robots.txt unreachable"}
+{"host":"maxwellhair.co.kr","skipped":"robots.txt unreachable"}
+{"host":"allforskin.co.kr","skipped":"robots.txt unreachable"}
+{"host":"soye.co.kr","skipped":"robots.txt unreachable"}
+{"host":"tour.jb.go.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"mimoreskin.co.kr","skipped":"robots.txt unreachable"}
+{"host":"ktwskin.com","skipped":"robots.txt unreachable"}
+{"host":"poyan.co.kr","skipped":"robots.txt unreachable"}
+{"host":"amoris.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"goun-skin.co.kr","skipped":"robots.txt unreachable"}
+{"host":"shinpibu.co.kr","skipped":"robots.txt unreachable"}
+{"host":"klasse4u.com","skipped":"robots.txt unreachable"}
+{"host":"skin-1004.com","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.923,"white":0.077},"rootBg":[255,255,255]}
+{"host":"catholicskin.com","skipped":"robots.txt unreachable"}
+{"host":"dmcseoul.com","skipped":"robots.txt unreachable"}
+{"host":"eplusdent.co.kr","skipped":"robots.txt unreachable"}
+{"host":"stardentist.co.kr","skipped":"robots.txt unreachable"}
+{"host":"bupyeong.yongplant.com","skipped":"robots.txt unreachable"}
+{"host":"grantskin.com","trade":"skin","kind":"service","country":"KR","ground":"image","accent":"amber","share":{"white":0.19,"image":0.81},"rootBg":[255,255,255]}
+{"host":"xn--vb0bp64duzea.com","skipped":"robots.txt unreachable"}
+{"host":"sldental.net","skipped":"robots.txt unreachable"}
+{"host":"seoulsdental.pe.kr","skipped":"robots.txt unreachable"}
+{"host":"seojung.ne.kr","skipped":"robots.txt unreachable"}
+{"host":"geonchi.com","skipped":"robots.txt unreachable"}
+{"host":"jsdental.net","skipped":"robots.txt unreachable"}
+{"host":"dentalbanobagi.com","skipped":"robots.txt unreachable"}
+{"host":"withdent.co.kr","skipped":"robots.txt unreachable"}
+{"host":"a-plantia.com","skipped":"robots.txt unreachable"}
+{"host":"jinjuye.co.kr","skipped":"robots.txt unreachable"}
+{"host":"maumgreen.net","skipped":"robots.txt unreachable"}
+{"host":"seoul1075.co.kr","skipped":"robots.txt unreachable"}
+{"host":"herbalclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"1075love.com","skipped":"robots.txt unreachable"}
+{"host":"heakwang.com","skipped":"robots.txt unreachable"}
+{"host":"egraceclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"sonwontaek.co.kr","skipped":"robots.txt unreachable"}
+{"host":"jounclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"whiteheart.co.kr","skipped":"robots.txt unreachable"}
+{"host":"beautimiz.co.kr","skipped":"robots.txt unreachable"}
+{"host":"ayamiclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"mizskin.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sejongomd.co.kr","skipped":"robots.txt unreachable"}
+{"host":"misoro.kr","skipped":"robots.txt unreachable"}
+{"host":"wellhani.com","skipped":"robots.txt unreachable"}
+{"host":"daejinclinic.com","skipped":"robots.txt unreachable"}
+{"host":"dodamhani.com","skipped":"robots.txt unreachable"}
+{"host":"sytbubu.co.kr","skipped":"robots.txt unreachable"}
+{"host":"nromd.com","skipped":"robots.txt unreachable"}
+{"host":"phildental.co.kr","skipped":"robots.txt unreachable"}
+{"host":"snudental.com","skipped":"robots.txt unreachable"}
+{"host":"mkpdent.co.kr","skipped":"robots.txt unreachable"}
+{"host":"faceline.kr","skipped":"robots.txt unreachable"}
+{"host":"ewellness.co.kr","skipped":"robots.txt unreachable"}
+{"host":"askdent.co.kr","trade":"dental","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.732,"image":0.179,"tint":0.083,"blue":0.006},"rootBg":[255,255,255]}
+{"host":"newami.co.kr","skipped":"robots.txt unreachable"}
+{"host":"seoul-plant.com","skipped":"robots.txt unreachable"}
+{"host":"seesun.co.kr","skipped":"page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.seesun.co.kr/"}
+{"host":"bhsoa.co.kr","skipped":"robots.txt unreachable"}
+{"host":"pilomc.com","skipped":"robots.txt unreachable"}
+{"host":"gungilhani.site","skipped":"robots.txt unreachable"}
+{"host":"nohgamin.kr","skipped":"robots.txt unreachable"}
+{"host":"happybogam.com","skipped":"robots.txt unreachable"}
+{"host":"chungmedical.com","skipped":"robots.txt unreachable"}
+{"host":"tntnimom.com","skipped":"robots.txt unreachable"}
+{"host":"morif.co.kr","skipped":"robots.txt unreachable"}
+{"host":"sr8.co.kr","skipped":"robots.txt unreachable"}
+{"host":"khbogam.kr","skipped":"robots.txt unreachable"}
+{"host":"happyhan.net","skipped":"robots.txt unreachable"}
+{"host":"juntong.co.kr","skipped":"robots.txt unreachable"}
+{"host":"migaramomclinic.co.kr","skipped":"robots.txt unreachable"}
+{"host":"dr-nabee.com","skipped":"robots.txt unreachable"}
+{"host":"schroth.kr","skipped":"robots.txt unreachable"}
+{"host":"suido-hihu.com","trade":"skin","kind":"service","country":"JP","ground":"brown","accent":"red","share":{"brown":0.56,"red":0.036,"image":0.292,"tint":0.018,"white":0.095},"rootBg":[244,240,234]}
+{"host":"jkboston.net","skipped":"robots.txt unreachable"}
+{"host":"ekimae-hifuka.jp","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.58,"image":0.357,"blue":0.057,"green":0.006},"rootBg":[255,255,255]}
+{"host":"yajima-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.693,"image":0.298,"red":0.009},"rootBg":[255,255,255]}
+{"host":"hoya-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"pink","share":{"white":0.714,"image":0.274,"green":0.012},"rootBg":[255,255,255]}
+{"host":"mori-hifu.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"image":0.548,"white":0.381,"green":0.071},"rootBg":[204,255,204]}
+{"host":"inuihifuka.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"red","share":{"image":0.649,"white":0.351},"rootBg":[255,255,255]}
+{"host":"taizou.biz","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"image":0.801,"white":0.182,"indigo":0.012,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"shimura-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"red","share":{"white":0.976,"image":0.018,"red":0.006},"rootBg":[255,255,255]}
+{"host":"tashima-skin.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.336,"image":0.58,"green":0.083},"rootBg":[255,255,255]}
+{"host":"maruta-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"white":0.185,"image":0.815},"rootBg":[255,255,255]}
+{"host":"yamazakura-clinic.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.622,"white":0.369,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"shoji-skincl.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"white":0.351,"image":0.649},"rootBg":[255,255,255]}
+{"host":"hihuka.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"image":0.929,"dark":0.071},"rootBg":[51,0,0]}
+{"host":"nagarahifuka.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"pink","share":{"white":0.158,"image":0.021,"pink":0.125,"tint":0.696},"rootBg":[255,244,247]}
+{"host":"kobayashi-deruma..com","skipped":"robots.txt unreachable"}
+{"host":"kobayashi-derma-prs.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"image":0.923,"white":0.077},"rootBg":[255,255,255]}
+{"host":"sakurane-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"image":0.967,"pink":0.03,"white":0.003},"rootBg":[255,255,255]}
+{"host":"tozukaangyo-hifuka.jp","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.396,"image":0.604},"rootBg":[255,255,255]}
+{"host":"yokohifukaclinic.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.211,"image":0.789},"rootBg":[255,255,255]}
+{"host":"komazawa-derma.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.946,"image":0.015,"green":0.003,"blue":0.021,"pink":0.012,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"dr-shuzo.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":0.988,"image":0.012},"rootBg":[255,255,255]}
+{"host":"akiko-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"image":0.58,"white":0.42},"rootBg":[255,255,255]}
+{"host":"makinohifuka.net","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"red","share":{"white":0.08,"image":0.304,"tint":0.616},"rootBg":[242,242,242]}
+{"host":"hifuka.wp.xdomain.jp","skipped":"robots.txt unreachable"}
+{"host":"mokaclinic.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"image":0.801,"tint":0.036,"white":0.164},"rootBg":[255,255,255]}
+{"host":"kubo-clinic.or.jp","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"green","share":{"white":0.702,"image":0.205,"green":0.071,"teal":0.009,"orange":0.012},"rootBg":[255,255,255]}
+{"host":"ooshimaclin.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.625,"image":0.304,"blue":0.071},"rootBg":[153,153,153]}
+{"host":"ige-med.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"green","share":{"image":0.408,"white":0.592},"rootBg":[255,250,247]}
+{"host":"nk-hifuka.jp","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"red","share":{"white":0.991,"image":0.009},"rootBg":[255,255,255]}
+{"host":"nomura-hifujibi.clinic","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.348,"image":0.652},"rootBg":[255,255,255]}
+{"host":"dermatologyclinic.jp","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"red","share":{"tint":0.768,"image":0.232},"rootBg":[248,245,239]}
+{"host":"sanritsu-machida.jp","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"tint":0.071,"white":0.265,"image":0.64,"blue":0.024},"rootBg":[255,255,255]}
+{"host":"fujii-clinic.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"yamamura-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"orange","share":{"image":0.25,"tint":0.643,"white":0.107},"rootBg":[255,255,255]}
+{"host":"skin.or.jp","skipped":"robots.txt unreachable"}
+{"host":"hara-hifuka.jp","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"taguchi-hifuka.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"image":0.53,"white":0.452,"pink":0.018},"rootBg":[255,255,255]}
+{"host":"fukuharahifuka.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"kashinoki-hifuka.jp","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"tint":0.333,"white":0.452,"image":0.214},"rootBg":[250,237,214]}
+{"host":"takagi-hihuka.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"tint":0.571,"image":0.298,"white":0.131},"rootBg":[254,243,207]}
+{"host":"maru-beauty.com","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"amber","share":{"tint":0.083,"white":0.256,"image":0.661},"rootBg":[255,255,255]}
+{"host":"motosumi-hifu.jp","trade":"skin","kind":"service","country":"JP","ground":"image","accent":"brown","share":{"teal":0.071,"white":0.399,"image":0.518,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"ibe-hifuka-clinic.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"teal","share":{"white":0.86,"image":0.042,"teal":0.098},"rootBg":[255,255,255]}
+{"host":"sato-hifuka-clinic.com","trade":"skin","kind":"service","country":"JP","ground":"light","accent":"teal","share":{"white":0.81,"image":0.048,"green":0.143},"rootBg":[255,255,255]}
+{"host":"tatsuyadc.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"dark":0.202,"image":0.798},"rootBg":[0,0,64]}
+{"host":"musashikoyama-hifu.com","trade":"skin","kind":"service","country":"JP","ground":"brown","accent":"orange","share":{"white":0.512,"orange":0.006,"amber":0.006,"brown":0.458,"image":0.018},"rootBg":[255,255,255]}
+{"host":"tsutsumi-dc.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.664,"tint":0.286,"blue":0.009,"amber":0.042},"rootBg":[247,245,234]}
+{"host":"miho-clinic.net","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.613,"image":0.378,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"implant-morimoto-dc.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"pink","share":{"white":0.768,"image":0.232},"rootBg":[246,246,246]}
+{"host":"nakatani-dent.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"tint":0.173,"image":0.619,"white":0.208},"rootBg":[255,255,255]}
+{"host":"nkg-dent.com","skipped":"robots.txt unreachable"}
+{"host":"iaidental.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"teal","share":{"white":0.342,"image":0.586,"tint":0.071},"rootBg":[255,255,255]}
+{"host":"matsuyama-ortho.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"tint":0.402,"image":0.199,"white":0.399},"rootBg":[255,255,255]}
+{"host":"yoshiishika.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"nagatadc.wp.xdomain.jp","skipped":"robots.txt unreachable"}
+{"host":"sakura418.jp","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.232,"image":0.756,"orange":0.012},"rootBg":[255,255,255]}
+{"host":"aoba-dental-clinic.net","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"white":0.446,"image":0.554},"rootBg":[255,255,255]}
+{"host":"uenoda-dental.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.545,"image":0.446,"orange":0.009},"rootBg":[255,255,255]}
+{"host":"hachiouji-c.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"green","share":{"white":0.536,"image":0.455,"green":0.009},"rootBg":[255,255,255]}
+{"host":"akiyama-shika.jp","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.473,"image":0.527},"rootBg":[255,255,255]}
+{"host":"tanino-dental.net","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"teal","share":{"image":0.97,"tint":0.03},"rootBg":[255,255,255]}
+{"host":"yokozutsumi-dc.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"green","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"mizuho-dc.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"edadental.jp","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"green","share":{"image":0.551,"white":0.429,"green":0.009,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"k-5454.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"white":0.25,"image":0.652,"tint":0.098},"rootBg":[255,255,255]}
+{"host":"dentcom.or.jp","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"image":1},"rootBg":[102,153,255]}
+{"host":"yamadabr.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":0.64,"image":0.36},"rootBg":[255,255,255]}
+{"host":"koriyama-yobou.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"yamanote-d-c.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.372,"green":0.187,"image":0.44},"rootBg":[255,255,255]}
+{"host":"ttdental.info","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.491,"image":0.405,"blue":0.104},"rootBg":[37,167,232]}
+{"host":"maioka-shika.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"orange","share":{"image":0.372,"white":0.292,"orange":0.009,"blue":0.033,"green":0.009,"tint":0.286},"rootBg":[255,255,255]}
+{"host":"yomodashika.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"image":0.801,"white":0.199},"rootBg":[221,240,254]}
+{"host":"sakamoto-dental-clinic.jp","trade":"dental","kind":"service","country":"JP","ground":"amber","accent":"brown","share":{"white":0.14,"image":0.536,"amber":0.324},"rootBg":[255,255,255]}
+{"host":"implant.cc","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"hanamizukido-rishika.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.568,"image":0.333,"pink":0.071,"tint":0.027},"rootBg":[255,255,255]}
+{"host":"toranomon-dentist.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"image":0.074,"white":0.402,"tint":0.494,"orange":0.009,"blue":0.003,"amber":0.018},"rootBg":[255,255,255]}
+{"host":"osaen-dc.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"orange","share":{"white":0.807,"image":0.193},"rootBg":[255,255,255]}
+{"host":"ohira-dental.info","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"tint":0.143,"image":0.845,"blue":0.012},"rootBg":[255,255,255]}
+{"host":"dental-nihonbashi.or.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"amber","share":{"white":0.518,"image":0.482},"rootBg":[255,255,255]}
+{"host":"tsunoda-dental.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"image":0.307,"white":0.693},"rootBg":[255,255,255]}
+{"host":"okubo-dc.net","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.789,"white":0.211},"rootBg":[238,238,238]}
+{"host":"bell-shika.com","skipped":"robots"}
+{"host":"pro-dent.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.577,"blue":0.045,"image":0.378},"rootBg":[255,255,255]}
+{"host":"ks-dscl.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"red","share":{"image":0.479,"white":0.521},"rootBg":[255,255,255]}
+{"host":"nizinomori.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"orange","share":{"image":0.033,"white":0.943,"tint":0.018,"amber":0.006},"rootBg":[255,255,255]}
+{"host":"ishiidentalclinic.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"red","share":{"image":0.521,"white":0.455,"blue":0.024},"rootBg":[255,255,255]}
+{"host":"eito-shika.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"teal","share":{"image":0.842,"tint":0.158},"rootBg":[255,255,255]}
+{"host":"akira-dental.net","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"green","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"koizumi118.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"green","share":{"white":0.134,"amber":0.009,"image":0.488,"tint":0.369},"rootBg":[243,240,232]}
+{"host":"ikawa-dental-toyoda.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"dental883.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"green","share":{"image":0.655,"white":0.253,"tint":0.092},"rootBg":[255,255,255]}
+{"host":"mutou-dc.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.601,"white":0.116,"amber":0.009,"teal":0.012,"tint":0.262},"rootBg":[255,255,255]}
+{"host":"sakura-nomo-dc.or.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"tint":0.071,"white":0.923,"image":0.006},"rootBg":[255,255,255]}
+{"host":"trustshika.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.967,"brown":0.006,"blue":0.027},"rootBg":[255,255,255]}
+{"host":"clinic-smiledesign.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"white":0.17,"image":0.83},"rootBg":[255,255,255]}
+{"host":"iwaharadc.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"edo418.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"image":0.048,"white":0.899,"blue":0.042,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"kidsfamily-shika.com","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"pink","share":{"white":0.348,"image":0.414,"tint":0.223,"pink":0.015},"rootBg":[255,255,255]}
+{"host":"licca-nishimura-shika.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"teal","share":{"image":0.857,"white":0.143},"rootBg":[255,255,255]}
+{"host":"shishido-dc.com","skipped":"robots.txt unreachable"}
+{"host":"sudou-shika.jp","trade":"dental","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"noah-omotesando.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"brown","share":{"white":0.402,"image":0.571,"amber":0.018,"tint":0.009},"rootBg":[255,255,255]}
+{"host":"uchida-dental.cihp2.jp","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"green","share":{"image":0.774,"white":0.214,"green":0.012},"rootBg":[255,255,255]}
+{"host":"angel-dental-clinic.com","trade":"dental","kind":"service","country":"JP","ground":"orange","accent":"orange","share":{"orange":0.75,"image":0.25},"rootBg":[255,187,128]}
+{"host":"mamatokodomo-sumiyoshi.com","trade":"dental","kind":"service","country":"JP","ground":"image","accent":"amber","share":{"white":0.155,"image":0.762,"tint":0.08,"red":0.003},"rootBg":[255,255,255]}
+{"host":"silverleaf-tsuwano.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"amber","share":{"image":0.232,"white":0.75,"amber":0.009,"teal":0.009},"rootBg":[255,255,255]}
+{"host":"miharashinosato.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"image":0.857,"white":0.131,"pink":0.012},"rootBg":[255,255,255]}
+{"host":"w-iryoseikyo.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"teal","share":{"white":0.848,"teal":0.027,"image":0.068,"dark":0.003,"tint":0.054},"rootBg":[255,255,255]}
+{"host":"saijo-seifuukai.or.jp","trade":"care","kind":"service","country":"JP","ground":"green","accent":"blue","share":{"green":0.345,"white":0.655},"rootBg":[193,224,141]}
+{"host":"michinokuso.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"orange","share":{"white":0.196,"image":0.497,"tint":0.214,"green":0.024,"amber":0.033,"indigo":0.027,"red":0.009},"rootBg":[255,255,255]}
+{"host":"greenhill.or.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":0.393,"image":0.393,"green":0.054,"red":0.054,"amber":0.054,"blue":0.054},"rootBg":[255,255,255]}
+{"host":"be-oasis2003.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"white":0.268,"image":0.714,"blue":0.018},"rootBg":[255,255,255]}
+{"host":"furusatohome.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"green","share":{"tint":0.33,"image":0.527,"white":0.143},"rootBg":[211,222,211]}
+{"host":"tahoukai-hibarien.com","trade":"care","kind":"service","country":"JP","ground":"amber","accent":"orange","share":{"amber":1},"rootBg":[255,255,255]}
+{"host":"poiinc.jp","skipped":"robots.txt unreachable"}
+{"host":"washukai.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"tint":0.057,"image":0.872,"white":0.071},"rootBg":[255,255,255]}
+{"host":"lino-kaigo.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"white":0.423,"image":0.577},"rootBg":[255,255,255]}
+{"host":"ja-shinmiyagi.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"white":0.054,"image":0.943,"amber":0.003},"rootBg":[248,244,236]}
+{"host":"nozomi-sogopuran.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"image":0.033,"tint":0.967},"rootBg":[218,243,250]}
+{"host":"rehabili-home.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"teal","share":{"white":0.298,"image":0.568,"tint":0.134},"rootBg":[255,255,255]}
+{"host":"gengoseikastu.jimdoweb.com","skipped":"robots"}
+{"host":"seiju-kai.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"image":0.821,"white":0.179},"rootBg":[255,255,255]}
+{"host":"chezmoi-nishidai.jp","skipped":"robots.txt unreachable"}
+{"host":"sunnyvalein.net","trade":"care","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"white":0.226,"image":0.765,"red":0.009},"rootBg":[255,255,255]}
+{"host":"yuuyuu.in.coocan.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"kenkouen.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"image":0.762,"white":0.238},"rootBg":[255,255,255]}
+{"host":"fujiki-hp.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.542,"image":0.292,"tint":0.167},"rootBg":[255,255,255]}
+{"host":"care-umbrella.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"white":0.327,"image":0.601,"green":0.012,"amber":0.06},"rootBg":[255,255,255]}
+{"host":"katsushika.tokuyou.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"red","share":{"image":0.717,"white":0.265,"red":0.006,"blue":0.006,"amber":0.006},"rootBg":[255,255,255]}
+{"host":"merci-life.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"green","share":{"white":0.274,"image":0.268,"pink":0.107,"orange":0.006,"tint":0.345},"rootBg":[255,255,255]}
+{"host":"omachishakyo.org","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.554,"image":0.351,"tint":0.083,"blue":0.012},"rootBg":[255,255,255]}
+{"host":"mikankai.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"white":0.185,"image":0.812,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"bloom.nankaifukushi.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"tint":0.411,"image":0.506,"white":0.083},"rootBg":[255,255,255]}
+{"host":"k-aimu.co.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"ink","share":{"white":0.354,"image":0.646},"rootBg":[255,255,255]}
+{"host":"care.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"green","share":{"white":0.214,"image":0.786},"rootBg":[255,255,255]}
+{"host":"kg-tokyo.or.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"green","share":{"white":0.539,"image":0.378,"green":0.083},"rootBg":[252,253,247]}
+{"host":"xn--welfarekumamoto-6s9h.com","skipped":"robots.txt unreachable"}
+{"host":"shizutetsu.co.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.607,"image":0.387,"teal":0.006},"rootBg":[255,255,255]}
+{"host":"kagayakinosato.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"amber","share":{"tint":0.101,"white":0.063,"image":0.836},"rootBg":[244,243,225]}
+{"host":"daijukai.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"teal","share":{"image":0.679,"white":0.286,"teal":0.036},"rootBg":[255,255,255]}
+{"host":"jusenkai.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"orange","share":{"tint":0.586,"image":0.381,"white":0.03,"red":0.003},"rootBg":[255,255,255]}
+{"host":"lightup-ltd.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":0.821,"image":0.179},"rootBg":[255,255,255]}
+{"host":"takeda-yuki.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"orange","share":{"red":0.071,"tint":0.125,"image":0.649,"white":0.155},"rootBg":[255,255,255]}
+{"host":"k-seizanso.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"image":0.015,"tint":0.926,"white":0.06},"rootBg":[245,245,245]}
+{"host":"utoria-kai.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"green","share":{"white":0.47,"green":0.208,"image":0.321},"rootBg":[255,255,255]}
+{"host":"takinouarigatou.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"red","share":{"white":0.872,"image":0.104,"green":0.006,"blue":0.006,"red":0.012},"rootBg":[255,255,255]}
+{"host":"greenarum.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"teal","share":{"white":0.952,"image":0.048},"rootBg":[255,255,255]}
+{"host":"mamie-hp.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"image":0.738,"tint":0.202,"pink":0.03,"white":0.03},"rootBg":[255,245,255]}
+{"host":"urawanosato.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.958,"image":0.018,"green":0.009,"pink":0.009,"blue":0.006},"rootBg":[255,255,255]}
+{"host":"you-wa-kai.or.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.952,"white":0.048},"rootBg":[251,246,246]}
+{"host":"kicchouen.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"indigo","share":{"tint":0.167,"image":0.798,"white":0.036},"rootBg":[255,255,255]}
+{"host":"mitane-shakyo.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.476,"image":0.524},"rootBg":[255,255,255]}
+{"host":"haming.ico.bz","trade":"care","kind":"service","country":"JP","ground":"light","accent":"teal","share":{"white":0.435,"image":0.432,"tint":0.134},"rootBg":[255,255,255]}
+{"host":"meipurucare.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.31,"image":0.679,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"okagawah.com","skipped":"robots.txt unreachable"}
+{"host":"momo-ecgr.com","trade":"care","kind":"service","country":"JP","ground":"image","accent":"pink","share":{"white":0.28,"image":0.658,"pink":0.009,"tint":0.054},"rootBg":[255,255,255]}
+{"host":"hapinisu.com","trade":"care","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.527,"image":0.473},"rootBg":[255,255,255]}
+{"host":"ci-kensa.co.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"white":0.143,"image":0.845,"blue":0.012},"rootBg":[255,255,255]}
+{"host":"jikoukai.or.jp","trade":"care","kind":"service","country":"JP","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"nozomi-g.co.jp","trade":"care","kind":"service","country":"JP","ground":"image","accent":"red","share":{"white":0.396,"image":0.586,"red":0.015,"green":0.003},"rootBg":[255,255,255]}
