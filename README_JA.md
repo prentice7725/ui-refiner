@@ -8,7 +8,7 @@ Claude CodeとCodexのためのデザインツールです。エージェント�
 
 - **3つの方向を割り当ててから直す。** `/ui-refine`はデザインをモデルの癖に任せません。
   - ファーストビューの案3つを、別々の出発点から別々のサブエージェントが作ります。定番案（人が作った同種サイトの実測）、個別案（この顧客の内容から色と書体まで決める）、大胆案（一つの素材で最後まで）です。
-  - 定番案は実測に従います。人が作ったサイト406件のファーストビューの始め方と、548件が使う色です。日本語・韓国語のページでは、`--trade`で顧客の業種を渡すと、その業種のサイトの実測に絞ります（美容室、宿、飲食店、塾など26業種512件）。
+  - 定番案は実測に従います。人が作ったサイト406件のファーストビューの始め方と、548件が使う色です。日本語・韓国語のページでは、`--trade`で顧客の業種を渡すと、その業種のサイトの実測に絞ります（美容室、宿、飲食店、クリニック、塾など28業種750件）。
   - ユーザーごとの記録があるので、次の案件に同じページが出ません。
   - 1つを選ぶか組み合わせると、実際の内容から作った固有の要素を中心にページを作り直します。家計簿アプリなら今月の帳簿、採用ページならチームの一日です。
 - **直しが正直であるためのチェック。**
@@ -123,7 +123,7 @@ ui-refiner scan your-site.example
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-0.7.0-1b1e24)
-![Tests](https://img.shields.io/badge/tests-174%20passing-555555)
+![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
 ## ライセンス
