@@ -165,3 +165,11 @@ test('allow: a signal the project keeps on purpose is reported without being sco
  assert.equal(await findAllow('https://example.com/',dir),file,'found in the working directory for a URL');
  await removeAllow(file,'generic-type');assert.deepEqual(await readAllow(file),[]);
 });
+
+test('allow: the CLI adds, lists and removes an entry', async () => {
+ const {execFileSync}=await import('node:child_process'),fsp=await import('node:fs/promises'),os=await import('node:os'),path=await import('node:path');
+ const dir=await fsp.mkdtemp(path.join(os.tmpdir(),'uir-allow-cli-')),bin=path.resolve('bin/ui-refiner.mjs'),run=(...a)=>execFileSync(process.execPath,[bin,...a],{cwd:dir,encoding:'utf8'});
+ assert.match(run('allow','add','default-accent','--reason','brand blue'),/\[ALLOW\] default-accent: brand blue/);
+ assert.match(run('allow','list'),/default-accent: brand blue/);
+ run('allow','remove','default-accent');assert.match(run('allow','list'),/No allowed signals/);
+});
