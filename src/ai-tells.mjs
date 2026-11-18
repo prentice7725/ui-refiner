@@ -299,12 +299,16 @@ export function scoreBreakdown(signals,craft=[]){
  return {rows:scored.map((s,i)=>({id:s.id,title:s.title,points:whole[i]})),craft:craft.map((id,i)=>({id,points:-(Math.floor(off/craft.length)+(i<off%craft.length?1:0))})),sum,cap:score-damped,score};
 }
 /**
- * What the score says about the page. 20 is where a refine starts and where calibration separates the two groups:
- * 66–73% of AI-made sites and 0–15% of human-made sites score 20 or more (1% of the Japanese reference sites, 11% of
- * the Korean ones and 31% of Korean software sites; data/kr-reference).
+ * What the score says about the page.
+ * - 20 or more reads as AI-made. It is where a refine starts and where calibration separates the two groups: 66–73% of
+ *   AI-made sites and 0–15% of human-made sites score 20 or more (1% of 209 Japanese reference sites, about 9% of 180
+ *   Korean ones, 31% among Korean software sites).
+ * - 8 to 19 is unclear, not "some traces": a fifth of the Japanese and about a quarter of the Korean human-made
+ *   reference sites score in that range.
+ * - Under 8 does not read as AI-made.
  */
-export const AI_VERDICT_AT=20,AI_TRACES_AT=8;
-export const aiVerdict=score=>score>=AI_VERDICT_AT?'ai':score>=AI_TRACES_AT?'traces':'none';
+export const AI_VERDICT_AT=20,AI_UNCLEAR_AT=8;
+export const aiVerdict=score=>score>=AI_VERDICT_AT?'ai':score>=AI_UNCLEAR_AT?'unclear':'none';
 
 /** Turns raw page metrics into ranked, explained signals. Pure; safe to unit-test. */
 export function evaluateAiTells(m,{lang='ko'}={}){
@@ -329,7 +333,11 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  // Japanese pages with a real Japanese stack (Hiragino, Noto Sans JP …) follow local convention, not a template default.
  if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)});
  // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
- if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)});
+ // Korean pages: reported, not scored. On 180 human-made Korean sites (data/kr-reference, November 2026) a display size
+ // under twice the body was found on 43%, and with it scored half of them reached 8 points or more. Japanese pages
+ // have been left out since the Japanese reference set, for the same reason.
+ const letters=(m.text||'').replace(/\s/g,''),korean=!m.japanese&&letters.length>0&&(letters.match(/[가-힣]/g)||[]).length/letters.length>=.15;
+ if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)},[],korean?0:null);
  const hits=new Map();for(const c of m.accents)for(const [name,ref] of Object.entries(defaultAccents))if(dist(c,ref)<14)hits.set(name,(hits.get(name)||0)+1);
  // Calibration (2026-11): plain blue defaults are as common on human sites; only indigo/violet/purple defaults score.
  if([...hits.values()].reduce((a,b)=>a+b,0)>=2)add('default-accent','moderate',{matches:Object.fromEntries(hits)},[],[...hits.keys()].some(k=>/indigo|violet|purple/.test(k))?null:0);
