@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-18T12:34:40.677Z",
+ "collectedAt": "2026-11-18T12:51:54.340Z",
  "sites": [
   {
    "category": "JP-academy",
@@ -1747,6 +1747,86 @@
   },
   {
    "category": "JP-beauty",
+   "url": "https://christinajapan.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "many-hues",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "tracked-labels",
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "poppins"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 15,
+    "h1": 16,
+    "display": 40,
+    "ratio": 2.67,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.33,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 2.4,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 42,
+    "accessible-name": 9,
+    "label-consistency": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-beauty",
    "url": "https://evolvebeauty.jp/",
    "split": "tune",
    "status": "ok",
@@ -1897,6 +1977,83 @@
     "text-contrast": 38,
     "control-state": 5,
     "accessible-name": 3,
+    "target-size": 3
+   }
+  },
+  {
+   "category": "JP-beauty",
+   "url": "https://guinot.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 25,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino kaku gothic pron",
+     "open sans"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 12,
+    "h1": 10,
+    "display": 36,
+    "ratio": 3,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.69,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0.21,
+    "lineHeight": 1.6,
+    "bodySize": 12,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 98,
+    "accessible-name": 7,
+    "control-state": 6,
     "target-size": 3
    }
   },
@@ -2226,6 +2383,86 @@
   },
   {
    "category": "JP-beauty",
+   "url": "https://www.cp-cosmetics.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "koburina gothic w3 jis2004",
+     "shuei mincho l",
+     "-apple-system"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 14,
+    "h1": null,
+    "display": 22,
+    "ratio": 1.57,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.56,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0.69,
+    "lineHeight": 1.8,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-orphans",
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "control-state": 32,
+    "text-contrast": 16,
+    "accessible-name": 12,
+    "viewport-bounds": 8,
+    "target-size": 2,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "JP-beauty",
    "url": "https://www.danbrise-barber.com/",
    "split": "tune",
    "status": "ok",
@@ -2295,6 +2532,85 @@
     "control-state": 18,
     "viewport-bounds": 7,
     "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-beauty",
+   "url": "https://www.esthederm.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "bliss2 bold",
+     "bliss2 medium"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 14,
+    "h1": 14,
+    "display": 27,
+    "ratio": 1.93,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.57,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-break-all",
+     "ja-tiny",
+     "ja-tracking"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 217,
+    "text-contrast": 21,
+    "target-size": 16,
+    "accessible-name": 8,
+    "control-state": 5
    }
   },
   {
@@ -2370,6 +2686,84 @@
   },
   {
    "category": "JP-beauty",
+   "url": "https://www.j-esthe.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yakuhanjps",
+     "noto sans jp",
+     "brandon-grotesque",
+     "fot-tsukuardgothic-std"
+    ],
+    "sizes": 13,
+    "weights": 3,
+    "body": 16,
+    "h1": 16,
+    "display": 44,
+    "ratio": 2.75,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0.15,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.85,
+    "fontFallback": 0,
+    "lineHeight": 1.75,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 62,
+    "target-size": 21,
+    "accessible-name": 8,
+    "control-state": 6
+   }
+  },
+  {
+   "category": "JP-beauty",
    "url": "https://www.leandra-isler.ch/en",
    "split": "tune",
    "status": "ok",
@@ -2438,10 +2832,159 @@
   },
   {
    "category": "JP-beauty",
+   "url": "https://www.marycohr.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 23,
+   "band": "low",
+   "signals": [
+    "emoji-icons",
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "emoji-icons",
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 19,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "didotltpro-roman",
+     "roboto"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 16,
+    "h1": 16,
+    "display": 72,
+    "ratio": 4.5,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.55,
+    "rounded": 0.18,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 19
+   },
+   "ja": {
+    "jaRatio": 0.61,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 28,
+    "accessible-name": 19,
+    "control-state": 6,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-beauty",
    "url": "https://www.moooor.com/",
    "split": "tune",
    "status": "error",
    "error": "unreachable"
+  },
+  {
+   "category": "JP-beauty",
+   "url": "https://www.policy.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 5,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "ヒラギノ明朝 pro w3"
+    ],
+    "sizes": 14,
+    "weights": 1,
+    "body": 13,
+    "h1": 12.8,
+    "display": 44.8,
+    "ratio": 3.45,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.35,
+    "rounded": 0.04,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.75,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 12.8,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all"
+    ]
+   },
+   "quality": {
+    "text-contrast": 67,
+    "control-state": 12,
+    "target-size": 2
+   }
   },
   {
    "category": "JP-beauty",
@@ -64829,6 +65372,81 @@
   },
   {
    "category": "JP-salon",
+   "url": "https://fufucolor.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "mfw-koburinagostdn-w6",
+     "helvetica 65",
+     "mfw-koburinagostdn-w3",
+     "helvetica 45"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 14,
+    "h1": 10,
+    "display": 28,
+    "ratio": 2,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.41,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0.97,
+    "lineHeight": 1.57,
+    "bodySize": 14,
+    "tightShare": 0.13,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "text-contrast": 46,
+    "control-state": 8,
+    "viewport-bounds": 3
+   }
+  },
+  {
+   "category": "JP-salon",
    "url": "https://garden-hair.jp/",
    "split": "holdout",
    "status": "ok",
@@ -64905,6 +65523,88 @@
     "accessible-name": 27,
     "control-state": 10,
     "text-contrast": 3
+   }
+  },
+  {
+   "category": "JP-salon",
+   "url": "https://haircolor-plus.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 36,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 1,
+    "nestedHosts": 1,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "notosansjp-regular",
+     "arial",
+     "jost"
+    ],
+    "sizes": 16,
+    "weights": 3,
+    "body": 16,
+    "h1": 10,
+    "display": 52,
+    "ratio": 3.25,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.29,
+    "rounded": 0.19,
+    "cardGrids": 0,
+    "largeGradients": 3,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.85,
+    "fontFallback": 0.04,
+    "lineHeight": 1.8,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 45,
+    "control-state": 12,
+    "viewport-bounds": 2,
+    "form-label": 1
    }
   },
   {
@@ -65141,6 +65841,153 @@
     "font-loading": 1,
     "form-label": 1,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-salon",
+   "url": "https://salon.shiseido.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "繝偵λ繧ｮ繝手ｧ偵ざ pro w3",
+     "lato",
+     "work sans"
+    ],
+    "sizes": 6,
+    "weights": 3,
+    "body": 17,
+    "h1": null,
+    "display": 42,
+    "ratio": 2.47,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.53,
+    "fontFallback": 0.06,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "control-state": 25,
+    "accessible-name": 20,
+    "text-contrast": 17,
+    "viewport-bounds": 3
+   }
+  },
+  {
+   "category": "JP-salon",
+   "url": "https://www.11cut.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "hero-cta-below",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "noto sans"
+    ],
+    "sizes": 13,
+    "weights": 4,
+    "body": 16,
+    "h1": 32,
+    "display": 64,
+    "ratio": 4,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.32,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.84,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 11,
+    "control-state": 4
    }
   },
   {
@@ -65386,6 +66233,88 @@
     "form-label": 3,
     "font-loading": 1,
     "target-size": 1
+   }
+  },
+  {
+   "category": "JP-salon",
+   "url": "https://www.forte-group.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 9,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 19,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "roboto condensed",
+     "noto serif jp",
+     "metropolisbold"
+    ],
+    "sizes": 9,
+    "weights": 6,
+    "body": 14,
+    "h1": 13.6,
+    "display": 32,
+    "ratio": 2.29,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 9
+   },
+   "ja": {
+    "jaRatio": 0.54,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 13.6,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny",
+     "ja-half-kana"
+    ]
+   },
+   "quality": {
+    "text-contrast": 23,
+    "viewport-bounds": 23,
+    "accessible-name": 4
    }
   },
   {
@@ -96261,6 +97190,70 @@
   },
   {
    "category": "KR-finance",
+   "url": "http://www.hanmiglobalamc.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 13,
+    "h1": 13,
+    "display": 50,
+    "ratio": 3.85,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 105,
+    "text-contrast": 31,
+    "accessible-name": 2,
+    "font-loading": 1,
+    "form-label": 1,
+    "control-state": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-finance",
    "url": "https://d-banks.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -97452,6 +98445,75 @@
   },
   {
    "category": "KR-finance",
+   "url": "https://www.igisam.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "glass",
+    "transition-all"
+   ],
+   "scored": [
+    "glass"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 28,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "__pretendard_a2baf6"
+    ],
+    "sizes": 14,
+    "weights": 2,
+    "body": 15,
+    "h1": null,
+    "display": 103.5,
+    "ratio": 6.9,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 3,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 69,
+    "accessible-name": 13,
+    "control-state": 10,
+    "form-label": 1,
+    "target-size": 1,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-finance",
    "url": "https://www.imbank.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -97892,6 +98954,71 @@
     "text-contrast": 46,
     "accessible-name": 1,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-finance",
+   "url": "https://www.koreitasset.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 28,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 14,
+    "weights": 6,
+    "body": 11,
+    "h1": 48,
+    "display": 48,
+    "ratio": 4.36,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.1,
+    "rounded": 0.25,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 51,
+    "control-state": 9,
+    "accessible-name": 4,
+    "target-size": 3,
+    "form-label": 1
    }
   },
   {
@@ -102365,6 +103492,73 @@
   },
   {
    "category": "KR-gov",
+   "url": "https://land.seoul.go.kr/land/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 6,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "-apple-system",
+     "arial"
+    ],
+    "sizes": 15,
+    "weights": 4,
+    "body": 16,
+    "h1": 0,
+    "display": 45,
+    "ratio": 2.81,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.57,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 262,
+    "text-contrast": 132,
+    "control-state": 19,
+    "form-label": 6,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-gov",
    "url": "https://portal.kosha.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -102432,6 +103626,77 @@
     "aria-reference": 2,
     "form-label": 1,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-gov",
+   "url": "https://reits.molit.go.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "default-accent",
+    "flat-scale"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendardgov",
+     "pretendard",
+     "scdream"
+    ],
+    "sizes": 15,
+    "weights": 5,
+    "body": 17,
+    "h1": null,
+    "display": 60,
+    "ratio": 3.53,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 149,
+    "viewport-bounds": 10,
+    "accessible-name": 6,
+    "control-state": 3,
+    "form-label": 1
    }
   },
   {
@@ -125104,6 +126369,73 @@
   },
   {
    "category": "KR-org",
+   "url": "https://www.kareit.or.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "empty-frames",
+    "transition-all",
+    "generic-cta",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 13,
+    "weights": 4,
+    "body": 14,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2.29,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 66,
+    "viewport-bounds": 3,
+    "control-state": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-org",
    "url": "https://www.kasa.kr/",
    "split": "tune",
    "status": "ok",
@@ -125878,6 +127210,77 @@
   },
   {
    "category": "KR-realestate",
+   "url": "https://skreit.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 6,
+   "band": "low",
+   "signals": [
+    "over-rounded",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "over-rounded"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 30,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 9,
+    "weights": 5,
+    "body": 18,
+    "h1": 32,
+    "display": 48,
+    "ratio": 2.67,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.76,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 110,
+    "control-state": 4,
+    "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "KR-realestate",
+   "url": "https://www.bright114.co.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "unreachable"
+  },
+  {
+   "category": "KR-realestate",
    "url": "https://www.dabangapp.com/",
    "split": "tune",
    "status": "ok",
@@ -126137,6 +127540,13 @@
   },
   {
    "category": "KR-realestate",
+   "url": "https://www.karhanbang.com/",
+   "split": "holdout",
+   "status": "error",
+   "error": "unreachable"
+  },
+  {
+   "category": "KR-realestate",
    "url": "https://www.lottecastle.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -126199,6 +127609,70 @@
     "text-contrast": 16,
     "target-size": 7,
     "accessible-name": 6
+   }
+  },
+  {
+   "category": "KR-realestate",
+   "url": "https://www.nemoapp.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "applesdgothicneo-regular"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 12,
+    "h1": 24,
+    "display": 24,
+    "ratio": 2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.01,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 1053,
+    "control-state": 66,
+    "accessible-name": 6,
+    "form-label": 2,
+    "text-contrast": 1,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -126348,6 +127822,82 @@
    "url": "https://www.raemian.co.kr/",
    "split": "holdout",
    "status": "robots"
+  },
+  {
+   "category": "KR-realestate",
+   "url": "https://www.sangga114.co.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "Could not load https://www.sangga114.co.kr/: page.goto: Timeout 45000ms exceeded."
+  },
+  {
+   "category": "KR-realestate",
+   "url": "https://www.smilersa.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 27,
+   "band": "low",
+   "signals": [
+    "gradient-text",
+    "glass",
+    "tracked-labels",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "gradient-text",
+    "glass",
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 9,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 13,
+    "weights": 6,
+    "body": 13,
+    "h1": 16,
+    "display": 180,
+    "ratio": 13.85,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.07,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 3,
+    "tracked": 9
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 231
+   }
   },
   {
    "category": "KR-realestate",
