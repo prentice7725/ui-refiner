@@ -1,8 +1,8 @@
 {
  "schemaVersion": 1,
  "measured": "2026-11-18",
- "sites": 1389,
- "droppedForLanguage": 118,
+ "sites": 1431,
+ "droppedForLanguage": 121,
  "minSites": 8,
  "source": "Human-made Korean and Japanese sites by trade (scripts/genre-sites.tsv), first desktop screen at 1440x900. robots.txt respected; measurements only. A trade/country appears only with 8 or more sites; hero and colour each need 8 of their own. lineHeight is measured on Japanese pages only.",
  "trades": {
@@ -246,39 +246,39 @@
    }
   },
   "corp/JP": {
-   "sites": 22,
+   "sites": 23,
    "hero": {
-    "sites": 22,
+    "sites": 23,
     "share": {
-     "below-fold": 0.591,
-     "full-bleed": 0.273,
-     "left+stacked": 0.091,
-     "center+stacked": 0.045
+     "below-fold": 0.609,
+     "full-bleed": 0.261,
+     "left+stacked": 0.087,
+     "center+stacked": 0.043
     }
    },
    "colour": {
-    "sites": 22,
+    "sites": 23,
     "ground": {
-     "image": 0.545,
-     "light": 0.455
+     "image": 0.565,
+     "light": 0.435
     },
     "accent": {
-     "blue": 0.409,
-     "red": 0.136,
-     "indigo": 0.136,
-     "teal": 0.091,
-     "ink": 0.045,
-     "amber": 0.045,
-     "pink": 0.045,
-     "green": 0.045,
-     "orange": 0.045
+     "blue": 0.391,
+     "red": 0.13,
+     "indigo": 0.13,
+     "ink": 0.087,
+     "teal": 0.087,
+     "amber": 0.043,
+     "pink": 0.043,
+     "green": 0.043,
+     "orange": 0.043
     }
    },
    "type": {
     "body": 15,
     "displayRatio": 2.86,
     "lineHeight": 1.8,
-    "serifDisplay": 0.091
+    "serifDisplay": 0.087
    }
   },
   "cosmetics/JP": {
@@ -347,6 +347,37 @@
     "displayRatio": 2.29,
     "lineHeight": 1.67,
     "serifDisplay": 0.087
+   }
+  },
+  "culture/KR": {
+   "sites": 9,
+   "hero": {
+    "sites": 9,
+    "share": {
+     "full-bleed": 0.556,
+     "below-fold": 0.222,
+     "left+stacked": 0.111,
+     "left+media": 0.111
+    }
+   },
+   "colour": {
+    "sites": 9,
+    "ground": {
+     "image": 0.889,
+     "light": 0.111
+    },
+    "accent": {
+     "ink": 0.556,
+     "blue": 0.222,
+     "orange": 0.111,
+     "teal": 0.111
+    }
+   },
+   "type": {
+    "body": 16,
+    "displayRatio": 2.5,
+    "lineHeight": null,
+    "serifDisplay": 0
    }
   },
   "dental/JP": {
@@ -469,83 +500,85 @@
    }
   },
   "ec/JP": {
-   "sites": 37,
+   "sites": 38,
    "hero": {
-    "sites": 32,
+    "sites": 33,
     "share": {
-     "below-fold": 0.344,
-     "full-bleed": 0.344,
-     "left+media": 0.156,
-     "center+media": 0.063,
-     "center+stacked": 0.031,
-     "wide+media": 0.031,
-     "left+stacked": 0.031
+     "below-fold": 0.364,
+     "full-bleed": 0.333,
+     "left+media": 0.152,
+     "center+media": 0.061,
+     "center+stacked": 0.03,
+     "wide+media": 0.03,
+     "left+stacked": 0.03
     }
    },
    "colour": {
-    "sites": 34,
+    "sites": 38,
     "ground": {
-     "light": 0.529,
-     "image": 0.382,
-     "dark": 0.059,
-     "amber": 0.029
+     "light": 0.5,
+     "image": 0.421,
+     "dark": 0.053,
+     "amber": 0.026
     },
     "accent": {
-     "ink": 0.294,
-     "blue": 0.206,
-     "teal": 0.118,
-     "red": 0.118,
-     "orange": 0.088,
-     "indigo": 0.059,
-     "green": 0.029,
-     "brown": 0.029,
-     "amber": 0.029,
-     "pink": 0.029
+     "ink": 0.316,
+     "blue": 0.184,
+     "red": 0.132,
+     "teal": 0.105,
+     "orange": 0.079,
+     "indigo": 0.053,
+     "pink": 0.053,
+     "green": 0.026,
+     "brown": 0.026,
+     "amber": 0.026
     }
    },
    "type": {
     "body": 14,
     "displayRatio": 2.46,
     "lineHeight": 1.7,
-    "serifDisplay": 0.135
+    "serifDisplay": 0.158
    }
   },
   "ec/KR": {
-   "sites": 24,
+   "sites": 28,
    "hero": {
-    "sites": 24,
+    "sites": 28,
     "share": {
      "below-fold": 0.5,
-     "left+media": 0.208,
-     "full-bleed": 0.125,
-     "left+stacked": 0.083,
-     "wide+media": 0.042,
-     "wide+stacked": 0.042
+     "left+media": 0.179,
+     "full-bleed": 0.143,
+     "left+stacked": 0.071,
+     "wide+media": 0.036,
+     "wide+stacked": 0.036,
+     "center+media": 0.036
     }
    },
    "colour": {
-    "sites": 20,
+    "sites": 27,
     "ground": {
-     "image": 0.45,
-     "light": 0.3,
-     "dark": 0.15,
-     "teal": 0.05,
-     "pink": 0.05
+     "image": 0.519,
+     "light": 0.296,
+     "dark": 0.111,
+     "teal": 0.037,
+     "pink": 0.037
     },
     "accent": {
-     "red": 0.25,
-     "blue": 0.25,
-     "ink": 0.25,
-     "orange": 0.1,
-     "green": 0.1,
-     "teal": 0.05
+     "red": 0.259,
+     "blue": 0.259,
+     "ink": 0.222,
+     "orange": 0.111,
+     "green": 0.074,
+     "teal": 0.037,
+     "indigo": 0.037
     }
    },
    "type": {
     "body": 14,
-    "displayRatio": 2.29,
+    "displayRatio": 2.17,
     "lineHeight": null,
-    "serifDisplay": 0.042
+    "serifDisplay": 0.036
    }
   },
   "event/JP": {
@@ -741,69 +774,69 @@
    }
   },
   "finance/JP": {
-   "sites": 44,
+   "sites": 45,
    "hero": {
-    "sites": 42,
+    "sites": 43,
     "share": {
-     "below-fold": 0.381,
-     "full-bleed": 0.357,
-     "center+stacked": 0.071,
-     "left+stacked": 0.071,
-     "left+media": 0.048,
-     "left+panel": 0.048,
-     "wide+stacked": 0.024
+     "below-fold": 0.395,
+     "full-bleed": 0.349,
+     "center+stacked": 0.07,
+     "left+stacked": 0.07,
+     "left+media": 0.047,
+     "left+panel": 0.047,
+     "wide+stacked": 0.023
     }
    },
    "colour": {
-    "sites": 41,
+    "sites": 45,
     "ground": {
-     "image": 0.537,
-     "light": 0.366,
-     "dark": 0.024,
-     "amber": 0.024,
-     "red": 0.024,
-     "blue": 0.024
+     "image": 0.511,
+     "light": 0.4,
+     "dark": 0.022,
+     "amber": 0.022,
+     "red": 0.022,
+     "blue": 0.022
     },
     "accent": {
-     "blue": 0.683,
-     "red": 0.098,
-     "indigo": 0.098,
-     "ink": 0.073,
-     "orange": 0.024,
-     "green": 0.024
+     "blue": 0.667,
+     "red": 0.111,
+     "indigo": 0.111,
+     "ink": 0.067,
+     "orange": 0.022,
+     "green": 0.022
     }
    },
    "type": {
     "body": 14,
     "displayRatio": 2.15,
     "lineHeight": 1.6,
-    "serifDisplay": 0.045
+    "serifDisplay": 0.044
    }
   },
   "finance/KR": {
-   "sites": 27,
+   "sites": 29,
    "hero": {
-    "sites": 27,
+    "sites": 29,
     "share": {
-     "below-fold": 0.296,
-     "full-bleed": 0.259,
-     "left+media": 0.222,
-     "left+panel": 0.148,
-     "left+stacked": 0.074
+     "below-fold": 0.345,
+     "full-bleed": 0.241,
+     "left+media": 0.207,
+     "left+panel": 0.138,
+     "left+stacked": 0.069
     }
    },
    "colour": {
-    "sites": 25,
+    "sites": 29,
     "ground": {
-     "light": 0.6,
-     "image": 0.36,
-     "dark": 0.04
+     "light": 0.655,
+     "image": 0.31,
+     "dark": 0.034
     },
     "accent": {
-     "blue": 0.56,
-     "ink": 0.24,
-     "indigo": 0.16,
-     "red": 0.04
+     "blue": 0.621,
+     "ink": 0.207,
+     "indigo": 0.138,
+     "red": 0.034
     }
    },
    "type": {
@@ -853,17 +886,17 @@
    }
   },
   "food/JP": {
-   "sites": 29,
+   "sites": 30,
    "hero": {
-    "sites": 29,
+    "sites": 30,
     "share": {
-     "full-bleed": 0.448,
-     "below-fold": 0.241,
-     "wide+stacked": 0.103,
-     "left+media": 0.069,
-     "left+stacked": 0.069,
-     "center+stacked": 0.034,
-     "right+media": 0.034
+     "full-bleed": 0.433,
+     "below-fold": 0.233,
+     "wide+stacked": 0.1,
+     "center+stacked": 0.067,
+     "left+media": 0.067,
+     "left+stacked": 0.067,
+     "right+media": 0.033
     }
    },
    "colour": {
@@ -888,7 +921,7 @@
     "body": 15,
     "displayRatio": 2,
     "lineHeight": 1.7,
-    "serifDisplay": 0.207
+    "serifDisplay": 0.2
    }
   },
   "food/KR": {
@@ -902,21 +935,21 @@
     }
    },
    "colour": {
-    "sites": 14,
+    "sites": 16,
     "ground": {
      "light": 0.5,
-     "image": 0.429,
-     "green": 0.071
+     "image": 0.438,
+     "green": 0.063
     },
     "accent": {
-     "red": 0.357,
-     "ink": 0.143,
-     "amber": 0.143,
-     "indigo": 0.071,
-     "teal": 0.071,
-     "green": 0.071,
-     "orange": 0.071,
-     "blue": 0.071
+     "red": 0.313,
+     "teal": 0.125,
+     "ink": 0.125,
+     "amber": 0.125,
+     "orange": 0.125,
+     "indigo": 0.063,
+     "green": 0.063,
+     "blue": 0.063
     }
    },
    "type": {
@@ -966,44 +999,45 @@
    }
   },
   "gov/KR": {
-   "sites": 43,
+   "sites": 51,
    "hero": {
-    "sites": 43,
+    "sites": 51,
     "share": {
-     "full-bleed": 0.419,
-     "below-fold": 0.209,
-     "left+media": 0.163,
-     "left+stacked": 0.14,
-     "center+stacked": 0.023,
-     "left+panel": 0.023,
-     "center+panel": 0.023
+     "full-bleed": 0.412,
+     "below-fold": 0.196,
+     "left+media": 0.176,
+     "left+stacked": 0.137,
+     "center+stacked": 0.039,
+     "left+panel": 0.02,
+     "center+panel": 0.02
     }
    },
    "colour": {
-    "sites": 41,
+    "sites": 47,
     "ground": {
-     "image": 0.488,
-     "light": 0.463,
-     "dark": 0.049
+     "image": 0.468,
+     "light": 0.447,
+     "dark": 0.085
     },
     "accent": {
-     "blue": 0.659,
-     "ink": 0.122,
-     "red": 0.073,
-     "teal": 0.073,
-     "indigo": 0.049,
-     "amber": 0.024
+     "blue": 0.638,
+     "ink": 0.128,
+     "red": 0.064,
+     "indigo": 0.064,
+     "teal": 0.064,
+     "amber": 0.021,
+     "green": 0.021
     }
    },
    "type": {
     "body": 16,
     "displayRatio": 2.5,
     "lineHeight": null,
-    "serifDisplay": 0
+    "serifDisplay": 0.02
    }
   },
   "hospital/JP": {
-   "sites": 11,
+   "sites": 12,
    "hero": {
     "sites": 11,
     "share": {
@@ -1014,59 +1048,61 @@
     }
    },
    "colour": {
-    "sites": 11,
+    "sites": 12,
     "ground": {
-     "image": 0.636,
-     "light": 0.364
+     "image": 0.667,
+     "light": 0.333
     },
     "accent": {
-     "green": 0.182,
-     "blue": 0.182,
-     "orange": 0.182,
-     "red": 0.091,
-     "pink": 0.091,
-     "ink": 0.091,
-     "teal": 0.091,
-     "indigo": 0.091
+     "blue": 0.25,
+     "green": 0.167,
+     "orange": 0.167,
+     "red": 0.083,
+     "pink": 0.083,
+     "ink": 0.083,
+     "teal": 0.083,
+     "indigo": 0.083
     }
    },
    "type": {
     "body": 16,
     "displayRatio": 2,
     "lineHeight": 1.75,
-    "serifDisplay": 0.091
+    "serifDisplay": 0.083
    }
   },
   "hospital/KR": {
-   "sites": 17,
+   "sites": 21,
    "hero": {
-    "sites": 17,
+    "sites": 20,
     "share": {
-     "full-bleed": 0.412,
-     "below-fold": 0.353,
-     "left+stacked": 0.176,
-     "left+media": 0.059
+     "full-bleed": 0.35,
+     "below-fold": 0.3,
+     "left+stacked": 0.2,
+     "left+media": 0.15
     }
    },
    "colour": {
-    "sites": 16,
+    "sites": 21,
     "ground": {
-     "light": 0.5,
-     "image": 0.438,
-     "dark": 0.063
+     "image": 0.476,
+     "light": 0.429,
+     "dark": 0.095
     },
     "accent": {
-     "blue": 0.75,
-     "amber": 0.125,
-     "ink": 0.063,
-     "red": 0.063
+     "blue": 0.667,
+     "ink": 0.095,
+     "amber": 0.095,
+     "red": 0.048,
+     "indigo": 0.048,
+     "green": 0.048
     }
    },
    "type": {
     "body": 16,
-    "displayRatio": 2.63,
+    "displayRatio": 2.5,
     "lineHeight": null,
-    "serifDisplay": 0
+    "serifDisplay": 0.048
    }
   },
   "inn/JP": {
@@ -1081,23 +1117,23 @@
     }
    },
    "colour": {
-    "sites": 58,
+    "sites": 61,
     "ground": {
-     "image": 0.638,
-     "light": 0.31,
-     "dark": 0.052
+     "image": 0.639,
+     "light": 0.311,
+     "dark": 0.049
     },
     "accent": {
-     "ink": 0.241,
-     "blue": 0.172,
-     "amber": 0.103,
-     "pink": 0.103,
-     "red": 0.086,
-     "teal": 0.069,
-     "orange": 0.069,
-     "brown": 0.052,
-     "indigo": 0.052,
-     "green": 0.052
+     "ink": 0.23,
+     "blue": 0.164,
+     "amber": 0.131,
+     "pink": 0.098,
+     "red": 0.082,
+     "orange": 0.082,
+     "teal": 0.066,
+     "brown": 0.049,
+     "indigo": 0.049,
+     "green": 0.049
     }
    },
    "type": {
@@ -1108,37 +1144,38 @@
    }
   },
   "inn/KR": {
-   "sites": 35,
+   "sites": 37,
    "hero": {
-    "sites": 34,
+    "sites": 35,
     "share": {
-     "full-bleed": 0.559,
-     "below-fold": 0.441
+     "full-bleed": 0.543,
+     "below-fold": 0.429,
+     "center+panel": 0.029
     }
    },
    "colour": {
-    "sites": 34,
+    "sites": 37,
     "ground": {
-     "image": 0.676,
-     "light": 0.294,
-     "dark": 0.029
+     "image": 0.649,
+     "light": 0.297,
+     "dark": 0.054
     },
     "accent": {
-     "ink": 0.235,
-     "brown": 0.206,
-     "blue": 0.206,
-     "amber": 0.088,
-     "indigo": 0.088,
-     "orange": 0.059,
-     "teal": 0.059,
-     "red": 0.059
+     "ink": 0.243,
+     "brown": 0.216,
+     "blue": 0.216,
+     "amber": 0.081,
+     "indigo": 0.081,
+     "orange": 0.054,
+     "teal": 0.054,
+     "red": 0.054
     }
    },
    "type": {
     "body": 14,
     "displayRatio": 3.33,
     "lineHeight": null,
-    "serifDisplay": 0.2
+    "serifDisplay": 0.189
    }
   },
   "interior/JP": {
@@ -1282,80 +1319,81 @@
    }
   },
   "local/KR": {
-   "sites": 13,
+   "sites": 15,
    "hero": {
-    "sites": 13,
+    "sites": 15,
     "share": {
-     "below-fold": 0.462,
-     "full-bleed": 0.385,
-     "left+stacked": 0.077,
-     "wide+media": 0.077
+     "below-fold": 0.533,
+     "full-bleed": 0.333,
+     "left+stacked": 0.067,
+     "wide+media": 0.067
     }
    },
    "colour": {
-    "sites": 12,
+    "sites": 15,
     "ground": {
-     "image": 0.5,
-     "light": 0.333,
-     "dark": 0.167
+     "light": 0.467,
+     "image": 0.4,
+     "dark": 0.133
     },
     "accent": {
-     "blue": 0.417,
+     "blue": 0.4,
      "ink": 0.333,
-     "pink": 0.083,
-     "indigo": 0.083,
-     "red": 0.083
+     "pink": 0.067,
+     "teal": 0.067,
+     "indigo": 0.067,
+     "red": 0.067
     }
    },
    "type": {
     "body": 15,
-    "displayRatio": 2.71,
+    "displayRatio": 3.31,
     "lineHeight": null,
-    "serifDisplay": 0.077
+    "serifDisplay": 0.067
    }
   },
   "maker/JP": {
-   "sites": 58,
+   "sites": 60,
    "hero": {
-    "sites": 55,
+    "sites": 57,
     "share": {
-     "full-bleed": 0.564,
-     "below-fold": 0.309,
-     "left+stacked": 0.073,
-     "left+media": 0.018,
+     "full-bleed": 0.544,
+     "below-fold": 0.316,
+     "left+stacked": 0.07,
+     "left+media": 0.035,
      "right+stacked": 0.018,
      "right+media": 0.018
     }
    },
    "colour": {
-    "sites": 53,
+    "sites": 58,
     "ground": {
-     "image": 0.528,
-     "light": 0.415,
-     "blue": 0.038,
-     "dark": 0.019
+     "image": 0.5,
+     "light": 0.431,
+     "dark": 0.034,
+     "blue": 0.034
     },
     "accent": {
-     "blue": 0.434,
-     "indigo": 0.151,
-     "ink": 0.151,
-     "red": 0.094,
-     "green": 0.075,
-     "amber": 0.038,
-     "brown": 0.019,
-     "teal": 0.019,
-     "pink": 0.019
+     "blue": 0.431,
+     "indigo": 0.155,
+     "ink": 0.138,
+     "red": 0.086,
+     "green": 0.069,
+     "pink": 0.034,
+     "amber": 0.034,
+     "teal": 0.034,
+     "brown": 0.017
     }
    },
    "type": {
     "body": 15,
     "displayRatio": 3,
     "lineHeight": 1.8,
-    "serifDisplay": 0.19
+    "serifDisplay": 0.183
    }
   },
   "maker/KR": {
-   "sites": 40,
+   "sites": 42,
    "hero": {
     "sites": 39,
     "share": {
@@ -1367,25 +1405,25 @@
     }
    },
    "colour": {
-    "sites": 40,
+    "sites": 42,
     "ground": {
-     "light": 0.45,
-     "image": 0.425,
-     "dark": 0.125
+     "light": 0.476,
+     "image": 0.405,
+     "dark": 0.119
     },
     "accent": {
-     "blue": 0.35,
-     "ink": 0.35,
-     "red": 0.175,
-     "indigo": 0.1,
-     "orange": 0.025
+     "ink": 0.357,
+     "blue": 0.333,
+     "red": 0.19,
+     "indigo": 0.095,
+     "orange": 0.024
     }
    },
    "type": {
-    "body": 15,
+    "body": 16,
     "displayRatio": 3,
     "lineHeight": null,
-    "serifDisplay": 0.025
+    "serifDisplay": 0.024
    }
   },
   "media/KR": {
@@ -1402,17 +1440,17 @@
     }
    },
    "colour": {
-    "sites": 17,
+    "sites": 18,
     "ground": {
-     "light": 0.941,
-     "image": 0.059
+     "light": 0.944,
+     "image": 0.056
     },
     "accent": {
-     "blue": 0.471,
-     "orange": 0.176,
-     "teal": 0.118,
-     "red": 0.118,
-     "indigo": 0.118
+     "blue": 0.5,
+     "orange": 0.167,
+     "teal": 0.111,
+     "red": 0.111,
+     "indigo": 0.111
     }
    },
    "type": {
@@ -1691,80 +1729,82 @@
    }
   },
   "software/JP": {
-   "sites": 35,
+   "sites": 37,
    "hero": {
-    "sites": 35,
+    "sites": 37,
     "share": {
-     "full-bleed": 0.514,
-     "left+stacked": 0.171,
-     "below-fold": 0.143,
-     "wide+stacked": 0.057,
-     "right+stacked": 0.029,
-     "left+panel": 0.029,
-     "center+stacked": 0.029,
-     "left+media": 0.029
+     "full-bleed": 0.541,
+     "left+stacked": 0.162,
+     "below-fold": 0.135,
+     "wide+stacked": 0.054,
+     "right+stacked": 0.027,
+     "left+panel": 0.027,
+     "center+stacked": 0.027,
+     "left+media": 0.027
     }
    },
    "colour": {
-    "sites": 35,
+    "sites": 37,
     "ground": {
-     "light": 0.457,
-     "image": 0.457,
-     "dark": 0.057,
-     "blue": 0.029
+     "image": 0.486,
+     "light": 0.432,
+     "dark": 0.054,
+     "blue": 0.027
     },
     "accent": {
-     "blue": 0.4,
-     "indigo": 0.171,
-     "ink": 0.114,
-     "teal": 0.114,
-     "red": 0.086,
-     "orange": 0.057,
-     "green": 0.029,
-     "amber": 0.029
+     "blue": 0.405,
+     "indigo": 0.162,
+     "ink": 0.108,
+     "teal": 0.108,
+     "red": 0.081,
+     "orange": 0.081,
+     "green": 0.027,
+     "amber": 0.027
     }
    },
    "type": {
     "body": 14,
-    "displayRatio": 2.86,
+    "displayRatio": 2.94,
     "lineHeight": 1.7,
-    "serifDisplay": 0.086
+    "serifDisplay": 0.081
    }
   },
   "software/KR": {
-   "sites": 30,
+   "sites": 34,
    "hero": {
-    "sites": 29,
+    "sites": 33,
     "share": {
-     "below-fold": 0.414,
-     "full-bleed": 0.345,
-     "center+stacked": 0.103,
-     "left+panel": 0.069,
-     "left+media": 0.034,
-     "wide+stacked": 0.034
+     "below-fold": 0.424,
+     "full-bleed": 0.333,
+     "center+stacked": 0.121,
+     "left+panel": 0.061,
+     "left+media": 0.03,
+     "wide+stacked": 0.03
     }
    },
    "colour": {
-    "sites": 30,
+    "sites": 34,
     "ground": {
-     "light": 0.533,
-     "image": 0.4,
-     "dark": 0.067
+     "light": 0.5,
+     "image": 0.412,
+     "dark": 0.059,
+     "blue": 0.029
     },
     "accent": {
-     "blue": 0.567,
-     "indigo": 0.233,
-     "ink": 0.067,
-     "orange": 0.067,
-     "green": 0.033,
-     "teal": 0.033
+     "blue": 0.588,
+     "indigo": 0.206,
+     "ink": 0.059,
+     "orange": 0.059,
+     "green": 0.029,
+     "teal": 0.029,
+     "pink": 0.029
     }
    },
    "type": {
     "body": 15,
-    "displayRatio": 3.75,
+    "displayRatio": 3.7,
     "lineHeight": null,
-    "serifDisplay": 0.067
+    "serifDisplay": 0.059
    }
   },
   "tax/JP": {
