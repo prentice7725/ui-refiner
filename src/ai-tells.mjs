@@ -278,7 +278,10 @@ export const signalTitle=(id,lang='ko')=>copy[id]?.[langKey(lang)][0];
 
 // Calibrated on 30 ChatGPT Sites vs 26 human sites (2026-11, scripts/calibrate-scan.mjs):
 // transition: all and repeated generic CTAs fired more on human sites, so they are reported but not scored.
-const UNSCORED=new Set(['transition-all','generic-cta','tinted-page','newsletter-tail','empty-frames','hero-cta-below','accent-word']);
+// Recheck 2026-11-19 (145 AI-built, 110 English-language human, 1790 Korean and Japanese human sites): stock marketing
+// phrases fired on 13% of AI sites and 14% of English human ones, and a display under twice the body on 8% and 19%.
+// Unscoring both cut human false positives at 20 from 8.2% to 4.5% (English) and lost one AI site in 145.
+const UNSCORED=new Set(['transition-all','generic-cta','tinted-page','newsletter-tail','empty-frames','hero-cta-below','accent-word','buzzword-copy','flat-scale']);
 const TH={tracked:6,trackedStrong:12,numbered:3,period:3,periodStrong:5,nested:3,nestedHosts:3,iconBoxes:3,emptyFrames:2};
 
 /** Weighted sum of signals, dampened 15% per craft signal. */
