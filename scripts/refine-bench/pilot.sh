@@ -12,7 +12,8 @@
 #   refine-j  이 체크아웃: 익숙한 안·맞춤 안·과감한 안을 각각 다른 서브에이전트가 만든다. ARMS에 j를 넣을 때만 돈다
 # 폴더 이름을 a–d로 둔 것은 에이전트가 경로에서 조건을 읽지 못하게 하려는 것이다.
 # 환경변수: PAGES (기본 4개), REPS (기본 "1 2 3"), ARMS (기본 "a b c d")
-HERE="$(cd "$(dirname "$0")" && pwd)"; R="$(cd "$HERE/../.." && pwd)"; export BENCH_DIR="${BENCH_DIR:-$PWD/refine-bench-out}"; B="$BENCH_DIR"
+pw(){ pwd -W 2>/dev/null || pwd; }  # Git Bash(윈도우)에서는 C:/… 경로
+HERE="$(cd "$(dirname "$0")" && pw)"; R="$(cd "$HERE/../.." && pw)"; BENCH_DIR="${BENCH_DIR:-$(pw)/refine-bench-out}"; mkdir -p "$BENCH_DIR"; export BENCH_DIR="$(cd "$BENCH_DIR" && pw)"; B="$BENCH_DIR"
 PAGES="${PAGES:-en-dental en-foodbank ko-fintech ja-recruit}"; REPS="${REPS:-1 2 3}"; ARMS="${ARMS:-a b c d}"
 for id in $PAGES; do [ -f "$B/pages/$id/before/index.html" ] || { mkdir -p "$B/pages/$id/before"; cp "$R/docs/refine-bench-2026-11-11/pages/$id/before.html" "$B/pages/$id/before/index.html"; }; done
 [ -d "$B/roots/r17" ] && [ -d "$B/roots/r12" ] || "$HERE/roots.sh" r17=origin/main r12=de170f6 || exit 1

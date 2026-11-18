@@ -6,10 +6,12 @@
 #   EXTRA_TOOLS   추가로 허용할 도구 (공백으로 구분, 예: "Agent Task")
 #   REP           반복 번호. 결과 폴더가 <arm>.<REP>가 되고, 선택 기록도 반복마다 따로 쓴다
 #   MODEL         생성 모델 (기본값 claude-opus-5-5)
-HERE="$(cd "$(dirname "$0")" && pwd)"; R="$(cd "$HERE/../.." && pwd)"; B="${BENCH_DIR:-$PWD/refine-bench-out}"; arm="$1"; id="$2"
+# Git Bash(윈도우)에서는 /c/… 대신 C:/… 경로를 써야 에이전트의 파일 도구와 훅이 같은 경로를 읽는다
+pw(){ pwd -W 2>/dev/null || pwd; }
+HERE="$(cd "$(dirname "$0")" && pw)"; R="$(cd "$HERE/../.." && pw)"; B="${BENCH_DIR:-$(pw)/refine-bench-out}"; arm="$1"; id="$2"
 [ -n "$arm" ] && [ -n "$id" ] || { echo "사용법: arm.sh <plain|unslop|refine[-이름]> <page id>" >&2; exit 2; }
-name="$arm${REP:+.$REP}"; ROOT="$(cd "${REFINER_ROOT:-$R}" && pwd)"; MODEL="${MODEL:-claude-opus-5-5}"
-mkdir -p "$B/logs" "$B/meta"
+name="$arm${REP:+.$REP}"; ROOT="$(cd "${REFINER_ROOT:-$R}" && pw)"; MODEL="${MODEL:-claude-opus-5-5}"
+mkdir -p "$B/logs" "$B/meta"; B="$(cd "$B" && pw)"
 U="${UNSLOP_SKILL:-}"  # unslop 방식만 필요: 내려받은 unslop 저장소의 skills/unslop 경로
 d="$B/pages/$id/$name"; rm -rf "$d"; mkdir -p "$d"; cp "$B/pages/$id/before/index.html" "$d/index.html"; cd "$d"
 export NODE_USE_ENV_PROXY=1  # 프록시 뒤에서 node fetch(사진 받기)가 프록시를 쓰게 한다. 프록시가 없으면 영향 없음
