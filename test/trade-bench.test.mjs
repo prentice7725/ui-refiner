@@ -18,3 +18,17 @@ test('trade fit scores a mock by how common its choices are in the measured grou
  const odd=fit({hero:'left+panel',ground:'dark',accent:'purple',body:18,ratio:4,serif:false},g);
  assert.equal(odd.typical,0);assert.equal(odd.matches,0);
 });
+
+test('first-screen colours see a cover photo under its overlay, and not one hidden by a panel', async () => {
+ const {chromium}=await import('playwright'),{colourProbe}=await import('../src/first-screen-colour.mjs');
+ const gif='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+ const b=await chromium.launch();
+ try{
+  const p=await b.newPage({viewport:{width:1440,height:900}}),ground=async html=>{await p.setContent(`<body style="margin:0">${html}</body>`);return measureColours(await p.evaluate(colourProbe)).ground;};
+  // A sibling overlay and a ::after overlay both sit above the photo; the box's fallback colour is not the ground.
+  assert.equal(await ground(`<section style="position:relative;height:900px;background:#2a4fa0"><img src="${gif}" style="width:100%;height:100%"><div style="position:absolute;inset:0;background:linear-gradient(#0003,#0006)"></div></section>`),'image');
+  assert.equal(await ground(`<style>.h{position:relative;height:900px;background:#2a4fa0}.h::after{content:"";position:absolute;inset:0;background:linear-gradient(#0000,#0008)}</style><section class=h><img src="${gif}" style="width:100%;height:100%"></section>`),'image');
+  assert.equal(await ground(`<div style="height:900px;background:#1e40af"></div>`),'blue');
+  assert.equal(await ground(`<img src="${gif}" style="position:absolute;width:100%;height:900px"><div style="position:relative;height:900px;background:#1e40af"></div>`),'blue');
+ }finally{await b.close();}
+});
