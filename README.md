@@ -19,7 +19,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 - **A scan that says why a page looks generic.**
   - `ui-refiner scan <url | file>` needs no config.
   - It checks about two dozen rendered signals: purple gradients, icon-card grids, eyebrow pills, glass, stock copy in English, Korean and Japanese, and more. Each one comes with evidence, the reason it reads as generic, and a fix.
-  - It was calibrated on about 250 AI-built and human-made sites. At a score of 20 or more it flags 66–74% of AI-built sites and 0–15% of human ones.
+  - It was calibrated on about 250 AI-built and human-made sites. At a score of 20 or more it flags 68–74% of AI-built sites and 0–15% of human ones.
   - It also saves the screenshot marked up like a graded paper (`scan-graded.png`): each scored signal circled in red where it was found, with its points, and the score at the top.
   - A rescan opens with a before/after comparison.
 - **Japanese pages placed among 209 real Japanese sites.**
@@ -32,14 +32,14 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 
 Three of the benchmark pages as Claude first built them (left) and after the current refine with three directions (right, unreleased). The agent picked the direction where a person normally would. The clinic photo is a credited stand-in. The red marks are the scan's own (`scan-graded.png`): each scored signal circled where it was found, with its points, and the AI-look score at the top right. The originals score 52, 43 and 56; the refined pages score 0, which is expected, because a refine keeps working until its own scan finds nothing. It says the listed signals are gone, not that the design is good.
 
-| 3 Korean and Japanese pages, one run each | Round 17 | Round 12 | Materials only | Three directions |
-|---|---:|---:|---:|---:|
-| Per-page mean rank of 5, lower is better | 3.5 | 2.5 | 4.0 | **1.3** |
-| Set sameness, 1–10, lower is more varied | 5.0 | 5.0 | **3.5** | 7.0 |
+| 3 Korean and Japanese pages, one run each | Round 17 | Round 12 | Materials only | Materials, free colour and type | Three directions |
+|---|---:|---:|---:|---:|---:|
+| Per-page mean rank of 5, lower is better | 3.5 | 2.5 | 4.0 | 3.7 | **1.3** |
+| Set sameness, 1–10, lower is more varied | 5.0 | 5.0 | **3.5** | **3.5** | 7.0 |
 
-- **Page by page, the three-direction refine ranked first** in 4 of 6 verdicts, with the same winner under both letter orders on every page.
+- **Page by page, the three-direction refine ranked first** in 4 of 6 verdicts. The judge saw each page twice with the versions relabelled, and the winner was the same both times on every page.
 - **As a set, its three pages were the most alike.** The agent picked the tailored direction twice, and the judge saw the same small label, heavy left headline, mock product card and row of figures on all three.
-- **Limits:** 3 pages, one run each, one judge (Claude, two letter orders), no human ratings. [Scores](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
+- **Limits:** 3 pages, one run each, one judge (Claude, each page judged twice with the versions relabelled), no human ratings. [Scores](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 
 ### Version 0.7.0 on eight pages
 
@@ -125,7 +125,7 @@ The report follows the page language: English, Korean or Japanese.
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-0.8.0-1b1e24)
-![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
+![Tests](https://img.shields.io/badge/tests-178%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
 ## License
