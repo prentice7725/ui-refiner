@@ -40,6 +40,7 @@ A target reads loud when too many things are strong at once. Quieter means fewer
 
 - Run `ui-refiner keep check <page>`. Nothing may be lost.
 - Run `ui-refiner system extract <page>` again and compare `DESIGN_SYSTEM.md` with the one from before: the faces, colours and box radius are the same; only sizes and widths may differ. If a face or a colour changed, you added something from outside: take it back.
+- Look at the screenshots at both widths (1440 and 390) before anything else. Nothing you made larger runs past its own column, box or bar, wraps onto a line it did not have, or pushes the main action below the fold. In the first run of this step, amounts set larger ran past the narrowest segment of the bar they belonged to. Where something no longer fits, give it room (stack it, shorten the row, let the container grow); do not shrink it back.
 - Rescan into the same folder. No new scored signal, and no quality issue or Japanese typesetting issue that got worse.
 - If the site has other pages built from the system, run `ui-refiner system check <page…>` and bring them along where sizes changed.
 - Report each move in one line: what was turned up or down, where, and what was left alone.

@@ -174,7 +174,7 @@ test('allow: the CLI adds, lists and removes an entry', async () => {
  run('allow','remove','default-accent');assert.match(run('allow','list'),/No allowed signals/);
 });
 
-test('Korean pages: a small display size is reported but not scored', () => {
+test('Korean pages: a small display size and a single plain family are reported but not scored', () => {
  const base=quiet();base.typography={...base.typography,display:28,body:16,ratio:1.75};
  const f=r=>r.signals.find(s=>s.id==='flat-scale');
  const en=evaluateAiTells({...base,text:'A plain English page about budgets and spending, long enough to count.'},{lang:'en'});
@@ -182,4 +182,7 @@ test('Korean pages: a small display size is reported but not scored', () => {
  assert.ok(f(en)?.weight>0,'scored on an English page');
  assert.equal(f(ko)?.weight,0,'reported on a Korean page');assert.equal(f(ko)?.points,0);
  assert.ok(ko.score<en.score);
+ const one={...base,typography:{...base.typography,families:[{name:'noto sans kr',count:40}]}},g=r=>r.signals.find(x=>x.id==='generic-type');
+ assert.ok(g(evaluateAiTells({...one,text:'A plain English page about budgets and spending, long enough to count.'},{lang:'en'}))?.weight>0,'a single plain family is scored on an English page');
+ assert.equal(g(evaluateAiTells({...one,text:'흩어진 계좌를 한 화면에 모아 보고 수수료 없이 송금하는 개인 자산관리 앱입니다.'},{lang:'ko'}))?.weight,0,'and reported on a Korean page');
 });
