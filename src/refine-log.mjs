@@ -70,6 +70,17 @@ export async function humanColours(kind,lang){
   return ((local?.sites>=15&&local)||(kind&&j.byKind?.[kind])||(c&&j.byCountry?.[c])||j.all).accent;
  }catch{return null;}
 }
+/**
+ * What human-made sites of one trade do in the page's country (data/genre-reference/human.json: hero structure,
+ * first-screen ground, accent family, type; Korean and Japanese sites only). Returns {trades, entry}: the known
+ * trades, and the figures for this trade and language, or null when too few sites were measured.
+ */
+export async function humanTrade(trade,lang){
+ try{
+  const j=JSON.parse(await fs.readFile(new URL('../data/genre-reference/human.json',import.meta.url),'utf8')),c=lang==='ko'?'KR':lang==='ja'?'JP':null;
+  return {trades:Object.keys(j.trades||{}),entry:(c&&j.byTrade?.[`${trade}/${c}`])?{country:c,...j.byTrade[`${trade}/${c}`]}:null};
+ }catch{return {trades:[],entry:null};}
+}
 export const PAGE_KINDS=['software','service','place','public','company','studio','media'];
 /** Page character, chosen before the deal; it narrows the surfaces and faces (data/type-pairs.json "tones"). */
 export const PAGE_TONES=['calm','warm','technical','bold'];
@@ -201,15 +212,19 @@ export function tailoredSurface(seed=0,{kind,tone}={}){
 }
 
 /** Writes DEAL.json into the directions folder: one familiar, one tailored and one bold direction (see LANES). */
-export async function dealDirections(dir,{log,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en',materials}={}){
+export async function dealDirections(dir,{log,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en',materials,trade,genre}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
  if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary(),toneDef=tone?lib.tones[tone]:null;
- const share=human===undefined?await humanHeroShare(kind):human,script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
+ // A trade narrows the familiar direction to what sites of that trade do in the page's country, where enough were measured.
+ const g=trade?(genre===undefined?await humanTrade(trade,lang):genre):null;
+ if(trade&&g.trades.length&&!g.trades.includes(trade))throw new Error(`--trade must be one of ${g.trades.join(', ')}`);
+ const local=g?.entry??null;
+ const share=human!==undefined?human:local?.hero?.share??await humanHeroShare(kind),script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
  // Familiar: the common structure, plain white (carried by a photo when photos are allowed), a common accent.
  const fKey=familiarStructure(share,{seed,noPhoto});
- const weights=colours===undefined?await humanColours(kind,lang):colours,pool=toneDef?.accents?.length?toneDef.accents.filter(a=>lib.accents[a]):Object.keys(lib.accents);
+ const weights=colours!==undefined?colours:local?.colour?.accent??await humanColours(kind,lang),pool=toneDef?.accents?.length?toneDef.accents.filter(a=>lib.accents[a]):Object.keys(lib.accents);
  const fAccent=dealAccents(pool,entries,project,{n:1,seed,weights})[0];
  // Tailored and bold: two more structures, not recently chosen for other projects and not the familiar one's.
  const rest=dealStructures(entries,project,{n:8,seed,human:share,noPhoto}).filter(k=>k!==fKey),otherFam=rest.filter(k=>FAMILY[k]!==FAMILY[fKey]);
@@ -220,11 +235,11 @@ export async function dealDirections(dir,{log,seed=Date.now()%9973,human,colours
  const bKey=otherFam.find(suits)??rest.find(suits)??otherFam[0]??rest[0],tKey=otherFam.find(k=>k!==bKey&&FAMILY[k]!==FAMILY[bKey])??rest.find(k=>k!==bKey);
  const surf=tailoredSurface(seed,{kind,tone}),at=(lane,key,extra)=>({lane,file:laneFile(lane),key,brief:HERO_STRUCTURES[key],humanShare:share?.[key]??null,...extra});
  const structures=[
-  at('familiar',fKey,{surface:{key:noPhoto?'white':'image',brief:lib.surfaces[noPhoto?'white':'image']},accent:{family:fAccent,brief:lib.accents[fAccent]}}),
+  at('familiar',fKey,{surface:{key:noPhoto?'white':'image',brief:lib.surfaces[noPhoto?'white':'image']},accent:{family:fAccent,brief:lib.accents[fAccent]},...(local?{measured:{trade,country:local.country,sites:local.sites,ground:local.colour?.ground??null,type:local.type}}:{})}),
   at('tailored',tKey,{surface:{key:surf,brief:lib.surfaces[surf]}}),
   at('bold',bKey,{material:{slug:m.slug,name:m.name,brief:m.brief,ground:m.ground,file:m.file},alternate:mats[1]?{slug:mats[1].slug,name:mats[1].name,brief:mats[1].brief,file:mats[1].file}:null})
  ].map((d,i)=>({label:String.fromCharCode(65+i),...d}));
- const deal={schemaVersion:7,kind:kind??null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures};
+ const deal={schemaVersion:7,kind:kind??null,trade:trade??null,tradeMeasured:trade?!!local:null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }

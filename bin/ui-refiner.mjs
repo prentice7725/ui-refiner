@@ -29,7 +29,7 @@ const help=`UI Refiner 0.7.0 — de-AI web design review and UI quality gate
   ui-refiner directions <folder of .html mocks> [--lang auto|ko|ja|en] [--json]
       scans each design-direction mock and writes DIRECTIONS.html and DIRECTIONS.md side by side, so a person can choose one;
       warns when mocks share a surface, type pair or hero layout, ignore their deal, or repeat a choice made for another project
-  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--tone calm|warm|technical|bold] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
+  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--trade <trade>] [--tone calm|warm|technical|bold] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
       assigns each of three mocks a hero structure (as common on human-made sites of that kind) and a material
       (a finished look: ground, colours, faces, surfaces, controls) that fits the tone and kind, avoiding what was chosen
       recently for other projects;
@@ -77,7 +77,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--tone','--count','--orientation','--system','--reason','--file'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -90,7 +90,7 @@ try{
     const lang=args.lang||process.env.UI_REFINER_LANG||'auto';
     if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`${args.lang?'--lang':'UI_REFINER_LANG'} must be auto or one of ${scanLangs.join(', ')}`);
     if(args.compare&&args.noCompare)throw Error('Use either --compare or --no-compare');
-    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang,locale:args.locale||null,source:args.source||null,compare:args.noCompare?null:args.compare||'auto'});
+    const {result,dir}=await scanUrl(sub,{out:args.out||'ui-refiner-scan',lang,locale:args.locale||null,source:args.source||null,compare:args.noCompare?null:args.compare||'auto',grade:true});
     const c=result.comparison,delta=n=>n>0?`+${n}`:`${n}`;
     if(args.json)console.log(JSON.stringify(result,null,2));
     else console.log(`[SCAN] AI-look ${result.aiLook.score}/100 (${result.aiLook.band}); verdict=${result.aiLook.verdict==='ai'?'looks AI-made':result.aiLook.verdict==='traces'?'some AI traces':'does not look AI-made'}; signals=${result.aiLook.signals.map(s=>s.id).join(',')||'none'}; quality issues=${result.quality.reduce((n,q)=>n+q.count,0)};${result.japanese.japanese?` ja-typography=${result.japanese.issues.map(i=>i.id).join(',')||'ok'};`:''} report=${result.lang};${c?` vs ${c.mode==='auto'?'last scan':'previous'} ${c.previous.score}→${c.current.score} (${delta(c.scoreDelta)}), resolved=${c.signals.resolved.length}, new=${c.signals.added.length}${c.warnings.length?`, warnings=${c.warnings.join(',')}`:''};`:''} ${path.join(dir,'DESIGN_REVIEW.md')}`);
@@ -118,9 +118,9 @@ try{
     else console.log(r.photos.map(p=>`${p.file}  ${p.width}x${p.height}  ${p.author} (${p.licence})  ${p.source}`).join('\n')+`\n[PHOTOS] ${r.photos.length} stand-ins in ${r.dir} (credits.json)\nCredit line for the footer:\n${r.credit}`);
   }
   else if(command==='directions'&&sub==='deal'&&args._.length===3){
-    const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
+    const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,trade:args.trade,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
     if(args.json)console.log(JSON.stringify(r,null,2));
-    else console.log((r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
+    else console.log((r.trade?(r.tradeMeasured?`[TRADE] ${r.trade}: A follows ${r.structures[0].measured.sites} human-made sites of this trade in ${r.structures[0].measured.country}\n`:`[TRADE] ${r.trade}: too few sites of this trade measured for this language; A follows the page kind\n`):'')+(r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
 `:'')+r.structures.map(d=>`${d.label} · ${d.lane}: ${d.key} — ${d.brief}${d.humanShare!=null?` (${Math.round(d.humanShare*100)}% of human-made sites of this kind)`:''}${d.surface?`
    surface: ${d.surface.brief}`:''}${d.accent?`
    colour: ${d.accent.family} — ${d.accent.brief}`:''}${d.material?`
