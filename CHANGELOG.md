@@ -4,6 +4,8 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+## 0.8.0 — 2026-11-18
+
 ### Added
 - `ui-refiner scan` also writes `scan-graded.png`: the desktop screenshot marked up like a graded paper. Each scored signal is circled in red where it was found (up to three places per signal) with its points beside the first, and the score and verdict are written at the top. Signals that have no single place on the page (a plain typeface, for example) are not circled. `DESIGN_REVIEW.md` links it next to the screenshots and `scan.json` records it as `graded`. Scans run inside `directions` and the collectors do not draw it.
 - `ui-refiner system extract <main page>` measures the picked main page (type, sizes, colours, main button, box radius, rules, content width) and writes `ui-refiner-system.json` and `DESIGN_SYSTEM.md`. `ui-refiner system check <page…>` lists where other pages of the site leave that design and exits 1 on drift. The refine skill now runs the directions step once, for the main page, and builds the site's other pages from the system: variety belongs between the three directions and between clients, not between pages of one site. In an inner-page benchmark (8 sites, main page code not available, `docs/SITE_BENCHMARK_2026-11-13.md`), 16 of 16 inner pages built from the system kept the design against 0 of 16 built from a screenshot, and three judges picked them in 18 of 23 verdicts. The system also records whether the main page is photo-led, and `system check` flags an inner page of a photo-led site that has no photos.
