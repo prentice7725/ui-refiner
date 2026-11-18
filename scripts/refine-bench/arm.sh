@@ -6,6 +6,7 @@
 #   EXTRA_TOOLS   추가로 허용할 도구 (공백으로 구분, 예: "Agent Task")
 #   REP           반복 번호. 결과 폴더가 <arm>.<REP>가 되고, 선택 기록도 반복마다 따로 쓴다
 #   MODEL         생성 모델 (기본값 claude-opus-5-5)
+#   KIND, TRADE, SEED  EXTRA_PROMPT의 {KIND} {LANG} {SEED} {TRADE_ARG} {TRADE_LINE}을 채운다 (variants/trade-*.md). TRADE가 비면 업종 없이 배정한다
 # Git Bash(윈도우)에서는 /c/… 대신 C:/… 경로를 써야 에이전트의 파일 도구와 훅이 같은 경로를 읽는다
 pw(){ pwd -W 2>/dev/null || pwd; }
 HERE="$(cd "$(dirname "$0")" && pw)"; R="$(cd "$HERE/../.." && pw)"; B="${BENCH_DIR:-$(pw)/refine-bench-out}"; arm="$1"; id="$2"
@@ -32,7 +33,7 @@ case "$arm" in
   export UI_REFINER_HOME="$B/home/$name" BENCH_PAGE_DIR="$d"
   # 어떤 코드와 프롬프트로 돌렸는지 남긴다 (에이전트가 보지 못하게 페이지 폴더 밖에 둔다)
   node -e 'const [f,arm,rep,id,root,model,extra]=process.argv.slice(1),{execSync:x}=require("child_process"),g=c=>{try{return x("git -C "+JSON.stringify(root)+" "+c,{encoding:"utf8"}).trim();}catch{return null;}};
-   require("fs").writeFileSync(f,JSON.stringify({arm,rep:rep||null,page:id,model,root,commit:g("rev-parse HEAD"),dirty:!!g("status --porcelain -- skills commands src bin data"),extraPrompt:extra||null,claude:(()=>{try{return x("claude --version",{encoding:"utf8"}).trim();}catch{return null;}})(),startedAt:new Date().toISOString()},null,1)+"\n");' \
+   require("fs").writeFileSync(f,JSON.stringify({arm,rep:rep||null,page:id,model,root,commit:g("rev-parse HEAD"),dirty:!!g("status --porcelain -- skills commands src bin data"),extraPrompt:extra||null,kind:process.env.KIND||null,trade:process.env.TRADE||null,seed:process.env.SEED||null,claude:(()=>{try{return x("claude --version",{encoding:"utf8"}).trim();}catch{return null;}})(),startedAt:new Date().toISOString()},null,1)+"\n");' \
    "$B/meta/$name-$id.json" "$arm" "${REP:-}" "$id" "$ROOT" "$MODEL" "${EXTRA_PROMPT:-}"
   mkdir -p .claude
   # Stop: 마무리 게이트. PostToolUse: 단계별 스냅숏 (시안, 첫 구현, 검사 뒤 수정본을 남긴다)
@@ -43,6 +44,9 @@ case "$arm" in
   extra=""; [ -n "${EXTRA_PROMPT:-}" ] && extra="
 
 $(cat "$EXTRA_PROMPT")"
+  lang="${id%%-*}"; [ "$lang" = en ] || [ "$lang" = ja ] || [ "$lang" = ko ] || lang=en
+  bt='`'; if [ -n "${TRADE:-}" ]; then targ=" --trade $TRADE"; tline="The client is in the trade $bt$TRADE$bt."; else targ=""; tline="Do not pass $bt--trade$bt, even if one fits."; fi
+  extra="${extra//\{KIND\}/${KIND:-}}"; extra="${extra//\{LANG\}/$lang}"; extra="${extra//\{SEED\}/${SEED:-}}"; extra="${extra//\{TRADE_ARG\}/$targ}"; extra="${extra//\{TRADE_LINE\}/$tline}"
   # shellcheck disable=SC2086
   claude -p "First read the skill at $ROOT/skills/ui-refiner-agent/SKILL.md (the \`ui-refiner-agent\` skill; \`ui-refiner\` means \`node $ROOT/bin/ui-refiner.mjs\`). Then:
 

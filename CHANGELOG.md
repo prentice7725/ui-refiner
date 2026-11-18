@@ -4,6 +4,13 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Added
+- `directions deal --seed <n>` fixes the draw, so two runs with one seed differ only in their inputs.
+- Refine benchmark harness: a trade benchmark, prepared but not run. Arms k/l build only the familiar mock (A) without and with `--trade`, on one seed per page and repeat; arms m/n refine to the end and pick A. Six Korean and Japanese pages are listed in `scripts/refine-bench/trades.tsv` (ko-logistics is the control), with prompts for three new ones. `scripts/refine-bench/trade-fit.mjs` measures how well each mock fits the trade's measured sites. See `scripts/refine-bench/README.md`.
+
+### Changed
+- The first-screen colour measure moved from `scripts/collect-colours.mjs` to `src/first-screen-colour.mjs`, so the benchmark measures mocks the same way the collector measures sites. The collector's output is unchanged.
+
 ## 0.8.0 — 2026-11-18
 
 ### Added
