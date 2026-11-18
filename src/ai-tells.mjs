@@ -331,12 +331,12 @@ export function evaluateAiTells(m,{lang='ko'}={}){
  if(m.iconBoxes&&m.iconBoxes.count>=TH.iconBoxes)add('boxed-icons','moderate',{boxes:m.iconBoxes.count},m.iconBoxes.targets);
  const fams=m.typography.families,top=fams[0]?.name;
  // Japanese pages with a real Japanese stack (Hiragino, Noto Sans JP …) follow local convention, not a template default.
- if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)});
- // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
- // Korean pages: reported, not scored. On 180 human-made Korean sites (data/kr-reference, November 2026) a display size
- // under twice the body was found on 43%, and with it scored half of them reached 8 points or more. Japanese pages
- // have been left out since the Japanese reference set, for the same reason.
+ // Korean pages: two type signals are reported, not scored. On 180 human-made Korean sites (data/kr-reference, November
+ // 2026) a display size under twice the body was found on 43% and a single plain family on 29%; with both scored, half
+ // of the sites reached 8 points or more. Japanese pages have left both out since the Japanese reference set.
  const letters=(m.text||'').replace(/\s/g,''),korean=!m.japanese&&letters.length>0&&(letters.match(/[가-힣]/g)||[]).length/letters.length>=.15;
+ if(top&&genericFonts.includes(top)&&fams.filter(f=>f.count>=3).length<=1&&!(m.japanese&&m.japaneseFontCoverage>=.5))add('generic-type','weak',{families:fams.map(f=>f.name)},[],korean?0:null);
+ // Dense Japanese portals and stores use modest heading sizes by convention; that is not a template tell.
  if(m.typography.ratio&&m.typography.ratio<2&&!m.japanese)add('flat-scale','weak',{display:m.typography.display,body:m.typography.body,ratio:+m.typography.ratio.toFixed(2)},[],korean?0:null);
  const hits=new Map();for(const c of m.accents)for(const [name,ref] of Object.entries(defaultAccents))if(dist(c,ref)<14)hits.set(name,(hits.get(name)||0)+1);
  // Calibration (2026-11): plain blue defaults are as common on human sites; only indigo/violet/purple defaults score.
