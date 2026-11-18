@@ -1,14 +1,19 @@
 # UI Refiner
 
-A design toolkit for Claude Code and Codex. It makes pages built by an agent look less AI-generated and less like each other. It renders a page in a real browser and scores how generic it looks. Then it mocks three different design directions, lets you pick one, and rebuilds the page around it. Your links, forms and figures stay exactly as they were.
+A design toolkit for Claude Code and Codex. It makes pages built by an agent look less AI-generated and less like each other. It renders a page in a real browser and scores how generic it looks. Then it mocks three different design directions, one of them drawn from measured real sites of the client's own trade, lets you pick one, and rebuilds the page around it. Your links, forms and figures stay exactly as they were.
 
 [한국어](README_KO.md) · [日本語](README_JA.md) · [Install](#installation) · [Full guide](docs/GUIDE.md) · [Changelog](CHANGELOG.md)
 
 ## What you get
 
+- **A familiar direction measured on real Korean and Japanese sites.**
+  - The first screens of 1790 human-made Korean and Japanese sites were measured in November 2026, in 40 trades: dental clinics, hair salons, inns, restaurants, hospitals, academies, software firms, makers, local governments, newspapers, job sites, logistics firms and more. They form 72 trade and country groups of 9 to 79 sites each.
+  - For each group the data records how the first screen opens (a photograph, a centred headline, the heading below the fold), the ground and accent colour, the body size, how much larger the largest text is, and how often the display face is serif or Mincho.
+  - Name the client's trade (`--trade inn`) and the familiar direction is drawn from that group, so two clients in one country get different starting points. Of 61 Japanese inns and hotels, 69% open on a full-bleed photograph, a third set the display in Mincho and body line height is 2.0. Of 49 Japanese job sites, half open on a light ground, blue is the accent on 47%, and 8% use Mincho.
+  - Without a trade, or on an English page, it follows how 406 human-made sites open their first screen and which colours 548 use.
+  - Not benchmarked yet: whether naming a trade makes refined pages better has not been tested.
 - **Refine with three directions from three sources.** `/ui-refine` does not leave the design to the model's habits.
   - Three first-screen mocks are built apart, each by its own subagent: familiar (what human-made sites of the kind do, as measured), tailored (colour and type from this client's content) and bold (one material, a finished look taken from a physical thing).
-  - The familiar direction follows measurements: how 406 human-made sites open their first screen and which colours 548 use. On a Korean or Japanese page, `--trade` narrows it to sites of the client's own trade (1790 sites in 40 trades: salons, inns, restaurants, clinics, hospitals, academies, software firms, makers, public bodies and more).
   - A per-user log keeps the next client from getting the same page.
   - You pick a direction, or a mix. The page is rebuilt around a signature element taken from the real content: this month's ledger for a budgeting app, a day in the team for a hiring page.
 - **Checks that keep a refine honest.**
