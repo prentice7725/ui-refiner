@@ -1,8 +1,8 @@
 {
  "schemaVersion": 1,
- "measured": "2026-11-17",
- "sites": 750,
- "droppedForLanguage": 107,
+ "measured": "2026-11-18",
+ "sites": 882,
+ "droppedForLanguage": 114,
  "minSites": 8,
  "source": "Human-made Korean and Japanese sites by trade (scripts/genre-sites.tsv), first desktop screen at 1440x900. robots.txt respected; measurements only. A trade/country appears only with 8 or more sites; hero and colour each need 8 of their own. lineHeight is measured on Japanese pages only.",
  "trades": {
@@ -13,6 +13,7 @@
   "care": "nursing care, welfare services",
   "cosmetics": "cosmetics and skincare brands",
   "dental": "dental clinics",
+  "design": "graphic and web design offices",
   "ec": "online shops and marketplaces",
   "event": "festivals, exhibitions, conferences, campaigns",
   "farm": "farms, breweries, distilleries, tea and local produce",
@@ -30,6 +31,7 @@
   "restaurant": "restaurants, cafes, bars",
   "salon": "hair salons",
   "skin": "dermatology and cosmetic clinics",
+  "software": "software and SaaS companies, system developers",
   "tax": "tax accountants, accounting and law offices",
   "tourism": "tourist boards, regional and city guides",
   "wedding": "wedding halls and planners",
@@ -81,7 +83,20 @@
      "left+media": 0.111
     }
    },
-   "colour": null,
+   "colour": {
+    "sites": 9,
+    "ground": {
+     "image": 0.444,
+     "light": 0.444,
+     "dark": 0.111
+    },
+    "accent": {
+     "blue": 0.444,
+     "red": 0.333,
+     "teal": 0.111,
+     "orange": 0.111
+    }
+   },
    "type": {
     "body": 16,
     "displayRatio": 2.5,
@@ -145,21 +160,38 @@
    }
   },
   "builder/KR": {
-   "sites": 10,
+   "sites": 18,
    "hero": {
-    "sites": 10,
+    "sites": 18,
     "share": {
-     "below-fold": 0.5,
-     "full-bleed": 0.4,
-     "left+stacked": 0.1
+     "below-fold": 0.556,
+     "full-bleed": 0.278,
+     "left+stacked": 0.056,
+     "left+media": 0.056,
+     "center+stacked": 0.056
     }
    },
-   "colour": null,
+   "colour": {
+    "sites": 17,
+    "ground": {
+     "light": 0.471,
+     "image": 0.412,
+     "dark": 0.118
+    },
+    "accent": {
+     "ink": 0.353,
+     "blue": 0.294,
+     "indigo": 0.176,
+     "amber": 0.059,
+     "red": 0.059,
+     "orange": 0.059
+    }
+   },
    "type": {
     "body": 15,
-    "displayRatio": 3.08,
+    "displayRatio": 2.38,
     "lineHeight": null,
-    "serifDisplay": 0.1
+    "serifDisplay": 0.056
    }
   },
   "care/JP": {
@@ -234,82 +266,121 @@
    }
   },
   "dental/JP": {
-   "sites": 55,
+   "sites": 67,
    "hero": {
-    "sites": 55,
+    "sites": 67,
     "share": {
-     "full-bleed": 0.473,
-     "below-fold": 0.218,
-     "left+stacked": 0.145,
-     "center+stacked": 0.055,
-     "left+media": 0.036,
-     "right+media": 0.036,
-     "center+panel": 0.018,
-     "right+stacked": 0.018
+     "full-bleed": 0.493,
+     "below-fold": 0.239,
+     "left+stacked": 0.119,
+     "center+stacked": 0.045,
+     "left+media": 0.03,
+     "center+panel": 0.03,
+     "right+media": 0.03,
+     "right+stacked": 0.015
     }
    },
    "colour": {
-    "sites": 53,
+    "sites": 66,
     "ground": {
-     "image": 0.547,
-     "light": 0.415,
-     "orange": 0.019,
-     "amber": 0.019
+     "image": 0.576,
+     "light": 0.394,
+     "orange": 0.015,
+     "amber": 0.015
     },
     "accent": {
-     "blue": 0.245,
-     "orange": 0.17,
-     "indigo": 0.151,
-     "green": 0.132,
-     "teal": 0.075,
-     "ink": 0.075,
-     "pink": 0.038,
-     "amber": 0.038,
-     "red": 0.038,
-     "brown": 0.038
-    }
-   },
-   "type": {
-    "body": 15,
-    "displayRatio": 2.25,
-    "lineHeight": 1.7,
-    "serifDisplay": 0.182
-   }
-  },
-  "dental/KR": {
-   "sites": 30,
-   "hero": {
-    "sites": 30,
-    "share": {
-     "below-fold": 0.6,
-     "full-bleed": 0.367,
-     "center+panel": 0.033
-    }
-   },
-   "colour": {
-    "sites": 30,
-    "ground": {
-     "image": 0.633,
-     "light": 0.3,
-     "indigo": 0.033,
-     "dark": 0.033
-    },
-    "accent": {
-     "blue": 0.4,
-     "ink": 0.267,
-     "indigo": 0.133,
-     "teal": 0.067,
-     "red": 0.033,
-     "orange": 0.033,
-     "brown": 0.033,
-     "amber": 0.033
+     "blue": 0.242,
+     "orange": 0.152,
+     "indigo": 0.136,
+     "green": 0.106,
+     "amber": 0.091,
+     "ink": 0.091,
+     "teal": 0.076,
+     "brown": 0.045,
+     "pink": 0.03,
+     "red": 0.03
     }
    },
    "type": {
     "body": 16,
-    "displayRatio": 2.8,
+    "displayRatio": 2.5,
+    "lineHeight": 1.71,
+    "serifDisplay": 0.224
+   }
+  },
+  "dental/KR": {
+   "sites": 38,
+   "hero": {
+    "sites": 38,
+    "share": {
+     "below-fold": 0.553,
+     "full-bleed": 0.368,
+     "left+stacked": 0.026,
+     "center+panel": 0.026,
+     "left+media": 0.026
+    }
+   },
+   "colour": {
+    "sites": 38,
+    "ground": {
+     "image": 0.579,
+     "light": 0.342,
+     "dark": 0.053,
+     "indigo": 0.026
+    },
+    "accent": {
+     "blue": 0.368,
+     "ink": 0.263,
+     "indigo": 0.132,
+     "teal": 0.105,
+     "green": 0.026,
+     "red": 0.026,
+     "orange": 0.026,
+     "brown": 0.026,
+     "amber": 0.026
+    }
+   },
+   "type": {
+    "body": 16,
+    "displayRatio": 3,
     "lineHeight": null,
-    "serifDisplay": 0.067
+    "serifDisplay": 0.053
+   }
+  },
+  "design/JP": {
+   "sites": 12,
+   "hero": {
+    "sites": 12,
+    "share": {
+     "below-fold": 0.583,
+     "full-bleed": 0.167,
+     "left+panel": 0.083,
+     "left+stacked": 0.083,
+     "left+media": 0.083
+    }
+   },
+   "colour": {
+    "sites": 12,
+    "ground": {
+     "image": 0.583,
+     "light": 0.333,
+     "orange": 0.083
+    },
+    "accent": {
+     "indigo": 0.333,
+     "ink": 0.25,
+     "green": 0.083,
+     "brown": 0.083,
+     "orange": 0.083,
+     "red": 0.083,
+     "amber": 0.083
+    }
+   },
+   "type": {
+    "body": 14,
+    "displayRatio": 2.39,
+    "lineHeight": 1.7,
+    "serifDisplay": 0.083
    }
   },
   "ec/JP": {
@@ -447,33 +518,34 @@
    }
   },
   "farm/KR": {
-   "sites": 9,
+   "sites": 10,
    "hero": {
-    "sites": 9,
+    "sites": 10,
     "share": {
-     "below-fold": 0.667,
-     "full-bleed": 0.333
+     "below-fold": 0.7,
+     "full-bleed": 0.3
     }
    },
    "colour": {
-    "sites": 9,
+    "sites": 10,
     "ground": {
-     "image": 0.556,
-     "light": 0.444
+     "image": 0.6,
+     "light": 0.4
     },
     "accent": {
-     "ink": 0.333,
-     "green": 0.222,
-     "teal": 0.222,
-     "amber": 0.111,
-     "red": 0.111
+     "ink": 0.3,
+     "green": 0.2,
+     "teal": 0.2,
+     "orange": 0.1,
+     "amber": 0.1,
+     "red": 0.1
     }
    },
    "type": {
-    "body": 13,
+    "body": 12,
     "displayRatio": 3.3,
     "lineHeight": null,
-    "serifDisplay": 0.222
+    "serifDisplay": 0.2
    }
   },
   "fashion/JP": {
@@ -489,17 +561,17 @@
     }
    },
    "colour": {
-    "sites": 13,
+    "sites": 14,
     "ground": {
-     "image": 0.615,
-     "light": 0.308,
-     "dark": 0.077
+     "image": 0.571,
+     "light": 0.357,
+     "dark": 0.071
     },
     "accent": {
-     "ink": 0.385,
-     "blue": 0.385,
-     "indigo": 0.154,
-     "orange": 0.077
+     "ink": 0.429,
+     "blue": 0.357,
+     "indigo": 0.143,
+     "orange": 0.071
     }
    },
    "type": {
@@ -518,7 +590,18 @@
      "full-bleed": 0.375
     }
    },
-   "colour": null,
+   "colour": {
+    "sites": 8,
+    "ground": {
+     "light": 0.625,
+     "image": 0.375
+    },
+    "accent": {
+     "ink": 0.625,
+     "red": 0.25,
+     "blue": 0.125
+    }
+   },
    "type": {
     "body": 12,
     "displayRatio": 2.66,
@@ -527,28 +610,38 @@
    }
   },
   "finance/JP": {
-   "sites": 8,
-   "hero": null,
+   "sites": 16,
+   "hero": {
+    "sites": 14,
+    "share": {
+     "below-fold": 0.429,
+     "full-bleed": 0.357,
+     "left+media": 0.143,
+     "left+stacked": 0.071
+    }
+   },
    "colour": {
-    "sites": 8,
+    "sites": 16,
     "ground": {
-     "image": 0.375,
+     "image": 0.563,
      "light": 0.25,
-     "dark": 0.125,
-     "red": 0.125,
-     "blue": 0.125
+     "dark": 0.063,
+     "red": 0.063,
+     "blue": 0.063
     },
     "accent": {
-     "blue": 0.5,
-     "ink": 0.375,
-     "red": 0.125
+     "blue": 0.563,
+     "ink": 0.188,
+     "indigo": 0.125,
+     "orange": 0.063,
+     "red": 0.063
     }
    },
    "type": {
     "body": 15,
-    "displayRatio": 4.29,
+    "displayRatio": 2.86,
     "lineHeight": 1.8,
-    "serifDisplay": 0.125
+    "serifDisplay": 0.063
    }
   },
   "fitness/JP": {
@@ -628,34 +721,35 @@
    }
   },
   "food/KR": {
-   "sites": 11,
+   "sites": 12,
    "hero": {
-    "sites": 11,
+    "sites": 12,
     "share": {
-     "full-bleed": 0.545,
-     "below-fold": 0.273,
-     "center+stacked": 0.182
+     "full-bleed": 0.583,
+     "below-fold": 0.25,
+     "center+stacked": 0.167
     }
    },
    "colour": {
-    "sites": 9,
+    "sites": 10,
     "ground": {
-     "light": 0.556,
-     "image": 0.333,
-     "green": 0.111
+     "light": 0.6,
+     "image": 0.3,
+     "green": 0.1
     },
     "accent": {
-     "ink": 0.222,
-     "amber": 0.222,
-     "red": 0.222,
-     "green": 0.111,
-     "orange": 0.111,
-     "blue": 0.111
+     "ink": 0.2,
+     "amber": 0.2,
+     "red": 0.2,
+     "teal": 0.1,
+     "green": 0.1,
+     "orange": 0.1,
+     "blue": 0.1
     }
    },
    "type": {
     "body": 16,
-    "displayRatio": 4.17,
+    "displayRatio": 3.46,
     "lineHeight": null,
     "serifDisplay": 0
    }
@@ -700,68 +794,72 @@
    }
   },
   "inn/JP": {
-   "sites": 24,
+   "sites": 35,
    "hero": {
-    "sites": 21,
+    "sites": 32,
     "share": {
-     "full-bleed": 0.524,
-     "below-fold": 0.381,
-     "left+stacked": 0.095
+     "full-bleed": 0.563,
+     "below-fold": 0.281,
+     "left+stacked": 0.125,
+     "center+stacked": 0.031
     }
    },
    "colour": {
-    "sites": 24,
+    "sites": 33,
     "ground": {
-     "image": 0.542,
-     "light": 0.417,
-     "dark": 0.042
+     "image": 0.606,
+     "light": 0.364,
+     "dark": 0.03
     },
     "accent": {
-     "ink": 0.417,
-     "blue": 0.167,
-     "green": 0.125,
-     "orange": 0.083,
-     "pink": 0.083,
-     "brown": 0.042,
-     "teal": 0.042,
-     "indigo": 0.042
-    }
-   },
-   "type": {
-    "body": 14,
-    "displayRatio": 2.38,
-    "lineHeight": 2,
-    "serifDisplay": 0.167
-   }
-  },
-  "inn/KR": {
-   "sites": 9,
-   "hero": {
-    "sites": 8,
-    "share": {
-     "below-fold": 0.875,
-     "full-bleed": 0.125
-    }
-   },
-   "colour": {
-    "sites": 9,
-    "ground": {
-     "image": 0.667,
-     "light": 0.333
-    },
-    "accent": {
-     "ink": 0.444,
-     "brown": 0.222,
-     "teal": 0.111,
-     "amber": 0.111,
-     "blue": 0.111
+     "ink": 0.303,
+     "blue": 0.182,
+     "pink": 0.121,
+     "brown": 0.091,
+     "green": 0.091,
+     "orange": 0.061,
+     "amber": 0.061,
+     "indigo": 0.061,
+     "teal": 0.03
     }
    },
    "type": {
     "body": 15,
-    "displayRatio": 2.77,
+    "displayRatio": 2.44,
+    "lineHeight": 2,
+    "serifDisplay": 0.257
+   }
+  },
+  "inn/KR": {
+   "sites": 19,
+   "hero": {
+    "sites": 18,
+    "share": {
+     "below-fold": 0.556,
+     "full-bleed": 0.444
+    }
+   },
+   "colour": {
+    "sites": 19,
+    "ground": {
+     "image": 0.789,
+     "light": 0.211
+    },
+    "accent": {
+     "ink": 0.316,
+     "blue": 0.158,
+     "amber": 0.105,
+     "teal": 0.105,
+     "red": 0.105,
+     "indigo": 0.105,
+     "brown": 0.105
+    }
+   },
+   "type": {
+    "body": 15,
+    "displayRatio": 3,
     "lineHeight": null,
-    "serifDisplay": 0.111
+    "serifDisplay": 0.263
    }
   },
   "interior/JP": {
@@ -868,72 +966,74 @@
    }
   },
   "maker/JP": {
-   "sites": 20,
+   "sites": 32,
    "hero": {
-    "sites": 18,
+    "sites": 30,
     "share": {
-     "full-bleed": 0.722,
-     "below-fold": 0.111,
-     "left+media": 0.056,
-     "left+stacked": 0.056,
-     "right+media": 0.056
+     "full-bleed": 0.667,
+     "below-fold": 0.2,
+     "left+stacked": 0.067,
+     "left+media": 0.033,
+     "right+media": 0.033
     }
    },
    "colour": {
-    "sites": 20,
+    "sites": 31,
     "ground": {
-     "image": 0.5,
-     "light": 0.4,
-     "blue": 0.05,
-     "dark": 0.05
+     "image": 0.484,
+     "light": 0.419,
+     "blue": 0.065,
+     "dark": 0.032
     },
     "accent": {
-     "ink": 0.35,
-     "blue": 0.3,
-     "indigo": 0.1,
-     "amber": 0.1,
-     "green": 0.05,
-     "brown": 0.05,
-     "pink": 0.05
+     "blue": 0.355,
+     "ink": 0.258,
+     "indigo": 0.129,
+     "green": 0.097,
+     "amber": 0.065,
+     "brown": 0.032,
+     "pink": 0.032,
+     "red": 0.032
     }
    },
    "type": {
-    "body": 14,
-    "displayRatio": 3,
+    "body": 15,
+    "displayRatio": 3.41,
     "lineHeight": 1.8,
-    "serifDisplay": 0.2
+    "serifDisplay": 0.25
    }
   },
   "maker/KR": {
-   "sites": 10,
+   "sites": 18,
    "hero": {
-    "sites": 9,
+    "sites": 17,
     "share": {
-     "below-fold": 0.556,
-     "full-bleed": 0.222,
-     "left+media": 0.111,
-     "center+stacked": 0.111
+     "below-fold": 0.529,
+     "full-bleed": 0.294,
+     "left+stacked": 0.059,
+     "left+media": 0.059,
+     "center+stacked": 0.059
     }
    },
    "colour": {
-    "sites": 10,
+    "sites": 18,
     "ground": {
-     "light": 0.5,
-     "image": 0.3,
-     "dark": 0.2
+     "image": 0.444,
+     "light": 0.444,
+     "dark": 0.111
     },
     "accent": {
-     "blue": 0.4,
-     "ink": 0.3,
-     "red": 0.2,
-     "indigo": 0.1
+     "blue": 0.389,
+     "ink": 0.333,
+     "indigo": 0.167,
+     "red": 0.111
     }
    },
    "type": {
     "body": 14,
-    "displayRatio": 2.85,
+    "displayRatio": 2.92,
     "lineHeight": null,
-    "serifDisplay": 0
+    "serifDisplay": 0.056
    }
   },
   "realestate/JP": {
@@ -988,35 +1088,39 @@
    }
   },
   "restaurant/JP": {
-   "sites": 10,
+   "sites": 20,
    "hero": {
-    "sites": 8,
+    "sites": 18,
     "share": {
      "full-bleed": 0.5,
-     "left+stacked": 0.25,
-     "below-fold": 0.25
+     "below-fold": 0.222,
+     "left+media": 0.111,
+     "left+stacked": 0.111,
+     "right+stacked": 0.056
     }
    },
    "colour": {
-    "sites": 10,
+    "sites": 20,
     "ground": {
-     "light": 0.5,
-     "image": 0.4,
+     "image": 0.45,
+     "light": 0.45,
      "dark": 0.1
     },
     "accent": {
-     "red": 0.5,
-     "indigo": 0.2,
-     "ink": 0.1,
+     "ink": 0.3,
+     "red": 0.3,
+     "indigo": 0.15,
      "teal": 0.1,
-     "blue": 0.1
+     "amber": 0.05,
+     "orange": 0.05,
+     "blue": 0.05
     }
    },
    "type": {
-    "body": 13,
-    "displayRatio": 5,
+    "body": 14,
+    "displayRatio": 2.92,
     "lineHeight": 1.8,
-    "serifDisplay": 0.5
+    "serifDisplay": 0.35
    }
   },
   "salon/JP": {
@@ -1069,23 +1173,23 @@
     }
    },
    "colour": {
-    "sites": 47,
+    "sites": 49,
     "ground": {
-     "image": 0.553,
-     "light": 0.404,
-     "brown": 0.043
+     "image": 0.551,
+     "light": 0.408,
+     "brown": 0.041
     },
     "accent": {
-     "blue": 0.255,
-     "pink": 0.128,
-     "red": 0.128,
-     "indigo": 0.128,
-     "ink": 0.106,
-     "orange": 0.085,
-     "amber": 0.064,
-     "green": 0.043,
-     "teal": 0.043,
-     "brown": 0.021
+     "blue": 0.245,
+     "red": 0.143,
+     "pink": 0.122,
+     "indigo": 0.122,
+     "ink": 0.102,
+     "orange": 0.082,
+     "teal": 0.061,
+     "amber": 0.061,
+     "green": 0.041,
+     "brown": 0.02
     }
    },
    "type": {
@@ -1134,6 +1238,75 @@
     "serifDisplay": 0.229
    }
   },
+  "software/JP": {
+   "sites": 12,
+   "hero": {
+    "sites": 12,
+    "share": {
+     "full-bleed": 0.5,
+     "left+stacked": 0.167,
+     "right+stacked": 0.083,
+     "left+panel": 0.083,
+     "below-fold": 0.083,
+     "left+media": 0.083
+    }
+   },
+   "colour": {
+    "sites": 12,
+    "ground": {
+     "light": 0.5,
+     "image": 0.333,
+     "dark": 0.083,
+     "blue": 0.083
+    },
+    "accent": {
+     "blue": 0.417,
+     "teal": 0.25,
+     "ink": 0.167,
+     "indigo": 0.083,
+     "orange": 0.083
+    }
+   },
+   "type": {
+    "body": 14,
+    "displayRatio": 4.29,
+    "lineHeight": 1.7,
+    "serifDisplay": 0.25
+   }
+  },
+  "software/KR": {
+   "sites": 10,
+   "hero": {
+    "sites": 10,
+    "share": {
+     "center+stacked": 0.3,
+     "below-fold": 0.3,
+     "full-bleed": 0.2,
+     "wide+stacked": 0.1,
+     "left+panel": 0.1
+    }
+   },
+   "colour": {
+    "sites": 10,
+    "ground": {
+     "light": 0.9,
+     "image": 0.1
+    },
+    "accent": {
+     "blue": 0.4,
+     "indigo": 0.3,
+     "green": 0.1,
+     "orange": 0.1,
+     "ink": 0.1
+    }
+   },
+   "type": {
+    "body": 17,
+    "displayRatio": 3.22,
+    "lineHeight": null,
+    "serifDisplay": 0.1
+   }
+  },
   "tax/JP": {
    "sites": 10,
    "hero": {
@@ -1146,17 +1319,18 @@
     }
    },
    "colour": {
-    "sites": 8,
+    "sites": 10,
     "ground": {
-     "light": 0.5,
-     "image": 0.375,
-     "blue": 0.125
+     "light": 0.4,
+     "image": 0.4,
+     "blue": 0.2
     },
     "accent": {
-     "blue": 0.375,
-     "indigo": 0.25,
-     "teal": 0.25,
-     "orange": 0.125
+     "blue": 0.3,
+     "indigo": 0.3,
+     "teal": 0.2,
+     "red": 0.1,
+     "orange": 0.1
     }
    },
    "type": {
@@ -1213,18 +1387,18 @@
     }
    },
    "colour": {
-    "sites": 11,
+    "sites": 12,
     "ground": {
-     "light": 0.545,
-     "image": 0.364,
-     "dark": 0.091
+     "light": 0.5,
+     "image": 0.333,
+     "dark": 0.167
     },
     "accent": {
-     "blue": 0.636,
-     "amber": 0.091,
-     "indigo": 0.091,
-     "ink": 0.091,
-     "orange": 0.091
+     "blue": 0.667,
+     "amber": 0.083,
+     "indigo": 0.083,
+     "ink": 0.083,
+     "orange": 0.083
     }
    },
    "type": {
@@ -1247,21 +1421,21 @@
     }
    },
    "colour": {
-    "sites": 23,
+    "sites": 24,
     "ground": {
-     "light": 0.478,
-     "image": 0.435,
-     "dark": 0.043,
-     "blue": 0.043
+     "light": 0.5,
+     "image": 0.417,
+     "dark": 0.042,
+     "blue": 0.042
     },
     "accent": {
-     "ink": 0.435,
-     "orange": 0.13,
-     "blue": 0.13,
-     "brown": 0.087,
-     "teal": 0.087,
-     "red": 0.087,
-     "pink": 0.043
+     "ink": 0.417,
+     "orange": 0.167,
+     "blue": 0.125,
+     "brown": 0.083,
+     "teal": 0.083,
+     "red": 0.083,
+     "pink": 0.042
     }
    },
    "type": {

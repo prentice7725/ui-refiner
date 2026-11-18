@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-17T08:51:39.380Z",
-  "attempted": 1025,
-  "ok": 857,
+  "generatedAt": "2026-11-18T06:19:02.517Z",
+  "attempted": 1162,
+  "ok": 996,
   "skippedRobots": [
     "https://www.kawai-juku.ac.jp/",
     "https://truekindskincare.com/",
@@ -208,10 +208,6 @@
       "error": "unreachable"
     },
     {
-      "url": "http://www.askdent.co.kr/",
-      "error": "Could not load http://www.askdent.co.kr/: page.goto: Timeout 45000ms exceeded."
-    },
-    {
       "url": "http://www.dentalbanobagi.com/",
       "error": "unreachable"
     },
@@ -314,10 +310,6 @@
     {
       "url": "https://www.sulseam.com/",
       "error": "Could not load https://www.sulseam.com/: page.goto: Timeout 45000ms exceeded."
-    },
-    {
-      "url": "https://www.sempio.com/",
-      "error": "Could not load https://www.sempio.com/: page.goto: Timeout 45000ms exceeded."
     },
     {
       "url": "https://www.high1.com/",
@@ -449,7 +441,7 @@
     },
     {
       "url": "http://www.xn--v42bw8twlaa350p.kr/",
-      "error": "unreachable"
+      "error": "Could not load http://www.xn--v42bw8twlaa350p.kr/: HTTP 403 at https://www.xn--v42bw8twlaa350p.kr/; HTTP 403 at https://www.xn--v42bw8twlaa350p.kr/"
     },
     {
       "url": "https://misoro.kr/",
@@ -529,175 +521,175 @@
     }
   ],
   "split": {
-    "tune": 595,
-    "holdout": 262
+    "tune": 693,
+    "holdout": 303
   },
   "all": {
-    "n": 857,
+    "n": 996,
     "score": {
-      "n": 857,
+      "n": 996,
       "p10": 0,
       "p50": 4,
       "p90": 16,
-      "flagged20": 0.06,
+      "flagged20": 0.07,
       "flagged30": 0.03
     },
     "signals": {
-      "transition-all": 0.65,
-      "generic-cta": 0.17,
-      "flat-scale": 0.15,
-      "many-hues": 0.13,
+      "transition-all": 0.66,
+      "generic-cta": 0.16,
+      "flat-scale": 0.14,
       "empty-frames": 0.12,
+      "many-hues": 0.12,
+      "centered": 0.09,
+      "generic-type": 0.09,
       "accent-word": 0.08,
-      "generic-type": 0.08,
       "large-gradient": 0.08,
-      "centered": 0.07,
       "tinted-page": 0.07,
+      "tracked-labels": 0.07,
       "default-accent": 0.06,
-      "tracked-labels": 0.06,
+      "card-grid": 0.04,
+      "gradient-text": 0.04,
       "buzzword-copy": 0.03,
-      "card-grid": 0.03,
-      "emoji-icons": 0.03,
       "glass": 0.03,
-      "gradient-text": 0.03,
-      "hero-cta-below": 0.03,
       "nested-cards": 0.03,
+      "emoji-icons": 0.02,
+      "eyebrow-pill": 0.02,
+      "hero-cta-below": 0.02,
       "numbered-labels": 0.02,
+      "paper-serif": 0.02,
       "period-headlines": 0.02,
       "purple-gradient": 0.02,
       "boxed-icons": 0.01,
-      "eyebrow-pill": 0.01,
       "glow": 0.01,
       "newsletter-tail": 0.01,
-      "over-rounded": 0.01,
-      "paper-serif": 0.01
+      "over-rounded": 0.01
     },
     "type": {
       "bodySize": {
-        "n": 857,
+        "n": 996,
         "p10": 12,
         "p50": 15,
         "p90": 18
       },
       "displayRatio": {
-        "n": 837,
-        "p10": 1.4,
-        "p50": 2.7,
-        "p90": 7.5
+        "n": 975,
+        "p10": 1.38,
+        "p50": 2.77,
+        "p90": 7
       },
       "sizes": {
-        "n": 857,
+        "n": 996,
         "p10": 4,
         "p50": 9,
         "p90": 16
       },
       "weights": {
-        "n": 857,
+        "n": 996,
         "p10": 2,
         "p50": 3,
         "p90": 5
       },
-      "webfontShare": 0.85
+      "webfontShare": 0.86
     },
     "color": {
       "hues": {
-        "n": 857,
+        "n": 996,
         "p10": 0,
         "p50": 2,
         "p90": 5
       },
-      "darkShare": 0.05
+      "darkShare": 0.04
     },
     "layout": {
       "centered": {
-        "n": 857,
+        "n": 996,
         "p10": 0,
-        "p50": 0.05,
-        "p90": 0.48
+        "p50": 0.06,
+        "p90": 0.5
       },
       "rounded": {
-        "n": 857,
+        "n": 996,
         "p10": 0,
         "p50": 0,
         "p90": 0.28
       },
-      "trackedAny": 0.13,
+      "trackedAny": 0.14,
       "tracked": {
-        "n": 857,
+        "n": 996,
         "p10": 0,
         "p50": 0,
         "p90": 1
       }
     },
     "japanese": {
-      "n": 516,
+      "n": 593,
       "lineHeight": {
-        "n": 425,
+        "n": 482,
         "p10": 1.5,
-        "p50": 1.77,
+        "p50": 1.78,
         "p90": 2
       },
       "bodySize": {
-        "n": 431,
-        "p10": 12.25,
+        "n": 492,
+        "p10": 13,
         "p50": 15,
         "p90": 17
       },
       "noJaFontShare": 0.14,
-      "tightShare": 0.07,
+      "tightShare": 0.06,
       "phraseAware": 0.01,
       "topFamilies": [
         [
           "noto sans jp",
-          100
-        ],
-        [
-          "ヒラギノ角ゴ pro w3",
-          19
-        ],
-        [
-          "zen kaku gothic new",
-          18
+          118
         ],
         [
           "メイリオ",
-          18
+          22
+        ],
+        [
+          "zen kaku gothic new",
+          21
+        ],
+        [
+          "ヒラギノ角ゴ pro w3",
+          21
         ],
         [
           "游ゴシック体",
-          13
+          16
         ],
         [
           "yakuhanjp",
-          13
+          14
         ],
         [
           "arial",
+          11
+        ],
+        [
+          "noto serif jp",
           10
         ],
         [
           "-apple-system",
-          9
+          10
         ],
         [
-          "helvetica neue",
-          8
-        ],
-        [
-          "zen old mincho",
-          8
+          "游明朝",
+          10
         ]
       ],
       "issues": {
-        "ja-tiny": 0.44,
+        "ja-tiny": 0.4,
         "ja-orphans": 0.31,
         "ja-font-fallback": 0.15,
-        "ja-tracking": 0.12,
-        "ja-line-height": 0.12,
-        "ja-bad-break": 0.08,
+        "ja-tracking": 0.11,
+        "ja-line-height": 0.11,
+        "ja-bad-break": 0.09,
         "ja-break-all": 0.06,
-        "ja-full-alnum": 0.04,
-        "ja-italic": 0.01,
+        "ja-full-alnum": 0.05,
+        "ja-italic": 0.02,
         "ja-half-kana": 0.01
       }
     }
@@ -1577,113 +1569,113 @@
       }
     },
     "JP-dental": {
-      "n": 55,
+      "n": 67,
       "score": {
-        "n": 55,
+        "n": 67,
         "p10": 0,
         "p50": 0,
-        "p90": 12,
-        "flagged20": 0.05,
+        "p90": 16,
+        "flagged20": 0.04,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.64,
-        "many-hues": 0.18,
-        "accent-word": 0.15,
-        "empty-frames": 0.15,
-        "centered": 0.09,
+        "transition-all": 0.67,
+        "accent-word": 0.18,
+        "many-hues": 0.16,
+        "empty-frames": 0.13,
+        "centered": 0.1,
         "generic-cta": 0.07,
-        "tinted-page": 0.05,
-        "large-gradient": 0.04,
-        "tracked-labels": 0.04,
-        "card-grid": 0.02,
-        "emoji-icons": 0.02,
-        "eyebrow-pill": 0.02,
-        "glass": 0.02,
-        "gradient-text": 0.02,
-        "hero-cta-below": 0.02,
-        "nested-cards": 0.02,
-        "numbered-labels": 0.02,
-        "paper-serif": 0.02
+        "large-gradient": 0.06,
+        "tinted-page": 0.06,
+        "tracked-labels": 0.06,
+        "nested-cards": 0.03,
+        "card-grid": 0.01,
+        "emoji-icons": 0.01,
+        "eyebrow-pill": 0.01,
+        "glass": 0.01,
+        "gradient-text": 0.01,
+        "hero-cta-below": 0.01,
+        "numbered-labels": 0.01,
+        "paper-serif": 0.01
       },
       "type": {
         "bodySize": {
-          "n": 55,
+          "n": 67,
           "p10": 13,
-          "p50": 15,
-          "p90": 16
+          "p50": 16,
+          "p90": 17
         },
         "displayRatio": {
-          "n": 54,
-          "p10": 1,
-          "p50": 2.4,
-          "p90": 8.13
+          "n": 66,
+          "p10": 1.2,
+          "p50": 2.5,
+          "p90": 8.1
         },
         "sizes": {
-          "n": 55,
-          "p10": 2,
-          "p50": 8,
-          "p90": 22
+          "n": 67,
+          "p10": 3,
+          "p50": 9,
+          "p90": 19
         },
         "weights": {
-          "n": 55,
+          "n": 67,
           "p10": 1,
           "p50": 2,
           "p90": 4
         },
-        "webfontShare": 0.65
+        "webfontShare": 0.69
       },
       "color": {
         "hues": {
-          "n": 55,
+          "n": 67,
           "p10": 1,
           "p50": 3,
           "p90": 6
         },
-        "darkShare": 0.02
+        "darkShare": 0.01
       },
       "layout": {
         "centered": {
-          "n": 55,
+          "n": 67,
           "p10": 0,
-          "p50": 0.17,
-          "p90": 0.56
+          "p50": 0.18,
+          "p90": 0.6
         },
         "rounded": {
-          "n": 55,
+          "n": 67,
           "p10": 0,
           "p50": 0,
           "p90": 0.17
         },
-        "trackedAny": 0.13,
+        "trackedAny": 0.16,
         "tracked": {
-          "n": 55,
+          "n": 67,
           "p10": 0,
           "p50": 0,
-          "p90": 1
+          "p90": 3
         }
       },
       "japanese": {
-        "n": 55,
+        "n": 67,
         "lineHeight": {
-          "n": 49,
-          "p10": 1.43,
-          "p50": 1.7,
+          "n": 59,
+          "p10": 1.5,
+          "p50": 1.71,
           "p90": 2
         },
         "bodySize": {
-          "n": 50,
+          "n": 61,
           "p10": 13,
           "p50": 15,
           "p90": 16.32
         },
         "noJaFontShare": 0.07,
-        "tightShare": 0.09,
+        "tightShare": 0.07,
         "phraseAware": 0,
         "topFamilies": [
           [
             "noto sans jp",
-            6
+            9
           ],
           [
             "ヒラギノ角ゴ pro w3",
@@ -1699,11 +1691,11 @@
           ],
           [
             "arial",
-            2
+            3
           ],
           [
             "游ゴシック体",
-            2
+            3
           ],
           [
             "times new roman",
@@ -1723,14 +1715,160 @@
           ]
         ],
         "issues": {
-          "ja-tiny": 0.35,
-          "ja-orphans": 0.35,
-          "ja-line-height": 0.15,
-          "ja-full-alnum": 0.11,
+          "ja-orphans": 0.33,
+          "ja-tiny": 0.31,
+          "ja-line-height": 0.12,
+          "ja-full-alnum": 0.09,
           "ja-font-fallback": 0.07,
-          "ja-tracking": 0.02,
-          "ja-break-all": 0.02,
-          "ja-bad-break": 0.02
+          "ja-break-all": 0.04,
+          "ja-bad-break": 0.04,
+          "ja-tracking": 0.03
+        }
+      }
+    },
+    "JP-design": {
+      "n": 12,
+      "score": {
+        "n": 12,
+        "p10": 0,
+        "p50": 0,
+        "p90": 9,
+        "flagged20": 0,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.58,
+        "empty-frames": 0.25,
+        "generic-cta": 0.17,
+        "tinted-page": 0.17,
+        "tracked-labels": 0.17,
+        "centered": 0.08,
+        "default-accent": 0.08
+      },
+      "type": {
+        "bodySize": {
+          "n": 12,
+          "p10": 12,
+          "p50": 14,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 12,
+          "p10": 1.56,
+          "p50": 2.5,
+          "p90": 4.33
+        },
+        "sizes": {
+          "n": 12,
+          "p10": 5,
+          "p50": 9,
+          "p90": 15
+        },
+        "weights": {
+          "n": 12,
+          "p10": 1,
+          "p50": 2,
+          "p90": 4
+        },
+        "webfontShare": 0.92
+      },
+      "color": {
+        "hues": {
+          "n": 12,
+          "p10": 0,
+          "p50": 2,
+          "p90": 4
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0.07,
+          "p90": 0.33
+        },
+        "rounded": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.13
+        },
+        "trackedAny": 0.25,
+        "tracked": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 8
+        }
+      },
+      "japanese": {
+        "n": 12,
+        "lineHeight": {
+          "n": 7,
+          "p10": 1.5,
+          "p50": 1.7,
+          "p90": 2
+        },
+        "bodySize": {
+          "n": 7,
+          "p10": 14,
+          "p50": 15.36,
+          "p90": 16
+        },
+        "noJaFontShare": 0.17,
+        "tightShare": 0,
+        "phraseAware": 0,
+        "topFamilies": [
+          [
+            "zen kaku gothic new",
+            2
+          ],
+          [
+            "游ゴシック体",
+            2
+          ],
+          [
+            "fp-koburinagostdn-w3",
+            1
+          ],
+          [
+            "fot-筑紫b丸ゴシック std e",
+            1
+          ],
+          [
+            "yakuhanjp",
+            1
+          ],
+          [
+            "noto-sans-cjk-jp",
+            1
+          ],
+          [
+            "noto sans jp",
+            1
+          ],
+          [
+            "wfont_53b23d_c42a93ee9b1d4afd8a90b7cc1574bbf2",
+            1
+          ],
+          [
+            "din-next-w01-light",
+            1
+          ],
+          [
+            "helveticaneueetextstd-bold",
+            1
+          ]
+        ],
+        "issues": {
+          "ja-tiny": 0.33,
+          "ja-orphans": 0.25,
+          "ja-font-fallback": 0.17,
+          "ja-italic": 0.08,
+          "ja-full-alnum": 0.08,
+          "ja-break-all": 0.08,
+          "ja-bad-break": 0.08
         }
       }
     },
@@ -2340,102 +2478,103 @@
       }
     },
     "JP-finance": {
-      "n": 13,
+      "n": 21,
       "score": {
-        "n": 13,
+        "n": 21,
         "p10": 0,
         "p50": 8,
-        "p90": 19,
-        "flagged20": 0.08,
+        "p90": 16,
+        "flagged20": 0.05,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.46,
-        "generic-cta": 0.31,
-        "accent-word": 0.23,
-        "card-grid": 0.23,
-        "buzzword-copy": 0.15,
-        "empty-frames": 0.15,
-        "period-headlines": 0.15,
-        "tinted-page": 0.15,
-        "tracked-labels": 0.15,
-        "default-accent": 0.08,
-        "glass": 0.08,
-        "large-gradient": 0.08,
-        "many-hues": 0.08,
-        "nested-cards": 0.08,
-        "newsletter-tail": 0.08
+        "transition-all": 0.57,
+        "generic-cta": 0.33,
+        "many-hues": 0.29,
+        "accent-word": 0.14,
+        "card-grid": 0.14,
+        "buzzword-copy": 0.1,
+        "centered": 0.1,
+        "default-accent": 0.1,
+        "empty-frames": 0.1,
+        "period-headlines": 0.1,
+        "tinted-page": 0.1,
+        "tracked-labels": 0.1,
+        "glass": 0.05,
+        "large-gradient": 0.05,
+        "nested-cards": 0.05,
+        "newsletter-tail": 0.05
       },
       "type": {
         "bodySize": {
-          "n": 13,
+          "n": 21,
           "p10": 14,
           "p50": 16,
-          "p90": 18
+          "p90": 17
         },
         "displayRatio": {
-          "n": 13,
-          "p10": 3,
-          "p50": 6,
-          "p90": 10.8
+          "n": 21,
+          "p10": 1.6,
+          "p50": 3.11,
+          "p90": 9.38
         },
         "sizes": {
-          "n": 13,
-          "p10": 9,
+          "n": 21,
+          "p10": 6,
           "p50": 10,
           "p90": 15
         },
         "weights": {
-          "n": 13,
+          "n": 21,
           "p10": 2,
           "p50": 3,
           "p90": 4
         },
-        "webfontShare": 1
+        "webfontShare": 0.9
       },
       "color": {
         "hues": {
-          "n": 13,
+          "n": 21,
           "p10": 0,
-          "p50": 1,
-          "p90": 3
+          "p50": 2,
+          "p90": 6
         },
-        "darkShare": 0.08
+        "darkShare": 0.05
       },
       "layout": {
         "centered": {
-          "n": 13,
+          "n": 21,
           "p10": 0,
-          "p50": 0,
-          "p90": 0.09
+          "p50": 0.04,
+          "p90": 0.45
         },
         "rounded": {
-          "n": 13,
+          "n": 21,
           "p10": 0,
           "p50": 0,
           "p90": 0.27
         },
-        "trackedAny": 0.15,
+        "trackedAny": 0.1,
         "tracked": {
-          "n": 13,
+          "n": 21,
           "p10": 0,
           "p50": 0,
-          "p90": 8
+          "p90": 0
         }
       },
       "japanese": {
-        "n": 8,
+        "n": 16,
         "lineHeight": {
-          "n": 7,
+          "n": 9,
           "p10": 1.5,
           "p50": 1.8,
           "p90": 2.11
         },
         "bodySize": {
-          "n": 7,
+          "n": 11,
           "p10": 14,
           "p50": 16,
-          "p90": 20
+          "p90": 18
         },
         "noJaFontShare": 0,
         "tightShare": 0,
@@ -2443,7 +2582,11 @@
         "topFamilies": [
           [
             "noto sans jp",
-            3
+            5
+          ],
+          [
+            "メイリオ",
+            2
           ],
           [
             "inter",
@@ -2458,7 +2601,19 @@
             1
           ],
           [
+            "-apple-system",
+            1
+          ],
+          [
+            "yu gothic",
+            1
+          ],
+          [
             "zen kaku gothic antique",
+            1
+          ],
+          [
+            "ヒラギノ角ゴ pro w3",
             1
           ],
           [
@@ -2467,10 +2622,12 @@
           ]
         ],
         "issues": {
-          "ja-line-height": 0.25,
-          "ja-tracking": 0.25,
-          "ja-orphans": 0.13,
+          "ja-bad-break": 0.19,
           "ja-break-all": 0.13,
+          "ja-line-height": 0.13,
+          "ja-orphans": 0.13,
+          "ja-full-alnum": 0.13,
+          "ja-tracking": 0.13,
           "ja-tiny": 0.13
         }
       }
@@ -2945,116 +3102,127 @@
       }
     },
     "JP-inn": {
-      "n": 26,
+      "n": 37,
       "score": {
-        "n": 26,
+        "n": 37,
         "p10": 0,
         "p50": 0,
-        "p90": 14,
+        "p90": 16,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.69,
-        "empty-frames": 0.15,
-        "generic-cta": 0.15,
-        "tinted-page": 0.12,
+        "transition-all": 0.78,
+        "empty-frames": 0.14,
+        "generic-cta": 0.14,
+        "tinted-page": 0.11,
         "centered": 0.08,
-        "hero-cta-below": 0.08,
-        "large-gradient": 0.08,
-        "buzzword-copy": 0.04,
-        "flat-scale": 0.04,
-        "generic-type": 0.04,
-        "many-hues": 0.04,
-        "newsletter-tail": 0.04,
-        "numbered-labels": 0.04,
-        "paper-serif": 0.04
+        "paper-serif": 0.08,
+        "hero-cta-below": 0.05,
+        "large-gradient": 0.05,
+        "buzzword-copy": 0.03,
+        "default-accent": 0.03,
+        "flat-scale": 0.03,
+        "generic-type": 0.03,
+        "gradient-text": 0.03,
+        "many-hues": 0.03,
+        "newsletter-tail": 0.03,
+        "numbered-labels": 0.03,
+        "tracked-labels": 0.03
       },
       "type": {
         "bodySize": {
-          "n": 26,
+          "n": 37,
           "p10": 10,
           "p50": 15,
           "p90": 18
         },
         "displayRatio": {
-          "n": 26,
-          "p10": 1.1,
+          "n": 37,
+          "p10": 1.25,
           "p50": 2.44,
           "p90": 4.07
         },
         "sizes": {
-          "n": 26,
-          "p10": 3,
-          "p50": 9,
+          "n": 37,
+          "p10": 4,
+          "p50": 10,
           "p90": 14
         },
         "weights": {
-          "n": 26,
+          "n": 37,
           "p10": 1,
           "p50": 2,
           "p90": 4
         },
-        "webfontShare": 0.73
+        "webfontShare": 0.76
       },
       "color": {
         "hues": {
-          "n": 26,
+          "n": 37,
           "p10": 0,
-          "p50": 1,
-          "p90": 3
+          "p50": 2,
+          "p90": 4
         },
-        "darkShare": 0.15
+        "darkShare": 0.11
       },
       "layout": {
         "centered": {
-          "n": 26,
+          "n": 37,
           "p10": 0,
-          "p50": 0.06,
+          "p50": 0.07,
           "p90": 0.58
         },
         "rounded": {
-          "n": 26,
+          "n": 37,
           "p10": 0,
           "p50": 0,
           "p90": 0.11
         },
-        "trackedAny": 0.19,
+        "trackedAny": 0.22,
         "tracked": {
-          "n": 26,
+          "n": 37,
           "p10": 0,
           "p50": 0,
-          "p90": 1
+          "p90": 2
         }
       },
       "japanese": {
-        "n": 24,
+        "n": 35,
         "lineHeight": {
-          "n": 18,
+          "n": 27,
           "p10": 1.6,
           "p50": 2,
           "p90": 2.1
         },
         "bodySize": {
-          "n": 18,
+          "n": 27,
           "p10": 14,
-          "p50": 15,
+          "p50": 15.08,
           "p90": 18
         },
-        "noJaFontShare": 0.21,
+        "noJaFontShare": 0.17,
         "tightShare": 0,
         "phraseAware": 0,
         "topFamilies": [
           [
             "游明朝",
-            4
+            7
           ],
           [
             "shippori mincho",
-            2
+            3
+          ],
+          [
+            "noto serif jp",
+            3
           ],
           [
             "zen old mincho",
+            2
+          ],
+          [
+            "noto sans jp",
             2
           ],
           [
@@ -3076,25 +3244,18 @@
           [
             "adobe-garamond-pro",
             1
-          ],
-          [
-            "inter",
-            1
-          ],
-          [
-            "tsukugopro-b-dinnextltpro-medium",
-            1
           ]
         ],
         "issues": {
-          "ja-tiny": 0.42,
-          "ja-font-fallback": 0.21,
-          "ja-orphans": 0.21,
-          "ja-bad-break": 0.13,
-          "ja-break-all": 0.08,
-          "ja-tracking": 0.04,
-          "ja-full-alnum": 0.04,
-          "ja-line-height": 0.04
+          "ja-tiny": 0.31,
+          "ja-orphans": 0.26,
+          "ja-font-fallback": 0.17,
+          "ja-bad-break": 0.11,
+          "ja-break-all": 0.09,
+          "ja-full-alnum": 0.09,
+          "ja-tracking": 0.03,
+          "ja-italic": 0.03,
+          "ja-line-height": 0.03
         }
       }
     },
@@ -3373,104 +3534,107 @@
       }
     },
     "JP-maker": {
-      "n": 27,
+      "n": 39,
       "score": {
-        "n": 27,
+        "n": 39,
         "p10": 0,
-        "p50": 8,
-        "p90": 19,
-        "flagged20": 0.04,
+        "p50": 0,
+        "p90": 12,
+        "flagged20": 0.03,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.52,
-        "tracked-labels": 0.15,
-        "gradient-text": 0.11,
-        "tinted-page": 0.11,
-        "centered": 0.07,
-        "empty-frames": 0.07,
-        "large-gradient": 0.07,
-        "period-headlines": 0.07,
-        "boxed-icons": 0.04,
-        "default-accent": 0.04,
-        "emoji-icons": 0.04,
-        "generic-cta": 0.04,
-        "generic-type": 0.04,
-        "glass": 0.04,
-        "nested-cards": 0.04,
-        "newsletter-tail": 0.04,
-        "purple-gradient": 0.04
+        "transition-all": 0.62,
+        "tracked-labels": 0.1,
+        "gradient-text": 0.08,
+        "tinted-page": 0.08,
+        "centered": 0.05,
+        "empty-frames": 0.05,
+        "generic-cta": 0.05,
+        "large-gradient": 0.05,
+        "period-headlines": 0.05,
+        "purple-gradient": 0.05,
+        "accent-word": 0.03,
+        "boxed-icons": 0.03,
+        "buzzword-copy": 0.03,
+        "default-accent": 0.03,
+        "emoji-icons": 0.03,
+        "generic-type": 0.03,
+        "glass": 0.03,
+        "many-hues": 0.03,
+        "nested-cards": 0.03,
+        "newsletter-tail": 0.03
       },
       "type": {
         "bodySize": {
-          "n": 27,
-          "p10": 12,
+          "n": 39,
+          "p10": 13,
           "p50": 15,
-          "p90": 16
+          "p90": 17
         },
         "displayRatio": {
-          "n": 26,
+          "n": 38,
           "p10": 1.93,
-          "p50": 4.04,
-          "p90": 10.51
+          "p50": 3.75,
+          "p90": 7
         },
         "sizes": {
-          "n": 27,
+          "n": 39,
           "p10": 6,
-          "p50": 10,
+          "p50": 11,
           "p90": 16
         },
         "weights": {
-          "n": 27,
+          "n": 39,
           "p10": 2,
           "p50": 3,
           "p90": 5
         },
-        "webfontShare": 0.85
+        "webfontShare": 0.87
       },
       "color": {
         "hues": {
-          "n": 27,
+          "n": 39,
           "p10": 0,
           "p50": 1,
           "p90": 3
         },
-        "darkShare": 0.07
+        "darkShare": 0.05
       },
       "layout": {
         "centered": {
-          "n": 27,
+          "n": 39,
           "p10": 0,
-          "p50": 0.03,
-          "p90": 0.43
+          "p50": 0.06,
+          "p90": 0.34
         },
         "rounded": {
-          "n": 27,
+          "n": 39,
           "p10": 0,
           "p50": 0,
-          "p90": 0.18
+          "p90": 0.07
         },
-        "trackedAny": 0.22,
+        "trackedAny": 0.18,
         "tracked": {
-          "n": 27,
+          "n": 39,
           "p10": 0,
           "p50": 0,
-          "p90": 5
+          "p90": 4
         }
       },
       "japanese": {
-        "n": 20,
+        "n": 32,
         "lineHeight": {
-          "n": 16,
+          "n": 25,
           "p10": 1.53,
           "p50": 1.8,
           "p90": 2
         },
         "bodySize": {
-          "n": 16,
+          "n": 26,
           "p10": 13,
-          "p50": 14.13,
-          "p90": 17.42
+          "p50": 16,
+          "p90": 18
         },
         "noJaFontShare": 0.25,
         "tightShare": 0,
@@ -3478,7 +3642,15 @@
         "topFamilies": [
           [
             "noto sans jp",
-            3
+            7
+          ],
+          [
+            "メイリオ",
+            1
+          ],
+          [
+            "notoserifjp_regular",
+            1
           ],
           [
             "noto sans jp variable",
@@ -3501,28 +3673,21 @@
             1
           ],
           [
+            "antonio",
+            1
+          ],
+          [
             "ryo-display-plusn",
-            1
-          ],
-          [
-            "ｍｓ ｐ明朝",
-            1
-          ],
-          [
-            "noto serif jp",
-            1
-          ],
-          [
-            "hiragino sans",
             1
           ]
         ],
         "issues": {
-          "ja-tiny": 0.45,
-          "ja-orphans": 0.3,
+          "ja-orphans": 0.34,
+          "ja-tiny": 0.28,
           "ja-font-fallback": 0.25,
-          "ja-tracking": 0.15,
-          "ja-bad-break": 0.15
+          "ja-bad-break": 0.13,
+          "ja-tracking": 0.09,
+          "ja-break-all": 0.03
         }
       }
     },
@@ -3653,9 +3818,9 @@
       }
     },
     "JP-restaurant": {
-      "n": 13,
+      "n": 23,
       "score": {
-        "n": 13,
+        "n": 23,
         "p10": 0,
         "p50": 0,
         "p90": 8,
@@ -3663,133 +3828,144 @@
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.46,
-        "accent-word": 0.15,
-        "tinted-page": 0.15,
-        "card-grid": 0.08,
-        "centered": 0.08,
-        "eyebrow-pill": 0.08,
-        "generic-cta": 0.08,
-        "gradient-text": 0.08,
-        "hero-cta-below": 0.08,
-        "many-hues": 0.08,
-        "paper-serif": 0.08
+        "transition-all": 0.61,
+        "tinted-page": 0.17,
+        "accent-word": 0.13,
+        "generic-cta": 0.09,
+        "hero-cta-below": 0.09,
+        "card-grid": 0.04,
+        "centered": 0.04,
+        "emoji-icons": 0.04,
+        "empty-frames": 0.04,
+        "eyebrow-pill": 0.04,
+        "flat-scale": 0.04,
+        "gradient-text": 0.04,
+        "many-hues": 0.04,
+        "paper-serif": 0.04
       },
       "type": {
         "bodySize": {
-          "n": 13,
-          "p10": 10,
+          "n": 23,
+          "p10": 12,
           "p50": 14,
-          "p90": 18
+          "p90": 16
         },
         "displayRatio": {
-          "n": 13,
-          "p10": 2.92,
-          "p50": 7.2,
-          "p90": 14.21
+          "n": 23,
+          "p10": 1.43,
+          "p50": 3.57,
+          "p90": 12.19
         },
         "sizes": {
-          "n": 13,
-          "p10": 7,
-          "p50": 10,
-          "p90": 20
+          "n": 23,
+          "p10": 3,
+          "p50": 9,
+          "p90": 17
         },
         "weights": {
-          "n": 13,
+          "n": 23,
           "p10": 2,
           "p50": 3,
           "p90": 4
         },
-        "webfontShare": 0.92
+        "webfontShare": 0.91
       },
       "color": {
         "hues": {
-          "n": 13,
-          "p10": 1,
+          "n": 23,
+          "p10": 0,
           "p50": 1,
           "p90": 3
         },
-        "darkShare": 0.08
+        "darkShare": 0.04
       },
       "layout": {
         "centered": {
-          "n": 13,
+          "n": 23,
           "p10": 0.01,
-          "p50": 0.08,
+          "p50": 0.2,
           "p90": 0.44
         },
         "rounded": {
-          "n": 13,
+          "n": 23,
           "p10": 0,
           "p50": 0,
-          "p90": 0.5
+          "p90": 0.43
         },
-        "trackedAny": 0.08,
+        "trackedAny": 0.04,
         "tracked": {
-          "n": 13,
+          "n": 23,
           "p10": 0,
           "p50": 0,
           "p90": 0
         }
       },
       "japanese": {
-        "n": 10,
+        "n": 20,
         "lineHeight": {
-          "n": 9,
-          "p10": 1.6,
+          "n": 17,
+          "p10": 1.4,
           "p50": 1.8,
-          "p90": 3
+          "p90": 2.43
         },
         "bodySize": {
-          "n": 9,
-          "p10": 12.25,
+          "n": 17,
+          "p10": 12.75,
           "p50": 14,
-          "p90": 19
+          "p90": 18
         },
-        "noJaFontShare": 0.4,
-        "tightShare": 0,
+        "noJaFontShare": 0.3,
+        "tightShare": 0.1,
         "phraseAware": 0,
         "topFamilies": [
           [
             "noto sans jp",
-            3
+            4
+          ],
+          [
+            "zen kaku gothic new",
+            2
+          ],
+          [
+            "alphabet",
+            1
+          ],
+          [
+            "helvetica neue",
+            1
+          ],
+          [
+            "neuehaasunicapro-bold",
+            1
+          ],
+          [
+            "higuregothicmedium",
+            1
+          ],
+          [
+            "verdana",
+            1
+          ],
+          [
+            "游ゴシック medium",
+            1
           ],
           [
             "shippori-mincho",
             1
           ],
           [
-            "zen kaku gothic new",
-            1
-          ],
-          [
             "source-han-serif-japanese",
-            1
-          ],
-          [
-            "hgpedomojikanteiryu",
-            1
-          ],
-          [
-            "poppins",
-            1
-          ],
-          [
-            "jost",
-            1
-          ],
-          [
-            "石井明朝オールドスタイルかな l",
             1
           ]
         ],
         "issues": {
-          "ja-font-fallback": 0.4,
-          "ja-orphans": 0.3,
-          "ja-tiny": 0.3,
-          "ja-tracking": 0.2,
-          "ja-italic": 0.1,
-          "ja-line-height": 0.1
+          "ja-font-fallback": 0.35,
+          "ja-tiny": 0.25,
+          "ja-orphans": 0.25,
+          "ja-line-height": 0.15,
+          "ja-tracking": 0.1,
+          "ja-italic": 0.05
         }
       }
     },
@@ -4093,6 +4269,149 @@
           "ja-full-alnum": 0.06,
           "ja-bad-break": 0.06,
           "ja-half-kana": 0.02
+        }
+      }
+    },
+    "JP-software": {
+      "n": 12,
+      "score": {
+        "n": 12,
+        "p10": 0,
+        "p50": 8,
+        "p90": 44,
+        "flagged20": 0.17,
+        "flagged30": 0.17
+      },
+      "signals": {
+        "transition-all": 0.92,
+        "accent-word": 0.33,
+        "generic-cta": 0.25,
+        "boxed-icons": 0.17,
+        "card-grid": 0.17,
+        "default-accent": 0.17,
+        "tracked-labels": 0.17,
+        "buzzword-copy": 0.08,
+        "centered": 0.08,
+        "empty-frames": 0.08,
+        "eyebrow-pill": 0.08,
+        "glow": 0.08,
+        "gradient-text": 0.08,
+        "large-gradient": 0.08,
+        "many-hues": 0.08,
+        "nested-cards": 0.08,
+        "numbered-labels": 0.08,
+        "paper-serif": 0.08
+      },
+      "type": {
+        "bodySize": {
+          "n": 12,
+          "p10": 14,
+          "p50": 14,
+          "p90": 16
+        },
+        "displayRatio": {
+          "n": 12,
+          "p10": 2,
+          "p50": 4.64,
+          "p90": 8.44
+        },
+        "sizes": {
+          "n": 12,
+          "p10": 8,
+          "p50": 12,
+          "p90": 18
+        },
+        "weights": {
+          "n": 12,
+          "p10": 2,
+          "p50": 3,
+          "p90": 5
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 12,
+          "p10": 1,
+          "p50": 2,
+          "p90": 4
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0.1,
+          "p90": 0.53
+        },
+        "rounded": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0.17,
+          "p90": 0.55
+        },
+        "trackedAny": 0.25,
+        "tracked": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 16
+        }
+      },
+      "japanese": {
+        "n": 12,
+        "lineHeight": {
+          "n": 12,
+          "p10": 1.6,
+          "p50": 1.75,
+          "p90": 2
+        },
+        "bodySize": {
+          "n": 12,
+          "p10": 14,
+          "p50": 16,
+          "p90": 16
+        },
+        "noJaFontShare": 0.17,
+        "tightShare": 0,
+        "phraseAware": 0.08,
+        "topFamilies": [
+          [
+            "noto sans jp",
+            6
+          ],
+          [
+            "lato",
+            1
+          ],
+          [
+            "yugothic_m",
+            1
+          ],
+          [
+            "inter",
+            1
+          ],
+          [
+            "zen kaku gothic antique",
+            1
+          ],
+          [
+            "geist",
+            1
+          ],
+          [
+            "ヒラギノ角ゴ pro w3",
+            1
+          ]
+        ],
+        "issues": {
+          "ja-orphans": 0.58,
+          "ja-bad-break": 0.25,
+          "ja-tracking": 0.25,
+          "ja-font-fallback": 0.17,
+          "ja-tiny": 0.17
         }
       }
     },
@@ -4735,82 +5054,84 @@
       "japanese": null
     },
     "KR-builder": {
-      "n": 12,
+      "n": 22,
       "score": {
-        "n": 12,
+        "n": 22,
         "p10": 0,
         "p50": 5,
-        "p90": 14,
+        "p90": 12,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.75,
-        "generic-type": 0.5,
-        "default-accent": 0.17,
-        "flat-scale": 0.17,
-        "generic-cta": 0.17,
-        "large-gradient": 0.17,
-        "accent-word": 0.08,
-        "centered": 0.08,
-        "glass": 0.08,
-        "many-hues": 0.08
+        "transition-all": 0.64,
+        "flat-scale": 0.41,
+        "generic-type": 0.32,
+        "default-accent": 0.14,
+        "generic-cta": 0.09,
+        "large-gradient": 0.09,
+        "tracked-labels": 0.09,
+        "accent-word": 0.05,
+        "centered": 0.05,
+        "empty-frames": 0.05,
+        "glass": 0.05,
+        "many-hues": 0.05
       },
       "type": {
         "bodySize": {
-          "n": 12,
+          "n": 22,
           "p10": 13,
           "p50": 16,
-          "p90": 16
+          "p90": 17
         },
         "displayRatio": {
-          "n": 12,
-          "p10": 1.63,
-          "p50": 3.75,
-          "p90": 8.75
+          "n": 22,
+          "p10": 1,
+          "p50": 2.4,
+          "p90": 5
         },
         "sizes": {
-          "n": 12,
-          "p10": 4,
-          "p50": 11,
+          "n": 22,
+          "p10": 2,
+          "p50": 7,
           "p90": 14
         },
         "weights": {
-          "n": 12,
-          "p10": 3,
+          "n": 22,
+          "p10": 2,
           "p50": 4,
-          "p90": 6
+          "p90": 5
         },
-        "webfontShare": 0.92
+        "webfontShare": 0.91
       },
       "color": {
         "hues": {
-          "n": 12,
+          "n": 22,
           "p10": 0,
           "p50": 1,
-          "p90": 3
+          "p90": 2
         },
         "darkShare": 0
       },
       "layout": {
         "centered": {
-          "n": 12,
+          "n": 22,
           "p10": 0,
-          "p50": 0.33,
+          "p50": 0.14,
           "p90": 1
         },
         "rounded": {
-          "n": 12,
+          "n": 22,
           "p10": 0,
           "p50": 0,
-          "p90": 0.05
+          "p90": 0.04
         },
-        "trackedAny": 0.08,
+        "trackedAny": 0.18,
         "tracked": {
-          "n": 12,
+          "n": 22,
           "p10": 0,
           "p50": 0,
-          "p90": 0
+          "p90": 1
         }
       },
       "japanese": null
@@ -4930,66 +5251,66 @@
       }
     },
     "KR-dental": {
-      "n": 34,
+      "n": 42,
       "score": {
-        "n": 34,
+        "n": 42,
         "p10": 0,
-        "p50": 4,
+        "p50": 5,
         "p90": 12,
-        "flagged20": 0.09,
-        "flagged30": 0.09
+        "flagged20": 0.1,
+        "flagged30": 0.1
       },
       "signals": {
-        "transition-all": 0.74,
-        "flat-scale": 0.35,
-        "accent-word": 0.18,
-        "centered": 0.18,
-        "empty-frames": 0.18,
-        "generic-type": 0.18,
-        "many-hues": 0.15,
-        "default-accent": 0.06,
-        "generic-cta": 0.06,
-        "glass": 0.06,
-        "gradient-text": 0.06,
-        "large-gradient": 0.06,
-        "nested-cards": 0.06,
-        "card-grid": 0.03,
-        "emoji-icons": 0.03,
-        "glow": 0.03,
-        "over-rounded": 0.03,
-        "tinted-page": 0.03,
-        "tracked-labels": 0.03
+        "transition-all": 0.76,
+        "flat-scale": 0.36,
+        "centered": 0.21,
+        "accent-word": 0.19,
+        "empty-frames": 0.17,
+        "generic-type": 0.17,
+        "many-hues": 0.14,
+        "large-gradient": 0.07,
+        "tracked-labels": 0.07,
+        "card-grid": 0.05,
+        "default-accent": 0.05,
+        "generic-cta": 0.05,
+        "glass": 0.05,
+        "gradient-text": 0.05,
+        "nested-cards": 0.05,
+        "emoji-icons": 0.02,
+        "glow": 0.02,
+        "over-rounded": 0.02,
+        "tinted-page": 0.02
       },
       "type": {
         "bodySize": {
-          "n": 34,
+          "n": 42,
           "p10": 13,
           "p50": 16,
           "p90": 18
         },
         "displayRatio": {
-          "n": 30,
-          "p10": 1.17,
-          "p50": 2.8,
-          "p90": 7
+          "n": 38,
+          "p10": 1,
+          "p50": 3,
+          "p90": 4.67
         },
         "sizes": {
-          "n": 34,
-          "p10": 0,
+          "n": 42,
+          "p10": 1,
           "p50": 9,
-          "p90": 15
+          "p90": 16
         },
         "weights": {
-          "n": 34,
-          "p10": 0,
+          "n": 42,
+          "p10": 1,
           "p50": 3,
           "p90": 6
         },
-        "webfontShare": 0.76
+        "webfontShare": 0.79
       },
       "color": {
         "hues": {
-          "n": 34,
+          "n": 42,
           "p10": 0,
           "p50": 2,
           "p90": 4
@@ -4998,23 +5319,95 @@
       },
       "layout": {
         "centered": {
-          "n": 34,
+          "n": 42,
           "p10": 0,
-          "p50": 0.08,
+          "p50": 0.07,
           "p90": 0.74
         },
         "rounded": {
-          "n": 34,
+          "n": 42,
           "p10": 0,
           "p50": 0,
-          "p90": 0.52
+          "p90": 0.37
         },
-        "trackedAny": 0.12,
+        "trackedAny": 0.14,
         "tracked": {
-          "n": 34,
+          "n": 42,
           "p10": 0,
           "p50": 0,
+          "p90": 4
+        }
+      },
+      "japanese": null
+    },
+    "KR-design": {
+      "n": 2,
+      "score": {
+        "n": 2,
+        "p10": 0,
+        "p50": 5,
+        "p90": 5,
+        "flagged20": 0,
+        "flagged30": 0
+      },
+      "signals": {
+        "flat-scale": 0.5
+      },
+      "type": {
+        "bodySize": {
+          "n": 2,
+          "p10": 9,
+          "p50": 12,
+          "p90": 12
+        },
+        "displayRatio": {
+          "n": 2,
+          "p10": 1.01,
+          "p50": 2.93,
+          "p90": 2.93
+        },
+        "sizes": {
+          "n": 2,
+          "p10": 1,
+          "p50": 2,
+          "p90": 2
+        },
+        "weights": {
+          "n": 2,
+          "p10": 1,
+          "p50": 1,
           "p90": 1
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 2,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 2,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        },
+        "rounded": {
+          "n": 2,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 2,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
         }
       },
       "japanese": null
@@ -5184,75 +5577,77 @@
       "japanese": null
     },
     "KR-farm": {
-      "n": 9,
+      "n": 10,
       "score": {
-        "n": 9,
+        "n": 10,
         "p10": 0,
-        "p50": 5,
+        "p50": 8,
         "p90": 17,
         "flagged20": 0,
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.78,
-        "flat-scale": 0.56,
-        "centered": 0.33,
-        "default-accent": 0.11,
-        "empty-frames": 0.11,
-        "glass": 0.11
+        "transition-all": 0.8,
+        "flat-scale": 0.5,
+        "centered": 0.3,
+        "default-accent": 0.1,
+        "empty-frames": 0.1,
+        "glass": 0.1,
+        "large-gradient": 0.1,
+        "tinted-page": 0.1
       },
       "type": {
         "bodySize": {
-          "n": 9,
+          "n": 10,
           "p10": 11,
           "p50": 13,
           "p90": 28
         },
         "displayRatio": {
-          "n": 9,
-          "p10": 1.18,
-          "p50": 3.3,
-          "p90": 4.25
+          "n": 10,
+          "p10": 1.25,
+          "p50": 3.69,
+          "p90": 4.36
         },
         "sizes": {
-          "n": 9,
-          "p10": 2,
+          "n": 10,
+          "p10": 3,
           "p50": 6,
           "p90": 12
         },
         "weights": {
-          "n": 9,
-          "p10": 1,
+          "n": 10,
+          "p10": 3,
           "p50": 3,
           "p90": 4
         },
-        "webfontShare": 0.89
+        "webfontShare": 0.9
       },
       "color": {
         "hues": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 1,
           "p90": 2
         },
-        "darkShare": 0.11
+        "darkShare": 0.1
       },
       "layout": {
         "centered": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 0.14,
           "p90": 1
         },
         "rounded": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 0,
-          "p90": 0
+          "p90": 0.17
         },
         "trackedAny": 0,
         "tracked": {
-          "n": 9,
+          "n": 10,
           "p10": 0,
           "p50": 0,
           "p90": 0
@@ -5369,6 +5764,78 @@
         }
       }
     },
+    "KR-finance": {
+      "n": 1,
+      "score": {
+        "n": 1,
+        "p10": 0,
+        "p50": 0,
+        "p90": 0,
+        "flagged20": 0,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 1
+      },
+      "type": {
+        "bodySize": {
+          "n": 1,
+          "p10": 14,
+          "p50": 14,
+          "p90": 14
+        },
+        "displayRatio": {
+          "n": 1,
+          "p10": 8.14,
+          "p50": 8.14,
+          "p90": 8.14
+        },
+        "sizes": {
+          "n": 1,
+          "p10": 18,
+          "p50": 18,
+          "p90": 18
+        },
+        "weights": {
+          "n": 1,
+          "p10": 5,
+          "p50": 5,
+          "p90": 5
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 1,
+          "p10": 2,
+          "p50": 2,
+          "p90": 2
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 1,
+          "p10": 0.09,
+          "p50": 0.09,
+          "p90": 0.09
+        },
+        "rounded": {
+          "n": 1,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        },
+        "trackedAny": 0,
+        "tracked": {
+          "n": 1,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
+    },
     "KR-fitness": {
       "n": 6,
       "score": {
@@ -5447,9 +5914,9 @@
       "japanese": null
     },
     "KR-food": {
-      "n": 12,
+      "n": 13,
       "score": {
-        "n": 12,
+        "n": 13,
         "p10": 0,
         "p50": 0,
         "p90": 9,
@@ -5457,34 +5924,35 @@
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.67,
-        "generic-type": 0.33,
-        "flat-scale": 0.25,
-        "generic-cta": 0.17,
+        "transition-all": 0.69,
+        "generic-type": 0.31,
+        "flat-scale": 0.23,
+        "generic-cta": 0.15,
         "gradient-text": 0.08,
+        "large-gradient": 0.08,
         "tinted-page": 0.08
       },
       "type": {
         "bodySize": {
-          "n": 12,
-          "p10": 14,
+          "n": 13,
+          "p10": 13,
           "p50": 16,
           "p90": 20
         },
         "displayRatio": {
-          "n": 12,
+          "n": 13,
           "p10": 2,
-          "p50": 4.27,
+          "p50": 4.17,
           "p90": 8.7
         },
         "sizes": {
-          "n": 12,
+          "n": 13,
           "p10": 5,
           "p50": 9,
           "p90": 15
         },
         "weights": {
-          "n": 12,
+          "n": 13,
           "p10": 2,
           "p50": 4,
           "p90": 5
@@ -5493,7 +5961,7 @@
       },
       "color": {
         "hues": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
           "p50": 2,
           "p90": 2
@@ -5502,20 +5970,20 @@
       },
       "layout": {
         "centered": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
-          "p50": 0.4,
+          "p50": 0.28,
           "p90": 1
         },
         "rounded": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
           "p50": 0,
           "p90": 0.29
         },
         "trackedAny": 0,
         "tracked": {
-          "n": 12,
+          "n": 13,
           "p10": 0,
           "p50": 0,
           "p90": 0
@@ -5634,79 +6102,86 @@
       }
     },
     "KR-inn": {
-      "n": 9,
+      "n": 19,
       "score": {
-        "n": 9,
+        "n": 19,
         "p10": 0,
-        "p50": 0,
-        "p90": 16,
-        "flagged20": 0,
-        "flagged30": 0
+        "p50": 4,
+        "p90": 24,
+        "flagged20": 0.11,
+        "flagged30": 0.05
       },
       "signals": {
-        "transition-all": 0.78,
-        "flat-scale": 0.44,
-        "generic-cta": 0.44,
-        "default-accent": 0.11,
+        "transition-all": 0.84,
+        "generic-cta": 0.32,
+        "default-accent": 0.26,
+        "centered": 0.21,
+        "flat-scale": 0.21,
+        "generic-type": 0.16,
         "empty-frames": 0.11,
-        "generic-type": 0.11,
-        "tracked-labels": 0.11
+        "many-hues": 0.11,
+        "accent-word": 0.05,
+        "boxed-icons": 0.05,
+        "card-grid": 0.05,
+        "gradient-text": 0.05,
+        "large-gradient": 0.05,
+        "tracked-labels": 0.05
       },
       "type": {
         "bodySize": {
-          "n": 9,
-          "p10": 10,
+          "n": 19,
+          "p10": 12,
           "p50": 15,
           "p90": 16
         },
         "displayRatio": {
-          "n": 8,
-          "p10": 2.05,
+          "n": 18,
+          "p10": 2.25,
           "p50": 3,
-          "p90": 4
+          "p90": 5.65
         },
         "sizes": {
-          "n": 9,
-          "p10": 0,
-          "p50": 7,
-          "p90": 14
+          "n": 19,
+          "p10": 5,
+          "p50": 9,
+          "p90": 12
         },
         "weights": {
-          "n": 9,
-          "p10": 0,
-          "p50": 3,
-          "p90": 4
+          "n": 19,
+          "p10": 2,
+          "p50": 4,
+          "p90": 5
         },
         "webfontShare": 1
       },
       "color": {
         "hues": {
-          "n": 9,
+          "n": 19,
           "p10": 0,
           "p50": 2,
-          "p90": 3
+          "p90": 6
         },
         "darkShare": 0
       },
       "layout": {
         "centered": {
-          "n": 9,
+          "n": 19,
           "p10": 0,
-          "p50": 0,
-          "p90": 1
+          "p50": 0.11,
+          "p90": 0.94
         },
         "rounded": {
-          "n": 9,
+          "n": 19,
           "p10": 0,
           "p50": 0,
-          "p90": 0.04
+          "p90": 0.11
         },
         "trackedAny": 0.11,
         "tracked": {
-          "n": 9,
+          "n": 19,
           "p10": 0,
           "p50": 0,
-          "p90": 6
+          "p90": 1
         }
       },
       "japanese": null
@@ -5806,9 +6281,9 @@
       "japanese": null
     },
     "KR-maker": {
-      "n": 13,
+      "n": 22,
       "score": {
-        "n": 13,
+        "n": 22,
         "p10": 0,
         "p50": 0,
         "p90": 5,
@@ -5816,45 +6291,47 @@
         "flagged30": 0
       },
       "signals": {
-        "transition-all": 0.92,
-        "generic-cta": 0.38,
-        "generic-type": 0.31,
-        "centered": 0.08,
-        "default-accent": 0.08,
-        "flat-scale": 0.08,
-        "hero-cta-below": 0.08,
-        "tinted-page": 0.08
+        "transition-all": 0.77,
+        "generic-type": 0.27,
+        "generic-cta": 0.23,
+        "default-accent": 0.09,
+        "empty-frames": 0.09,
+        "centered": 0.05,
+        "flat-scale": 0.05,
+        "glass": 0.05,
+        "hero-cta-below": 0.05,
+        "tinted-page": 0.05
       },
       "type": {
         "bodySize": {
-          "n": 13,
-          "p10": 12,
-          "p50": 14,
-          "p90": 16
+          "n": 22,
+          "p10": 13,
+          "p50": 15,
+          "p90": 17
         },
         "displayRatio": {
-          "n": 12,
+          "n": 20,
           "p10": 2.29,
           "p50": 3.13,
           "p90": 7.57
         },
         "sizes": {
-          "n": 13,
-          "p10": 5,
+          "n": 22,
+          "p10": 3,
           "p50": 9,
           "p90": 11
         },
         "weights": {
-          "n": 13,
+          "n": 22,
           "p10": 2,
           "p50": 4,
           "p90": 5
         },
-        "webfontShare": 0.92
+        "webfontShare": 0.86
       },
       "color": {
         "hues": {
-          "n": 13,
+          "n": 22,
           "p10": 0,
           "p50": 1,
           "p90": 3
@@ -5863,23 +6340,23 @@
       },
       "layout": {
         "centered": {
-          "n": 13,
+          "n": 22,
           "p10": 0,
           "p50": 0.03,
-          "p90": 0.57
+          "p90": 0.5
         },
         "rounded": {
-          "n": 13,
+          "n": 22,
           "p10": 0,
           "p50": 0,
           "p90": 0.03
         },
-        "trackedAny": 0.15,
+        "trackedAny": 0.09,
         "tracked": {
-          "n": 13,
+          "n": 22,
           "p10": 0,
           "p50": 0,
-          "p90": 1
+          "p90": 0
         }
       },
       "japanese": null
@@ -5957,6 +6434,87 @@
           "p10": 0,
           "p50": 0,
           "p90": 0
+        }
+      },
+      "japanese": null
+    },
+    "KR-restaurant": {
+      "n": 8,
+      "score": {
+        "n": 8,
+        "p10": 0,
+        "p50": 11,
+        "p90": 24,
+        "flagged20": 0.13,
+        "flagged30": 0
+      },
+      "signals": {
+        "transition-all": 0.75,
+        "centered": 0.5,
+        "generic-type": 0.38,
+        "empty-frames": 0.25,
+        "flat-scale": 0.25,
+        "eyebrow-pill": 0.13,
+        "generic-cta": 0.13,
+        "numbered-labels": 0.13,
+        "paper-serif": 0.13,
+        "tinted-page": 0.13
+      },
+      "type": {
+        "bodySize": {
+          "n": 8,
+          "p10": 10,
+          "p50": 16,
+          "p90": 18
+        },
+        "displayRatio": {
+          "n": 8,
+          "p10": 1.13,
+          "p50": 3.33,
+          "p90": 10.37
+        },
+        "sizes": {
+          "n": 8,
+          "p10": 3,
+          "p50": 8,
+          "p90": 12
+        },
+        "weights": {
+          "n": 8,
+          "p10": 1,
+          "p50": 4,
+          "p90": 5
+        },
+        "webfontShare": 1
+      },
+      "color": {
+        "hues": {
+          "n": 8,
+          "p10": 0,
+          "p50": 1,
+          "p90": 3
+        },
+        "darkShare": 0
+      },
+      "layout": {
+        "centered": {
+          "n": 8,
+          "p10": 0,
+          "p50": 0.44,
+          "p90": 0.95
+        },
+        "rounded": {
+          "n": 8,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0.22
+        },
+        "trackedAny": 0.25,
+        "tracked": {
+          "n": 8,
+          "p10": 0,
+          "p50": 0,
+          "p90": 2
         }
       },
       "japanese": null
@@ -6152,6 +6710,99 @@
           "ja-tiny": 1
         }
       }
+    },
+    "KR-software": {
+      "n": 12,
+      "score": {
+        "n": 12,
+        "p10": 0,
+        "p50": 35,
+        "p90": 71,
+        "flagged20": 0.58,
+        "flagged30": 0.5
+      },
+      "signals": {
+        "transition-all": 0.58,
+        "generic-type": 0.5,
+        "large-gradient": 0.42,
+        "flat-scale": 0.33,
+        "gradient-text": 0.33,
+        "accent-word": 0.25,
+        "boxed-icons": 0.25,
+        "buzzword-copy": 0.25,
+        "card-grid": 0.25,
+        "centered": 0.25,
+        "empty-frames": 0.25,
+        "glow": 0.25,
+        "eyebrow-pill": 0.17,
+        "generic-cta": 0.17,
+        "many-hues": 0.17,
+        "nested-cards": 0.17,
+        "default-accent": 0.08,
+        "emoji-icons": 0.08,
+        "glass": 0.08,
+        "over-rounded": 0.08,
+        "purple-gradient": 0.08,
+        "tracked-labels": 0.08
+      },
+      "type": {
+        "bodySize": {
+          "n": 12,
+          "p10": 13,
+          "p50": 17,
+          "p90": 20
+        },
+        "displayRatio": {
+          "n": 12,
+          "p10": 2,
+          "p50": 3.38,
+          "p90": 5.49
+        },
+        "sizes": {
+          "n": 12,
+          "p10": 4,
+          "p50": 11,
+          "p90": 14
+        },
+        "weights": {
+          "n": 12,
+          "p10": 2,
+          "p50": 4,
+          "p90": 6
+        },
+        "webfontShare": 0.83
+      },
+      "color": {
+        "hues": {
+          "n": 12,
+          "p10": 1,
+          "p50": 2,
+          "p90": 4
+        },
+        "darkShare": 0.08
+      },
+      "layout": {
+        "centered": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0.23,
+          "p90": 0.57
+        },
+        "rounded": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0.11,
+          "p90": 0.57
+        },
+        "trackedAny": 0.08,
+        "tracked": {
+          "n": 12,
+          "p10": 0,
+          "p50": 0,
+          "p90": 0
+        }
+      },
+      "japanese": null
     },
     "KR-tax": {
       "n": 7,

@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-17T08:51:39.397Z",
+ "collectedAt": "2026-11-18T06:19:02.538Z",
  "sites": [
   {
    "category": "JP-academy",
@@ -12913,6 +12913,86 @@
   },
   {
    "category": "JP-dental",
+   "url": "https://aidental-clinic.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0.2,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yu mincho",
+     "cinzel",
+     "游ゴシック",
+     "ten-mincho"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 16,
+    "h1": 10,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.6,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.79,
+    "fontFallback": 0.08,
+    "lineHeight": null,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 26,
+    "viewport-bounds": 15,
+    "accessible-name": 6,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "JP-dental",
    "url": "https://dental-nihonbashi.or.jp/",
    "split": "tune",
    "status": "ok",
@@ -12996,6 +13076,160 @@
     "control-state": 2,
     "target-size": 2,
     "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://fukumori-shika.net/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "arial",
+     "times new roman",
+     "roboto"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 14,
+    "h1": 14,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.18,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.71,
+    "fontFallback": 0.02,
+    "lineHeight": 3,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 27,
+    "viewport-bounds": 9,
+    "control-state": 6,
+    "accessible-name": 3,
+    "form-label": 1,
+    "aria-reference": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://inutsuka-dc.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0.8,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "source-han-sans-japanese",
+     "source-han-serif-japanese"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 16,
+    "h1": 16,
+    "display": 56,
+    "ratio": 3.5,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.69,
+    "fontFallback": 1,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-bad-break",
+     "ja-tracking",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 77,
+    "accessible-name": 4,
+    "control-state": 2
    }
   },
   {
@@ -13309,6 +13543,74 @@
   },
   {
    "category": "JP-dental",
+   "url": "https://matsuyamadentalclinic.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans japanese"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 14,
+    "h1": 14,
+    "display": 34,
+    "ratio": 2.43,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 1.71,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 67,
+    "accessible-name": 2,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-dental",
    "url": "https://nizinomori.com/",
    "split": "tune",
    "status": "ok",
@@ -13386,6 +13688,384 @@
     "text-contrast": 130,
     "accessible-name": 4,
     "control-state": 3
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://ogawadc-naruto.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino kaku gothic pron"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 48,
+    "ratio": 3,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.36,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.69,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 9,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://ooka-dentaloffice.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 18,
+    "h1": 32,
+    "display": 65,
+    "ratio": 3.61,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.29,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.72,
+    "fontFallback": 0,
+    "lineHeight": 1.9,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 51,
+    "control-state": 3,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://sakata-shika.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0.33,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体",
+     "noto serif jp",
+     "futura-pt"
+    ],
+    "sizes": 15,
+    "weights": 5,
+    "body": 17,
+    "h1": 11,
+    "display": 50,
+    "ratio": 2.94,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 6,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 17,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 60,
+    "viewport-bounds": 27,
+    "control-state": 5,
+    "aria-reference": 2,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://sanodental.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 20,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 5,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "zen maru gothic"
+    ],
+    "sizes": 15,
+    "weights": 3,
+    "body": 15,
+    "h1": 18,
+    "display": 55,
+    "ratio": 3.67,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.9,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 99,
+    "viewport-bounds": 32,
+    "control-state": 2,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://shimamura-dc.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "nested-cards",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels",
+    "nested-cards"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 12,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 19,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 3,
+    "nestedHosts": 3,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "m plus rounded 1c",
+     "rubik"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 16,
+    "h1": 10,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0.25,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 12
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 93,
+    "target-size": 5,
+    "viewport-bounds": 3,
+    "control-state": 2
    }
   },
   {
@@ -13690,6 +14370,85 @@
   },
   {
    "category": "JP-dental",
+   "url": "https://www.matsumoto-shika.biz/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "empty-frames"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "tsukushimarugothic",
+     "tsukushioldmincho",
+     "メイリオ",
+     "futura-lt-w01-book"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 25,
+    "h1": 26,
+    "display": 50,
+    "ratio": 2,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.75,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.88,
+    "fontFallback": 0.06,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 371,
+    "text-contrast": 27,
+    "control-state": 11,
+    "form-label": 6,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-dental",
    "url": "https://www.nakatani-dent.com/",
    "split": "tune",
    "status": "ok",
@@ -13909,6 +14668,162 @@
     "control-state": 2,
     "aria-reference": 1,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://www.suhara-dental.or.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "large-gradient",
+    "tinted-page",
+    "accent-word",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "tracked-labels",
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 18,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat",
+     "noto sans jp"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 14,
+    "h1": 28,
+    "display": 90,
+    "ratio": 6.43,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     240,
+     240,
+     240
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.3,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 3,
+    "glass": 0,
+    "tracked": 18
+   },
+   "ja": {
+    "jaRatio": 0.61,
+    "fontFallback": 0,
+    "lineHeight": 2.2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 103,
+    "control-state": 8,
+    "viewport-bounds": 6,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "JP-dental",
+   "url": "https://www.takebuchi-shika.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "noto serif jp"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 16,
+    "h1": null,
+    "display": 36,
+    "ratio": 2.25,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.71,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all"
+    ]
+   },
+   "quality": {
+    "text-contrast": 18,
+    "accessible-name": 4
    }
   },
   {
@@ -14366,6 +15281,902 @@
     "target-size": 3,
     "control-state": 3
    }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://884-dsn.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "fp-koburinagostdn-w3"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 14,
+    "h1": null,
+    "display": 28,
+    "ratio": 2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     247,
+     247,
+     247
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 13,
+    "viewport-bounds": 2,
+    "horizontal-overflow": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://actnp.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 2,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen kaku gothic new"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 14,
+    "h1": null,
+    "display": 96,
+    "ratio": 6.86,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0.11,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 2
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 20
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://bun-design-office.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 14,
+    "h1": 16,
+    "display": 24,
+    "ratio": 1.71,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     253,
+     253,
+     253
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.26,
+    "rounded": 0.63,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.83,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 27,
+    "accessible-name": 10,
+    "viewport-bounds": 3
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://eibukobo.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 5,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen kaku gothic new",
+     "游ゴシック体"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 14,
+    "h1": 16,
+    "display": 39.2,
+    "ratio": 2.8,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.21,
+    "rounded": 0.13,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-italic"
+    ]
+   },
+   "quality": {
+    "text-contrast": 33,
+    "control-state": 12
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://hgr.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 127,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "fot-筑紫b丸ゴシック std e",
+     "fp-こぶりなゴシック stdn w3",
+     "arial"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 34,
+    "h1": 32,
+    "display": 59.84,
+    "ratio": 1.76,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 0.03,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "text-contrast": 70,
+    "target-size": 5
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://hinode-graph.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "tinted-page",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yakuhanjp",
+     "noto sans jp",
+     "hind",
+     "游明朝"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 16,
+    "h1": 16,
+    "display": 40,
+    "ratio": 2.5,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     240,
+     240,
+     240
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.75,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 27,
+    "viewport-bounds": 2,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://ikka-web.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 8,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 120,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体"
+    ],
+    "sizes": 4,
+    "weights": 1,
+    "body": 12,
+    "h1": 13,
+    "display": 15,
+    "ratio": 1.25,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     241,
+     241,
+     241
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 8
+   },
+   "ja": {
+    "jaRatio": 0.19,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "accessible-name": 120,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://kimura-agc.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 39,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto-sans-cjk-jp",
+     "urw-din"
+    ],
+    "sizes": 17,
+    "weights": 4,
+    "body": 15,
+    "h1": 28.8,
+    "display": 65,
+    "ratio": 4.33,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 39
+   },
+   "ja": {
+    "jaRatio": 0.65,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 15.36,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 65,
+    "control-state": 3,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://okumatsusaka.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "source sans pro",
+     "montserrat"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 18,
+    "h1": null,
+    "display": 43,
+    "ratio": 2.39,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.42,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "accessible-name": 23,
+    "target-size": 5,
+    "text-contrast": 4,
+    "control-state": 3
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.design-kaigraph.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 39,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "wfont_53b23d_c42a93ee9b1d4afd8a90b7cc1574bbf2",
+     "wfont_0bd506_f18f6c3efa8d49a38b8ee32fe0730b4b",
+     "wfont_8be151_d8f1c749a1244687bb5627268a617358",
+     "tsukushioldmincho"
+    ],
+    "sizes": 15,
+    "weights": 2,
+    "body": 14,
+    "h1": 7,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 10
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.22,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.86,
+    "fontFallback": 0.88,
+    "lineHeight": 1.5,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-orphans",
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 1305,
+    "control-state": 105,
+    "text-contrast": 94,
+    "horizontal-overflow": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.oki-design.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "din-next-w01-light",
+     "proxima-n-w01-reg",
+     "ot-yu-gothic-pr6n",
+     "helvetica-w01-light"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 25,
+    "ratio": 1.56,
+    "webfonts": 8
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.86,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 558,
+    "control-state": 45,
+    "text-contrast": 8,
+    "target-size": 3,
+    "accessible-name": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.tk-design.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "helveticaneueetextstd-bold",
+     "helveticaneueetextstd-roman"
+    ],
+    "sizes": 5,
+    "weights": 1,
+    "body": 12,
+    "h1": 32,
+    "display": 48,
+    "ratio": 4,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     250,
+     250,
+     250
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.68,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {}
   },
   {
    "category": "JP-ec",
@@ -20390,6 +22201,83 @@
   },
   {
    "category": "JP-finance",
+   "url": "https://kitagunshinkumi.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 8,
+    "nestedHosts": 1,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 14,
+    "h1": 10,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0.43,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 76,
+    "accessible-name": 9,
+    "control-state": 9,
+    "viewport-bounds": 4
+   }
+  },
+  {
+   "category": "JP-finance",
    "url": "https://kopetzki.law/",
    "split": "holdout",
    "status": "ok",
@@ -20823,6 +22711,233 @@
   },
   {
    "category": "JP-finance",
+   "url": "https://www.karashin-bank.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 5,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 16,
+    "h1": 36,
+    "display": 42,
+    "ratio": 2.63,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 7,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.86,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 42,
+    "target-size": 22,
+    "control-state": 19,
+    "aria-reference": 12
+   }
+  },
+  {
+   "category": "JP-finance",
+   "url": "https://www.kumamoto-shinkin.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "centered",
+    "many-hues",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "centered",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 5,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yu gothic"
+    ],
+    "sizes": 13,
+    "weights": 3,
+    "body": 14,
+    "h1": 16,
+    "display": 44.8,
+    "ratio": 3.2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0.03,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 88,
+    "control-state": 17,
+    "viewport-bounds": 5,
+    "target-size": 5,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-finance",
+   "url": "https://www.nobeshin.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ"
+    ],
+    "sizes": 6,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 19.2,
+    "ratio": 1.2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     109,
+     192,
+     228
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.75,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 12,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 219,
+    "text-contrast": 58,
+    "accessible-name": 11,
+    "target-size": 9,
+    "control-state": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-finance",
    "url": "https://www.orixrentec.jp/company/recruit/index.html",
    "split": "tune",
    "status": "ok",
@@ -20895,6 +23010,79 @@
    "quality": {
     "text-contrast": 33,
     "control-state": 1
+   }
+  },
+  {
+   "category": "JP-finance",
+   "url": "https://www.ryobishinkumi.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "ヒラギノ明朝 pron w3"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 13,
+    "h1": 10,
+    "display": 28,
+    "ratio": 2.15,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.45,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.82,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 25,
+    "accessible-name": 10,
+    "control-state": 4,
+    "form-label": 1
    }
   },
   {
@@ -21058,6 +23246,81 @@
   },
   {
    "category": "JP-finance",
+   "url": "https://www.takanabe-shinkin.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 2,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "arial"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 15,
+    "h1": null,
+    "display": 24,
+    "ratio": 1.6,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0.27,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.93,
+    "fontFallback": 0.02,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "control-state": 19,
+    "text-contrast": 13,
+    "accessible-name": 10,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-finance",
    "url": "https://www.thefoundation.house/",
    "split": "tune",
    "status": "ok",
@@ -21121,6 +23384,87 @@
     "text-contrast": 180,
     "control-state": 26,
     "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-finance",
+   "url": "https://www.toyoshin.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 14,
+   "band": "low",
+   "signals": [
+    "centered",
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ヒラギノ角ゴ pro w3",
+     "yumincho"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 16,
+    "h1": 32,
+    "display": 30,
+    "ratio": 1.88,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.9,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 24,
+    "target-size": 4,
+    "accessible-name": 2,
+    "control-state": 2,
+    "form-label": 1,
+    "viewport-bounds": 1
    }
   },
   {
@@ -21200,6 +23544,85 @@
     "target-size": 9,
     "control-state": 1,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-finance",
+   "url": "https://www.yukiguni.shinkumi.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "default-accent",
+    "generic-cta"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "biz udpgothic"
+    ],
+    "sizes": 4,
+    "weights": 3,
+    "body": 16,
+    "h1": 26,
+    "display": 28,
+    "ratio": 1.75,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.06,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.72,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 13,
+    "accessible-name": 7,
+    "control-state": 4,
+    "target-size": 3,
+    "form-label": 1
    }
   },
   {
@@ -26586,6 +29009,83 @@
   },
   {
    "category": "JP-inn",
+   "url": "https://fujinoyu.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 3,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 16,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif jp",
+     "arial"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 16,
+    "h1": 12,
+    "display": 36,
+    "ratio": 2.25,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 3
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 130,
+    "control-state": 17,
+    "accessible-name": 15,
+    "form-label": 4
+   }
+  },
+  {
+   "category": "JP-inn",
    "url": "https://hoshinoya.com/",
    "split": "tune",
    "status": "ok",
@@ -26820,6 +29320,81 @@
     "target-size": 9,
     "accessible-name": 7,
     "control-state": 4
+   }
+  },
+  {
+   "category": "JP-inn",
+   "url": "https://kadoya-hirayama.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 8,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif jp",
+     "メイリオ"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 16,
+    "h1": 12,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.09,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 8
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 70,
+    "control-state": 7,
+    "form-label": 4
    }
   },
   {
@@ -27060,6 +29635,80 @@
   },
   {
    "category": "JP-inn",
+   "url": "https://odaonsen.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 16,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "ヒラギノ角ゴ pro w3",
+     "serif"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 18,
+    "h1": 40,
+    "display": 42,
+    "ratio": 2.33,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     243,
+     243,
+     243
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.64,
+    "fontFallback": 0.18,
+    "lineHeight": 1.9,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "control-state": 53,
+    "viewport-bounds": 33,
+    "text-contrast": 33,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-inn",
    "url": "https://otozure.jp/",
    "split": "holdout",
    "status": "ok",
@@ -27208,6 +29857,82 @@
     "viewport-bounds": 12,
     "horizontal-overflow": 1,
     "control-state": 1
+   }
+  },
+  {
+   "category": "JP-inn",
+   "url": "https://sumiyoshiya-nozawaonsen.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游明朝",
+     "yu mincho"
+    ],
+    "sizes": 7,
+    "weights": 3,
+    "body": 17,
+    "h1": 23,
+    "display": 22.4,
+    "ratio": 1.32,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0.5,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.84,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 17,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "text-contrast": 88,
+    "viewport-bounds": 36,
+    "target-size": 4,
+    "accessible-name": 3,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -27418,6 +30143,86 @@
     "accessible-name": 2,
     "viewport-bounds": 1,
     "form-label": 1
+   }
+  },
+  {
+   "category": "JP-inn",
+   "url": "https://tukinohotaru.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "centered",
+    "paper-serif",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "paper-serif"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0.86,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "shippori mincho",
+     "yuji syuku",
+     "cormorant"
+    ],
+    "sizes": 14,
+    "weights": 5,
+    "body": 16,
+    "h1": 14,
+    "display": 50,
+    "ratio": 3.13,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     245,
+     245,
+     237
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.75,
+    "rounded": 0.02,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.2,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 135,
+    "accessible-name": 8,
+    "viewport-bounds": 6,
+    "control-state": 4
    }
   },
   {
@@ -27644,6 +30449,78 @@
   },
   {
    "category": "JP-inn",
+   "url": "https://www.gyominan.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "shippori mincho b1",
+     "com4t"
+    ],
+    "sizes": 10,
+    "weights": 2,
+    "body": 15,
+    "h1": 30,
+    "display": 42,
+    "ratio": 2.8,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.12,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.75,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 33,
+    "accessible-name": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-inn",
    "url": "https://www.hiiragiya.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -27794,6 +30671,80 @@
   },
   {
    "category": "JP-inn",
+   "url": "https://www.kashoutei-hanaya.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif jp"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 16,
+    "h1": 16,
+    "display": 30,
+    "ratio": 1.88,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.18,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 97,
+    "control-state": 5,
+    "target-size": 5,
+    "form-label": 4
+   }
+  },
+  {
+   "category": "JP-inn",
    "url": "https://www.kurokawaonsen.or.jp/",
    "split": "holdout",
    "status": "ok",
@@ -27868,6 +30819,152 @@
     "target-size": 18,
     "control-state": 7,
     "horizontal-overflow": 1,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-inn",
+   "url": "https://www.maruhachiryokan.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游明朝",
+     "material icons",
+     "eb garamond",
+     "roboto"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 15,
+    "h1": 13,
+    "display": 32,
+    "ratio": 2.13,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.26,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.67,
+    "fontFallback": 0.01,
+    "lineHeight": 1.8,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-italic"
+    ]
+   },
+   "quality": {
+    "text-contrast": 67,
+    "control-state": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-inn",
+   "url": "https://www.nasukogen-miyama.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游明朝"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 16,
+    "h1": 16,
+    "display": 40,
+    "ratio": 2.5,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.1,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.66,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 47,
+    "control-state": 2,
     "viewport-bounds": 1
    }
   },
@@ -28153,6 +31250,88 @@
   },
   {
    "category": "JP-inn",
+   "url": "https://www.shogetsu.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "gradient-text",
+    "paper-serif",
+    "transition-all"
+   ],
+   "scored": [
+    "gradient-text",
+    "paper-serif"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 20,
+    "serifDisplay": 1,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "markazi text",
+     "shippori mincho b1"
+    ],
+    "sizes": 16,
+    "weights": 6,
+    "body": 16,
+    "h1": 8.64,
+    "display": 48.1572,
+    "ratio": 3.01,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     248,
+     242,
+     226
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0.01,
+    "lineHeight": 2.25,
+    "bodySize": 16.15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-bad-break",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 143,
+    "control-state": 34,
+    "form-label": 5
+   }
+  },
+  {
+   "category": "JP-inn",
    "url": "https://www.takaragawa.com/",
    "split": "tune",
    "status": "ok",
@@ -28224,6 +31403,85 @@
     "text-contrast": 31,
     "accessible-name": 5,
     "control-state": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-inn",
+   "url": "https://www.tanonaganoyadokko.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "futura-lt-w01-light",
+     "futura-lt-w01-book",
+     "arial",
+     "arp-display"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 15,
+    "h1": 72,
+    "display": 72,
+    "ratio": 4.8,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.27,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.7,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 630,
+    "control-state": 34,
+    "text-contrast": 23,
     "horizontal-overflow": 1
    }
   },
@@ -30060,6 +33318,152 @@
   },
   {
    "category": "JP-maker",
+   "url": "http://www.taniko.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "buzzword-copy",
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "buzzword-copy",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0.25,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "noto serif jp"
+    ],
+    "sizes": 18,
+    "weights": 3,
+    "body": 17,
+    "h1": 60,
+    "display": 57.975,
+    "ratio": 3.41,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.26,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 17,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 43,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "http://www.ugawa-metal.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 13,
+    "h1": 12.8,
+    "display": 12.8,
+    "ratio": 0.98,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.59,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 12.8,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 43,
+    "text-contrast": 12,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-maker",
    "url": "https://fluid.glass/",
    "split": "tune",
    "status": "ok",
@@ -30124,6 +33528,164 @@
     "viewport-bounds": 25,
     "control-state": 18,
     "text-contrast": 5
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://harada-seikou.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notoserifjp_regular",
+     "zen kaku gothic new",
+     "zenkakugothicantique_regular",
+     "noto sans jp"
+    ],
+    "sizes": 14,
+    "weights": 3,
+    "body": 16,
+    "h1": 43.2,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 12
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.27,
+    "rounded": 0.04,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.68,
+    "fontFallback": 0.52,
+    "lineHeight": null,
+    "bodySize": 17.6,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 70,
+    "control-state": 8,
+    "accessible-name": 5
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://ozawa-inc.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "purple-gradient",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "purple-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0.71,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "martel sans",
+     "noto serif jp",
+     "material icons"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 18,
+    "h1": 16,
+    "display": 42,
+    "ratio": 2.33,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.11,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.55,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 33,
+    "control-state": 4,
+    "viewport-bounds": 2,
+    "accessible-name": 1
    }
   },
   {
@@ -30433,6 +33995,78 @@
   },
   {
    "category": "JP-maker",
+   "url": "https://taiyo-koki.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 23,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "oswald",
+     "material symbols outlined"
+    ],
+    "sizes": 15,
+    "weights": 3,
+    "body": 16,
+    "h1": 16,
+    "display": 96,
+    "ratio": 6,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.22,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 15,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-maker",
    "url": "https://tojiro.net/",
    "split": "tune",
    "status": "ok",
@@ -30589,6 +34223,82 @@
     "label-consistency": 8,
     "accessible-name": 7,
     "target-size": 3
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://www.akitani.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 31,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "antonio",
+     "ibm plex sans jp"
+    ],
+    "sizes": 16,
+    "weights": 3,
+    "body": 16,
+    "h1": 1,
+    "display": 109.936,
+    "ratio": 6.87,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.63,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-bad-break",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "control-state": 21,
+    "text-contrast": 11,
+    "label-consistency": 7,
+    "accessible-name": 2
    }
   },
   {
@@ -30891,6 +34601,155 @@
   },
   {
    "category": "JP-maker",
+   "url": "https://www.haranomachi.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "m-plus-1-regular",
+     "m-plus-1-semibold",
+     "inter-black",
+     "noto-sans-jp-bold"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 16,
+    "h1": 12,
+    "display": 40,
+    "ratio": 2.5,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.06,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 367,
+    "text-contrast": 55,
+    "control-state": 16,
+    "accessible-name": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://www.isesakikikai.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 1,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "poppins"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 16,
+    "h1": 93,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     168,
+     197,
+     232
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 38,
+    "accessible-name": 2,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-maker",
    "url": "https://www.iwachu.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -30967,6 +34826,83 @@
     "accessible-name": 2,
     "horizontal-overflow": 1,
     "form-label": 1
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://www.iwata-seisakusyo.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosanscjkm",
+     "notosanscjkr",
+     "notosanscjkdelight",
+     "notosanscjkb"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 14,
+    "h1": null,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.64,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "text-contrast": 26,
+    "control-state": 7,
+    "viewport-bounds": 4,
+    "accessible-name": 2,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -31450,6 +35386,81 @@
   },
   {
    "category": "JP-maker",
+   "url": "https://www.saitetsu.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0.17,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yu gothic medium",
+     "oswald",
+     "yu mincho"
+    ],
+    "sizes": 9,
+    "weights": 5,
+    "body": 14,
+    "h1": 16,
+    "display": 36,
+    "ratio": 2.57,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.13,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.69,
+    "fontFallback": 0.01,
+    "lineHeight": 1.75,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all"
+    ]
+   },
+   "quality": {
+    "text-contrast": 37,
+    "accessible-name": 8,
+    "control-state": 4
+   }
+  },
+  {
+   "category": "JP-maker",
    "url": "https://www.shikokusenki.com/",
    "split": "tune",
    "status": "ok",
@@ -31596,6 +35607,78 @@
     "text-contrast": 194,
     "control-state": 12,
     "accessible-name": 10
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://www.takano-s.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system-body",
+     "poppins"
+    ],
+    "sizes": 13,
+    "weights": 4,
+    "body": 16,
+    "h1": 56,
+    "display": 72,
+    "ratio": 4.5,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 2.2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 49,
+    "accessible-name": 20,
+    "viewport-bounds": 3,
+    "control-state": 1
    }
   },
   {
@@ -31826,6 +35909,78 @@
    "quality": {
     "text-contrast": 76,
     "accessible-name": 25
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://www.yamazaki-metal.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif japanese"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 14,
+    "h1": 28,
+    "display": 48,
+    "ratio": 3.43,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.71,
+    "fontFallback": 0,
+    "lineHeight": 2.29,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 11,
+    "control-state": 1
    }
   },
   {
@@ -32657,6 +36812,233 @@
   },
   {
    "category": "JP-restaurant",
+   "url": "https://1110cafe-bakery.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "alphabet"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 13,
+    "h1": 18,
+    "display": 28.125,
+    "ratio": 2.16,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.38,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.66,
+    "fontFallback": 0,
+    "lineHeight": 2.35,
+    "bodySize": 12.75,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 54,
+    "accessible-name": 7,
+    "control-state": 4,
+    "aria-reference": 1
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://alpenrose.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 14,
+   "band": "low",
+   "signals": [
+    "emoji-icons",
+    "transition-all",
+    "tinted-page"
+   ],
+   "scored": [
+    "emoji-icons"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "helvetica neue",
+     "garamond",
+     "roboto"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 14,
+    "h1": 28,
+    "display": 36,
+    "ratio": 2.57,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.34,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.72,
+    "fontFallback": 0.13,
+    "lineHeight": 2.2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 71,
+    "accessible-name": 12,
+    "control-state": 9,
+    "viewport-bounds": 2,
+    "form-label": 2,
+    "label-consistency": 2,
+    "aria-reference": 1
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://bsquared.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "neuehaasunicapro-bold",
+     "neuehaasunicapro",
+     "noto sans jp"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 14,
+    "h1": 14,
+    "display": 50,
+    "ratio": 3.57,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.13,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.39,
+    "fontFallback": 0.5,
+    "lineHeight": 2.43,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 50,
+    "text-contrast": 21,
+    "accessible-name": 8
+   }
+  },
+  {
+   "category": "JP-restaurant",
    "url": "https://cartapani.it/",
    "split": "tune",
    "status": "ok",
@@ -32723,6 +37105,232 @@
     "viewport-bounds": 4,
     "accessible-name": 3,
     "target-size": 2
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://fam-oshima.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "work sans",
+     "poppins",
+     "見出ゴmb1"
+    ],
+    "sizes": 6,
+    "weights": 5,
+    "body": 15,
+    "h1": null,
+    "display": 64,
+    "ratio": 4.27,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.25,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0.38,
+    "lineHeight": 1.4,
+    "bodySize": 15,
+    "tightShare": 1,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 7,
+    "accessible-name": 4,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://kajyukouen.takoman.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "higuregothicmedium",
+     "higuregothicregular"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 14,
+    "h1": 17,
+    "display": 20,
+    "ratio": 1.43,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 1,
+    "lineHeight": 1.7,
+    "bodySize": 13,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "accessible-name": 9,
+    "control-state": 9,
+    "text-contrast": 7
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://kitchen-usuda.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "verdana",
+     "arial",
+     "times new roman"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 14,
+    "h1": 32,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.68,
+    "fontFallback": 0,
+    "lineHeight": 2.4,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 34,
+    "accessible-name": 12,
+    "control-state": 1
    }
   },
   {
@@ -32869,6 +37477,81 @@
     "viewport-bounds": 10,
     "label-consistency": 2,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://parc-de-vague.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "hero-cta-below"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック medium",
+     "biz udmincho"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 16,
+    "h1": 28,
+    "display": 28,
+    "ratio": 1.75,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.38,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 13,
+    "viewport-bounds": 10,
+    "control-state": 3
    }
   },
   {
@@ -33237,6 +37920,155 @@
   },
   {
    "category": "JP-restaurant",
+   "url": "https://stong-bakery.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "tinted-page",
+    "transition-all",
+    "accent-word"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 1
+   },
+   "type": {
+    "families": [
+     "zen kaku gothic new",
+     "marcellus"
+    ],
+    "sizes": 3,
+    "weights": 2,
+    "body": 16,
+    "h1": 20,
+    "display": 23,
+    "ratio": 1.44,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     251,
+     248,
+     243
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.66,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 15,
+    "target-size": 4,
+    "control-state": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://thecitybakery.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "inconsolata",
+     "游ゴシック体"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 12,
+    "h1": 15,
+    "display": 12,
+    "ratio": 1,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.22,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "control-state": 2,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-restaurant",
    "url": "https://www.aimservices.co.jp/recruit/chourishi/",
    "split": "tune",
    "status": "ok",
@@ -33526,6 +38358,79 @@
    "quality": {
     "text-contrast": 63,
     "accessible-name": 4
+   }
+  },
+  {
+   "category": "JP-restaurant",
+   "url": "https://www.lata-merucoro.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman"
+    ],
+    "sizes": 4,
+    "weights": 2,
+    "body": 13,
+    "h1": 0,
+    "display": 16,
+    "ratio": 1.23,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.56,
+    "fontFallback": 1,
+    "lineHeight": 1,
+    "bodySize": 16,
+    "tightShare": 1,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-line-height",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 181,
+    "text-contrast": 164,
+    "accessible-name": 3,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -38370,6 +43275,938 @@
     "text-contrast": 25,
     "control-state": 2,
     "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://aerotrace.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 44,
+   "band": "medium",
+   "signals": [
+    "card-grid",
+    "tracked-labels",
+    "boxed-icons",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "card-grid",
+    "tracked-labels",
+    "boxed-icons"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 16,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 25,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 3
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "montserrat"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 14,
+    "h1": 60,
+    "display": 60,
+    "ratio": 4.29,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0,
+    "cardGrids": 3,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 16
+   },
+   "ja": {
+    "jaRatio": 0.6,
+    "fontFallback": 0,
+    "lineHeight": 1.63,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 81
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://c-mikata.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 16,
+    "h1": 24,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.42,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.84,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 16,
+    "control-state": 6,
+    "accessible-name": 3,
+    "target-size": 3,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://c-tag.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yugothic_m",
+     "yugothib",
+     "helvetica",
+     "helvetica-bold"
+    ],
+    "sizes": 14,
+    "weights": 3,
+    "body": 16,
+    "h1": 88,
+    "display": 88,
+    "ratio": 5.5,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0.42,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 26,
+    "text-contrast": 5,
+    "control-state": 4,
+    "target-size": 2
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://k-mij.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "gradient-text",
+    "transition-all"
+   ],
+   "scored": [
+    "gradient-text"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 2,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "inter",
+     "cardo",
+     "poppins"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 14,
+    "h1": 32.7,
+    "display": 58,
+    "ratio": 4.14,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     249,
+     249,
+     249
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.53,
+    "rounded": 0.36,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.87,
+    "fontFallback": 1,
+    "lineHeight": 1.8,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 23,
+    "font-loading": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://saas-lab.cloud/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 61,
+   "band": "high",
+   "signals": [
+    "card-grid",
+    "tracked-labels",
+    "eyebrow-pill",
+    "nested-cards",
+    "numbered-labels",
+    "many-hues",
+    "accent-word",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "card-grid",
+    "tracked-labels",
+    "eyebrow-pill",
+    "nested-cards",
+    "numbered-labels",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 23,
+    "numbered": 2,
+    "periodHeadings": 0,
+    "headings": 20,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 4,
+    "nestedHosts": 4,
+    "iconBoxes": 1
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "jetbrains mono",
+     "space grotesk"
+    ],
+    "sizes": 16,
+    "weights": 4,
+    "body": 11,
+    "h1": 48,
+    "display": 54,
+    "ratio": 4.91,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     250,
+     250,
+     247
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.58,
+    "cardGrids": 2,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 23
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0.05,
+    "lineHeight": 1.9,
+    "bodySize": 16.5,
+    "tightShare": 0,
+    "phraseAware": 3,
+    "issues": [
+     "ja-orphans",
+     "ja-bad-break",
+     "ja-tracking",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 52
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.cam-net.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen kaku gothic antique"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 14,
+    "h1": 40,
+    "display": 32,
+    "ratio": 2.29,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.33,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 14.4,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 56,
+    "label-consistency": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.gen-square.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "paper-serif",
+    "buzzword-copy",
+    "transition-all"
+   ],
+   "scored": [
+    "paper-serif",
+    "buzzword-copy"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 31,
+    "serifDisplay": 1,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "cormorant"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 14,
+    "h1": 16,
+    "display": 65,
+    "ratio": 4.64,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     246,
+     241,
+     235
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.42,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.6,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0.14,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 21,
+    "form-label": 7,
+    "control-state": 4,
+    "viewport-bounds": 1,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.jcc-ltd.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "default-accent",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 2,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 57,
+    "serifDisplay": 0.03,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "inter",
+     "tai heritage pro"
+    ],
+    "sizes": 33,
+    "weights": 4,
+    "body": 16,
+    "h1": 63.36,
+    "display": 135,
+    "ratio": 8.44,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0.17,
+    "cardGrids": 0,
+    "largeGradients": 3,
+    "glass": 0,
+    "tracked": 2
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0.16,
+    "lineHeight": 1.75,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 100,
+    "control-state": 48,
+    "accessible-name": 28,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.ksw.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 2,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 16,
+    "h1": 0,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 0,
+    "lineHeight": 1.75,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tracking"
+    ]
+   },
+   "quality": {
+    "text-contrast": 64,
+    "target-size": 24,
+    "control-state": 3,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.lic.ne.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 16,
+    "serifDisplay": 0.88,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "roboto-black",
+     "new-atten",
+     "roboto-regular"
+    ],
+    "sizes": 18,
+    "weights": 3,
+    "body": 14,
+    "h1": 14,
+    "display": 170,
+    "ratio": 12.14,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0.21,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.62,
+    "fontFallback": 0.18,
+    "lineHeight": 2.2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 16,
+    "accessible-name": 5,
+    "form-label": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.plus1-foryou.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "glow",
+    "boxed-icons",
+    "accent-word"
+   ],
+   "scored": [
+    "glow",
+    "boxed-icons"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 22,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 3
+   },
+   "type": {
+    "families": [
+     "geist"
+    ],
+    "sizes": 13,
+    "weights": 5,
+    "body": 14,
+    "h1": 60,
+    "display": 96,
+    "ratio": 6.86,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.1,
+    "rounded": 0.55,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.85,
+    "fontFallback": 1,
+    "lineHeight": 1.63,
+    "bodySize": 14,
+    "tightShare": 0.11,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-orphans",
+     "ja-tracking"
+    ]
+   },
+   "quality": {
+    "text-contrast": 53
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.velc.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ヒラギノ角ゴ pro w3",
+     "montserrat"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 14,
+    "h1": 16,
+    "display": 60,
+    "ratio": 4.29,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.63,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.65,
+    "fontFallback": 0.03,
+    "lineHeight": 1.6,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 22,
+    "target-size": 4
    }
   },
   {
@@ -44283,6 +50120,469 @@
   },
   {
    "category": "KR-builder",
+   "url": "https://d-atelier.net/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "futura-pt",
+     "proxima-nova"
+    ],
+    "sizes": 2,
+    "weights": 2,
+    "body": 14,
+    "h1": 30,
+    "display": 15,
+    "ratio": 1.07,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     252,
+     252,
+     252
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 19,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://design5.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "scored": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "sans-serif"
+    ],
+    "sizes": 1,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 13,
+    "ratio": 1,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://designfirm.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "notosanskr",
+     "malgun gothic",
+     "montserrat"
+    ],
+    "sizes": 13,
+    "weights": 4,
+    "body": 16,
+    "h1": 32,
+    "display": 38,
+    "ratio": 2.38,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 121,
+    "text-contrast": 24,
+    "control-state": 11,
+    "accessible-name": 8,
+    "label-consistency": 3,
+    "horizontal-overflow": 1,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://mun-arch.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "manrope",
+     "kopubworld dotum",
+     "jost"
+    ],
+    "sizes": 1,
+    "weights": 3,
+    "body": 14,
+    "h1": null,
+    "display": 14,
+    "ratio": 1,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 8,
+    "accessible-name": 6,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://so-bo.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels",
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 11,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "raleway"
+    ],
+    "sizes": 3,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 28,
+    "ratio": 2.15,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 11
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 15,
+    "accessible-name": 3,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://studio22.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "kopubdotum",
+     "kopubdotummedium"
+    ],
+    "sizes": 2,
+    "weights": 2,
+    "body": 17,
+    "h1": null,
+    "display": 16.8,
+    "ratio": 0.99,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 35,
+    "text-contrast": 6,
+    "viewport-bounds": 2,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://www.2oa.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "en",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 39,
+    "numbered": 0,
+    "periodHeadings": 2,
+    "headings": 22,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "freesentation"
+    ],
+    "sizes": 7,
+    "weights": 5,
+    "body": 17,
+    "h1": 79.2,
+    "display": 79.2,
+    "ratio": 4.66,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 39
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 15
+   }
+  },
+  {
+   "category": "KR-builder",
    "url": "https://www.casamia.co.kr/",
    "split": "holdout",
    "status": "robots"
@@ -44765,6 +51065,72 @@
   },
   {
    "category": "KR-builder",
+   "url": "https://www.jipie.site/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "helvetica-w01-roman"
+    ],
+    "sizes": 2,
+    "weights": 1,
+    "body": 14,
+    "h1": null,
+    "display": 15,
+    "ratio": 1.07,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 60,
+    "control-state": 6,
+    "text-contrast": 4,
+    "accessible-name": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-builder",
    "url": "https://www.kccworld.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -44965,6 +51331,144 @@
     "control-state": 6,
     "form-label": 2,
     "aria-reference": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://www.modd.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanum gothic",
+     "questrial",
+     "nanum barun gothic",
+     "raleway"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 13,
+    "h1": null,
+    "display": 18,
+    "ratio": 1.38,
+    "webfonts": 9
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0.04,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 172,
+    "viewport-bounds": 16,
+    "accessible-name": 6,
+    "form-label": 2
+   }
+  },
+  {
+   "category": "KR-builder",
+   "url": "https://www.suspicion.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "verdana",
+     "orbitron",
+     "wfont_35a8ed_b350cbafc69e4a96a1f70ad777bdfc2c"
+    ],
+    "sizes": 4,
+    "weights": 1,
+    "body": 20,
+    "h1": 20,
+    "display": 48,
+    "ratio": 2.4,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 208,
+    "control-state": 23,
+    "text-contrast": 5,
+    "accessible-name": 2,
+    "target-size": 2,
     "horizontal-overflow": 1
    }
   },
@@ -45778,6 +52282,73 @@
   },
   {
    "category": "KR-dental",
+   "url": "http://indentist.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 4,
+    "weights": 2,
+    "body": 14,
+    "h1": null,
+    "display": 17,
+    "ratio": 1.21,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 11,
+    "control-state": 11,
+    "text-contrast": 3
+   }
+  },
+  {
+   "category": "KR-dental",
    "url": "http://itto.moredental.com/",
    "split": "tune",
    "status": "ok",
@@ -46140,8 +52711,69 @@
    "category": "KR-dental",
    "url": "http://www.askdent.co.kr/",
    "split": "holdout",
-   "status": "error",
-   "error": "Could not load http://www.askdent.co.kr/: page.goto: Timeout 45000ms exceeded."
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "material symbols outlined"
+    ],
+    "sizes": 12,
+    "weights": 6,
+    "body": 16,
+    "h1": 52,
+    "display": 56,
+    "ratio": 3.5,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.25,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 37,
+    "accessible-name": 3,
+    "target-size": 3,
+    "control-state": 2
+   }
   },
   {
    "category": "KR-dental",
@@ -46493,6 +53125,70 @@
     "control-state": 25,
     "accessible-name": 16,
     "viewport-bounds": 5
+   }
+  },
+  {
+   "category": "KR-dental",
+   "url": "http://www.evichi.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ptsansregular"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 13,
+    "h1": null,
+    "display": 13,
+    "ratio": 1,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 11,
+    "viewport-bounds": 2,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -46987,6 +53683,79 @@
     "control-state": 68,
     "text-contrast": 53,
     "accessible-name": 2
+   }
+  },
+  {
+   "category": "KR-dental",
+   "url": "http://www.kangbukye.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "noto sans",
+     "gmaketl"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 20,
+    "h1": 12,
+    "display": 80,
+    "ratio": 4,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.62,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 183,
+    "text-contrast": 56,
+    "control-state": 28,
+    "form-label": 5,
+    "accessible-name": 5,
+    "horizontal-overflow": 1,
+    "font-loading": 1
    }
   },
   {
@@ -48141,6 +54910,295 @@
   },
   {
    "category": "KR-dental",
+   "url": "https://moondental.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 16,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 25,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "jost"
+    ],
+    "sizes": 17,
+    "weights": 5,
+    "body": 15,
+    "h1": 56,
+    "display": 56,
+    "ratio": 3.73,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     250,
+     250,
+     248
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 16
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 23,
+    "label-consistency": 10,
+    "control-state": 4,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-dental",
+   "url": "https://www.banpoleedent.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "many-hues",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "wfont_65d2df_2bcc4b6280b84dc0952f534be62386c8",
+     "aether",
+     "wfont_a09cb2_f324052f9f404711889ffb2357ae1454",
+     "wfont_6f8a2a_066afc5add5b4872802f1694f5ca160e"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 16,
+    "h1": 29,
+    "display": 30,
+    "ratio": 1.88,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 513,
+    "control-state": 44,
+    "text-contrast": 20,
+    "accessible-name": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-dental",
+   "url": "https://www.hushubundang.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto",
+     "woori",
+     "os",
+     "applesdgothicneo-regular"
+    ],
+    "sizes": 16,
+    "weights": 5,
+    "body": 15,
+    "h1": 0,
+    "display": 55,
+    "ratio": 3.67,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 45,
+    "form-label": 8,
+    "accessible-name": 5,
+    "viewport-bounds": 3,
+    "target-size": 1,
+    "control-state": 1,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-dental",
+   "url": "https://yon.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 33,
+   "band": "medium",
+   "signals": [
+    "tracked-labels",
+    "card-grid",
+    "centered",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels",
+    "card-grid",
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 13,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "pretendard",
+     "inter"
+    ],
+    "sizes": 16,
+    "weights": 6,
+    "body": 14,
+    "h1": 14,
+    "display": 64.8,
+    "ratio": 4.63,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.67,
+    "rounded": 0.37,
+    "cardGrids": 1,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 13
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 138,
+    "control-state": 16,
+    "accessible-name": 12,
+    "target-size": 2,
+    "viewport-bounds": 1,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-dental",
    "url": "https://youngjuraon.com/",
    "split": "holdout",
    "status": "ok",
@@ -48202,6 +55260,131 @@
     "accessible-name": 5,
     "control-state": 4,
     "form-label": 3
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://hoao.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "diatype variable"
+    ],
+    "sizes": 2,
+    "weights": 1,
+    "body": 12,
+    "h1": null,
+    "display": 35.2123,
+    "ratio": 2.93,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 55,
+    "target-size": 34
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.no-mal.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "diatype variable"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 9,
+    "h1": null,
+    "display": 9.072,
+    "ratio": 1.01,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 53,
+    "control-state": 13,
+    "target-size": 4,
+    "viewport-bounds": 3,
+    "accessible-name": 1
    }
   },
   {
@@ -49657,6 +56840,73 @@
   },
   {
    "category": "KR-farm",
+   "url": "https://sowoldang.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat",
+     "nanum myeongjo",
+     "-apple-system"
+    ],
+    "sizes": 5,
+    "weights": 3,
+    "body": 11,
+    "h1": null,
+    "display": 48,
+    "ratio": 4.36,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     250,
+     248,
+     245
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.17,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 24,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-farm",
    "url": "https://www.boksoondoga.com/",
    "split": "tune",
    "status": "ok",
@@ -51033,6 +58283,71 @@
    }
   },
   {
+   "category": "KR-finance",
+   "url": "https://www.cu.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 23,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosans",
+     "titillium web"
+    ],
+    "sizes": 18,
+    "weights": 5,
+    "body": 14,
+    "h1": 30.4,
+    "display": 114,
+    "ratio": 8.14,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.09,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 59,
+    "control-state": 9,
+    "accessible-name": 1,
+    "target-size": 1
+   }
+  },
+  {
    "category": "KR-fitness",
    "url": "https://www.ablegym.co.kr/",
    "split": "holdout",
@@ -52178,8 +59493,75 @@
    "category": "KR-food",
    "url": "https://www.sempio.com/",
    "split": "tune",
-   "status": "error",
-   "error": "Could not load https://www.sempio.com/: page.goto: Timeout 45000ms exceeded."
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosans",
+     "notosanscjkkr",
+     "buri",
+     "dx타자"
+    ],
+    "sizes": 15,
+    "weights": 3,
+    "body": 13,
+    "h1": 0,
+    "display": 45,
+    "ratio": 3.46,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.28,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 63,
+    "text-contrast": 37,
+    "control-state": 14,
+    "accessible-name": 4,
+    "form-label": 3,
+    "aria-reference": 2,
+    "label-consistency": 1,
+    "target-size": 1
+   }
   },
   {
    "category": "KR-food",
@@ -53253,6 +60635,499 @@
   },
   {
    "category": "KR-inn",
+   "url": "http://hanoka.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "나눔고딕"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 12,
+    "h1": 36,
+    "display": 72,
+    "ratio": 6,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.4,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 48,
+    "accessible-name": 14,
+    "control-state": 4,
+    "form-label": 3,
+    "aria-reference": 2,
+    "font-loading": 1,
+    "label-consistency": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "http://sowoodo.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "nanum barun gothic",
+     "nanum myeongjo"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 14,
+    "h1": 0,
+    "display": 36,
+    "ratio": 2.57,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.67,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 49,
+    "viewport-bounds": 34,
+    "control-state": 9,
+    "accessible-name": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "http://www.aromapensiontel.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0.33,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat",
+     "roboto",
+     "playfair display",
+     "noto sans kr"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 14,
+    "h1": null,
+    "display": 57,
+    "ratio": 4.07,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.3,
+    "rounded": 0.02,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 45,
+    "viewport-bounds": 35,
+    "target-size": 18,
+    "accessible-name": 14,
+    "control-state": 9,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "http://www.ebomnal.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "generic-type"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "poppins",
+     "roboto"
+    ],
+    "sizes": 12,
+    "weights": 2,
+    "body": 17,
+    "h1": 52,
+    "display": 96,
+    "ratio": 5.65,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 47,
+    "text-contrast": 33,
+    "control-state": 11,
+    "accessible-name": 3,
+    "label-consistency": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "http://www.hotel-view.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto",
+     "roboto slab",
+     "barlow"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 13,
+    "h1": null,
+    "display": 65,
+    "ratio": 5,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.11,
+    "rounded": 0.11,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 42,
+    "viewport-bounds": 23,
+    "control-state": 5,
+    "accessible-name": 4,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "http://www.mulhan.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "large-gradient"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "open sans",
+     "malgun gothic",
+     "arial",
+     "applesdgothicneo-regular"
+    ],
+    "sizes": 8,
+    "weights": 4,
+    "body": 13,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2.46,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     228,
+     230,
+     233
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 3,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 103,
+    "text-contrast": 101,
+    "accessible-name": 9,
+    "control-state": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "http://xn--v69a02lnos9mn.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 24,
+   "band": "low",
+   "signals": [
+    "centered",
+    "boxed-icons",
+    "many-hues",
+    "generic-cta",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "boxed-icons",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 4
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "gyeonggititle",
+     "malgun gothic"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 15,
+    "h1": 12,
+    "display": 35,
+    "ratio": 2.33,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 7,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.94,
+    "rounded": 0.13,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 42,
+    "viewport-bounds": 18,
+    "control-state": 10,
+    "accessible-name": 6,
+    "target-size": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-inn",
    "url": "https://ananti.kr/",
    "split": "tune",
    "status": "ok",
@@ -53319,6 +61194,142 @@
     "accessible-name": 20,
     "control-state": 3,
     "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "https://sumorum.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "kopub dotum",
+     "kopub batang"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 16,
+    "h1": 14,
+    "display": 46.1715,
+    "ratio": 2.89,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 16,
+    "control-state": 4,
+    "form-label": 3,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-inn",
+   "url": "https://www.celestepension.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "default-accent",
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "default-accent",
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "gowun batang",
+     "gowun dodum"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 16,
+    "h1": null,
+    "display": 76,
+    "ratio": 4.75,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.57,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 36,
+    "control-state": 3,
+    "accessible-name": 1,
+    "viewport-bounds": 1
    }
   },
   {
@@ -53886,6 +61897,83 @@
    "split": "tune",
    "status": "error",
    "error": "Could not load https://www.yongpyong.co.kr/: page.goto: Timeout 45000ms exceeded."
+  },
+  {
+   "category": "KR-inn",
+   "url": "https://www.yystarps.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 43,
+   "band": "medium",
+   "signals": [
+    "gradient-text",
+    "default-accent",
+    "card-grid",
+    "generic-type",
+    "many-hues",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "gradient-text",
+    "default-accent",
+    "card-grid",
+    "generic-type",
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "inter"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 16,
+    "h1": 64,
+    "display": 64,
+    "ratio": 4,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 46,
+    "target-size": 16,
+    "viewport-bounds": 9,
+    "control-state": 7,
+    "accessible-name": 3,
+    "aria-reference": 1
+   }
   },
   {
    "category": "KR-kmed",
@@ -56344,7 +64432,7 @@
    "url": "http://www.xn--v42bw8twlaa350p.kr/",
    "split": "tune",
    "status": "error",
-   "error": "unreachable"
+   "error": "Could not load http://www.xn--v42bw8twlaa350p.kr/: HTTP 403 at https://www.xn--v42bw8twlaa350p.kr/; HTTP 403 at https://www.xn--v42bw8twlaa350p.kr/"
   },
   {
    "category": "KR-kmed",
@@ -56962,6 +65050,438 @@
    },
    "ja": null,
    "quality": {}
+  },
+  {
+   "category": "KR-maker",
+   "url": "http://www.djf.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato",
+     "arial"
+    ],
+    "sizes": 10,
+    "weights": 5,
+    "body": 13,
+    "h1": null,
+    "display": 44.8,
+    "ratio": 3.45,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 27,
+    "viewport-bounds": 14,
+    "control-state": 9,
+    "target-size": 8,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "KR-maker",
+   "url": "http://www.kgmetal.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [],
+    "sizes": 0,
+    "weights": 0,
+    "body": 16,
+    "h1": null,
+    "display": 0,
+    "ratio": null,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
+  },
+  {
+   "category": "KR-maker",
+   "url": "http://www.koaautomotive.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "roboto"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 17,
+    "h1": 0,
+    "display": 57.15,
+    "ratio": 3.36,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 114,
+    "text-contrast": 36,
+    "form-label": 5,
+    "control-state": 4,
+    "accessible-name": 3,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-maker",
+   "url": "http://www.pangum.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "generic-type"
+   ],
+   "scored": [
+    "generic-type"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans"
+    ],
+    "sizes": 6,
+    "weights": 5,
+    "body": 16,
+    "h1": 16,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 9,
+    "target-size": 6,
+    "viewport-bounds": 1,
+    "horizontal-overflow": 1,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-maker",
+   "url": "http://www.shingwang.co/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanumbarungothic",
+     "tahoma"
+    ],
+    "sizes": 8,
+    "weights": 4,
+    "body": 14,
+    "h1": 40,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     249,
+     249,
+     249
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 27,
+    "text-contrast": 16,
+    "accessible-name": 7,
+    "control-state": 4,
+    "form-label": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-maker",
+   "url": "https://dabonst.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman"
+    ],
+    "sizes": 3,
+    "weights": 2,
+    "body": 16,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "target-size": 15,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-maker",
+   "url": "https://wsdf.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "font-r",
+     "font-b"
+    ],
+    "sizes": 8,
+    "weights": 5,
+    "body": 20,
+    "h1": null,
+    "display": 56,
+    "ratio": 2.8,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.1,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 18,
+    "control-state": 11,
+    "accessible-name": 6,
+    "viewport-bounds": 4
+   }
   },
   {
    "category": "KR-maker",
@@ -57587,6 +66107,72 @@
   },
   {
    "category": "KR-maker",
+   "url": "https://www.shinseng.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "malgun gothic",
+     "applesdgothicneo-regular"
+    ],
+    "sizes": 13,
+    "weights": 5,
+    "body": 17,
+    "h1": 18,
+    "display": 80,
+    "ratio": 4.71,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.11,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 35,
+    "viewport-bounds": 10,
+    "font-loading": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-maker",
    "url": "https://www.sidiz.com/",
    "split": "tune",
    "status": "ok",
@@ -57841,6 +66427,73 @@
     "text-contrast": 15,
     "accessible-name": 7,
     "form-label": 1
+   }
+  },
+  {
+   "category": "KR-maker",
+   "url": "https://zeidindus.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "glass",
+    "generic-type",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "glass",
+    "generic-type"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 8,
+    "weights": 5,
+    "body": 16,
+    "h1": 14,
+    "display": 48,
+    "ratio": 3,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.27,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 6,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 34,
+    "accessible-name": 1
    }
   },
   {
@@ -58403,6 +67056,561 @@
    "url": "https://www.xi.co.kr/",
    "split": "tune",
    "status": "robots"
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://aewolbakery.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 3,
+    "weights": 4,
+    "body": 12,
+    "h1": null,
+    "display": 13.5,
+    "ratio": 1.13,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 7,
+    "text-contrast": 6,
+    "accessible-name": 3,
+    "control-state": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://domaseoul.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "centered",
+    "numbered-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "numbered-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 4,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0.9,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanum myeongjo",
+     "nanumsquare",
+     "nanum gothic",
+     "sans-serif"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 18,
+    "h1": null,
+    "display": 60,
+    "ratio": 3.33,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.95,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 15,
+    "control-state": 5,
+    "viewport-bounds": 4,
+    "target-size": 4,
+    "accessible-name": 3,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://edge230.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "paper-serif"
+   ],
+   "scored": [
+    "paper-serif"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0.5,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system",
+     "old standard tt",
+     "playball"
+    ],
+    "sizes": 7,
+    "weights": 1,
+    "body": 10,
+    "h1": 67.68,
+    "display": 103.68,
+    "ratio": 10.37,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     241,
+     236,
+     225
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 10,
+    "viewport-bounds": 1,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://fonduecroissant.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "generic-type"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0.3,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto",
+     "cormorant",
+     "poppins"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 12,
+    "h1": 72,
+    "display": 72,
+    "ratio": 6,
+    "webfonts": 9
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.28,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 104,
+    "text-contrast": 52,
+    "control-state": 33,
+    "viewport-bounds": 6,
+    "form-label": 2,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://onjisim-ikseon.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 24,
+   "band": "low",
+   "signals": [
+    "eyebrow-pill",
+    "centered",
+    "generic-type",
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [
+    "eyebrow-pill",
+    "centered",
+    "generic-type"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 7,
+    "weights": 5,
+    "body": 18,
+    "h1": 60,
+    "display": 60,
+    "ratio": 3.33,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     250,
+     248,
+     245
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.78,
+    "rounded": 0.11,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 1,
+    "control-state": 1,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://thebreadbag.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0.25,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "libre baskerville",
+     "noto sans kr",
+     "material icons"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 16,
+    "h1": null,
+    "display": 86,
+    "ratio": 5.38,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     217,
+     217,
+     217
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.27,
+    "rounded": 0.22,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 31,
+    "accessible-name": 10,
+    "control-state": 4
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://woncoffee.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "centered",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 2,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "oswald",
+     "bebas kai"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 12,
+    "h1": null,
+    "display": 20,
+    "ratio": 1.67,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.44,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 2
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 33,
+    "viewport-bounds": 6,
+    "accessible-name": 2,
+    "control-state": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "KR-restaurant",
+   "url": "https://zelkovacafe.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all",
+    "empty-frames"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "imweb sans english",
+     "eb garamond"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 16,
+    "h1": 48,
+    "display": 48,
+    "ratio": 3,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.46,
+    "rounded": 0.08,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 126,
+    "accessible-name": 29,
+    "viewport-bounds": 8,
+    "control-state": 7,
+    "label-consistency": 2,
+    "horizontal-overflow": 1
+   }
   },
   {
    "category": "KR-salon",
@@ -61797,6 +71005,853 @@
     "text-contrast": 120,
     "control-state": 19,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://asungsoft.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman"
+    ],
+    "sizes": 2,
+    "weights": 2,
+    "body": 16,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
+  },
+  {
+   "category": "KR-software",
+   "url": "https://celery.ai.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 44,
+   "band": "medium",
+   "signals": [
+    "eyebrow-pill",
+    "boxed-icons",
+    "buzzword-copy",
+    "generic-type",
+    "many-hues",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "eyebrow-pill",
+    "boxed-icons",
+    "buzzword-copy",
+    "generic-type",
+    "many-hues"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 14
+   },
+   "type": {
+    "families": [
+     "-apple-system"
+    ],
+    "sizes": 8,
+    "weights": 4,
+    "body": 14,
+    "h1": 48,
+    "display": 48,
+    "ratio": 3.43,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.57,
+    "rounded": 0.08,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 36
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://newgenwise.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 17,
+    "h1": 17,
+    "display": 48,
+    "ratio": 2.82,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     25,
+     42,
+     70
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 24,
+    "viewport-bounds": 20,
+    "control-state": 13,
+    "form-label": 4,
+    "accessible-name": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://onewms.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 52,
+   "band": "medium",
+   "signals": [
+    "purple-gradient",
+    "buzzword-copy",
+    "centered",
+    "nested-cards",
+    "generic-type",
+    "many-hues",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "purple-gradient",
+    "buzzword-copy",
+    "centered",
+    "nested-cards",
+    "generic-type",
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 13,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 18,
+    "h1": 46,
+    "display": 58,
+    "ratio": 3.22,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.11,
+    "cardGrids": 0,
+    "largeGradients": 5,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 41,
+    "viewport-bounds": 17,
+    "accessible-name": 3,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://retools.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "over-rounded",
+    "flat-scale",
+    "empty-frames"
+   ],
+   "scored": [
+    "over-rounded",
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "sora",
+     "ibm plex sans kr"
+    ],
+    "sizes": 4,
+    "weights": 3,
+    "body": 17,
+    "h1": 56,
+    "display": 17,
+    "ratio": 1,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.75,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 3
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://seedssoft.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "suitmedium",
+     "montserratbold",
+     "suitbold",
+     "montserratsemibold"
+    ],
+    "sizes": 10,
+    "weights": 1,
+    "body": 16,
+    "h1": 84,
+    "display": 54,
+    "ratio": 3.38,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.42,
+    "rounded": 0.04,
+    "cardGrids": 0,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 43,
+    "control-state": 35,
+    "viewport-bounds": 12,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://sendus.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 83,
+   "band": "high",
+   "signals": [
+    "gradient-text",
+    "emoji-icons",
+    "card-grid",
+    "large-gradient",
+    "eyebrow-pill",
+    "boxed-icons",
+    "generic-cta"
+   ],
+   "scored": [
+    "gradient-text",
+    "emoji-icons",
+    "card-grid",
+    "large-gradient",
+    "eyebrow-pill",
+    "boxed-icons"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 21,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 7
+   },
+   "type": {
+    "families": [
+     "pretendard variable"
+    ],
+    "sizes": 17,
+    "weights": 5,
+    "body": 13,
+    "h1": 60,
+    "display": 60,
+    "ratio": 4.62,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.57,
+    "cardGrids": 5,
+    "largeGradients": 3,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 42,
+    "label-consistency": 2
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://whyworks.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 28,
+   "band": "low",
+   "signals": [
+    "centered",
+    "tracked-labels",
+    "generic-type",
+    "flat-scale",
+    "accent-word",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "tracked-labels",
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 2,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 12,
+    "weights": 6,
+    "body": 13,
+    "h1": 51.2,
+    "display": 51.2,
+    "ratio": 3.94,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     254,
+     251
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.55,
+    "rounded": 0.29,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 2
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 39,
+    "label-consistency": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://www.emro.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 38,
+   "band": "medium",
+   "signals": [
+    "large-gradient",
+    "centered",
+    "gradient-text",
+    "glow",
+    "generic-type",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient",
+    "centered",
+    "gradient-text",
+    "glow",
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 14,
+    "weights": 6,
+    "body": 24,
+    "h1": null,
+    "display": 48,
+    "ratio": 2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.72,
+    "rounded": 0.07,
+    "cardGrids": 0,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 71,
+    "control-state": 33,
+    "aria-reference": 20,
+    "accessible-name": 8,
+    "form-label": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://www.kanapp.net/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 71,
+   "band": "high",
+   "signals": [
+    "gradient-text",
+    "large-gradient",
+    "card-grid",
+    "glass",
+    "boxed-icons",
+    "buzzword-copy",
+    "glow",
+    "generic-type",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "gradient-text",
+    "large-gradient",
+    "card-grid",
+    "glass",
+    "boxed-icons",
+    "buzzword-copy",
+    "glow",
+    "generic-type"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 6
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "audiowide"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 16,
+    "h1": 96,
+    "display": 96,
+    "ratio": 6,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0.46,
+    "cardGrids": 1,
+    "largeGradients": 4,
+    "glass": 3,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 30
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://www.prever.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 25,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto",
+     "comic sans ms",
+     "arial"
+    ],
+    "sizes": 14,
+    "weights": 4,
+    "body": 17,
+    "h1": 84,
+    "display": 93.3333,
+    "ratio": 5.49,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.21,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 80,
+    "control-state": 6,
+    "target-size": 2
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://www.sherpasoft.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 35,
+   "band": "medium",
+   "signals": [
+    "large-gradient",
+    "card-grid",
+    "glow",
+    "nested-cards",
+    "gradient-text"
+   ],
+   "scored": [
+    "large-gradient",
+    "card-grid",
+    "glow",
+    "nested-cards",
+    "gradient-text"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0.14,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "fraunces"
+    ],
+    "sizes": 13,
+    "weights": 5,
+    "body": 20,
+    "h1": 50,
+    "display": 64,
+    "ratio": 3.2,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.23,
+    "rounded": 0.55,
+    "cardGrids": 1,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 53,
+    "control-state": 17,
+    "label-consistency": 4
    }
   },
   {
