@@ -11,6 +11,7 @@ import {spawnBounded} from './execute.mjs';
 import {collectJaTypography,evaluateJaTypography} from './ja-typography.mjs';
 import {compactSite,compareToReference,loadJaReference,renderReference} from './reference.mjs';
 import {jaReport} from './ja-copy.mjs';
+import {readAllow,findAllow,applyAllow} from './allow.mjs';
 import {gradeScreenshot} from './scan-grade.mjs';
 import {compareScans,findAutoPrevious,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
 
@@ -62,7 +63,7 @@ export function detectLang(view){
  return ['ja','ko'].includes(declared)?declared:'en';
 }
 
-export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000,screenshots=true,keepRaw=false,grade=false}={}){
+export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=null,source=null,compare=null,timeoutMs=45000,screenshots=true,keepRaw=false,grade=false,allow}={}){
  if(lang!=='auto'&&!scanLangs.includes(lang))throw Error(`Unsupported report language: ${lang}`);
  const url=scanTarget(input),dir=path.resolve(out),browserLoc=locale||(lang==='auto'?hintLocale(url):browserLocale[lang]);
  // Load the previous scan and keep its screenshots before this run can overwrite them in the same folder.
@@ -100,7 +101,9 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
  if(!ok.length)throw Error(`Could not load ${url}: ${views.map(v=>v.error).join('; ')}`);
  const langSource=lang==='auto'?'page':'option';
  if(lang==='auto')lang=detectLang(ok[0]);
- const tells=mergeTells(ok,lang);
+ // Signals the project keeps on purpose (ui-refiner-allow.json beside the page or in the working directory, or `allow`).
+ const allowFile=allow===undefined?await findAllow(input):null,allowed=Array.isArray(allow)?allow:allowFile?await readAllow(allowFile):[];
+ const tells=mergeTells(ok,lang,allowed);
  const quality=groupQuality(views),japanese=mergeJa(ok,lang);
  const result={schemaVersion:1,tool:'ui-refiner scan',advisory:true,blocking:false,url,scannedAt:new Date().toISOString(),lang,langSource,locale:browserLoc,aiLook:tells,quality,japanese,
   views:views.map(({metrics,quality,ja,...v})=>({...v,typography:metrics?.typography,inspectedElements:metrics?.inspected,totalElements:metrics?.total})),
@@ -118,10 +121,11 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
 }
 
 /** Desktop drives the design read; later viewports add any signal it missed. Pure; reused for offline rescoring. */
-export function mergeTells(views,lang){
+export function mergeTells(views,lang,allow=[]){
  const tells=evaluateAiTells(views[0].metrics,{lang});
  for(const v of views.slice(1))for(const s of evaluateAiTells(v.metrics,{lang}).signals)if(!tells.signals.some(x=>x.id===s.id))tells.signals.push({...s,viewport:v.viewport});
  tells.absent=tells.absent.filter(id=>!tells.signals.some(s=>s.id===id));
+ applyAllow(tells,allow);
  Object.assign(tells,scoreSignals(tells.signals,tells.craft));tells.signals.sort((a,b)=>b.weight-a.weight);
  tells.breakdown=scoreBreakdown(tells.signals,tells.craft);tells.verdict=aiVerdict(tells.score);
  for(const s of tells.signals)s.points=tells.breakdown.rows.find(r=>r.id===s.id)?.points??0;
@@ -156,8 +160,8 @@ export function groupQuality(views){
 }
 
 const t={
- ko:{whyScore:'왜 이 점수인가',reason:'이유',pts:'점수',unscored:'참고만',unscoredNote:'사람이 만든 사이트에도 흔해 점수에 넣지 않습니다',craftRow:'의도된 디자인 신호',capRow:'100점 상한',total:'합계',point:'점',verdicts:{ai:'판정: AI가 만든 사이트로 보입니다.',traces:'판정: AI가 만든 흔적이 일부 있습니다.',none:'판정: AI가 만든 사이트로 보이지 않습니다.'},basis:'20점 이상이면 AI가 만든 사이트로 보고, 8–19점이면 흔적이 일부 있다고 봅니다. 보정에 쓴 사이트에서 AI가 만든 사이트의 66–73%가 20점 이상이었고, 사람이 만든 사이트는 0–15%(일본 참고 사이트는 1%)였습니다. 누가 만들었는지를 증명하는 것은 아니고, 화면이 그렇게 보인다는 뜻입니다.',jaType:'일본어 타이포그래피',jaNone:'일본어 조판에서 눈에 띄는 문제를 찾지 못했습니다.',craft:'의도된 디자인 신호',crafts:{'custom-webfont':'직접 고른 웹폰트','imagery':'실제 이미지·영상','type-scale':'풍부한 글자 크기 단계'},craftNote:'점수를 낮췄지만 신호가 사라지지는 않습니다',title:'디자인 점검',index:'AI 티 지수',bands:{high:'높음',medium:'보통',low:'낮음',none:'없음'},note:'휴리스틱 신호이며 차단 판정이 아닙니다. 승인된 브랜드 선택이면 유지하세요.',shots:'스크린샷',signals:'AI 티 신호 (강한 순)',none:'뚜렷한 AI 티 신호를 찾지 못했습니다.',strength:{strong:'강',moderate:'중',weak:'약'},evidence:'근거',targets:'대상',why:'왜',fix:'제안',quality:'기본 품질 (실제 렌더링 측정)',qnone:'측정한 보편 규칙에서 문제를 찾지 못했습니다.',rule:'규칙',count:'요소 수',vp:'뷰포트',ex:'예시',stat:'소스 정적 검사 (suta)',good:'피한 것',next:'에이전트가 이어서 할 일',steps:['위 스크린샷을 직접 열어 본다. 첫 화면에서 "무슨 서비스이고 무엇을 하라는지" 3초 안에 읽히는지, 시선이 어디서 시작해 어디로 가는지 적는다.','신호 목록을 그대로 나열하지 말고, 근본 원인 2~3개로 묶어 리디자인 방향을 제안한다(예: "장식으로 위계를 대신함" → 그라데이션·글로우·배지 제거 + 타이포 크기 대비).','각 제안에 보존할 것(문구의 사실, 링크 목적지, 폼 필드, 브랜드 색/서체)을 명시한다.','코드를 고칠 수 있으면 suta 패턴(vendor/suta/skills/suta)을 참고해 수정하고 `ui-refiner scan`을 다시 돌려 신호가 줄었는지 비교한다.','업무형 화면(대시보드·설정·표)은 시스템 서체·높은 밀도가 정상일 수 있다. 화면 목적에 맞지 않는 지적은 근거와 함께 기각한다.'],error:'불러오기 실패'},
- en:{whyScore:'Why this score',reason:'Reason',pts:'Points',unscored:'noted only',unscoredNote:'common on human-made sites too, so it adds nothing to the score',craftRow:'Deliberate-design sign',capRow:'Cap at 100',total:'Total',point:' pts',verdicts:{ai:'Verdict: this looks like an AI-made site.',traces:'Verdict: this shows some traces of an AI-made site.',none:'Verdict: this does not look like an AI-made site.'},basis:'20 or more reads as AI-made; 8–19 as some traces. In calibration, 66–73% of AI-made sites and 0–15% of human-made sites scored 20 or more (1% of the Japanese reference sites). It does not prove who made the page; it says how the screen reads.',jaType:'Japanese typography',jaNone:'No notable Japanese typesetting issues found.',craft:'Deliberate-design signals',crafts:{'custom-webfont':'chosen webfont','imagery':'real imagery','type-scale':'rich type scale'},craftNote:'score dampened; signals still apply',title:'Design scan',index:'AI-look index',bands:{high:'high',medium:'medium',low:'low',none:'none'},note:'Heuristic signals, not a blocking verdict. Keep anything that is an approved brand choice.',shots:'Screenshots',signals:'AI-look signals (strongest first)',none:'No clear AI-look signals found.',strength:{strong:'strong',moderate:'moderate',weak:'weak'},evidence:'Evidence',targets:'Targets',why:'Why',fix:'Suggestion',quality:'Baseline quality (rendered measurements)',qnone:'No issues in the universal rules measured.',rule:'Rule',count:'Elements',vp:'Viewports',ex:'Example',stat:'Source static audit (suta)',good:'Avoided',next:'Next steps for the agent',steps:['Open the screenshots. Can you tell in three seconds what this is and what to do? Note where the eye starts and where it goes.','Do not just list signals: group them into 2–3 root causes and propose a redesign direction (e.g. "decoration replaces hierarchy" → drop gradients/glows/badges, strengthen type contrast).','For each proposal, state what must be preserved (factual copy, link targets, form fields, brand color/typeface).','If you can edit the code, use the suta patterns (vendor/suta/skills/suta), then rerun `ui-refiner scan` and compare signals.','Operational screens (dashboards, settings, tables) may legitimately use system fonts and high density. Reject findings that do not fit the surface purpose, with a reason.'],error:'load failed'},
+ ko:{allowed:'허용',allowedNote:'프로젝트가 의도한 선택이라고 `ui-refiner-allow.json`에 이유와 함께 적어 둔 신호라서 점수에 넣지 않습니다',whyScore:'왜 이 점수인가',reason:'이유',pts:'점수',unscored:'참고만',unscoredNote:'사람이 만든 사이트에도 흔해 점수에 넣지 않습니다',craftRow:'의도된 디자인 신호',capRow:'100점 상한',total:'합계',point:'점',verdicts:{ai:'판정: AI가 만든 사이트로 보입니다.',unclear:'판정: AI가 만든 사이트인지 판정하기 어렵습니다.',none:'판정: AI가 만든 사이트로 보이지 않습니다.'},basis:'20점 이상이면 AI가 만든 사이트로 봅니다. 보정에 쓴 사이트에서 AI가 만든 사이트의 66–73%가 20점 이상이었고, 사람이 만든 사이트는 0–15%였습니다(일본 참고 사이트 209곳은 1%, 한국 참고 사이트 180곳은 약 9%이고 그중 소프트웨어 업종은 31%). 8–19점은 판정하기 어려운 구간입니다: 사람이 만든 일본 참고 사이트의 5분의 1, 한국 참고 사이트의 약 4분의 1이 이 구간에 듭니다. 누가 만들었는지를 증명하는 것은 아니고, 화면이 그렇게 보인다는 뜻입니다.',jaType:'일본어 타이포그래피',jaNone:'일본어 조판에서 눈에 띄는 문제를 찾지 못했습니다.',craft:'의도된 디자인 신호',crafts:{'custom-webfont':'직접 고른 웹폰트','imagery':'실제 이미지·영상','type-scale':'풍부한 글자 크기 단계'},craftNote:'점수를 낮췄지만 신호가 사라지지는 않습니다',title:'디자인 점검',index:'AI 티 지수',bands:{high:'높음',medium:'보통',low:'낮음',none:'없음'},note:'휴리스틱 신호이며 차단 판정이 아닙니다. 승인된 브랜드 선택이면 유지하세요.',shots:'스크린샷',signals:'AI 티 신호 (강한 순)',none:'뚜렷한 AI 티 신호를 찾지 못했습니다.',strength:{strong:'강',moderate:'중',weak:'약'},evidence:'근거',targets:'대상',why:'왜',fix:'제안',quality:'기본 품질 (실제 렌더링 측정)',qnone:'측정한 보편 규칙에서 문제를 찾지 못했습니다.',rule:'규칙',count:'요소 수',vp:'뷰포트',ex:'예시',stat:'소스 정적 검사 (suta)',good:'피한 것',next:'에이전트가 이어서 할 일',steps:['위 스크린샷을 직접 열어 본다. 첫 화면에서 "무슨 서비스이고 무엇을 하라는지" 3초 안에 읽히는지, 시선이 어디서 시작해 어디로 가는지 적는다.','신호 목록을 그대로 나열하지 말고, 근본 원인 2~3개로 묶어 리디자인 방향을 제안한다(예: "장식으로 위계를 대신함" → 그라데이션·글로우·배지 제거 + 타이포 크기 대비).','각 제안에 보존할 것(문구의 사실, 링크 목적지, 폼 필드, 브랜드 색/서체)을 명시한다.','코드를 고칠 수 있으면 suta 패턴(vendor/suta/skills/suta)을 참고해 수정하고 `ui-refiner scan`을 다시 돌려 신호가 줄었는지 비교한다.','업무형 화면(대시보드·설정·표)은 시스템 서체·높은 밀도가 정상일 수 있다. 화면 목적에 맞지 않는 지적은 근거와 함께 기각한다.'],error:'불러오기 실패'},
+ en:{allowed:'allowed',allowedNote:'the project lists this signal in `ui-refiner-allow.json` as deliberate, with its reason, so it adds nothing to the score',whyScore:'Why this score',reason:'Reason',pts:'Points',unscored:'noted only',unscoredNote:'common on human-made sites too, so it adds nothing to the score',craftRow:'Deliberate-design sign',capRow:'Cap at 100',total:'Total',point:' pts',verdicts:{ai:'Verdict: this looks like an AI-made site.',unclear:'Verdict: unclear whether this is an AI-made site.',none:'Verdict: this does not look like an AI-made site.'},basis:'20 or more reads as AI-made. In calibration, 66–73% of AI-made sites and 0–15% of human-made sites scored 20 or more (1% of 209 Japanese reference sites; about 9% of 180 Korean reference sites, 31% among Korean software sites). 8–19 is unclear: a fifth of the Japanese and about a quarter of the Korean human-made reference sites score in that range. It does not prove who made the page; it says how the screen reads.',jaType:'Japanese typography',jaNone:'No notable Japanese typesetting issues found.',craft:'Deliberate-design signals',crafts:{'custom-webfont':'chosen webfont','imagery':'real imagery','type-scale':'rich type scale'},craftNote:'score dampened; signals still apply',title:'Design scan',index:'AI-look index',bands:{high:'high',medium:'medium',low:'low',none:'none'},note:'Heuristic signals, not a blocking verdict. Keep anything that is an approved brand choice.',shots:'Screenshots',signals:'AI-look signals (strongest first)',none:'No clear AI-look signals found.',strength:{strong:'strong',moderate:'moderate',weak:'weak'},evidence:'Evidence',targets:'Targets',why:'Why',fix:'Suggestion',quality:'Baseline quality (rendered measurements)',qnone:'No issues in the universal rules measured.',rule:'Rule',count:'Elements',vp:'Viewports',ex:'Example',stat:'Source static audit (suta)',good:'Avoided',next:'Next steps for the agent',steps:['Open the screenshots. Can you tell in three seconds what this is and what to do? Note where the eye starts and where it goes.','Do not just list signals: group them into 2–3 root causes and propose a redesign direction (e.g. "decoration replaces hierarchy" → drop gradients/glows/badges, strengthen type contrast).','For each proposal, state what must be preserved (factual copy, link targets, form fields, brand color/typeface).','If you can edit the code, use the suta patterns (vendor/suta/skills/suta), then rerun `ui-refiner scan` and compare signals.','Operational screens (dashboards, settings, tables) may legitimately use system fonts and high density. Reject findings that do not fit the surface purpose, with a reason.'],error:'load failed'},
  ja:jaReport
 };
 const severity={ko:{high:'높음',medium:'중간',low:'낮음'},ja:{high:'高',medium:'中',low:'低'},en:{high:'high',medium:'medium',low:'low'}};
@@ -169,15 +173,15 @@ export function renderScan(r){
  if(a.breakdown){
   // The score, row by row: what each signal added, what deliberate design took off, and the verdict it leads to.
   lines.push(h(x.whyScore),'',`| ${x.reason} | ${x.pts} |`,'|---|---:|');
-  for(const s of a.signals)lines.push(`| ${s.title} | ${s.weight>0?'+'+s.points:`0 (${x.unscored})`} |`);
+  for(const s of a.signals)lines.push(`| ${s.title} | ${s.weight>0?'+'+s.points:s.allowed?`0 (${x.allowed}: ${s.allowed.replace(/\|/g,'/')})`:`0 (${x.unscored})`} |`);
   for(const c of a.breakdown.craft)lines.push(`| ${x.craftRow}: ${x.crafts[c.id]} | ${c.points<0?'−'+(-c.points):0} |`);
   if(a.breakdown.cap)lines.push(`| ${x.capRow} | −${-a.breakdown.cap} |`);
-  lines.push(`| **${x.total}** | **${a.score}** |`,'',`**${x.verdicts[a.verdict]}** ${x.basis}`,...(a.signals.some(s=>!s.weight)?['',`${x.unscored}: ${x.unscoredNote}.`]:[]),'');
+  lines.push(`| **${x.total}** | **${a.score}** |`,'',`**${x.verdicts[a.verdict]}** ${x.basis}`,...(a.signals.some(s=>!s.weight&&!s.allowed)?['',`${x.unscored}: ${x.unscoredNote}.`]:[]),...(a.signals.some(s=>s.allowed)?['',`${x.allowed}: ${x.allowedNote}.`]:[]),'');
  }
  lines.push(h(x.signals),'');
  if(!a.signals.length)lines.push(x.none,'');
  for(const s of a.signals){
-  lines.push(`### [${x.strength[s.strength]}] ${s.title}${s.viewport?` (${s.viewport})`:''}${a.breakdown?s.weight>0?` · +${s.points}${x.point}`:` · ${x.unscored}`:''}`,'',`- ${x.evidence}: \`${JSON.stringify(s.evidence)}\``);
+  lines.push(`### [${x.strength[s.strength]}] ${s.title}${s.viewport?` (${s.viewport})`:''}${a.breakdown?s.weight>0?` · +${s.points}${x.point}`:` · ${s.allowed?x.allowed:x.unscored}`:''}`,'',`- ${x.evidence}: \`${JSON.stringify(s.evidence)}\``);
   if(s.targets?.length)lines.push(`- ${x.targets}: ${s.targets.slice(0,4).map(v=>'`'+v+'`').join(', ')}`);
   lines.push(`- ${x.why}: ${s.why}`,`- **${x.fix}:** ${s.fix}`,'');
  }

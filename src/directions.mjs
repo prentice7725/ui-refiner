@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {scanUrl} from './scan.mjs';
 import {countStandIns} from './photos.mjs';
+import {FAMILIAR_TYPE} from './refine-log.mjs';
 import {readLog,readDeal,historyWarnings,pickNotes,projectOf,humanHeroShare,accentFamily,leadColour,SHEET_JSON} from './refine-log.mjs';
 
 
@@ -158,7 +159,9 @@ export async function compareDirections(dir,{lang='auto',timeoutMs=45000,log}={}
  const items=[],share=await humanHeroShare(),deal=await readDeal(root);let sheetLang=lang==='auto'?null:lang;
  for(const [i,file] of files.entries()){
   const out=path.join(root,'_scans',file.replace(/\.html?$/i,''));
-  const {result:r}=await scanUrl(path.join(root,file),{out,lang,compare:false,timeoutMs,keepRaw:true});
+  // The familiar direction uses a plain, widely used family on purpose; its mock is not marked down for it.
+  const lane=deal?.structures?.find(x=>x.label===String.fromCharCode(65+i))?.lane;
+  const {result:r}=await scanUrl(path.join(root,file),{out,lang,compare:false,timeoutMs,keepRaw:true,allow:lane==='familiar'?[FAMILIAR_TYPE]:[]});
   sheetLang??=r.lang;
   const m=r.raw?.find(v=>v.viewport==='desktop')?.metrics??r.raw?.[0]?.metrics;delete r.raw;
   const rel=v=>path.relative(root,path.join(out,`scan-${v}.png`)).split(path.sep).join('/');
