@@ -19,7 +19,7 @@ A target reads flat when it does less than the rest of the page already does: th
 - **Add nothing from outside.** No new colour, no new face, no gradient, glow, shadow or motion the direction does not already have. In benchmark round 15, colours handed to a page from outside its subject made eight pages differ and made each one worse.
 - **One move, made completely.** Then quiet what is around it, so the move can be read. When everything gets louder, the page gets flatter.
 - **By direction:**
-  - *familiar*: stay plain. A larger photograph, a headline at the upper end of what human-made sites use (on the Japanese sites measured, nine in ten keep the largest text under about 4.3 times the body), more room around the main action. Not a second colour.
+  - *familiar*: stay plain. A larger photograph, a headline at the upper end of what human-made sites use (nine in ten of the sites measured keep the largest text under about 4.3 times the body in Japan and 5 times in Korea; when the deal carried `measured` figures for the trade, stay near them), more room around the main action. Not a second colour.
   - *tailored*: push the display face and the signature element, the two things this direction is built on.
   - *bold*: bring the material's own surfaces to full strength in the first screen and in one other place, as its Rhythm section allows. Not in every section.
 - **Test the structure without the words.** If the target only works once the copy is back, the boldness is in the type size and not in the design.
