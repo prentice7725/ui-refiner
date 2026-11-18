@@ -300,7 +300,8 @@ export function scoreBreakdown(signals,craft=[]){
 }
 /**
  * What the score says about the page. 20 is where a refine starts and where calibration separates the two groups:
- * 66–73% of AI-made sites and 0–15% of human-made sites score 20 or more (1% of the Japanese reference sites).
+ * 66–73% of AI-made sites and 0–15% of human-made sites score 20 or more (1% of the Japanese reference sites, 11% of
+ * the Korean ones and 31% of Korean software sites; data/kr-reference).
  */
 export const AI_VERDICT_AT=20,AI_TRACES_AT=8;
 export const aiVerdict=score=>score>=AI_VERDICT_AT?'ai':score>=AI_TRACES_AT?'traces':'none';
