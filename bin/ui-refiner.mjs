@@ -29,11 +29,12 @@ const help=`UI Refiner 0.8.0 — de-AI web design review and UI quality gate
   ui-refiner directions <folder of .html mocks> [--lang auto|ko|ja|en] [--json]
       scans each design-direction mock and writes DIRECTIONS.html and DIRECTIONS.md side by side, so a person can choose one;
       warns when mocks share a surface, type pair or hero layout, ignore their deal, or repeat a choice made for another project
-  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--trade <trade>] [--tone calm|warm|technical|bold] [--lang en|ja|ko] [--no-photo] [--log file] [--json]
+  ui-refiner directions deal <folder> [--kind software|service|place|public|company|studio|media] [--trade <trade>] [--tone calm|warm|technical|bold] [--lang en|ja|ko] [--no-photo] [--log file] [--seed n] [--json]
       assigns each of three mocks a hero structure (as common on human-made sites of that kind) and a material
       (a finished look: ground, colours, faces, surfaces, controls) that fits the tone and kind, avoiding what was chosen
       recently for other projects;
-      --no-photo skips structures that need a real photo
+      --no-photo skips structures that need a real photo; --seed fixes the draw (for benchmarks: two runs with one
+      seed differ only in their inputs)
   ui-refiner directions record <folder> --pick A|B|C [--page name] [--log file]
       remembers the picked direction (default log: ~/.ui-refiner/refine-log.json, or UI_REFINER_HOME)
   ui-refiner directions verify <folder> <applied page> [--pick A|B|C] [--json]
@@ -77,7 +78,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -118,7 +119,8 @@ try{
     else console.log(r.photos.map(p=>`${p.file}  ${p.width}x${p.height}  ${p.author} (${p.licence})  ${p.source}`).join('\n')+`\n[PHOTOS] ${r.photos.length} stand-ins in ${r.dir} (credits.json)\nCredit line for the footer:\n${r.credit}`);
   }
   else if(command==='directions'&&sub==='deal'&&args._.length===3){
-    const r=await dealDirections(args._[2],{log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,trade:args.trade,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
+    if(args.seed!=null&&!/^\d+$/.test(String(args.seed)))throw new Error('--seed must be a whole number');
+    const r=await dealDirections(args._[2],{...(args.seed!=null?{seed:Number(args.seed)}:{}),log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,trade:args.trade,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log((r.trade?(r.tradeMeasured?`[TRADE] ${r.trade}: A follows ${r.structures[0].measured.sites} human-made sites of this trade in ${r.structures[0].measured.country}\n`:`[TRADE] ${r.trade}: too few sites of this trade measured for this language; A follows the page kind\n`):'')+(r.tone?`[TONE] ${r.tone}: ${r.toneBrief}
 `:'')+r.structures.map(d=>`${d.label} · ${d.lane}: ${d.key} — ${d.brief}${d.humanShare!=null?` (${Math.round(d.humanShare*100)}% of human-made sites of this kind)`:''}${d.surface?`
