@@ -113,6 +113,8 @@ ui-refiner scan your-site.example
 2. 익숙한 안, 맞춤 안, 과감한 안을 각각 다른 서브에이전트가 만들고, 나란히 보여 준 뒤(`refine-directions/DIRECTIONS.html`) 고를 때까지 기다립니다.
 3. 페이지를 다시 짜고, 검사한 뒤 다시 스캔합니다.
 
+고른 뒤에 "조금 더 과감하게"나 "가격 섹션만 더 차분하게"라고 하면, 새로 만들지 않고 그 페이지가 이미 가진 서체·색·요소의 강도만 조절합니다.
+
 리포트는 페이지 언어(영어, 한국어, 일본어)를 따릅니다.
 
 ## 더 보기
@@ -122,7 +124,7 @@ ui-refiner scan your-site.example
 - [변경 기록](CHANGELOG.md)
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
-![Version](https://img.shields.io/badge/version-0.7.0-1b1e24)
+![Version](https://img.shields.io/badge/version-0.8.0-1b1e24)
 ![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
