@@ -2381,3 +2381,94 @@
 {"host":"weidong.com","skipped":"robots.txt unreachable"}
 {"host":"jobindustry.co.kr","trade":"hiring","kind":"service","country":"KR","ground":"light","accent":"amber","share":{"white":0.893,"image":0.101,"amber":0.006},"rootBg":[255,255,255]}
 {"host":"mediajob.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"nsart.or.kr","skipped":"robots.txt unreachable"}
+{"host":"kctc.co.kr","skipped":"robots.txt unreachable"}
+{"host":"pknu.ac.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"kira.or.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"ulsan.go.kr","skipped":"page.goto: net::ERR_EMPTY_RESPONSE at https://www.ulsan.go.kr/s/museum/main.ulsa"}
+{"host":"cha.go.kr","skipped":"robots.txt unreachable"}
+{"host":"kobe-np.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"kosa.or.kr","skipped":"robots.txt unreachable"}
+{"host":"gokea.org","skipped":"page.evaluate: TypeError: Failed to execute 'getComputedStyle' on 'Window': para"}
+{"host":"inha.ac.kr","skipped":"page.evaluate: TypeError: Failed to execute 'getComputedStyle' on 'Window': para"}
+{"host":"chunichi.co.jp","trade":"media","kind":"media","country":"JP","ground":"light","accent":"blue","share":{"tint":0.411,"white":0.589},"rootBg":[255,255,255]}
+{"host":"chiba-u.ac.jp","skipped":"robots.txt unreachable"}
+{"host":"poscofuturem.com","trade":"hiring","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.667,"image":0.333},"rootBg":[255,255,255]}
+{"host":"work24.go.kr","skipped":"Cannot read properties of undefined (reading 'cells')"}
+{"host":"doowoo.co.kr","skipped":"page.evaluate: TypeError: Failed to execute 'getComputedStyle' on 'Window': para"}
+{"host":"fomek.or.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"hmm21.com","skipped":"robots.txt unreachable"}
+{"host":"saramin.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"openwork.jp","trade":"hiring","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"blue":0.039,"image":0.089,"white":0.845,"tint":0.003,"green":0.024},"rootBg":[255,255,255]}
+{"host":"doda.jp","skipped":"robots.txt unreachable"}
+{"host":"gamejob.co.kr","trade":"hiring","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.801,"image":0.199},"rootBg":[255,255,255]}
+{"host":"weidong.com","skipped":"robots.txt unreachable"}
+{"host":"chahongsalon.com","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.143,"image":0.214,"tint":0.643},"rootBg":[91,91,91]}
+{"host":"mediajob.co.kr","trade":"hiring","kind":"service","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.821,"image":0.179},"rootBg":[255,255,255]}
+{"host":"idhair.com","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"red","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"xeohair.com","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.929,"dark":0.036,"white":0.036},"rootBg":[255,255,255]}
+{"host":"parkjun.com","skipped":"robots.txt unreachable"}
+{"host":"hairthebeau.co.kr","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"pschair.co.kr","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.372,"image":0.628},"rootBg":[255,255,255]}
+{"host":"lloydbomb.com","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"tint":0.074,"white":0.074,"image":0.851},"rootBg":[255,255,255]}
+{"host":"de-blur.com","trade":"design","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":0.795,"image":0.205},"rootBg":[255,255,255]}
+{"host":"studio-jt.co.kr","trade":"design","kind":"company","country":"KR","ground":"image","accent":"indigo","share":{"white":0.214,"image":0.786},"rootBg":[255,255,255]}
+{"host":"plus-ex.com","trade":"design","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"designfever.com","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":1},"rootBg":[0,0,0]}
+{"host":"does.kr","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"white":0.137,"image":0.28,"dark":0.583},"rootBg":[255,255,255]}
+{"host":"osc-studio.com","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":1},"rootBg":[0,0,0]}
+{"host":"wshow.kr","trade":"design","kind":"company","country":"KR","ground":"light","accent":"red","share":{"white":0.976,"dark":0.012,"image":0.012},"rootBg":[255,255,255]}
+{"host":"sodiumpartners.com","trade":"design","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"image":0.583,"white":0.417},"rootBg":[254,255,250]}
+{"host":"design.co.kr","trade":"media","kind":"media","country":"KR","ground":"light","accent":"green","share":{"white":0.923,"image":0.012,"red":0.065},"rootBg":[255,255,255]}
+{"host":"cdr.co.kr","trade":"design","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.345,"image":0.655},"rootBg":[255,255,255]}
+{"host":"roundlab.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.137,"image":0.86,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"abib.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"dark":0.071,"white":0.202,"image":0.726},"rootBg":[255,255,255]}
+{"host":"torriden.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"numbuzin.com","trade":"cosmetics","kind":"company","country":"KR","ground":"light","accent":"pink","share":{"dark":0.071,"white":0.869,"image":0.06},"rootBg":[255,255,255]}
+{"host":"aestura.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"chahong.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.44,"image":0.56},"rootBg":[255,255,255]}
+{"host":"skin1004korea.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"smilegate.com","trade":"game","kind":"company","country":"KR","ground":"indigo","accent":"ink","share":{"white":0.068,"image":0.009,"indigo":0.911,"orange":0.006,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"nexon.com","trade":"game","kind":"company","country":"KR","ground":"dark","accent":"green","share":{"dark":0.524,"image":0.429,"white":0.048},"rootBg":[255,255,255]}
+{"host":"webzen.co.kr","trade":"game","kind":"company","country":"KR","ground":"red","accent":"indigo","share":{"image":0.696,"red":0.268,"dark":0.036},"rootBg":[238,49,36]}
+{"host":"bodychannel.co.kr","trade":"fitness","kind":"place","country":"KR","ground":"light","accent":"pink","share":{"white":0.75,"image":0.235,"pink":0.015},"rootBg":[255,255,255]}
+{"host":"thebodychannel.co.kr","trade":"fitness","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.14,"image":0.86},"rootBg":[255,255,255]}
+{"host":"gymboxx.com","trade":"fitness","kind":"place","country":"KR","ground":"dark","accent":"indigo","share":{"image":0.006,"dark":0.988,"red":0.006},"rootBg":[3,3,3]}
+{"host":"m.frogfitness.co.kr","trade":"fitness","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"dark":0.14,"image":0.375,"tint":0.482,"white":0.003},"rootBg":[255,255,255]}
+{"host":"edamtax.com","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"white":0.089,"image":0.911},"rootBg":[255,255,255]}
+{"host":"taxgn.co.kr","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"white":0.164,"image":0.545,"dark":0.292},"rootBg":[255,255,255]}
+{"host":"dasoltax.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"gaduktax.com","trade":"tax","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"image":0.229,"white":0.771},"rootBg":[255,255,255]}
+{"host":"taxhome.co.kr","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.408,"image":0.574,"blue":0.006,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"gmtax.co.kr","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.19,"image":0.795,"blue":0.006,"amber":0.009},"rootBg":[255,255,255]}
+{"host":"seoultax.kr","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"image":0.622,"white":0.348,"tint":0.03},"rootBg":[255,255,255]}
+{"host":"daesungtax.co.kr","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"white":0.301,"image":0.699},"rootBg":[255,255,255]}
+{"host":"taxly.kr","trade":"tax","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.878,"image":0.122},"rootBg":[255,255,255]}
+{"host":"yswed.co.kr","trade":"wedding","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"tint":0.676,"image":0.324},"rootBg":[222,218,215]}
+{"host":"w-square.kr","trade":"wedding","kind":"place","country":"KR","ground":"light","accent":"brown","share":{"tint":0.994,"image":0.006},"rootBg":[250,246,239]}
+{"host":"wiconvention.co.kr","trade":"wedding","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.14,"image":0.86},"rootBg":[255,255,255]}
+{"host":"thechapel.co.kr","trade":"wedding","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.812,"image":0.187},"rootBg":[255,255,255]}
+{"host":"apelgamo.com","trade":"wedding","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.812,"image":0.187},"rootBg":[255,255,255]}
+{"host":"luvel.com","trade":"wedding","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.792,"image":0.208},"rootBg":[255,255,255]}
+{"host":"chungdamvilladegd.com","trade":"wedding","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.762,"white":0.238},"rootBg":[255,255,255]}
+{"host":"nonhyeonvilladegd.com","trade":"wedding","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.762,"white":0.238},"rootBg":[255,255,255]}
+{"host":"suzuki.co.jp","trade":"car","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.905,"white":0.095},"rootBg":[255,255,255]}
+{"host":"wocon.co.kr","trade":"wedding","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.399,"image":0.601},"rootBg":[255,255,255]}
+{"host":"mazda.co.jp","trade":"car","kind":"company","country":"JP","ground":"image","accent":"orange","share":{"white":0.17,"image":0.81,"tint":0.012,"orange":0.009},"rootBg":[255,255,255]}
+{"host":"daihatsu.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"isuzu.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"hino.co.jp","skipped":"robots.txt unreachable"}
+{"host":"mitsuoka-motor.com","trade":"car","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"image":0.631,"white":0.369},"rootBg":[255,255,255]}
+{"host":"kurumaerabi.com","trade":"car","kind":"company","country":"JP","ground":"light","accent":"blue","share":{"tint":0.074,"white":0.839,"image":0.086},"rootBg":[255,255,255]}
+{"host":"autobacs.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"lava-intl.co.jp","skipped":"robots.txt unreachable"}
+{"host":"autoc-one.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"konami.com","trade":"fitness","kind":"place","country":"JP","ground":"image","accent":"red","share":{"image":0.58,"red":0.048,"white":0.122,"tint":0.107,"dark":0.143},"rootBg":[255,255,255]}
+{"host":"tokyu-sports.com","trade":"fitness","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"image":0.509,"white":0.47,"orange":0.015,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"shop.sportsoasis.co.jp","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"white":0.327,"image":0.565,"blue":0.012,"tint":0.095},"rootBg":[255,255,255]}
+{"host":"spaworld.co.jp","skipped":"robots.txt unreachable"}
+{"host":"hinatanoyu.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"red","share":{"image":0.994,"white":0.006},"rootBg":[255,255,255]}
+{"host":"spasuminoe.jp","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"image":0.625,"white":0.366,"green":0.009},"rootBg":[255,255,255]}
+{"host":"naniwanoyu.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"red","share":{"red":0.071,"white":0.205,"image":0.723},"rootBg":[255,255,255]}
+{"host":"yu-bath.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"image":0.682,"white":0.012,"dark":0.307},"rootBg":[35,26,20]}
+{"host":"naniwa-utopia.com","trade":"wellness","kind":"place","country":"JP","ground":"light","accent":"blue","share":{"white":0.86,"image":0.128,"blue":0.012},"rootBg":[255,255,255]}

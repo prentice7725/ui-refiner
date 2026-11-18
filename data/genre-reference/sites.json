@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-18T10:55:38.767Z",
+ "collectedAt": "2026-11-18T12:10:36.966Z",
  "sites": [
   {
    "category": "JP-academy",
@@ -4280,6 +4280,85 @@
   },
   {
    "category": "JP-car",
+   "url": "https://autoc-one.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 19,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino sans",
+     "noto sans jp",
+     "dinnextltpro"
+    ],
+    "sizes": 15,
+    "weights": 3,
+    "body": 13,
+    "h1": null,
+    "display": 52,
+    "ratio": 4,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.03,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 13,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tracking",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 62,
+    "target-size": 23,
+    "control-state": 3
+   }
+  },
+  {
+   "category": "JP-car",
    "url": "https://brue.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -4517,6 +4596,86 @@
   },
   {
    "category": "JP-car",
+   "url": "https://www.autobacs.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "nested-cards",
+    "hero-cta-below",
+    "transition-all"
+   ],
+   "scored": [
+    "nested-cards"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 13,
+    "nestedHosts": 4,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "outfit"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 16,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.68,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 28,
+    "control-state": 15,
+    "accessible-name": 10,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "JP-car",
    "url": "https://www.chargetrip.com/",
    "split": "tune",
    "status": "ok",
@@ -4596,6 +4755,83 @@
   },
   {
    "category": "JP-car",
+   "url": "https://www.daihatsu.co.jp/index.htm",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans japanese",
+     "游ゴシック体"
+    ],
+    "sizes": 7,
+    "weights": 4,
+    "body": 12,
+    "h1": 16,
+    "display": 28,
+    "ratio": 2.33,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     239,
+     240,
+     241
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.72,
+    "fontFallback": 0.93,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 98,
+    "accessible-name": 3,
+    "font-loading": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-car",
    "url": "https://www.esrbespoke.au/",
    "split": "tune",
    "status": "ok",
@@ -4661,6 +4897,157 @@
     "accessible-name": 12,
     "target-size": 12,
     "label-consistency": 11
+   }
+  },
+  {
+   "category": "JP-car",
+   "url": "https://www.hino.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 3,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system",
+     "yugothic"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 20,
+    "h1": null,
+    "display": 30,
+    "ratio": 1.5,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 3
+   },
+   "ja": {
+    "jaRatio": 0.7,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "control-state": 19,
+    "text-contrast": 12,
+    "viewport-bounds": 11,
+    "target-size": 2,
+    "form-label": 1,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-car",
+   "url": "https://www.isuzu.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体",
+     "arial"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 16,
+    "h1": 32,
+    "display": 36,
+    "ratio": 2.25,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 31,
+    "control-state": 3,
+    "accessible-name": 2,
+    "target-size": 2
    }
   },
   {
@@ -4738,6 +5125,242 @@
     "control-state": 8,
     "accessible-name": 3,
     "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "JP-car",
+   "url": "https://www.kurumaerabi.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "numbered-labels",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "numbered-labels"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 4,
+    "periodHeadings": 0,
+    "headings": 28,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 1,
+    "nestedHosts": 1,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "helvetica neue",
+     "arial"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 14,
+    "h1": 10,
+    "display": 22,
+    "ratio": 1.57,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.03,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.83,
+    "fontFallback": 0.01,
+    "lineHeight": 1.6,
+    "bodySize": 14,
+    "tightShare": 0.17,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 1081,
+    "text-contrast": 87,
+    "target-size": 19,
+    "form-label": 9,
+    "accessible-name": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-car",
+   "url": "https://www.mazda.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "mazdatype"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 14,
+    "h1": null,
+    "display": 34,
+    "ratio": 2.43,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.43,
+    "fontFallback": 0,
+    "lineHeight": 1.67,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "aria-reference": 23,
+    "control-state": 17,
+    "text-contrast": 13,
+    "accessible-name": 7,
+    "target-size": 2,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "JP-car",
+   "url": "https://www.mitsuoka-motor.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "notera",
+     "open sans"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 15,
+    "h1": 16,
+    "display": 79.2,
+    "ratio": 5.28,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.54,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 52,
+    "control-state": 18,
+    "accessible-name": 9,
+    "viewport-bounds": 1
    }
   },
   {
@@ -4967,6 +5590,82 @@
     "label-consistency": 2,
     "text-contrast": 1,
     "control-state": 1
+   }
+  },
+  {
+   "category": "JP-car",
+   "url": "https://www.suzuki.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 5,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "noto serif jp"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 14,
+    "h1": null,
+    "display": 34,
+    "ratio": 2.43,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 16,
+    "tightShare": 0.5,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 44,
+    "target-size": 4,
+    "accessible-name": 2,
+    "control-state": 2,
+    "viewport-bounds": 2
    }
   },
   {
@@ -33198,6 +33897,79 @@
   },
   {
    "category": "JP-fitness",
+   "url": "https://www.konami.com/sportsclub/fitness/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 20,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 4,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "source-han-sans-japanese",
+     "oswald",
+     "montserrat"
+    ],
+    "sizes": 16,
+    "weights": 6,
+    "body": 16,
+    "h1": 32,
+    "display": 50,
+    "ratio": 3.13,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.11,
+    "rounded": 0.23,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 46,
+    "control-state": 3,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "JP-fitness",
    "url": "https://www.megalos.co.jp/",
    "split": "holdout",
    "status": "ok",
@@ -33588,6 +34360,82 @@
    "quality": {
     "text-contrast": 46,
     "control-state": 6,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-fitness",
+   "url": "https://www.tokyu-sports.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "montserrat"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 16,
+    "h1": null,
+    "display": 80,
+    "ratio": 5,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.22,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.85,
+    "fontFallback": 0,
+    "lineHeight": 2.25,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 65,
+    "viewport-bounds": 55,
+    "control-state": 13,
+    "horizontal-overflow": 1,
     "accessible-name": 1
    }
   },
@@ -58970,8 +59818,78 @@
    "category": "JP-media",
    "url": "https://www.kobe-np.co.jp/",
    "split": "tune",
-   "status": "error",
-   "error": "Could not load https://www.kobe-np.co.jp/: page.goto: Timeout 45000ms exceeded."
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 14,
+    "h1": 32,
+    "display": 22,
+    "ratio": 1.57,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.01,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny",
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "text-contrast": 134,
+    "accessible-name": 77,
+    "target-size": 2,
+    "control-state": 2
+   }
   },
   {
    "category": "JP-media",
@@ -78250,6 +79168,82 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://lava-intl.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yakuhanjps"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 14,
+    "h1": 44,
+    "display": 56,
+    "ratio": 4,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.52,
+    "fontFallback": 0,
+    "lineHeight": 1.75,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 37,
+    "viewport-bounds": 18,
+    "control-state": 8,
+    "accessible-name": 5,
+    "target-size": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://momentia.jp/",
    "split": "holdout",
    "status": "ok",
@@ -78325,6 +79319,316 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://naniwa-utopia.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 14,
+   "band": "low",
+   "signals": [
+    "centered",
+    "over-rounded",
+    "transition-all",
+    "accent-word"
+   ],
+   "scored": [
+    "centered",
+    "over-rounded"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zenmarugothic-medium"
+    ],
+    "sizes": 6,
+    "weights": 1,
+    "body": 15,
+    "h1": 28,
+    "display": 24,
+    "ratio": 1.6,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.83,
+    "rounded": 0.93,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 39,
+    "accessible-name": 5,
+    "control-state": 5
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://naniwanoyu.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "emoji-icons",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "emoji-icons"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif jp",
+     "georgia",
+     "noto sans jp",
+     "times new roman"
+    ],
+    "sizes": 20,
+    "weights": 5,
+    "body": 14,
+    "h1": 25.6,
+    "display": 117,
+    "ratio": 8.36,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0.09,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0.02,
+    "lineHeight": 1.8,
+    "bodySize": 14.4,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 110,
+    "accessible-name": 2,
+    "control-state": 1,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://shop.sportsoasis.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato"
+    ],
+    "sizes": 6,
+    "weights": 2,
+    "body": 15,
+    "h1": 16,
+    "display": 18,
+    "ratio": 1.2,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.03,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 42,
+    "text-contrast": 33,
+    "control-state": 2,
+    "form-label": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://spasuminoe.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif jp",
+     "cormorant infant"
+    ],
+    "sizes": 13,
+    "weights": 3,
+    "body": 14,
+    "h1": 16,
+    "display": 48,
+    "ratio": 3.43,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.18,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.79,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "text-contrast": 13,
+    "target-size": 11,
+    "viewport-bounds": 4,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://www.biograph.com/",
    "split": "tune",
    "status": "ok",
@@ -78396,6 +79700,73 @@
     "text-contrast": 186,
     "accessible-name": 26,
     "target-size": 4
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://www.hinatanoyu.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "shippori mincho",
+     "noto sans jp"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 16,
+    "h1": 52,
+    "display": 52,
+    "ratio": 3.25,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.28,
+    "rounded": 0.38,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 54,
+    "control-state": 7
    }
   },
   {
@@ -78537,6 +79908,82 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://www.spaworld.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 12,
+    "weights": 2,
+    "body": 20,
+    "h1": 16,
+    "display": 32,
+    "ratio": 1.6,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.46,
+    "fontFallback": 0.01,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 384,
+    "viewport-bounds": 13,
+    "accessible-name": 7,
+    "control-state": 6,
+    "target-size": 2
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://www.spectrum.life/",
    "split": "tune",
    "status": "ok",
@@ -78610,6 +80057,87 @@
     "control-state": 4,
     "viewport-bounds": 3,
     "label-consistency": 2
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://yu-bath.com/t-bath/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "emoji-icons",
+    "transition-all"
+   ],
+   "scored": [
+    "emoji-icons"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 39,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen old mincho",
+     "yu gothic"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 16,
+    "h1": 16,
+    "display": 36,
+    "ratio": 2.25,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     35,
+     26,
+     20
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 67,
+    "control-state": 17,
+    "target-size": 5,
+    "accessible-name": 3,
+    "viewport-bounds": 1
    }
   },
   {
@@ -81755,6 +83283,138 @@
   },
   {
    "category": "KR-cosmetics",
+   "url": "https://abib.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "circularstd",
+     "helvetica"
+    ],
+    "sizes": 15,
+    "weights": 4,
+    "body": 17,
+    "h1": null,
+    "display": 42,
+    "ratio": 2.47,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.54,
+    "rounded": 0.71,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 75,
+    "viewport-bounds": 59,
+    "control-state": 37,
+    "target-size": 18
+   }
+  },
+  {
+   "category": "KR-cosmetics",
+   "url": "https://chahong.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 8,
+    "weights": 5,
+    "body": 11,
+    "h1": 12,
+    "display": 28,
+    "ratio": 2.55,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 22,
+    "control-state": 14,
+    "accessible-name": 4,
+    "label-consistency": 1,
+    "viewport-bounds": 1,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-cosmetics",
    "url": "https://nonfiction.com/",
    "split": "tune",
    "status": "ok",
@@ -81822,6 +83482,72 @@
     "accessible-name": 5,
     "text-contrast": 2,
     "label-consistency": 2
+   }
+  },
+  {
+   "category": "KR-cosmetics",
+   "url": "https://numbuzin.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 24,
+    "h1": null,
+    "display": 60,
+    "ratio": 2.5,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0.17,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 44,
+    "viewport-bounds": 33,
+    "text-contrast": 30,
+    "accessible-name": 7,
+    "target-size": 5,
+    "form-label": 1
    }
   },
   {
@@ -81894,6 +83620,215 @@
     "accessible-name": 8,
     "target-size": 6,
     "form-label": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-cosmetics",
+   "url": "https://roundlab.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat"
+    ],
+    "sizes": 15,
+    "weights": 5,
+    "body": 13,
+    "h1": null,
+    "display": 45,
+    "ratio": 3.46,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.9,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 344,
+    "text-contrast": 30,
+    "control-state": 21,
+    "accessible-name": 3,
+    "font-loading": 1,
+    "form-label": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-cosmetics",
+   "url": "https://skin1004korea.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "generic-type",
+    "flat-scale",
+    "transition-all",
+    "default-accent"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 3,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat",
+     "applesdgothicneor"
+    ],
+    "sizes": 9,
+    "weights": 5,
+    "body": 16,
+    "h1": null,
+    "display": 30,
+    "ratio": 1.88,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.32,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 3
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 65,
+    "viewport-bounds": 54,
+    "control-state": 18,
+    "accessible-name": 12,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-cosmetics",
+   "url": "https://www.aestura.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 5,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 20,
+    "h1": 0,
+    "display": 44,
+    "ratio": 2.2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.43,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 89,
+    "text-contrast": 9,
+    "control-state": 7,
+    "target-size": 4,
+    "accessible-name": 3,
+    "aria-reference": 3,
     "horizontal-overflow": 1
    }
   },
@@ -82413,6 +84348,70 @@
    "quality": {
     "text-contrast": 42,
     "label-consistency": 1
+   }
+  },
+  {
+   "category": "KR-cosmetics",
+   "url": "https://www.torriden.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 7,
+    "weights": 5,
+    "body": 15,
+    "h1": 24,
+    "display": 60,
+    "ratio": 4,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.09,
+    "rounded": 0.33,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 90,
+    "text-contrast": 36,
+    "target-size": 6,
+    "accessible-name": 2,
+    "horizontal-overflow": 1,
+    "control-state": 1
    }
   },
   {
@@ -87810,6 +89809,131 @@
   },
   {
    "category": "KR-design",
+   "url": "http://wshow.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "flat-scale"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 1,
+    "headings": 2633,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "agsuperblackgothic"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 40,
+    "h1": null,
+    "display": 40,
+    "ratio": 1,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 8,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
+  },
+  {
+   "category": "KR-design",
+   "url": "https://cdr.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "freesentation"
+    ],
+    "sizes": 3,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 16,
+    "ratio": 1.23,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "target-size": 24,
+    "text-contrast": 5
+   }
+  },
+  {
+   "category": "KR-design",
    "url": "https://hoao.kr/",
    "split": "holdout",
    "status": "ok",
@@ -87865,6 +89989,205 @@
    "quality": {
     "text-contrast": 55,
     "target-size": 34
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://osc-studio.com/",
+   "split": "holdout",
+   "status": "error",
+   "error": "Could not load https://osc-studio.com/: HTTP 403 at https://osc-studio.com/; HTTP 403 at https://osc-studio.com/"
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.de-blur.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "inter",
+     "pretendardvariable"
+    ],
+    "sizes": 10,
+    "weights": 2,
+    "body": 17,
+    "h1": 60,
+    "display": 48,
+    "ratio": 2.82,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 9
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.designfever.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "scored": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 3,
+    "weights": 2,
+    "body": 26,
+    "h1": 0,
+    "display": 26,
+    "ratio": 1,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     0,
+     0,
+     0
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 83,
+    "text-contrast": 18,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.does.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yoongothic",
+     "averta"
+    ],
+    "sizes": 6,
+    "weights": 4,
+    "body": 15,
+    "h1": 14,
+    "display": 40,
+    "ratio": 2.67,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "target-size": 15,
+    "control-state": 5,
+    "viewport-bounds": 4,
+    "accessible-name": 2
    }
   },
   {
@@ -87931,6 +90254,204 @@
     "target-size": 4,
     "viewport-bounds": 3,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.plus-ex.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "scored": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto"
+    ],
+    "sizes": 6,
+    "weights": 2,
+    "body": 18,
+    "h1": 16,
+    "display": 24,
+    "ratio": 1.33,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 5,
+    "control-state": 4,
+    "viewport-bounds": 1,
+    "text-contrast": 1
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.sodiumpartners.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "generic-type"
+   ],
+   "scored": [
+    "generic-type"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "poppins"
+    ],
+    "sizes": 4,
+    "weights": 4,
+    "body": 14,
+    "h1": 56,
+    "display": 56,
+    "ratio": 4,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     254,
+     255,
+     250
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 40,
+    "control-state": 23,
+    "accessible-name": 8,
+    "viewport-bounds": 6
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.studio-jt.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-type",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosanskr",
+     "montserrat",
+     "arial"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 18,
+    "h1": 19,
+    "display": 40,
+    "ratio": 2.22,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.21,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 8,
+    "control-state": 2,
+    "viewport-bounds": 1
    }
   },
   {
@@ -94326,6 +96847,143 @@
   },
   {
    "category": "KR-fitness",
+   "url": "https://gymboxx.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 1,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "poppins",
+     "helvetica"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 15,
+    "h1": 80,
+    "display": 80,
+    "ratio": 5.33,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     3,
+     3,
+     3
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 111,
+    "text-contrast": 34,
+    "accessible-name": 23,
+    "target-size": 5
+   }
+  },
+  {
+   "category": "KR-fitness",
+   "url": "https://m.frogfitness.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "malgun gothic",
+     "verdana",
+     "arial"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 12,
+    "h1": 26,
+    "display": 15,
+    "ratio": 1.25,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.95,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 13,
+    "control-state": 9,
+    "text-contrast": 7,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-fitness",
    "url": "https://www.ablegym.co.kr/",
    "split": "holdout",
    "status": "ok",
@@ -94390,6 +97048,75 @@
     "control-state": 6,
     "accessible-name": 5,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-fitness",
+   "url": "https://www.bodychannel.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "purple-gradient",
+    "buzzword-copy",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "purple-gradient",
+    "buzzword-copy"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 3,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "oswald"
+    ],
+    "sizes": 11,
+    "weights": 5,
+    "body": 12,
+    "h1": 112,
+    "display": 112,
+    "ratio": 9.33,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 3
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 19,
+    "accessible-name": 1
    }
   },
   {
@@ -94665,6 +97392,76 @@
     "text-contrast": 32,
     "control-state": 22,
     "aria-reference": 1
+   }
+  },
+  {
+   "category": "KR-fitness",
+   "url": "https://www.thebodychannel.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "period-headlines",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "period-headlines"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 5,
+    "headings": 28,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "wfont_4fd5bb_cc77c4597ee2467eb77c06b66f5f4624",
+     "space grotesk",
+     "helvetica-w01-light",
+     "helvetica-w01-roman"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 17,
+    "h1": null,
+    "display": 83.2501,
+    "ratio": 4.9,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.33,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 104,
+    "text-contrast": 12,
+    "target-size": 4
    }
   },
   {
@@ -96628,6 +99425,79 @@
   },
   {
    "category": "KR-game",
+   "url": "https://www.nexon.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "malgun gothic",
+     "nexon gothic bold",
+     "nexon gothic"
+    ],
+    "sizes": 10,
+    "weights": 2,
+    "body": 12,
+    "h1": 12,
+    "display": 24,
+    "ratio": 2,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 597,
+    "text-contrast": 89,
+    "target-size": 29,
+    "accessible-name": 7,
+    "control-state": 3,
+    "horizontal-overflow": 1,
+    "font-loading": 1,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-game",
    "url": "https://www.nhn.com/",
    "split": "tune",
    "status": "ok",
@@ -96760,6 +99630,74 @@
   },
   {
    "category": "KR-game",
+   "url": "https://www.smilegate.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "sdgothicneoa-fsm",
+     "sdgothicneoa-emd",
+     "circularxxweb-medium",
+     "circularxxweb-black"
+    ],
+    "sizes": 6,
+    "weights": 4,
+    "body": 14,
+    "h1": 16,
+    "display": 60,
+    "ratio": 4.29,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.19,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 125,
+    "control-state": 27,
+    "text-contrast": 14,
+    "accessible-name": 13,
+    "horizontal-overflow": 1,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "KR-game",
    "url": "https://www.starship-ent.com/",
    "split": "tune",
    "status": "ok",
@@ -96822,6 +99760,71 @@
     "text-contrast": 28,
     "control-state": 3,
     "target-size": 2
+   }
+  },
+  {
+   "category": "KR-game",
+   "url": "https://www.webzen.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanum gothic",
+     "segoe ui"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 13,
+    "h1": 13,
+    "display": 20,
+    "ratio": 1.54,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     238,
+     49,
+     36
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 116,
+    "text-contrast": 20,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -102802,7 +105805,7 @@
    "url": "https://www.poscofuturem.com/recruitment/talent.do",
    "split": "tune",
    "status": "error",
-   "error": "Could not load https://poscofuturem.com/recruitment/talent.do: page.evaluate: TypeError: Set is not a function or its return value is not iterable"
+   "error": "Could not load https://www.poscofuturem.com/recruitment/talent.do: page.evaluate: TypeError: Set is not a function or its return value is not iterable"
   },
   {
    "category": "KR-hiring",
@@ -118327,6 +121330,72 @@
   },
   {
    "category": "KR-media",
+   "url": "https://design.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 26,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "md sans",
+     "designmag sans"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 70,
+    "ratio": 4.38,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.15,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 124,
+    "accessible-name": 41,
+    "target-size": 8,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-media",
    "url": "https://kookje.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -122437,6 +125506,259 @@
   },
   {
    "category": "KR-salon",
+   "url": "http://xeohair.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ng",
+     "ng_b",
+     "garamond"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 12,
+    "h1": 14,
+    "display": 70,
+    "ratio": 5.83,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 68,
+    "control-state": 22,
+    "viewport-bounds": 3,
+    "accessible-name": 3,
+    "form-label": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "KR-salon",
+   "url": "https://chahongsalon.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato"
+    ],
+    "sizes": 7,
+    "weights": 3,
+    "body": 16,
+    "h1": null,
+    "display": 36,
+    "ratio": 2.25,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     91,
+     91,
+     91
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 6,
+    "text-contrast": 5,
+    "target-size": 4,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "KR-salon",
+   "url": "https://hairthebeau.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 16,
+    "h1": null,
+    "display": 0,
+    "ratio": null,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "KR-salon",
+   "url": "https://lloydbomb.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat",
+     "arimo"
+    ],
+    "sizes": 6,
+    "weights": 3,
+    "body": 11,
+    "h1": 18,
+    "display": 50,
+    "ratio": 4.55,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.25,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 18,
+    "control-state": 11,
+    "text-contrast": 10,
+    "accessible-name": 5,
+    "target-size": 5,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-salon",
    "url": "https://www.blueclub.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -122563,6 +125885,71 @@
    },
    "ja": null,
    "quality": {}
+  },
+  {
+   "category": "KR-salon",
+   "url": "https://www.idhair.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "apparel",
+     "gt walsheim"
+    ],
+    "sizes": 8,
+    "weights": 5,
+    "body": 13,
+    "h1": 130.91,
+    "display": 130.91,
+    "ratio": 10.07,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 33,
+    "accessible-name": 4,
+    "viewport-bounds": 2
+   }
   },
   {
    "category": "KR-salon",
@@ -122750,6 +126137,79 @@
     "viewport-bounds": 13,
     "text-contrast": 6,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-salon",
+   "url": "https://www.parkjun.com/",
+   "split": "tune",
+   "status": "error",
+   "error": "unreachable"
+  },
+  {
+   "category": "KR-salon",
+   "url": "https://www.pschair.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 32,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto",
+     "arial"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 15,
+    "h1": null,
+    "display": 40,
+    "ratio": 2.67,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 42,
+    "accessible-name": 22,
+    "control-state": 7,
+    "target-size": 4,
+    "viewport-bounds": 1
    }
   },
   {
@@ -128435,6 +131895,281 @@
   },
   {
    "category": "KR-tax",
+   "url": "http://taxhome.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "empty-frames",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto",
+     "pretendard-regular"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 20,
+    "h1": 32,
+    "display": 54,
+    "ratio": 2.7,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 32,
+    "control-state": 3,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "KR-tax",
+   "url": "http://www.daesungtax.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 33,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 13,
+    "weights": 3,
+    "body": 20,
+    "h1": 32,
+    "display": 50,
+    "ratio": 2.5,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.41,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 39,
+    "aria-reference": 24,
+    "control-state": 23,
+    "form-label": 9,
+    "accessible-name": 4,
+    "viewport-bounds": 4,
+    "target-size": 3,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-tax",
+   "url": "http://www.seoultax.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "accent-word",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "noto sans",
+     "dotum",
+     "nanum gothic"
+    ],
+    "sizes": 10,
+    "weights": 5,
+    "body": 16,
+    "h1": 24,
+    "display": 54,
+    "ratio": 3.38,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.37,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 61,
+    "control-state": 13,
+    "text-contrast": 11,
+    "target-size": 2
+   }
+  },
+  {
+   "category": "KR-tax",
+   "url": "https://taxly.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 24,
+   "band": "low",
+   "signals": [
+    "card-grid",
+    "large-gradient",
+    "generic-type",
+    "flat-scale",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "card-grid",
+    "large-gradient"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 16,
+    "h1": null,
+    "display": 30,
+    "ratio": 1.88,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 5,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 82,
+    "text-contrast": 72,
+    "form-label": 2
+   }
+  },
+  {
+   "category": "KR-tax",
    "url": "https://www.bznav.com/",
    "split": "holdout",
    "status": "ok",
@@ -128510,6 +132245,146 @@
   },
   {
    "category": "KR-tax",
+   "url": "https://www.dasoltax.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all",
+    "default-accent"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 20,
+    "serifDisplay": 0.25,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "noto serif kr",
+     "noto sans",
+     "rosarivo"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 16,
+    "h1": 24,
+    "display": 90,
+    "ratio": 5.63,
+    "webfonts": 8
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 8,
+    "control-state": 7,
+    "text-contrast": 3,
+    "target-size": 3,
+    "viewport-bounds": 1,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "KR-tax",
+   "url": "https://www.edamtax.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "wfont_a6b261_9f58b430fcc0407f9dfca252b96cd56a",
+     "wfont_a6b261_4a163a483ddb4cbdbe673bb840386e53",
+     "wfont_a6b261_d7cfc92691a94c1795d09ed09e1443de",
+     "wfont_17d935_3628ea4bc54146df8085b3df71a2693f"
+    ],
+    "sizes": 10,
+    "weights": 1,
+    "body": 12,
+    "h1": null,
+    "display": 42,
+    "ratio": 3.5,
+    "webfonts": 8
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.49,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 894,
+    "text-contrast": 7,
+    "control-state": 2,
+    "accessible-name": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-tax",
    "url": "https://www.findsemusa.com/",
    "split": "tune",
    "status": "ok",
@@ -128581,6 +132456,136 @@
     "target-size": 1,
     "form-label": 1,
     "control-state": 1
+   }
+  },
+  {
+   "category": "KR-tax",
+   "url": "https://www.gaduktax.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "notokr-medium"
+    ],
+    "sizes": 4,
+    "weights": 2,
+    "body": 18,
+    "h1": 18,
+    "display": 60,
+    "ratio": 3.33,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 21,
+    "text-contrast": 20,
+    "control-state": 6
+   }
+  },
+  {
+   "category": "KR-tax",
+   "url": "https://www.gmtax.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 33,
+   "band": "medium",
+   "signals": [
+    "card-grid",
+    "boxed-icons",
+    "tracked-labels",
+    "generic-type",
+    "accent-word",
+    "empty-frames"
+   ],
+   "scored": [
+    "card-grid",
+    "boxed-icons",
+    "tracked-labels"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 10,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 7
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 10,
+    "weights": 6,
+    "body": 14,
+    "h1": 58,
+    "display": 58,
+    "ratio": 4.14,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 3,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 10
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 40
    }
   },
   {
@@ -128844,6 +132849,73 @@
    "url": "https://www.ssem.kr/",
    "split": "tune",
    "status": "robots"
+  },
+  {
+   "category": "KR-tax",
+   "url": "https://www.taxgn.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "anton",
+     "raleway",
+     "open sans",
+     "belinda-w00-regular"
+    ],
+    "sizes": 10,
+    "weights": 2,
+    "body": 16,
+    "h1": 22,
+    "display": 46,
+    "ratio": 2.88,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.39,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 465,
+    "text-contrast": 123,
+    "control-state": 18,
+    "form-label": 4,
+    "accessible-name": 2,
+    "horizontal-overflow": 1
+   }
   },
   {
    "category": "KR-tax",
@@ -131438,6 +135510,564 @@
   },
   {
    "category": "KR-wedding",
+   "url": "http://chungdamvilladegd.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "flat-scale",
+    "default-accent",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "alegreya",
+     "montserrat",
+     "quicksand",
+     "pretendard"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 30,
+    "ratio": 1.88,
+    "webfonts": 12
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.59,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 33,
+    "accessible-name": 29,
+    "viewport-bounds": 6,
+    "target-size": 4,
+    "control-state": 3,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "http://nonhyeonvilladegd.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "default-accent",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "alegreya",
+     "quicksand",
+     "pretendard"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 14,
+    "h1": null,
+    "display": 30,
+    "ratio": 2.14,
+    "webfonts": 10
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.56,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 36,
+    "text-contrast": 34,
+    "accessible-name": 19,
+    "control-state": 3,
+    "target-size": 3,
+    "label-consistency": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "http://wiconvention.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "empty-frames",
+    "transition-all",
+    "generic-cta",
+    "flat-scale"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "cormorant",
+     "montserrat",
+     "playfair display"
+    ],
+    "sizes": 6,
+    "weights": 1,
+    "body": 16,
+    "h1": 64,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 10
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 22,
+    "accessible-name": 11,
+    "viewport-bounds": 6,
+    "control-state": 5
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "http://www.wocon.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "spoqa han sans neo",
+     "noto serif kr",
+     "spartan",
+     "lato"
+    ],
+    "sizes": 17,
+    "weights": 7,
+    "body": 18,
+    "h1": 36,
+    "display": 72,
+    "ratio": 4,
+    "webfonts": 10
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.65,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 64,
+    "accessible-name": 6,
+    "control-state": 6,
+    "form-label": 3,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "https://apelgamo.com/home/index",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "__montserrat_305ab1"
+    ],
+    "sizes": 9,
+    "weights": 5,
+    "body": 12,
+    "h1": null,
+    "display": 47,
+    "ratio": 3.92,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 89,
+    "control-state": 88,
+    "text-contrast": 58,
+    "accessible-name": 7,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "https://luvel.com/home/index",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "__montserrat_adcfb5"
+    ],
+    "sizes": 9,
+    "weights": 5,
+    "body": 12,
+    "h1": null,
+    "display": 47,
+    "ratio": 3.92,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 79,
+    "control-state": 73,
+    "text-contrast": 47,
+    "accessible-name": 6,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "https://thechapel.co.kr/home/index",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "__montserrat_760570"
+    ],
+    "sizes": 9,
+    "weights": 5,
+    "body": 12,
+    "h1": null,
+    "display": 47,
+    "ratio": 3.92,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 94,
+    "control-state": 92,
+    "text-contrast": 54,
+    "accessible-name": 6,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "https://w-square.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "centered",
+    "tracked-labels",
+    "flat-scale",
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [
+    "centered",
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 4,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "cormorant garamond"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 13,
+    "h1": null,
+    "display": 24,
+    "ratio": 1.85,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     250,
+     246,
+     239
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.55,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 1,
+    "tracked": 4
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 56
+   }
+  },
+  {
+   "category": "KR-wedding",
    "url": "https://www.amoris.co.kr/",
    "split": "tune",
    "status": "error",
@@ -131863,6 +136493,74 @@
     "control-state": 9,
     "accessible-name": 9,
     "viewport-bounds": 6
+   }
+  },
+  {
+   "category": "KR-wedding",
+   "url": "https://www.yswed.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "paper-serif",
+    "transition-all"
+   ],
+   "scored": [
+    "paper-serif"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 1,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto serif cjk kr",
+     "libre baskerville",
+     "lora",
+     "questrial"
+    ],
+    "sizes": 4,
+    "weights": 1,
+    "body": 11,
+    "h1": null,
+    "display": 65,
+    "ratio": 5.91,
+    "webfonts": 8
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     222,
+     218,
+     215
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 5,
+    "viewport-bounds": 4,
+    "accessible-name": 2
    }
   }
  ]
