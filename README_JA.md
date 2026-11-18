@@ -113,6 +113,8 @@ ui-refiner scan your-site.example
 2. 定番案（人が作った同種サイトの実測）、個別案（この顧客の内容から色と書体まで決める）、大胆案（一つの素材で最後まで）を別々のサブエージェントが作り、並べて見せて（`refine-directions/DIRECTIONS.html`）、選ぶまで待ちます。
 3. ページを作り直し、チェックしてから再スキャンします。
 
+選んだあとに「もう少し大胆に」「料金のセクションだけ落ち着かせて」と頼むと、作り直さず、そのページがすでに持つ書体・色・要素の強さだけを調整します。
+
 レポートはページの言語（英語、韓国語、日本語）に合わせます。
 
 ## もっと詳しく
@@ -122,7 +124,7 @@ ui-refiner scan your-site.example
 - [変更履歴](CHANGELOG.md)
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
-![Version](https://img.shields.io/badge/version-0.7.0-1b1e24)
+![Version](https://img.shields.io/badge/version-0.8.0-1b1e24)
 ![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 

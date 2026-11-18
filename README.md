@@ -113,6 +113,8 @@ For a refine, the agent:
 2. builds three directions from three sources, each in its own subagent (familiar: what human-made sites of the kind do, as measured; tailored: colour and type from this client's content; bold: one material throughout), then shows them side by side (`refine-directions/DIRECTIONS.html`) and waits for your pick;
 3. rebuilds the page, verifies it and rescans.
 
+After the pick, "a little bolder" or "quieter on the pricing section" does not start over: it turns up or down the type, colour and elements the page already has.
+
 The report follows the page language: English, Korean or Japanese.
 
 ## Learn more
@@ -122,7 +124,7 @@ The report follows the page language: English, Korean or Japanese.
 - [Changelog](CHANGELOG.md)
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
-![Version](https://img.shields.io/badge/version-0.7.0-1b1e24)
+![Version](https://img.shields.io/badge/version-0.8.0-1b1e24)
 ![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
