@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-18T12:10:36.966Z",
+ "collectedAt": "2026-11-18T12:34:40.677Z",
  "sites": [
   {
    "category": "JP-academy",
@@ -33289,6 +33289,87 @@
   },
   {
    "category": "JP-fitness",
+   "url": "https://pilates-k.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 14,
+    "numbered": 0,
+    "periodHeadings": 2,
+    "headings": 78,
+    "serifDisplay": 0.07,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen old mincho",
+     "brandon-grotesque",
+     "holland",
+     "helvetica neue"
+    ],
+    "sizes": 15,
+    "weights": 5,
+    "body": 16,
+    "h1": 16,
+    "display": 96,
+    "ratio": 6,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     222,
+     215,
+     209
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0.02,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 14
+   },
+   "ja": {
+    "jaRatio": 0.64,
+    "fontFallback": 0.01,
+    "lineHeight": 1.7,
+    "bodySize": 15.94,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tiny",
+     "ja-half-kana",
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 157,
+    "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-fitness",
    "url": "https://rie-tanaka.com/",
    "split": "tune",
    "status": "ok",
@@ -34437,6 +34518,91 @@
     "control-state": 13,
     "horizontal-overflow": 1,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-fitness",
+   "url": "https://www.zenplace.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "card-grid",
+    "nested-cards",
+    "many-hues",
+    "accent-word",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "card-grid",
+    "nested-cards",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 43,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 10,
+    "nestedHosts": 7,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "noto serif jp"
+    ],
+    "sizes": 15,
+    "weights": 4,
+    "body": 16,
+    "h1": 16,
+    "display": 45,
+    "ratio": 2.81,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0.41,
+    "cardGrids": 1,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.59,
+    "fontFallback": 0,
+    "lineHeight": 1.75,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 106,
+    "control-state": 8,
+    "accessible-name": 7,
+    "label-consistency": 1,
+    "form-label": 1
    }
   },
   {
@@ -79244,6 +79410,84 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://manyo.co.jp/mm21/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "default-accent"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiraginosans-w6",
+     "hiraginosans-w3",
+     "メイリオ",
+     "hirakakupron-w3"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 12.8,
+    "ratio": 0.98,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.86,
+    "fontFallback": 0.01,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 181,
+    "accessible-name": 31,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://momentia.jp/",
    "split": "holdout",
    "status": "ok",
@@ -79480,6 +79724,83 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://rakuspa.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "lalezar"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 16,
+    "h1": 25,
+    "display": 72,
+    "ratio": 4.5,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.42,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 9,
+    "target-size": 8,
+    "accessible-name": 3,
+    "control-state": 3
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://shop.sportsoasis.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -79629,6 +79950,79 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://tsurugamine.ryusenjinoyu.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino mincho pro"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 15,
+    "h1": 30.72,
+    "display": 27.648,
+    "ratio": 1.84,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.69,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 374,
+    "control-state": 4,
+    "text-contrast": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://www.biograph.com/",
    "split": "tune",
    "status": "ok",
@@ -79771,6 +80165,93 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://www.hotelmonterey.co.jp/lasoeur_osaka/spa/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "many-hues",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "large-gradient",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino sans",
+     "ヒラギノ明朝 pro w3",
+     "arial",
+     "amiri"
+    ],
+    "sizes": 9,
+    "weights": 6,
+    "body": 12,
+    "h1": 20,
+    "display": 32,
+    "ratio": 2.67,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.23,
+    "rounded": 0.06,
+    "cardGrids": 0,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.82,
+    "fontFallback": 0.02,
+    "lineHeight": 1.8,
+    "bodySize": 14,
+    "tightShare": 0.07,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 47,
+    "viewport-bounds": 14,
+    "target-size": 11,
+    "control-state": 10,
+    "label-consistency": 3,
+    "accessible-name": 3,
+    "font-loading": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://www.myhealthprac.com/",
    "split": "tune",
    "status": "ok",
@@ -79841,6 +80322,81 @@
   },
   {
    "category": "JP-wellness",
+   "url": "https://www.ousama2603.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "shippori mincho",
+     "tenor sans"
+    ],
+    "sizes": 12,
+    "weights": 1,
+    "body": 13,
+    "h1": 13,
+    "display": 29,
+    "ratio": 2.23,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0.02,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.83,
+    "fontFallback": 0,
+    "lineHeight": 1.85,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 64,
+    "target-size": 17,
+    "accessible-name": 9,
+    "control-state": 5
+   }
+  },
+  {
+   "category": "JP-wellness",
    "url": "https://www.radiatinghope.org/",
    "split": "tune",
    "status": "ok",
@@ -79904,6 +80460,156 @@
     "viewport-bounds": 24,
     "control-state": 11,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://www.ryusenjinoyu.com/spametsaotaka/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 35,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosansjp",
+     "galano grotesque alt"
+    ],
+    "sizes": 8,
+    "weights": 4,
+    "body": 16,
+    "h1": 16,
+    "display": 64,
+    "ratio": 4,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.09,
+    "rounded": 0.21,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.69,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 78,
+    "accessible-name": 2,
+    "control-state": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-wellness",
+   "url": "https://www.seibu-leisure.co.jp/niwanoyu/index.html",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yumincho",
+     "yugothic",
+     "eb garamond"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 28,
+    "ratio": 1.75,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.67,
+    "fontFallback": 0.05,
+    "lineHeight": 2.4,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 59,
+    "control-state": 14,
+    "accessible-name": 6,
+    "viewport-bounds": 1
    }
   },
   {
@@ -89870,6 +90576,137 @@
   },
   {
    "category": "KR-design",
+   "url": "https://bndpartners.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ibm plex sans",
+     "optima"
+    ],
+    "sizes": 2,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 16,
+    "ratio": 1,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     114,
+     109,
+     105
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 8,
+    "text-contrast": 5
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://brenden.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "beausite classic"
+    ],
+    "sizes": 5,
+    "weights": 1,
+    "body": 18,
+    "h1": null,
+    "display": 55,
+    "ratio": 3.06,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     0,
+     0,
+     0
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 4,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "KR-design",
    "url": "https://cdr.co.kr/",
    "split": "holdout",
    "status": "ok",
@@ -89993,10 +90830,271 @@
   },
   {
    "category": "KR-design",
+   "url": "https://millimeterlab.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "josefin sans"
+    ],
+    "sizes": 8,
+    "weights": 3,
+    "body": 20,
+    "h1": null,
+    "display": 60,
+    "ratio": 3,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 143,
+    "text-contrast": 49,
+    "accessible-name": 15,
+    "viewport-bounds": 6
+   }
+  },
+  {
+   "category": "KR-design",
    "url": "https://osc-studio.com/",
    "split": "holdout",
    "status": "error",
    "error": "Could not load https://osc-studio.com/: HTTP 403 at https://osc-studio.com/; HTTP 403 at https://osc-studio.com/"
+  },
+  {
+   "category": "KR-design",
+   "url": "https://relay-works.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "abcwhyte"
+    ],
+    "sizes": 2,
+    "weights": 1,
+    "body": 15,
+    "h1": null,
+    "display": 15,
+    "ratio": 1,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     40,
+     40,
+     40
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 6,
+    "text-contrast": 2
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://tbastudio.co.kr/home",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 14,
+    "h1": null,
+    "display": 14,
+    "ratio": 1,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 2,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.brant.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "empty-frames"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 12,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "roboto",
+     "noto sans kr",
+     "cormorant garamond"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 36,
+    "ratio": 2.77,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     0,
+     0,
+     0
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 12
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 6,
+    "viewport-bounds": 1,
+    "control-state": 1
+   }
   },
   {
    "category": "KR-design",
@@ -90058,6 +91156,74 @@
    "ja": null,
    "quality": {
     "text-contrast": 9
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.denod.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "돋움",
+     "cousine"
+    ],
+    "sizes": 2,
+    "weights": 2,
+    "body": 11,
+    "h1": 24,
+    "display": 12,
+    "ratio": 1.09,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 487,
+    "text-contrast": 137,
+    "target-size": 5,
+    "form-label": 4,
+    "control-state": 2,
+    "accessible-name": 1,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -90452,6 +91618,154 @@
     "text-contrast": 8,
     "control-state": 2,
     "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.urbanplay.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "flat-scale",
+    "transition-all",
+    "empty-frames"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans",
+     "helvetica"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 12,
+    "h1": null,
+    "display": 19,
+    "ratio": 1.58,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     0,
+     0,
+     0
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0.67,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 33,
+    "text-contrast": 12,
+    "viewport-bounds": 6,
+    "control-state": 6
+   }
+  },
+  {
+   "category": "KR-design",
+   "url": "https://www.wedidit.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 31,
+   "band": "medium",
+   "signals": [
+    "card-grid",
+    "boxed-icons",
+    "tracked-labels",
+    "numbered-labels",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "card-grid",
+    "boxed-icons",
+    "tracked-labels",
+    "numbered-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 7,
+    "numbered": 3,
+    "periodHeadings": 0,
+    "headings": 30,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 6
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "ui-monospace",
+     "noto sans korean",
+     "system-ui"
+    ],
+    "sizes": 21,
+    "weights": 8,
+    "body": 11,
+    "h1": 56,
+    "display": 56,
+    "ratio": 5.09,
+    "webfonts": 8
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     0,
+     0,
+     0
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0.01,
+    "rounded": 0.01,
+    "cardGrids": 2,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 7
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 422,
+    "label-consistency": 35,
+    "control-state": 25,
+    "viewport-bounds": 6,
+    "target-size": 5,
+    "accessible-name": 1
    }
   },
   {
@@ -98813,6 +100127,211 @@
   },
   {
    "category": "KR-game",
+   "url": "https://cookapps.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "over-rounded",
+    "generic-type",
+    "flat-scale"
+   ],
+   "scored": [
+    "over-rounded"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "clashdisplay"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 16,
+    "h1": null,
+    "display": 48,
+    "ratio": 3,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0.79,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 66,
+    "accessible-name": 11,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "KR-game",
+   "url": "https://crimsondesert.pearlabyss.com/ko-KR/Main",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "strongsword_new",
+     "crimson"
+    ],
+    "sizes": 14,
+    "weights": 2,
+    "body": 18,
+    "h1": 22.4,
+    "display": 96,
+    "ratio": 5.33,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.4,
+    "rounded": 0.03,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 46,
+    "viewport-bounds": 45,
+    "accessible-name": 5,
+    "control-state": 4,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-game",
+   "url": "https://df.floor.line.games/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "emoji-icons",
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "emoji-icons",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "noto sans kr"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 16,
+    "h1": null,
+    "display": 38,
+    "ratio": 2.38,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 7,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.42,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 127,
+    "text-contrast": 16,
+    "control-state": 4,
+    "accessible-name": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-game",
    "url": "https://shiftup.co.kr/",
    "split": "holdout",
    "status": "ok",
@@ -99276,6 +100795,144 @@
   },
   {
    "category": "KR-game",
+   "url": "https://www.mgame.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "flat-scale",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable"
+    ],
+    "sizes": 7,
+    "weights": 5,
+    "body": 14,
+    "h1": 32,
+    "display": 24,
+    "ratio": 1.71,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 285,
+    "text-contrast": 30,
+    "control-state": 10,
+    "accessible-name": 7,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-game",
+   "url": "https://www.nc.com/?locale=ko-KR",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 14,
+   "band": "low",
+   "signals": [
+    "glass",
+    "generic-type",
+    "empty-frames",
+    "transition-all",
+    "generic-cta",
+    "flat-scale"
+   ],
+   "scored": [
+    "glass"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 7,
+    "weights": 3,
+    "body": 15,
+    "h1": null,
+    "display": 48,
+    "ratio": 3.2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.2,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 26,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 19,
+    "text-contrast": 9
+   }
+  },
+  {
+   "category": "KR-game",
    "url": "https://www.neowiz.com/",
    "split": "tune",
    "status": "ok",
@@ -99425,6 +101082,74 @@
   },
   {
    "category": "KR-game",
+   "url": "https://www.netmarble.net/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosans_regular",
+     "notosanskr_en_regular",
+     "notosanskr_medium",
+     "notosanskr_bold"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 11,
+    "h1": 24,
+    "display": 24,
+    "ratio": 2.18,
+    "webfonts": 12
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 226,
+    "text-contrast": 54,
+    "control-state": 6,
+    "horizontal-overflow": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "KR-game",
    "url": "https://www.nexon.com/",
    "split": "tune",
    "status": "ok",
@@ -99494,6 +101219,75 @@
     "horizontal-overflow": 1,
     "font-loading": 1,
     "form-label": 1
+   }
+  },
+  {
+   "category": "KR-game",
+   "url": "https://www.nexongames.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nexon lv2 gothic",
+     "nexon lv2 gothic light",
+     "nexon lv2 gothic bold",
+     "nexon lv2 gothic regular"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 15,
+    "h1": 0,
+    "display": 66,
+    "ratio": 4.4,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.11,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 45,
+    "viewport-bounds": 19,
+    "target-size": 19,
+    "accessible-name": 9,
+    "control-state": 3
    }
   },
   {
@@ -121999,6 +123793,144 @@
     "target-size": 14,
     "accessible-name": 5,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-media",
+   "url": "https://www.designsori.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "k-design award",
+     "pretendard",
+     "designsori"
+    ],
+    "sizes": 7,
+    "weights": 4,
+    "body": 14,
+    "h1": null,
+    "display": 24,
+    "ratio": 1.71,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 41,
+    "viewport-bounds": 7,
+    "accessible-name": 6,
+    "control-state": 4,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-media",
+   "url": "https://www.gamevu.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "many-hues"
+   ],
+   "scored": [
+    "large-gradient",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 88,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "inter",
+     "system-ui"
+    ],
+    "sizes": 6,
+    "weights": 4,
+    "body": 14,
+    "h1": 16,
+    "display": 32,
+    "ratio": 2.29,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 707,
+    "text-contrast": 83,
+    "accessible-name": 4,
+    "horizontal-overflow": 1,
+    "control-state": 1
    }
   },
   {

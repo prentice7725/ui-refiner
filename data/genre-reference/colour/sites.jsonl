@@ -2472,3 +2472,41 @@
 {"host":"naniwanoyu.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"red","share":{"red":0.071,"white":0.205,"image":0.723},"rootBg":[255,255,255]}
 {"host":"yu-bath.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"image":0.682,"white":0.012,"dark":0.307},"rootBg":[35,26,20]}
 {"host":"naniwa-utopia.com","trade":"wellness","kind":"place","country":"JP","ground":"light","accent":"blue","share":{"white":0.86,"image":0.128,"blue":0.012},"rootBg":[255,255,255]}
+{"host":"skin1004korea.com","trade":"cosmetics","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":0.057,"image":0.015,"tint":0.929},"rootBg":[255,255,255]}
+{"host":"parkjun.com","skipped":"robots.txt unreachable"}
+{"host":"dasoltax.com","trade":"tax","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.268,"image":0.708,"dark":0.021,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"daihatsu.co.jp","trade":"car","kind":"company","country":"JP","ground":"image","accent":"red","share":{"white":0.128,"image":0.604,"tint":0.268},"rootBg":[239,240,241]}
+{"host":"isuzu.co.jp","trade":"car","kind":"company","country":"JP","ground":"image","accent":"red","share":{"image":0.649,"white":0.324,"dark":0.015,"red":0.003,"tint":0.009},"rootBg":[255,255,255]}
+{"host":"hino.co.jp","trade":"car","kind":"company","country":"JP","ground":"image","accent":"red","share":{"white":0.366,"image":0.592,"tint":0.018,"red":0.024},"rootBg":[255,255,255]}
+{"host":"autoc-one.jp","trade":"car","kind":"company","country":"JP","ground":"light","accent":"red","share":{"white":0.375,"image":0.393,"tint":0.164,"green":0.068},"rootBg":[255,255,255]}
+{"host":"torriden.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"autobacs.com","trade":"car","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"white":0.146,"image":0.512,"orange":0.012,"tint":0.33},"rootBg":[255,255,255]}
+{"host":"lava-intl.co.jp","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"indigo","share":{"white":0.226,"image":0.56,"tint":0.214},"rootBg":[255,255,255]}
+{"host":"denod.co.kr","trade":"design","kind":"company","country":"KR","ground":"image","accent":"teal","share":{"white":0.125,"image":0.875},"rootBg":[255,255,255]}
+{"host":"relay-works.kr","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.577,"image":0.423},"rootBg":[40,40,40]}
+{"host":"tbastudio.co.kr","trade":"design","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"brenden.kr","trade":"design","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"dark":0.068,"image":0.932},"rootBg":[0,0,0]}
+{"host":"spaworld.co.jp","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"white":0.131,"image":0.804,"blue":0.065},"rootBg":[255,255,255]}
+{"host":"bndpartners.co.kr","trade":"design","kind":"company","country":"KR","ground":"image","accent":"pink","share":{"image":0.994,"tint":0.006},"rootBg":[114,109,105]}
+{"host":"urbanplay.co.kr","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"blue","share":{"dark":1},"rootBg":[0,0,0]}
+{"host":"brant.kr","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.929,"amber":0.071},"rootBg":[0,0,0]}
+{"host":"designsori.com","trade":"media","kind":"media","country":"KR","ground":"light","accent":"red","share":{"white":0.801,"image":0.199},"rootBg":[255,255,255]}
+{"host":"millimeterlab.com","trade":"design","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"image":0.015,"white":0.985},"rootBg":[255,255,255]}
+{"host":"nc.com","trade":"game","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":0.83,"dark":0.17},"rootBg":[255,255,255]}
+{"host":"netmarble.net","trade":"game","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"nexongames.co.kr","trade":"game","kind":"company","country":"KR","ground":"light","accent":"blue","share":{"image":0.384,"white":0.616},"rootBg":[255,255,255]}
+{"host":"wedidit.kr","trade":"design","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.732,"image":0.262,"amber":0.006},"rootBg":[0,0,0]}
+{"host":"mgame.com","trade":"game","kind":"company","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.619,"image":0.381},"rootBg":[255,255,255]}
+{"host":"df.floor.line.games","trade":"game","kind":"company","country":"KR","ground":"red","accent":"blue","share":{"dark":0.092,"image":0.202,"white":0.295,"red":0.327,"indigo":0.012,"tint":0.068,"amber":0.003},"rootBg":[255,255,255]}
+{"host":"gamevu.co.kr","trade":"media","kind":"media","country":"KR","ground":"light","accent":"red","share":{"white":0.836,"red":0.003,"blue":0.003,"image":0.074,"teal":0.083},"rootBg":[255,255,255]}
+{"host":"crimsondesert.pearlabyss.com","trade":"game","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"dark":0.131,"image":0.583,"white":0.286},"rootBg":[255,255,255]}
+{"host":"cookapps.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"seibu-leisure.co.jp","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"image":0.988,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"tsurugamine.ryusenjinoyu.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"red","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"ryusenjinoyu.com","trade":"wellness","kind":"place","country":"JP","ground":"light","accent":"teal","share":{"image":0.253,"white":0.747},"rootBg":[255,255,255]}
+{"host":"ousama2603.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"orange","share":{"white":0.19,"dark":0.009,"image":0.801},"rootBg":[255,255,255]}
+{"host":"rakuspa.com","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"pink","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"manyo.co.jp","trade":"wellness","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"white":0.03,"image":0.97},"rootBg":[255,255,255]}
+{"host":"hotelmonterey.co.jp","skipped":"robots.txt unreachable"}
+{"host":"zenplace.co.jp","trade":"fitness","kind":"place","country":"JP","ground":"light","accent":"blue","share":{"white":0.789,"image":0.158,"pink":0.054},"rootBg":[255,255,255]}
+{"host":"pilates-k.jp","trade":"fitness","kind":"place","country":"JP","ground":"image","accent":"orange","share":{"tint":0.461,"image":0.512,"dark":0.003,"red":0.006,"white":0.018},"rootBg":[222,215,209]}
