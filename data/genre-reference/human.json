@@ -1,8 +1,8 @@
 {
  "schemaVersion": 1,
  "measured": "2026-11-18",
- "sites": 1743,
- "droppedForLanguage": 128,
+ "sites": 1769,
+ "droppedForLanguage": 129,
  "minSites": 8,
  "source": "Human-made Korean and Japanese sites by trade (scripts/genre-sites.tsv), first desktop screen at 1440x900. robots.txt respected; measurements only. A trade/country appears only with 8 or more sites; hero and colour each need 8 of their own. lineHeight is measured on Japanese pages only.",
  "trades": {
@@ -217,18 +217,18 @@
     }
    },
    "colour": {
-    "sites": 11,
+    "sites": 16,
     "ground": {
-     "light": 0.545,
-     "image": 0.364,
-     "dark": 0.091
+     "image": 0.5,
+     "light": 0.438,
+     "dark": 0.063
     },
     "accent": {
-     "blue": 0.364,
-     "ink": 0.364,
-     "green": 0.091,
-     "orange": 0.091,
-     "red": 0.091
+     "red": 0.313,
+     "blue": 0.313,
+     "ink": 0.25,
+     "green": 0.063,
+     "orange": 0.063
     }
    },
    "type": {
@@ -390,16 +390,16 @@
     }
    },
    "colour": {
-    "sites": 10,
+    "sites": 11,
     "ground": {
-     "light": 0.5,
-     "image": 0.4,
-     "dark": 0.1
+     "light": 0.545,
+     "image": 0.364,
+     "dark": 0.091
     },
     "accent": {
-     "ink": 0.6,
-     "blue": 0.3,
-     "pink": 0.1
+     "ink": 0.636,
+     "blue": 0.273,
+     "pink": 0.091
     }
    },
    "type": {
@@ -602,31 +602,35 @@
    }
   },
   "design/KR": {
-   "sites": 8,
+   "sites": 16,
    "hero": {
-    "sites": 8,
+    "sites": 15,
     "share": {
-     "below-fold": 0.5,
-     "full-bleed": 0.25,
-     "left+stacked": 0.125,
-     "center+stacked": 0.125
+     "below-fold": 0.667,
+     "full-bleed": 0.133,
+     "left+stacked": 0.067,
+     "center+stacked": 0.067,
+     "left+panel": 0.067
     }
    },
    "colour": {
-    "sites": 8,
+    "sites": 16,
     "ground": {
-     "light": 0.5,
-     "image": 0.25,
-     "dark": 0.25
+     "light": 0.375,
+     "dark": 0.375,
+     "image": 0.25
     },
     "accent": {
-     "ink": 0.75,
-     "red": 0.125,
-     "indigo": 0.125
+     "ink": 0.688,
+     "red": 0.063,
+     "pink": 0.063,
+     "teal": 0.063,
+     "indigo": 0.063,
+     "blue": 0.063
     }
    },
    "type": {
-    "body": 17,
+    "body": 15,
     "displayRatio": 1.33,
     "lineHeight": null,
     "serifDisplay": 0
@@ -980,42 +984,43 @@
    }
   },
   "fitness/JP": {
-   "sites": 24,
+   "sites": 26,
    "hero": {
-    "sites": 22,
+    "sites": 24,
     "share": {
-     "full-bleed": 0.591,
-     "below-fold": 0.273,
-     "center+media": 0.045,
-     "right+stacked": 0.045,
-     "center+stacked": 0.045
+     "full-bleed": 0.583,
+     "below-fold": 0.25,
+     "center+media": 0.042,
+     "right+stacked": 0.042,
+     "center+stacked": 0.042,
+     "left+stacked": 0.042
     }
    },
    "colour": {
-    "sites": 24,
+    "sites": 26,
     "ground": {
-     "image": 0.542,
-     "light": 0.375,
-     "dark": 0.042,
-     "red": 0.042
+     "image": 0.538,
+     "light": 0.385,
+     "dark": 0.038,
+     "red": 0.038
     },
     "accent": {
-     "blue": 0.25,
-     "red": 0.167,
-     "ink": 0.125,
-     "pink": 0.125,
-     "amber": 0.083,
-     "indigo": 0.083,
-     "orange": 0.083,
-     "teal": 0.042,
-     "green": 0.042
+     "blue": 0.269,
+     "red": 0.154,
+     "ink": 0.115,
+     "orange": 0.115,
+     "pink": 0.115,
+     "amber": 0.077,
+     "indigo": 0.077,
+     "teal": 0.038,
+     "green": 0.038
     }
    },
    "type": {
     "body": 16,
     "displayRatio": 3.69,
-    "lineHeight": 1.69,
-    "serifDisplay": 0.083
+    "lineHeight": 1.7,
+    "serifDisplay": 0.154
    }
   },
   "fitness/KR": {
@@ -1164,27 +1169,38 @@
    }
   },
   "game/KR": {
-   "sites": 8,
-   "hero": null,
+   "sites": 15,
+   "hero": {
+    "sites": 13,
+    "share": {
+     "below-fold": 0.538,
+     "full-bleed": 0.231,
+     "center+stacked": 0.077,
+     "left+stacked": 0.077,
+     "wide+media": 0.077
+    }
+   },
    "colour": {
-    "sites": 8,
+    "sites": 14,
     "ground": {
-     "light": 0.375,
-     "dark": 0.25,
-     "image": 0.125,
-     "indigo": 0.125,
-     "red": 0.125
+     "light": 0.429,
+     "dark": 0.214,
+     "image": 0.143,
+     "red": 0.143,
+     "indigo": 0.071
     },
     "accent": {
-     "ink": 0.375,
-     "green": 0.25,
-     "indigo": 0.25,
-     "orange": 0.125
+     "ink": 0.357,
+     "blue": 0.214,
+     "green": 0.143,
+     "indigo": 0.143,
+     "amber": 0.071,
+     "orange": 0.071
     }
    },
    "type": {
-    "body": 14,
-    "displayRatio": 3.67,
+    "body": 15,
+    "displayRatio": 3,
     "lineHeight": null,
     "serifDisplay": 0
    }
@@ -1801,31 +1817,31 @@
    }
   },
   "media/KR": {
-   "sites": 20,
+   "sites": 22,
    "hero": {
-    "sites": 20,
+    "sites": 22,
     "share": {
-     "below-fold": 0.3,
-     "center+media": 0.2,
-     "center+stacked": 0.15,
-     "left+media": 0.15,
-     "center+panel": 0.15,
-     "left+stacked": 0.05
+     "below-fold": 0.318,
+     "center+media": 0.182,
+     "center+stacked": 0.136,
+     "left+media": 0.136,
+     "center+panel": 0.136,
+     "left+stacked": 0.091
     }
    },
    "colour": {
-    "sites": 20,
+    "sites": 22,
     "ground": {
-     "light": 0.95,
-     "image": 0.05
+     "light": 0.955,
+     "image": 0.045
     },
     "accent": {
-     "blue": 0.45,
-     "red": 0.15,
-     "orange": 0.15,
-     "teal": 0.1,
-     "indigo": 0.1,
-     "green": 0.05
+     "blue": 0.409,
+     "red": 0.227,
+     "orange": 0.136,
+     "teal": 0.091,
+     "indigo": 0.091,
+     "green": 0.045
     }
    },
    "type": {
@@ -2289,17 +2305,17 @@
     }
    },
    "colour": {
-    "sites": 14,
+    "sites": 15,
     "ground": {
-     "image": 0.643,
-     "light": 0.357
+     "image": 0.667,
+     "light": 0.333
     },
     "accent": {
-     "blue": 0.429,
-     "indigo": 0.357,
-     "ink": 0.071,
-     "amber": 0.071,
-     "orange": 0.071
+     "blue": 0.467,
+     "indigo": 0.333,
+     "ink": 0.067,
+     "amber": 0.067,
+     "orange": 0.067
     }
    },
    "type": {
@@ -2518,14 +2534,37 @@
    }
   },
   "wellness/JP": {
-   "sites": 8,
-   "hero": null,
-   "colour": null,
+   "sites": 15,
+   "hero": {
+    "sites": 10,
+    "share": {
+     "full-bleed": 0.7,
+     "below-fold": 0.1,
+     "left+stacked": 0.1,
+     "left+media": 0.1
+    }
+   },
+   "colour": {
+    "sites": 14,
+    "ground": {
+     "image": 0.786,
+     "light": 0.214
+    },
+    "accent": {
+     "blue": 0.357,
+     "red": 0.214,
+     "ink": 0.143,
+     "indigo": 0.071,
+     "pink": 0.071,
+     "orange": 0.071,
+     "teal": 0.071
+    }
+   },
    "type": {
-    "body": 14,
+    "body": 15,
     "displayRatio": 2.25,
-    "lineHeight": 1.75,
-    "serifDisplay": 0.375
+    "lineHeight": 1.8,
+    "serifDisplay": 0.267
    }
   }
  }

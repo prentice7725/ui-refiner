@@ -8,7 +8,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 
 - **Refine with three directions from three sources.** `/ui-refine` does not leave the design to the model's habits.
   - Three first-screen mocks are built apart, each by its own subagent: familiar (what human-made sites of the kind do, as measured), tailored (colour and type from this client's content) and bold (one material, a finished look taken from a physical thing).
-  - The familiar direction follows measurements: how 406 human-made sites open their first screen and which colours 548 use. On a Korean or Japanese page, `--trade` narrows it to sites of the client's own trade (1743 sites in 40 trades: salons, inns, restaurants, clinics, hospitals, academies, software firms, makers, public bodies and more).
+  - The familiar direction follows measurements: how 406 human-made sites open their first screen and which colours 548 use. On a Korean or Japanese page, `--trade` narrows it to sites of the client's own trade (1769 sites in 40 trades: salons, inns, restaurants, clinics, hospitals, academies, software firms, makers, public bodies and more).
   - A per-user log keeps the next client from getting the same page.
   - You pick a direction, or a mix. The page is rebuilt around a signature element taken from the real content: this month's ledger for a budgeting app, a day in the team for a hiring page.
 - **Checks that keep a refine honest.**
