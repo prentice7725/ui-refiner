@@ -4,6 +4,9 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Changed
+- AI-look index: stock marketing phrases (`buzzword-copy`) and a display under twice the body (`flat-scale`) are reported but no longer scored. A recheck on 19 November 2026 rescanned the calibration lists (145 AI-built, 110 English-language human sites) and rescored 1790 human-made Korean and Japanese sites: stock phrases showed up on 13% of AI sites and 14% of English human ones, a flat scale on 8% and 19%. Without them, score ≥ 20 flags 69–74% of AI sites (one of 145 lost), 0–9% of English human sites (was 0–15%), 7% of Korean and 3% of Japanese ones. Korean false positives come from Korean commercial style (dense banners, pop-ups, card grids, gradients, emoji, glass), which the strong signals also see on AI sites, so they were left as they are. All AI-built samples are English; the catch rate on AI-built Korean and Japanese pages is still unmeasured. The calibration tables in the guides and the README line now show these figures.
+
 ## 0.8.0 — 2026-11-18
 
 ### Added
