@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-18T08:13:15.538Z",
+ "collectedAt": "2026-11-18T09:10:01.905Z",
  "sites": [
   {
    "category": "JP-academy",
@@ -9325,6 +9325,83 @@
     "text-contrast": 135,
     "accessible-name": 11,
     "control-state": 4
+   }
+  },
+  {
+   "category": "JP-corp",
+   "url": "https://parking-system.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "empty-frames"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ヒラギノ角ゴ pro w3",
+     "oswald"
+    ],
+    "sizes": 6,
+    "weights": 1,
+    "body": 15,
+    "h1": null,
+    "display": 36,
+    "ratio": 2.4,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.8,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.57,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 2,
+    "accessible-name": 2,
+    "viewport-bounds": 1,
+    "horizontal-overflow": 1,
+    "control-state": 1
    }
   },
   {
@@ -21644,6 +21721,86 @@
   },
   {
    "category": "JP-ec",
+   "url": "https://shop.tsuruyayoshinobu.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 52,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yugothic",
+     "游明朝",
+     "poppins"
+    ],
+    "sizes": 15,
+    "weights": 5,
+    "body": 12,
+    "h1": 37,
+    "display": 40,
+    "ratio": 3.33,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.22,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.66,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 90,
+    "text-contrast": 37,
+    "accessible-name": 22,
+    "target-size": 11,
+    "control-state": 6,
+    "form-label": 5
+   }
+  },
+  {
+   "category": "JP-ec",
    "url": "https://takaisami.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -29415,6 +29572,81 @@
   },
   {
    "category": "JP-finance",
+   "url": "https://www.eiwa-shinkin.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 18,
+    "ratio": 1.38,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 82,
+    "accessible-name": 31,
+    "target-size": 28,
+    "control-state": 18,
+    "aria-reference": 14,
+    "form-label": 2
+   }
+  },
+  {
+   "category": "JP-finance",
    "url": "https://www.gifushin.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -33895,6 +34127,85 @@
   },
   {
    "category": "JP-food",
+   "url": "https://nagomi-yoneya.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yu gothic medium",
+     "游明朝",
+     "arial"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 17,
+    "h1": 20,
+    "display": 30,
+    "ratio": 1.76,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0,
+    "lineHeight": 1.3,
+    "bodySize": 13,
+    "tightShare": 1,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 158,
+    "aria-reference": 15,
+    "control-state": 8,
+    "viewport-bounds": 7,
+    "form-label": 2,
+    "accessible-name": 2,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "JP-food",
    "url": "https://upvege.com/",
    "split": "holdout",
    "status": "ok",
@@ -37917,6 +38228,80 @@
   },
   {
    "category": "JP-hiring",
+   "url": "https://cybozu.co.jp/recruit/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans cjk jp"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 16,
+    "h1": 58,
+    "display": 58,
+    "ratio": 3.63,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.03,
+    "rounded": 0.16,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.84,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 46,
+    "viewport-bounds": 26,
+    "label-consistency": 1,
+    "form-label": 1,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-hiring",
    "url": "https://recruit.ifuji.co.jp/",
    "split": "holdout",
    "status": "ok",
@@ -38659,6 +39044,81 @@
     "form-label": 1,
     "horizontal-overflow": 1,
     "control-state": 1
+   }
+  },
+  {
+   "category": "JP-hospital",
+   "url": "https://www.city.sakaide.lg.jp/site/hospital-taisei/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "centered"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman"
+    ],
+    "sizes": 3,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 22.4,
+    "ratio": 1.4,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.75,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.92,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "text-contrast": 85,
+    "target-size": 46,
+    "viewport-bounds": 9,
+    "control-state": 2,
+    "form-label": 1
    }
   },
   {
@@ -48261,6 +48721,83 @@
   },
   {
    "category": "JP-maker",
+   "url": "https://thermos.jtekt.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "linespeedjp",
+     "manrope"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 13,
+    "h1": 30,
+    "display": 50,
+    "ratio": 3.85,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.79,
+    "fontFallback": 0,
+    "lineHeight": 1.65,
+    "bodySize": 17,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tracking"
+    ]
+   },
+   "quality": {
+    "text-contrast": 104,
+    "accessible-name": 26,
+    "control-state": 13,
+    "target-size": 2,
+    "label-consistency": 1
+   }
+  },
+  {
+   "category": "JP-maker",
    "url": "https://tojiro.net/",
    "split": "tune",
    "status": "ok",
@@ -50919,6 +51456,72 @@
     "text-contrast": 37,
     "accessible-name": 8,
     "control-state": 4
+   }
+  },
+  {
+   "category": "JP-maker",
+   "url": "https://www.sealing.jtekt.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "繝偵λ繧ｮ繝手ｧ偵ざ pro w3"
+    ],
+    "sizes": 2,
+    "weights": 1,
+    "body": 16,
+    "h1": 32,
+    "display": 16,
+    "ratio": 1,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 24,
+    "text-contrast": 2,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -62724,6 +63327,82 @@
   },
   {
    "category": "JP-software",
+   "url": "https://www.alsi.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 23,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 16,
+    "h1": 16,
+    "display": 52,
+    "ratio": 3.25,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.21,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 36,
+    "control-state": 2,
+    "label-consistency": 1,
+    "accessible-name": 1,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "JP-software",
    "url": "https://www.broadleaf.co.jp/",
    "split": "holdout",
    "status": "ok",
@@ -62869,6 +63548,88 @@
    "quality": {
     "text-contrast": 56,
     "label-consistency": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-software",
+   "url": "https://www.chieru.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "glow",
+    "transition-all"
+   ],
+   "scored": [
+    "glow"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yugothic",
+     "jost",
+     "roboto"
+    ],
+    "sizes": 15,
+    "weights": 2,
+    "body": 16,
+    "h1": 16,
+    "display": 52,
+    "ratio": 3.25,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.13,
+    "rounded": 0.13,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.71,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-bad-break",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 96,
+    "control-state": 6,
+    "target-size": 4,
+    "aria-reference": 1,
     "accessible-name": 1
    }
   },
@@ -73267,6 +74028,13 @@
   },
   {
    "category": "KR-culture",
+   "url": "http://www.gacf.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "Could not load http://www.gacf.kr/: page.goto: Timeout 45000ms exceeded."
+  },
+  {
+   "category": "KR-culture",
    "url": "http://yctf.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -73472,6 +74240,72 @@
   },
   {
    "category": "KR-culture",
+   "url": "https://gwcf.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "empty-frames",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "sans-serif"
+    ],
+    "sizes": 13,
+    "weights": 3,
+    "body": 22,
+    "h1": 15,
+    "display": 60,
+    "ratio": 2.73,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.36,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 26,
+    "accessible-name": 6,
+    "control-state": 4,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-culture",
    "url": "https://sema.seoul.go.kr/",
    "split": "tune",
    "status": "ok",
@@ -73537,6 +74371,75 @@
   },
   {
    "category": "KR-culture",
+   "url": "https://uctf.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "nanumsquareneo",
+     "gmarketsans",
+     "arial"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 12,
+    "h1": 8,
+    "display": 32,
+    "ratio": 2.67,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0.03,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 128,
+    "text-contrast": 32,
+    "viewport-bounds": 26,
+    "accessible-name": 8
+   }
+  },
+  {
+   "category": "KR-culture",
    "url": "https://www.cacf.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -73588,6 +74491,72 @@
    },
    "ja": null,
    "quality": {}
+  },
+  {
+   "category": "KR-culture",
+   "url": "https://www.gcaf.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "accent-word",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 52,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 16,
+    "h1": null,
+    "display": 40,
+    "ratio": 2.5,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 54,
+    "control-state": 44,
+    "accessible-name": 21,
+    "target-size": 4
+   }
   },
   {
    "category": "KR-culture",
@@ -78265,6 +79234,75 @@
   },
   {
    "category": "KR-ec",
+   "url": "https://www.10041004.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "empty-frames"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "나눔고딕",
+     "나눔스퀘어",
+     "돋움",
+     "굴림"
+    ],
+    "sizes": 14,
+    "weights": 4,
+    "body": 12,
+    "h1": 12,
+    "display": 32,
+    "ratio": 2.67,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 7,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.42,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 820,
+    "text-contrast": 158,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-ec",
    "url": "https://www.10x10.co.kr/",
    "split": "holdout",
    "status": "ok",
@@ -78463,6 +79501,78 @@
   },
   {
    "category": "KR-ec",
+   "url": "https://www.cyso.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "over-rounded",
+    "many-hues",
+    "generic-type",
+    "flat-scale",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "over-rounded",
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 8,
+    "nestedHosts": 1,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 18,
+    "h1": null,
+    "display": 32,
+    "ratio": 1.78,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.82,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 101,
+    "accessible-name": 29,
+    "control-state": 11,
+    "target-size": 7,
+    "viewport-bounds": 4
+   }
+  },
+  {
+   "category": "KR-ec",
    "url": "https://www.danawa.com/",
    "split": "tune",
    "status": "error",
@@ -78540,6 +79650,74 @@
     "target-size": 44,
     "control-state": 41,
     "accessible-name": 2,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "KR-ec",
+   "url": "https://www.flowercity.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "돋움",
+     "arial"
+    ],
+    "sizes": 4,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 15,
+    "ratio": 1.15,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 671,
+    "accessible-name": 114,
+    "text-contrast": 58,
+    "target-size": 14,
+    "control-state": 2,
+    "horizontal-overflow": 1,
     "form-label": 1
    }
   },
@@ -78739,6 +79917,76 @@
     "control-state": 110,
     "accessible-name": 3,
     "form-label": 1
+   }
+  },
+  {
+   "category": "KR-ec",
+   "url": "https://www.nongsarang.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "lato",
+     "arial",
+     "pt sans"
+    ],
+    "sizes": 14,
+    "weights": 5,
+    "body": 17,
+    "h1": 16,
+    "display": 31,
+    "ratio": 1.82,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.01,
+    "rounded": 0.07,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 643,
+    "text-contrast": 107,
+    "accessible-name": 31,
+    "form-label": 1,
+    "control-state": 1,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -81610,6 +82858,144 @@
    "split": "holdout",
    "status": "error",
    "error": "Could not load https://jcgf.or.kr/: HTTP 403 at https://jcgf.or.kr/; HTTP 403 at https://jcgf.or.kr/"
+  },
+  {
+   "category": "KR-finance",
+   "url": "https://mgwonkwang.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "eyebrow-pill",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "eyebrow-pill"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 16,
+    "h1": 0,
+    "display": 54.4,
+    "ratio": 3.4,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.19,
+    "rounded": 0.17,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 30,
+    "viewport-bounds": 3,
+    "accessible-name": 2,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "KR-finance",
+   "url": "https://saejongam.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "card-grid",
+    "accent-word",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [
+    "card-grid"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 26,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "gmarketsans"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 14,
+    "h1": 0,
+    "display": 82.8,
+    "ratio": 5.91,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.15,
+    "rounded": 0.26,
+    "cardGrids": 1,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 43,
+    "accessible-name": 13,
+    "target-size": 5,
+    "viewport-bounds": 3,
+    "control-state": 1
+   }
   },
   {
    "category": "KR-finance",
@@ -85943,6 +87329,69 @@
   },
   {
    "category": "KR-gov",
+   "url": "https://cms.wfmc.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "centered",
+    "generic-type",
+    "transition-all",
+    "hero-cta-below"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 6,
+    "weights": 3,
+    "body": 16,
+    "h1": 32,
+    "display": 50,
+    "ratio": 3.13,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0.36,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 5
+   }
+  },
+  {
+   "category": "KR-gov",
    "url": "https://dgfca.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -86345,6 +87794,13 @@
   },
   {
    "category": "KR-gov",
+   "url": "https://kosmes.or.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "Could not load https://www.kosmes.or.kr/: page.goto: Timeout 45000ms exceeded."
+  },
+  {
+   "category": "KR-gov",
    "url": "https://portal.kosha.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -86412,6 +87868,68 @@
     "aria-reference": 2,
     "form-label": 1,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-gov",
+   "url": "https://www.auc.or.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanum gothic"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 16,
+    "h1": 14,
+    "display": 16,
+    "ratio": 1,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 8,
+    "viewport-bounds": 1
    }
   },
   {
@@ -87038,6 +88556,134 @@
     "control-state": 177,
     "text-contrast": 30,
     "target-size": 2
+   }
+  },
+  {
+   "category": "KR-gov",
+   "url": "https://www.djbea.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "gradient-text",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [
+    "gradient-text"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard gov",
+     "paperlogy"
+    ],
+    "sizes": 5,
+    "weights": 4,
+    "body": 16,
+    "h1": 32,
+    "display": 42,
+    "ratio": 2.63,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 1,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 8,
+    "target-size": 3,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-gov",
+   "url": "https://www.djsiseol.or.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanumbarungothic"
+    ],
+    "sizes": 4,
+    "weights": 2,
+    "body": 13,
+    "h1": 32,
+    "display": 20,
+    "ratio": 1.54,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "font-loading": 1,
+    "text-contrast": 1
    }
   },
   {
@@ -87795,6 +89441,76 @@
   },
   {
    "category": "KR-gov",
+   "url": "https://www.ictr.or.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "purple-gradient",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [
+    "purple-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "paperlogy",
+     "scdream"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 18,
+    "h1": 32,
+    "display": 50,
+    "ratio": 2.78,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.33,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 66,
+    "viewport-bounds": 24,
+    "control-state": 5,
+    "target-size": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-gov",
    "url": "https://www.itp.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -88004,6 +89720,74 @@
   },
   {
    "category": "KR-gov",
+   "url": "https://www.jntp.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all",
+    "generic-cta",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 23,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "suit",
+     "돋움"
+    ],
+    "sizes": 12,
+    "weights": 7,
+    "body": 14,
+    "h1": 16,
+    "display": 50,
+    "ratio": 3.57,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.13,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 30,
+    "accessible-name": 4,
+    "form-label": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "KR-gov",
    "url": "https://www.kasa.go.kr/",
    "split": "tune",
    "status": "ok",
@@ -88067,6 +89851,73 @@
     "text-contrast": 68,
     "target-size": 3,
     "control-state": 2
+   }
+  },
+  {
+   "category": "KR-gov",
+   "url": "https://www.kead.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "default-accent",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 12,
+    "nestedHosts": 2,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosanskr",
+     "tahoma"
+    ],
+    "sizes": 7,
+    "weights": 4,
+    "body": 15,
+    "h1": 24,
+    "display": 24,
+    "ratio": 1.6,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.56,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 32,
+    "viewport-bounds": 9,
+    "control-state": 5,
+    "label-consistency": 4
    }
   },
   {
@@ -88199,6 +90050,13 @@
   },
   {
    "category": "KR-gov",
+   "url": "https://www.koroad.or.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "unreachable"
+  },
+  {
+   "category": "KR-gov",
    "url": "https://www.ksponco.or.kr/",
    "split": "tune",
    "status": "ok",
@@ -88266,8 +90124,68 @@
    "category": "KR-gov",
    "url": "https://www.ptp.or.kr/",
    "split": "holdout",
-   "status": "error",
-   "error": "Could not load https://www.ptp.or.kr/: page.goto: Timeout 45000ms exceeded."
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0.11,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "open sans",
+     "noto sans kr",
+     "noto serif kr"
+    ],
+    "sizes": 19,
+    "weights": 4,
+    "body": 15,
+    "h1": null,
+    "display": 56,
+    "ratio": 3.73,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.4,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 79,
+    "accessible-name": 26,
+    "target-size": 13,
+    "font-loading": 1
+   }
   },
   {
    "category": "KR-gov",
@@ -88924,6 +90842,13 @@
    }
   },
   {
+   "category": "KR-hiring",
+   "url": "https://keco.applyin.co.kr/",
+   "split": "holdout",
+   "status": "error",
+   "error": "Could not load https://keco.applyin.co.kr/: page.goto: Timeout 45000ms exceeded."
+  },
+  {
    "category": "KR-hospital",
    "url": "http://eunyang.imc-boram.co.kr/",
    "split": "holdout",
@@ -89120,6 +91045,126 @@
     "control-state": 4,
     "horizontal-overflow": 1
    }
+  },
+  {
+   "category": "KR-hospital",
+   "url": "https://djh.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "nanumbarungothic",
+     "arial"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 12,
+    "h1": 25,
+    "display": 25,
+    "ratio": 2.08,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 117,
+    "text-contrast": 37,
+    "target-size": 6,
+    "control-state": 2,
+    "accessible-name": 1,
+    "form-label": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-hospital",
+   "url": "https://firsteyeclinic.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "en",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [],
+    "sizes": 0,
+    "weights": 0,
+    "body": 16,
+    "h1": null,
+    "display": 0,
+    "ratio": null,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
   },
   {
    "category": "KR-hospital",
@@ -89548,6 +91593,133 @@
   },
   {
    "category": "KR-hospital",
+   "url": "https://www.guposs.com/kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 22,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "industry"
+    ],
+    "sizes": 22,
+    "weights": 5,
+    "body": 19,
+    "h1": null,
+    "display": 59.993,
+    "ratio": 3.16,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.49,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
+  },
+  {
+   "category": "KR-hospital",
+   "url": "https://www.hanseohospital.or.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale",
+    "tinted-page"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "돋움",
+     "굴림1"
+    ],
+    "sizes": 1,
+    "weights": 1,
+    "body": 11,
+    "h1": 12,
+    "display": 11,
+    "ratio": 1,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     237,
+     238,
+     240
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 216,
+    "text-contrast": 20,
+    "target-size": 8,
+    "control-state": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-hospital",
    "url": "https://www.himnaera.co.kr/",
    "split": "holdout",
    "status": "ok",
@@ -89755,6 +91927,70 @@
     "control-state": 6,
     "label-consistency": 2,
     "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "KR-hospital",
+   "url": "https://www.kimsclinic.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman",
+     "arial",
+     "k40myeongjo"
+    ],
+    "sizes": 7,
+    "weights": 3,
+    "body": 16,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "target-size": 75,
+    "viewport-bounds": 40,
+    "text-contrast": 3,
+    "horizontal-overflow": 1,
+    "font-loading": 1,
+    "label-consistency": 1,
+    "accessible-name": 1
    }
   },
   {
@@ -91240,6 +93476,67 @@
   },
   {
    "category": "KR-inn",
+   "url": "https://www.ecolandjeju.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "s-coredream"
+    ],
+    "sizes": 4,
+    "weights": 4,
+    "body": 12,
+    "h1": 12,
+    "display": 30,
+    "ratio": 2.5,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 11,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-inn",
    "url": "https://www.eldoradoresort.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -91790,6 +94087,74 @@
   },
   {
    "category": "KR-inn",
+   "url": "https://www.lottehotel.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "en",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "flat-scale",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "flat-scale"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard variable",
+     "anth"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 12,
+    "h1": 12,
+    "display": 36,
+    "ratio": 3,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.39,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 101,
+    "control-state": 4,
+    "aria-reference": 1
+   }
+  },
+  {
+   "category": "KR-inn",
    "url": "https://www.oakvalley.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -92062,6 +94427,78 @@
   },
   {
    "category": "KR-inn",
+   "url": "https://www.shillahotels.com/ko/shillastay/hub/index.do",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 19,
+   "band": "low",
+   "signals": [
+    "glass",
+    "large-gradient",
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [
+    "glass",
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosans-demilight"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 14,
+    "h1": 14,
+    "display": 48,
+    "ratio": 3.43,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 17,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 181,
+    "text-contrast": 61,
+    "control-state": 4,
+    "label-consistency": 2,
+    "form-label": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-inn",
    "url": "https://www.sonohotelsresorts.com/",
    "split": "tune",
    "status": "ok",
@@ -92195,6 +94632,13 @@
    "url": "https://www.stayfolio.com/",
    "split": "holdout",
    "status": "robots"
+  },
+  {
+   "category": "KR-inn",
+   "url": "https://www.stxresort.com/",
+   "split": "tune",
+   "status": "error",
+   "error": "Could not load https://www.stxresort.com/: page.evaluate: TypeError: parent.children is not iterable"
   },
   {
    "category": "KR-inn",
@@ -92406,6 +94850,13 @@
     "horizontal-overflow": 1,
     "font-loading": 1
    }
+  },
+  {
+   "category": "KR-inn",
+   "url": "https://www.toyoko-inn.co.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "Could not load https://www.toyoko-inn.co.kr/: page.evaluate: TypeError: parent.children is not iterable"
   },
   {
    "category": "KR-inn",
@@ -95651,6 +98102,13 @@
   },
   {
    "category": "KR-kmed",
+   "url": "https://www.jaseng.co.kr/",
+   "split": "tune",
+   "status": "error",
+   "error": "unreachable"
+  },
+  {
+   "category": "KR-kmed",
    "url": "https://www.nowonhani.com/",
    "split": "tune",
    "status": "ok",
@@ -95847,6 +98305,76 @@
     "text-contrast": 193,
     "control-state": 127,
     "viewport-bounds": 3,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "KR-local",
+   "url": "http://xn--jj0bz32a1nd.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "imweb sans",
+     "jalnan",
+     "genkjwajinotf-rg",
+     "reko"
+    ],
+    "sizes": 15,
+    "weights": 2,
+    "body": 13,
+    "h1": null,
+    "display": 48.21,
+    "ratio": 3.71,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0.14,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 75,
+    "control-state": 43,
+    "viewport-bounds": 23,
+    "horizontal-overflow": 1,
     "accessible-name": 1
    }
   },
@@ -96670,6 +99198,143 @@
     "text-contrast": 1,
     "form-label": 1,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-local",
+   "url": "https://www.spacecare.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "emoji-icons",
+    "many-hues",
+    "default-accent",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "emoji-icons",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "suite"
+    ],
+    "sizes": 13,
+    "weights": 5,
+    "body": 16,
+    "h1": null,
+    "display": 64,
+    "ratio": 4,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.36,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 11,
+    "label-consistency": 2,
+    "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "KR-logistics",
+   "url": "https://valex.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 11,
+   "band": "low",
+   "signals": [
+    "centered",
+    "generic-type",
+    "flat-scale",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr"
+    ],
+    "sizes": 8,
+    "weights": 5,
+    "body": 18,
+    "h1": 36,
+    "display": 35,
+    "ratio": 1.94,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 50,
+    "viewport-bounds": 36,
+    "control-state": 14,
+    "accessible-name": 9,
+    "form-label": 1
    }
   },
   {
@@ -98990,6 +101655,73 @@
   },
   {
    "category": "KR-maker",
+   "url": "https://www.nsk.com/kr-ko/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ko",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all",
+    "flat-scale"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 22,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "gulim"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 16,
+    "h1": null,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 6,
+    "accessible-name": 4,
+    "label-consistency": 1,
+    "form-label": 1,
+    "control-state": 1,
+    "aria-reference": 1
+   }
+  },
+  {
+   "category": "KR-maker",
    "url": "https://www.pipeway.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -99183,6 +101915,72 @@
   },
   {
    "category": "KR-maker",
+   "url": "https://www.samickthk.co.kr/kr/index",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 16,
+    "h1": 16,
+    "display": 100,
+    "ratio": 6.25,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 47,
+    "viewport-bounds": 4,
+    "control-state": 3
+   }
+  },
+  {
+   "category": "KR-maker",
    "url": "https://www.shinseng.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -99367,6 +102165,58 @@
     "control-state": 7,
     "viewport-bounds": 1
    }
+  },
+  {
+   "category": "KR-maker",
+   "url": "https://www.smiltd.co.kr/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "en",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [],
+    "sizes": 0,
+    "weights": 0,
+    "body": 16,
+    "h1": null,
+    "display": 0,
+    "ratio": null,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {}
   },
   {
    "category": "KR-maker",
@@ -106858,6 +109708,88 @@
   },
   {
    "category": "KR-software",
+   "url": "https://localblock.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 39,
+   "band": "medium",
+   "signals": [
+    "large-gradient",
+    "glass",
+    "eyebrow-pill",
+    "nested-cards",
+    "glow",
+    "many-hues",
+    "default-accent",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient",
+    "glass",
+    "eyebrow-pill",
+    "nested-cards",
+    "glow",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 2,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 21,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 9,
+    "nestedHosts": 6,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "suit variable",
+     "ui-monospace",
+     "monospace",
+     "nanum myeongjo"
+    ],
+    "sizes": 19,
+    "weights": 6,
+    "body": 15,
+    "h1": 50,
+    "display": 50,
+    "ratio": 3.33,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     42,
+     52,
+     71
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0.57,
+    "rounded": 0.51,
+    "cardGrids": 0,
+    "largeGradients": 3,
+    "glass": 3,
+    "tracked": 2
+   },
+   "ja": null,
+   "quality": {
+    "control-state": 21,
+    "text-contrast": 5,
+    "form-label": 3,
+    "label-consistency": 3
+   }
+  },
+  {
+   "category": "KR-software",
    "url": "https://modusign.co.kr/",
    "split": "tune",
    "status": "ok",
@@ -107486,6 +110418,75 @@
   },
   {
    "category": "KR-software",
+   "url": "https://www.brainz.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "notosanskr",
+     "roboto"
+    ],
+    "sizes": 10,
+    "weights": 5,
+    "body": 18,
+    "h1": 32,
+    "display": 62.22,
+    "ratio": 3.46,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.31,
+    "rounded": 0.12,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "viewport-bounds": 365,
+    "text-contrast": 32,
+    "control-state": 6,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "KR-software",
    "url": "https://www.douzone.com/",
    "split": "holdout",
    "status": "ok",
@@ -107551,6 +110552,73 @@
     "text-contrast": 42,
     "control-state": 13,
     "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://www.eksys.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans kr",
+     "suit"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 16,
+    "h1": null,
+    "display": 59.2,
+    "ratio": 3.7,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.67,
+    "rounded": 0.15,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 22,
+    "control-state": 12,
+    "target-size": 3
    }
   },
   {
@@ -108067,6 +111135,73 @@
    "ja": null,
    "quality": {
     "text-contrast": 30
+   }
+  },
+  {
+   "category": "KR-software",
+   "url": "https://www.ndsoft.co.kr/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ko",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "glass",
+    "generic-type",
+    "transition-all"
+   ],
+   "scored": [
+    "glass"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "pretendard",
+     "josefin sans"
+    ],
+    "sizes": 12,
+    "weights": 7,
+    "body": 16,
+    "h1": null,
+    "display": 88,
+    "ratio": 5.5,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 3,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "text-contrast": 72,
+    "control-state": 10
    }
   },
   {

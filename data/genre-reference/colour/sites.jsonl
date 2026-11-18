@@ -1965,3 +1965,87 @@
 {"host":"opam.jp","trade":"culture","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"white":0.158,"image":0.586,"teal":0.042,"tint":0.214},"rootBg":[255,255,255]}
 {"host":"kanko-miyazaki.jp","trade":"tourism","kind":"public","country":"JP","ground":"light","accent":"orange","share":{"image":0.455,"white":0.491,"tint":0.006,"dark":0.045,"blue":0.003},"rootBg":[255,255,255]}
 {"host":"fukuiblowinds.com","trade":"event","kind":"public","country":"JP","ground":"image","accent":"blue","share":{"image":0.673,"white":0.199,"dark":0.116,"red":0.012},"rootBg":[14,27,60]}
+{"host":"2oa.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"kosinmed.or.kr","trade":"hospital","kind":"service","country":"KR","ground":"light","accent":"green","share":{"white":0.518,"tint":0.253,"green":0.08,"image":0.086,"dark":0.063},"rootBg":[255,255,255]}
+{"host":"samjinfood.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sogokju.co.kr","trade":"food","kind":"company","country":"KR","ground":"light","accent":"orange","share":{"white":0.565,"image":0.435},"rootBg":[255,255,255]}
+{"host":"shinkung.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"teal","share":{"teal":0.012,"white":0.435,"tint":0.012,"image":0.542},"rootBg":[255,255,255]}
+{"host":"kyotobank.co.jp","trade":"finance","kind":"service","country":"JP","ground":"light","accent":"red","share":{"image":0.402,"tint":0.086,"white":0.452,"red":0.006,"green":0.054},"rootBg":[255,255,255]}
+{"host":"77bank.co.jp","trade":"finance","kind":"service","country":"JP","ground":"light","accent":"blue","share":{"white":0.723,"image":0.167,"amber":0.018,"tint":0.086,"blue":0.006},"rootBg":[255,255,255]}
+{"host":"joyobank.co.jp","trade":"finance","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.533,"image":0.342,"blue":0.065,"red":0.006,"dark":0.054},"rootBg":[255,255,255]}
+{"host":"kyosan.co.jp","trade":"maker","kind":"company","country":"JP","ground":"light","accent":"blue","share":{"white":0.455,"blue":0.012,"image":0.318,"tint":0.214},"rootBg":[255,255,255]}
+{"host":"aeonglobalscm.co.jp","trade":"maker","kind":"company","country":"JP","ground":"dark","accent":"pink","share":{"dark":1},"rootBg":[31,31,31]}
+{"host":"kwnews.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"hirata.co.jp","trade":"maker","kind":"company","country":"JP","ground":"light","accent":"indigo","share":{"image":0.327,"white":0.673},"rootBg":[255,255,255]}
+{"host":"fukuoka-u.ac.jp","trade":"university","kind":"public","country":"JP","ground":"image","accent":"indigo","share":{"red":0.071,"white":0.199,"image":0.726,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"finetakeda.co.jp","trade":"maker","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.81,"tint":0.045,"blue":0.009,"white":0.134,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"trusco.co.jp","trade":"maker","kind":"company","country":"JP","ground":"light","accent":"teal","share":{"white":0.774,"image":0.173,"tint":0.054},"rootBg":[255,255,255]}
+{"host":"hyoe.co.jp","trade":"inn","kind":"place","country":"JP","ground":"image","accent":"orange","share":{"image":0.97,"white":0.018,"tint":0.006,"amber":0.003,"brown":0.003},"rootBg":[246,237,204]}
+{"host":"estarbank.co.kr","trade":"finance","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.711,"image":0.196,"tint":0.083,"dark":0.009},"rootBg":[255,255,255]}
+{"host":"cksavingsbank.co.kr","trade":"finance","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.607,"image":0.179,"tint":0.098,"green":0.054,"blue":0.054,"dark":0.009},"rootBg":[255,255,255]}
+{"host":"suimeikan.co.jp","trade":"inn","kind":"place","country":"JP","ground":"light","accent":"amber","share":{"tint":0.696,"amber":0.012,"image":0.271,"blue":0.009,"teal":0.012},"rootBg":[252,247,237]}
+{"host":"ghntown.co.kr","trade":"inn","kind":"place","country":"KR","ground":"light","accent":"brown","share":{"image":0.223,"white":0.649,"dark":0.122,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"tour054.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.324,"image":0.601,"tint":0.074},"rootBg":[255,255,255]}
+{"host":"budoo-shop.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"pink","share":{"tint":0.074,"image":0.702,"white":0.223},"rootBg":[255,255,255]}
+{"host":"shop.taneya.co.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"white":0.199,"image":0.72,"red":0.003,"tint":0.071,"green":0.006},"rootBg":[255,255,255]}
+{"host":"mametoku.shop","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"red","share":{"dark":0.06,"tint":0.176,"white":0.351,"image":0.351,"red":0.063},"rootBg":[255,255,255]}
+{"host":"gdco.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"oqoq.jp","trade":"inn","kind":"place","country":"JP","ground":"image","accent":"amber","share":{"tint":0.244,"green":0.003,"amber":0.006,"image":0.717,"dark":0.009,"white":0.021},"rootBg":[252,249,239]}
+{"host":"ptp.or.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"jnmall.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"orange","share":{"white":0.738,"image":0.262},"rootBg":[255,255,255]}
+{"host":"davichmarket.com","trade":"local","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.917,"image":0.083},"rootBg":[255,255,255]}
+{"host":"cbdc.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"pmaa.or.kr","skipped":"page.evaluate: Execution context was destroyed, most likely because of a navigat"}
+{"host":"shanews.com","trade":"media","kind":"media","country":"KR","ground":"light","accent":"blue","share":{"white":0.795,"image":0.205},"rootBg":[255,255,255]}
+{"host":"gwdmall.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.363,"image":0.536,"blue":0.068,"tint":0.033},"rootBg":[255,255,255]}
+{"host":"ndsoft.co.kr","trade":"software","kind":"software","country":"KR","ground":"image","accent":"pink","share":{"white":0.086,"image":0.908,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"eksys.co.kr","trade":"software","kind":"software","country":"KR","ground":"image","accent":"blue","share":{"white":0.372,"image":0.628},"rootBg":[255,255,255]}
+{"host":"brainz.co.kr","trade":"software","kind":"software","country":"KR","ground":"light","accent":"blue","share":{"image":0.006,"white":0.988,"blue":0.006},"rootBg":[255,255,255]}
+{"host":"mgwonkwang.co.kr","trade":"finance","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"image":0.369,"white":0.586,"dark":0.006,"blue":0.039},"rootBg":[255,255,255]}
+{"host":"cms.wfmc.kr","trade":"gov","kind":"public","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.714,"white":0.107,"image":0.179},"rootBg":[255,255,255]}
+{"host":"saejongam.co.kr","trade":"finance","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"image":0.437,"tint":0.095,"white":0.449,"blue":0.018},"rootBg":[255,255,255]}
+{"host":"koroad.or.kr","skipped":"robots.txt unreachable"}
+{"host":"djsiseol.or.kr","trade":"gov","kind":"public","country":"KR","ground":"light","accent":"indigo","share":{"image":0.476,"indigo":0.083,"blue":0.071,"teal":0.083,"white":0.214,"tint":0.071},"rootBg":[255,255,255]}
+{"host":"auc.or.kr","trade":"gov","kind":"public","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"ictr.or.kr","trade":"gov","kind":"public","country":"KR","ground":"image","accent":"green","share":{"tint":0.071,"image":0.637,"white":0.292},"rootBg":[255,255,255]}
+{"host":"keco.applyin.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"nsk.com","trade":"maker","kind":"company","country":"KR","ground":"light","accent":"red","share":{"white":0.5,"image":0.467,"tint":0.03,"red":0.003},"rootBg":[255,255,255]}
+{"host":"kead.or.kr","trade":"gov","kind":"public","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.833,"white":0.167},"rootBg":[255,255,255]}
+{"host":"smiltd.co.kr","trade":"maker","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"kimsclinic.co.kr","trade":"hospital","kind":"service","country":"KR","ground":"dark","accent":"indigo","share":{"dark":0.94,"white":0.06},"rootBg":[255,255,255]}
+{"host":"valex.co.kr","trade":"logistics","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"white":0.298,"image":0.702},"rootBg":[255,255,255]}
+{"host":"firsteyeclinic.co.kr","trade":"hospital","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"djh.kr","trade":"hospital","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"tint":0.128,"image":0.586,"white":0.286},"rootBg":[255,255,255]}
+{"host":"samickthk.co.kr","trade":"maker","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":0.991,"image":0.009},"rootBg":[255,255,255]}
+{"host":"jaseng.co.kr","skipped":"robots.txt unreachable"}
+{"host":"hanseohospital.or.kr","trade":"hospital","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"image":0.949,"white":0.051},"rootBg":[237,238,240]}
+{"host":"flowercity.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"indigo","share":{"white":0.295,"image":0.705},"rootBg":[255,255,255]}
+{"host":"guposs.com","trade":"hospital","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"blue":0.08,"image":0.583,"white":0.247,"tint":0.068,"dark":0.021},"rootBg":[255,255,255]}
+{"host":"xn--jj0bz32a1nd.com","trade":"local","kind":"place","country":"KR","ground":"light","accent":"teal","share":{"white":0.896,"image":0.104},"rootBg":[255,255,255]}
+{"host":"localblock.co.kr","trade":"software","kind":"software","country":"KR","ground":"blue","accent":"blue","share":{"blue":0.771,"amber":0.015,"white":0.202,"tint":0.009,"image":0.003},"rootBg":[42,52,71]}
+{"host":"spacecare.co.kr","trade":"local","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"white":0.693,"image":0.298,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"cyso.co.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.976,"blue":0.012,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"nongsarang.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"red","share":{"image":0.646,"white":0.354},"rootBg":[255,255,255]}
+{"host":"ecolandjeju.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"stxresort.com","trade":"inn","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.533,"image":0.461,"white":0.006},"rootBg":[255,255,255]}
+{"host":"10041004.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"red","share":{"image":0.738,"white":0.262},"rootBg":[255,255,255]}
+{"host":"shillahotels.com","trade":"inn","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.75,"white":0.25},"rootBg":[255,255,255]}
+{"host":"lottehotel.com","trade":"inn","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.833,"white":0.167},"rootBg":[255,255,255]}
+{"host":"toyoko-inn.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.405,"image":0.586,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"kosmes.or.kr","skipped":"robots.txt unreachable"}
+{"host":"jntp.or.kr","trade":"gov","kind":"public","country":"KR","ground":"light","accent":"blue","share":{"image":0.318,"white":0.435,"blue":0.238,"tint":0.006,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"djbea.or.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"uctf.or.kr","trade":"culture","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.461,"image":0.536,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"gwcf.or.kr","trade":"culture","kind":"place","country":"KR","ground":"image","accent":"teal","share":{"image":0.881,"white":0.119},"rootBg":[255,255,255]}
+{"host":"gcaf.or.kr","trade":"culture","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.378,"dark":0.027,"image":0.592,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"parking-system.co.jp","trade":"corp","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"image":0.833,"white":0.167},"rootBg":[255,255,255]}
+{"host":"alsi.co.jp","trade":"software","kind":"software","country":"JP","ground":"image","accent":"blue","share":{"white":0.31,"blue":0.054,"image":0.637},"rootBg":[255,255,255]}
+{"host":"chieru.co.jp","trade":"software","kind":"software","country":"JP","ground":"image","accent":"orange","share":{"image":0.914,"white":0.063,"orange":0.024},"rootBg":[255,255,255]}
+{"host":"eiwa-shinkin.co.jp","trade":"finance","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.872,"amber":0.107,"tint":0.021},"rootBg":[255,255,255]}
+{"host":"cybozu.co.jp","trade":"hiring","kind":"service","country":"JP","ground":"light","accent":"indigo","share":{"white":0.804,"image":0.125,"blue":0.065,"teal":0.006},"rootBg":[255,255,255]}
+{"host":"gacf.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sealing.jtekt.co.jp","skipped":"robots.txt unreachable"}
+{"host":"thermos.jtekt.co.jp","skipped":"robots.txt unreachable"}
+{"host":"city.sakaide.lg.jp","trade":"hospital","kind":"service","country":"JP","ground":"image","accent":"blue","share":{"image":0.81,"white":0.19},"rootBg":[255,255,255]}
+{"host":"nagomi-yoneya.co.jp","skipped":"robots.txt unreachable"}
+{"host":"shop.tsuruyayoshinobu.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"tint":0.143,"white":0.054,"image":0.804},"rootBg":[255,255,255]}
