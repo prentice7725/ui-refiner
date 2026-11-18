@@ -5,7 +5,9 @@ argument-hint: <local file | dev-server url> [extra instructions]
 
 Refine the page: $ARGUMENTS
 
-Follow the **Refine** workflow of the `ui-refiner-agent` skill:
+If the page was already refined and the extra instructions only ask for it bolder or quieter (as a whole, or one named section), follow **Bolder or quieter** in the `ui-refiner-agent` skill (`reference/steer.md`) instead of the steps below.
+
+Otherwise follow the **Refine** workflow of the `ui-refiner-agent` skill:
 
 1. Find the source that renders the target (the `.html` file itself, or the project files behind the dev server). If you cannot edit it, stop and run the **Review** workflow instead.
 2. Run `node <UI_REFINER>/bin/ui-refiner.mjs scan <target>` (the skill explains where `<UI_REFINER>` is), then open `ui-refiner-scan/scan-desktop.png` and `scan-mobile.png` before reading `DESIGN_REVIEW.md`. Decide how much to change from the score: 20 or more, the full refine below; 8–19, or any page with a real brand, polish it (keep structure, palette and type, fix the confirmed signals and craft issues, skip the directions, still run `keep record` and `keep check`); under 8 with no confirmed signal, report and change nothing unless asked.

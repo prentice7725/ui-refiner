@@ -93,6 +93,10 @@ test('deal: a familiar, a tailored and a bold direction, each with its own lane 
  assert.equal(r.entry.lane,'bold');assert.equal(r.entry.material,bold.material.slug);assert.equal((await readLog(log))[0].material,bold.material.slug,'a bold pick remembers its material');
  const t=await recordChoice(path.join(dir,'p','dirs'),{pick:'B',log});
  assert.equal(t.entry.lane,'tailored');assert.equal(t.entry.material,null,'other lanes record no material');
+ assert.equal(t.allowed,null);
+ const fam2=await recordChoice(path.join(dir,'p','dirs'),{pick:'A',log});
+ assert.equal(fam2.entry.lane,'familiar');
+ assert.deepEqual(JSON.parse(await fs.readFile(path.join(dir,'p','ui-refiner-allow.json'),'utf8')).allow.map(e=>e.signal),['generic-type'],'a familiar pick records its plain typeface as deliberate in the project');
  const led=k=>['full-bleed','left+media','below-fold'].includes(k);
  for(let seed=0;seed<20;seed++){
   const x=await dealDirections(path.join(dir,'q'+seed,'dirs'),{log:path.join(dir,'none.json'),seed,kind:'software',tone:'calm',noPhoto:true});

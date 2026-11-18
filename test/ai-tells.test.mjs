@@ -138,15 +138,51 @@ test('score breakdown: whole points per signal add up to the score, and the verd
   assert.equal(b.rows.reduce((n,r)=>n+r.points,0)+b.craft.reduce((n,c)=>n+c.points,0)+b.cap,score);
   assert.ok(b.rows.every(r=>r.points>0)&&!b.rows.some(r=>r.id==='d'&&signals.find(s=>s.id==='d')?.weight===0));
  }
- assert.deepEqual([0,7,8,19,20,100].map(aiVerdict),['none','none','traces','traces','ai','ai']);
+ assert.deepEqual([0,7,8,19,20,100].map(aiVerdict),['none','none','unclear','unclear','ai','ai']);
  const md=renderScan({url:'http://x/',lang:'ko',aiLook:evaluateAiTells({...quiet(),emoji:{count:6,icons:6,targets:['span']}}),quality:[],japanese:{japanese:false,issues:[]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
  assert.match(md,/## 1\. 왜 이 점수인가/);assert.match(md,/\| \*\*합계\*\* \| \*\*\d+\*\* \|/);assert.match(md,/판정: AI가 만든/);
 });
 
-test('familiar direction: a single plain typeface is reported but not scored', () => {
+test('allow: a signal the project keeps on purpose is reported without being scored', async () => {
+ const {mergeTells}=await import('../src/scan.mjs');
+ const {readAllow,addAllow,removeAllow,findAllow,ALLOW_FILE}=await import('../src/allow.mjs');
+ const fsp=await import('node:fs/promises'),os=await import('node:os'),path=await import('node:path');
  const m=quiet();m.typography={...m.typography,families:[{name:'noto sans kr',count:40}]};
- const plain=evaluateAiTells(m),fam=evaluateAiTells({...m,direction:'familiar'});
- const g=r=>r.signals.find(s=>s.id==='generic-type');
- assert.ok(g(plain)?.weight>0,'scored on an ordinary page');
- assert.equal(g(fam)?.weight,0);assert.equal(g(fam)?.points,0);assert.ok(fam.score<plain.score);
+ const plain=mergeTells([{viewport:'desktop',metrics:m}],'ko'),kept=mergeTells([{viewport:'desktop',metrics:m}],'ko',[{signal:'generic-type',reason:'brand typeface'}]);
+ const g=r=>r.signals.find(x=>x.id==='generic-type');
+ assert.ok(g(plain).weight>0&&!g(plain).allowed);
+ assert.equal(g(kept).weight,0);assert.equal(g(kept).points,0);assert.equal(g(kept).allowed,'brand typeface');assert.ok(kept.score<plain.score);
+ assert.equal(kept.breakdown.rows.reduce((n,r)=>n+r.points,0)+kept.breakdown.craft.reduce((n,c)=>n+c.points,0)+kept.breakdown.cap,kept.score);
+ const md=renderScan({url:'http://x/',lang:'ko',aiLook:kept,quality:[],japanese:{japanese:false,issues:[]},views:[{viewport:'desktop',width:1440,screenshot:'scan-desktop.png'}],static:null});
+ assert.match(md,/0 \(허용: brand typeface\)/);assert.match(md,/ui-refiner-allow\.json/);
+ const dir=await fsp.mkdtemp(path.join(os.tmpdir(),'uir-allow-')),file=path.join(dir,ALLOW_FILE);
+ assert.deepEqual(await readAllow(file),[],'a missing file is an empty list');
+ await addAllow(file,{signal:'generic-type',reason:'brand typeface'});await addAllow(file,{signal:'generic-type',reason:'house face'});
+ assert.deepEqual(await readAllow(file),[{signal:'generic-type',reason:'house face'}],'one entry per signal');
+ await assert.rejects(addAllow(file,{signal:'text-contrast',reason:'we like it'}),/Unknown signal/,'quality rules cannot be allowed');
+ await assert.rejects(addAllow(file,{signal:'gradient-text'}),/--reason is required/);
+ assert.equal(await findAllow(path.join(dir,'index.html'),os.tmpdir()),file,'found beside a local page');
+ assert.equal(await findAllow('https://example.com/',dir),file,'found in the working directory for a URL');
+ await removeAllow(file,'generic-type');assert.deepEqual(await readAllow(file),[]);
+});
+
+test('allow: the CLI adds, lists and removes an entry', async () => {
+ const {execFileSync}=await import('node:child_process'),fsp=await import('node:fs/promises'),os=await import('node:os'),path=await import('node:path');
+ const dir=await fsp.mkdtemp(path.join(os.tmpdir(),'uir-allow-cli-')),bin=path.resolve('bin/ui-refiner.mjs'),run=(...a)=>execFileSync(process.execPath,[bin,...a],{cwd:dir,encoding:'utf8'});
+ assert.match(run('allow','add','default-accent','--reason','brand blue'),/\[ALLOW\] default-accent: brand blue/);
+ assert.match(run('allow','list'),/default-accent: brand blue/);
+ run('allow','remove','default-accent');assert.match(run('allow','list'),/No allowed signals/);
+});
+
+test('Korean pages: a small display size and a single plain family are reported but not scored', () => {
+ const base=quiet();base.typography={...base.typography,display:28,body:16,ratio:1.75};
+ const f=r=>r.signals.find(s=>s.id==='flat-scale');
+ const en=evaluateAiTells({...base,text:'A plain English page about budgets and spending, long enough to count.'},{lang:'en'});
+ const ko=evaluateAiTells({...base,text:'흩어진 계좌를 한 화면에 모아 보고 수수료 없이 송금하는 개인 자산관리 앱입니다.'},{lang:'ko'});
+ assert.ok(f(en)?.weight>0,'scored on an English page');
+ assert.equal(f(ko)?.weight,0,'reported on a Korean page');assert.equal(f(ko)?.points,0);
+ assert.ok(ko.score<en.score);
+ const one={...base,typography:{...base.typography,families:[{name:'noto sans kr',count:40}]}},g=r=>r.signals.find(x=>x.id==='generic-type');
+ assert.ok(g(evaluateAiTells({...one,text:'A plain English page about budgets and spending, long enough to count.'},{lang:'en'}))?.weight>0,'a single plain family is scored on an English page');
+ assert.equal(g(evaluateAiTells({...one,text:'흩어진 계좌를 한 화면에 모아 보고 수수료 없이 송금하는 개인 자산관리 앱입니다.'},{lang:'ko'}))?.weight,0,'and reported on a Korean page');
 });
