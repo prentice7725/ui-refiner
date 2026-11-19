@@ -44,9 +44,10 @@ const help=`UI Refiner 0.8.0 — de-AI web design review and UI quality gate
       ui-refiner-system.json and DESIGN_SYSTEM.md next to it (or in --dir), to build the site's other pages from
   ui-refiner system check <page> [more pages] [--system ui-refiner-system.json] [--json]
       lists where other pages of the site leave that design (exit 1 on drift)
-  ui-refiner photos "<subject>" [--out assets/stand-in] [--count 6] [--orientation landscape|portrait|any] [--lang en|ja|ko] [--json]
+  ui-refiner photos "<subject>" [--out assets/stand-in] [--count 6] [--orientation landscape|portrait|any] [--lang en|ja|ko] [--no-optimise] [--json]
       saves openly licensed stand-in photographs from Wikimedia Commons with credits.json and a footer credit line;
-      mark each on the page with data-stand-in, never present it as the client's own, replace it with real photos
+      mark each on the page with data-stand-in, never present it as the client's own, replace it with real photos;
+      each photo is saved as WebP at 640, 1024 and 1600px with a ready <img srcset> line (--no-optimise keeps the download)
   ui-refiner allow add <signal> --reason "why it is deliberate" [--file ui-refiner-allow.json]
   ui-refiner allow remove <signal> | ui-refiner allow list
       keeps a list of AI-look signals this project uses on purpose (a brand typeface, a brand accent); the scan reports
@@ -77,6 +78,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--json'){out.json=true;continue;}
   if(a==='--no-compare'){out.noCompare=true;continue;}
   if(a==='--no-photo'){out.noPhoto=true;continue;}
+  if(a==='--no-optimise'){out.noOptimise=true;continue;}
   if(a==='--help'){out.help=true;continue;}
   if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
@@ -114,9 +116,13 @@ try{
     process.exitCode=r.ok?0:1;
   }
   else if(command==='photos'&&args._.length===2){
-    const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
+    const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en',optimise:!args.noOptimise});
+    const kb=n=>`${Math.round(n/1024)} KB`;
     if(args.json)console.log(JSON.stringify(r,null,2));
-    else console.log(r.photos.map(p=>`${p.file}  ${p.width}x${p.height}  ${p.author} (${p.licence})  ${p.source}`).join('\n')+`\n[PHOTOS] ${r.photos.length} stand-ins in ${r.dir} (credits.json)\nCredit line for the footer:\n${r.credit}`);
+    else console.log(r.photos.map(p=>`${p.file}  ${p.width}x${p.height}  ${p.author} (${p.licence})  ${p.source}`+(p.variants?`\n  WebP ${p.variants.map(v=>`${v.width}w ${kb(v.bytes)}`).join(', ')} (was ${kb(p.originalBytes)})\n  ${p.img}`:'')).join('\n')
+      +`\n[PHOTOS] ${r.photos.length} stand-ins in ${r.dir} (credits.json)`+(r.optimiseSkipped?`\n[WARN] ${r.optimiseSkipped}`:'')
+      +(r.photos.some(p=>p.variants)?`\nUse each photo through its <img> line: keep srcset, width and height, set sizes to the width the photo really takes in the layout (for example "(min-width: 64em) 50vw, 100vw"), add fetchpriority="high" to the first-screen photo and loading="lazy" to the rest, and write a generic alt.`:'')
+      +`\nCredit line for the footer:\n${r.credit}`);
   }
   else if(command==='directions'&&sub==='deal'&&args._.length===3){
     if(args.seed!=null&&!/^\d+$/.test(String(args.seed)))throw new Error('--seed must be a whole number');
@@ -153,7 +159,10 @@ try{
     else console.log(r.drift.length?`[DRIFT] ${r.label}: ${r.drift.map(d=>`${d.id} ${d.chosen} → ${d.applied}`).join('; ')}`:`[VERIFY] ${r.label}: hero ${r.applied.hero}, surface and type kept`);
     if(r.problems?.length)console.log(`[FIRST SCREEN] ${r.problems.join(', ')}: the first screen needs a one-line claim, not dwarfed by other text, the main action, and a photo or a large product screen showing one readable scene`);
     if(r.habits?.includes('stat-strip'))console.log('[HABIT] stat-strip: a row of big figures side by side. In benchmark round 16 all three set judges named it as a habit shared across unrelated clients; keep a figure only where it is the client’s point, as a sentence, a table or a timetable');
-    process.exitCode=r.drift.length||r.problems?.length?1:0;
+    for(const l of r.loading||[])console.log(l.id==='blocking-font-css'
+      ?`[LOADING] blocking-font-css: ${l.items.join(', ')} blocks the first paint. Load it without blocking, keeping preconnect and display=swap: <link rel="stylesheet" href="…" media="print" onload="this.media='all'"> followed by <noscript><link rel="stylesheet" href="…"></noscript>`
+      :`[LOADING] stand-in-no-srcset: ${l.items.join(', ')} has no srcset. Use the <img> line \`ui-refiner photos\` printed (srcset, width, height) and set sizes to the width the photo takes`);
+    process.exitCode=r.drift.length||r.problems?.length||r.loading?.length?1:0;
   }
   else if(command==='directions'&&args._.length===2){
     const lang=args.lang||process.env.UI_REFINER_LANG||'auto';
