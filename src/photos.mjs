@@ -45,8 +45,45 @@ export function creditLine(photos,lang='en'){
  return `<p class="stand-in-credits">${lead}: ${photos.map(p=>`<a href="${esc(p.source)}">${esc(p.author)}</a> (${esc(p.licence)})`).join(', ')}, via Wikimedia Commons</p>`;
 }
 
-/** Searches and saves stand-ins into `out` with credits.json; returns the saved list and the credit line. */
-export async function fetchStandIns(query,{out='assets/stand-in',count=6,orientation='landscape',lang='en',fetchImpl=fetch}={}){
+/** Widths the stand-ins are saved at. A downloaded 1600px Commons JPEG weighs 400–750 KB and was the
+ * largest-contentful-paint element on refined pages (2026-11-19 benchmark); WebP at these widths with
+ * srcset lets a phone load the 640px file instead. */
+export const PHOTO_WIDTHS=[640,1024,1600];
+
+/** Resizes saved photos to WebP at each width (never wider than the original) with the bundled Chromium,
+ * replaces the original file and adds `variants`, `srcset` and an `<img>` snippet to each photo.
+ * When the browser cannot be started, the originals stay and `skipped` says why. */
+export async function optimisePhotos(dir,photos,{widths=PHOTO_WIDTHS,quality=0.8,base=dir}={}){
+ if(!photos.length)return {photos,skipped:null};
+ let browser;
+ try{const {chromium}=await import('playwright');browser=await chromium.launch();}
+ catch(e){return {photos,skipped:`could not start Chromium to convert photos (${String(e.message).split('\n')[0]}); the original files were kept`};}
+ const rel=f=>path.relative(base,path.join(dir,f)).split(path.sep).join('/');
+ try{
+  const page=await browser.newPage();
+  for(const p of photos){
+   const src=path.join(dir,p.file),buf=await fs.readFile(src),mime=p.file.endsWith('.png')?'image/png':p.file.endsWith('.webp')?'image/webp':'image/jpeg';
+   const made=await page.evaluate(async({data,widths,quality})=>{
+    const img=new Image();img.src=data;try{await img.decode();}catch{return null;}
+    const W=img.naturalWidth,H=img.naturalHeight,ws=[...new Set([...widths.filter(w=>w<W),Math.min(W,Math.max(...widths))])].sort((a,b)=>a-b);
+    return ws.map(w=>{const h=Math.round(w*H/W),c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');g.imageSmoothingQuality='high';g.drawImage(img,0,0,w,h);
+     const url=c.toDataURL('image/webp',quality);return url.startsWith('data:image/webp')?{w,h,b64:url.split(',')[1]}:null;}).filter(Boolean);
+   },{data:`data:${mime};base64,${buf.toString('base64')}`,widths,quality});
+   if(!made?.length)continue;
+   const stem=p.file.replace(/\.\w+$/,'');p.variants=[];
+   for(const v of made){const f=`${stem}-${v.w}.webp`;await fs.writeFile(path.join(dir,f),Buffer.from(v.b64,'base64'));p.variants.push({file:f,width:v.w,height:v.h,bytes:Buffer.byteLength(v.b64,'base64')});}
+   await fs.rm(src,{force:true});
+   const big=p.variants.at(-1);p.originalBytes=buf.length;p.file=big.file;
+   p.srcset=p.variants.map(v=>`${rel(v.file)} ${v.width}w`).join(', ');
+   p.img=`<img src="${rel(big.file)}" srcset="${p.srcset}" sizes="100vw" width="${big.width}" height="${big.height}" alt="" data-stand-in>`;
+  }
+ }finally{await browser.close();}
+ return {photos,skipped:null};
+}
+
+/** Searches and saves stand-ins into `out` with credits.json; returns the saved list and the credit line.
+ * Photos are converted to WebP at PHOTO_WIDTHS unless `optimise` is false. */
+export async function fetchStandIns(query,{out='assets/stand-in',count=6,orientation='landscape',lang='en',fetchImpl=fetch,optimise=true,base=process.cwd()}={}){
  const found=await searchPhotos(query,{count,orientation,fetchImpl});
  if(!found.length)throw new Error(`No openly licensed photographs found for "${query}". Try a plainer subject (for example "dentist chair" instead of a clinic name).`);
  const dir=path.resolve(out);await fs.mkdir(dir,{recursive:true});
@@ -61,9 +98,10 @@ export async function fetchStandIns(query,{out='assets/stand-in',count=6,orienta
   await fs.writeFile(path.join(dir,file),Buffer.from(await res.arrayBuffer()));
   saved.push({file,query,...p});
  }
+ const opt=optimise?await optimisePhotos(dir,saved,{base:path.resolve(base)}):{skipped:null};
  credits.photos.push(...saved);
  await fs.writeFile(path.join(dir,'credits.json'),JSON.stringify(credits,null,1)+'\n');
- return {dir,photos:saved,credit:creditLine(credits.photos,lang)};
+ return {dir,photos:saved,credit:creditLine(credits.photos,lang),...(opt.skipped?{optimiseSkipped:opt.skipped}:{})};
 }
 
 /** Counts stand-in images in an HTML source (img or elements marked data-stand-in). */
