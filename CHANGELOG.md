@@ -9,7 +9,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - Refine benchmark harness: a trade benchmark, prepared but not run. Arms k/l build only the familiar mock (A) without and with `--trade`, on one seed per page and repeat; arms m/n refine to the end and pick A. Six Korean and Japanese pages are listed in `scripts/refine-bench/trades.tsv` (ko-logistics is the control), with prompts for three new ones. `scripts/refine-bench/trade-fit.mjs` measures how well each mock fits the trade's measured sites. See `scripts/refine-bench/README.md`.
 
 ### Changed
-- `directions deal`: the "images first" structure (`below-fold`) asks for images across the full width with the claim on them or in a short band right under them, never in a column beside a half-width photo. In the first run of the trade benchmark, 4 of 6 mocks dealt it with `--trade` were built as a photo on one half and the headline on the other, which is a different structure (`left+media`).
+- `directions deal`: the "images first" structure (`below-fold`) asks for images across the full width with the claim on them or in a short band right under them, never in a column beside a half-width photo. In the first run of the trade benchmark, 4 of 18 mocks dealt it were built as a photo on one half and the headline on the other, which is a different structure (`left+media`, `right+media`).
 - The first-screen colour measure moved from `scripts/collect-colours.mjs` to `src/first-screen-colour.mjs`, so the benchmark measures mocks the same way the collector measures sites. The collector's output is unchanged.
 
 ### Fixed
