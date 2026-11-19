@@ -24,6 +24,8 @@ ui-refiner directions verify refine-directions index.html             # check th
 ui-refiner system extract index.html                                  # save the picked design for the site's other pages
 ui-refiner system check about.html pricing.html                       # check other pages keep that design
 ui-refiner keep check index.html                                   # exit 1 if the refined page lost any of them
+ui-refiner stress index.html                                       # worst-case labels, emails, phone numbers and figures at 320/390/1440px; exit 1 if something broke
+ui-refiner prefer add surface paper --said "no more cream grounds"   # something this person never wants; later deals leave it out
 ```
 
 That is the whole loop. `scan` takes any URL, bare host name or local `.html` file, needs no config and changes nothing in the target project. Without `npm link`, use `node bin/ui-refiner.mjs scan …` instead.
