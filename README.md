@@ -130,7 +130,7 @@ The report follows the page language: English, Korean or Japanese.
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-0.8.0-1b1e24)
-![Tests](https://img.shields.io/badge/tests-178%20passing-555555)
+![Tests](https://img.shields.io/badge/tests-182%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
 ## License
