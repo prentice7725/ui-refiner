@@ -6,6 +6,7 @@
 #   EXTRA_TOOLS   추가로 허용할 도구 (공백으로 구분, 예: "Agent Task")
 #   REP           반복 번호. 결과 폴더가 <arm>.<REP>가 되고, 선택 기록도 반복마다 따로 쓴다
 #   MODEL         생성 모델 (기본값 claude-opus-5-5)
+#   EXTRA_DIR     페이지 폴더의 ./.extra로 복사할 자료 폴더. 실행이 끝나면 지운다
 #   KIND, TRADE, SEED  EXTRA_PROMPT의 {KIND} {LANG} {SEED} {TRADE_ARG} {TRADE_LINE}을 채운다 (variants/trade-*.md). TRADE가 비면 업종 없이 배정한다
 # Git Bash(윈도우)에서는 /c/… 대신 C:/… 경로를 써야 에이전트의 파일 도구와 훅이 같은 경로를 읽는다
 pw(){ pwd -W 2>/dev/null || pwd; }
@@ -36,6 +37,8 @@ case "$arm" in
    require("fs").writeFileSync(f,JSON.stringify({arm,rep:rep||null,page:id,model,root,commit:g("rev-parse HEAD"),dirty:!!g("status --porcelain -- skills commands src bin data"),extraPrompt:extra||null,kind:process.env.KIND||null,trade:process.env.TRADE||null,seed:process.env.SEED||null,claude:(()=>{try{return x("claude --version",{encoding:"utf8"}).trim();}catch{return null;}})(),startedAt:new Date().toISOString()},null,1)+"\n");' \
    "$B/meta/$name-$id.json" "$arm" "${REP:-}" "$id" "$ROOT" "$MODEL" "${EXTRA_PROMPT:-}"
   mkdir -p .claude
+  # EXTRA_DIR: 에이전트가 읽을 추가 자료(예: Modern Web Guidance 스킬)를 ./.extra에 두고, 끝나면 지운다
+  [ -n "${EXTRA_DIR:-}" ] && cp -r "$EXTRA_DIR" ./.extra
   # Stop: 마무리 게이트. PostToolUse: 단계별 스냅숏 (시안, 첫 구현, 검사 뒤 수정본을 남긴다)
   printf '{"hooks":{"Stop":[{"hooks":[{"type":"command","command":"node %s/scripts/refine-gate-hook.mjs","timeout":15}]}],"PostToolUse":[{"matcher":"*","hooks":[{"type":"command","command":"node %s/snapshot-hook.mjs","timeout":15}]}]}}\n' "$ROOT" "$HERE" > .claude/settings.json
   body="$(awk 'BEGIN{c=0} /^---$/{c++; next} c>=2' "$ROOT/commands/ui-refine.md")"
@@ -51,7 +54,8 @@ $(cat "$EXTRA_PROMPT")"
   claude -p "First read the skill at $ROOT/skills/ui-refiner-agent/SKILL.md (the \`ui-refiner-agent\` skill; \`ui-refiner\` means \`node $ROOT/bin/ui-refiner.mjs\`). Then:
 
 $body$extra" "${common[@]}" --setting-sources project --add-dir "$ROOT" \
-    --allowed-tools Read Edit Write Glob Grep "Bash(node:*)" ${EXTRA_TOOLS:-} > "$log.json" 2> "$log.err";;
+    --allowed-tools Read Edit Write Glob Grep "Bash(node:*)" ${EXTRA_TOOLS:-} > "$log.json" 2> "$log.err"
+  rm -rf ./.extra;;
  *) echo "모르는 방식: $arm" >&2; exit 2;;
 esac
 echo "$name $id done"

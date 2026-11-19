@@ -10,6 +10,7 @@
 #   refine-h  refine-b(12차) + 새 맥락의 히어로·마무리 리뷰 (variants/review.md). 재료는 쓰지 않는다. ARMS에 h를 넣을 때만 돈다
 #   refine-i  Rhythm 절이 들어간 재료(7eca68b)에 refine-g의 배정 패치를 얹은 것. ARMS에 i를 넣을 때만 돈다
 #   refine-j  이 체크아웃: 익숙한 안·맞춤 안·과감한 안을 각각 다른 서브에이전트가 만든다. ARMS에 j를 넣을 때만 돈다
+#   refine-w  refine-j + Chrome의 Modern Web Guidance 스킬 (variants/mwg.md). 구현 품질(접근성·성능·옛 패턴)을 mwg-audit.mjs로 잰다. ARMS에 w를 넣을 때만 돈다
 #   refine-k, refine-l  업종 벤치마크 1단계: 익숙한 안(A) 시안만 만든다 (variants/trade-mock.md). k는 --trade 없이, l은 trades.tsv의 업종으로.
 #                       두 조건은 페이지·반복마다 같은 --seed를 쓴다. 시안은 refine-directions/a.html에 남는다
 #   refine-m, refine-n  업종 벤치마크 2단계: 끝까지 고치되 A를 고른다 (variants/trade-full.md). m은 --trade 없이, n은 업종으로
@@ -20,6 +21,8 @@ HERE="$(cd "$(dirname "$0")" && pw)"; R="$(cd "$HERE/../.." && pw)"; BENCH_DIR="
 PAGES="${PAGES:-en-dental en-foodbank ko-fintech ja-recruit}"; REPS="${REPS:-1 2 3}"; ARMS="${ARMS:-a b c d}"
 for id in $PAGES; do [ -f "$B/pages/$id/before/index.html" ] && continue; src="$R/docs/refine-bench-2026-11-11/pages/$id/before.html"; [ -f "$src" ] || { echo "$id: 원본이 없습니다. 먼저 ONLY=$id $HERE/gen.sh 로 만드세요" >&2; exit 1; }; mkdir -p "$B/pages/$id/before"; cp "$src" "$B/pages/$id/before/index.html"; done
 case " $ARMS " in *" a "*|*" b "*|*" h "*) { [ -d "$B/roots/r17" ] && [ -d "$B/roots/r12" ]; } || "$HERE/roots.sh" r17=origin/main r12=de170f6 || exit 1;; esac
+# refine-w: Modern Web Guidance 스킬을 고정 커밋으로 받아 둔다 (MWG_REF로 바꿀 수 있다)
+case " $ARMS " in *" w "*) [ -f "$B/mwg/SKILL.md" ] || { mkdir -p "$B/mwg" && gh api "repos/GoogleChrome/modern-web-guidance/contents/skills/modern-web-guidance/SKILL.md?ref=${MWG_REF:-64a6d708f5a43f2cd3fde5d4d7db3905ba1bdf65}" --jq .content | base64 -d > "$B/mwg/SKILL.md"; } || exit 1;; esac
 case " $ARMS " in *" e "*) [ -d "$B/roots/mat" ] || "$HERE/roots.sh" mat="${MATERIALS_REF:-f4684f5}" || exit 1;; esac
 case " $ARMS " in *" f "*) [ -d "$B/roots/matf" ] || { "$HERE/roots.sh" matf="${MATERIALS_REF:-f4684f5}" && git -C "$B/roots/matf" apply "$HERE/variants/materials-free.patch"; } || exit 1;; esac
 case " $ARMS " in *" g "*) [ -d "$B/roots/matg" ] || { "$HERE/roots.sh" matg="${MATERIALS_REF:-f4684f5}" && git -C "$B/roots/matg" apply "$HERE/variants/materials-deal.patch"; } || exit 1;; esac
@@ -41,6 +44,7 @@ one(){ # 한 조건의 한 반복: 페이지를 순서대로 돌려 앞 페이�
       h) REP=$rep REFINER_ROOT="$B/roots/r12" EXTRA_PROMPT="$HERE/variants/review.md" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-h "$id";;
       i) REP=$rep REFINER_ROOT="$B/roots/mati" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-i "$id";;
       j) REP=$rep EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-j "$id";;
+      w) REP=$rep EXTRA_DIR="$B/mwg" EXTRA_PROMPT="$HERE/variants/mwg.md" EXTRA_TOOLS="Agent Task Bash(npx:*)" "$HERE/arm.sh" refine-w "$id";;
       k|l|m|n) eval "$(trade_env "$id" "$rep")"; [ -n "${KIND:-}" ] || { echo "$id: trades.tsv에 없습니다" >&2; continue; }
          case "$arm" in k|m) TRADE="";; esac
          case "$arm" in k|l) v=trade-mock.md; gate=off; tools="";; *) v=trade-full.md; gate=on; tools="Agent Task";; esac
