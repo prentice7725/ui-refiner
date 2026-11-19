@@ -30,5 +30,8 @@ test('first-screen colours see a cover photo under its overlay, and not one hidd
   assert.equal(await ground(`<style>.h{position:relative;height:900px;background:#2a4fa0}.h::after{content:"";position:absolute;inset:0;background:linear-gradient(#0000,#0008)}</style><section class=h><img src="${gif}" style="width:100%;height:100%"></section>`),'image');
   assert.equal(await ground(`<div style="height:900px;background:#1e40af"></div>`),'blue');
   assert.equal(await ground(`<img src="${gif}" style="position:absolute;width:100%;height:900px"><div style="position:relative;height:900px;background:#1e40af"></div>`),'blue');
+  // Some pages have no body element (seen on Korean public sites); the probe still measures them.
+  await p.setContent('<body></body>');await p.evaluate(()=>{const d=document.createElement('div');d.style.cssText='height:900px;background:#1e40af';document.body.replaceWith(d);});
+  assert.equal(measureColours(await p.evaluate(colourProbe)).ground,'blue');
  }finally{await b.close();}
 });

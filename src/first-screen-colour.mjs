@@ -8,14 +8,16 @@ export function colourProbe(){
  const media=el=>['IMG','VIDEO','CANVAS','PICTURE','IFRAME'].includes(el.tagName)||(el.tagName==='svg'&&el.getBoundingClientRect().width*el.getBoundingClientRect().height>40000)||/url\(/.test(getComputedStyle(el).backgroundImage);
  // A transparent body and html show the browser's white canvas.
  const solid=v=>{const c=rgba(v);return c&&c[3]>.5?c.slice(0,3):null;};
- const rootBg=solid(getComputedStyle(document.body).backgroundColor)||solid(getComputedStyle(document.documentElement).backgroundColor)||[255,255,255];
+ // Some pages have no body element at all (document.body is null).
+ const rootBg=(document.body&&solid(getComputedStyle(document.body).backgroundColor))||solid(getComputedStyle(document.documentElement).backgroundColor)||[255,255,255];
  const cells=[];
  for(let y=0;y<14;y++)for(let x=0;x<24;x++){
   // Every element stacked at the point, top first, not only the topmost one and its parents: a photo often sits
   // beside its text overlay rather than under it in the tree, and a ::after overlay makes the photo's own box the
   // topmost element. A box's background paints under its descendants, so it hides a photo only when it does not
   // contain it (a fallback colour behind a cover photo is not the ground).
-  let hit=null;const stack=document.elementsFromPoint((x+.5)*W/24,(y+.5)*H/14).filter(e=>e!==document.documentElement);
+  // The prototype's own method, and elements only: some pages replace document.elementsFromPoint with a polyfill.
+  let hit=null;const stack=[...Document.prototype.elementsFromPoint.call(document,(x+.5)*W/24,(y+.5)*H/14)].filter(e=>e?.nodeType===1&&e!==document.documentElement);
   for(const e of stack){if(media(e)){hit='image';break;}const c=rgba(getComputedStyle(e).backgroundColor);if(c&&c[3]>.5){hit=stack.some(d=>d!==e&&e.contains(d)&&media(d))?'image':c.slice(0,3);break;}}
   cells.push(hit||rootBg);
  }

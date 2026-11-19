@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "measured": "2026-11-18",
+ "measured": "2026-11-19",
  "sites": 1790,
  "droppedForLanguage": 129,
  "minSites": 8,
@@ -60,20 +60,18 @@
     }
    },
    "colour": {
-    "sites": 21,
+    "sites": 20,
     "ground": {
-     "light": 0.429,
-     "image": 0.381,
-     "blue": 0.143,
-     "dark": 0.048
+     "image": 0.6,
+     "light": 0.3,
+     "blue": 0.1
     },
     "accent": {
-     "blue": 0.476,
-     "teal": 0.19,
-     "indigo": 0.143,
-     "red": 0.095,
-     "ink": 0.048,
-     "orange": 0.048
+     "blue": 0.5,
+     "teal": 0.2,
+     "indigo": 0.15,
+     "red": 0.1,
+     "orange": 0.05
     }
    },
    "type": {
@@ -96,14 +94,15 @@
    "colour": {
     "sites": 9,
     "ground": {
-     "image": 0.444,
-     "light": 0.444,
+     "image": 0.778,
+     "light": 0.111,
      "dark": 0.111
     },
     "accent": {
-     "blue": 0.444,
      "red": 0.333,
+     "blue": 0.333,
      "teal": 0.111,
+     "green": 0.111,
      "orange": 0.111
     }
    },
@@ -126,9 +125,9 @@
    "colour": {
     "sites": 15,
     "ground": {
-     "image": 0.667,
-     "light": 0.267,
-     "dark": 0.067
+     "image": 0.867,
+     "dark": 0.067,
+     "light": 0.067
     },
     "accent": {
      "ink": 0.4,
@@ -161,8 +160,8 @@
    "colour": {
     "sites": 18,
     "ground": {
-     "light": 0.5,
-     "image": 0.444,
+     "image": 0.611,
+     "light": 0.333,
      "blue": 0.056
     },
     "accent": {
@@ -195,8 +194,8 @@
    "colour": {
     "sites": 17,
     "ground": {
-     "light": 0.471,
-     "image": 0.412,
+     "image": 0.471,
+     "light": 0.412,
      "dark": 0.118
     },
     "accent": {
@@ -230,8 +229,8 @@
    "colour": {
     "sites": 16,
     "ground": {
-     "image": 0.5,
-     "light": 0.438,
+     "image": 0.625,
+     "light": 0.313,
      "dark": 0.063
     },
     "accent": {
@@ -266,10 +265,11 @@
    "colour": {
     "sites": 52,
     "ground": {
-     "image": 0.558,
-     "light": 0.404,
+     "image": 0.654,
+     "light": 0.288,
      "green": 0.019,
-     "amber": 0.019
+     "amber": 0.019,
+     "orange": 0.019
     },
     "accent": {
      "blue": 0.231,
@@ -304,8 +304,8 @@
    "colour": {
     "sites": 23,
     "ground": {
-     "image": 0.565,
-     "light": 0.435
+     "image": 0.826,
+     "light": 0.174
     },
     "accent": {
      "blue": 0.391,
@@ -338,18 +338,18 @@
     }
    },
    "colour": {
-    "sites": 14,
+    "sites": 12,
     "ground": {
-     "light": 0.5,
-     "image": 0.357,
-     "dark": 0.143
+     "image": 0.667,
+     "light": 0.167,
+     "dark": 0.167
     },
     "accent": {
-     "blue": 0.5,
-     "indigo": 0.143,
-     "red": 0.143,
-     "ink": 0.143,
-     "teal": 0.071
+     "blue": 0.417,
+     "indigo": 0.167,
+     "red": 0.167,
+     "ink": 0.167,
+     "teal": 0.083
     }
    },
    "type": {
@@ -372,8 +372,8 @@
    "colour": {
     "sites": 13,
     "ground": {
-     "image": 0.692,
-     "light": 0.308
+     "image": 0.769,
+     "light": 0.231
     },
     "accent": {
      "blue": 0.462,
@@ -403,13 +403,13 @@
    "colour": {
     "sites": 11,
     "ground": {
-     "light": 0.545,
-     "image": 0.364,
+     "image": 0.727,
+     "light": 0.182,
      "dark": 0.091
     },
     "accent": {
-     "ink": 0.636,
-     "blue": 0.273,
+     "ink": 0.727,
+     "blue": 0.182,
      "pink": 0.091
     }
    },
@@ -436,8 +436,8 @@
    "colour": {
     "sites": 23,
     "ground": {
-     "image": 0.522,
-     "light": 0.435,
+     "image": 0.652,
+     "light": 0.304,
      "dark": 0.043
     },
     "accent": {
@@ -473,13 +473,12 @@
    "colour": {
     "sites": 25,
     "ground": {
-     "image": 0.6,
-     "light": 0.36,
-     "dark": 0.04
+     "image": 0.64,
+     "light": 0.36
     },
     "accent": {
-     "ink": 0.4,
-     "blue": 0.32,
+     "ink": 0.44,
+     "blue": 0.28,
      "teal": 0.16,
      "orange": 0.04,
      "red": 0.04,
@@ -511,11 +510,10 @@
    "colour": {
     "sites": 79,
     "ground": {
-     "image": 0.57,
-     "light": 0.392,
+     "image": 0.81,
+     "light": 0.165,
      "orange": 0.013,
-     "green": 0.013,
-     "amber": 0.013
+     "green": 0.013
     },
     "accent": {
      "blue": 0.228,
@@ -552,9 +550,9 @@
    "colour": {
     "sites": 44,
     "ground": {
-     "image": 0.568,
-     "light": 0.364,
-     "dark": 0.045,
+     "image": 0.773,
+     "light": 0.182,
+     "dark": 0.023,
      "indigo": 0.023
     },
     "accent": {
@@ -591,8 +589,8 @@
    "colour": {
     "sites": 12,
     "ground": {
-     "image": 0.583,
-     "light": 0.333,
+     "image": 0.667,
+     "light": 0.25,
      "orange": 0.083
     },
     "accent": {
@@ -627,9 +625,9 @@
    "colour": {
     "sites": 16,
     "ground": {
-     "light": 0.375,
-     "dark": 0.375,
-     "image": 0.25
+     "image": 0.438,
+     "light": 0.313,
+     "dark": 0.25
     },
     "accent": {
      "ink": 0.688,
@@ -664,10 +662,9 @@
    "colour": {
     "sites": 38,
     "ground": {
-     "light": 0.5,
-     "image": 0.421,
-     "dark": 0.053,
-     "amber": 0.026
+     "image": 0.553,
+     "light": 0.421,
+     "dark": 0.026
     },
     "accent": {
      "ink": 0.316,
@@ -706,20 +703,20 @@
    "colour": {
     "sites": 29,
     "ground": {
-     "image": 0.517,
-     "light": 0.31,
-     "dark": 0.103,
+     "image": 0.655,
+     "light": 0.207,
+     "dark": 0.069,
      "teal": 0.034,
      "pink": 0.034
     },
     "accent": {
      "blue": 0.276,
      "red": 0.241,
-     "ink": 0.207,
+     "ink": 0.172,
      "orange": 0.138,
      "green": 0.069,
-     "teal": 0.034,
-     "indigo": 0.034
+     "indigo": 0.069,
+     "teal": 0.034
     }
    },
    "type": {
@@ -743,9 +740,9 @@
    "colour": {
     "sites": 13,
     "ground": {
-     "light": 0.385,
-     "image": 0.385,
-     "dark": 0.154,
+     "image": 0.538,
+     "light": 0.308,
+     "dark": 0.077,
      "blue": 0.077
     },
     "accent": {
@@ -773,17 +770,17 @@
     }
    },
    "colour": {
-    "sites": 13,
+    "sites": 14,
     "ground": {
-     "image": 0.615,
-     "light": 0.231,
-     "dark": 0.154
+     "image": 0.714,
+     "dark": 0.143,
+     "light": 0.143
     },
     "accent": {
-     "ink": 0.385,
-     "blue": 0.385,
-     "red": 0.154,
-     "indigo": 0.077
+     "ink": 0.429,
+     "blue": 0.357,
+     "red": 0.143,
+     "indigo": 0.071
     }
    },
    "type": {
@@ -807,9 +804,8 @@
    "colour": {
     "sites": 24,
     "ground": {
-     "light": 0.667,
-     "image": 0.292,
-     "dark": 0.042
+     "image": 0.75,
+     "light": 0.25
     },
     "accent": {
      "ink": 0.542,
@@ -840,8 +836,7 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "image": 0.6,
-     "light": 0.4
+     "image": 1
     },
     "accent": {
      "ink": 0.3,
@@ -874,8 +869,8 @@
    "colour": {
     "sites": 15,
     "ground": {
-     "image": 0.6,
-     "light": 0.333,
+     "image": 0.667,
+     "light": 0.267,
      "dark": 0.067
     },
     "accent": {
@@ -905,8 +900,7 @@
    "colour": {
     "sites": 9,
     "ground": {
-     "light": 0.556,
-     "image": 0.444
+     "image": 1
     },
     "accent": {
      "ink": 0.667,
@@ -938,17 +932,17 @@
    "colour": {
     "sites": 45,
     "ground": {
-     "image": 0.511,
-     "light": 0.4,
+     "image": 0.556,
+     "light": 0.356,
      "dark": 0.022,
      "amber": 0.022,
      "red": 0.022,
      "blue": 0.022
     },
     "accent": {
-     "blue": 0.667,
-     "red": 0.111,
+     "blue": 0.689,
      "indigo": 0.111,
+     "red": 0.089,
      "ink": 0.067,
      "orange": 0.022,
      "green": 0.022
@@ -976,9 +970,9 @@
    "colour": {
     "sites": 32,
     "ground": {
-     "light": 0.625,
-     "image": 0.313,
-     "dark": 0.063
+     "image": 0.531,
+     "light": 0.438,
+     "dark": 0.031
     },
     "accent": {
      "blue": 0.563,
@@ -1010,19 +1004,18 @@
    "colour": {
     "sites": 26,
     "ground": {
-     "image": 0.538,
-     "light": 0.385,
-     "dark": 0.038,
-     "red": 0.038
+     "image": 0.808,
+     "light": 0.115,
+     "dark": 0.077
     },
     "accent": {
      "blue": 0.269,
      "red": 0.154,
      "ink": 0.115,
      "orange": 0.115,
-     "pink": 0.115,
+     "indigo": 0.115,
      "amber": 0.077,
-     "indigo": 0.077,
+     "pink": 0.077,
      "teal": 0.038,
      "green": 0.038
     }
@@ -1047,9 +1040,8 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "light": 0.5,
-     "image": 0.4,
-     "dark": 0.1
+     "image": 0.8,
+     "light": 0.2
     },
     "accent": {
      "indigo": 0.4,
@@ -1083,10 +1075,9 @@
    "colour": {
     "sites": 30,
     "ground": {
-     "image": 0.6,
-     "light": 0.3,
-     "orange": 0.067,
-     "dark": 0.033
+     "image": 0.733,
+     "light": 0.2,
+     "orange": 0.067
     },
     "accent": {
      "ink": 0.333,
@@ -1116,21 +1107,22 @@
     }
    },
    "colour": {
-    "sites": 16,
+    "sites": 18,
     "ground": {
-     "light": 0.5,
-     "image": 0.438,
-     "green": 0.063
+     "image": 0.722,
+     "light": 0.222,
+     "dark": 0.056
     },
     "accent": {
-     "red": 0.313,
-     "teal": 0.125,
-     "ink": 0.125,
-     "amber": 0.125,
-     "orange": 0.125,
-     "indigo": 0.063,
-     "green": 0.063,
-     "blue": 0.063
+     "red": 0.333,
+     "teal": 0.111,
+     "ink": 0.111,
+     "amber": 0.111,
+     "orange": 0.111,
+     "pink": 0.056,
+     "indigo": 0.056,
+     "green": 0.056,
+     "blue": 0.056
     }
    },
    "type": {
@@ -1153,23 +1145,22 @@
     }
    },
    "colour": {
-    "sites": 22,
+    "sites": 19,
     "ground": {
-     "image": 0.5,
-     "light": 0.364,
-     "dark": 0.045,
-     "blue": 0.045,
-     "amber": 0.045
+     "image": 0.737,
+     "light": 0.158,
+     "dark": 0.053,
+     "amber": 0.053
     },
     "accent": {
-     "blue": 0.455,
-     "red": 0.182,
-     "amber": 0.091,
-     "indigo": 0.091,
-     "green": 0.045,
-     "orange": 0.045,
-     "pink": 0.045,
-     "ink": 0.045
+     "blue": 0.421,
+     "red": 0.158,
+     "amber": 0.105,
+     "indigo": 0.105,
+     "green": 0.053,
+     "orange": 0.053,
+     "pink": 0.053,
+     "ink": 0.053
     }
    },
    "type": {
@@ -1194,18 +1185,16 @@
    "colour": {
     "sites": 15,
     "ground": {
-     "light": 0.467,
-     "dark": 0.2,
-     "image": 0.133,
-     "red": 0.133,
-     "indigo": 0.067
+     "image": 0.6,
+     "light": 0.2,
+     "dark": 0.2
     },
     "accent": {
-     "ink": 0.4,
+     "ink": 0.467,
      "blue": 0.2,
      "green": 0.133,
-     "indigo": 0.133,
      "amber": 0.067,
+     "indigo": 0.067,
      "orange": 0.067
     }
    },
@@ -1266,18 +1255,18 @@
     }
    },
    "colour": {
-    "sites": 50,
+    "sites": 51,
     "ground": {
-     "image": 0.48,
-     "light": 0.44,
-     "dark": 0.08
+     "image": 0.529,
+     "light": 0.392,
+     "dark": 0.078
     },
     "accent": {
-     "blue": 0.64,
-     "ink": 0.14,
-     "red": 0.06,
-     "indigo": 0.06,
-     "teal": 0.06,
+     "blue": 0.647,
+     "ink": 0.137,
+     "red": 0.059,
+     "indigo": 0.059,
+     "teal": 0.059,
      "amber": 0.02,
      "green": 0.02
     }
@@ -1303,10 +1292,10 @@
    "colour": {
     "sites": 49,
     "ground": {
-     "light": 0.531,
-     "image": 0.388,
-     "blue": 0.041,
-     "dark": 0.041
+     "image": 0.571,
+     "light": 0.388,
+     "blue": 0.02,
+     "dark": 0.02
     },
     "accent": {
      "blue": 0.469,
@@ -1343,13 +1332,13 @@
    "colour": {
     "sites": 40,
     "ground": {
-     "light": 0.675,
-     "image": 0.2,
+     "light": 0.575,
+     "image": 0.3,
      "dark": 0.125
     },
     "accent": {
-     "blue": 0.45,
-     "ink": 0.275,
+     "blue": 0.4,
+     "ink": 0.325,
      "indigo": 0.075,
      "red": 0.075,
      "amber": 0.05,
@@ -1413,13 +1402,13 @@
    "colour": {
     "sites": 21,
     "ground": {
-     "image": 0.476,
-     "light": 0.429,
+     "image": 0.571,
+     "light": 0.333,
      "dark": 0.095
     },
     "accent": {
-     "blue": 0.667,
-     "ink": 0.095,
+     "blue": 0.619,
+     "ink": 0.143,
      "amber": 0.095,
      "red": 0.048,
      "indigo": 0.048,
@@ -1447,8 +1436,8 @@
    "colour": {
     "sites": 61,
     "ground": {
-     "image": 0.639,
-     "light": 0.311,
+     "image": 0.787,
+     "light": 0.164,
      "dark": 0.049
     },
     "accent": {
@@ -1484,9 +1473,9 @@
    "colour": {
     "sites": 37,
     "ground": {
-     "image": 0.649,
-     "light": 0.297,
-     "dark": 0.054
+     "image": 0.865,
+     "light": 0.108,
+     "dark": 0.027
     },
     "accent": {
      "ink": 0.243,
@@ -1518,8 +1507,8 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "light": 0.8,
-     "image": 0.2
+     "light": 0.7,
+     "image": 0.3
     },
     "accent": {
      "ink": 0.6,
@@ -1551,15 +1540,15 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "light": 0.7,
-     "image": 0.2,
+     "light": 0.5,
+     "image": 0.4,
      "blue": 0.1
     },
     "accent": {
-     "blue": 0.3,
-     "teal": 0.2,
+     "blue": 0.4,
      "red": 0.2,
      "ink": 0.2,
+     "teal": 0.1,
      "pink": 0.1
     }
    },
@@ -1588,18 +1577,18 @@
    "colour": {
     "sites": 33,
     "ground": {
-     "light": 0.545,
-     "image": 0.424,
+     "image": 0.667,
+     "light": 0.303,
      "dark": 0.03
     },
     "accent": {
-     "ink": 0.364,
+     "ink": 0.303,
      "blue": 0.242,
      "teal": 0.121,
      "amber": 0.091,
-     "red": 0.061,
-     "brown": 0.061,
-     "indigo": 0.061
+     "red": 0.091,
+     "indigo": 0.091,
+     "brown": 0.061
     }
    },
    "type": {
@@ -1624,8 +1613,8 @@
    "colour": {
     "sites": 23,
     "ground": {
-     "image": 0.652,
-     "light": 0.348
+     "image": 0.783,
+     "light": 0.217
     },
     "accent": {
      "blue": 0.435,
@@ -1660,8 +1649,8 @@
    "colour": {
     "sites": 15,
     "ground": {
-     "light": 0.467,
-     "image": 0.4,
+     "image": 0.667,
+     "light": 0.2,
      "dark": 0.133
     },
     "accent": {
@@ -1693,10 +1682,9 @@
    "colour": {
     "sites": 47,
     "ground": {
-     "image": 0.553,
-     "light": 0.362,
-     "dark": 0.064,
-     "blue": 0.021
+     "image": 0.745,
+     "light": 0.191,
+     "dark": 0.064
     },
     "accent": {
      "blue": 0.277,
@@ -1731,10 +1719,10 @@
    "colour": {
     "sites": 60,
     "ground": {
-     "image": 0.517,
-     "light": 0.417,
+     "image": 0.85,
+     "light": 0.1,
      "dark": 0.033,
-     "blue": 0.033
+     "blue": 0.017
     },
     "accent": {
      "blue": 0.433,
@@ -1770,15 +1758,15 @@
    "colour": {
     "sites": 42,
     "ground": {
-     "light": 0.476,
-     "image": 0.405,
+     "image": 0.69,
+     "light": 0.19,
      "dark": 0.119
     },
     "accent": {
-     "ink": 0.357,
-     "blue": 0.333,
+     "blue": 0.357,
+     "ink": 0.31,
      "red": 0.19,
-     "indigo": 0.095,
+     "indigo": 0.119,
      "orange": 0.024
     }
    },
@@ -1807,8 +1795,8 @@
    "colour": {
     "sites": 20,
     "ground": {
-     "light": 0.8,
-     "image": 0.2
+     "light": 0.55,
+     "image": 0.45
     },
     "accent": {
      "blue": 0.6,
@@ -1843,8 +1831,8 @@
    "colour": {
     "sites": 22,
     "ground": {
-     "light": 0.955,
-     "image": 0.045
+     "light": 0.909,
+     "image": 0.091
     },
     "accent": {
      "blue": 0.409,
@@ -1911,12 +1899,12 @@
    "colour": {
     "sites": 17,
     "ground": {
-     "light": 0.529,
-     "image": 0.471
+     "image": 0.647,
+     "light": 0.353
     },
     "accent": {
-     "blue": 0.412,
-     "ink": 0.294,
+     "blue": 0.353,
+     "ink": 0.353,
      "indigo": 0.118,
      "amber": 0.059,
      "red": 0.059,
@@ -1945,8 +1933,8 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "image": 0.6,
-     "light": 0.4
+     "image": 0.8,
+     "light": 0.2
     },
     "accent": {
      "blue": 0.6,
@@ -1978,8 +1966,8 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "light": 0.6,
-     "image": 0.3,
+     "image": 0.8,
+     "light": 0.1,
      "dark": 0.1
     },
     "accent": {
@@ -2012,16 +2000,17 @@
    "colour": {
     "sites": 20,
     "ground": {
-     "image": 0.45,
-     "light": 0.45,
+     "image": 0.7,
+     "light": 0.2,
      "dark": 0.1
     },
     "accent": {
-     "ink": 0.3,
      "red": 0.3,
+     "ink": 0.25,
      "indigo": 0.15,
      "teal": 0.1,
      "amber": 0.05,
+     "pink": 0.05,
      "orange": 0.05,
      "blue": 0.05
     }
@@ -2045,8 +2034,9 @@
    "colour": {
     "sites": 13,
     "ground": {
-     "light": 0.538,
-     "image": 0.462
+     "image": 0.615,
+     "light": 0.308,
+     "dark": 0.077
     },
     "accent": {
      "ink": 0.462,
@@ -2079,9 +2069,8 @@
    "colour": {
     "sites": 20,
     "ground": {
-     "image": 0.6,
-     "light": 0.3,
-     "dark": 0.1
+     "image": 0.8,
+     "light": 0.2
     },
     "accent": {
      "ink": 0.35,
@@ -2114,8 +2103,8 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "image": 0.8,
-     "light": 0.2
+     "image": 0.9,
+     "light": 0.1
     },
     "accent": {
      "ink": 0.7,
@@ -2148,9 +2137,9 @@
    "colour": {
     "sites": 49,
     "ground": {
-     "image": 0.551,
-     "light": 0.408,
-     "brown": 0.041
+     "image": 0.673,
+     "light": 0.306,
+     "brown": 0.02
     },
     "accent": {
      "blue": 0.245,
@@ -2188,9 +2177,9 @@
    "colour": {
     "sites": 34,
     "ground": {
-     "image": 0.559,
-     "light": 0.324,
-     "dark": 0.118
+     "image": 0.765,
+     "dark": 0.118,
+     "light": 0.118
     },
     "accent": {
      "ink": 0.382,
@@ -2229,8 +2218,8 @@
    "colour": {
     "sites": 37,
     "ground": {
-     "image": 0.486,
-     "light": 0.432,
+     "image": 0.703,
+     "light": 0.216,
      "dark": 0.054,
      "blue": 0.027
     },
@@ -2268,8 +2257,8 @@
    "colour": {
     "sites": 35,
     "ground": {
-     "light": 0.514,
-     "image": 0.4,
+     "image": 0.543,
+     "light": 0.371,
      "dark": 0.057,
      "blue": 0.029
     },
@@ -2304,9 +2293,9 @@
    "colour": {
     "sites": 10,
     "ground": {
-     "light": 0.4,
-     "image": 0.4,
-     "blue": 0.2
+     "image": 0.8,
+     "light": 0.1,
+     "blue": 0.1
     },
     "accent": {
      "blue": 0.3,
@@ -2334,17 +2323,16 @@
     }
    },
    "colour": {
-    "sites": 15,
+    "sites": 14,
     "ground": {
-     "image": 0.667,
-     "light": 0.333
+     "image": 0.714,
+     "light": 0.286
     },
     "accent": {
-     "blue": 0.467,
-     "indigo": 0.333,
-     "ink": 0.067,
-     "amber": 0.067,
-     "orange": 0.067
+     "blue": 0.5,
+     "indigo": 0.357,
+     "ink": 0.071,
+     "amber": 0.071
     }
    },
    "type": {
@@ -2367,21 +2355,21 @@
     }
    },
    "colour": {
-    "sites": 27,
+    "sites": 26,
     "ground": {
-     "light": 0.519,
-     "image": 0.481
+     "image": 0.692,
+     "light": 0.308
     },
     "accent": {
-     "blue": 0.296,
-     "ink": 0.148,
-     "amber": 0.148,
-     "orange": 0.111,
-     "green": 0.074,
-     "red": 0.074,
-     "indigo": 0.074,
-     "pink": 0.037,
-     "teal": 0.037
+     "blue": 0.308,
+     "amber": 0.154,
+     "ink": 0.115,
+     "orange": 0.115,
+     "green": 0.077,
+     "red": 0.077,
+     "indigo": 0.077,
+     "pink": 0.038,
+     "teal": 0.038
     }
    },
    "type": {
@@ -2405,9 +2393,9 @@
    "colour": {
     "sites": 13,
     "ground": {
-     "light": 0.538,
-     "image": 0.308,
-     "dark": 0.154
+     "image": 0.692,
+     "dark": 0.231,
+     "light": 0.077
     },
     "accent": {
      "blue": 0.692,
@@ -2439,9 +2427,9 @@
    "colour": {
     "sites": 21,
     "ground": {
-     "light": 0.429,
-     "image": 0.429,
-     "dark": 0.143
+     "image": 0.667,
+     "light": 0.238,
+     "dark": 0.095
     },
     "accent": {
      "blue": 0.524,
@@ -2472,20 +2460,19 @@
     }
    },
    "colour": {
-    "sites": 20,
+    "sites": 21,
     "ground": {
-     "image": 0.65,
-     "light": 0.15,
-     "blue": 0.1,
-     "dark": 0.1
+     "image": 0.81,
+     "blue": 0.095,
+     "light": 0.095
     },
     "accent": {
-     "blue": 0.55,
-     "pink": 0.15,
-     "amber": 0.1,
-     "red": 0.1,
-     "ink": 0.05,
-     "green": 0.05
+     "blue": 0.524,
+     "pink": 0.143,
+     "amber": 0.095,
+     "red": 0.095,
+     "ink": 0.095,
+     "green": 0.048
     }
    },
    "type": {
@@ -2510,10 +2497,9 @@
    "colour": {
     "sites": 24,
     "ground": {
-     "light": 0.5,
-     "image": 0.417,
-     "dark": 0.042,
-     "blue": 0.042
+     "image": 0.708,
+     "light": 0.208,
+     "dark": 0.083
     },
     "accent": {
      "ink": 0.417,
@@ -2543,16 +2529,16 @@
     }
    },
    "colour": {
-    "sites": 15,
+    "sites": 14,
     "ground": {
-     "dark": 0.4,
-     "image": 0.4,
-     "light": 0.2
+     "image": 0.5,
+     "dark": 0.429,
+     "light": 0.071
     },
     "accent": {
-     "blue": 0.467,
-     "ink": 0.333,
-     "brown": 0.2
+     "ink": 0.429,
+     "blue": 0.357,
+     "brown": 0.214
     }
    },
    "type": {
@@ -2576,15 +2562,16 @@
    "colour": {
     "sites": 15,
     "ground": {
-     "image": 0.733,
-     "light": 0.267
+     "image": 0.867,
+     "light": 0.133
     },
     "accent": {
      "blue": 0.333,
-     "red": 0.267,
+     "red": 0.2,
      "ink": 0.133,
      "indigo": 0.067,
      "pink": 0.067,
+     "amber": 0.067,
      "orange": 0.067,
      "teal": 0.067
     }

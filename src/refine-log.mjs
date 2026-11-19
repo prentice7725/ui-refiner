@@ -59,7 +59,7 @@ const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','f
 /** Share of each hero structure on human-made sites (data/hero-reference/human.json), overall or for one page kind. */
 export async function humanHeroShare(kind){try{const j=JSON.parse(await fs.readFile(new URL('../data/hero-reference/human.json',import.meta.url),'utf8'));return (kind&&j.byKind?.[kind]?.share)||j.share;}catch{return null;}}
 /**
- * Accent families human sites of this kind use (data/colour-reference/human.json, measured on 548 Korean, Japanese
+ * Accent families human sites of this kind use (data/colour-reference/human.json, measured on 552 Korean, Japanese
  * and English sites in November 2026), as weights for the colour deal. Korean and Japanese pages use their own
  * country's figures when 15 or more sites of that kind were measured.
  */
@@ -134,9 +134,9 @@ export function dealAccents(families,entries,project,{n=3,seed=0,weights}={}){
 
 /**
  * Surfaces: plain white for most; one direction gets a white page carried by a photo or product screen, or more
- * rarely a brand, dark or paper ground. Measured on 548 Korean, Japanese and English sites (data/colour-reference),
- * only about 2% of first screens use a full-colour ground and 5% a dark one; 35% open on a photo, and 87% of the light
- * ones are pure white (2% a warm cream). In benchmark round 16, when the odd direction was mostly paper, agents chose
+ * rarely a brand, dark or paper ground. Measured on 552 Korean, Japanese and English sites (data/colour-reference),
+ * only about 2% of first screens use a full-colour ground and 5% a dark one; 52% open on a photo, and 85% of the light
+ * ones are pure white (1% a warm cream). In benchmark round 16, when the odd direction was mostly paper, agents chose
  * it on 3 of 7 pages and all three set judges named the cream body as the set's shared habit.
  * Software pages get no dark ground: in benchmark round 12 all three judges read the dark dashboard with a neon
  * accent as a crypto or dev-tool template and ranked both Korean software pages 4th or 5th of 5.

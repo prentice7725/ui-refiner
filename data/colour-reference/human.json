@@ -1,29 +1,29 @@
 {
  "schemaVersion": 1,
- "measured": "2026-11-12",
- "sites": 548,
- "skipped": 122,
+ "measured": "2026-11-19",
+ "sites": 552,
+ "skipped": 118,
  "all": {
-  "sites": 548,
+  "sites": 552,
   "ground": {
-   "light": 0.577,
-   "image": 0.352,
-   "dark": 0.053,
+   "image": 0.524,
+   "light": 0.411,
+   "dark": 0.045,
    "blue": 0.005,
-   "teal": 0.004,
-   "orange": 0.004,
-   "amber": 0.002,
+   "orange": 0.005,
+   "amber": 0.004,
+   "teal": 0.002,
    "green": 0.002,
    "pink": 0.002
   },
   "accent": {
-   "blue": 0.325,
-   "ink": 0.245,
-   "indigo": 0.157,
-   "red": 0.084,
-   "teal": 0.053,
-   "green": 0.04,
-   "amber": 0.04,
+   "blue": 0.341,
+   "ink": 0.203,
+   "indigo": 0.161,
+   "red": 0.096,
+   "teal": 0.051,
+   "green": 0.047,
+   "amber": 0.045,
    "orange": 0.033,
    "pink": 0.018,
    "brown": 0.005
@@ -31,367 +31,821 @@
  },
  "byCountry": {
   "KR": {
-   "sites": 189,
+   "sites": 182,
    "ground": {
-    "light": 0.577,
-    "image": 0.328,
-    "dark": 0.079,
-    "blue": 0.016
+    "image": 0.478,
+    "light": 0.407,
+    "dark": 0.093,
+    "blue": 0.016,
+    "orange": 0.005
    },
    "accent": {
-    "blue": 0.286,
-    "ink": 0.265,
-    "indigo": 0.18,
-    "teal": 0.063,
-    "red": 0.063,
-    "amber": 0.053,
-    "green": 0.048,
+    "blue": 0.28,
+    "ink": 0.236,
+    "indigo": 0.176,
+    "red": 0.082,
+    "teal": 0.066,
+    "amber": 0.066,
+    "green": 0.049,
     "orange": 0.016,
     "pink": 0.016,
     "brown": 0.011
    }
   },
   "JP": {
-   "sites": 320,
+   "sites": 327,
    "ground": {
-    "light": 0.569,
-    "image": 0.394,
-    "dark": 0.025,
+    "image": 0.569,
+    "light": 0.407,
+    "dark": 0.009,
+    "orange": 0.006,
     "teal": 0.003,
     "amber": 0.003,
-    "orange": 0.003,
     "pink": 0.003
    },
    "accent": {
-    "blue": 0.366,
-    "ink": 0.238,
-    "indigo": 0.128,
-    "red": 0.106,
-    "orange": 0.047,
-    "teal": 0.044,
-    "green": 0.028,
-    "amber": 0.025,
-    "pink": 0.016,
+    "blue": 0.404,
+    "ink": 0.18,
+    "indigo": 0.135,
+    "red": 0.116,
+    "orange": 0.046,
+    "teal": 0.043,
+    "green": 0.034,
+    "amber": 0.028,
+    "pink": 0.012,
     "brown": 0.003
    }
   },
   "EN": {
-   "sites": 39,
+   "sites": 43,
    "ground": {
-    "light": 0.641,
-    "dark": 0.154,
-    "image": 0.128,
-    "green": 0.026,
-    "orange": 0.026,
-    "teal": 0.026
+    "light": 0.465,
+    "image": 0.372,
+    "dark": 0.116,
+    "green": 0.023,
+    "amber": 0.023
    },
    "accent": {
-    "indigo": 0.282,
-    "ink": 0.205,
-    "blue": 0.179,
-    "green": 0.103,
-    "amber": 0.103,
-    "teal": 0.077,
-    "pink": 0.051
+    "indigo": 0.302,
+    "ink": 0.233,
+    "green": 0.14,
+    "blue": 0.116,
+    "amber": 0.093,
+    "pink": 0.07,
+    "teal": 0.047
    }
   }
  },
  "byKind": {
   "company": {
-   "sites": 110,
+   "sites": 96,
    "ground": {
-    "light": 0.573,
-    "image": 0.409,
-    "blue": 0.009,
-    "dark": 0.009
+    "image": 0.729,
+    "light": 0.198,
+    "dark": 0.052,
+    "blue": 0.01,
+    "orange": 0.01
    },
    "accent": {
-    "ink": 0.309,
-    "blue": 0.227,
-    "indigo": 0.164,
-    "red": 0.136,
-    "pink": 0.036,
-    "orange": 0.036,
-    "teal": 0.036,
-    "amber": 0.027,
-    "green": 0.027
+    "blue": 0.26,
+    "ink": 0.208,
+    "indigo": 0.177,
+    "red": 0.167,
+    "pink": 0.042,
+    "orange": 0.042,
+    "teal": 0.042,
+    "amber": 0.031,
+    "green": 0.031
    }
   },
   "company/JP": {
-   "sites": 80,
+   "sites": 68,
    "ground": {
-    "light": 0.613,
-    "image": 0.388
+    "image": 0.735,
+    "light": 0.265
    },
    "accent": {
-    "ink": 0.288,
-    "blue": 0.263,
-    "red": 0.163,
-    "indigo": 0.125,
-    "orange": 0.05,
-    "teal": 0.05,
-    "green": 0.025,
-    "pink": 0.025,
-    "amber": 0.013
+    "blue": 0.324,
+    "red": 0.206,
+    "ink": 0.147,
+    "indigo": 0.132,
+    "orange": 0.059,
+    "teal": 0.059,
+    "pink": 0.029,
+    "green": 0.029,
+    "amber": 0.015
    }
   },
   "company/KR": {
-   "sites": 30,
+   "sites": 28,
    "ground": {
-    "image": 0.467,
-    "light": 0.467,
-    "blue": 0.033,
-    "dark": 0.033
+    "image": 0.714,
+    "dark": 0.179,
+    "light": 0.036,
+    "blue": 0.036,
+    "orange": 0.036
    },
    "accent": {
-    "ink": 0.367,
-    "indigo": 0.267,
-    "blue": 0.133,
-    "pink": 0.067,
-    "amber": 0.067,
-    "red": 0.067,
-    "green": 0.033
+    "ink": 0.357,
+    "indigo": 0.286,
+    "blue": 0.107,
+    "pink": 0.071,
+    "amber": 0.071,
+    "red": 0.071,
+    "green": 0.036
    }
   },
   "media": {
-   "sites": 18,
+   "sites": 26,
    "ground": {
-    "light": 0.944,
-    "image": 0.056
+    "light": 0.731,
+    "image": 0.231,
+    "dark": 0.038
    },
    "accent": {
-    "ink": 0.333,
-    "blue": 0.278,
-    "red": 0.167,
-    "indigo": 0.111,
-    "teal": 0.111
+    "blue": 0.346,
+    "red": 0.192,
+    "indigo": 0.154,
+    "ink": 0.154,
+    "teal": 0.115,
+    "green": 0.038
    }
   },
   "media/JP": {
-   "sites": 8,
+   "sites": 12,
    "ground": {
-    "light": 0.875,
-    "image": 0.125
+    "light": 0.583,
+    "image": 0.333,
+    "dark": 0.083
    },
    "accent": {
-    "ink": 0.375,
-    "blue": 0.25,
-    "red": 0.25,
-    "indigo": 0.125
+    "blue": 0.417,
+    "red": 0.167,
+    "indigo": 0.167,
+    "ink": 0.167,
+    "green": 0.083
    }
   },
   "media/KR": {
-   "sites": 10,
+   "sites": 14,
    "ground": {
-    "light": 1
+    "light": 0.857,
+    "image": 0.143
    },
    "accent": {
-    "blue": 0.3,
-    "ink": 0.3,
-    "teal": 0.2,
-    "indigo": 0.1,
-    "red": 0.1
+    "blue": 0.286,
+    "teal": 0.214,
+    "red": 0.214,
+    "indigo": 0.143,
+    "ink": 0.143
    }
   },
   "place": {
-   "sites": 79,
+   "sites": 77,
    "ground": {
-    "image": 0.468,
-    "light": 0.43,
-    "dark": 0.076,
-    "orange": 0.025
+    "image": 0.714,
+    "light": 0.182,
+    "dark": 0.091,
+    "orange": 0.013
    },
    "accent": {
-    "ink": 0.291,
-    "blue": 0.241,
-    "amber": 0.127,
-    "indigo": 0.114,
-    "orange": 0.076,
-    "green": 0.051,
-    "red": 0.051,
-    "pink": 0.025,
+    "ink": 0.26,
+    "blue": 0.221,
+    "indigo": 0.143,
+    "amber": 0.13,
+    "orange": 0.078,
+    "red": 0.065,
+    "green": 0.052,
+    "pink": 0.026,
     "brown": 0.013,
     "teal": 0.013
    }
   },
   "place/EN": {
-   "sites": 9,
+   "sites": 10,
    "ground": {
-    "image": 0.333,
-    "light": 0.333,
-    "dark": 0.222,
-    "orange": 0.111
+    "image": 0.8,
+    "dark": 0.2
    },
    "accent": {
-    "amber": 0.333,
-    "indigo": 0.222,
-    "blue": 0.222,
-    "pink": 0.111,
-    "ink": 0.111
+    "indigo": 0.3,
+    "amber": 0.3,
+    "ink": 0.2,
+    "blue": 0.1,
+    "pink": 0.1
    }
   },
   "place/JP": {
    "sites": 36,
    "ground": {
-    "image": 0.5,
-    "light": 0.472,
+    "image": 0.694,
+    "light": 0.278,
     "orange": 0.028
    },
    "accent": {
-    "ink": 0.306,
-    "blue": 0.222,
+    "ink": 0.278,
+    "blue": 0.194,
     "orange": 0.139,
     "amber": 0.111,
-    "indigo": 0.083,
-    "red": 0.056,
+    "indigo": 0.111,
+    "red": 0.083,
     "teal": 0.028,
     "green": 0.028,
     "pink": 0.028
    }
   },
   "place/KR": {
-   "sites": 34,
+   "sites": 31,
    "ground": {
-    "image": 0.471,
-    "light": 0.412,
-    "dark": 0.118
+    "image": 0.71,
+    "dark": 0.161,
+    "light": 0.129
    },
    "accent": {
-    "ink": 0.324,
-    "blue": 0.265,
-    "indigo": 0.118,
-    "green": 0.088,
-    "amber": 0.088,
-    "red": 0.059,
-    "orange": 0.029,
-    "brown": 0.029
+    "blue": 0.29,
+    "ink": 0.258,
+    "indigo": 0.129,
+    "green": 0.097,
+    "amber": 0.097,
+    "red": 0.065,
+    "orange": 0.032,
+    "brown": 0.032
    }
   },
   "public": {
-   "sites": 136,
+   "sites": 141,
    "ground": {
-    "light": 0.5,
-    "image": 0.449,
-    "dark": 0.037,
+    "image": 0.532,
+    "light": 0.433,
+    "dark": 0.014,
+    "orange": 0.007,
     "green": 0.007,
     "pink": 0.007
    },
    "accent": {
-    "blue": 0.463,
-    "indigo": 0.14,
-    "red": 0.096,
-    "green": 0.074,
-    "teal": 0.066,
-    "ink": 0.059,
-    "amber": 0.037,
-    "orange": 0.029,
-    "pink": 0.029,
+    "blue": 0.454,
+    "indigo": 0.142,
+    "red": 0.106,
+    "green": 0.078,
+    "teal": 0.064,
+    "ink": 0.05,
+    "amber": 0.043,
+    "orange": 0.028,
+    "pink": 0.028,
     "brown": 0.007
    }
   },
   "public/EN": {
-   "sites": 7,
+   "sites": 9,
    "ground": {
-    "light": 0.571,
-    "image": 0.143,
-    "green": 0.143,
-    "dark": 0.143
+    "light": 0.444,
+    "image": 0.333,
+    "green": 0.111,
+    "dark": 0.111
    },
    "accent": {
-    "green": 0.571,
-    "pink": 0.143,
-    "indigo": 0.143,
-    "teal": 0.143
+    "green": 0.556,
+    "pink": 0.222,
+    "indigo": 0.111,
+    "teal": 0.111
    }
   },
   "public/JP": {
-   "sites": 96,
+   "sites": 98,
    "ground": {
-    "image": 0.5,
-    "light": 0.469,
-    "dark": 0.021,
+    "image": 0.561,
+    "light": 0.408,
+    "orange": 0.01,
+    "dark": 0.01,
     "pink": 0.01
    },
    "accent": {
-    "blue": 0.542,
-    "indigo": 0.146,
-    "red": 0.104,
-    "ink": 0.052,
-    "teal": 0.042,
-    "amber": 0.031,
+    "blue": 0.541,
+    "indigo": 0.163,
+    "red": 0.112,
+    "teal": 0.041,
+    "ink": 0.041,
     "green": 0.031,
+    "amber": 0.031,
     "orange": 0.031,
-    "pink": 0.021
+    "pink": 0.01
    }
   },
   "public/KR": {
-   "sites": 33,
+   "sites": 34,
    "ground": {
-    "light": 0.576,
-    "image": 0.364,
-    "dark": 0.061
+    "light": 0.5,
+    "image": 0.5
    },
    "accent": {
-    "blue": 0.333,
-    "teal": 0.121,
-    "indigo": 0.121,
-    "red": 0.091,
-    "ink": 0.091,
-    "green": 0.091,
-    "amber": 0.061,
-    "orange": 0.03,
-    "brown": 0.03,
-    "pink": 0.03
+    "blue": 0.324,
+    "teal": 0.118,
+    "red": 0.118,
+    "indigo": 0.088,
+    "ink": 0.088,
+    "amber": 0.088,
+    "green": 0.088,
+    "orange": 0.029,
+    "brown": 0.029,
+    "pink": 0.029
    }
   },
   "service": {
-   "sites": 51,
+   "sites": 52,
    "ground": {
-    "light": 0.667,
-    "image": 0.294,
-    "blue": 0.02,
-    "dark": 0.02
+    "light": 0.5,
+    "image": 0.442,
+    "dark": 0.038,
+    "amber": 0.019
    },
    "accent": {
-    "blue": 0.431,
-    "indigo": 0.196,
-    "ink": 0.157,
-    "teal": 0.098,
-    "orange": 0.039,
-    "amber": 0.039,
-    "brown": 0.02,
-    "red": 0.02
+    "blue": 0.481,
+    "indigo": 0.154,
+    "ink": 0.096,
+    "amber": 0.077,
+    "teal": 0.077,
+    "orange": 0.038,
+    "red": 0.038,
+    "green": 0.019,
+    "brown": 0.019
    }
   },
   "service/EN": {
-   "sites": 4,
+   "sites": 2,
    "ground": {
-    "light": 1
+    "amber": 0.5,
+    "light": 0.5
    },
    "accent": {
-    "ink": 0.25,
-    "blue": 0.25,
-    "teal": 0.25,
-    "indigo": 0.25
+    "teal": 0.5,
+    "indigo": 0.5
    }
   },
   "service/JP": {
-   "sites": 23,
+   "sites": 29,
    "ground": {
-    "light": 0.696,
-    "image": 0.304
+    "light": 0.517,
+    "image": 0.483
    },
    "accent": {
-    "blue": 0.435,
-    "ink": 0.174,
-    "indigo": 0.174,
-    "teal": 0.087,
-    "brown": 0.043,
-    "red": 0.043,
-    "orange": 0.043
+    "blue": 0.517,
+    "indigo": 0.138,
+    "red": 0.069,
+    "teal": 0.069,
+    "ink": 0.069,
+    "green": 0.034,
+    "brown": 0.034,
+    "amber": 0.034,
+    "orange": 0.034
    }
   },
   "service/KR": {
+   "sites": 21,
+   "ground": {
+    "light": 0.476,
+    "image": 0.429,
+    "dark": 0.095
+   },
+   "accent": {
+    "blue": 0.476,
+    "indigo": 0.143,
+    "amber": 0.143,
+    "ink": 0.143,
+    "orange": 0.048,
+    "teal": 0.048
+   }
+  },
+  "software": {
+   "sites": 127,
+   "ground": {
+    "light": 0.606,
+    "image": 0.339,
+    "dark": 0.024,
+    "blue": 0.016,
+    "teal": 0.008,
+    "amber": 0.008
+   },
+   "accent": {
+    "blue": 0.362,
+    "ink": 0.236,
+    "indigo": 0.213,
+    "teal": 0.055,
+    "red": 0.055,
+    "green": 0.047,
+    "amber": 0.016,
+    "orange": 0.016
+   }
+  },
+  "software/EN": {
+   "sites": 19,
+   "ground": {
+    "light": 0.684,
+    "image": 0.211,
+    "dark": 0.105
+   },
+   "accent": {
+    "indigo": 0.421,
+    "ink": 0.263,
+    "blue": 0.211,
+    "amber": 0.053,
+    "green": 0.053
+   }
+  },
+  "software/JP": {
+   "sites": 61,
+   "ground": {
+    "light": 0.574,
+    "image": 0.393,
+    "teal": 0.016,
+    "amber": 0.016
+   },
+   "accent": {
+    "blue": 0.459,
+    "ink": 0.213,
+    "indigo": 0.115,
+    "red": 0.082,
+    "teal": 0.049,
+    "green": 0.049,
+    "orange": 0.033
+   }
+  },
+  "software/KR": {
+   "sites": 47,
+   "ground": {
+    "light": 0.617,
+    "image": 0.319,
+    "blue": 0.043,
+    "dark": 0.021
+   },
+   "accent": {
+    "blue": 0.298,
+    "ink": 0.255,
+    "indigo": 0.255,
+    "teal": 0.085,
+    "green": 0.043,
+    "red": 0.043,
+    "amber": 0.021
+   }
+  },
+  "studio": {
+   "sites": 33,
+   "ground": {
+    "image": 0.515,
+    "light": 0.333,
+    "dark": 0.152
+   },
+   "accent": {
+    "ink": 0.788,
+    "red": 0.091,
+    "blue": 0.061,
+    "indigo": 0.061
+   }
+  },
+  "studio/EN": {
+   "sites": 3,
+   "ground": {
+    "light": 0.667,
+    "image": 0.333
+   },
+   "accent": {
+    "ink": 1
+   }
+  },
+  "studio/JP": {
+   "sites": 23,
+   "ground": {
+    "image": 0.609,
+    "light": 0.348,
+    "dark": 0.043
+   },
+   "accent": {
+    "ink": 0.783,
+    "blue": 0.087,
+    "indigo": 0.087,
+    "red": 0.043
+   }
+  },
+  "studio/KR": {
+   "sites": 7,
+   "ground": {
+    "dark": 0.571,
+    "image": 0.286,
+    "light": 0.143
+   },
+   "accent": {
+    "ink": 0.714,
+    "red": 0.286
+   }
+  }
+ },
+ "byTrade": {
+  "app/JP": {
+   "sites": 10,
+   "ground": {
+    "light": 0.7,
+    "image": 0.2,
+    "amber": 0.1
+   },
+   "accent": {
+    "blue": 0.6,
+    "ink": 0.2,
+    "orange": 0.1,
+    "indigo": 0.1
+   }
+  },
+  "app/KR": {
+   "sites": 11,
+   "ground": {
+    "light": 0.909,
+    "image": 0.091
+   },
+   "accent": {
+    "ink": 0.455,
+    "blue": 0.273,
+    "indigo": 0.273
+   }
+  },
+  "bakery/JP": {
+   "sites": 10,
+   "ground": {
+    "image": 0.7,
+    "light": 0.3
+   },
+   "accent": {
+    "orange": 0.3,
+    "ink": 0.2,
+    "indigo": 0.2,
+    "amber": 0.1,
+    "blue": 0.1,
+    "red": 0.1
+   }
+  },
+  "cafe/JP": {
+   "sites": 8,
+   "ground": {
+    "image": 0.625,
+    "light": 0.375
+   },
+   "accent": {
+    "blue": 0.375,
+    "ink": 0.25,
+    "teal": 0.125,
+    "amber": 0.125,
+    "orange": 0.125
+   }
+  },
+  "cafe/KR": {
+   "sites": 10,
+   "ground": {
+    "image": 1
+   },
+   "accent": {
+    "ink": 0.4,
+    "blue": 0.2,
+    "green": 0.1,
+    "amber": 0.1,
+    "red": 0.1,
+    "indigo": 0.1
+   }
+  },
+  "city/JP": {
+   "sites": 10,
+   "ground": {
+    "image": 0.6,
+    "light": 0.4
+   },
+   "accent": {
+    "blue": 0.5,
+    "indigo": 0.3,
+    "teal": 0.2
+   }
+  },
+  "company/KR": {
+   "sites": 28,
+   "ground": {
+    "image": 0.714,
+    "dark": 0.179,
+    "light": 0.036,
+    "blue": 0.036,
+    "orange": 0.036
+   },
+   "accent": {
+    "ink": 0.357,
+    "indigo": 0.286,
+    "blue": 0.107,
+    "pink": 0.071,
+    "amber": 0.071,
+    "red": 0.071,
+    "green": 0.036
+   }
+  },
+  "corp/JP": {
+   "sites": 68,
+   "ground": {
+    "image": 0.735,
+    "light": 0.265
+   },
+   "accent": {
+    "blue": 0.324,
+    "red": 0.206,
+    "ink": 0.147,
+    "indigo": 0.132,
+    "orange": 0.059,
+    "teal": 0.059,
+    "pink": 0.029,
+    "green": 0.029,
+    "amber": 0.015
+   }
+  },
+  "design/JP": {
+   "sites": 15,
+   "ground": {
+    "image": 0.533,
+    "light": 0.4,
+    "dark": 0.067
+   },
+   "accent": {
+    "ink": 0.8,
+    "indigo": 0.133,
+    "blue": 0.067
+   }
+  },
+  "fintech/JP": {
+   "sites": 9,
+   "ground": {
+    "light": 0.667,
+    "image": 0.333
+   },
+   "accent": {
+    "blue": 0.667,
+    "green": 0.222,
+    "indigo": 0.111
+   }
+  },
+  "foodbank/EN": {
+   "sites": 9,
+   "ground": {
+    "light": 0.444,
+    "image": 0.333,
+    "green": 0.111,
+    "dark": 0.111
+   },
+   "accent": {
+    "green": 0.556,
+    "pink": 0.222,
+    "indigo": 0.111,
+    "teal": 0.111
+   }
+  },
+  "gov/JP": {
+   "sites": 47,
+   "ground": {
+    "image": 0.511,
+    "light": 0.468,
+    "pink": 0.021
+   },
+   "accent": {
+    "blue": 0.66,
+    "indigo": 0.128,
+    "red": 0.085,
+    "orange": 0.043,
+    "amber": 0.021,
+    "ink": 0.021,
+    "teal": 0.021,
+    "pink": 0.021
+   }
+  },
+  "gov/KR": {
+   "sites": 10,
+   "ground": {
+    "light": 0.8,
+    "image": 0.2
+   },
+   "accent": {
+    "blue": 0.6,
+    "ink": 0.2,
+    "red": 0.1,
+    "indigo": 0.1
+   }
+  },
+  "hiring/JP": {
+   "sites": 10,
+   "ground": {
+    "image": 0.5,
+    "light": 0.5
+   },
+   "accent": {
+    "blue": 0.7,
+    "green": 0.1,
+    "red": 0.1,
+    "teal": 0.1
+   }
+  },
+  "media/JP": {
+   "sites": 12,
+   "ground": {
+    "light": 0.583,
+    "image": 0.333,
+    "dark": 0.083
+   },
+   "accent": {
+    "blue": 0.417,
+    "red": 0.167,
+    "indigo": 0.167,
+    "ink": 0.167,
+    "green": 0.083
+   }
+  },
+  "media/KR": {
+   "sites": 14,
+   "ground": {
+    "light": 0.857,
+    "image": 0.143
+   },
+   "accent": {
+    "blue": 0.286,
+    "teal": 0.214,
+    "red": 0.214,
+    "indigo": 0.143,
+    "ink": 0.143
+   }
+  },
+  "npo/JP": {
+   "sites": 11,
+   "ground": {
+    "image": 0.545,
+    "light": 0.364,
+    "orange": 0.091
+   },
+   "accent": {
+    "blue": 0.455,
+    "red": 0.182,
+    "indigo": 0.091,
+    "green": 0.091,
+    "amber": 0.091,
+    "teal": 0.091
+   }
+  },
+  "npo/KR": {
+   "sites": 10,
+   "ground": {
+    "image": 0.7,
+    "light": 0.3
+   },
+   "accent": {
+    "amber": 0.3,
+    "green": 0.2,
+    "red": 0.2,
+    "teal": 0.2,
+    "orange": 0.1
+   }
+  },
+  "org/JP": {
+   "sites": 19,
+   "ground": {
+    "image": 0.684,
+    "light": 0.316
+   },
+   "accent": {
+    "blue": 0.474,
+    "red": 0.211,
+    "indigo": 0.158,
+    "ink": 0.105,
+    "amber": 0.053
+   }
+  },
+  "saas/EN": {
+   "sites": 13,
+   "ground": {
+    "light": 0.692,
+    "image": 0.231,
+    "dark": 0.077
+   },
+   "accent": {
+    "indigo": 0.385,
+    "ink": 0.308,
+    "blue": 0.231,
+    "amber": 0.077
+   }
+  },
+  "saas/JP": {
+   "sites": 22,
+   "ground": {
+    "light": 0.636,
+    "image": 0.318,
+    "teal": 0.045
+   },
+   "accent": {
+    "blue": 0.409,
+    "teal": 0.136,
+    "red": 0.136,
+    "indigo": 0.136,
+    "ink": 0.091,
+    "green": 0.045,
+    "orange": 0.045
+   }
+  },
+  "saas/KR": {
    "sites": 24,
    "ground": {
     "light": 0.583,
@@ -400,135 +854,37 @@
     "dark": 0.042
    },
    "accent": {
-    "blue": 0.458,
-    "indigo": 0.208,
-    "ink": 0.125,
-    "teal": 0.083,
-    "amber": 0.083,
-    "orange": 0.042
-   }
-  },
-  "software": {
-   "sites": 120,
-   "ground": {
-    "light": 0.708,
-    "image": 0.2,
-    "dark": 0.058,
-    "teal": 0.017,
-    "blue": 0.008,
-    "amber": 0.008
-   },
-   "accent": {
-    "blue": 0.35,
-    "ink": 0.242,
-    "indigo": 0.208,
-    "teal": 0.067,
-    "red": 0.058,
-    "green": 0.042,
-    "amber": 0.017,
-    "orange": 0.017
-   }
-  },
-  "software/EN": {
-   "sites": 17,
-   "ground": {
-    "light": 0.706,
-    "dark": 0.176,
-    "teal": 0.059,
-    "image": 0.059
-   },
-   "accent": {
-    "indigo": 0.412,
-    "blue": 0.235,
-    "ink": 0.235,
-    "amber": 0.059,
-    "teal": 0.059
-   }
-  },
-  "software/JP": {
-   "sites": 53,
-   "ground": {
-    "light": 0.698,
-    "image": 0.245,
-    "teal": 0.019,
-    "amber": 0.019,
-    "dark": 0.019
-   },
-   "accent": {
-    "blue": 0.415,
-    "ink": 0.226,
-    "indigo": 0.113,
-    "red": 0.094,
-    "teal": 0.057,
-    "green": 0.057,
-    "orange": 0.038
-   }
-  },
-  "software/KR": {
-   "sites": 50,
-   "ground": {
-    "light": 0.72,
-    "image": 0.2,
-    "dark": 0.06,
-    "blue": 0.02
-   },
-   "accent": {
-    "blue": 0.32,
-    "ink": 0.26,
-    "indigo": 0.24,
-    "teal": 0.08,
-    "green": 0.04,
-    "red": 0.04,
-    "amber": 0.02
-   }
-  },
-  "studio": {
-   "sites": 34,
-   "ground": {
-    "light": 0.441,
-    "image": 0.294,
-    "dark": 0.265
-   },
-   "accent": {
-    "ink": 0.765,
-    "red": 0.088,
-    "indigo": 0.088,
-    "blue": 0.059
-   }
-  },
-  "studio/EN": {
-   "sites": 2,
-   "ground": {
-    "light": 1
-   },
-   "accent": {
-    "ink": 1
-   }
-  },
-  "studio/JP": {
-   "sites": 24,
-   "ground": {
-    "light": 0.458,
-    "image": 0.333,
-    "dark": 0.208
-   },
-   "accent": {
-    "ink": 0.75,
-    "indigo": 0.125,
-    "blue": 0.083,
+    "blue": 0.292,
+    "indigo": 0.25,
+    "ink": 0.208,
+    "teal": 0.125,
+    "green": 0.083,
     "red": 0.042
    }
   },
-  "studio/KR": {
+  "startup/JP": {
+   "sites": 15,
+   "ground": {
+    "image": 0.667,
+    "light": 0.333
+   },
+   "accent": {
+    "ink": 0.533,
+    "blue": 0.333,
+    "indigo": 0.067,
+    "red": 0.067
+   }
+  },
+  "studio/JP": {
    "sites": 8,
    "ground": {
-    "dark": 0.5,
-    "image": 0.25,
+    "image": 0.75,
     "light": 0.25
    },
    "accent": {
     "ink": 0.75,
-    "red": 0.25
+    "blue": 0.125,
+    "red": 0.125
    }
   }
  }
