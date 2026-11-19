@@ -21,6 +21,7 @@ import {addPref,removePref,readPrefs,suggestPrefs,AXES} from '../src/preferences
 import {loadMaterials} from '../src/materials.mjs';
 import {fetchStandIns} from '../src/photos.mjs';
 import {recordKeep,checkKeep} from '../src/keep.mjs';
+import {stressPage} from '../src/stress.mjs';
 import {ALLOW_FILE,readAllow,addAllow,removeAllow} from '../src/allow.mjs';
 import {extractSystem,checkSystem} from '../src/site-system.mjs';
 
@@ -62,6 +63,9 @@ const help=`UI Refiner 0.8.0 — de-AI web design review and UI quality gate
   ui-refiner keep check <page> [--from ui-refiner-keep.json] [--json]
       records link targets, forms, fields, contact links and facts before a redesign, then fails (exit 1) when the
       redesigned page lost any of them; facts that appear only afterwards are listed to check they are real
+  ui-refiner stress <page|url> [--out ui-refiner-stress] [--lang ko|ja|en] [--json]
+      swaps realistic worst-case values (long labels and headings, long emails and URLs, big numbers) into the
+      rendered text at 320, 390 and 1440px and lists what broke with the usual fix (exit 1 when something broke)
   ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
@@ -120,6 +124,13 @@ try{
     if(args.json)console.log(JSON.stringify(r,null,2));
     else{const part=(k,label)=>r[k].length?`\n  ${label}: ${r[k].join(', ')}`:'';console.log((r.ok?'[KEPT] links, forms, fields and facts are all still there':'[LOST] the redesign dropped:')+part('links','links')+part('forms','forms')+part('fields','fields')+part('facts','facts')+(r.added.length?`\n  new facts to confirm (not on the original page): ${r.added.join(', ')}`:''));}
     process.exitCode=r.ok?0:1;
+  }
+  else if(command==='stress'&&args._.length===2){
+    const r=await stressPage(sub,{out:args.out||'ui-refiner-stress',lang:args.lang&&args.lang!=='auto'?args.lang:undefined});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else console.log((r.findings.length?r.findings.map((f,i)=>`${i+1}. [${f.severity.toUpperCase()}] ${f.width}px ${f.kind}: ${f.type}${f.element?` — ${f.element}`:''}${f.value?` → “${f.value}”`:''}${f.with?` (on “${f.with}”)`:''}\n   fix: ${f.fix}`).join('\n'):'[HELD] nothing broke with worst-case values')
+      +`\n[TESTED] ${Object.entries(r.tested).map(([k,n])=>`${k} ${n}`).join(', ')} (${r.lang}, ${r.widths.join('/')}px)\n[STRESS] ${path.join(r.dir,'STRESS.md')}`);
+    process.exitCode=r.broken?1:0;
   }
   else if(command==='photos'&&args._.length===2){
     const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en',optimise:!args.noOptimise,page:args.page});
