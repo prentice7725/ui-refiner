@@ -50,7 +50,7 @@ const help=`UI Refiner 0.8.0 — de-AI web design review and UI quality gate
       ui-refiner-system.json and DESIGN_SYSTEM.md next to it (or in --dir), to build the site's other pages from
   ui-refiner system check <page> [more pages] [--system ui-refiner-system.json] [--json]
       lists where other pages of the site leave that design (exit 1 on drift)
-  ui-refiner photos "<subject>" [--out assets/stand-in] [--count 6] [--orientation landscape|portrait|any] [--lang en|ja|ko] [--no-optimise] [--json]
+  ui-refiner photos "<subject>" [--out assets/stand-in] [--count 6] [--orientation landscape|portrait|any] [--lang en|ja|ko] [--page index.html] [--no-optimise] [--json]
       saves openly licensed stand-in photographs from Wikimedia Commons with credits.json and a footer credit line;
       mark each on the page with data-stand-in, never present it as the client's own, replace it with real photos;
       each photo is saved as WebP at 640, 1024 and 1600px with a ready <img srcset> line (--no-optimise keeps the download)
@@ -122,12 +122,12 @@ try{
     process.exitCode=r.ok?0:1;
   }
   else if(command==='photos'&&args._.length===2){
-    const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en',optimise:!args.noOptimise});
+    const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en',optimise:!args.noOptimise,page:args.page});
     const kb=n=>`${Math.round(n/1024)} KB`;
     if(args.json)console.log(JSON.stringify(r,null,2));
     else console.log(r.photos.map(p=>`${p.file}  ${p.width}x${p.height}  ${p.author} (${p.licence})  ${p.source}`+(p.variants?`\n  WebP ${p.variants.map(v=>`${v.width}w ${kb(v.bytes)}`).join(', ')} (was ${kb(p.originalBytes)})\n  ${p.img}`:'')).join('\n')
       +`\n[PHOTOS] ${r.photos.length} stand-ins in ${r.dir} (credits.json)`+(r.optimiseSkipped?`\n[WARN] ${r.optimiseSkipped}`:'')
-      +(r.photos.some(p=>p.variants)?`\nUse each photo through its <img> line: keep srcset, width and height, set sizes to the width the photo really takes in the layout (for example "(min-width: 64em) 50vw, 100vw"), add fetchpriority="high" to the first-screen photo and loading="lazy" to the rest, and write a generic alt.`:'')
+      +(r.photos.some(p=>p.variants)?`\nThe <img> paths are relative to ${r.base}; a page in another folder (a mock in refine-directions/) needs them adjusted, or pass --page <its html file>.\nUse each photo through its <img> line: keep srcset, width and height, set sizes to the width the photo really takes in the layout (for example "(min-width: 64em) 50vw, 100vw"), add fetchpriority="high" to the first-screen photo and loading="lazy" to the rest, and write a generic alt.`:'')
       +`\nCredit line for the footer:\n${r.credit}`);
   }
   else if(command==='prefer'&&sub==='add'&&args._.length===4){

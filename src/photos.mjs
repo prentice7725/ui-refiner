@@ -83,7 +83,19 @@ export async function optimisePhotos(dir,photos,{widths=PHOTO_WIDTHS,quality=0.8
 
 /** Searches and saves stand-ins into `out` with credits.json; returns the saved list and the credit line.
  * Photos are converted to WebP at PHOTO_WIDTHS unless `optimise` is false. */
-export async function fetchStandIns(query,{out='assets/stand-in',count=6,orientation='landscape',lang='en',fetchImpl=fetch,optimise=true,base=process.cwd()}={}){
+/**
+ * The folder the `<img>` paths are written relative to: the page's folder when `page` is given, otherwise the project
+ * folder that holds the outermost `assets` folder of `out` (`<project>/assets/stand-in` → `<project>`), otherwise the
+ * folder above `out`. The working directory is never used: an agent runs the command from the UI Refiner checkout,
+ * and paths relative to it came out as `../../Users/…`, broken in the page (2026-11-19 check).
+ */
+export function photoBase(out,page){
+ if(page)return path.dirname(path.resolve(page));
+ const dir=path.resolve(out),parts=dir.split(path.sep),i=parts.findIndex(x=>x.toLowerCase()==='assets');
+ return i>0?parts.slice(0,i).join(path.sep)||path.sep:path.dirname(dir);
+}
+
+export async function fetchStandIns(query,{out='assets/stand-in',count=6,orientation='landscape',lang='en',fetchImpl=fetch,optimise=true,page,base=photoBase(out,page)}={}){
  const found=await searchPhotos(query,{count,orientation,fetchImpl});
  if(!found.length)throw new Error(`No openly licensed photographs found for "${query}". Try a plainer subject (for example "dentist chair" instead of a clinic name).`);
  const dir=path.resolve(out);await fs.mkdir(dir,{recursive:true});
@@ -101,7 +113,7 @@ export async function fetchStandIns(query,{out='assets/stand-in',count=6,orienta
  const opt=optimise?await optimisePhotos(dir,saved,{base:path.resolve(base)}):{skipped:null};
  credits.photos.push(...saved);
  await fs.writeFile(path.join(dir,'credits.json'),JSON.stringify(credits,null,1)+'\n');
- return {dir,photos:saved,credit:creditLine(credits.photos,lang),...(opt.skipped?{optimiseSkipped:opt.skipped}:{})};
+ return {dir,base:path.resolve(base),photos:saved,credit:creditLine(credits.photos,lang),...(opt.skipped?{optimiseSkipped:opt.skipped}:{})};
 }
 
 /** Counts stand-in images in an HTML source (img or elements marked data-stand-in). */

@@ -50,6 +50,17 @@ test('photos: search and save use the given fetch, write credits.json and a loca
  assert.equal(countStandIns('<img src="a.jpg" data-stand-in><img data-stand-in="true" src="b.jpg"><img src="c.jpg">'),2);
 });
 
+test('photos: img paths start from the page or the project folder, never the working directory', async () => {
+ const {photoBase}=await import('../src/photos.mjs');
+ const proj=path.join(os.tmpdir(),'uir-base','clinic');
+ assert.equal(photoBase(path.join(proj,'assets','stand-in')),proj,'<project>/assets/stand-in → <project>');
+ assert.equal(photoBase(path.join(proj,'public','assets','img','stand-in')),path.join(proj,'public'),'the outermost assets folder');
+ assert.equal(photoBase(path.join(proj,'stand-in')),proj,'no assets folder: the folder above');
+ assert.equal(photoBase(path.join(proj,'assets','stand-in'),path.join(proj,'refine-directions','a.html')),path.join(proj,'refine-directions'),'--page wins');
+ const rel=path.relative(photoBase(path.join(proj,'assets','stand-in')),path.join(proj,'assets','stand-in','x.webp')).split(path.sep).join('/');
+ assert.equal(rel,'assets/stand-in/x.webp');
+});
+
 test('photos: saved photos become WebP at each width up to the original, with srcset and an img line', async () => {
  const {chromium}=await import('playwright');
  const b=await chromium.launch();const pg=await b.newPage();
