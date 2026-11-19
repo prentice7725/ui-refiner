@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {scanUrl} from './scan.mjs';
 import {countStandIns} from './photos.mjs';
+import {loadingProblems} from './page-loading.mjs';
 import {FAMILIAR_TYPE} from './refine-log.mjs';
 import {readLog,readDeal,historyWarnings,pickNotes,projectOf,humanHeroShare,accentFamily,leadColour,SHEET_JSON} from './refine-log.mjs';
 
@@ -202,7 +203,7 @@ export async function verifyApplied(dir,target,{pick,log,lang='auto',timeoutMs=4
  if(chosen.bg&&applied.bg&&!(white(chosen.bg)&&white(applied.bg))&&!chosen.bg.every((v,k)=>Math.abs(v-applied.bg[k])<=16))drift.push({id:'surface',chosen:hex(chosen.bg),applied:hex(applied.bg)});
  if(chosen.fonts?.length&&applied.fonts.length&&!chosen.fonts.some(f=>applied.fonts.includes(f)))drift.push({id:'type',chosen:chosen.fonts.join(' + '),applied:applied.fonts.join(' + ')});
  const problems=firstScreenProblems(m),habits=pageHabits(m);
- let standIns=null;try{standIns=countStandIns(await fs.readFile(path.resolve(target),'utf8'));}catch{}
- await fs.writeFile(path.join(root,'VERIFY.json'),JSON.stringify({checkedAt:new Date().toISOString(),target,label,drift,problems,habits},null,1)+'\n');
- return {label,chosen:{hero:chosen.hero,bg:chosen.bg,fonts:chosen.fonts},applied:{...applied,standIns},drift,problems,habits};
+ let standIns=null,loading=[];try{const html=await fs.readFile(path.resolve(target),'utf8');standIns=countStandIns(html);loading=loadingProblems(html);}catch{}
+ await fs.writeFile(path.join(root,'VERIFY.json'),JSON.stringify({checkedAt:new Date().toISOString(),target,label,drift,problems,habits,loading},null,1)+'\n');
+ return {label,chosen:{hero:chosen.hero,bg:chosen.bg,fonts:chosen.fonts},applied:{...applied,standIns},drift,problems,habits,loading};
 }

@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {compareKeep} from '../src/keep.mjs';
-import {openLicence,toCandidate,searchPhotos,creditLine,countStandIns,fetchStandIns} from '../src/photos.mjs';
+import {openLicence,toCandidate,searchPhotos,creditLine,countStandIns,fetchStandIns,optimisePhotos} from '../src/photos.mjs';
 import {refineGateProblems} from '../scripts/refine-gate-hook.mjs';
 import {evaluateAiTells} from '../src/ai-tells.mjs';
 
@@ -41,13 +41,47 @@ test('photos: search and save use the given fetch, write credits.json and a loca
  assert.deepEqual((await searchPhotos('dental chair',{fetchImpl})).map(p=>p.title),['File:Dental chair.jpg']);
  await assert.rejects(searchPhotos('  ',{fetchImpl}),/subject/);
  const out=await fs.mkdtemp(path.join(os.tmpdir(),'uir-photos-'));
- const r=await fetchStandIns('dental chair',{out,lang:'ja',fetchImpl});
+ const r=await fetchStandIns('dental chair',{out,lang:'ja',fetchImpl,optimise:false});
  assert.deepEqual(r.photos.map(p=>p.file),['dental-chair-01.jpg']);
  assert.equal((await fs.readFile(path.join(out,'dental-chair-01.jpg'))).length,3);
  const credits=JSON.parse(await fs.readFile(path.join(out,'credits.json'),'utf8'));
  assert.equal(credits.standIn,true);assert.equal(credits.photos[0].author,'Jane Roe');
  assert.match(r.credit,/^<p class="stand-in-credits">仮の写真/);assert.match(creditLine(r.photos,'ko'),/임시 사진/);
  assert.equal(countStandIns('<img src="a.jpg" data-stand-in><img data-stand-in="true" src="b.jpg"><img src="c.jpg">'),2);
+});
+
+test('photos: img paths start from the page or the project folder, never the working directory', async () => {
+ const {photoBase}=await import('../src/photos.mjs');
+ const proj=path.join(os.tmpdir(),'uir-base','clinic');
+ assert.equal(photoBase(path.join(proj,'assets','stand-in')),proj,'<project>/assets/stand-in → <project>');
+ assert.equal(photoBase(path.join(proj,'public','assets','img','stand-in')),path.join(proj,'public'),'the outermost assets folder');
+ assert.equal(photoBase(path.join(proj,'stand-in')),proj,'no assets folder: the folder above');
+ assert.equal(photoBase(path.join(proj,'assets','stand-in'),path.join(proj,'refine-directions','a.html')),path.join(proj,'refine-directions'),'--page wins');
+ const rel=path.relative(photoBase(path.join(proj,'assets','stand-in')),path.join(proj,'assets','stand-in','x.webp')).split(path.sep).join('/');
+ assert.equal(rel,'assets/stand-in/x.webp');
+});
+
+test('photos: saved photos become WebP at each width up to the original, with srcset and an img line', async () => {
+ const {chromium}=await import('playwright');
+ const b=await chromium.launch();const pg=await b.newPage();
+ const jpeg=Buffer.from((await pg.evaluate(()=>{const c=document.createElement('canvas');c.width=1200;c.height=800;const g=c.getContext('2d');
+  for(let i=0;i<400;i++){g.fillStyle=`hsl(${i*37%360} 60% ${30+i%40}%)`;g.fillRect((i*53)%1200,(i*97)%800,60,40);}return c.toDataURL('image/jpeg',0.95);})).split(',')[1],'base64');
+ await b.close();
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'uir-opt-'));await fs.writeFile(path.join(dir,'room-01.jpg'),jpeg);
+ const photos=[{file:'room-01.jpg'},{file:'broken-02.jpg'}];await fs.writeFile(path.join(dir,'broken-02.jpg'),Buffer.from([1,2,3]));
+ const r=await optimisePhotos(dir,photos,{base:path.dirname(dir)});
+ assert.equal(r.skipped,null);
+ const [p,bad]=r.photos;
+ assert.deepEqual(p.variants.map(v=>v.width),[640,1024,1200],'never wider than the original');
+ assert.deepEqual(p.variants.map(v=>v.height),[427,683,800]);
+ assert.equal(p.file,'room-01-1200.webp');
+ const files=(await fs.readdir(dir)).sort();
+ assert.deepEqual(files,['broken-02.jpg','room-01-1024.webp','room-01-1200.webp','room-01-640.webp'],'original replaced; an undecodable file is left as it was');
+ assert.equal((await fs.readFile(path.join(dir,'room-01-640.webp'))).subarray(8,12).toString(),'WEBP');
+ const d=path.basename(dir);
+ assert.equal(p.srcset,`${d}/room-01-640.webp 640w, ${d}/room-01-1024.webp 1024w, ${d}/room-01-1200.webp 1200w`);
+ assert.match(p.img,new RegExp(`^<img src="${d}/room-01-1200.webp" srcset="[^"]+" sizes="100vw" width="1200" height="800" alt="" data-stand-in>$`));
+ assert.equal(bad.variants,undefined);
 });
 
 test('gate: blocks only while a recorded refine lacks a fresh, passing keep check or verify', async () => {
@@ -73,6 +107,8 @@ test('gate: blocks only while a recorded refine lacks a fresh, passing keep chec
  assert.match((await refineGateProblems(cwd))[0],/drifted.*below-fold → left\+stacked/);
  await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[],problems:['no-claim']}));
  assert.match((await refineGateProblems(cwd))[0],/does not say what this is/);
+ await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[],problems:[],loading:[{id:'blocking-font-css',items:['https://fonts.googleapis.com/css2?family=X']}]}));
+ assert.match((await refineGateProblems(cwd))[0],/blocks the first paint.*media="print"/);
  await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[]}));
  assert.deepEqual(await refineGateProblems(cwd),[]);
  assert.deepEqual(await refineGateProblems(cwd,Date.now()+13*3600e3),[],'stale refine state older than 12 hours is ignored');

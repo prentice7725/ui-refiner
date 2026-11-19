@@ -15,8 +15,8 @@ jobs:
           node-version: '22.18.0'
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm test
       - run: npx playwright install --with-deps chromium
+      - run: npm test
       - run: npm run smoke:ui
       - run: npm run smoke:gate
       - run: npm run smoke:review2
