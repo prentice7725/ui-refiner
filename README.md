@@ -24,7 +24,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 - **A scan that says why a page looks generic.**
   - `ui-refiner scan <url | file>` needs no config.
   - It checks about two dozen rendered signals: purple gradients, icon-card grids, eyebrow pills, glass, stock copy in English, Korean and Japanese, and more. Each one comes with evidence, the reason it reads as generic, and a fix.
-  - It was calibrated on about 250 AI-built and human-made sites and checked on 1790 human-made Korean and Japanese sites. At a score of 20 or more it flags 69–74% of AI-built sites, 0–9% of English-language human ones, 7% of Korean and 3% of Japanese ones. The AI-built sites are all in English, so how well it catches AI-built Korean and Japanese pages is not measured yet.
+  - It was calibrated on about 250 AI-built and human-made sites and checked on 1790 human-made Korean and Japanese sites. At a score of 20 or more it flags 69–74% of AI-built sites, 0–9% of English-language human ones, 7% of Korean and 3% of Japanese ones. On 79 Korean and Japanese pages built by Claude, Codex and Antigravity from one-line prompts it flags 70%, but only 42% of the Codex ones.
   - It also saves the screenshot marked up like a graded paper (`scan-graded.png`): each scored signal circled in red where it was found, with its points, and the score at the top.
   - A rescan opens with a before/after comparison.
 - **Japanese pages placed among 209 real Japanese sites.**

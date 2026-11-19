@@ -5,6 +5,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 ## Unreleased
 
 ### Added
+- `scripts/calibration-ai-krjp.tsv`: 24 Korean and Japanese one-line prompts for an AI-built calibration sample. Built once each by Claude Opus 5.5, Codex and Antigravity, plus 7 Claude-built benchmark pages, 79 pages in all: score ≥ 20 flags 70% of them (Korean 77%, Japanese 63%). By tool: Antigravity 92%, Claude 74%, Codex 42%. The Codex pages share one editorial template that only two scored signals catch. The README and the guides now give these figures instead of saying the Korean and Japanese catch rate is unmeasured.
 - `directions deal --seed <n>` fixes the draw, so two runs with one seed differ only in their inputs.
 - Refine benchmark harness: a trade benchmark. Only stage 1 has been run (see `scripts/refine-bench/README.md`): naming the trade did not bring the familiar mock closer to the trade's measured sites. Arms k/l build only the familiar mock (A) without and with `--trade`, on one seed per page and repeat; arms m/n refine to the end and pick A. Six Korean and Japanese pages are listed in `scripts/refine-bench/trades.tsv` (ko-logistics is the control), with prompts for three new ones. `scripts/refine-bench/trade-fit.mjs` measures how well each mock fits the trade's measured sites. See `scripts/refine-bench/README.md`.
 

@@ -129,9 +129,12 @@ Measured again on 19 November 2026 with the current scoring (scores change as si
 | Korean, global brand, editorial, public and personal sites (extra) | 55 | 4 | 9% |
 | Korean human-made sites by trade (`data/genre-reference`) | 776 | 0 | 7% |
 | Japanese human-made sites by trade (`data/genre-reference`) | 1014 | 0 | 3% |
+| Korean and Japanese pages built by Claude Opus 5.5 from one-line prompts (`scripts/calibration-ai-krjp.tsv`, plus 7 benchmark pages) | 31 | 33 | 74% |
+| The same prompts built by Antigravity | 24 | 38 | 92% |
+| The same prompts built by Codex (gpt-6.1-sol) | 24 | 19 | 42% |
 | `examples/ai-slop-landing.html`, `ai-slop-landing-ja.html` | 2 | 100 | |
 
-The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds were set. Its human side is where the score is weakest: large SaaS and consumer brands such as toss.im, shopify.com, allbirds.com and loom.com score 27–38 because they use the same purple gradients, card grids and glass. On the Korean sites by trade the misses come from Korean commercial style: dense banners, pop-ups, card grids, gradients, emoji and glass. Every AI-built set here is in English; how often the score catches AI-built Korean or Japanese pages has not been measured. A low score does not prove good design, and more than a quarter of AI-built sites still score under 20.
+The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds were set. Its human side is where the score is weakest: large SaaS and consumer brands such as toss.im, shopify.com, allbirds.com and loom.com score 27–38 because they use the same purple gradients, card grids and glass. On the Korean sites by trade the misses come from Korean commercial style: dense banners, pop-ups, card grids, gradients, emoji and glass. The Korean and Japanese AI-built pages were made on 19 November 2026 from 24 one-line prompts (12 Korean, 12 Japanese), each built once by three tools. The Codex pages share one editorial template (a cream ground, a thin serif, small tracked English labels over the Korean or Japanese headline, English script taglines) that two scored signals catch, so most stop between 8 and 19. A low score does not prove good design, and more than a quarter of AI-built sites still score under 20.
 
 ## Using it with agents
 

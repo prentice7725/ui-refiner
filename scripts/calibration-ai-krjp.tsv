@@ -1,0 +1,29 @@
+# Korean and Japanese one-line prompts for an AI-built calibration sample (2026-11-19).
+# Each prompt was built once in an empty folder by Claude Opus 5.5 (claude -p, no skills or settings), Codex (codex exec, gpt-6.1-sol)
+# and Antigravity (agy -p; "do not run shell commands" appended, since headless agy stops when a command is denied).
+# The pages are not kept in the repo; results are in docs/GUIDE.md (Calibration).
+# id	prompt
+ko-cafe	서울 성수동의 스페셜티 카페 "느린오후"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-salon	부산 서면의 헤어살롱 "결 헤어"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-academy	대치동 수학 전문 학원 "정석수학"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-skin	강남역 피부과 "맑은피부과의원"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-kmed	대전의 한의원 "온숨한의원"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-saas	소상공인을 위한 예약 관리 SaaS "예약콕"의 랜딩 페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-cosmetics	비건 스킨케어 브랜드 "풀잎랩"의 브랜드 사이트 메인 페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-interior	주거 인테리어 시공 회사 "공간짓기"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-law	서초동 법률사무소 "바른길 법률사무소"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-pension	강원도 양양의 바닷가 펜션 "파도소리"의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-hiring	IT 개발자 채용 플랫폼 "코드잡"의 랜딩 페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ko-public	경기도 ○○시 청년창업지원센터의 홈페이지를 만들어 주세요. 단일 파일 index.html로 작성해 주세요.
+ja-salon	東京・表参道の美容室「HAREMA」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-cafe	京都・二条の喫茶店「からす珈琲」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-dental	大阪市北区の「みなと歯科クリニック」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-juku	横浜市の個別指導塾「まなび舎」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-builder	静岡県の工務店「杉本ホーム」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-saas	中小企業向け勤怠管理SaaS「キンタイクラウド」のランディングページを作ってください。単一ファイル index.html で書いてください。
+ja-tax	名古屋の税理士事務所「森田会計事務所」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-yoga	福岡のヨガスタジオ「mitsu yoga」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-realestate	札幌の不動産会社「北斗不動産」のホームページを作ってください。単一ファイル index.html で書いてください。
+ja-cosmetics	国産オーガニックコスメブランド「つきくさ」のブランドサイトのトップページを作ってください。単一ファイル index.html で書いてください。
+ja-maker	新潟の金属加工メーカー「燕精工」のコーポレートサイトのトップページを作ってください。単一ファイル index.html で書いてください。
+ja-city	長野県○○町の移住・定住促進サイトのトップページを作ってください。単一ファイル index.html で書いてください。
