@@ -1,6 +1,6 @@
 # Familiar
 
-The direction a careful human studio would most likely make for a client of this kind. It is built from measurements of human-made sites (hero structures of 406 sites, colours of 548 Korean, Japanese and English sites, type on 209 Japanese and 180 Korean sites, and 750 Korean and Japanese sites by trade; see `data/`), so a visitor reads it at once as a real site of its kind. It is the least surprising of the three, on purpose: it wins on fit and ease, not on being remembered.
+The direction a careful human studio would most likely make for a client of this kind. It is built from measurements of human-made sites (hero structures of 406 sites, colours of 552 Korean, Japanese and English sites, type on 209 Japanese and 180 Korean sites, and 1790 Korean and Japanese sites by trade; see `data/`), so a visitor reads it at once as a real site of its kind. It is the least surprising of the three, on purpose: it wins on fit and ease, not on being remembered.
 
 Read [README.md](README.md) first; this file adds what is particular to this lane.
 
