@@ -21,7 +21,7 @@ export const HERO_STRUCTURES={
  'wide+stacked':'One very large headline across the full width; the signature element follows below.',
  'center+stacked':'A short centred headline; the signature element follows below at full width.',
  'left+stacked':'Headline in a narrow left column; the signature element runs full width below it.',
- 'below-fold':'Images first: real photos, products or listings with pictures fill most of the first screen, as on human-made sites that open without a headline (most of them are image-led). The one-line claim and the main action still sit on or beside them, and the claim is the largest text on the screen. Not a text, table or dashboard board; without real images, use another structure.'
+ 'below-fold':'Images first: real photos, products or listings with pictures run the full width of the first screen and fill most of it, as on human-made sites that open without a headline (most of them are image-led). The one-line claim and the main action sit on the images or in a short band right under them, and the claim is the largest text on the screen. Never a text column beside a half-width photo: that is a split, another structure. Not a text, table or dashboard board; without real images, use another structure.'
 };
 
 export function logPath(file){return file||path.join(process.env.UI_REFINER_HOME||path.join(os.homedir(),'.ui-refiner'),'refine-log.json');}
