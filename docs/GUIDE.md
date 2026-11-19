@@ -77,7 +77,7 @@ A heuristic built from rendered signals. Strong signals weigh 3, moderate 2, wea
 | Cards inside cards | Rounded boxes nested in rounded boxes, in three or more outer cards |
 | Icons in rounded squares | Three or more small tinted rounded squares that each hold only an icon |
 | Generic type | One stock face (Inter, Roboto, system…) for everything |
-| Flat type scale | Largest heading under 2× the body size (skipped on Japanese pages) |
+| Flat type scale | Largest heading under 2× the body size (skipped on Japanese pages; reported only: found on 19% of English human sites and 8% of AI ones) |
 | Default accent | Untouched Tailwind indigo/violet/purple (plain blue and Bootstrap blue are reported only) |
 | Many hues | Five or more chromatic hue families in UI colors |
 | Tracked labels | Tiny, letter-spaced uppercase labels repeated across sections |
@@ -86,7 +86,7 @@ A heuristic built from rendered signals. Strong signals weigh 3, moderate 2, wea
 | Paper and serif | Warm off-white background with serif display type, the 2025–26 editorial template |
 | `transition: all` | Computed on interactive elements (reported only) |
 | Faint off-white page | Light grey or cream page surface instead of white: about 10% of human sites, 25–40% of AI sites (reported only; `directions` uses it) |
-| Buzzword copy | Stock phrases in EN/KO/JA ("unlock your potential", 잠재력, 可能性を解き放つ, 次世代の …); two or more needed |
+| Buzzword copy | Stock phrases in EN/KO/JA ("unlock your potential", 잠재력, 可能性を解き放つ, 次世代の …); two or more needed (reported only: found on 14% of English human sites and 13% of AI ones) |
 | Repeated generic CTA | "Learn more", 자세히 보기, 詳しく見る … repeated (reported only) |
 
 Decorative illustrations, `aria-hidden` art, SVG internals and pinned navigation are excluded to keep crafted brand work from being flagged.
@@ -117,20 +117,21 @@ The section ends with **日本のサイトとの比較**, the comparison shown a
 
 ### Calibration
 
-Measured in November 2026 (scores change as sites change). Scripts: `scripts/calibrate-scan.mjs`, `scripts/rescore.mjs`.
+Measured again on 19 November 2026 with the current scoring (scores change as sites change, and a few sites no longer answered, so set sizes moved slightly). Scripts: `scripts/calibrate-scan.mjs`, `scripts/rescore.mjs`.
 
 | Set | Sites | Median score | Score ≥ 20 |
 |---|---:|---:|---:|
 | ChatGPT-built sites (tuning) | 30 | 38 | 70% |
 | Human sites (tuning) | 26 | 0 | 0% |
-| Lovable/v0 sites (holdout) | 38 | 28 | 68% |
-| Design-forward studio, award and editorial sites (holdout) | 29 | 5 | 3% |
-| Replit/Lovable gallery sites (extra) | 77 | 35 | 74% |
-| Korean, global brand, editorial, public and personal sites (extra) | 54 | 8 | 15% |
-| Japanese reference sites | 210 | 0 | 1% |
+| Lovable/v0 sites (holdout) | 39 | 31 | 69% |
+| Design-forward studio, award and editorial sites (holdout) | 29 | 0 | 0% |
+| Replit/Lovable gallery sites (extra) | 76 | 33 | 74% |
+| Korean, global brand, editorial, public and personal sites (extra) | 55 | 4 | 9% |
+| Korean human-made sites by trade (`data/genre-reference`) | 776 | 0 | 7% |
+| Japanese human-made sites by trade (`data/genre-reference`) | 1014 | 0 | 3% |
 | `examples/ai-slop-landing.html`, `ai-slop-landing-ja.html` | 2 | 100 | |
 
-The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds were set. Its human side is where the score is weakest: large SaaS and consumer brands such as toss.im, shopify.com, loom.com, canva.com and dropbox.com score 27–57 because they use the same purple gradients, stock copy, card grids and glass. A low score does not prove good design, and about a third of AI-built sites still score under 20.
+The extra set (`scripts/calibration-extra.tsv`) was added after the thresholds were set. Its human side is where the score is weakest: large SaaS and consumer brands such as toss.im, shopify.com, allbirds.com and loom.com score 27–38 because they use the same purple gradients, card grids and glass. On the Korean sites by trade the misses come from Korean commercial style: dense banners, pop-ups, card grids, gradients, emoji and glass. Every AI-built set here is in English; how often the score catches AI-built Korean or Japanese pages has not been measured. A low score does not prove good design, and more than a quarter of AI-built sites still score under 20.
 
 ## Using it with agents
 
