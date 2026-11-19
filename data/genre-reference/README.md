@@ -4,7 +4,7 @@ What human-made Korean and Japanese sites of one trade do on their first screen,
 
 - `human.json`: per trade and country (for example `salon/JP`), the share of each hero structure, the first-screen ground and accent family, and type (median body size, largest text over body, body line height on Japanese pages, share of sites with a serif or Mincho display face). A group appears only with 8 or more sites; 72 groups from 1790 sites. Built by `scripts/build-genre-reference.mjs`.
 - `sites.tsv`, `sites.json`, `summary.json`, `SUMMARY.md`: the full scan of 1919 sites (`scripts/collect-reference.mjs`).
-- `colour/`: first-screen colours of 1957 sites (`scripts/collect-colours.mjs`).
+- `colour/`: first-screen colours of 1942 sites (`scripts/collect-colours.mjs`).
 
 The list is `scripts/genre-sites.tsv`. Its sites come from four kinds of source:
 

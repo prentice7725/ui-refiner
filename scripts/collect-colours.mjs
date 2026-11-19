@@ -10,7 +10,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {chromium} from 'playwright';
 import {robotsPolicy,pendingRows} from '../src/reference.mjs';
-import {accentFamily} from '../src/refine-log.mjs';
+import {colourProbe,measureColours} from '../src/first-screen-colour.mjs';
 
 const args=process.argv.slice(2).filter(a=>!a.startsWith('--')&&!/^\d+$/.test(a));
 const listPath=args[0]||'scripts/colour-sites.tsv',outDir=args[1]||'data/colour-reference';
@@ -24,50 +24,6 @@ async function robots(u){
  const x=new URL(u);
  try{const r=await fetch(`${x.origin}/robots.txt`,{headers:{'user-agent':UA},signal:AbortSignal.timeout(10000)});return robotsPolicy(r.status,r.status<400?await r.text():'',x.pathname,AGENT);}
  catch{return 'retry';}
-}
-
-// Runs in the page: what covers the first screen (sampled on a grid) and which colour its links and buttons use.
-function probe(){
- const W=innerWidth,H=innerHeight,rgba=v=>{const m=String(v).match(/rgba?\(([^)]+)\)/);if(!m)return null;const p=m[1].split(/[ ,/]+/).filter(Boolean).map(Number);return [p[0],p[1],p[2],p.length>3?p[3]:1];};
- const media=el=>['IMG','VIDEO','CANVAS','PICTURE','IFRAME'].includes(el.tagName)||(el.tagName==='svg'&&el.getBoundingClientRect().width*el.getBoundingClientRect().height>40000)||/url\(/.test(getComputedStyle(el).backgroundImage);
- // A transparent body and html show the browser's white canvas.
- const solid=v=>{const c=rgba(v);return c&&c[3]>.5?c.slice(0,3):null;};
- const rootBg=solid(getComputedStyle(document.body).backgroundColor)||solid(getComputedStyle(document.documentElement).backgroundColor)||[255,255,255];
- const cells=[];
- for(let y=0;y<14;y++)for(let x=0;x<24;x++){
-  let el=document.elementFromPoint((x+.5)*W/24,(y+.5)*H/14),hit=null;
-  for(let e=el;e&&e!==document.documentElement;e=e.parentElement){if(media(e)){hit='image';break;}const c=rgba(getComputedStyle(e).backgroundColor);if(c&&c[3]>.5){hit=c.slice(0,3);break;}}
-  cells.push(hit||rootBg);
- }
- const acc=[];
- for(const el of document.querySelectorAll('a[href],button,[role=button],input[type=submit]')){
-  const r=el.getBoundingClientRect();if(!r.width||!r.height)continue;const s=getComputedStyle(el);
-  for(const v of [s.backgroundColor,s.color,s.borderTopColor]){const c=rgba(v);if(c&&c[3]>.5)acc.push(c.slice(0,3));}
-  if(acc.length>400)break;
- }
- return {rootBg,cells,acc};
-}
-
-const hsl=([r,g,b])=>{r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2,d=mx-mn;return {s:d?d/(1-Math.abs(2*l-1)):0,l};};
-// What a ground cell reads as: white, a faint tint, dark, a clear colour family, or an image.
-function cellClass(c){
- if(c==='image')return 'image';
- const {s,l}=hsl(c);
- if(l<.18)return 'dark';
- if(Math.min(...c)>=247&&Math.max(...c)-Math.min(...c)<=8)return 'white';
- if(s<.2||l>.9)return 'tint';
- const f=accentFamily(c);return f==='ink'?'dark':f;
-}
-function measure(m){
- const n=m.cells.length,share={};
- for(const c of m.cells){const k=cellClass(c);share[k]=(share[k]||0)+1/n;}
- const colour=Object.entries(share).filter(([k])=>!['white','tint','dark','image'].includes(k)).sort((a,b)=>b[1]-a[1])[0];
- const counts=new Map();for(const c of m.acc){const {s,l}=hsl(c);if(s<.25||l<.1||l>.88)continue;const f=accentFamily(c);if(!f||f==='ink')continue;counts.set(f,(counts.get(f)||0)+1);}
- const accent=[...counts].sort((a,b)=>b[1]-a[1])[0]?.[0]??'ink';
- // The ground is a clear colour when one family covers a quarter of the first screen or more.
- const ground=colour&&colour[1]>=.25?colour[0]:(share.dark||0)>=.5?'dark':(share.image||0)>=.5?'image':'light';
- const r=x=>Math.round(x*1000)/1000;
- return {ground,accent,share:Object.fromEntries(Object.entries(share).map(([k,v])=>[k,r(v)])),rootBg:m.rootBg};
 }
 
 await fs.mkdir(outDir,{recursive:true});
@@ -94,7 +50,7 @@ async function worker(){
    let page;
    try{
     page=await hard((await ctxFor(row.country)).newPage(),15000);
-    rec=await hard((async()=>{await page.goto(row.url,{waitUntil:'load',timeout:30000});await page.waitForTimeout(2500);return {host,trade:row.trade,kind:row.kind,country:row.country,...measure(await page.evaluate(probe))};})(),60000);
+    rec=await hard((async()=>{await page.goto(row.url,{waitUntil:'load',timeout:30000});await page.waitForTimeout(2500);return {host,trade:row.trade,kind:row.kind,country:row.country,...measureColours(await page.evaluate(colourProbe))};})(),60000);
    }catch(e){rec={host,skipped:(e.message||'').split('\n')[0].slice(0,80)};
     // A page that hung may have wedged its context; start a fresh one for the next site.
     const c=ctxs[row.country];delete ctxs[row.country];c?.close().catch(()=>{});}

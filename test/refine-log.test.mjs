@@ -187,3 +187,16 @@ test('a trade draws the familiar direction from sites of that trade in the page\
  // The shipped data: Japanese inns are measured, and an English page has no trade figures.
  assert.ok((await humanTrade('inn','ja')).entry.sites>=8);assert.equal((await humanTrade('inn','en')).entry,null);
 });
+
+test('one seed gives one deal, so a trade benchmark compares like with like', async () => {
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'uir-seed-')),log=path.join(tmp,'log.json');
+ const keys=d=>d.structures.map(s=>s.key+'/'+(s.accent?.family??s.surface?.key??s.material?.slug));
+ const a=await dealDirections(path.join(tmp,'a'),{log,seed:7,kind:'place',trade:'inn',lang:'ja'});
+ const b=await dealDirections(path.join(tmp,'b'),{log,seed:7,kind:'place',trade:'inn',lang:'ja'});
+ assert.deepEqual(keys(a),keys(b));
+ assert.equal(a.structures[0].measured.trade,'inn');
+ // A trade whose hero shares lean wholly one way decides A's structure, whatever the kind would have drawn.
+ const genre={trades:['inn'],entry:{country:'JP',sites:9,hero:{sites:9,share:{'left+media':1}},colour:null,type:{}}};
+ const c=await dealDirections(path.join(tmp,'c'),{log,seed:7,kind:'place',trade:'inn',lang:'ja',genre});
+ assert.equal(c.structures[0].key,'left+media');
+});

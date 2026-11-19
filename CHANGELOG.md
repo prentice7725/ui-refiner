@@ -4,6 +4,18 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Added
+- `directions deal --seed <n>` fixes the draw, so two runs with one seed differ only in their inputs.
+- Refine benchmark harness: a trade benchmark, prepared but not run. Arms k/l build only the familiar mock (A) without and with `--trade`, on one seed per page and repeat; arms m/n refine to the end and pick A. Six Korean and Japanese pages are listed in `scripts/refine-bench/trades.tsv` (ko-logistics is the control), with prompts for three new ones. `scripts/refine-bench/trade-fit.mjs` measures how well each mock fits the trade's measured sites. See `scripts/refine-bench/README.md`.
+
+### Changed
+- `directions deal`: the "images first" structure (`below-fold`) asks for images across the full width with the claim on them or in a short band right under them, never in a column beside a half-width photo. In the first run of the trade benchmark, 4 of 13 mocks dealt it were built as a photo on one half and the headline on the other, which is a different structure (`left+media`, `right+media`).
+- The first-screen colour measure moved from `scripts/collect-colours.mjs` to `src/first-screen-colour.mjs`, so the benchmark measures mocks the same way the collector measures sites. The collector's output is unchanged.
+
+### Fixed
+- The trade benchmark scores a mock's hero structure by family, as the deal does. A mock dealt "images first" (`below-fold`) keeps its claim on the first screen as the lane asks, so it measures as a full-bleed photo; in the first trial run this read as the agent drifting from its deal.
+- The first-screen colour measure missed a photo under a text overlay. It walked up from the topmost element only, so a photo beside its overlay in the tree, or one darkened by a `::after` overlay over a fallback colour, read as white or as that colour. It now looks through every element stacked at each point, and it no longer fails on pages without a body element. Both colour surveys were measured again on 19 November 2026: `data/colour-reference` now covers 552 sites and reads 52% of first screens as photos (before: 548 sites, 35%), and `data/genre-reference/colour` covers 1942 sites with photos on 65% (before: 46%). In the trade groups the photo share rose most for Korean games (13% → 60%), Japanese farms (29% → 75%) and Japanese makers (52% → 85%); Japanese inns went from 64% to 79%. `academy/KR` regained its colour shares, so all 72 groups report them.
+
 ## 0.8.0 — 2026-11-18
 
 ### Added
