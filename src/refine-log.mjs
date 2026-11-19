@@ -54,7 +54,7 @@ export function dealStructures(entries,project,{n=3,seed=0,human=null,noPhoto=fa
 // Structures that need a photo or product shot (human first screens without a headline are mostly image-led). With no client photos, deal them only when stand-ins
 // (ui-refiner photos) are acceptable; --no-photo removes them.
 const PHOTO=new Set(['full-bleed','left+media','below-fold']);
-const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','full-bleed':'image','wide+stacked':'stacked','center+stacked':'stacked','left+stacked':'stacked','below-fold':'image'};
+export const FAMILY={'left+panel':'split','right+panel':'split','left+media':'split','full-bleed':'image','wide+stacked':'stacked','center+stacked':'stacked','left+stacked':'stacked','below-fold':'image'};
 
 /** Share of each hero structure on human-made sites (data/hero-reference/human.json), overall or for one page kind. */
 export async function humanHeroShare(kind){try{const j=JSON.parse(await fs.readFile(new URL('../data/hero-reference/human.json',import.meta.url),'utf8'));return (kind&&j.byKind?.[kind]?.share)||j.share;}catch{return null;}}
