@@ -38,6 +38,28 @@ test('deal and record round-trip through DEAL.json, DIRECTIONS.json and the log 
  assert.equal((await readLog(log)).length,1);
 });
 
+test('record keeps the directions not picked and the person\'s words, and only the pick feeds the next deal', async () => {
+ const {cleanSaid}=await import('../src/refine-log.mjs');
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'uir-said-')),dir=path.join(tmp,'proj','refine-directions'),log=path.join(tmp,'log.json');
+ await fs.mkdir(dir,{recursive:true});
+ await fs.writeFile(path.join(dir,'DIRECTIONS.json'),JSON.stringify({items:[
+  {label:'A',hero:'center+stacked',fonts:['pretendard'],bg:[255,255,255]},
+  {label:'B',hero:'full-bleed',fonts:['noto serif kr','pretendard'],bg:[255,255,255],accent:[30,80,60]},
+  {label:'C',hero:'wide+stacked',fonts:['black han sans'],bg:[20,20,20]}]}));
+ const r=await recordChoice(dir,{pick:'B',log,said:'  B 구조에 A 색으로.\n C는 너무 과해  '});
+ assert.equal(r.entry.said,'B 구조에 A 색으로. C는 너무 과해','whitespace and newlines collapsed, words kept');
+ assert.deepEqual(r.entry.rejected.map(d=>d.label+':'+d.hero),['A:center+stacked','C:wide+stacked']);
+ assert.deepEqual(r.entry.rejected[1].fonts,['black han sans']);
+ assert.equal(JSON.parse(await fs.readFile(path.join(dir,'PICK.json'),'utf8')).said,r.entry.said);
+ const plain=await recordChoice(dir,{pick:'A',log});
+ assert.equal(plain.entry.said,null,'no words given: null, never a paraphrase');
+ assert.equal(cleanSaid('가'.repeat(600)).length,500);assert.equal(cleanSaid('   '),null);
+ // Another project: the rejected wide+stacked and C's fonts were never shipped, so they are not repeats.
+ const warn=historyWarnings([{label:'A',hero:'wide+stacked',fonts:['black han sans']}],await readLog(log),'/p/other');
+ assert.deepEqual(warn,[]);
+ assert.ok(dealStructures(await readLog(log),'/p/other',{seed:1}).includes('wide+stacked'),'a rejected structure is not pushed back');
+});
+
 test('pick note: a run of white picks for other projects points at the non-white directions', async () => {
  const {pickNotes}=await import('../src/refine-log.mjs');
  const items=[{label:'A',bg:[255,255,255]},{label:'B',bg:[20,22,24]},{label:'C',bg:[255,255,255]}];

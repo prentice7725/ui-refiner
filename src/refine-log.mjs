@@ -8,6 +8,7 @@ import os from 'node:os';
 import {loadMaterials,dealMaterials} from './materials.mjs';
 import {ALLOW_FILE,addAllow} from './allow.mjs';
 import path from 'node:path';
+import {readPrefs,activePrefs,avoidSets} from './preferences.mjs';
 
 export const DEAL_FILE='DEAL.json';
 export const SHEET_JSON='DIRECTIONS.json';
@@ -37,19 +38,26 @@ const others=(entries,project)=>entries.filter(e=>e.project!==project);
  * `human` (optional) maps structure keys to their share on human-made sites; among equally fresh
  * structures the more common human ones come first. Ties are broken by `seed` so a re-deal can differ.
  */
-export function dealStructures(entries,project,{n=3,seed=0,human=null,noPhoto=false}={}){
+export function dealStructures(entries,project,{n=3,seed=0,human=null,noPhoto=false,avoid=null}={}){
  const recent=others(entries,project).slice(-12).reverse();
- const keys=Object.keys(HERO_STRUCTURES).filter(k=>!(noPhoto&&PHOTO.has(k)));
+ const keys=keepEnough(Object.keys(HERO_STRUCTURES).filter(k=>!(noPhoto&&PHOTO.has(k))),avoid,n);
  const age=k=>{const i=recent.findIndex(e=>e.hero===k);return i<0?Infinity:i;};
  const jitter=k=>{let h=seed+7;for(const c of k)h=(h*31+c.charCodeAt(0))>>>0;return h%997;};
  // Among equally fresh structures, ones common on human-made sites come first, with some randomness so deals vary.
  const weight=k=>(human?.[k]??0)*(0.6+0.8*jitter(k)/997);
- const order=keys.sort((a,b)=>(age(b)-age(a))||(weight(b)-weight(a))||(jitter(a)-jitter(b)));
+ const out_=k=>avoid?.has(k)?1:0; // the person's avoided structures stay last even when they are needed to reach n
+ const order=keys.sort((a,b)=>(out_(a)-out_(b))||(age(b)-age(a))||(weight(b)-weight(a))||(jitter(a)-jitter(b)));
  // Spread the deal over structure families first, so three "headline then signature below" variants are not dealt together.
  const out=[],fams=new Set();
  for(const k of order)if(out.length<n&&!fams.has(FAMILY[k])){out.push(k);fams.add(FAMILY[k]);}
  for(const k of order)if(out.length<n&&!out.includes(k))out.push(k);
  return out;
+}
+/** Leaves out the avoided values, unless that would leave fewer than `n`: then the avoided ones go last. */
+export function keepEnough(list,avoid,n=1,key=x=>x){
+ if(!avoid?.size)return list;
+ const kept=list.filter(x=>!avoid.has(key(x)));
+ return kept.length>=n?kept:[...kept,...list.filter(x=>avoid.has(key(x)))];
 }
 // Structures that need a photo or product shot (human first screens without a headline are mostly image-led). With no client photos, deal them only when stand-ins
 // (ui-refiner photos) are acceptable; --no-photo removes them.
@@ -175,10 +183,11 @@ export function dealSurfaces(n=3,seed=0,{kind,tone}={}){
  * faces that fight the page's tone (condensed or ultra-heavy faces on a calm or warm page: in the November 2026
  * benchmarks judges called condensed capitals "harsh" on a family dental page and Dela Gothic One hard to read).
  */
-export function avoidFaces(pairs,entries,project,toneDef){
+export function avoidFaces(pairs,entries,project,toneDef,prefFaces=[]){
  const out=new Set(pairs.filter(p=>p.overused).flatMap(p=>[p.display,p.text]));
  if(toneDef){for(const p of pairs)if(toneDef.avoidVoices.includes(p.voice))out.add(p.display);for(const f of toneDef.avoidFaces)out.add(f);}
  for(const e of others(entries,project).slice(-8))for(const f of e.fonts||[])out.add(f);
+ for(const f of prefFaces)out.add(f);
  return [...out];
 }
 
@@ -198,48 +207,58 @@ const LANE_DIR=new URL('../skills/ui-refiner-agent/',import.meta.url);
 const laneFile=lane=>path.resolve(decodeURIComponent(new URL(LANES[lane],LANE_DIR).pathname.replace(/^\/(?=[A-Za-z]:)/,'')));
 
 /** The hero structure most human sites of the kind use, drawn by share so clients do not all get the top one. */
-export function familiarStructure(human,{seed=0,noPhoto=false}={}){
- const keys=Object.keys(HERO_STRUCTURES).filter(k=>!(noPhoto&&PHOTO.has(k))),w=k=>Math.max(human?.[k]??0,.02)**2; // squared: lean towards the most common structures
+export function familiarStructure(human,{seed=0,noPhoto=false,avoid=null}={}){
+ const all=Object.keys(HERO_STRUCTURES).filter(k=>!(noPhoto&&PHOTO.has(k))),fresh=all.filter(k=>!avoid?.has(k)),keys=fresh.length?fresh:all,w=k=>Math.max(human?.[k]??0,.02)**2; // squared: lean towards the most common structures
  const total=keys.reduce((n,k)=>n+w(k),0);let r=(hash(seed,'familiar')/997)*total;
  for(const k of keys.sort((a,b)=>w(b)-w(a))){r-=w(k);if(r<=0)return k;}
  return keys[0];
 }
 /** Ground for the tailored direction: white half the time, otherwise brand, paper or dark. */
-export function tailoredSurface(seed=0,{kind,tone}={}){
+export function tailoredSurface(seed=0,{kind,tone,avoid=null}={}){
+ const s=tailoredSurfaceDraw(seed,{kind,tone});
+ return avoid?.has(s)?'white':s;
+}
+function tailoredSurfaceDraw(seed=0,{kind,tone}={}){
  // Dark needs a subject that carries it: not software (round 12) and not a calm or warm page (round 13).
  const dark=kind!=='software'&&(!tone||tone==='technical'||tone==='bold'),r=hash(seed,'tailored')%10;
  return r<5?'white':r<7?'brand':r<8?'paper':dark?'dark':'brand';
 }
 
+/** A surface the person avoids also rules out the materials built on that ground (materials name grounds their own way). */
+const MATERIAL_GROUND={dark:'dark',brand:'colour',paper:'tint'};
+
 /** Writes DEAL.json into the directions folder: one familiar, one tailored and one bold direction (see LANES). */
-export async function dealDirections(dir,{log,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en',materials,trade,genre}={}){
+export async function dealDirections(dir,{log,seed=Date.now()%9973,human,colours,noPhoto=false,kind,tone,lang='en',materials,trade,genre,prefs,prefsFile}={}){
  if(kind&&!PAGE_KINDS.includes(kind))throw new Error(`--kind must be one of ${PAGE_KINDS.join(', ')}`);
  if(tone&&!PAGE_TONES.includes(tone))throw new Error(`--tone must be one of ${PAGE_TONES.join(', ')}`);
  const root=path.resolve(dir);await fs.mkdir(root,{recursive:true});
  const entries=await readLog(log),project=projectOf(root),lib=await typeLibrary(),toneDef=tone?lib.tones[tone]:null;
+ // The person's taste (src/preferences.mjs): what applies to this kind is left out of every lane, as far as the pools allow.
+ const applied=activePrefs(prefs??await readPrefs(prefsFile,log),kind),av=avoidSets(applied);
  // A trade narrows the familiar direction to what sites of that trade do in the page's country, where enough were measured.
  const g=trade?(genre===undefined?await humanTrade(trade,lang):genre):null;
  if(trade&&g.trades.length&&!g.trades.includes(trade))throw new Error(`--trade must be one of ${g.trades.join(', ')}`);
  const local=g?.entry??null;
  const share=human!==undefined?human:local?.hero?.share??await humanHeroShare(kind),script=lang==='ja'?'ja':lang==='ko'?'ko':'latin';
  // Familiar: the common structure, plain white (carried by a photo when photos are allowed), a common accent.
- const fKey=familiarStructure(share,{seed,noPhoto});
- const weights=colours!==undefined?colours:local?.colour?.accent??await humanColours(kind,lang),pool=toneDef?.accents?.length?toneDef.accents.filter(a=>lib.accents[a]):Object.keys(lib.accents);
+ const fKey=familiarStructure(share,{seed,noPhoto,avoid:av.hero});
+ const weights=colours!==undefined?colours:local?.colour?.accent??await humanColours(kind,lang),pool=keepEnough(toneDef?.accents?.length?toneDef.accents.filter(a=>lib.accents[a]):Object.keys(lib.accents),av.accent,1);
  const fAccent=dealAccents(pool,entries,project,{n:1,seed,weights})[0];
  // Tailored and bold: two more structures, not recently chosen for other projects and not the familiar one's.
- const rest=dealStructures(entries,project,{n:8,seed,human:share,noPhoto}).filter(k=>k!==fKey),otherFam=rest.filter(k=>FAMILY[k]!==FAMILY[fKey]);
- const mats=dealMaterials(materials??await loadMaterials(),entries,project,{n:2,seed,kind,tone,noPhoto});
+ const rest=dealStructures(entries,project,{n:8,seed,human:share,noPhoto,avoid:av.hero}).filter(k=>k!==fKey),otherFam=rest.filter(k=>FAMILY[k]!==FAMILY[fKey]);
+ const allMats=materials??await loadMaterials(),avoidMat=m=>av.material.has(m.slug)||[...av.surface].some(g=>MATERIAL_GROUND[g]===m.ground),okMats=allMats.filter(m=>!avoidMat(m));
+ const mats=dealMaterials(okMats.length?okMats:allMats,entries,project,{n:2,seed,kind,tone,noPhoto});
  if(!mats.length)throw new Error('No materials found; expected skills/ui-refiner-agent/reference/materials/*.md');
  // The bold structure suits its material: photo-led for one that needs photographs, no photo for one that rarely uses them.
  const m=mats[0],suits=k=>m.photo==='required'?PHOTO.has(k):m.photo==='rare'?!PHOTO.has(k):true;
  const bKey=otherFam.find(suits)??rest.find(suits)??otherFam[0]??rest[0],tKey=otherFam.find(k=>k!==bKey&&FAMILY[k]!==FAMILY[bKey])??rest.find(k=>k!==bKey);
- const surf=tailoredSurface(seed,{kind,tone}),at=(lane,key,extra)=>({lane,file:laneFile(lane),key,brief:HERO_STRUCTURES[key],humanShare:share?.[key]??null,...extra});
+ const surf=tailoredSurface(seed,{kind,tone,avoid:av.surface}),at=(lane,key,extra)=>({lane,file:laneFile(lane),key,brief:HERO_STRUCTURES[key],humanShare:share?.[key]??null,...extra});
  const structures=[
   at('familiar',fKey,{surface:{key:noPhoto?'white':'image',brief:lib.surfaces[noPhoto?'white':'image']},accent:{family:fAccent,brief:lib.accents[fAccent]},...(local?{measured:{trade,country:local.country,sites:local.sites,ground:local.colour?.ground??null,type:local.type}}:{})}),
   at('tailored',tKey,{surface:{key:surf,brief:lib.surfaces[surf]}}),
   at('bold',bKey,{material:{slug:m.slug,name:m.name,brief:m.brief,ground:m.ground,file:m.file},alternate:mats[1]?{slug:mats[1].slug,name:mats[1].name,brief:mats[1].brief,file:mats[1].file}:null})
  ].map((d,i)=>({label:String.fromCharCode(65+i),...d}));
- const deal={schemaVersion:7,kind:kind??null,trade:trade??null,tradeMeasured:trade?!!local:null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef),structures};
+ const deal={schemaVersion:7,kind:kind??null,trade:trade??null,tradeMeasured:trade?!!local:null,tone:tone??null,toneBrief:toneDef?.brief??null,lang,script,avoidFaces:avoidFaces(lib.pairs,entries,project,toneDef,applied.filter(p=>p.axis==='face').map(p=>p.value)),preferences:applied.map(({axis,value,kind,said})=>({axis,value,kind,said})),structures};
  await fs.writeFile(path.join(root,DEAL_FILE),JSON.stringify(deal,null,1)+'\n');
  return {...deal,file:path.join(root,DEAL_FILE)};
 }
@@ -284,18 +303,32 @@ export function pickNotes(items,entries,project,run=4){
 /** What a familiar page is allowed: its one plain typeface is the direction, not a tell. */
 export const FAMILIAR_TYPE={signal:'generic-type',reason:'familiar direction: one plain, widely used family on purpose'};
 
+/** The person's own words about the pick, kept verbatim as data: control characters dropped, at most 500 characters. */
+export function cleanSaid(said){
+ if(said==null)return null;
+ const s=String(said).replace(/[\u0000-\u001f\u007f]+/g,' ').replace(/\s+/g,' ').trim();
+ return s?[...s].slice(0,500).join(''):null;
+}
+
+/** What a direction looked like, for the log: the same fields as a pick, without project or date. */
+const lookOf=(item,deal)=>{const dealt=deal?.structures?.find(x=>x.label===item.label);
+ return {label:item.label,lane:dealt?.lane??null,material:dealt?.material?(item.material??dealt.material.slug):null,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};};
+
 /**
- * Appends the picked direction (by label) from the last `directions` run to the log. Picking the familiar direction
- * also writes its plain typeface into the project's ui-refiner-allow.json, so later scans report it without scoring it.
+ * Appends the picked direction (by label) from the last `directions` run to the log, with the directions shown but not
+ * picked (`rejected`) and, when given, the person's own words about the choice (`said`). Only the pick's own fields feed
+ * later deals; the rejected looks were never shipped, so they do not count as repeats across clients. Picking the familiar
+ * direction also writes its plain typeface into the project's ui-refiner-allow.json, so later scans report it without scoring it.
  */
-export async function recordChoice(dir,{pick,page,log}={}){
+export async function recordChoice(dir,{pick,page,log,said}={}){
  const root=path.resolve(dir);
  let sheet;try{sheet=JSON.parse(await fs.readFile(path.join(root,SHEET_JSON),'utf8'));}catch{throw new Error(`Run "ui-refiner directions ${dir}" first; ${SHEET_JSON} is missing.`);}
  const item=sheet.items.find(d=>d.label===String(pick||'').toUpperCase());
  if(!item)throw new Error(`--pick must be one of ${sheet.items.map(d=>d.label).join(', ')}`);
  const entries=await readLog(log),deal=await readDeal(root);
- const dealt=deal?.structures?.find(x=>x.label===item.label);
- const entry={lane:dealt?.lane??null,material:dealt?.material?(item.material??dealt.material.slug):null,date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label:item.label,concept:item.note?.concept??null,hero:item.hero??null,fonts:item.fonts??[],bg:item.bg??null,accent:item.accent??null};
+ const {label,...look}=lookOf(item,deal);
+ const entry={lane:look.lane,material:look.material,date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label,concept:look.concept,hero:look.hero,fonts:look.fonts,bg:look.bg,accent:look.accent,
+  said:cleanSaid(said),rejected:sheet.items.filter(d=>d.label!==item.label).map(d=>lookOf(d,deal))};
  entries.push(entry);
  await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify(entry,null,1)+'\n');
  const allowed=entry.lane==='familiar'?(await addAllow(path.join(projectOf(root),ALLOW_FILE),FAMILIAR_TYPE)).file:null;

@@ -16,7 +16,9 @@ import {upstreamCheck} from '../src/vendor.mjs';
 import {presets} from '../src/presets.mjs';
 import {scanUrl,scanLangs} from '../src/scan.mjs';
 import {compareDirections,verifyApplied} from '../src/directions.mjs';
-import {dealDirections,recordChoice} from '../src/refine-log.mjs';
+import {dealDirections,recordChoice,readLog} from '../src/refine-log.mjs';
+import {addPref,removePref,readPrefs,suggestPrefs,AXES} from '../src/preferences.mjs';
+import {loadMaterials} from '../src/materials.mjs';
 import {fetchStandIns} from '../src/photos.mjs';
 import {recordKeep,checkKeep} from '../src/keep.mjs';
 import {ALLOW_FILE,readAllow,addAllow,removeAllow} from '../src/allow.mjs';
@@ -35,8 +37,12 @@ const help=`UI Refiner 0.8.0 — de-AI web design review and UI quality gate
       recently for other projects;
       --no-photo skips structures that need a real photo; --seed fixes the draw (for benchmarks: two runs with one
       seed differ only in their inputs)
-  ui-refiner directions record <folder> --pick A|B|C [--page name] [--log file]
+  ui-refiner directions record <folder> --pick A|B|C [--page name] [--said "the person's words"] [--log file]
       remembers the picked direction (default log: ~/.ui-refiner/refine-log.json, or UI_REFINER_HOME)
+  ui-refiner prefer add <axis> <value> --said "the person's words" [--kind kind] | prefer remove <axis> <value> [--kind kind]
+  ui-refiner prefer list | prefer suggest [--log file]
+      the person's taste as things directions deal leaves out (axes: hero, face, accent, surface, material), kept next
+      to the refine log; suggest lists their recorded words and looks shown 3+ times and never picked, to ask about
   ui-refiner directions verify <folder> <applied page> [--pick A|B|C] [--json]
       checks that the applied page kept the chosen mock's hero structure, surface and type (exit 1 on drift)
   ui-refiner system extract <main page> [--dir folder] [--json]
@@ -80,7 +86,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--no-optimise'){out.noOptimise=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed','--said'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -124,6 +130,25 @@ try{
       +(r.photos.some(p=>p.variants)?`\nUse each photo through its <img> line: keep srcset, width and height, set sizes to the width the photo really takes in the layout (for example "(min-width: 64em) 50vw, 100vw"), add fetchpriority="high" to the first-screen photo and loading="lazy" to the rest, and write a generic alt.`:'')
       +`\nCredit line for the footer:\n${r.credit}`);
   }
+  else if(command==='prefer'&&sub==='add'&&args._.length===4){
+    const r=await addPref(args._[2],args._[3],{said:args.said,kind:args.kind,log:args.log,materials:(await loadMaterials()).map(m=>m.slug)});
+    console.log(`[PREFER] avoid ${r.entry.axis} ${r.entry.value}${r.entry.kind?` on ${r.entry.kind} pages`:''} — "${r.entry.said}" → ${r.file}`);
+  }
+  else if(command==='prefer'&&sub==='remove'&&args._.length===4){
+    const r=await removePref(args._[2],args._[3],{kind:args.kind,log:args.log});
+    console.log(r.retired?`[PREFER] retired ${r.retired} → ${r.file}`:`[PREFER] no active entry for ${args._[2]} ${args._[3]}`);
+  }
+  else if(command==='prefer'&&sub==='list'&&args._.length===2){
+    const active=(await readPrefs(undefined,args.log)).filter(p=>p.status==='active');
+    if(args.json)console.log(JSON.stringify(active,null,2));
+    else console.log(active.length?active.map(p=>`${p.axis} ${p.value}${p.kind?` (${p.kind})`:''}  ${p.date}  "${p.said}"`).join('\n'):`[PREFER] none recorded (axes: ${Object.keys(AXES).join(', ')})`);
+  }
+  else if(command==='prefer'&&sub==='suggest'&&args._.length===2){
+    const r=suggestPrefs(await readLog(args.log),await readPrefs(undefined,args.log));
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else console.log([...r.said.map(s=>`[SAID] ${s.date} ${s.page} (picked ${s.pick}): "${s.said}"`),...r.neverPicked.map(s=>`[NEVER PICKED] ${s.axis} ${s.value}: shown ${s.rejected} times, never picked`)].join('\n')
+      +(r.said.length||r.neverPicked.length?`\nAsk the person before adding any of these; add only what they confirm, with their words: ui-refiner prefer add <axis> <value> --said "…"`:'[PREFER] nothing to suggest'));
+  }
   else if(command==='directions'&&sub==='deal'&&args._.length===3){
     if(args.seed!=null&&!/^\d+$/.test(String(args.seed)))throw new Error('--seed must be a whole number');
     const r=await dealDirections(args._[2],{...(args.seed!=null?{seed:Number(args.seed)}:{}),log:args.log,noPhoto:!!args.noPhoto,kind:args.kind,trade:args.trade,tone:args.tone,lang:args.lang&&args.lang!=='auto'?args.lang:'en'});
@@ -135,12 +160,14 @@ try{
    material: ${d.material.name} — ${d.material.brief}
    material file: ${d.material.file}${d.alternate?`
    alternate, if that one does not suit this client: ${d.alternate.name} — ${d.alternate.file}`:''}`:''}
-   read: ${d.file}`).join('\n')+`\n[AVOID FACES] ${r.avoidFaces.join(', ')}\n[LANES] build each direction in its own subagent, which reads only its lane file\n[DEAL] ${r.file}`);
+   read: ${d.file}`).join('\n')+(r.preferences.length?`\n[PREFERENCES] left out for this person: ${r.preferences.map(p=>`${p.axis} ${p.value}${p.kind?` (${p.kind})`:''} — "${p.said}"`).join('; ')}`:'')+`\n[AVOID FACES] ${r.avoidFaces.join(', ')}\n[LANES] build each direction in its own subagent, which reads only its lane file\n[DEAL] ${r.file}`);
   }
   else if(command==='directions'&&sub==='record'&&args._.length===3){
     if(!args.pick)throw Error('directions record requires --pick');
-    const r=await recordChoice(args._[2],{pick:args.pick,page:args.page,log:args.log});
-    console.log(`[RECORD] ${r.entry.label} ${r.entry.hero??'-'} ${(r.entry.fonts||[]).join(' + ')||'-'} → ${r.file}`+(r.allowed?`\n[ALLOW] the familiar direction's plain typeface is recorded as deliberate → ${r.allowed}`:''));
+    const r=await recordChoice(args._[2],{pick:args.pick,page:args.page,log:args.log,said:args.said});
+    console.log(`[RECORD] ${r.entry.label} ${r.entry.hero??'-'} ${(r.entry.fonts||[]).join(' + ')||'-'} → ${r.file}`+
+      (r.entry.rejected.length?`\n[NOT PICKED] ${r.entry.rejected.map(d=>`${d.label} ${d.hero??'-'}`).join(', ')}`:'')+
+      (r.entry.said?`\n[SAID] "${r.entry.said}"`:'')+(r.allowed?`\n[ALLOW] the familiar direction's plain typeface is recorded as deliberate → ${r.allowed}`:''));
   }
   else if(command==='system'&&sub==='extract'&&args._.length===3){
     const r=await extractSystem(args._[2],{dir:args.dir});
