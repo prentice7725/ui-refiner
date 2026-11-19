@@ -1,14 +1,19 @@
 # UI Refiner
 
-A design toolkit for Claude Code and Codex. It makes pages built by an agent look less AI-generated and less like each other. It renders a page in a real browser and scores how generic it looks. Then it mocks three different design directions, lets you pick one, and rebuilds the page around it. Your links, forms and figures stay exactly as they were.
+A design toolkit for Claude Code and Codex. It makes pages built by an agent look less AI-generated and less like each other. It renders a page in a real browser and scores how generic it looks. Then it mocks three different design directions, one of them drawn from measured real sites of the client's own trade, lets you pick one, and rebuilds the page around it. Your links, forms and figures stay exactly as they were.
 
 [한국어](README_KO.md) · [日本語](README_JA.md) · [Install](#installation) · [Full guide](docs/GUIDE.md) · [Changelog](CHANGELOG.md)
 
 ## What you get
 
+- **A familiar direction measured on real Korean and Japanese sites.**
+  - The first screens of 1790 human-made Korean and Japanese sites were measured in November 2026, in 40 trades: dental clinics, hair salons, inns, restaurants, hospitals, academies, software firms, makers, local governments, newspapers, job sites, logistics firms and more. They form 72 trade and country groups of 9 to 79 sites each.
+  - For each group the data records how the first screen opens (a photograph, a centred headline, the heading below the fold), the ground and accent colour, the body size, how much larger the largest text is, and how often the display face is serif or Mincho.
+  - Name the client's trade (`--trade inn`) and the familiar direction is drawn from that group, so two clients in one country get different starting points. Of 61 Japanese inns and hotels, 69% open on a full-bleed photograph, a third set the display in Mincho and body line height is 2.0. Of 49 Japanese job sites, 44% open on a full-bleed photograph, blue is the accent on 47%, and 8% use Mincho.
+  - Without a trade, or on an English page, it follows how 406 human-made sites open their first screen and which colours 552 use.
+  - Benchmarked once, on mocks only, with no effect found. On six Korean and Japanese pages (36 runs, November 2026), naming the trade did not bring the familiar mock closer to that trade's measurements. With one seed, the dealt structure family and accent were the same with and without the trade in 16 of 18 pairs: most trades open on a photograph, as the page-kind figures already do. The one clear difference was type (a Mincho display on the inn page). Fully refined pages have not been tested.
 - **Refine with three directions from three sources.** `/ui-refine` does not leave the design to the model's habits.
   - Three first-screen mocks are built apart, each by its own subagent: familiar (what human-made sites of the kind do, as measured), tailored (colour and type from this client's content) and bold (one material, a finished look taken from a physical thing).
-  - The familiar direction follows measurements: how 406 human-made sites open their first screen and which colours 552 use. On a Korean or Japanese page, `--trade` narrows it to sites of the client's own trade (1790 sites in 40 trades: salons, inns, restaurants, clinics, hospitals, academies, software firms, makers, public bodies and more).
   - A per-user log keeps the next client from getting the same page.
   - You pick a direction, or a mix. The page is rebuilt around a signature element taken from the real content: this month's ledger for a budgeting app, a day in the team for a hiring page.
 - **Checks that keep a refine honest.**
@@ -19,7 +24,7 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 - **A scan that says why a page looks generic.**
   - `ui-refiner scan <url | file>` needs no config.
   - It checks about two dozen rendered signals: purple gradients, icon-card grids, eyebrow pills, glass, stock copy in English, Korean and Japanese, and more. Each one comes with evidence, the reason it reads as generic, and a fix.
-  - It was calibrated on about 250 AI-built and human-made sites. At a score of 20 or more it flags 66–74% of AI-built sites and 0–15% of human ones.
+  - It was calibrated on about 250 AI-built and human-made sites. At a score of 20 or more it flags 68–74% of AI-built sites and 0–15% of human ones.
   - It also saves the screenshot marked up like a graded paper (`scan-graded.png`): each scored signal circled in red where it was found, with its points, and the score at the top.
   - A rescan opens with a before/after comparison.
 - **Japanese pages placed among 209 real Japanese sites.**
@@ -32,14 +37,14 @@ A design toolkit for Claude Code and Codex. It makes pages built by an agent loo
 
 Three of the benchmark pages as Claude first built them (left) and after the current refine with three directions (right, unreleased). The agent picked the direction where a person normally would. The clinic photo is a credited stand-in. The red marks are the scan's own (`scan-graded.png`): each scored signal circled where it was found, with its points, and the AI-look score at the top right. The originals score 52, 43 and 56; the refined pages score 0, which is expected, because a refine keeps working until its own scan finds nothing. It says the listed signals are gone, not that the design is good.
 
-| 3 Korean and Japanese pages, one run each | Round 17 | Round 12 | Materials only | Three directions |
-|---|---:|---:|---:|---:|
-| Per-page mean rank of 5, lower is better | 3.5 | 2.5 | 4.0 | **1.3** |
-| Set sameness, 1–10, lower is more varied | 5.0 | 5.0 | **3.5** | 7.0 |
+| 3 Korean and Japanese pages, one run each | Round 17 | Round 12 | Materials only | Materials, free colour and type | Three directions |
+|---|---:|---:|---:|---:|---:|
+| Per-page mean rank of 5, lower is better | 3.5 | 2.5 | 4.0 | 3.7 | **1.3** |
+| Set sameness, 1–10, lower is more varied | 5.0 | 5.0 | **3.5** | **3.5** | 7.0 |
 
-- **Page by page, the three-direction refine ranked first** in 4 of 6 verdicts, with the same winner under both letter orders on every page.
+- **Page by page, the three-direction refine ranked first** in 4 of 6 verdicts. The judge saw each page twice with the versions relabelled, and the winner was the same both times on every page.
 - **As a set, its three pages were the most alike.** The agent picked the tailored direction twice, and the judge saw the same small label, heavy left headline, mock product card and row of figures on all three.
-- **Limits:** 3 pages, one run each, one judge (Claude, two letter orders), no human ratings. [Scores](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
+- **Limits:** 3 pages, one run each, one judge (Claude, each page judged twice with the versions relabelled), no human ratings. [Scores](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 
 ### Version 0.7.0 on eight pages
 
@@ -125,7 +130,7 @@ The report follows the page language: English, Korean or Japanese.
 
 [![CI](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml/badge.svg)](https://github.com/prentice7725/ui-refiner/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-0.8.0-1b1e24)
-![Tests](https://img.shields.io/badge/tests-176%20passing-555555)
+![Tests](https://img.shields.io/badge/tests-178%20passing-555555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
 ## License
