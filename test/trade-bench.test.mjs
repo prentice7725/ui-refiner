@@ -14,9 +14,11 @@ test('first-screen colours: a page of photos reads as image, a white page with b
 test('trade fit scores a mock by how common its choices are in the measured group', () => {
  const g={hero:{share:{'full-bleed':.7,'below-fold':.3}},colour:{ground:{image:.6,light:.4},accent:{blue:.5,ink:.5}},type:{body:15,displayRatio:2.4,serifDisplay:.33}};
  const typical=fit({hero:'full-bleed',ground:'image',accent:'blue',body:16,ratio:2.6,serif:true},g);
- assert.equal(typical.typical,.6);assert.equal(typical.matches,3);assert.equal(typical.of,3);
+ assert.equal(typical.typical,.7);assert.equal(typical.heroExact,.7);assert.equal(typical.matches,3);assert.equal(typical.of,3);
  const odd=fit({hero:'left+panel',ground:'dark',accent:'purple',body:18,ratio:4,serif:false},g);
  assert.equal(odd.typical,0);assert.equal(odd.matches,0);
+ // A below-fold deal keeps its claim on the first screen, so it is built and measured as full-bleed: one family.
+ assert.equal(fit({hero:'below-fold'},g).heroShare,1);
 });
 
 test('first-screen colours see a cover photo under its overlay, and not one hidden by a panel', async () => {

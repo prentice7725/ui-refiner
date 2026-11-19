@@ -12,6 +12,7 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - The first-screen colour measure moved from `scripts/collect-colours.mjs` to `src/first-screen-colour.mjs`, so the benchmark measures mocks the same way the collector measures sites. The collector's output is unchanged.
 
 ### Fixed
+- The trade benchmark scores a mock's hero structure by family, as the deal does. A mock dealt "images first" (`below-fold`) keeps its claim on the first screen as the lane asks, so it measures as a full-bleed photo; in the first trial run this read as the agent drifting from its deal.
 - The first-screen colour measure missed a photo under a text overlay. It walked up from the topmost element only, so a photo beside its overlay in the tree, or one darkened by a `::after` overlay over a fallback colour, read as white or as that colour. It now looks through every element stacked at each point, and it no longer fails on pages without a body element. Both colour surveys were measured again on 19 November 2026: `data/colour-reference` now covers 552 sites and reads 52% of first screens as photos (before: 548 sites, 35%), and `data/genre-reference/colour` covers 1942 sites with photos on 65% (before: 46%). In the trade groups the photo share rose most for Korean games (13% → 60%), Japanese farms (29% → 75%) and Japanese makers (52% → 85%); Japanese inns went from 64% to 79%. `academy/KR` regained its colour shares, so all 72 groups report them.
 
 ## 0.8.0 — 2026-11-18

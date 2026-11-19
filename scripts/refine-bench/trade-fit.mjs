@@ -13,6 +13,7 @@ import {scanUrl} from '../../src/scan.mjs';
 import {compactSite} from '../../src/reference.mjs';
 import {heroSkeleton} from '../../src/directions.mjs';
 import {colourProbe,measureColours} from '../../src/first-screen-colour.mjs';
+import {FAMILY} from '../../src/refine-log.mjs';
 
 const HERE=path.dirname(fileURLToPath(import.meta.url));
 const B=process.env.BENCH_DIR||path.resolve('refine-bench-out'),arms=process.argv.slice(2);
@@ -20,17 +21,22 @@ const human=JSON.parse(await fs.readFile(path.join(HERE,'../../data/genre-refere
 const pages=(await fs.readFile(path.join(HERE,'trades.tsv'),'utf8')).split(/\r?\n/).filter(l=>l&&!l.startsWith('#')&&!l.startsWith('id\t')).map(l=>{const [id,kind,trade]=l.split('\t');return {id,kind,trade};});
 const COUNTRY={ja:'JP',ko:'KR'};
 
-/** 한 시안을 업종 실측과 비교한다. share는 그 값이 실측 그룹에서 차지하는 비율(0–1), ok는 허용 범위 안인지. */
+/**
+ * 한 시안을 업종 실측과 비교한다. share는 그 값이 실측 그룹에서 차지하는 비율(0–1), ok는 허용 범위 안인지.
+ * 첫 화면 구성은 같은 계열끼리 묶어 잰다(heroShare). 배정의 below-fold("사진 먼저")는 문구를 첫 화면에 남기라고 하므로,
+ * 지시대로 만들면 사진 아래에 제목이 보여 full-bleed로 잰다(2026-11-19 시험 실행). 배정도 두 구성을 한 계열(image)로 다룬다.
+ * heroExact는 구성 그대로의 비율이다.
+ */
 export function fit(m,g){
+ const r=x=>Math.round(x*1000)/1000;
  const share=(dist,k)=>dist&&k!=null?dist[k]??0:null;
- const heroShare=share(g.hero?.share,m.hero),groundShare=share(g.colour?.ground,m.ground),accentShare=share(g.colour?.accent,m.accent);
+ const fam=FAMILY[m.hero],heroExact=share(g.hero?.share,m.hero),heroShare=fam&&g.hero?.share?Object.entries(g.hero.share).filter(([k])=>FAMILY[k]===fam).reduce((a,[,v])=>a+v,0):heroExact,groundShare=share(g.colour?.ground,m.ground),accentShare=share(g.colour?.accent,m.accent);
  const t=g.type||{};
  const bodyOk=m.body!=null&&t.body!=null?Math.abs(m.body-t.body)<=1:null;
  const ratioOk=m.ratio!=null&&t.displayRatio?Math.abs(m.ratio-t.displayRatio)/t.displayRatio<=.25:null;
  const serifOk=t.serifDisplay!=null?m.serif===(t.serifDisplay>=.3):null;
  const shares=[heroShare,groundShare,accentShare].filter(v=>v!=null),oks=[bodyOk,ratioOk,serifOk].filter(v=>v!=null);
- const r=x=>Math.round(x*1000)/1000;
- return {heroShare,groundShare,accentShare,bodyOk,ratioOk,serifOk,typical:shares.length?r(shares.reduce((a,b)=>a+b,0)/shares.length):null,matches:oks.filter(Boolean).length,of:oks.length};
+ return {heroShare:heroShare==null?null:r(heroShare),heroExact,groundShare,accentShare,bodyOk,ratioOk,serifOk,typical:shares.length?r(shares.reduce((a,b)=>a+b,0)/shares.length):null,matches:oks.filter(Boolean).length,of:oks.length};
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
