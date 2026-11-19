@@ -24,6 +24,8 @@ ui-refiner directions verify refine-directions index.html             # 완성�
 ui-refiner system extract index.html                                  # 고른 디자인을 사이트의 다른 페이지용 규칙으로 저장
 ui-refiner system check about.html pricing.html                       # 다른 페이지가 그 디자인을 지켰는지 확인
 ui-refiner keep check index.html                                   # 리파인한 페이지가 그중 하나라도 잃으면 exit 1
+ui-refiner stress index.html                                       # 긴 라벨·이메일·전화번호·큰 숫자를 넣어 320/390/1440px에서 확인, 깨지면 exit 1
+ui-refiner prefer add surface paper --said "크림 바탕은 이제 그만"   # 이 사람이 원하지 않는 것, 이후 배정에서 뺌
 ```
 
 이게 전부입니다. `scan`은 URL, 호스트 이름, 로컬 `.html` 파일을 받고, 설정이 필요 없으며 대상 프로젝트를 바꾸지 않습니다. `npm link`를 하지 않았다면 `node bin/ui-refiner.mjs scan …`으로 실행합니다.

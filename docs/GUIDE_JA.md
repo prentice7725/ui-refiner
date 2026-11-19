@@ -24,6 +24,8 @@ ui-refiner directions verify refine-directions index.html             # 仕上�
 ui-refiner system extract index.html                                  # 選んだデザインをサイトの他のページ用に保存
 ui-refiner system check about.html pricing.html                       # 他のページがそのデザインを保っているか確認
 ui-refiner keep check index.html                                   # リファイン後のページで一つでも失われたら exit 1
+ui-refiner stress index.html                                       # 長いラベル・メール・電話番号・大きな数字を入れて320/390/1440pxで確認、崩れたらexit 1
+ui-refiner prefer add surface paper --said "クリーム色の背景はもうやめて"   # この人が望まないもの、以後の割り当てから外す
 ```
 
 これだけです。`scan`はURL、ホスト名、ローカルの`.html`ファイルを受け付け、設定は不要で、対象プロジェクトを変更しません。`npm link`をしていない場合は`node bin/ui-refiner.mjs scan …`で実行します。
