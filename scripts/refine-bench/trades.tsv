@@ -1,0 +1,9 @@
+id	kind	trade
+# Pages for the trade benchmark (variants/trade-*.md): page kind and the trade group it should follow.
+# ko-logistics is the control: logistics/KR differs least from the company default.
+ja-inn	place	inn
+ko-dental	service	dental
+ko-fintech	service	finance
+ja-care	service	care
+ja-recruit	service	hiring
+ko-logistics	company	logistics
