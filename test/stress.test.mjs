@@ -38,6 +38,11 @@ test('stress: a fragile header breaks, a sturdy one holds (real browser)', async
  assert.ok(fragile.findings.some(f=>f.kind==='tokens'&&['offscreen','page-overflow'].includes(f.type)),'the long phone number runs off a nowrap header');
  assert.ok(fragile.findings.some(f=>f.type==='label-wrap'&&f.element.includes('예약하기')),'a fixed-width button wraps its longer label');
  assert.ok(!fragile.findings.some(f=>f.element?.includes('바른미소치과의원')&&f.kind==='labels'),'the logo link is not a label');
+ // A button in a fixed bottom bar lies over the content scrolling under it by design: not an overlap.
+ await fs.writeFile(path.join(dir,'bar.html'),`<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><style>body{margin:0;font:16px sans-serif}main p{margin:0 16px 12px}.bar{position:fixed;left:0;right:0;bottom:0;display:flex}.bar a{flex:1;background:#245;color:#fff;padding:12px;text-align:center}</style>
+<main>${'<p>風邪や発熱などの急な症状から、高血圧・糖尿病などの生活習慣病まで、かかりつけ医として診療します。初めての方もお気軽にどうぞ。</p>'.repeat(12)}</main><div class="bar"><a href="tel:0300000000">電話する</a><a href="#web">WEB予約</a></div></html>`);
+ const bar=await stressPage(path.join(dir,'bar.html'),{out:path.join(dir,'b'),widths:[320],kinds:['labels'],shots:false});
+ assert.ok(!bar.findings.some(f=>f.type==='overlap'),JSON.stringify(bar.findings));
  const sturdy=await stressPage(path.join(dir,'sturdy.html'),{out:path.join(dir,'s'),widths:[320],shots:false});
  assert.equal(sturdy.broken,0,JSON.stringify(sturdy.findings));
  assert.match(await fs.readFile(path.join(dir,'s','STRESS.md'),'utf8'),/tokens: 1 elements, held/);

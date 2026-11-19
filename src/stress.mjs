@@ -107,9 +107,13 @@ export function measureTargets(){
  // Overlap: a marked element whose box crosses another visible text or control it is not part of.
  // Fixed and sticky bars are left out: content scrolls under them by design (a phone bar at the bottom, a header).
  const pinned=el=>{for(let a=el;a&&a!==document.body;a=a.parentElement){const p=getComputedStyle(a).position;if(p==='fixed'||p==='sticky')return true;}return false;};
- const others=[...document.querySelectorAll('a,button,h1,h2,h3,h4,p,li,label,input,[data-uir-stress]')].filter(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden'&&!pinned(el);});
+ // A changed element inside such a bar is compared only with what shares the bar.
+ const shown=[...document.querySelectorAll('a,button,h1,h2,h3,h4,p,li,label,input,[data-uir-stress]')].filter(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden';});
+ const bar=el=>{let top=null;for(let a=el;a&&a!==document.body;a=a.parentElement){const p=getComputedStyle(a).position;if(p==='fixed'||p==='sticky')top=a;}return top;};
+ const others=shown.filter(el=>!pinned(el));
  for(const el of document.querySelectorAll('[data-uir-stress]')){
-  const a=el.getBoundingClientRect(),hit=others.find(o=>o!==el&&!o.contains(el)&&!el.contains(o)&&(()=>{const b=o.getBoundingClientRect(),x=Math.min(a.right,b.right)-Math.max(a.left,b.left),y=Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top);return x>3&&y>3;})());
+  const own=bar(el),pool=own?shown.filter(o=>own.contains(o)):others;
+  const a=el.getBoundingClientRect(),hit=pool.find(o=>o!==el&&!o.contains(el)&&!el.contains(o)&&(()=>{const b=o.getBoundingClientRect(),x=Math.min(a.right,b.right)-Math.max(a.left,b.left),y=Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top);return x>3&&y>3;})());
   items[el.getAttribute('data-uir-stress')].overlap=hit?(hit.innerText||hit.getAttribute('aria-label')||hit.tagName).trim().slice(0,40):null;
  }
  const images=[...document.images].filter(i=>i.naturalWidth&&i.getBoundingClientRect().width>8).map((i,n)=>{const r=i.getBoundingClientRect(),fit=getComputedStyle(i).objectFit;return {n,src:(i.currentSrc||i.src).split('/').pop().slice(0,60),ratio:r.width/r.height,natural:i.naturalWidth/i.naturalHeight,fit};});
