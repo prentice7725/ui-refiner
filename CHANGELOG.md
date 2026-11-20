@@ -4,6 +4,9 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Added
+- The scan lists placeholder text left in the page as a quality item (`placeholder-text`, `src/placeholders.mjs`): an all-zero phone number or postcode, "○○町" or "OO구" beside an address part, "Lorem ipsum", a "[Company Name]" slot, an `@example.com` address. It found 35 of 79 Korean and Japanese pages that Claude and Codex built from one-line prompts and 2 of 1845 human-made Korean and Japanese sites (20 November 2026; "〇〇な方へ" and board tags such as "[회사소식]" are left alone). It is not scored: the values come from a brief without facts, not from how a model writes. The refine report lists the ones left for the client to supply. The same measurement tried the second-generation copy tells from taste-skill (em dashes, "not X but Y", negation runs, virtue words, personas, two-fragment lines) on these pages: none separated AI-built from human-made Korean and Japanese pages, and none was added.
+
 ## 0.9.0 — 2026-11-20
 
 ### Added
