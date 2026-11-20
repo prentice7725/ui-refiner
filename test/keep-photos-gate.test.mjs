@@ -103,14 +103,23 @@ test('gate: blocks only while a recorded refine lacks a fresh, passing keep chec
  assert.deepEqual(await refineGateProblems(cwd),[],'waiting for the person to choose is not blocked');
  await fs.writeFile(path.join(cwd,'refine-directions','PICK.json'),JSON.stringify({label:'B'}));
  assert.match((await refineGateProblems(cwd))[0],/directions verify/);
- await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[{id:'hero',chosen:'below-fold',applied:'left+stacked'}]}));
+ await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({label:'B',target:'index.html',checkedAt:later,drift:[{id:'hero',chosen:'below-fold',applied:'left+stacked'}]}));
  assert.match((await refineGateProblems(cwd))[0],/drifted.*below-fold → left\+stacked/);
- await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[],problems:['no-claim']}));
+ await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({label:'B',target:'index.html',checkedAt:later,drift:[],problems:['no-claim']}));
  assert.match((await refineGateProblems(cwd))[0],/does not say what this is/);
- await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[],problems:[],loading:[{id:'blocking-font-css',items:['https://fonts.googleapis.com/css2?family=X']}]}));
+ await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({label:'B',target:'index.html',checkedAt:later,drift:[],problems:[],loading:[{id:'blocking-font-css',items:['https://fonts.googleapis.com/css2?family=X']}]}));
  assert.match((await refineGateProblems(cwd))[0],/blocks the first paint.*media="print"/);
- await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({target:'index.html',checkedAt:later,drift:[]}));
+ await fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({label:'B',target:'index.html',checkedAt:later,drift:[]}));
  assert.deepEqual(await refineGateProblems(cwd),[]);
+ const writeVerify=(label,checkedAt)=>fs.writeFile(path.join(cwd,'refine-directions','VERIFY.json'),JSON.stringify({label,checkedAt,drift:[]}));
+ await writeVerify('A',later);
+ assert.match((await refineGateProblems(cwd))[0],/current selection/);
+ await writeVerify('B',new Date(Date.now()-60000).toISOString());
+ assert.match((await refineGateProblems(cwd))[0],/current selection/);
+ await writeVerify('B',later);
+ assert.deepEqual(await refineGateProblems(cwd),[]);
+ await fs.writeFile(path.join(cwd,'refine-directions','PICK.json'),JSON.stringify({label:'B',selectionId:'new-choice'}));
+ assert.match((await refineGateProblems(cwd))[0],/current selection/,'selecting B again invalidates its previous result');
  assert.deepEqual(await refineGateProblems(cwd,Date.now()+13*3600e3),[],'stale refine state older than 12 hours is ignored');
 });
 

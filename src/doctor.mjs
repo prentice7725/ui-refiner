@@ -26,3 +26,12 @@ export async function doctor({root,config,probe=probeChromium}){
  const [major,minor]=process.versions.node.split('.').map(Number);if(config.static.enabled&&(major<22||major===22&&minor<18)){errors++;lines.push('Node >=22.18 required for suta native TS.');}
  return {lines,errors};
 }
+
+export async function scanDoctor(){
+ const lines=[`Scan readiness · Node ${process.versions.node}`];
+ const [major,minor]=process.versions.node.split('.').map(Number);
+ if(major<22||major===22&&minor<18)return {lines:[...lines,'Install Node.js 22.18 or later.'],errors:1};
+ try{await probeChromium();}
+ catch(error){return {lines:[...lines,`Chromium: ${error.message}`,'Run npm ci and npx playwright install chromium in the UI Refiner checkout.'],errors:1};}
+ return {lines:[...lines,'Chromium: launch OK','Ready: ui-refiner scan <URL or HTML file>'],errors:0};
+}

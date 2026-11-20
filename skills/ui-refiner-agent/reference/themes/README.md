@@ -24,6 +24,8 @@ A theme is a finished design measured from real human-made sites: one archetype 
 
 Korea and Japan differ as much as trades do (Korean care sites go white and short, Japanese ones standard corporate with big type), so a theme is never reused across the two countries.
 
+[Open the local theme gallery](index.html) to filter by country, family and available photographs.
+
 ## Choosing a theme
 
 1. Country of the page, then the purpose family of the client's trade.
