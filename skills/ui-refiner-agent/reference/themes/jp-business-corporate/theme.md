@@ -60,3 +60,12 @@ For Japanese manufacturers, software and engineering firms, regional companies a
 ## Applying to a client's content
 
 See `../README.md`. Without IR (a private company) the link cards are 会社概要 · サステナビリティ · 採用情報. A regional service firm uses its service area map instead of the message watermark.
+
+Learned on a real regional service firm (暮らしリフォーム, 20 November 2026):
+
+- **Client photographs at 640–770px**: no full-bleed hero. A split hero on white: claim left, the best photograph at its own size (≤ 560px) right. The claim comes from the client's own words (its banner: 原状回復、一社完結主義).
+- **Seven services**: a four-column card grid (photograph 3:2, small English label, name, the client's text, 詳細はこちら) instead of three tiles. A service whose only image is a cartoon gets a type card.
+- **Service area** (区・市 link lists by prefecture) replaces the message section.
+- **Recruit band**: the photograph fills half the band, so it needs at least 640px; a 770×300 banner there is upscaled past 2× and blurs. The band carries the client's own recruiting words.
+- **Contact band** (phone large, お問合せ・無料見積) replaces the form when the client has its own contact page.
+- **Client CSS**: a client rule that sets grid columns (footer nav, services) must sit inside a desktop media query; unscoped, it beats the theme's phone rules (the footer ran 384px off screen at 320px in stress).
