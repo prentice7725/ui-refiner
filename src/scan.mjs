@@ -13,11 +13,12 @@ import {compactSite,compareToReference,loadJaReference,renderReference} from './
 import {jaReport} from './ja-copy.mjs';
 import {readAllow,findAllow,applyAllow} from './allow.mjs';
 import {gradeScreenshot} from './scan-grade.mjs';
+import {collectPlaceholders,placeholderArgs} from './placeholders.mjs';
 import {compareScans,findAutoPrevious,keepBeforeImages,loadPreviousScan,renderComparison} from './scan-compare.mjs';
 
 // Universal checks only. Font/size/copy/contract rules depend on a project policy, and content-clipping is
 // too noisy on marketing pages (marquees, carousels), so a scan skips them.
-export const scanRules=['text-contrast','accessible-name','form-label','aria-reference','label-consistency','control-state','target-size','horizontal-overflow','viewport-bounds','content-overflow','font-loading'];
+export const scanRules=['placeholder-text','text-contrast','accessible-name','form-label','aria-reference','label-consistency','control-state','target-size','horizontal-overflow','viewport-bounds','content-overflow','font-loading'];
 export const scanLangs=['ko','ja','en'];
 const browserLocale={ko:'ko-KR',ja:'ja-JP',en:'en-US'};
 export const scanViewports=[{name:'desktop',width:1440,height:900},{name:'mobile',width:390,height:844}];
@@ -92,6 +93,9 @@ export async function scanUrl(input,{out='ui-refiner-scan',lang='auto',locale=nu
      const raw=await checkPage(page,{bannedCopy:[],viewports:[{width:vp.width,height:vp.height}],colorSchemes:['light']});
      view.quality=raw.findings.filter(f=>scanRules.includes(f.rule)).map(f=>({rule:f.rule,selector:f.selector,message:f.message,actual:f.actual,expected:f.expected}));
     }catch(e){view.qualityError=e.message;}
+    // Placeholder text left in the page (an all-zero phone number, "○○町", "Lorem ipsum"): the person replaces it with real values.
+    const ph=await page.evaluate(collectPlaceholders,placeholderArgs()).catch(()=>[]);
+    if(ph.length)(view.quality||=[]).push(...ph.map(x=>({rule:'placeholder-text',selector:x.selector,message:`Placeholder text left in the page: “${x.match}”. Replace it with the real value.`,actual:x.match,expected:x.kind})));
    }catch(e){view.error=e.message;}
    finally{await context.close();}
    views.push(view);
