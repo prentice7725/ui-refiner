@@ -4,7 +4,7 @@ For Korean dental, dermatology and Korean-medicine clinics and small hospitals: 
 
 ## Measured basis
 
-34 human-made Korean sites in the care family that fall in the white-quiet archetype (dental 35%, skin 26%, Korean medicine 24%, hospital 9%), measured November 2026 (`archetypes/spec-KR-care-2.json`).
+38 human-made Korean sites in the care family that fall in the white-quiet archetype (dental 32%, skin 24%, Korean medicine 21%, salons 13%, hospital 8%), measured November 2026 (`archetypes/spec-KR-care-2.json`).
 
 | What | Measured (p25 / median / p75) | Theme value |
 |---|---|---|

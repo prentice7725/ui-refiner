@@ -1,6 +1,6 @@
 # UI Refiner
 
-A design toolkit for Claude Code and Codex, built on measurements of real sites. In November 2026, 1761 human-made Korean and Japanese sites were measured and grouped by first impression and by what a visitor comes to do. From those groups come 13 finished themes, so an agent starts a page from what real sites of that kind look like instead of from its own habits. The toolkit still scans a page for what makes it look AI-generated and refines it in place, keeping its links, forms and figures exactly as they were.
+A design toolkit for Claude Code and Codex, built on measurements of real sites. In November 2026, 2245 human-made Korean and Japanese sites were measured and grouped by first impression and by what a visitor comes to do. From those groups come 13 finished themes, so an agent starts a page from what real sites of that kind look like instead of from its own habits. The toolkit still scans a page for what makes it look AI-generated and refines it in place, keeping its links, forms and figures exactly as they were.
 
 [한국어](README_KO.md) · [日本語](README_JA.md) · [Install](#installation) · [Themes](skills/ui-refiner-agent/reference/themes/README.md) · [Full guide](docs/GUIDE.md) · [Changelog](CHANGELOG.md)
 
