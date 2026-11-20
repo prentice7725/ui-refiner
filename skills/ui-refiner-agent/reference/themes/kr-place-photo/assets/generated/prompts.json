@@ -1,0 +1,30 @@
+{
+  "hero-sea": {
+    "model": "grok-imagine",
+    "prompt": "A wide golden-hour photograph of a low white modern pension on a green hillside above a blue southern-Korean bay, small islands on the horizon. The building has a few large plain glass windows and a simple recessed door, white plaster and a flat roof, pines and dry grass around it. Warm low sunlight, a little haze over the water, no people. Walls, glass and the door are completely blank, with no signs and no lettering."
+  },
+  "room-ocean": {
+    "model": "grok-imagine",
+    "prompt": "A bright daylight photograph of a minimal pension bedroom. White bedding on a low bed, pale wooden floor, very little furniture, and a large window filled with a calm blue sea. Soft morning light, a slightly creased duvet, realistic wood grain, empty of people, and no pictures, clocks or lettering in the room."
+  },
+  "room-family": {
+    "model": "grok-imagine",
+    "prompt": "A warm afternoon photograph of a family pension room. A wooden loft bed above, a simple linen sofa below, pale walls, and a window where the sea is only partly glimpsed. Honey-coloured sunlight, a folded blanket, lived-in but tidy, empty of people, surfaces free of posters and lettering."
+  },
+  "pool": {
+    "model": "grok-imagine",
+    "prompt": "A late-afternoon photograph of a small infinity pool on a stone terrace overlooking the open sea. Two plain wooden loungers and a low table, still water meeting the horizon, warm sunlight and a soft shadow from a nearby wall. No people, no towels with marks, and no lettering anywhere."
+  },
+  "bbq": {
+    "model": "grok-imagine",
+    "prompt": "A dusk photograph of an outdoor barbecue terrace above the sea. Warm string lights overhead with no banners, a steel grill, and a plain wooden table. A Korean couple sits with their backs to the camera, looking toward the fading sea. Natural skin and ordinary clothes, a little smoke from the grill, realistic low light, no logos and no lettering."
+  },
+  "walk": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation morning photograph of a narrow coastal footpath with wildflowers and dry grass, stepping down between low shrubs toward a blue sea. Soft early light, a few worn stones in the path, no people, no railings with marks, and no signs or lettering."
+  },
+  "cafe": {
+    "model": "grok-imagine",
+    "prompt": "A daylight photograph of a small seaside café terrace. On a weathered wooden table sit two plain white cups of coffee and a plate of simple pastries, with the sea soft in the background beyond a low wall. Natural side light, a few crumbs, realistic ceramic, empty of people, cups and table free of logos and lettering."
+  }
+}
