@@ -1,0 +1,22 @@
+{
+  "hero-room": {
+    "model": "grok-imagine",
+    "prompt": "A bright documentary photograph of a small modern dental treatment room in a Korean neighbourhood clinic. One white dental chair, white walls, a large window with soft daylight, a single small green plant on a shelf, equipment tidy and ordinary. Clean but not glossy, true whites with a hint of shadow, no people, equipment and walls free of labels and lettering."
+  },
+  "doctor": {
+    "model": "grok-imagine",
+    "prompt": "A natural-light portrait photograph of a Korean woman in her early forties, a neighbourhood dentist, standing in a bright clinic corridor. She wears a plain white coat over a navy top, hair simply tied back, a calm friendly expression, looking into the camera. Soft window light, white walls softly blurred behind her, ordinary skin texture, no name badge, coat and walls completely free of lettering."
+  },
+  "reception": {
+    "model": "grok-imagine",
+    "prompt": "A daylight photograph of a small dental clinic reception and waiting area. A light oak counter, white walls, a few simple chairs, and deep green leafy plants by the window. The room is empty of people. Soft natural light, calm and slightly lived-in, monitors off and blank, walls and counter free of signs and lettering."
+  },
+  "xray-room": {
+    "model": "grok-imagine",
+    "prompt": "A documentary photograph of a panoramic dental X-ray machine standing in a clean white clinic room. White walls, pale floor, soft daylight from a high window, the machine in matte white and grey with blank panels. Tidy and ordinary, realistic depth of field, no people, the housing free of labels and lettering."
+  },
+  "consult": {
+    "model": "grok-imagine",
+    "prompt": "A photograph at a consultation desk in a Korean dental clinic. The monitor shows only a grayscale dental panoramic radiograph, with no software interface and no labels. A Korean dentist's hand points at the radiograph, and a Korean patient in a plain grey sweater sits with their back to the camera. Soft daylight, realistic skin, no papers and no lettering in the room."
+  }
+}

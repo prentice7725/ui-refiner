@@ -1,0 +1,36 @@
+// Acceptance check for the generated theme images: every listed file exists in <theme>/assets/generated/, is a PNG,
+// JPEG or WebP, is at least the listed width and height, and generated/prompts.json names the model and prompt for it.
+// node skills/ui-refiner-agent/reference/themes/generated.check.mjs  → exit 0 when all are present.
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const here=path.dirname(fileURLToPath(import.meta.url));
+export const WANT={
+ 'jp-place-photo':{'hero-bath':[1600,900],'exterior':[1600,900],'room-main':[1600,1000],'room-corner':[1600,1000],'kaiseki':[1600,1000],'dish':[1200,1200],'entrance':[1200,1500]},
+ 'kr-care-white':{'hero-room':[1600,1200],'doctor':[1200,1500],'reception':[1600,1000],'xray-room':[1600,1000],'consult':[1600,1000]},
+ 'kr-business-dark':{'hero-line':[1920,1080],'tile-machining':[1200,1500],'tile-automation':[1200,1500],'tile-semicon':[1200,1500],'tile-mold':[1200,1500],'tech-measure':[1600,1100]}
+};
+function size(file){
+ const b=fs.readFileSync(file);
+ if(b.slice(1,4).toString()==='PNG')return [b.readUInt32BE(16),b.readUInt32BE(20)];
+ if(b.slice(0,4).toString()==='RIFF'&&b.slice(8,12).toString()==='WEBP'){
+  const kind=b.slice(12,16).toString();
+  if(kind==='VP8X')return [1+b.readUIntLE(24,3),1+b.readUIntLE(27,3)];
+  if(kind==='VP8 ')return [b.readUInt16LE(26)&0x3fff,b.readUInt16LE(28)&0x3fff];
+  if(kind==='VP8L'){const v=b.readUInt32LE(21);return [1+(v&0x3fff),1+((v>>14)&0x3fff)];}
+ }
+ if(b[0]===0xff&&b[1]===0xd8){let i=2;while(i<b.length){if(b[i]!==0xff){i++;continue;}const m=b[i+1];if(m>=0xc0&&m<=0xcf&&![0xc4,0xc8,0xcc].includes(m))return [b.readUInt16BE(i+7),b.readUInt16BE(i+5)];i+=2+b.readUInt16BE(i+2);}}
+ return null;
+}
+const problems=[];
+for(const [theme,files] of Object.entries(WANT)){
+ const dir=path.join(here,theme,'assets','generated');
+ let prompts={};try{prompts=JSON.parse(fs.readFileSync(path.join(dir,'prompts.json'),'utf8'));}catch{problems.push(`${theme}: generated/prompts.json missing or not JSON`);}
+ for(const [name,[w,h]] of Object.entries(files)){
+  const f=['.png','.jpg','.jpeg','.webp'].map(e=>path.join(dir,name+e)).find(f=>fs.existsSync(f));
+  if(!f){problems.push(`${theme}: ${name} missing`);continue;}
+  const s=size(f);if(!s){problems.push(`${theme}: ${name} is not a PNG, JPEG or WebP`);continue;}
+  if(s[0]<w||s[1]<h)problems.push(`${theme}: ${name} is ${s[0]}x${s[1]}, needs at least ${w}x${h}`);
+  const p=prompts[name];if(!p||!p.model||!p.prompt)problems.push(`${theme}: prompts.json has no model and prompt for ${name}`);
+ }
+}
+if(problems.length){console.error(problems.join('\n'));process.exit(1);}
+console.log('all generated images present');
