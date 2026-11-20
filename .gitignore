@@ -4,3 +4,14 @@ artifacts/
 .DS_Store
 .vendor-sync-*/
 data/colour-reference/sites.jsonl
+
+# Local work and internal notes kept out of the repository
+hallmark-pilot/
+refine-pilot-local/
+ui-refiner-scan/
+docs/BENCHMARK_HALLMARK_IMPECCABLE_2026-10-25_KO.md
+docs/REFINE_JOURNAL_KO.md
+docs/REFINE_PILOT_2026-11-15_KO.md
+docs/refine-pilot-2026-11-15/
+docs/history/
+docs/AGENT_STUDY_2026-10-25.json
