@@ -4,23 +4,23 @@ A theme is a finished design measured from real human-made sites: one archetype 
 
 ## Where the themes come from
 
-1761 human-made Korean and Japanese sites (72 trade × country groups, November 2026) were measured from their stored scans and desktop screenshots and grouped into eight impression archetypes: short & small, dark cinematic, white quiet, dense portal, photo-led, big type, standard corporate, bold colour. Trades were then grouped by what a visitor comes to do: place (stay, eat, see), care (book and visit), public (look up and apply), shop (choose and buy), business (trust a company), creative (show work). A theme is the most common archetype of one family in one country, with its values taken from that group's measurements (`theme.md`, "Measured basis").
+2245 human-made Korean and Japanese sites (78 trade × country groups, November 2026; 484 of them added in a second collection for the thin creative, shop and place groups) were measured from their stored scans and desktop screenshots and grouped into eight impression archetypes: short & small, dark cinematic, white quiet, dense portal, photo-led, big type, standard corporate, bold colour. Trades were then grouped by what a visitor comes to do: place (stay, eat, see), care (book and visit), public (look up and apply), shop (choose and buy), business (trust a company), creative (show work: design, game, architecture, photo and video, illustration). A theme is the most common archetype of one family in one country, with its values taken from that group's measurements (`theme.md`, "Measured basis").
 
 | Theme | Country · family · archetype | Measured sites |
 |---|---|---|
 | `jp-place-photo` | JP · place (inn, tourism, restaurant, wedding) · photo-led | 65 |
-| `kr-care-white` | KR · care (dental, dermatology, Korean medicine, hospital) · white quiet | 34 |
+| `kr-care-white` | KR · care (dental, dermatology, Korean medicine, hospital) · white quiet | 38 |
 | `kr-business-dark` | KR · business (maker, logistics, software) · dark cinematic | 35 |
 | `kr-business-white` | KR · business (software, B2B service, tax, hiring) · white quiet; the business theme without photographs | 50 |
 | `jp-care-corporate` | JP · care (dental, dermatology, day service, fitness, salon) · standard corporate | 68 |
-| `kr-place-photo` | KR · place (pension, resort, wedding, event) · photo-led | 29 |
+| `kr-place-photo` | KR · place (pension, resort, restaurant, tourism, wedding) · photo-led | 43 |
 | `jp-business-corporate` | JP · business (maker, software, regional firm, builder) · standard corporate | 52 |
-| `kr-public-portal` | KR · public (media, government, culture, finance, associations) · dense portal | 58 |
+| `kr-public-portal` | KR · public (media, government, culture, finance, associations) · dense portal | 61 |
 | `jp-public-portal` | JP · public (finance, media, government, associations, universities) · dense portal | 64 |
-| `kr-shop-portal` | KR · shop (e-commerce, cosmetics, fashion) · dense portal | 26 |
-| `jp-shop-portal` | JP · shop (e-commerce, food, cosmetics, fashion) · dense portal | 30 |
-| `kr-creative-dark` | KR · creative (design, game) · dark cinematic; weak basis | 12 |
-| `jp-creative-colour` | JP · creative (game, design) · bold colour; weak basis | 7 |
+| `kr-shop-portal` | KR · shop (e-commerce, fashion, farm, cosmetics, food) · dense portal | 60 |
+| `jp-shop-portal` | JP · shop (e-commerce, food, cosmetics, fashion) · dense portal | 57 |
+| `kr-creative-dark` | KR · creative (design, game, photo, architecture, illustration) · dark cinematic | 34 |
+| `jp-creative-bigtype` | JP · creative (design, photo and video, architecture studios) · big type | 23 |
 
 Korea and Japan differ as much as trades do (Korean care sites go white and short, Japanese ones standard corporate with big type), so a theme is never reused across the two countries.
 

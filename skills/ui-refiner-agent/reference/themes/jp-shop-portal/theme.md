@@ -4,20 +4,20 @@ For Japanese makers and stores that sell online: sake and food brands, cosmetics
 
 ## Measured basis
 
-30 human-made Japanese sites in the shop family that fall in the dense-portal archetype (e-commerce 43%, food 23%, cosmetics 13%, fashion 13%, farm 7%), measured November 2026 (`archetypes/spec-JP-shop-3.json`).
+57 human-made Japanese sites in the shop family that fall in the dense-portal archetype (e-commerce 47%, food 35%, cosmetics 7%, fashion 7%, farm 4%; 34% of the 165 Japanese shop sites), measured November 2026 (`archetypes/spec-JP-shop-3.json`).
 
 | What | Measured (p25 / median / p75) | Theme value |
 |---|---|---|
-| Ground | white on 83%; #f4f4f4, #f8f6ec | `#ffffff`, band `#f7f5ef` |
-| Photographs | 14 / 20 / 33 | 18–24 |
-| Faces | Noto Sans JP 20%; Shippori Mincho 7%; Mincho on 10% | Noto Sans JP; Shippori Mincho for the brand's headings |
+| Ground | white on 82%; #f4f4f4, #ecebe8, #f8f6ec | `#ffffff`, band `#f7f5ef` |
+| Photographs | 15 / 19 / 29 | 18–24 |
+| Faces | Noto Sans JP 23% of body faces; Shippori Mincho 4%; serif display on 16% | Noto Sans JP; Shippori Mincho for the brand's headings |
 | Body | 13 / 14 / 16 px | 15px, line height 1.85 |
-| Display | 24 / 30 / 40 px, display ÷ body 1.8 / 2.2 / 2.9 | 32px Shippori Mincho 600 |
-| Buttons | white 27%, grey, red, deep blue (#1e4d9e), deep green (#004022); radius 0 / 0 / 6; 43px | deep indigo `#1f3a5f` for カートに入れる, 0 radius, 48px |
-| Hairlines | 15 / 28 / 55 | many |
-| Hero | full-bleed on 3%; centred 23%, left 17% | a wide visual inside the width, 16:7 |
-| Page length | 6.7 / 8.8 / 10.7 screens | 8–9 |
-| Content width | 980 / 1130 / 1280 | 1140px |
+| Display | 24 / 30 / 36 px, display ÷ body 1.8 / 2.0 / 2.6 | 32px Shippori Mincho 600 |
+| Buttons | white 30%, grey, red, deep blue (#1e4d9e, #0058aa), deep green (#004022); radius 0 / 2 / 7; 44px | deep indigo `#1f3a5f` for カートに入れる, 0 radius, 48px |
+| Hairlines | 15 / 28 / 56 | many |
+| Hero | full-bleed on 2%; left 35%, centred 12% | a wide visual inside the width, 16:7 |
+| Page length | 6.8 / 8.6 / 10.4 screens | 8–9 |
+| Content width | 980 / 1150 / 1200 | 1140px |
 | Menu | カート, ログイン, お気に入り, 商品情報, 企業情報, 店舗情報, ご利用ガイド | the same |
 
 ## Tokens

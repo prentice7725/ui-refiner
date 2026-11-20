@@ -4,21 +4,21 @@ For Korean online shops: farm-direct and food malls, cosmetics and fashion store
 
 ## Measured basis
 
-26 human-made Korean sites in the shop family that fall in the dense-portal archetype (e-commerce 69%, cosmetics 15%, fashion 15%), measured November 2026 (`archetypes/spec-KR-shop-3.json`).
+60 human-made Korean sites in the shop family that fall in the dense-portal archetype (e-commerce 48%, fashion 15%, farm 15%, cosmetics 12%, food 10%; 30% of the 199 Korean shop sites), measured November 2026 (`archetypes/spec-KR-shop-3.json`).
 
 | What | Measured (p25 / median / p75) | Theme value |
 |---|---|---|
-| Ground | white on 100% | `#ffffff`, band `#f7f7f5` |
-| Photographs | 12 / 24 / 44 | 20–30 product images |
-| Hairlines | 16 / 29 / 101 | product rows, tabs, footer |
-| Faces | Pretendard 50% | Pretendard |
-| Body | 12 / 14 / 16 px | 14px, line height 1.6 |
-| Display | 28 / 32 / 42 px, display ÷ body 1.8 / 2.4 / 2.9 | 30px / 700; product names 15px |
-| Buttons | white, red (#e00011), grey, blue, black; radius 0 / 2 / 30; 50px | brand green `#2f7d32` for 장바구니/구매, black for secondary; 2px radius, 48px |
+| Ground | white on 98% | `#ffffff`, band `#f7f7f5` |
+| Photographs | 9 / 18 / 36 | 20–30 product images |
+| Hairlines | 12 / 29 / 78 | product rows, tabs, footer |
+| Faces | Pretendard 38% of body faces (with Pretendard Variable), Noto Sans KR 12% | Pretendard |
+| Body | 13 / 16 px (median / p75) | 14px, line height 1.6 |
+| Display | 29 / 32 / 40 px, display ÷ body 2.0 / 2.4 / 2.9 | 30px / 700; product names 15px |
+| Buttons | white 32%, black, grey, red; radius 0 / 0 / 20; 50px | brand green `#2f7d32` for 장바구니/구매, black for secondary; 2px radius, 48px |
 | Boxes | radius 0 | product images 4px, boxes 0 |
 | Hero | not full-bleed; banner inside the width | a main banner slider inside 1200px, 3:1 |
-| Page length | 6.5 / 7.9 / 9.8 screens | 8 |
-| Content width | 1000 / 1200 / 1310 | 1200px |
+| Page length | 5.9 / 6.9 / 10.4 screens | 8 |
+| Content width | 1200 / 1260 / 1320 | 1200px |
 | Menu | 로그인, 회원가입, 장바구니, 마이페이지, 신상품, 베스트, 이벤트, 고객센터 | the same |
 
 ## Tokens
