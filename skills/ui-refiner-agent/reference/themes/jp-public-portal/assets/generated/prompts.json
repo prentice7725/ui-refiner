@@ -1,0 +1,18 @@
+{
+  "branch": {
+    "model": "grok-imagine",
+    "prompt": "A bright daytime photograph inside a Japanese regional bank branch. A long pale wooden counter crosses the room, a row of simple waiting chairs sits nearby, and leafy plants stand by tall windows. One Japanese staff member in a plain navy jacket stands behind the counter looking down at blank papers. Soft window light, quiet carpet, real wood grain, empty of other people. Counter, walls and papers are blank, with no logos and no lettering."
+  },
+  "consult": {
+    "model": "grok-imagine",
+    "prompt": "A natural daylight photograph of a Japanese couple in their thirties at a pale wood desk with a Japanese bank staff member in a plain navy suit, talking about a home loan. They look at one another and nobody faces the camera. Two blank cream sheets and a plain pen lie on the desk. The wall behind them is bare plaster with no notices. Soft window light, realistic skin and wool clothing. No logos and no lettering anywhere in the room."
+  },
+  "business": {
+    "model": "grok-imagine",
+    "prompt": "A morning photograph inside a small Japanese bakery. A Japanese baker in a plain flour-dusted apron stands behind a wooden counter of real bread and talks with a bank staff member in a plain navy jacket; they look at each other, not at the camera. Warm side light, crusty loaves, kraft paper bags that are completely unprinted. No logos and no lettering on bags, walls or clothing."
+  },
+  "town": {
+    "model": "grok-imagine",
+    "prompt": "A morning photograph looking down a small Japanese shopping street under a metal arcade roof. Open shops show only solid indigo and cream noren curtains and wooden crates of vegetables, with no signboards anywhere in the street. A few Japanese people walk away from the camera. Cool early light, damp stone pavement, realistic depth of field. Every cloth, crate and wall is free of letters and marks."
+  }
+}
