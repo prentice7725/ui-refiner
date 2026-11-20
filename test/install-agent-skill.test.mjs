@@ -1,0 +1,38 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+
+test('single-host installation previews and applies updates while preserving local edits',async t=>{
+ const app=await fs.mkdtemp(path.join(os.tmpdir(),'ui-refiner-installer-'));
+ t.after(()=>fs.rm(app,{recursive:true,force:true}));
+ const repo=path.join(app,'tools/ui-refiner');
+ const source=path.join(repo,'skills/ui-refiner-agent');
+ await fs.mkdir(source,{recursive:true});
+ await fs.mkdir(path.join(repo,'scripts'));
+ await fs.copyFile(new URL('../scripts/install-agent-skill.mjs',import.meta.url),path.join(repo,'scripts/install-agent-skill.mjs'));
+ await fs.cp(new URL('../commands/',import.meta.url),path.join(repo,'commands'),{recursive:true});
+ await fs.writeFile(path.join(repo,'package.json'),'{"version":"1.0.0"}');
+ await fs.writeFile(path.join(source,'SKILL.md'),'original');
+ await fs.writeFile(path.join(source,'theme.css'),'original css');
+ const install=(host,...args)=>execFileSync(process.execPath,[path.join(repo,'scripts/install-agent-skill.mjs'),app,'--host',host,...args],{encoding:'utf8'});
+ install('codex');
+ await assert.rejects(fs.access(path.join(app,'.claude')),{code:'ENOENT'});
+ const dest=path.join(app,'.agents/skills/ui-refiner-agent');
+ await fs.writeFile(path.join(dest,'theme.css'),'user css');
+ await fs.writeFile(path.join(source,'SKILL.md'),'updated');
+ await fs.writeFile(path.join(source,'theme.css'),'updated css');
+ await fs.writeFile(path.join(repo,'package.json'),'{"version":"2.0.0"}');
+ assert.match(install('codex'),/1\.0\.0 → 2\.0\.0[\s\S]*update SKILL.md/);
+ assert.equal(await fs.readFile(path.join(dest,'SKILL.md'),'utf8'),'original');
+ assert.match(install('codex','--update'),/review locally changed or untracked file: theme.css/);
+ assert.equal(await fs.readFile(path.join(dest,'SKILL.md'),'utf8'),'updated');
+ assert.equal(await fs.readFile(path.join(dest,'theme.css'),'utf8'),'user css');
+ const claude=path.join(app,'other');
+ execFileSync(process.execPath,[path.join(repo,'scripts/install-agent-skill.mjs'),claude,'--host','claude']);
+ await assert.rejects(fs.access(path.join(claude,'.agents')),{code:'ENOENT'});
+ const settings=JSON.parse(await fs.readFile(path.join(claude,'.claude/settings.local.json'),'utf8'));
+ assert.match(settings.hooks.Stop[0].hooks[0].command,/\.claude\/skills/);
+});

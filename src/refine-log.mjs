@@ -1,3 +1,4 @@
+import {randomUUID} from 'node:crypto';
 // Memory across refines, so the agent does not hand every client the same page.
 // `deal` assigns three different hero structures before the mocks are built, avoiding the ones
 // chosen recently for other projects; `record` stores the direction the person picked.
@@ -330,7 +331,7 @@ export async function recordChoice(dir,{pick,page,log,said}={}){
  const entry={lane:look.lane,material:look.material,date:new Date().toISOString().slice(0,10),project:projectOf(root),page:page||path.basename(projectOf(root)),label,concept:look.concept,hero:look.hero,fonts:look.fonts,bg:look.bg,accent:look.accent,
   said:cleanSaid(said),rejected:sheet.items.filter(d=>d.label!==item.label).map(d=>lookOf(d,deal))};
  entries.push(entry);
- await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify(entry,null,1)+'\n');
+ await fs.writeFile(path.join(root,'PICK.json'),JSON.stringify({...entry,selectionId:randomUUID()},null,1)+'\n');
  const allowed=entry.lane==='familiar'?(await addAllow(path.join(projectOf(root),ALLOW_FILE),FAMILIAR_TYPE)).file:null;
  return {entry,allowed,file:await writeLog(entries.slice(-200),log)};
 }
