@@ -2525,3 +2525,568 @@
 {"host":"wocon.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
 {"host":"karhanbang.com","skipped":"robots.txt unreachable"}
 {"host":"sangga114.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"010studio.net","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.024,"image":0.976},"rootBg":[255,255,255]}
+{"host":"designusweb.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"amber","share":{"white":0.997,"image":0.003},"rootBg":[255,255,255]}
+{"host":"jeokjungstudio.com","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"brown","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"dameum.org","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"griddy.co.kr","trade":"design","kind":"studio","country":"KR","ground":"orange","accent":"orange","share":{"orange":1},"rootBg":[242,240,237]}
+{"host":"orcrew.com","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.199,"image":0.75,"dark":0.051},"rootBg":[255,255,255]}
+{"host":"terraweb.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.065,"image":0.935},"rootBg":[255,255,255]}
+{"host":"suwolhada.com","skipped":"robots.txt unreachable"}
+{"host":"monoze.co.kr","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.673,"image":0.327},"rootBg":[250,250,248]}
+{"host":"sigstudio.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.357,"image":0.643},"rootBg":[34,34,34]}
+{"host":"bounz.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"orange","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"youchive.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":0.872,"white":0.128},"rootBg":[255,255,255]}
+{"host":"thinkro.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"olord.co.kr","skipped":"robots.txt unreachable"}
+{"host":"nninc.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"always-studio.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"amber","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"progect.co.kr","skipped":"robots"}
+{"host":"designstudio99.co.kr","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":0.667,"image":0.333},"rootBg":[255,255,255]}
+{"host":"dasdesign.co.kr","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"dimension-studio.co.kr","skipped":"robots"}
+{"host":"designstudiotoast.com","skipped":"robots"}
+{"host":"sawolstyle.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.583,"image":0.417},"rootBg":[255,255,255]}
+{"host":"1950.co.kr","trade":"design","kind":"studio","country":"KR","ground":"blue","accent":"ink","share":{"blue":1},"rootBg":[0,88,216]}
+{"host":"k-partners.co.kr","skipped":"robots"}
+{"host":"nodehome.kr","trade":"design","kind":"studio","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.818,"image":0.182},"rootBg":[255,255,255]}
+{"host":"iand.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"image":0.988,"white":0.012},"rootBg":[255,255,255]}
+{"host":"dcub.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"teal","share":{"white":0.295,"image":0.685,"blue":0.021},"rootBg":[255,255,255]}
+{"host":"ourearth.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"red","share":{"image":0.857,"tint":0.143},"rootBg":[255,255,255]}
+{"host":"cmania.co.kr","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":0.714,"dark":0.036,"image":0.25},"rootBg":[255,255,255]}
+{"host":"pepper.kr","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"amber","share":{"image":0.452,"white":0.545,"amber":0.003},"rootBg":[255,255,255]}
+{"host":"contentformcontext.com","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.167,"image":0.833},"rootBg":[17,17,17]}
+{"host":"huskyfox.com","trade":"design","kind":"studio","country":"KR","ground":"dark","accent":"ink","share":{"white":0.214,"dark":0.786},"rootBg":[255,255,255]}
+{"host":"total-impact.net","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"infinite.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"eggplantfactory.co.kr","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"tint":0.988,"image":0.012},"rootBg":[255,255,255]}
+{"host":"rightbrain.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"blue","share":{"dark":0.476,"image":0.524},"rootBg":[255,255,255]}
+{"host":"ordinarypeople.info","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"batcrew.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.47,"dark":0.006,"image":0.524},"rootBg":[255,255,255]}
+{"host":"duotone.io","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.56,"image":0.44},"rootBg":[255,255,255]}
+{"host":"vinylc.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"silolab.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.003,"image":0.997},"rootBg":[0,0,0]}
+{"host":"easywith.com","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.193,"image":0.807},"rootBg":[255,255,255]}
+{"host":"dstrict.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"cuz-art.com","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[0,0,0]}
+{"host":"kallos.media","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"studio-artech.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"rebel9.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"godesign.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"pink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"2grey.com","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"theswna.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"bkid.co","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"citrusdesign.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[234,234,234]}
+{"host":"601bisang.com","skipped":"robots.txt unreachable"}
+{"host":"agbook.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"chuigraf.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":0.58,"white":0.42},"rootBg":[255,255,255]}
+{"host":"workroompress.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.393,"image":0.607},"rootBg":[255,255,255]}
+{"host":"corners.kr","trade":"design","kind":"studio","country":"KR","ground":"teal","accent":"ink","share":{"teal":0.667,"pink":0.333},"rootBg":[245,245,245]}
+{"host":"labotory.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"amber","share":{"image":0.473,"white":0.527},"rootBg":[255,255,255]}
+{"host":"post-standards.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"image":0.452,"white":0.548},"rootBg":[255,255,255]}
+{"host":"heaz.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":0.792,"image":0.202,"dark":0.006},"rootBg":[255,255,255]}
+{"host":"sparksedition.com","skipped":"robots"}
+{"host":"paperpress.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"red","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"studioframer.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":0.589,"image":0.411},"rootBg":[255,255,255]}
+{"host":"triangle-studio.co.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.134,"image":0.866},"rootBg":[255,255,255]}
+{"host":"polarisdesign.kr","trade":"design","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.315,"image":0.685},"rootBg":[255,255,255]}
+{"host":"urbanjeju.com","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":0.738,"image":0.262},"rootBg":[255,255,255]}
+{"host":"o-jo.co.kr","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.405,"image":0.595},"rootBg":[255,255,255]}
+{"host":"saworl.com","trade":"design","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"archijeju.com","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"blue","share":{"white":0.592,"image":0.408},"rootBg":[255,255,255]}
+{"host":"arootarchitecture.com","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.208,"image":0.792},"rootBg":[255,255,255]}
+{"host":"archthemoon.com","skipped":"robots.txt unreachable"}
+{"host":"oarchi.com","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"rehan.kr","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"buildingworkshop.co.kr","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.917,"image":0.083},"rootBg":[255,255,255]}
+{"host":"ilshinarch.co.kr","trade":"architecture","kind":"studio","country":"KR","ground":"dark","accent":"ink","share":{"white":0.071,"dark":0.929},"rootBg":[255,255,255]}
+{"host":"busanarchi.com","trade":"architecture","kind":"studio","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.738,"image":0.262},"rootBg":[255,255,255]}
+{"host":"onecompany.kr","trade":"architecture","kind":"studio","country":"KR","ground":"dark","accent":"amber","share":{"amber":0.071,"dark":0.929},"rootBg":[255,255,255]}
+{"host":"taega.co.kr","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":0.935,"dark":0.065},"rootBg":[255,255,255]}
+{"host":"sspsup.com","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"kwangjangarch.com","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"maaes.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"heerim.com","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"samoo.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sudesign-arch.com","trade":"architecture","kind":"studio","country":"KR","ground":"image","accent":"brown","share":{"tint":0.137,"image":0.783,"dark":0.071,"amber":0.009},"rootBg":[241,239,233]}
+{"host":"dagroup.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"gansam.com","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"tint":1},"rootBg":[255,255,255]}
+{"host":"usun.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"han-guk.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"junglim.com","trade":"architecture","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"zio-prodc.com","trade":"photo","kind":"studio","country":"KR","ground":"light","accent":"ink","share":{"white":0.997,"image":0.003},"rootBg":[255,255,255]}
+{"host":"good-production.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"dark","accent":"green","share":{"dark":0.756,"green":0.006,"image":0.238},"rootBg":[243,243,243]}
+{"host":"baum.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"haeahn.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"wood-media.com","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.214,"image":0.786},"rootBg":[255,255,255]}
+{"host":"studiosag.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"light","accent":"blue","share":{"white":0.75,"blue":0.006,"dark":0.006,"image":0.238},"rootBg":[255,255,255]}
+{"host":"studiomorak.com","trade":"photo","kind":"studio","country":"KR","ground":"light","accent":"red","share":{"white":0.902,"image":0.083,"red":0.003,"dark":0.006,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"wooubistudio.co.kr","skipped":"robots.txt unreachable"}
+{"host":"sejoo.net","trade":"photo","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.821,"image":0.179},"rootBg":[255,255,255]}
+{"host":"zinstudio.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[251,249,246]}
+{"host":"visionpencil.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"green","share":{"image":0.92,"dark":0.071,"green":0.006,"amber":0.003},"rootBg":[10,10,10]}
+{"host":"yscontents.co.kr","skipped":"robots"}
+{"host":"artrostudio.com","trade":"photo","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.714,"image":0.286},"rootBg":[255,255,255]}
+{"host":"studio918.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.214,"image":0.786},"rootBg":[255,255,255]}
+{"host":"jgmediafilm.com","trade":"photo","kind":"studio","country":"KR","ground":"light","accent":"green","share":{"tint":0.777,"image":0.122,"dark":0.074,"green":0.006,"white":0.015,"amber":0.006},"rootBg":[246,245,240]}
+{"host":"studio.firstmkt.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"blue","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"seoulphotostudio.com","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.009,"white":0.149,"image":0.836,"green":0.006},"rootBg":[255,255,255]}
+{"host":"studiorea.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"image":0.937,"white":0.063},"rootBg":[255,255,255]}
+{"host":"automaticstudio.co.kr","trade":"photo","kind":"studio","country":"KR","ground":"dark","accent":"amber","share":{"dark":0.932,"image":0.018,"white":0.039,"amber":0.006,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"simplelim.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sijum.net","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"mongsangviewstudio.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"vmgstudio.net","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"studiosangdan.com","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"tint":0.063,"image":0.613,"white":0.143,"indigo":0.048,"pink":0.045,"teal":0.045,"blue":0.045},"rootBg":[255,255,255]}
+{"host":"studiobutton.kr","trade":"illustration","kind":"studio","country":"KR","ground":"light","accent":"indigo","share":{"white":0.607,"image":0.393},"rootBg":[255,255,255]}
+{"host":"campfireani.com","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"image":0.705,"white":0.295},"rootBg":[255,255,255]}
+{"host":"pingo.kr","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"ccpp21.com","trade":"illustration","kind":"studio","country":"KR","ground":"light","accent":"blue","share":{"image":0.327,"white":0.673},"rootBg":[255,255,255]}
+{"host":"artpq.com","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"orange","share":{"image":0.652,"dark":0.348},"rootBg":[0,0,0]}
+{"host":"alzalstudio.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"studioeon.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"studioanimal.co.kr","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"orange","share":{"tint":0.167,"white":0.182,"image":0.652},"rootBg":[215,214,214]}
+{"host":"soulcreative.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"amzstudio.co.kr","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"indigo","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"studioorigin.co.kr","trade":"illustration","kind":"studio","country":"KR","ground":"light","accent":"blue","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"designbrrr.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"studiomir.co.kr","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"image":0.545,"white":0.455},"rootBg":[255,255,255]}
+{"host":"nextstage.co.kr","trade":"game","kind":"company","country":"KR","ground":"light","accent":"blue","share":{"white":0.548,"image":0.452},"rootBg":[255,255,255]}
+{"host":"unicornstudio.co.kr","trade":"illustration","kind":"studio","country":"KR","ground":"image","accent":"ink","share":{"white":0.179,"image":0.821},"rootBg":[255,255,255]}
+{"host":"technkindness.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"masangsoft.com","trade":"game","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.708,"image":0.292},"rootBg":[0,0,0]}
+{"host":"kog.co.kr","trade":"game","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"white":0.068,"image":0.726,"dark":0.074,"tint":0.119,"orange":0.012},"rootBg":[255,255,255]}
+{"host":"treenod.com","trade":"game","kind":"company","country":"KR","ground":"light","accent":"teal","share":{"image":0.491,"dark":0.187,"tint":0.321},"rootBg":[255,255,255]}
+{"host":"appnori.com","trade":"game","kind":"company","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.071,"image":0.929},"rootBg":[255,255,255]}
+{"host":"projectmoon.studio","trade":"game","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"lizardsmoothie.com","trade":"game","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"white":0.22,"image":0.161,"dark":0.619},"rootBg":[255,255,255]}
+{"host":"rhaone.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"nimbleneuron.com","trade":"game","kind":"company","country":"KR","ground":"image","accent":"indigo","share":{"image":0.72,"dark":0.271,"amber":0.009},"rootBg":[14,14,15]}
+{"host":"katkit.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"gonggames.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"haegin.kr","trade":"game","kind":"company","country":"KR","ground":"light","accent":"indigo","share":{"white":0.667,"image":0.333},"rootBg":[255,255,255]}
+{"host":"supercat.co.kr","trade":"game","kind":"company","country":"KR","ground":"dark","accent":"indigo","share":{"dark":0.571,"image":0.429},"rootBg":[255,255,255]}
+{"host":"loadcomplete.com","skipped":"robots"}
+{"host":"npixel.co.kr","trade":"game","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"image":1},"rootBg":[0,0,0]}
+{"host":"teamtapas.com","trade":"game","kind":"company","country":"KR","ground":"light","accent":"blue","share":{"white":0.542,"image":0.458},"rootBg":[255,255,255]}
+{"host":"studiobside.com","trade":"game","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"corp.joycity.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"f-creation.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"white":0.033,"image":0.967},"rootBg":[255,255,255]}
+{"host":"studiokeya.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"white":0.452,"image":0.548},"rootBg":[255,255,255]}
+{"host":"current-design.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"blue","share":{"white":0.818,"image":0.161,"blue":0.021},"rootBg":[255,255,255]}
+{"host":"mobirix.com","trade":"game","kind":"company","country":"KR","ground":"image","accent":"green","share":{"white":0.143,"image":0.842,"blue":0.015},"rootBg":[255,255,255]}
+{"host":"spicato.com","trade":"design","kind":"studio","country":"JP","ground":"brown","accent":"blue","share":{"image":0.039,"brown":0.961},"rootBg":[186,175,143]}
+{"host":"mamezoudesign.com","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"x3-design.com","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"ink","share":{"white":0.658,"image":0.33,"dark":0.012},"rootBg":[255,255,255]}
+{"host":"redkirin.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"white":0.36,"image":0.616,"tint":0.021,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"titan-art.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"web.bridge-net.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"white":0.06,"image":0.869,"dark":0.071},"rootBg":[255,255,255]}
+{"host":"sanzen-design.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"amber","share":{"tint":0.789,"white":0.045,"image":0.167},"rootBg":[251,250,243]}
+{"host":"crosswish.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.693,"blue":0.012,"green":0.009,"white":0.259,"tint":0.027},"rootBg":[255,255,255]}
+{"host":"ok-design.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"red":0.012,"white":0.333,"image":0.643,"amber":0.012},"rootBg":[255,255,255]}
+{"host":"sogodesign.co.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"indigo","share":{"dark":0.173,"image":0.47,"white":0.357},"rootBg":[255,255,255]}
+{"host":"new-design.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":0.929,"white":0.068,"dark":0.003},"rootBg":[0,0,0]}
+{"host":"kaeru.design","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"teal","share":{"image":0.943,"teal":0.057},"rootBg":[255,255,255]}
+{"host":"designstudio-l.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"ink","share":{"white":0.786,"image":0.214},"rootBg":[255,255,255]}
+{"host":"sodosha.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"nanoha-co.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"brandvoice.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"nanairo-inc.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sidethree.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"image":0.708,"red":0.149,"white":0.143},"rootBg":[255,255,255]}
+{"host":"willstyle.co.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"brown","share":{"tint":0.693,"dark":0.006,"white":0.018,"image":0.283},"rootBg":[240,240,240]}
+{"host":"long-town.co.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"amber","share":{"white":0.714,"image":0.286},"rootBg":[255,255,255]}
+{"host":"tsushima-design.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"white":0.06,"image":0.726,"tint":0.214},"rootBg":[255,255,255]}
+{"host":"nxpg.net","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"tdc-ad.co.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"ink","share":{"image":0.211,"white":0.628,"dark":0.161},"rootBg":[255,255,255]}
+{"host":"nobiru-love.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"white":0.205,"image":0.795},"rootBg":[255,255,255]}
+{"host":"gyoku.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"amber","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"kotohogidesign.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":1},"rootBg":[250,250,250]}
+{"host":"design-kom.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"teal","share":{"white":0.336,"image":0.503,"teal":0.071,"tint":0.089},"rootBg":[255,255,255]}
+{"host":"lionheart.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.857,"white":0.143},"rootBg":[255,255,255]}
+{"host":"caina.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.929,"white":0.063,"orange":0.009},"rootBg":[242,243,245]}
+{"host":"choreo.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.696,"white":0.17,"dark":0.131,"green":0.003},"rootBg":[255,255,255]}
+{"host":"hanano-ya.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"white":0.167,"image":0.78,"tint":0.054},"rootBg":[255,255,255]}
+{"host":"networld-jp.net","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"amber","share":{"image":0.929,"tint":0.071},"rootBg":[240,239,236]}
+{"host":"8brandingdesign.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"paddledesign.co.jp","trade":"design","kind":"studio","country":"JP","ground":"dark","accent":"ink","share":{"dark":0.982,"image":0.018},"rootBg":[255,255,255]}
+{"host":"frontier-web.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"michiyoko.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"amber","share":{"image":0.866,"blue":0.003,"white":0.131},"rootBg":[255,255,255]}
+{"host":"designam.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.964,"white":0.036},"rootBg":[255,255,255]}
+{"host":"branding-market.com","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"pink","share":{"dark":0.286,"image":0.595,"tint":0.119},"rootBg":[32,32,32]}
+{"host":"lincom.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":0.917,"tint":0.009,"dark":0.033,"white":0.042},"rootBg":[255,255,255]}
+{"host":"harajuku-design.co.jp","trade":"design","kind":"studio","country":"JP","ground":"dark","accent":"ink","share":{"dark":0.982,"image":0.018},"rootBg":[255,255,255]}
+{"host":"nue-inc.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"webright.co.jp","trade":"design","kind":"studio","country":"JP","ground":"dark","accent":"indigo","share":{"dark":0.705,"image":0.295},"rootBg":[255,255,255]}
+{"host":"tokyodesignstudio.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"mother.co.jp","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"blue","share":{"white":0.979,"image":0.006,"blue":0.015},"rootBg":[255,255,255]}
+{"host":"acsport.net","trade":"design","kind":"studio","country":"JP","ground":"light","accent":"green","share":{"white":0.515,"image":0.485},"rootBg":[255,255,255]}
+{"host":"irokoto.co.jp","trade":"design","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.798,"white":0.202},"rootBg":[255,255,255]}
+{"host":"unicreative.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"white":0.461,"tint":0.009,"image":0.53},"rootBg":[255,255,255]}
+{"host":"jyuken-sekkei.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.997,"red":0.003},"rootBg":[0,0,0]}
+{"host":"aplan.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":1},"rootBg":[85,95,95]}
+{"host":"rover-archi.com","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.911,"white":0.039,"dark":0.051},"rootBg":[255,255,255]}
+{"host":"ikka-design.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":1},"rootBg":[217,214,209]}
+{"host":"tds-tokyo.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"toyosekkei.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"orange","share":{"white":0.208,"image":0.792},"rootBg":[255,255,255]}
+{"host":"ishizue-inc.com","trade":"architecture","kind":"studio","country":"JP","ground":"light","accent":"blue","share":{"tint":0.955,"image":0.045},"rootBg":[255,255,255]}
+{"host":"acehatano.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":1},"rootBg":[240,240,240]}
+{"host":"nishijima-arch.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.673,"tint":0.327},"rootBg":[255,255,255]}
+{"host":"matsuyama-a.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"white":0.179,"image":0.821},"rootBg":[255,255,255]}
+{"host":"seisaku.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"dark":0.063,"image":0.937},"rootBg":[255,255,255]}
+{"host":"tohata.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.929,"white":0.071},"rootBg":[255,255,255]}
+{"host":"fujiyoshi.org","trade":"architecture","kind":"studio","country":"JP","ground":"light","accent":"blue","share":{"white":0.973,"image":0.018,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"koken-archi.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"white":0.22,"image":0.78},"rootBg":[255,255,255]}
+{"host":"ishimoto.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.976,"white":0.024},"rootBg":[255,255,255]}
+{"host":"tokyoarchitects.com","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"shin-arc.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"green","share":{"white":0.387,"image":0.613},"rootBg":[255,255,255]}
+{"host":"yamakawa-design.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"amber","share":{"dark":0.131,"image":0.869},"rootBg":[255,255,255]}
+{"host":"onoda-arc.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"brown","share":{"white":0.262,"image":0.738},"rootBg":[253,252,250]}
+{"host":"miyama-architects.com","trade":"architecture","kind":"studio","country":"JP","ground":"light","accent":"green","share":{"dark":0.063,"green":0.223,"white":0.679,"image":0.036},"rootBg":[255,255,255]}
+{"host":"shinsekkei.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.997,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"archiplace.com","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"white":0.259,"image":0.741},"rootBg":[255,255,255]}
+{"host":"ikkasekkei.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"e-kanda.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"blue","accent":"blue","share":{"blue":0.857,"white":0.143},"rootBg":[255,255,255]}
+{"host":"j-ishida.co.jp","trade":"architecture","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"tint":0.071,"white":0.247,"image":0.682},"rootBg":[255,255,255]}
+{"host":"jpc-ltd.co.jp","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"white":0.125,"image":0.652,"tint":0.223},"rootBg":[255,255,255]}
+{"host":"house-ism.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"nne.ne.jp","trade":"photo","kind":"studio","country":"JP","ground":"light","accent":"amber","share":{"white":0.982,"image":0.018},"rootBg":[255,255,255]}
+{"host":"rockhearts.co.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"ansrick.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"noblem.jp","trade":"photo","kind":"studio","country":"JP","ground":"light","accent":"ink","share":{"white":0.518,"image":0.461,"tint":0.009,"dark":0.012},"rootBg":[239,236,230]}
+{"host":"reevo.jp","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.994,"dark":0.006},"rootBg":[20,20,20]}
+{"host":"tele-more.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":0.929,"dark":0.068,"blue":0.003},"rootBg":[255,255,255]}
+{"host":"snow-in.cc","trade":"photo","kind":"studio","country":"JP","ground":"light","accent":"ink","share":{"tint":0.071,"white":0.542,"image":0.387},"rootBg":[255,255,255]}
+{"host":"bee-c.net","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"teal","share":{"dark":0.435,"image":0.565},"rootBg":[0,0,0]}
+{"host":"la-viecouleur.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.798,"white":0.193,"blue":0.009},"rootBg":[255,255,255]}
+{"host":"precieux-studio.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"lovstmade.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"white":0.223,"image":0.762,"pink":0.015},"rootBg":[255,255,255]}
+{"host":"ray.co.jp","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"image":0.583,"dark":0.417},"rootBg":[18,32,37]}
+{"host":"tfc.co.jp","trade":"photo","kind":"studio","country":"JP","ground":"light","accent":"teal","share":{"white":0.729,"image":0.098,"teal":0.003,"dark":0.063,"tint":0.107},"rootBg":[255,255,255]}
+{"host":"locus-inc.co.jp","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"red","share":{"white":0.173,"image":0.762,"tint":0.027,"red":0.027,"orange":0.012},"rootBg":[255,255,255]}
+{"host":"studioselfit.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"pink","share":{"white":0.33,"image":0.661,"orange":0.003,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"kuppography.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"ink","share":{"white":0.054,"image":0.726,"tint":0.22},"rootBg":[255,255,255]}
+{"host":"dub.co.jp","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.982,"dark":0.018},"rootBg":[255,255,255]}
+{"host":"scene-tokyo.com","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"pink","share":{"white":0.077,"image":0.824,"dark":0.098},"rootBg":[255,255,255]}
+{"host":"ttdesign.net","trade":"illustration","kind":"studio","country":"JP","ground":"light","accent":"teal","share":{"image":0.235,"white":0.658,"teal":0.018,"dark":0.018,"red":0.018,"tint":0.054},"rootBg":[255,255,255]}
+{"host":"kyotoanimation.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"white":0.295,"image":0.702,"orange":0.003},"rootBg":[255,255,255]}
+{"host":"happilyphoto.jp","trade":"photo","kind":"studio","country":"JP","ground":"image","accent":"orange","share":{"tint":0.113,"image":0.75,"orange":0.006,"white":0.131},"rootBg":[255,255,255]}
+{"host":"nipponarts.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"image":0.911,"white":0.089},"rootBg":[255,255,255]}
+{"host":"frencel.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"amber","share":{"image":0.857,"white":0.143},"rootBg":[255,255,255]}
+{"host":"yellows.jp","trade":"illustration","kind":"studio","country":"JP","ground":"amber","accent":"indigo","share":{"amber":0.542,"image":0.208,"tint":0.021,"white":0.229},"rootBg":[247,247,247]}
+{"host":"digishoku.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"teal","share":{"image":0.899,"white":0.051,"teal":0.03,"dark":0.021},"rootBg":[255,255,255]}
+{"host":"tms-e.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"blue","share":{"white":0.42,"image":0.58},"rootBg":[255,255,255]}
+{"host":"lidenfilms.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.842,"tint":0.086,"white":0.071},"rootBg":[255,255,255]}
+{"host":"pierrot.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"indigo","share":{"image":0.655,"amber":0.063,"orange":0.003,"tint":0.28},"rootBg":[248,248,244]}
+{"host":"design-ark.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"witstudio.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"light","accent":"green","share":{"tint":0.869,"white":0.131},"rootBg":[243,243,243]}
+{"host":"pixyda.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"image":1},"rootBg":[51,51,51]}
+{"host":"colorido.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"image","accent":"teal","share":{"white":0.19,"image":0.795,"pink":0.003,"amber":0.006,"green":0.006},"rootBg":[255,255,255]}
+{"host":"st-hibari.co.jp","trade":"illustration","kind":"studio","country":"JP","ground":"light","accent":"blue","share":{"white":0.432,"blue":0.015,"image":0.494,"tint":0.06},"rootBg":[255,255,255]}
+{"host":"rocketstd.co.jp","trade":"game","kind":"company","country":"JP","ground":"dark","accent":"blue","share":{"white":0.063,"image":0.009,"dark":0.929},"rootBg":[220,230,238]}
+{"host":"hexadrive.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"orange","share":{"white":0.286,"image":0.643,"dark":0.068,"orange":0.003},"rootBg":[255,255,255]}
+{"host":"gamedo.co.jp","trade":"game","kind":"company","country":"JP","ground":"light","accent":"green","share":{"white":0.518,"tint":0.482},"rootBg":[255,255,255]}
+{"host":"playism.com","trade":"game","kind":"company","country":"JP","ground":"image","accent":"amber","share":{"image":0.771,"tint":0.018,"white":0.143,"dark":0.063,"amber":0.006},"rootBg":[240,239,233]}
+{"host":"freestyles.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.997,"white":0.003},"rootBg":[255,255,255]}
+{"host":"ganbarion.co.jp","trade":"game","kind":"company","country":"JP","ground":"light","accent":"blue","share":{"white":0.985,"red":0.015},"rootBg":[255,255,255]}
+{"host":"torisan-net.com","trade":"game","kind":"company","country":"JP","ground":"light","accent":"red","share":{"white":0.982,"image":0.018},"rootBg":[255,255,255]}
+{"host":"cc2.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.851,"tint":0.006,"white":0.143},"rootBg":[255,255,255]}
+{"host":"nippon1.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"white":0.357,"image":0.562,"tint":0.015,"dark":0.065},"rootBg":[255,255,255]}
+{"host":"gzoe.co.jp","trade":"game","kind":"company","country":"JP","ground":"dark","accent":"blue","share":{"white":0.211,"image":0.003,"dark":0.786},"rootBg":[255,255,255]}
+{"host":"snk-corp.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"white":0.238,"image":0.613,"dark":0.125,"blue":0.024},"rootBg":[255,255,255]}
+{"host":"platinumgames.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"tint":0.372,"image":0.628},"rootBg":[240,240,240]}
+{"host":"indieszero.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"white":0.128,"image":0.86,"tint":0.003,"dark":0.009},"rootBg":[255,255,255]}
+{"host":"phoenixx.ne.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"amber","share":{"image":0.929,"white":0.06,"orange":0.009,"blue":0.003},"rootBg":[249,249,249]}
+{"host":"toydium.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"amber","share":{"image":0.982,"dark":0.018},"rootBg":[254,213,0]}
+{"host":"falcom.co.jp","skipped":"robots.txt unreachable"}
+{"host":"8ing.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"white":0.205,"dark":0.042,"image":0.753},"rootBg":[255,255,255]}
+{"host":"spike-chunsoft.co.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"indigo","share":{"image":0.649,"white":0.312,"indigo":0.012,"tint":0.006,"dark":0.003,"red":0.018},"rootBg":[248,255,248]}
+{"host":"arcsystemworks.jp","trade":"game","kind":"company","country":"JP","ground":"image","accent":"red","share":{"image":0.842,"white":0.086,"red":0.071},"rootBg":[255,255,255]}
+{"host":"cheonyu.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"image":0.607,"white":0.369,"tint":0.024},"rootBg":[255,255,255]}
+{"host":"jisungmall.com","trade":"ec","kind":"place","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.821,"image":0.143,"white":0.036},"rootBg":[255,255,255]}
+{"host":"yesoffice.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.536,"amber":0.045,"white":0.372,"tint":0.042,"dark":0.006},"rootBg":[255,255,255]}
+{"host":"songwol.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"indigo","share":{"white":0.402,"image":0.568,"tint":0.03},"rootBg":[255,255,255]}
+{"host":"banff.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.47,"image":0.53},"rootBg":[255,255,255]}
+{"host":"reahome.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"amber":0.071,"white":0.205,"image":0.72,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"craftshop.co.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.458,"image":0.405,"tint":0.137},"rootBg":[255,255,255]}
+{"host":"chimeric.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"white":0.512,"image":0.485,"blue":0.003},"rootBg":[255,255,255]}
+{"host":"sm1982.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"white":0.369,"red":0.006,"image":0.616,"blue":0.003,"green":0.003,"indigo":0.003},"rootBg":[255,255,255]}
+{"host":"jcshop.or.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.735,"white":0.262,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"hanzi.co.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.557,"image":0.443},"rootBg":[255,255,255]}
+{"host":"hanjistory.com","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"orange","share":{"brown":0.077,"white":0.375,"image":0.449,"tint":0.083,"dark":0.006,"orange":0.009},"rootBg":[255,255,255]}
+{"host":"diycc.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.568,"white":0.432},"rootBg":[255,255,255]}
+{"host":"xn--o39aobz1em41ahhd8qynrx.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"tint":0.071,"white":0.262,"image":0.667},"rootBg":[255,255,255]}
+{"host":"jejubest.com","trade":"ec","kind":"place","country":"KR","ground":"dark","accent":"blue","share":{"dark":0.833,"image":0.167},"rootBg":[255,255,255]}
+{"host":"jigubyulstore.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.69,"white":0.31},"rootBg":[255,255,255]}
+{"host":"shophankook.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"tint":0.071,"white":0.226,"image":0.702},"rootBg":[255,255,255]}
+{"host":"btrmall.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"image":0.976,"amber":0.024},"rootBg":[255,255,255]}
+{"host":"gngaguland.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"orange","share":{"white":0.113,"image":0.815,"tint":0.071},"rootBg":[255,255,255]}
+{"host":"gb1030.or.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"dark":0.051,"white":0.741,"image":0.182,"tint":0.024,"red":0.003},"rootBg":[255,255,255]}
+{"host":"mauction.simpol.co.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"blanos.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.961,"white":0.039},"rootBg":[249,249,249]}
+{"host":"basicgagu.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"orange","share":{"white":0.393,"image":0.601,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"samickmall.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"woodolens.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"amber":0.071,"white":0.071,"image":0.857},"rootBg":[255,255,255]}
+{"host":"sherwood.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"orange","share":{"tint":0.071,"image":0.923,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"emons.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.17,"blue":0.012,"indigo":0.021,"image":0.798},"rootBg":[255,255,255]}
+{"host":"thecohen.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.071,"image":0.929},"rootBg":[255,255,255]}
+{"host":"hsoban.com","skipped":"robots.txt unreachable"}
+{"host":"ekwangjuyo.com","trade":"ec","kind":"place","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.976,"white":0.024},"rootBg":[255,255,255]}
+{"host":"chals.co.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.982,"white":0.018},"rootBg":[255,255,255]}
+{"host":"ansungyugi.com","skipped":"robots.txt unreachable"}
+{"host":"nobban.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"blue":0.071,"image":0.646,"tint":0.283},"rootBg":[255,255,255]}
+{"host":"namugongjakso.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"brown","share":{"white":0.411,"image":0.583,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"soilbaker.kr","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"brown","share":{"image":0.673,"tint":0.327},"rootBg":[252,249,242]}
+{"host":"odenseofficial.com","trade":"ec","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.22,"tint":0.071,"image":0.708},"rootBg":[255,255,255]}
+{"host":"polaathome.co.kr","trade":"ec","kind":"place","country":"KR","ground":"light","accent":"green","share":{"tint":0.545,"image":0.411,"white":0.027,"orange":0.018},"rootBg":[250,245,235]}
+{"host":"2mancoffee.co.kr","trade":"food","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.833,"image":0.143,"white":0.024},"rootBg":[255,255,255]}
+{"host":"kittybunnypony.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"waveoncoffee.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.286,"image":0.714},"rootBg":[255,255,255]}
+{"host":"304coffee.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.455,"tint":0.006,"image":0.539},"rootBg":[255,255,255]}
+{"host":"dailylike.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"mammoth-bakery.com","trade":"food","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.929,"white":0.071},"rootBg":[249,249,249]}
+{"host":"gnti.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"white":0.223,"orange":0.009,"tint":0.009,"image":0.759},"rootBg":[255,255,255]}
+{"host":"daegubbang.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.89,"white":0.11},"rootBg":[255,255,255]}
+{"host":"roastery-wimi.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"orange","share":{"white":0.417,"image":0.583},"rootBg":[255,255,255]}
+{"host":"mirromegi.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"red","share":{"white":0.202,"image":0.798},"rootBg":[255,255,255]}
+{"host":"5megi.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"red","share":{"image":0.952,"white":0.048},"rootBg":[255,255,255]}
+{"host":"jejusuul.com","trade":"food","kind":"company","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.985,"image":0.015},"rootBg":[255,255,255]}
+{"host":"dcake.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"hallasan.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"gochujjang.co.kr","trade":"food","kind":"company","country":"KR","ground":"light","accent":"orange","share":{"image":0.5,"tint":0.036,"dark":0.464},"rootBg":[250,249,246]}
+{"host":"chegokdang.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"white":0.134,"image":0.866},"rootBg":[255,255,255]}
+{"host":"sunchangtown.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"orange","share":{"white":0.399,"image":0.601},"rootBg":[255,255,255]}
+{"host":"shunchang.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"white":0.274,"image":0.646,"red":0.074,"dark":0.003,"blue":0.003},"rootBg":[246,246,246]}
+{"host":"ohsmall.co.kr","skipped":"robots.txt unreachable"}
+{"host":"ricewinecake.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.134,"image":0.866},"rootBg":[255,255,255]}
+{"host":"jeonjuchanbang.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"ksdo.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"gyodong.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.744,"white":0.256},"rootBg":[255,255,255]}
+{"host":"keongdong.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.848,"white":0.152},"rootBg":[255,255,255]}
+{"host":"cupper.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"brown","share":{"white":0.137,"image":0.863},"rootBg":[255,255,255]}
+{"host":"namusairo.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.833,"dark":0.027,"white":0.14},"rootBg":[252,251,247]}
+{"host":"dawon01.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"indigo","share":{"tint":0.143,"white":0.339,"image":0.518},"rootBg":[255,255,255]}
+{"host":"oraund.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"teal","share":{"image":0.696,"dark":0.289,"teal":0.012,"white":0.003},"rootBg":[0,0,0]}
+{"host":"napoleonbakery.co.kr","trade":"food","kind":"company","country":"KR","ground":"light","accent":"blue","share":{"white":0.536,"image":0.452,"tint":0.012},"rootBg":[255,255,255]}
+{"host":"sugarlane.kr","trade":"food","kind":"company","country":"KR","ground":"dark","accent":"amber","share":{"white":0.063,"image":0.009,"dark":0.926,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"taegeukdang.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.363,"image":0.637},"rootBg":[255,255,255]}
+{"host":"e-coffeestory.com","trade":"food","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.812,"tint":0.009,"white":0.179},"rootBg":[255,255,255]}
+{"host":"cafealtro.co.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"white":0.384,"image":0.613,"amber":0.003},"rootBg":[255,255,255]}
+{"host":"sanhaerang.kr","trade":"food","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"blue":0.068,"image":0.574,"white":0.357},"rootBg":[255,255,255]}
+{"host":"lottesweetmall.com","trade":"food","kind":"company","country":"KR","ground":"light","accent":"red","share":{"white":0.512,"image":0.458,"tint":0.03},"rootBg":[255,255,255]}
+{"host":"leesle.com","skipped":"robots.txt unreachable"}
+{"host":"66girls.co.kr","skipped":"robots.txt unreachable"}
+{"host":"kevinshoes.co.kr","skipped":"robots.txt unreachable"}
+{"host":"bonfeel.kr","trade":"fashion","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"tint":0.071,"white":0.446,"image":0.482},"rootBg":[255,255,255]}
+{"host":"zijangsa.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"terryshoes.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"bsph.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"eyenshop.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"oliboa.com","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"shop.bikemart.co.kr","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"white":0.274,"image":0.726},"rootBg":[255,255,255]}
+{"host":"sie-official.kr","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[250,250,246]}
+{"host":"joygryson.com","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.997,"white":0.003},"rootBg":[255,255,255]}
+{"host":"margesherwood.com","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"dark":0.089,"image":0.857,"white":0.054},"rootBg":[255,255,255]}
+{"host":"zanne.co.kr","trade":"fashion","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":0.682,"image":0.318},"rootBg":[255,255,255]}
+{"host":"rolarola.com","skipped":"robots.txt unreachable"}
+{"host":"satur.co.kr","skipped":"robots.txt unreachable"}
+{"host":"marhenj.co.kr","skipped":"robots.txt unreachable"}
+{"host":"standoil.kr","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"camelbrown.com","trade":"fashion","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.193,"image":0.807},"rootBg":[255,255,255]}
+{"host":"insilence.co.kr","trade":"fashion","kind":"company","country":"KR","ground":"dark","accent":"red","share":{"dark":0.768,"image":0.125,"white":0.107},"rootBg":[255,255,255]}
+{"host":"brownbreath.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"tamrare.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"green","share":{"tint":0.042,"image":0.804,"white":0.155},"rootBg":[255,255,255]}
+{"host":"bozagi.co.kr","skipped":"robots.txt unreachable"}
+{"host":"parajeju.com","trade":"cosmetics","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"accoje.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.164,"dark":0.137,"image":0.699},"rootBg":[255,255,255]}
+{"host":"jejuon.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"green","share":{"image":0.866,"white":0.134},"rootBg":[255,255,255]}
+{"host":"lycoris.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"white":0.051,"image":0.884,"orange":0.045,"tint":0.021},"rootBg":[255,255,255]}
+{"host":"toasmall.com","trade":"cosmetics","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"tint":0.923,"white":0.065,"image":0.012},"rootBg":[255,255,255]}
+{"host":"umusoap.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"tint":0.488,"image":0.509,"white":0.003},"rootBg":[242,242,243]}
+{"host":"vemonteskorea.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.009,"image":0.884,"tint":0.107},"rootBg":[255,255,255]}
+{"host":"aura-group.co.kr","skipped":"robots.txt unreachable"}
+{"host":"kr.riman.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"teal","share":{"image":0.595,"white":0.399,"teal":0.006},"rootBg":[255,255,255]}
+{"host":"cosrx.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"blue","share":{"image":0.696,"dark":0.048,"white":0.25,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"lashpia.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"amusemakeup.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"white":0.357,"image":0.643},"rootBg":[255,255,255]}
+{"host":"dalba.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"amber","share":{"image":0.929,"white":0.071},"rootBg":[255,255,255]}
+{"host":"cerolabs.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"dark":0.071,"white":0.42,"image":0.509},"rootBg":[255,255,255]}
+{"host":"clubclio.co.kr","skipped":"robots.txt unreachable"}
+{"host":"onething.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"light","accent":"ink","share":{"white":0.467,"tint":0.036,"image":0.491,"dark":0.003,"amber":0.003},"rootBg":[248,248,248]}
+{"host":"whamisashop.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"dark":0.071,"white":0.286,"image":0.643},"rootBg":[255,255,255]}
+{"host":"jejugul.com","skipped":"robots.txt unreachable"}
+{"host":"theforment.com","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"image":0.985,"white":0.015},"rootBg":[255,255,255]}
+{"host":"sioris.co.kr","trade":"cosmetics","kind":"company","country":"KR","ground":"image","accent":"ink","share":{"dark":0.036,"red":0.036,"image":0.857,"white":0.071},"rootBg":[255,255,255]}
+{"host":"bugane.com","trade":"farm","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"white":0.661,"image":0.336,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"viphalla.com","trade":"farm","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"white":0.589,"image":0.411},"rootBg":[255,255,255]}
+{"host":"witchhilljeju.com","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.063,"image":0.923,"blue":0.015},"rootBg":[255,255,255]}
+{"host":"ischeesemall.co.kr","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"green","share":{"green":0.077,"image":0.759,"white":0.164},"rootBg":[255,255,255]}
+{"host":"allthejeju.com","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"teal","share":{"teal":0.068,"image":0.554,"white":0.372,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"xn--352bl9k1ze.com","trade":"farm","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"dphanwoo.co.kr","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"orange","share":{"white":0.259,"image":0.667,"tint":0.068,"orange":0.006},"rootBg":[255,255,255]}
+{"host":"sanghafarm.co.kr","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"green","share":{"image":0.732,"green":0.003,"white":0.048,"dark":0.009,"tint":0.208},"rootBg":[255,255,255]}
+{"host":"bosunggreentea.co.kr","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.292,"image":0.708},"rootBg":[255,255,255]}
+{"host":"nabro.co.kr","trade":"farm","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"image":0.435,"white":0.411,"green":0.048,"dark":0.107},"rootBg":[255,255,255]}
+{"host":"najumall.kr","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.679,"white":0.321},"rootBg":[255,255,255]}
+{"host":"boseongmall.co.kr","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"image":0.943,"white":0.057},"rootBg":[255,255,255]}
+{"host":"sarangkwa.com","trade":"farm","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"teal":0.071,"white":0.5,"image":0.429},"rootBg":[255,255,255]}
+{"host":"hadongshop.co.kr","trade":"farm","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"amber":0.071,"white":0.402,"image":0.446,"tint":0.009,"teal":0.071},"rootBg":[255,255,255]}
+{"host":"chungjuc.com","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.973,"amber":0.003,"white":0.024},"rootBg":[255,255,255]}
+{"host":"hongsister.shop","trade":"farm","kind":"place","country":"KR","ground":"image","accent":"red","share":{"image":0.714,"red":0.021,"white":0.256,"amber":0.009},"rootBg":[255,255,255]}
+{"host":"oneegg.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"yangbongnh.com","trade":"farm","kind":"place","country":"KR","ground":"dark","accent":"ink","share":{"dark":0.857,"image":0.119,"white":0.024},"rootBg":[255,255,255]}
+{"host":"mocad-shop.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"orange","share":{"dark":0.071,"white":0.071,"image":0.857},"rootBg":[255,255,255]}
+{"host":"shop.kyoto-nokaze.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"tint":0.104,"image":0.771,"white":0.125},"rootBg":[255,255,255]}
+{"host":"kurochiku.co.jp","skipped":"robots.txt unreachable"}
+{"host":"nagaokameichiku.shop-pro.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"white":0.345,"image":0.655},"rootBg":[255,255,255]}
+{"host":"tachikichi.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"sekikagu-shop.jp","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"ink","share":{"white":0.521,"image":0.408,"dark":0.071},"rootBg":[255,255,255]}
+{"host":"mokukagu.com","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"red","share":{"dark":0.11,"orange":0.003,"tint":0.176,"blue":0.071,"white":0.31,"image":0.33},"rootBg":[255,255,255]}
+{"host":"coordinatekagu.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"teal","share":{"white":0.467,"image":0.509,"tint":0.024},"rootBg":[255,255,255]}
+{"host":"okawa-mokkoufes.net","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"white":0.458,"image":0.536,"blue":0.006},"rootBg":[255,255,255]}
+{"host":"store.hasamiyaki.jp","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"red","share":{"white":0.518,"red":0.003,"green":0.045,"image":0.435},"rootBg":[255,255,255]}
+{"host":"kagucoco.jp","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"ink","share":{"dark":0.131,"white":0.863,"image":0.006},"rootBg":[255,255,255]}
+{"host":"takanomokkou.co.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"indigo","share":{"image":0.988,"white":0.012},"rootBg":[255,255,255]}
+{"host":"natural69-hasami.co.jp","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"ink","share":{"tint":0.75,"image":0.25},"rootBg":[255,255,255]}
+{"host":"specialthanks.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"shop.shobido-honten.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"indigo","share":{"white":0.217,"image":0.726,"dark":0.057},"rootBg":[255,255,255]}
+{"host":"marubun-shop.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"red","share":{"image":0.97,"tint":0.03},"rootBg":[255,253,250]}
+{"host":"imabariyokkin.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"brown","share":{"tint":0.116,"image":0.777,"brown":0.107},"rootBg":[255,255,255]}
+{"host":"maruyamatowel-shop.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"blue","share":{"tint":0.143,"white":0.137,"image":0.655,"red":0.065},"rootBg":[255,255,255]}
+{"host":"imabari-towel.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"red","share":{"white":0.25,"image":0.75},"rootBg":[255,255,255]}
+{"host":"ec.murakami-towel.com","trade":"ec","kind":"place","country":"JP","ground":"light","accent":"teal","share":{"teal":0.071,"white":0.473,"image":0.455},"rootBg":[255,255,255]}
+{"host":"store.kurashikihampu.co.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"indigo","share":{"white":0.146,"image":0.854},"rootBg":[255,255,255]}
+{"host":"muku-store.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"white":0.071,"image":0.926,"amber":0.003},"rootBg":[255,255,255]}
+{"host":"hidasangyo.com","skipped":"robots.txt unreachable"}
+{"host":"oigen.jp","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"dark":0.071,"white":0.149,"image":0.78},"rootBg":[255,255,255]}
+{"host":"yoshizawa-gama.com","trade":"ec","kind":"place","country":"JP","ground":"image","accent":"ink","share":{"white":0.31,"image":0.667,"tint":0.024},"rootBg":[255,255,255]}
+{"host":"otonayaki.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"washita.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"indigo","share":{"white":0.071,"image":0.839,"amber":0.071,"tint":0.018},"rootBg":[246,246,246]}
+{"host":"e-nampo.com","skipped":"robots.txt unreachable"}
+{"host":"ochamura.com","skipped":"robots.txt unreachable"}
+{"host":"shop.ryushodo.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"teal","share":{"white":0.214,"image":0.786},"rootBg":[232,231,231]}
+{"host":"bankaku.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"tint":0.077,"white":0.196,"image":0.726},"rootBg":[255,255,255]}
+{"host":"kubara.jp","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"yamecha-yuge.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"white":0.173,"image":0.798,"tint":0.03},"rootBg":[255,255,255]}
+{"host":"koganoyamecha.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"indigo","share":{"image":0.69,"white":0.304,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"yame.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"orange","share":{"image":0.509,"green":0.063,"white":0.429},"rootBg":[255,255,255]}
+{"host":"hoshisan.jp","trade":"food","kind":"company","country":"JP","ground":"light","accent":"red","share":{"red":0.077,"image":0.458,"white":0.143,"tint":0.321},"rootBg":[255,255,255]}
+{"host":"shioya-store.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"amber","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"kubojyozo.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"white":0.39,"image":0.586,"dark":0.024},"rootBg":[255,255,255]}
+{"host":"sakurakaneyo.shop-pro.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"red","share":{"image":1},"rootBg":[249,245,244]}
+{"host":"letao.jp","skipped":"robots.txt unreachable"}
+{"host":"morimoto-shinya.jp","skipped":"robots.txt unreachable"}
+{"host":"mz-kama.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.714,"white":0.286},"rootBg":[255,255,255]}
+{"host":"moroeya.net","trade":"food","kind":"company","country":"JP","ground":"image","accent":"red","share":{"image":0.658,"orange":0.009,"white":0.333},"rootBg":[221,221,221]}
+{"host":"warakudo.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"white":0.17,"image":0.83},"rootBg":[255,255,255]}
+{"host":"shiraken.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"teal","share":{"teal":0.065,"blue":0.006,"white":0.271,"image":0.658},"rootBg":[242,242,242]}
+{"host":"kamakurabeniya.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"white":0.268,"tint":0.077,"image":0.655},"rootBg":[255,255,255]}
+{"host":"abekama.co.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"blue","share":{"image":0.988,"white":0.012},"rootBg":[255,255,255]}
+{"host":"onlineshop.kiyoken.com","skipped":"robots.txt unreachable"}
+{"host":"lightupcoffee.com","skipped":"robots.txt unreachable"}
+{"host":"thecoffeeshop.jp","trade":"food","kind":"company","country":"JP","ground":"image","accent":"amber","share":{"dark":0.06,"image":0.658,"white":0.283},"rootBg":[255,255,255]}
+{"host":"tokiwacoffee.com","trade":"food","kind":"company","country":"JP","ground":"image","accent":"ink","share":{"white":0.208,"dark":0.006,"image":0.786},"rootBg":[255,255,255]}
+{"host":"hotel-topsten.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"chestertons.co.kr","skipped":"robots.txt unreachable"}
+{"host":"skybay.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"cassiasokcho.com","trade":"inn","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.783,"image":0.006,"tint":0.211},"rootBg":[255,255,255]}
+{"host":"seogwipean.com","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"image":0.857,"tint":0.143},"rootBg":[250,245,236]}
+{"host":"sagyeorum.com","skipped":"robots.txt unreachable"}
+{"host":"busanparadisehotel.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"waitingforthemoon.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"indigo","share":{"white":0.143,"dark":0.006,"image":0.851},"rootBg":[255,255,255]}
+{"host":"glad-hotels.com","skipped":"robots.txt unreachable"}
+{"host":"arumsamdal.com","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"indigo","share":{"white":0.143,"dark":0.006,"image":0.851},"rootBg":[255,255,255]}
+{"host":"sglamping.com","skipped":"robots.txt unreachable"}
+{"host":"lavalsehotel.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"white":0.06,"image":0.851,"amber":0.012,"tint":0.071,"dark":0.006},"rootBg":[192,192,192]}
+{"host":"spaceyeongdeok.com","skipped":"robots.txt unreachable"}
+{"host":"todaycyan.com","trade":"inn","kind":"place","country":"KR","ground":"light","accent":"teal","share":{"image":0.211,"tint":0.667,"white":0.086,"dark":0.003,"teal":0.033},"rootBg":[255,255,255]}
+{"host":"yeosuvenezia.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"villagabae.com","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.997,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"nuribom.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"white":0.048,"image":0.949,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"stanford-hotel.com","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"brown","share":{"white":0.134,"brown":0.003,"image":0.854,"tint":0.009},"rootBg":[255,255,255]}
+{"host":"cheongpungresort.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"blue":0.021,"image":0.949,"white":0.03},"rootBg":[255,255,255]}
+{"host":"neoul.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"image":0.937,"white":0.057,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"sangnokresort.co.kr","trade":"inn","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"image":0.185,"white":0.81,"tint":0.006},"rootBg":[255,255,255]}
+{"host":"suites.co.kr","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"dark":0.071,"image":0.875,"white":0.054},"rootBg":[255,255,255]}
+{"host":"nesthotel.co.kr","skipped":"robots.txt unreachable"}
+{"host":"hotel-sr.com","trade":"inn","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"image":0.887,"amber":0.03,"white":0.083},"rootBg":[255,255,255]}
+{"host":"bncr.co.kr","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.158,"image":0.842},"rootBg":[255,255,255]}
+{"host":"blackupcoffee.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.994,"tint":0.003,"white":0.003},"rootBg":[255,255,255]}
+{"host":"jhpoolvilla.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"toujours.co.kr","skipped":"robots.txt unreachable"}
+{"host":"haeundaegalbi.com","trade":"restaurant","kind":"place","country":"KR","ground":"dark","accent":"red","share":{"dark":0.988,"image":0.012},"rootBg":[245,245,245]}
+{"host":"samihun.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.298,"tint":0.039,"image":0.664},"rootBg":[255,255,255]}
+{"host":"umujeju.com","skipped":"robots.txt unreachable"}
+{"host":"hwangnam.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"dark":0.074,"image":0.857,"tint":0.068},"rootBg":[255,255,255]}
+{"host":"a-boutcoffee.com","trade":"restaurant","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"image":0.363,"dark":0.298,"white":0.339},"rootBg":[255,255,255]}
+{"host":"gamzabatt.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"orange","share":{"tint":0.071,"white":0.116,"image":0.812},"rootBg":[255,255,255]}
+{"host":"mansuk.kr","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.848,"white":0.045,"tint":0.101,"amber":0.003,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"youdongcoffeeshop.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"dark":0.071,"image":0.747,"white":0.182},"rootBg":[255,255,255]}
+{"host":"ansbakery.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":1},"rootBg":[255,255,255]}
+{"host":"coffeelibre.kr","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.244,"image":0.732,"dark":0.024},"rootBg":[255,255,255]}
+{"host":"omisa.co.kr","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"red","share":{"image":0.884,"white":0.116},"rootBg":[255,255,255]}
+{"host":"delmoondo.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"image":0.917,"white":0.083},"rootBg":[255,255,255]}
+{"host":"ourbakery.co.kr","skipped":"robots.txt unreachable"}
+{"host":"kimyoungmo.com","skipped":"robots.txt unreachable"}
+{"host":"jinjinsura.com","skipped":"robots.txt unreachable"}
+{"host":"dinehill.co.kr","skipped":"robots.txt unreachable"}
+{"host":"knottedstore.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"cmlandco.kr","trade":"restaurant","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.5,"image":0.485,"dark":0.015},"rootBg":[255,255,255]}
+{"host":"hereroasters.com","trade":"restaurant","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"dark":0.06,"image":0.932,"white":0.009},"rootBg":[255,255,255]}
+{"host":"dotgalbi.kr","trade":"restaurant","kind":"place","country":"KR","ground":"dark","accent":"red","share":{"dark":0.726,"red":0.006,"image":0.268},"rootBg":[21,19,15]}
+{"host":"camelliahill.co.kr","trade":"tourism","kind":"public","country":"KR","ground":"light","accent":"indigo","share":{"white":0.729,"image":0.271},"rootBg":[255,255,255]}
+{"host":"gjw.co.kr","trade":"tourism","kind":"public","country":"KR","ground":"image","accent":"red","share":{"white":0.351,"image":0.637,"red":0.012},"rootBg":[255,255,255]}
+{"host":"forestoutings.co.kr","trade":"restaurant","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"busanaircruise.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"legoland.kr","trade":"tourism","kind":"public","country":"KR","ground":"image","accent":"red","share":{"amber":0.128,"image":0.705,"red":0.048,"blue":0.119},"rootBg":[255,255,255]}
+{"host":"eworld.kr","trade":"tourism","kind":"public","country":"KR","ground":"light","accent":"orange","share":{"image":0.283,"white":0.652,"orange":0.006,"tint":0.06},"rootBg":[255,255,255]}
+{"host":"alpacaworld.co.kr","trade":"tourism","kind":"public","country":"KR","ground":"image","accent":"ink","share":{"image":0.786,"white":0.071,"tint":0.143},"rootBg":[255,255,255]}
+{"host":"oworld.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"railpark.co.kr","trade":"tourism","kind":"public","country":"KR","ground":"light","accent":"ink","share":{"image":0.006,"white":0.994},"rootBg":[255,255,255]}
+{"host":"naminara.net","trade":"tourism","kind":"public","country":"KR","ground":"light","accent":"ink","share":{"white":0.848,"image":0.152},"rootBg":[255,255,255]}
+{"host":"codersit.co.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.304,"image":0.583,"blue":0.065,"amber":0.006,"dark":0.024,"teal":0.009,"orange":0.009},"rootBg":[255,255,255]}
+{"host":"jisungedu.co.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.161,"image":0.839},"rootBg":[255,255,255]}
+{"host":"hakmundang.co.kr","trade":"academy","kind":"service","country":"KR","ground":"blue","accent":"indigo","share":{"blue":0.714,"white":0.283,"image":0.003},"rootBg":[255,255,255]}
+{"host":"xn--bo1bw08abihswe.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.357,"image":0.586,"blue":0.057},"rootBg":[255,255,255]}
+{"host":"koreanfolk.co.kr","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"linguaedu.co.kr","trade":"academy","kind":"service","country":"KR","ground":"light","accent":"blue","share":{"white":0.988,"dark":0.012},"rootBg":[255,255,255]}
+{"host":"maple.theclip.net","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"teal","share":{"white":0.443,"image":0.533,"orange":0.006,"tint":0.018},"rootBg":[255,255,255]}
+{"host":"greensum.page24.app","trade":"academy","kind":"service","country":"KR","ground":"dark","accent":"pink","share":{"white":0.304,"dark":0.696},"rootBg":[255,255,255]}
+{"host":"theplusmath.net","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"dark":0.027,"image":0.652,"white":0.321},"rootBg":[255,255,255]}
+{"host":"hs1984.co.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"orange","share":{"image":0.911,"blue":0.018,"white":0.071},"rootBg":[255,255,255]}
+{"host":"sigak.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.268,"image":0.726,"dark":0.006},"rootBg":[255,255,255]}
+{"host":"naracook.co.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"ink","share":{"white":0.164,"image":0.836},"rootBg":[255,255,255]}
+{"host":"smsmusic.co.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"amber","share":{"image":0.756,"dark":0.193,"amber":0.051},"rootBg":[255,227,43]}
+{"host":"jam.or.kr","trade":"academy","kind":"service","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"usbeauty.co.kr","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"red","share":{"white":0.071,"image":0.929},"rootBg":[255,255,255]}
+{"host":"lamusicacad.com","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"indigo","share":{"dark":0.065,"image":0.935},"rootBg":[255,255,255]}
+{"host":"ilgong.com","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"blue","share":{"white":0.33,"image":0.661,"red":0.009},"rootBg":[255,255,255]}
+{"host":"kcookart.com","skipped":"robots.txt unreachable"}
+{"host":"ccunmusic.com","skipped":"page.goto: Timeout 30000ms exceeded."}
+{"host":"hscook.com","trade":"academy","kind":"service","country":"KR","ground":"image","accent":"red","share":{"white":0.265,"tint":0.006,"image":0.726,"dark":0.003},"rootBg":[255,255,255]}
+{"host":"koreaisacademy.com","skipped":"robots.txt unreachable"}
+{"host":"felia.co.kr","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"pink","share":{"image":0.881,"white":0.119},"rootBg":[255,255,255]}
+{"host":"hwamiju.com","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"tint":0.131,"image":0.821,"white":0.048},"rootBg":[255,255,255]}
+{"host":"ohmoosun.com","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"image":0.997,"white":0.003},"rootBg":[255,255,255]}
+{"host":"bomnalhair.com","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"ink","share":{"white":0.143,"image":0.857},"rootBg":[255,255,255]}
+{"host":"dasunhair.com","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"green","share":{"white":0.063,"image":0.937},"rootBg":[255,255,255]}
+{"host":"kevinhair.co.kr","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.988,"dark":0.012},"rootBg":[255,255,255]}
+{"host":"gohair.co.kr","trade":"salon","kind":"place","country":"KR","ground":"image","accent":"amber","share":{"white":0.137,"image":0.863},"rootBg":[255,255,255]}
+{"host":"voghair.kr","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"orange","share":{"tint":0.661,"image":0.315,"white":0.024},"rootBg":[255,255,255]}
+{"host":"seoulhairsalon.com","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"white":0.857,"image":0.143},"rootBg":[255,255,255]}
+{"host":"seedthebeauty.com","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"brown","share":{"white":0.75,"image":0.238,"dark":0.012},"rootBg":[255,255,255]}
+{"host":"avahair.co.kr","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.86,"image":0.14},"rootBg":[255,255,255]}
+{"host":"rabeautycore.com","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"indigo","share":{"image":0.149,"white":0.851},"rootBg":[255,255,255]}
+{"host":"okfitness.co.kr","trade":"fitness","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":1},"rootBg":[247,248,250]}
+{"host":"balanceyoga.cafe24.com","skipped":"robots.txt unreachable"}
+{"host":"kaijunghair.com","trade":"salon","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.607,"tint":0.107,"image":0.286},"rootBg":[255,255,255]}
+{"host":"pilatesbompt.com","trade":"fitness","kind":"place","country":"KR","ground":"image","accent":"teal","share":{"white":0.063,"image":0.923,"teal":0.006,"tint":0.009},"rootBg":[250,249,246]}
+{"host":"lanoawell.com","trade":"fitness","kind":"place","country":"KR","ground":"image","accent":"brown","share":{"image":1},"rootBg":[242,228,222]}
+{"host":"uspilates.kr","trade":"fitness","kind":"place","country":"KR","ground":"light","accent":"ink","share":{"white":0.574,"image":0.402,"tint":0.024},"rootBg":[255,255,255]}
+{"host":"unninepilates.kr","skipped":"robots"}
+{"host":"pilatesre-academy.co.kr","trade":"fitness","kind":"place","country":"KR","ground":"light","accent":"blue","share":{"white":1},"rootBg":[255,255,255]}
+{"host":"mepilates.kr","trade":"fitness","kind":"place","country":"KR","ground":"image","accent":"pink","share":{"white":0.065,"pink":0.012,"image":0.923},"rootBg":[255,255,255]}
+{"host":"carepilates.com","trade":"fitness","kind":"place","country":"KR","ground":"image","accent":"blue","share":{"white":0.414,"image":0.583,"tint":0.003},"rootBg":[255,255,255]}
+{"host":"rebornpilates.com","skipped":"robots.txt unreachable"}
+{"host":"forwell-pilates.com","trade":"fitness","kind":"place","country":"KR","ground":"light","accent":"green","share":{"tint":0.994,"green":0.006},"rootBg":[242,246,241]}
+{"host":"afteryogapilates.com","skipped":"robots"}
+{"host":"klcapilates.com","trade":"fitness","kind":"place","country":"KR","ground":"image","accent":"indigo","share":{"image":0.991,"white":0.009},"rootBg":[255,255,255]}
