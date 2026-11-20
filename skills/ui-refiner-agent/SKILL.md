@@ -117,6 +117,7 @@ Variety belongs in two places: between the three directions for the main page, s
    - emoji as icons, untouched Tailwind indigo/violet or Bootstrap blue, one generic font at flat sizes;
    - "Unlock your potential / seamless / supercharge / 잠재력 / 혁신적인" copy and repeated "Learn more" buttons;
    - `transition: all`, animating layout properties, ignoring `prefers-reduced-motion`, `div` with `onClick`.
+   - a viewport meta that blocks zoom (`user-scalable=no`, `maximum-scale=1`), form fields under 16px on phones, fields that refuse paste.
 5. Use real content (product screenshots, numbers, specific use cases). If content is missing, leave an honest placeholder and say so instead of inventing claims.
 6. Run the dev server and `ui-refiner scan http://127.0.0.1:<port> --source src`. Fix strong and moderate signals that are not deliberate, plus contrast/label/overflow issues. Rerun the same scan after each round; it compares with the previous scan automatically, so resolved and new signals are explicit. At most two fix-and-rescan rounds; then report what remains and why. Then run `ui-refiner stress http://127.0.0.1:<port>` and fix its broken rows: a screen built against its own demo copy breaks first on a longer label, a long email or a phone number with an extension.
 7. Look at the screenshots before claiming the result is done.
