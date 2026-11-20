@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>酒井酒造 オンラインストア｜兵庫の蔵元 明治四年創業</title>
+<meta name="description" content="兵庫県の蔵元・酒井酒造の公式オンラインストア。純米大吟醸、純米酒、季節限定酒、ギフトを蔵から直接お届けします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Shippori+Mincho:wght@600&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Shippori+Mincho:wght@600&amp;display=swap"></noscript>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<!-- Fictional client for the theme sample. Company, product names, volumes and prices are sample values, not real products. -->
+
+<div class="topline">
+  <div class="wrap">
+    <p class="topline__note">税込11,000円以上のご注文で送料無料</p>
+    <ul>
+      <li class="topline__wide"><a href="#guide">送料・お届けについて</a></li>
+      <li><a href="#guide">ご利用ガイド</a></li>
+      <li><button type="button">ログイン</button></li>
+      <li><button type="button">お気に入り</button></li>
+      <li><button type="button" class="cart-link" aria-label="カート（0点）">カート<span class="cart-count" aria-hidden="true">0</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="logo__name">酒井酒造</span>
+      <span class="logo__sub">兵庫の蔵元 オンラインストア</span>
+    </a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#products">商品一覧</a></li>
+        <li><a href="#gift">ギフト</a></li>
+        <li><a href="#story">蔵の物語</a></li>
+        <li><a href="#shop">店舗情報</a></li>
+        <li><a href="#news">お知らせ</a></li>
+      </ul>
+    </nav>
+    <form class="search" role="search" action="#" method="get">
+      <label class="visually-hidden" for="q">商品を検索</label>
+      <input id="q" name="q" type="search" placeholder="商品名・キーワード">
+      <button type="submit">検索</button>
+    </form>
+  </div>
+</header>
+
+<main>
+
+  <section class="mv" aria-roledescription="carousel" aria-label="特集">
+    <div class="wrap">
+      <div class="mv__viewport">
+        <div class="mv__track" id="mv-track">
+          <div class="mv__slide" id="mv-1" aria-roledescription="slide" aria-label="1 / 2">
+            <img class="photo" data-generated
+              src="assets/generated/hero-brewer.jpg" style="object-position: 60% 50%;"
+              sizes="(max-width: 767px) 100vw, 1140px" width="1920" height="840" fetchpriority="high"
+              alt="木桶の中のもろみを手で確かめる蔵人。奥に杉の樽が積まれている">
+            <div class="mv__line">
+              <h1>冬の蔵で、<br>今年の酒を仕込んでいます。</h1>
+              <p class="mv__sub">純米 新酒しぼりたて　12月上旬より順次お届け</p>
+            </div>
+          </div>
+          <div class="mv__slide" id="mv-2" aria-roledescription="slide" aria-label="2 / 2">
+            <img class="photo" data-generated loading="lazy"
+              src="assets/generated/pairing.jpg" style="object-position: 50% 60%;"
+              sizes="(max-width: 767px) 100vw, 1140px" width="1600" height="1100"
+              alt="木のカウンターに、酒を注いだ盃と刺身、焼き魚の皿">
+            <div class="mv__line">
+              <p>瀬戸内の肴と、<br>ひやおろしを一献。</p>
+              <p class="mv__sub">季節限定 純米ひやおろし　数量限定で販売中</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mv__dots" role="group" aria-label="スライドを選ぶ">
+        <button type="button" aria-controls="mv-1" aria-current="true"><span class="visually-hidden">スライド1</span></button>
+        <button type="button" aria-controls="mv-2" aria-current="false"><span class="visually-hidden">スライド2</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reco" aria-labelledby="reco-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="reco-title">おすすめコンテンツ <span class="en">PICK UP</span></h2>
+      </div>
+      <ul class="reco__row">
+        <li class="reco__card">
+          <a href="#products">
+            <div class="frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-3.jpg" style="object-position: 50% 55%;" sizes="(max-width: 767px) 62vw, 212px" width="1200" height="1200" alt="琥珀色の瓶と白い盃"></div>
+            <span class="tag tag--limited">限定</span>
+            <h3>秋の純米ひやおろし、今年も出荷しました</h3>
+            <p>ひと夏寝かせて丸くなった味わいです。</p>
+          </a>
+        </li>
+        <li class="reco__card">
+          <div>
+            <div class="frame"><img class="photo" data-generated loading="lazy" src="assets/generated/pairing.jpg" sizes="(max-width: 767px) 62vw, 212px" width="1600" height="1100" alt="盃と刺身、焼き魚"></div>
+            <span class="tag">読みもの</span>
+            <h3>魚料理に合わせるなら、純米酒をぬる燗で</h3>
+            <p>白身の刺身から焼き魚まで、蔵人の家の食卓から。</p>
+          </div>
+        </li>
+        <li class="reco__card">
+          <a href="#story">
+            <div class="frame"><img class="photo" data-generated loading="lazy" src="assets/generated/hero-brewer.jpg" style="object-position: 62% 50%;" sizes="(max-width: 767px) 62vw, 212px" width="1920" height="840" alt="もろみを確かめる蔵人"></div>
+            <span class="tag">蔵だより</span>
+            <h3>十一月、仕込みがはじまりました</h3>
+            <p>米を洗い、蒸して、麹をつくる。冬の蔵の一日。</p>
+          </a>
+        </li>
+        <li class="reco__card">
+          <div>
+            <div class="frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" style="object-position: 50% 50%;" sizes="(max-width: 767px) 62vw, 212px" width="1200" height="1200" alt="透明な瓶の日本酒"></div>
+            <span class="tag">読みもの</span>
+            <h3>冷やと燗、温度で変わる味わい</h3>
+            <p>同じ一本を、5℃から50℃まで飲みくらべ。</p>
+          </div>
+        </li>
+        <li class="reco__card">
+          <a href="#shop">
+            <div class="frame"><img class="photo" data-generated loading="lazy" src="assets/generated/brewery.jpg" style="object-position: 50% 40%;" sizes="(max-width: 767px) 62vw, 212px" width="1600" height="1100" alt="杉玉の下がる白壁の酒蔵の入口"></div>
+            <span class="tag">店舗情報</span>
+            <h3>蔵の直売所でも、試飲とお買い物ができます</h3>
+            <p>営業日と場所のご案内。</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section products" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="products-title">商品一覧 <span class="en">PRODUCTS</span></h2>
+        <p>価格はすべて税込です。</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="カテゴリー">
+        <button type="button" role="tab" aria-selected="true" data-filter="all">すべて</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="daiginjo">純米大吟醸</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="junmai">純米酒</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="season">季節限定</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="gift">ギフト</button>
+      </div>
+
+      <!-- Sample products: names, volumes and prices are made up for the theme sample. -->
+      <ul class="grid" role="tabpanel" aria-labelledby="products-title">
+        <li class="product" data-cat="daiginjo">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-1.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="緑色の一升瓶"></div>
+          <div class="product__tags"><span class="tag">純米大吟醸</span></div>
+          <h3>純米大吟醸 山田錦 四割磨き</h3>
+          <p class="product__vol">1800ml</p>
+          <p class="price">8,250円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="daiginjo">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-1.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="緑色の四合瓶"></div>
+          <div class="product__tags"><span class="tag">純米大吟醸</span></div>
+          <h3>純米大吟醸 山田錦 四割磨き</h3>
+          <p class="product__vol">720ml</p>
+          <p class="price">4,400円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="daiginjo">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="透明な四合瓶"></div>
+          <div class="product__tags"><span class="tag">純米大吟醸</span></div>
+          <h3>純米大吟醸 五割磨き</h3>
+          <p class="product__vol">720ml</p>
+          <p class="price">3,080円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="junmai">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="透明な一升瓶"></div>
+          <div class="product__tags"><span class="tag">純米酒</span></div>
+          <h3>特別純米酒</h3>
+          <p class="product__vol">1800ml</p>
+          <p class="price">3,630円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="junmai">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="透明な四合瓶"></div>
+          <div class="product__tags"><span class="tag">純米酒</span></div>
+          <h3>特別純米酒</h3>
+          <p class="product__vol">720ml</p>
+          <p class="price">1,980円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="junmai">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-3.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="琥珀色の瓶と盃"></div>
+          <div class="product__tags"><span class="tag">純米酒</span><span class="tag tag--new">新商品</span></div>
+          <h3>純米酒 蔵内熟成 三年</h3>
+          <p class="product__vol">720ml</p>
+          <p class="price">2,750円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="season">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-3.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="琥珀色の瓶と盃"></div>
+          <div class="product__tags"><span class="tag">季節限定</span><span class="tag tag--limited">限定</span></div>
+          <h3>純米ひやおろし</h3>
+          <p class="product__vol">720ml</p>
+          <p class="price">2,200円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="season">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="透明な四合瓶"></div>
+          <div class="product__tags"><span class="tag">季節限定</span><span class="tag tag--limited">限定</span></div>
+          <h3>純米 新酒しぼりたて 生原酒（予約）</h3>
+          <p class="product__vol">720ml</p>
+          <p class="price">2,090円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="gift">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-1.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="緑色の四合瓶"></div>
+          <div class="product__tags"><span class="tag">ギフト</span></div>
+          <h3>飲みくらべ二本セット 純米大吟醸・特別純米 化粧箱入</h3>
+          <p class="product__vol">720ml × 2本</p>
+          <p class="price">6,600円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+        <li class="product" data-cat="gift">
+          <div class="product__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-3.jpg" sizes="(max-width: 767px) 46vw, 210px" width="1200" height="1200" alt="琥珀色の小瓶と盃"></div>
+          <div class="product__tags"><span class="tag">ギフト</span></div>
+          <h3>小瓶三本セット</h3>
+          <p class="product__vol">300ml × 3本</p>
+          <p class="price">2,970円<small>（税込）</small></p>
+          <button class="button" type="button">カートに入れる</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gift" id="gift" aria-labelledby="gift-title">
+    <div class="wrap">
+      <div class="gift__photo frame">
+        <img class="photo" data-generated loading="lazy"
+          src="assets/generated/bottle-3.jpg"
+          sizes="(max-width: 767px) calc(100vw - 32px), 546px" width="1200" height="1200"
+          alt="琥珀色の瓶と白い盃">
+      </div>
+      <div class="gift__body">
+        <h2 id="gift-title">贈りものに、蔵の酒を。</h2>
+        <p>お歳暮、お年賀、お祝いに。化粧箱入りのセットのほか、どの商品もご注文時にギフト包装をお選びいただけます。</p>
+        <dl class="gift__options">
+          <div><dt>包装</dt><dd>和紙の包装紙でお包みします（1点につき110円・税込）</dd></div>
+          <div><dt>のし</dt><dd>御歳暮・御年賀・御祝・内祝・無地からお選びください。名入れもできます。</dd></div>
+          <div><dt>手提げ袋</dt><dd>ご希望の数をお付けします（無料）</dd></div>
+          <div><dt>お届け日</dt><dd>ご注文から3日後以降で日付を指定できます</dd></div>
+        </dl>
+        <a class="button button--line" href="#products" data-jump="gift">ギフト商品を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section story" id="story" aria-labelledby="story-title">
+    <div class="wrap">
+      <div class="story__head">
+        <span class="en">OUR STORY</span>
+        <h2 id="story-title">蔵の物語</h2>
+      </div>
+      <div class="story__photo frame">
+        <img class="photo" data-generated loading="lazy"
+          src="assets/generated/brewery.jpg" style="object-position: 50% 45%;"
+          sizes="(max-width: 767px) calc(100vw - 32px), 1140px" width="1600" height="1100"
+          alt="杉玉が下がる、白壁と瓦屋根の酒蔵">
+      </div>
+      <div class="story__body">
+        <dl class="story__facts">
+          <div><dt>創業</dt><dd>1871年（明治4年）</dd></div>
+          <div><dt>所在地</dt><dd>兵庫県</dd></div>
+          <div><dt>仕込み水</dt><dd>蔵の井戸水</dd></div>
+          <div><dt>酒米</dt><dd>兵庫県産 山田錦ほか</dd></div>
+        </dl>
+        <div class="story__text">
+          <h3>水と米と、冬の仕事。</h3>
+          <p>酒井酒造は明治四年、兵庫県のこの町で酒造りをはじめました。仕込みに使うのは、創業のころから蔵の敷地で汲みつづけている井戸の水です。山から時間をかけて下りてきた水は、口あたりがやわらかく、酒の味を静かに支えてくれます。</p>
+          <p>米は、地元の農家さんと話をしながら選んだ兵庫県産の山田錦が中心です。純米大吟醸は四割まで、純米酒は六割まで磨き、米の味わいがどこまで残るかを見ながら、一つひとつの仕込みを決めています。</p>
+          <p>仕込みは毎年十一月から三月まで。蔵人が交代で泊まり込み、蒸し米と麹ともろみの様子を確かめます。醸造アルコールは加えず、すべて純米でお造りしています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking" aria-labelledby="ranking-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="ranking-title">人気ランキング <span class="en">RANKING</span></h2>
+        <p>2026年10月の販売数より</p>
+      </div>
+      <ol>
+        <li class="rank">
+          <span class="rank__no">1</span>
+          <div class="rank__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-1.jpg" sizes="(max-width: 767px) 88px, 210px" width="1200" height="1200" alt=""></div>
+          <h3>純米大吟醸 山田錦 四割磨き 720ml</h3>
+          <span class="price">4,400円<small>（税込）</small></span>
+        </li>
+        <li class="rank">
+          <span class="rank__no">2</span>
+          <div class="rank__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-3.jpg" sizes="(max-width: 767px) 88px, 210px" width="1200" height="1200" alt=""></div>
+          <h3>純米ひやおろし 720ml</h3>
+          <span class="price">2,200円<small>（税込）</small></span>
+        </li>
+        <li class="rank">
+          <span class="rank__no">3</span>
+          <div class="rank__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" sizes="(max-width: 767px) 88px, 210px" width="1200" height="1200" alt=""></div>
+          <h3>特別純米酒 1800ml</h3>
+          <span class="price">3,630円<small>（税込）</small></span>
+        </li>
+        <li class="rank">
+          <span class="rank__no">4</span>
+          <div class="rank__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-1.jpg" sizes="(max-width: 767px) 88px, 210px" width="1200" height="1200" alt=""></div>
+          <h3>飲みくらべ二本セット 化粧箱入</h3>
+          <span class="price">6,600円<small>（税込）</small></span>
+        </li>
+        <li class="rank">
+          <span class="rank__no">5</span>
+          <div class="rank__img frame"><img class="photo" data-generated loading="lazy" src="assets/generated/bottle-2.jpg" sizes="(max-width: 767px) 88px, 210px" width="1200" height="1200" alt=""></div>
+          <h3>純米大吟醸 五割磨き 720ml</h3>
+          <span class="price">3,080円<small>（税込）</small></span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section news" id="news" aria-labelledby="news-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="news-title">お知らせ <span class="en">NEWS</span></h2>
+      </div>
+      <ul class="news__list">
+        <li class="news__row"><time datetime="2026-11-18">2026.11.18</time><span class="tag">お届け</span><p>年末年始の発送スケジュールについて</p></li>
+        <li class="news__row"><time datetime="2026-11-10">2026.11.10</time><span class="tag tag--new">新商品</span><p>純米 新酒しぼりたて 生原酒のご予約を受け付けています</p></li>
+        <li class="news__row"><time datetime="2026-11-01">2026.11.01</time><span class="tag">店舗</span><p>仕込み期間中（11月〜3月）の蔵見学はお休みします。直売所は通常どおり営業します</p></li>
+        <li class="news__row"><time datetime="2026-09-15">2026.09.15</time><span class="tag tag--limited">限定</span><p>季節限定 純米ひやおろしの販売をはじめました</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="guide" id="guide" aria-labelledby="guide-title">
+    <h2 id="guide-title" class="visually-hidden">ご利用ガイド</h2>
+    <div class="wrap">
+      <div><h3>送料</h3><p>全国一律880円（税込）。税込11,000円以上のご注文で送料無料。一升瓶は1箱6本まで同梱できます。</p></div>
+      <div><h3>お届け</h3><p>ご注文から3営業日以内に発送します。生酒はクール便でお届けします（別途330円）。</p></div>
+      <div><h3>お支払い</h3><p>クレジットカード、代金引換、銀行振込（前払い）がご利用いただけます。</p></div>
+      <div><h3>年齢の確認</h3><p>20歳未満の方への酒類の販売はいたしません。ご注文時に生年月日をおうかがいします。</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__top">
+      <div id="shop">
+        <p class="site-footer__name">酒井酒造株式会社</p>
+        <p>〒000-0000 兵庫県○○市○○町1-2-3</p>
+        <p>フリーダイヤル <a href="tel:0120000000">0120-000-000</a></p>
+        <p>直売所 10:00〜17:00（水曜定休）</p>
+      </div>
+      <nav aria-label="フッターメニュー">
+        <h3>ショッピング</h3>
+        <ul>
+          <li><a href="#products">商品一覧</a></li>
+          <li><a href="#gift">ギフト</a></li>
+          <li><a href="#guide">ご利用ガイド</a></li>
+          <li><a href="#guide">送料・お届けについて</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="蔵について">
+        <h3>酒井酒造について</h3>
+        <ul>
+          <li><a href="#story">蔵の物語</a></li>
+          <li><a href="#shop">店舗情報</a></li>
+          <li><a href="#news">お知らせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__notice">
+      <!-- In a real store these two lines link to the client's own legal pages. -->
+      <ul class="legal">
+        <li>特定商取引法に基づく表記</li>
+        <li>プライバシーポリシー</li>
+      </ul>
+      <p class="drinking-age">20歳未満の飲酒は法律で禁止されています。</p>
+      <p>妊娠中や授乳期の飲酒は、胎児・乳児の発育に悪影響を与えるおそれがあります。</p>
+    </div>
+    <div class="site-footer__bottom">
+      <p>掲載画像はこのテーマ用にAIで生成した見本（Grok Imagine）で、実在の蔵元や商品を撮った写真ではありません。社名・商品名・価格も見本です。</p>
+      <p>&copy; 酒井酒造株式会社</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    // main visual dots
+    var track = document.getElementById('mv-track');
+    var dots = Array.prototype.slice.call(document.querySelectorAll('.mv__dots button'));
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+      });
+    });
+    track.addEventListener('scroll', function () {
+      var i = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach(function (d, j) { d.setAttribute('aria-current', String(i === j)); });
+    }, { passive: true });
+
+    // category tabs
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+    var products = Array.prototype.slice.call(document.querySelectorAll('.product'));
+    function select(filter) {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.filter === filter)); });
+      products.forEach(function (p) { p.hidden = filter !== 'all' && p.dataset.cat !== filter; });
+    }
+    tabs.forEach(function (t) { t.addEventListener('click', function () { select(t.dataset.filter); }); });
+    document.querySelectorAll('[data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () { select(a.dataset.jump); });
+    });
+
+    // cart count
+    var count = 0;
+    var badge = document.querySelector('.cart-count');
+    var cart = document.querySelector('.cart-link');
+    document.querySelectorAll('.product .button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        count += 1;
+        badge.textContent = count;
+        cart.setAttribute('aria-label', 'カート（' + count + '点）');
+        b.classList.add('is-added');
+        b.textContent = 'カートに追加しました';
+      });
+    });
+  })();
+</script>
+</body>
+</html>

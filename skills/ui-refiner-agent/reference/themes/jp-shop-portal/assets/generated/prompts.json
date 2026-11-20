@@ -1,0 +1,26 @@
+{
+  "hero-brewer": {
+    "model": "grok-imagine",
+    "prompt": "A wide photograph inside a dim traditional Japanese sake brewery. A Japanese brewer in plain white work clothes leans over a large wooden sake vat, checking the mash, his face turned down toward the vat rather than the camera. Warm low side light, a little steam, worn wood staves, cedar barrels behind him. Clothing and walls are free of marks and lettering."
+  },
+  "bottle-1": {
+    "model": "grok-imagine",
+    "prompt": "A studio product photograph of one tall dark-green glass sake bottle standing centered on a pure white seamless background. It has a completely blank white paper label with no printing at all, a plain dark cap, and soft even studio light with a faint contact shadow. No text, no crest and no lettering anywhere."
+  },
+  "bottle-2": {
+    "model": "grok-imagine",
+    "prompt": "A studio product photograph of one clear glass sake bottle centered on a pure white seamless background. The bottle holds pale transparent liquid and wears a completely blank cream paper label with no printing. Soft studio light, a faint contact shadow, a plain cap. No text and no lettering."
+  },
+  "bottle-3": {
+    "model": "grok-imagine",
+    "prompt": "A studio product photograph on a pure white seamless background. A small amber glass sake bottle with a completely blank cream label stands beside a small empty ceramic ochoko cup. Soft studio light, faint contact shadows, no printing and no lettering on the bottle, the label or the cup."
+  },
+  "pairing": {
+    "model": "grok-imagine",
+    "prompt": "A natural-light food photograph on a worn wooden counter. A small ceramic cup of pale sake sits beside a few slices of fresh sashimi and a small grilled fish on a plain ceramic plate. Side window light, real glaze, a little moisture on the fish, shallow depth of field. No wrappers, no menus and no lettering."
+  },
+  "brewery": {
+    "model": "grok-imagine",
+    "prompt": "An afternoon photograph of the white-plaster exterior of an old Japanese sake brewery. A large cedar-needle ball, a sugidama, hangs above a plain wooden entrance, with an aged dark tile roof and a quiet empty street. Warm side light, a little weathering and hairline cracks in the plaster, no people. The walls and the cedar ball carry no characters and no lettering."
+  }
+}

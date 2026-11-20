@@ -1,0 +1,26 @@
+{
+  "work-hero": {
+    "model": "grok-imagine",
+    "prompt": "A photographic still life of brand packaging on a matte black surface under one soft overhead light. Kraft boxes, a tall black box, two dark glass dropper bottles and two thick cards. Every piece carries only a plain circle or a half-circle in cream, nothing shaped like a letter. Real paper grain, quiet glass, slightly uneven spacing, deep shadow around the light. No text and no logos."
+  },
+  "work-1": {
+    "model": "grok-imagine",
+    "prompt": "A portrait photograph of three vertical posters in a row on a raw concrete wall in a dim corridor. Each poster is only abstract geometry, blocks and arcs in charcoal, rust and off-white, with no letters of any kind. One overhead practical light, a little scuff on the concrete, and a slight paper curl at one corner. The posters fill most of the frame."
+  },
+  "work-2": {
+    "model": "grok-imagine",
+    "prompt": "A photograph of handmade ceramic tableware on a dark wooden table. A few bowls and a plate each carry one small abstract brand mark, a simple geometric symbol pressed in the clay, with no letters. Low warm side light, uneven glaze, a few water spots, and a dark quiet background. No text anywhere."
+  },
+  "work-3": {
+    "model": "grok-imagine",
+    "prompt": "A photograph of a minimal brand installation inside a white-box gallery at night. The walls and floor are white, the room is dim, and three large flat panels in deep green, clay and off-white stand at slight angles under one soft spotlight. Panel surfaces are plain colour with no marks. A little dust in the beam, realistic perspective, no letters and no logos."
+  },
+  "work-4": {
+    "model": "grok-imagine",
+    "prompt": "A close portrait photograph of an adult hand holding a phone in a dark room. The screen shows only a minimal app of large abstract rounded shapes in muted blue and sand on a near-black background, with no words, no numbers and no letter-like icons. The room falls into shadow, realistic skin texture, a faint reflection on the glass."
+  },
+  "studio": {
+    "model": "grok-imagine",
+    "prompt": "A night photograph inside a small Seoul design studio. Two Korean designers sit at separate desks, faces turned toward generic black monitors rather than the camera. Each screen shows only a grid of abstract grey and sand colour blocks, with no words. The monitor bezels are plain matte black with no logos. Desk lamps, a few blank white sheets, dark city windows, a bare wall, realistic low light. No logos and no lettering anywhere."
+  }
+}

@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한라농원 · 제주 산지직송 감귤·한라봉·고구마</title>
+<meta name="description" content="제주 한라농원 산지직송 몰. 노지 감귤, 한라봉, 천혜향, 꿀고구마와 선물세트를 농장에서 바로 보내 드립니다. 오후 2시 전 주문 당일 출고, 3만 원 이상 무료배송.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<!-- Sample page for the kr-shop-portal theme. 한라농원 is a fictional client; every product, price, discount,
+     review count, review, name and notice on this page is a made-up sample, not a real offer. -->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.2 11h10.4l2-8H6.2"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="16.5" cy="19" r="1.4"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c.8-3.8 3.8-5.8 7.5-5.8s6.7 2 7.5 5.8"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
+</svg>
+
+<!-- 1. Top promise line -->
+<div class="topline">
+  <div class="wrap">
+    <p class="promise"><strong>오후 2시 전 주문 당일 출고</strong> · 3만 원 이상 무료배송</p>
+    <div class="member">
+      <button class="text-button" type="button">로그인</button>
+      <button class="text-button" type="button">회원가입</button>
+      <a href="#service">고객센터</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Header -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="name">한라<em>농원</em></span>
+      <span class="tag">제주 서귀포 산지직송</span>
+    </a>
+    <div class="search">
+      <form role="search" action="#season" onsubmit="return false">
+        <label class="visually-hidden" for="q">상품 검색</label>
+        <input id="q" type="search" name="q" placeholder="한라봉, 감귤 5kg처럼 찾아보세요" autocomplete="off">
+        <button type="submit" aria-label="검색"><svg class="icon"><use href="#i-search"/></svg></button>
+      </form>
+      <dl class="recent">
+        <dt>최근 검색어</dt>
+        <dd><a href="#season">한라봉</a></dd>
+        <dd><a href="#season">감귤 5kg</a></dd>
+        <dd><a href="#gift">선물세트</a></dd>
+      </dl>
+    </div>
+    <div class="quick">
+      <button type="button"><svg class="icon"><use href="#i-heart"/></svg>찜</button>
+      <button type="button" id="cart-link"><svg class="icon"><use href="#i-cart"/></svg>장바구니<span class="count" id="cart-count" aria-label="담긴 상품 0개">0</span></button>
+      <button type="button"><svg class="icon"><use href="#i-user"/></svg>마이페이지</button>
+    </div>
+  </div>
+</header>
+
+<!-- 3. Category bar with mega panel -->
+<div class="catbar">
+  <div class="wrap">
+    <button class="all-cat" type="button" aria-expanded="false" aria-controls="mega">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span><span>전체<span class="label-full"> 카테고리</span></span>
+    </button>
+    <nav aria-label="주 메뉴">
+      <ul>
+        <li><a href="#season">신상품</a></li>
+        <li><a href="#best">베스트</a></li>
+        <li><a href="#season">제철</a></li>
+        <li><a href="#gift">선물세트</a></li>
+        <li><a href="#banner">이벤트</a></li>
+      </ul>
+    </nav>
+    <p class="ship-note">오늘 14:00까지 주문하면 오늘 출고</p>
+  </div>
+  <div class="mega" id="mega" hidden>
+    <div class="wrap">
+      <div>
+        <h3>감귤</h3>
+        <ul>
+          <li><a href="#season">노지 감귤</a></li>
+          <li><a href="#season">소포장 2kg</a></li>
+          <li><a href="#best">못난이 감귤</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>만감류</h3>
+        <ul>
+          <li><a href="#season">한라봉</a></li>
+          <li><a href="#season">천혜향</a></li>
+          <li><a href="#best">가정용 흠과</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>고구마</h3>
+        <ul>
+          <li><a href="#season">꿀고구마</a></li>
+          <li><a href="#best">한입 고구마</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>선물세트</h3>
+        <ul>
+          <li><a href="#gift">혼합 선물세트</a></li>
+          <li><a href="#gift">한라봉 선물세트</a></li>
+          <li><a href="#gift">천혜향 선물세트</a></li>
+        </ul>
+      </div>
+      <p class="mega-note"><strong>수확한 날 보내 드립니다</strong>감귤은 11월부터 2월까지, 한라봉과 천혜향은 2월부터 4월까지 농장에서 바로 따서 보냅니다.</p>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- 4. Main banner slider -->
+<section class="banner" id="banner" aria-roledescription="carousel" aria-label="이벤트 배너">
+  <div class="wrap slider">
+    <div class="slides" aria-live="off">
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3개 중 1번째">
+        <img src="assets/generated/banner-farm.jpg" width="1920" height="800" fetchpriority="high"
+             sizes="(max-width: 767px) 100vw, 1200px"
+             alt="현무암 돌담 옆으로 귤이 주렁주렁 달린 겨울 감귤밭" data-generated>
+        <div class="slide-caption">
+          <span class="eyebrow">2026 노지 감귤 첫 수확</span>
+          <h2>올겨울 첫 감귤,<br>따서 바로 보냅니다</h2>
+          <p>서귀포 남원 농장에서 그날 딴 감귤만 포장합니다.</p>
+          <span class="period">2026.11.20 – 12.31 · 첫 구매 5% 할인</span>
+        </div>
+      </div>
+      <div class="slide slide--product" role="group" aria-roledescription="slide" aria-label="3개 중 2번째" hidden>
+        <img src="assets/generated/giftset.jpg" width="1200" height="1200" loading="lazy"
+             sizes="(max-width: 767px) 100vw, 600px"
+             alt="나무 상자에 담긴 한라봉 두 개와 잎 달린 감귤" data-generated>
+        <div class="slide-caption">
+          <span class="eyebrow">설 선물세트 사전 예약</span>
+          <h2>한라봉·감귤 선물세트<br>원하는 날짜에 받으세요</h2>
+          <p>보내는 날을 고르면 그 주에 딴 과일로 채웁니다.</p>
+          <span class="period">2026.12.1 – 2027.1.31</span>
+        </div>
+      </div>
+      <div class="slide slide--product" role="group" aria-roledescription="slide" aria-label="3개 중 3번째" hidden>
+        <img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy"
+             sizes="(max-width: 767px) 100vw, 600px"
+             alt="바구니에 담긴 껍질 붉은 제주 고구마" data-generated>
+        <div class="slide-caption">
+          <span class="eyebrow">겨울 꿀고구마</span>
+          <h2>숙성 3주,<br>달아진 고구마</h2>
+          <p>캐낸 뒤 저온 창고에서 3주 숙성해 보냅니다.</p>
+          <span class="period">2026.11.20 – 2027.2.28</span>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button type="button" data-step="-1" aria-label="이전 배너"><svg class="icon"><use href="#i-prev"/></svg></button>
+      <span class="counter" aria-live="polite"><b id="slide-now">1</b> / <span id="slide-total">3</span></span>
+      <button type="button" data-step="1" aria-label="다음 배너"><svg class="icon"><use href="#i-next"/></svg></button>
+      <button type="button" id="slide-pause" aria-label="배너 자동 넘김 멈춤"><svg class="icon"><use href="#i-pause"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Round category shortcuts -->
+<nav class="shortcuts" aria-label="상품 분류 바로가기">
+  <div class="wrap">
+    <ul>
+      <li><a href="#season"><span class="disc"><img src="assets/generated/tangerine.jpg" width="1200" height="1200" loading="lazy" sizes="96px" alt="" data-generated></span><span class="label">감귤</span></a></li>
+      <li><a href="#season"><span class="disc"><img src="assets/generated/hallabong.jpg" width="1200" height="1200" loading="lazy" sizes="96px" alt="" data-generated></span><span class="label">한라봉</span></a></li>
+      <li><a href="#season"><span class="disc" aria-hidden="true">천혜향</span><span class="label">천혜향</span></a></li>
+      <li><a href="#season"><span class="disc"><img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy" sizes="96px" alt="" data-generated></span><span class="label">고구마</span></a></li>
+      <li><a href="#gift"><span class="disc"><img src="assets/generated/giftset.jpg" width="1200" height="1200" loading="lazy" sizes="96px" alt="" data-generated></span><span class="label">선물세트</span></a></li>
+      <li><a href="#best"><span class="disc" aria-hidden="true">BEST</span><span class="label">베스트</span></a></li>
+      <li><a href="#story"><span class="disc"><img src="assets/generated/farmer.jpg" width="1600" height="1100" loading="lazy" sizes="96px" alt="" data-generated></span><span class="label">농장 이야기</span></a></li>
+      <li><a href="#reviews"><span class="disc" aria-hidden="true">후기</span><span class="label">구매 후기</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 6a. Product grid: 오늘의 제철 -->
+<section class="section" id="season" aria-labelledby="season-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="season-title">오늘의 제철</h2>
+        <p class="lede">지금 농장에서 따고 캐는 것만 올립니다.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="제철 상품 분류" data-grid="season-grid">
+      <button type="button" role="tab" aria-selected="true" data-filter="all">전체</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="citrus">감귤</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="mandarin">한라봉·천혜향</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="potato">고구마</button>
+    </div>
+    <ul class="products" id="season-grid">
+      <li class="product" data-cat="citrus">
+        <div class="product-thumb">
+          <img src="assets/generated/tangerine.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="잎 달린 제주 감귤이 가득 담긴 종이 상자" data-generated>
+          <span class="sale-tag">특가</span>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 노지 감귤 3kg 로열과 (S~M 크기)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>19,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>15%</span><strong class="price">16,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.8</span><span>리뷰 1,284</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="citrus">
+        <div class="product-thumb">
+          <img src="assets/generated/tangerine.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="잎 달린 제주 감귤이 가득 담긴 종이 상자" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 노지 감귤 5kg 로열과 (S~M 크기)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>29,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>20%</span><strong class="price">23,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.8</span><span>리뷰 2,031</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li><li>당일출고</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="mandarin">
+        <div class="product-thumb">
+          <img src="assets/generated/hallabong.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="꼭지가 볼록 솟은 한라봉 세 개" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 한라봉 2kg (6~8과)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>33,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>12%</span><strong class="price">29,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.9</span><span>리뷰 642</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="mandarin">
+        <div class="product-thumb">
+          <img src="assets/generated/hallabong.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="꼭지가 볼록 솟은 한라봉 세 개" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 한라봉 3kg (9~12과)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>48,000원</del><span class="rate"><span class="visually-hidden">할인율 </span>13%</span><strong class="price">41,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.9</span><span>리뷰 418</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="mandarin">
+        <div class="product-thumb">
+          <div class="thumb-empty" role="img" aria-label="천혜향 상품 사진 준비 중"><span><strong>천혜향</strong>사진 준비 중</span></div>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 천혜향 2kg (6~9과) 2월 첫 수확분 예약</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>36,000원</del><span class="rate"><span class="visually-hidden">할인율 </span>10%</span><strong class="price">32,400<small>원</small></strong></p>
+          <p class="product-meta"><span>예약 상품 · 2월 둘째 주 출고</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>예약판매</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="potato">
+        <div class="product-thumb">
+          <img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="바구니에 담긴 껍질 붉은 제주 고구마" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 꿀고구마 3kg 중 크기</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>17,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>16%</span><strong class="price">14,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.7</span><span>리뷰 873</span></p>
+          <ul class="badges"><li>산지직송</li><li>3주 숙성</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="potato">
+        <div class="product-thumb">
+          <img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="바구니에 담긴 껍질 붉은 제주 고구마" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 꿀고구마 5kg 중 크기</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>26,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>18%</span><strong class="price">21,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.7</span><span>리뷰 1,105</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li><li>3주 숙성</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="citrus">
+        <div class="product-thumb">
+          <img src="assets/generated/tangerine.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="잎 달린 제주 감귤이 가득 담긴 종이 상자" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 노지 감귤 2kg 소포장 (1~2인 가구용)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>14,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>13%</span><strong class="price">12,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.8</span><span>리뷰 356</span></p>
+          <ul class="badges"><li>산지직송</li><li>당일출고</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6b. Product grid: 베스트 -->
+<section class="section" id="best" aria-labelledby="best-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="best-title">베스트</h2>
+        <p class="lede">이번 주 가장 많이 담긴 상품입니다.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="베스트 상품 분류" data-grid="best-grid">
+      <button type="button" role="tab" aria-selected="true" data-filter="all">전체</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="fruit">과일</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="potato">고구마</button>
+    </div>
+    <ul class="products" id="best-grid">
+      <li class="product" data-cat="fruit">
+        <div class="product-thumb">
+          <span class="rank">1</span>
+          <img src="assets/generated/tangerine.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="잎 달린 제주 감귤이 가득 담긴 종이 상자" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">못난이 감귤 10kg 가정용 (크기 섞임, 겉에 흠집)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>34,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>26%</span><strong class="price">25,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.6</span><span>리뷰 3,412</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="fruit">
+        <div class="product-thumb">
+          <span class="rank">2</span>
+          <img src="assets/generated/hallabong.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="꼭지가 볼록 솟은 한라봉 세 개" data-generated>
+          <span class="sale-tag">특가</span>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">한라봉 가정용 3kg (껍질 흠과, 맛은 같아요)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>39,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>25%</span><strong class="price">29,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.7</span><span>리뷰 1,920</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>산지직송</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="potato">
+        <div class="product-thumb">
+          <span class="rank">3</span>
+          <img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="바구니에 담긴 껍질 붉은 제주 고구마" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">제주 꿀고구마 10kg 크기 섞임</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>45,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>22%</span><strong class="price">35,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.7</span><span>리뷰 1,566</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>3주 숙성</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="potato">
+        <div class="product-thumb">
+          <span class="rank">4</span>
+          <img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="바구니에 담긴 껍질 붉은 제주 고구마" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">한입 꿀고구마 2kg 작은 크기 (에어프라이어용)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>12,900원</del><span class="rate"><span class="visually-hidden">할인율 </span>15%</span><strong class="price">10,900<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.8</span><span>리뷰 728</span></p>
+          <ul class="badges"><li>산지직송</li><li>3주 숙성</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6c. Product grid: 선물세트 -->
+<section class="section" id="gift" aria-labelledby="gift-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="gift-title">선물세트</h2>
+        <p class="lede">나무 상자에 담고 받는 분 이름으로 보내 드립니다.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="선물세트 가격대" data-grid="gift-grid">
+      <button type="button" role="tab" aria-selected="true" data-filter="all">전체</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="under">4만 원 이하</button>
+      <button type="button" role="tab" aria-selected="false" data-filter="over">4만 원 초과</button>
+    </div>
+    <ul class="products" id="gift-grid">
+      <li class="product" data-cat="under">
+        <div class="product-thumb">
+          <img src="assets/generated/giftset.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="나무 상자에 담긴 한라봉 두 개와 잎 달린 감귤" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">한라봉·감귤 혼합 선물세트 3kg 나무 상자</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>45,000원</del><span class="rate"><span class="visually-hidden">할인율 </span>13%</span><strong class="price">39,000<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.9</span><span>리뷰 512</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>보자기 포장</li><li>날짜 지정</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="over">
+        <div class="product-thumb">
+          <img src="assets/generated/giftset.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="나무 상자에 담긴 한라봉 두 개와 잎 달린 감귤" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">한라봉·감귤 혼합 선물세트 5kg 나무 상자</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>62,000원</del><span class="rate"><span class="visually-hidden">할인율 </span>11%</span><strong class="price">55,000<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.9</span><span>리뷰 287</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>보자기 포장</li><li>날짜 지정</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="over">
+        <div class="product-thumb">
+          <img src="assets/generated/hallabong.jpg" width="1200" height="1200" loading="lazy" sizes="(max-width: 767px) 50vw, 285px" alt="꼭지가 볼록 솟은 한라봉 세 개" data-generated>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">한라봉 선물세트 3kg 대과 (8~10과)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>49,000원</del><span class="rate"><span class="visually-hidden">할인율 </span>14%</span><strong class="price">42,000<small>원</small></strong></p>
+          <p class="product-meta"><span class="stars">★ 4.9</span><span>리뷰 194</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>보자기 포장</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+      <li class="product" data-cat="over">
+        <div class="product-thumb">
+          <div class="thumb-empty" role="img" aria-label="천혜향 선물세트 사진 준비 중"><span><strong>천혜향 선물세트</strong>사진 준비 중</span></div>
+          <button class="wish" type="button" aria-pressed="false" aria-label="찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">천혜향 선물세트 3kg (2월 출고 예약)</h3>
+          <p class="product-price"><del class="was"><span class="visually-hidden">정가 </span>52,000원</del><span class="rate"><span class="visually-hidden">할인율 </span>10%</span><strong class="price">46,800<small>원</small></strong></p>
+          <p class="product-meta"><span>예약 상품 · 2월 둘째 주 출고</span></p>
+          <ul class="badges"><li class="ship">무료배송</li><li>예약판매</li></ul>
+          <button class="cart-add" type="button"><svg class="icon"><use href="#i-cart"/></svg>장바구니 담기</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. Producer story -->
+<section class="section" id="story" aria-labelledby="story-title">
+  <div class="wrap story">
+    <img src="assets/generated/farmer.jpg" width="1600" height="1100" loading="lazy"
+         sizes="(max-width: 767px) calc(100vw - 32px), 680px"
+         alt="돌담 옆 감귤나무에서 귤을 따 바구니에 담는 농부" data-generated>
+    <div>
+      <span class="eyebrow">농장 이야기</span>
+      <h2 id="story-title">서귀포 남원, 돌담 안<br>삼대째 귤밭입니다</h2>
+      <p>아버지가 심은 나무에서 지금도 귤을 땁니다. 나무에서 충분히 익힌 뒤 따기 때문에 수확이 남들보다 일주일쯤 늦습니다. 주문이 들어온 날 따서 그날 상자에 담고, 상한 것은 포장 전에 손으로 골라냅니다.</p>
+      <p>받아 보시고 상한 과일이 있으면 사진 한 장만 보내 주세요. 그만큼 다시 보내 드립니다.</p>
+      <p class="producer"><strong>고성훈</strong><span>한라농원 대표 · 감귤 농사 28년</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Reviews -->
+<section class="section" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="reviews-title">구매 후기</h2>
+        <p class="lede">상품을 받아 보신 분들이 남긴 글입니다.</p>
+      </div>
+    </div>
+    <ul class="reviews">
+      <li class="review">
+        <span class="stars" role="img" aria-label="별점 5점 만점에 5점">★★★★★</span>
+        <blockquote><p>새콤달콤 딱 좋아요. 상자 열었을 때 잎이 싱싱하게 붙어 있어서 바로 딴 게 느껴졌어요. 아이들이 하루에 열 개씩 먹네요.</p></blockquote>
+        <p class="who">김*진 · 2026.11.18</p>
+        <p class="item"><img src="assets/generated/tangerine.jpg" width="1200" height="1200" loading="lazy" sizes="48px" alt="" data-generated><span>제주 노지 감귤 5kg 로열과</span></p>
+      </li>
+      <li class="review">
+        <span class="stars" role="img" aria-label="별점 5점 만점에 5점">★★★★★</span>
+        <blockquote><p>부모님 댁으로 보냈는데 나무 상자가 생각보다 고급스러워서 좋아하셨어요. 날짜 맞춰 도착했습니다.</p></blockquote>
+        <p class="who">이*수 · 2026.11.15</p>
+        <p class="item"><img src="assets/generated/giftset.jpg" width="1200" height="1200" loading="lazy" sizes="48px" alt="" data-generated><span>한라봉·감귤 혼합 선물세트 3kg</span></p>
+      </li>
+      <li class="review">
+        <span class="stars" role="img" aria-label="별점 5점 만점에 4점">★★★★<span class="off">★</span></span>
+        <blockquote><p>에어프라이어에 20분 돌리니 꿀이 흘러요. 크기가 조금씩 달라서 별 하나 뺐는데 맛은 정말 좋습니다.</p></blockquote>
+        <p class="who">박*희 · 2026.11.12</p>
+        <p class="item"><img src="assets/generated/sweetpotato.jpg" width="1200" height="1200" loading="lazy" sizes="48px" alt="" data-generated><span>한입 꿀고구마 2kg</span></p>
+      </li>
+      <li class="review">
+        <span class="stars" role="img" aria-label="별점 5점 만점에 5점">★★★★★</span>
+        <blockquote><p>흠과라고 해서 걱정했는데 껍질에 점 몇 개 있는 정도예요. 집에서 먹기엔 이게 훨씬 낫네요. 재구매합니다.</p></blockquote>
+        <p class="who">최*영 · 2026.11.09</p>
+        <p class="item"><img src="assets/generated/hallabong.jpg" width="1200" height="1200" loading="lazy" sizes="48px" alt="" data-generated><span>한라봉 가정용 3kg</span></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 9. Notices and service -->
+<section class="section section--band" id="service" aria-label="공지사항과 고객센터">
+  <div class="wrap info">
+    <div class="notices">
+      <h2>공지사항</h2>
+      <details>
+        <summary><span class="kind">배송</span><span class="title">12월 셋째 주부터 택배 물량이 많아 하루 늦게 도착할 수 있습니다</span><time datetime="2026-11-19">2026.11.19</time></summary>
+        <p>연말 택배 물량이 늘어나는 기간에는 출고 다음 날이 아닌 이틀 뒤 도착할 수 있습니다. 날짜가 중요한 선물은 날짜 지정 배송을 이용해 주세요.</p>
+      </details>
+      <details>
+        <summary><span class="kind">상품</span><span class="title">2026년 노지 감귤 수확을 시작했습니다</span><time datetime="2026-11-10">2026.11.10</time></summary>
+        <p>올해 감귤은 11월 10일부터 수확해 보내 드립니다. 첫 2주는 신맛이 조금 더 있고, 12월로 갈수록 단맛이 올라옵니다.</p>
+      </details>
+      <details>
+        <summary><span class="kind">안내</span><span class="title">상한 과일이 있을 때 다시 보내 드리는 방법</span><time datetime="2026-11-01">2026.11.01</time></summary>
+        <p>받으신 날로부터 3일 안에 상한 과일 사진을 고객센터 문자로 보내 주시면, 그만큼 다음 출고 때 다시 보내 드립니다.</p>
+      </details>
+      <details>
+        <summary><span class="kind">휴무</span><span class="title">매주 일요일과 공휴일은 출고하지 않습니다</span><time datetime="2026-10-20">2026.10.20</time></summary>
+        <p>토요일 오후 2시 이후와 일요일에 들어온 주문은 월요일에 출고합니다.</p>
+      </details>
+    </div>
+    <div class="service">
+      <h2>고객센터</h2>
+      <a class="phone" href="tel:000-0000-0000">000-0000-0000</a>
+      <dl>
+        <div><dt>평일</dt><dd>09:00 – 18:00 (점심 12:00 – 13:00)</dd></div>
+        <div><dt>토요일</dt><dd>09:00 – 13:00</dd></div>
+        <div><dt>휴무</dt><dd>일요일 · 공휴일</dd></div>
+      </dl>
+      <dl class="account">
+        <div><dt>무통장 입금</dt><dd>OO은행 000-000000-00</dd></div>
+        <div><dt>예금주</dt><dd>한라농원</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 10. Footer -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <div class="wrap">
+      <ul>
+        <li><button class="text-button" type="button">개인정보처리방침</button></li>
+        <li><button class="text-button" type="button">이용약관</button></li>
+        <li><a href="#service">고객센터</a></li>
+        <li><a href="#story">농장 소개</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap body">
+    <span class="brand-name">한라농원</span>
+    <p class="facts">
+      <span>상호 한라농원</span>
+      <span>대표 고성훈</span>
+      <span>제주특별자치도 서귀포시 남원읍 OO로 00</span>
+    </p>
+    <p class="facts">
+      <span>사업자등록번호 000-00-00000 <a href="#service">사업자정보 확인</a></span>
+      <span>통신판매업 신고 제0000-제주OO-0000호</span>
+      <span>고객센터 000-0000-0000</span>
+    </p>
+    <p class="escrow">고객님의 안전한 현금 거래를 위해 무통장 입금으로 결제하실 때 결제대금 예치(에스크로) 서비스를 이용하실 수 있습니다.</p>
+    <p class="credit">이 페이지는 테마 예시입니다. 한라농원과 대표, 상품, 가격, 후기는 모두 지어낸 것이며, 이미지는 AI(Grok Imagine)로 만든 예시로 실제 쇼핑몰 상품을 찍은 사진이 아닙니다.</p>
+    <p class="copy">© 한라농원</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    /* mega panel */
+    var allCat = document.querySelector(".all-cat");
+    var mega = document.getElementById("mega");
+    function setMega(open) {
+      allCat.setAttribute("aria-expanded", String(open));
+      mega.hidden = !open;
+    }
+    allCat.addEventListener("click", function () { setMega(mega.hidden); });
+    mega.addEventListener("click", function (e) { if (e.target.closest("a")) setMega(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !mega.hidden) { setMega(false); allCat.focus(); } });
+    document.addEventListener("click", function (e) { if (!mega.hidden && !e.target.closest(".catbar")) setMega(false); });
+
+    /* banner slider */
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var now = document.getElementById("slide-now");
+    var pause = document.getElementById("slide-pause");
+    var index = 0, timer = null;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function show(i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach(function (s, n) { s.hidden = n !== index; });
+      now.textContent = index + 1;
+    }
+    function play() { stop(); timer = setInterval(function () { show(index + 1); }, 5000); setPauseLabel(true); }
+    function stop() { if (timer) clearInterval(timer); timer = null; setPauseLabel(false); }
+    function setPauseLabel(playing) {
+      pause.setAttribute("aria-label", playing ? "배너 자동 넘김 멈춤" : "배너 자동 넘김 재생");
+      pause.querySelector("use").setAttribute("href", playing ? "#i-pause" : "#i-play");
+    }
+    document.querySelectorAll(".slider-controls [data-step]").forEach(function (b) {
+      b.addEventListener("click", function () { show(index + Number(b.getAttribute("data-step"))); if (timer) play(); });
+    });
+    pause.addEventListener("click", function () { if (timer) stop(); else play(); });
+    if (!reduce) play(); else setPauseLabel(false);
+
+    /* section tabs */
+    document.querySelectorAll(".tabs").forEach(function (list) {
+      var grid = document.getElementById(list.getAttribute("data-grid"));
+      list.addEventListener("click", function (e) {
+        var tab = e.target.closest("[role=tab]");
+        if (!tab) return;
+        var filter = tab.getAttribute("data-filter");
+        list.querySelectorAll("[role=tab]").forEach(function (t) { t.setAttribute("aria-selected", String(t === tab)); });
+        grid.querySelectorAll(".product").forEach(function (p) {
+          p.hidden = filter !== "all" && p.getAttribute("data-cat") !== filter;
+        });
+      });
+    });
+
+    /* wish and cart */
+    var count = 0, countEl = document.getElementById("cart-count");
+    document.addEventListener("click", function (e) {
+      var wish = e.target.closest(".wish");
+      if (wish) wish.setAttribute("aria-pressed", String(wish.getAttribute("aria-pressed") !== "true"));
+      var add = e.target.closest(".cart-add");
+      if (add && !add.classList.contains("is-added")) {
+        add.classList.add("is-added");
+        add.lastChild.textContent = "담았어요";
+        count += 1;
+        countEl.textContent = count;
+        countEl.setAttribute("aria-label", "담긴 상품 " + count + "개");
+      }
+    });
+  })();
+</script>
+</body>
+</html>
