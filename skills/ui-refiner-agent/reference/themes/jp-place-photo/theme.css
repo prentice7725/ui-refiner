@@ -1,0 +1,546 @@
+/* 湯宿 · 写真主導 (jp-place-photo) — see theme.md for the measured basis. */
+
+:root {
+  --ground: #ffffff;
+  --paper: #f6f3ee;
+  --ink: #1f1c18;
+  --ink-soft: #5b544c;
+  --line: #d9d2c7;
+  --earth: #7a5c43;
+  --earth-deep: #4a3829;
+  --night: #1d1a17;
+  --display: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --text: "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  --body: 15px;
+  --leading: 2.0;
+  --display-size: 40px;
+  --h2: 28px;
+  --h3: 18px;
+  --radius: 0;
+  --content: 1160px;
+  --gap: clamp(64px, 9vw, 120px);
+
+  /* derived, not measured */
+  --gutter: 24px;
+  --button-h: 52px;
+  --bar-h: 92px;
+  --header-h: 80px;
+}
+
+/* ---------- base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--body);
+  line-height: var(--leading);
+  font-weight: 400;
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, dl, dd, figure, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+h1, h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+  font-feature-settings: "palt";
+}
+h2 { font-size: var(--h2); }
+h3 {
+  font-size: var(--h3);
+  font-weight: 500;
+  line-height: 1.6;
+  text-wrap: balance;
+  font-feature-settings: "palt";
+}
+
+a { color: var(--earth); text-underline-offset: 0.25em; text-decoration-thickness: 1px; }
+a:hover { color: var(--earth-deep); }
+
+img { display: block; max-width: 100%; height: auto; }
+.photo { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+/* a fixed-ratio frame: the photo fills it whatever its own proportions */
+.frame { position: relative; overflow: hidden; }
+.frame > .photo { position: absolute; inset: 0; }
+
+:focus-visible { outline: 2px solid var(--earth); outline-offset: 3px; }
+
+/* ---------- layout helpers ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--content) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--gap); }
+.section--paper { background: var(--paper); }
+
+.section-head { margin-bottom: 48px; }
+.section-head p { margin-top: 16px; color: var(--ink-soft); max-width: 36em; }
+
+/* the romanised label above a section heading: same Mincho, 12px, wide tracking */
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+}
+
+.note { font-size: 13px; color: var(--ink-soft); }
+
+/* ---------- buttons ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-h);
+  padding-inline: 28px;
+  border: 1px solid var(--earth);
+  border-radius: 2px;
+  background: var(--earth);
+  color: #fff;
+  font: 500 15px/1 var(--text);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.button:hover { background: var(--earth-deep); border-color: var(--earth-deep); color: #fff; }
+
+/* white outline while over the photograph */
+.button--on-photo { background: transparent; border-color: #fff; color: #fff; }
+.button--on-photo:hover { background: rgba(255, 255, 255, 0.12); border-color: #fff; }
+
+/* ---------- 1. header ---------- */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 0 14px rgba(0, 0, 0, 0.45);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: var(--header-h);
+}
+.site-header__name {
+  margin-right: auto;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  font-feature-settings: "palt";
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav ul { display: flex; gap: 32px; }
+.site-nav a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+.site-nav a:hover { text-decoration: underline; }
+
+.site-header .button--on-photo { box-shadow: 0 0 10px rgba(0, 0, 0, 0.18); }
+.site-header.is-solid {
+  text-shadow: none;
+  background: var(--ground);
+  color: var(--ink);
+  border-bottom-color: var(--line);
+}
+.site-header.is-solid .button--on-photo { box-shadow: none; background: var(--earth); border-color: var(--earth); color: #fff; }
+.site-header.is-solid .button--on-photo:hover { background: var(--earth-deep); border-color: var(--earth-deep); }
+
+/* ---------- 2. hero ---------- */
+
+.hero {
+  position: relative;
+  height: calc(100vh - var(--bar-h));
+  height: calc(100svh - var(--bar-h));
+  min-height: 520px;
+  overflow: hidden;
+  color: #fff;
+}
+.hero > img { position: absolute; inset: 0; object-position: 50% 50%; }
+/* the only gradient on the page: a soft dark fade at the bottom of the hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to bottom, rgba(20, 16, 12, 0) 0%, rgba(20, 16, 12, 0.6) 100%);
+  pointer-events: none;
+}
+.hero__claim {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 64px;
+}
+.hero__claim h1 {
+  font-size: var(--display-size);
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- 3. booking bar ---------- */
+
+.booking {
+  background: var(--ground);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.booking .wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: var(--bar-h);
+  padding-block: 18px;
+}
+.booking__form {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+.field { display: grid; gap: 2px; }
+.field label { font-size: 12px; line-height: 1.6; color: var(--ink-soft); letter-spacing: 0.06em; }
+.field input,
+.field select {
+  height: var(--button-h);
+  min-width: 120px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 15px/1 var(--text);
+}
+.field input[type="date"] { min-width: 180px; }
+.booking__tel {
+  margin-left: auto;
+  text-align: right;
+  line-height: 1.5;
+}
+.booking__tel small { display: block; font-size: 12px; color: var(--ink-soft); }
+.booking__tel a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 4. concept ---------- */
+
+.concept .wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 26em) minmax(0, 1fr);
+  column-gap: 64px;
+  align-items: start;
+}
+.concept__title {
+  writing-mode: vertical-rl;
+  font-size: var(--h2);
+  line-height: 1.8;
+  letter-spacing: 0.16em;
+  height: 12em;
+  text-wrap: wrap;
+}
+.concept__text { padding-top: 8px; }
+.concept__text p + p { margin-top: 1em; }
+.concept__photo {
+  margin-top: 120px;
+  aspect-ratio: 4 / 3;
+}
+
+/* ---------- 5. onsen ---------- */
+
+.onsen .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: 64px;
+  align-items: center;
+}
+.onsen__photo { aspect-ratio: 4 / 3; }
+.onsen__body p { margin-top: 24px; }
+
+.spec {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.spec > div {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  gap: 16px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.spec dt { color: var(--ink-soft); }
+
+/* ---------- 6. rooms ---------- */
+
+.rooms__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.rooms__grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.room { display: flex; flex-direction: column; }
+.room__photo { aspect-ratio: 3 / 2; }
+.room__body {
+  flex: 1;
+  padding-block: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.room__body p { margin-top: 8px; font-size: 14px; color: var(--ink-soft); }
+.room__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+.room__facts dt { color: var(--ink-soft); display: inline; }
+.room__facts dd { display: inline; margin-left: 6px; }
+.room__price {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.room__price strong { font-size: 18px; font-weight: 500; letter-spacing: 0.04em; }
+
+/* ---------- 7. cuisine ---------- */
+
+.cuisine__strip {
+  display: grid;
+  grid-template-columns: 5fr 4fr 4fr;
+  gap: 8px;
+  height: clamp(240px, 32vw, 440px);
+}
+.cuisine__strip--two { grid-template-columns: 3fr 2fr; }
+.cuisine__strip figure { position: relative; min-height: 0; }
+.cuisine__strip figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.cuisine__strip img { height: calc(100% - 34px); }
+.cuisine__text {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  column-gap: 64px;
+  margin-top: 64px;
+}
+
+/* ---------- 8. plans ---------- */
+
+.plans__list { border-top: 1px solid var(--line); }
+.plans__note { margin-top: 16px; }
+.plan {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 2fr) 12em 5em;
+  gap: 32px;
+  align-items: baseline;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.plan h3 { font-size: 17px; }
+.plan__includes { font-size: 14px; color: var(--ink-soft); }
+.plan__price { font-size: 14px; text-align: right; }
+.plan__price strong { font-size: 18px; font-weight: 500; letter-spacing: 0.04em; }
+.plan__more { text-align: right; font-size: 14px; }
+
+/* ---------- 9. access ---------- */
+
+.access .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 64px;
+}
+.access .section-head { grid-column: 1 / -1; }
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.info-table th,
+.info-table td {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.info-table th {
+  width: 8.5em;
+  padding-right: 16px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.access__side { display: grid; gap: 24px; align-content: start; }
+.access__photo { aspect-ratio: 16 / 9; }
+.map-frame {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+/* ---------- 10. news ---------- */
+
+.news__list { border-top: 1px solid var(--line); }
+.news__list li { border-bottom: 1px solid var(--line); }
+.news__list a {
+  display: grid;
+  grid-template-columns: 8em 1fr;
+  gap: 24px;
+  padding-block: 18px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.news__list a:hover .news__title { text-decoration: underline; color: var(--earth); }
+.news__list time { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+/* ---------- 11. footer ---------- */
+
+.site-footer {
+  background: var(--night);
+  color: rgba(255, 255, 255, 0.86);
+  padding-block: 80px 40px;
+  font-size: 14px;
+}
+.site-footer a { color: inherit; }
+.site-footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+.site-footer__name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  font-feature-settings: "palt";
+  color: #fff;
+  margin-bottom: 16px;
+}
+.site-footer__nav ul { display: grid; grid-auto-flow: column; grid-template-rows: repeat(4, auto); gap: 4px 48px; }
+.site-footer__nav a { text-decoration: none; }
+.site-footer__nav a:hover { text-decoration: underline; }
+.site-footer__bottom {
+  padding-top: 24px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.6);
+}
+.site-footer__bottom p + p { margin-top: 8px; }
+
+/* ---------- phone ---------- */
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+    --display-size: 28px;
+    --h2: 24px;
+    --header-h: 60px;
+    --bar-h: 0px;
+  }
+
+  .site-header .wrap { gap: 16px; }
+  .site-header__name { font-size: 19px; }
+  .site-nav { display: none; }
+  .site-header .button { height: 40px; padding-inline: 16px; font-size: 14px; }
+
+  .hero { height: 78svh; min-height: 460px; }
+  .hero__claim { bottom: 40px; }
+
+  .booking .wrap { display: block; padding-block: 20px 24px; }
+  .booking__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .booking__form .field:first-child,
+  .booking__form .button { grid-column: 1 / -1; }
+  .field input, .field select { width: 100%; min-width: 0; }
+  .booking__tel { margin-top: 16px; text-align: left; }
+
+  .section-head { margin-bottom: 32px; }
+
+  .concept .wrap { grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; }
+  .concept__title { height: 11em; font-size: 22px; }
+  .concept__photo { grid-column: 1 / -1; margin-top: 40px; }
+
+  .onsen .wrap,
+  .access .wrap,
+  .cuisine__text,
+  .site-footer__top { grid-template-columns: minmax(0, 1fr); }
+  .onsen__body { margin-top: 32px; }
+
+  .rooms__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+
+  .cuisine__strip {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+  .cuisine__strip figure:first-child { grid-column: 1 / -1; }
+  .cuisine__strip img { height: auto; aspect-ratio: 4 / 3; }
+  .cuisine__strip figure:first-child img { aspect-ratio: 16 / 10; }
+  .cuisine__strip--two figure { grid-column: 1 / -1; }
+  .cuisine__strip--two figure:last-child img { aspect-ratio: 16 / 10; }
+  .cuisine__text { margin-top: 32px; row-gap: 16px; }
+
+  .plan {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 16px;
+    padding-block: 22px;
+  }
+  .plan h3, .plan__includes { grid-column: 1 / -1; }
+  .plan__price { text-align: left; }
+
+  .access__side { margin-top: 32px; }
+  .info-table th { width: 6.5em; }
+
+  .news__list a { grid-template-columns: minmax(0, 1fr); gap: 0; }
+
+  .site-footer { padding-block: 56px 32px; }
+}

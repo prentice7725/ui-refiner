@@ -1,0 +1,30 @@
+{
+  "hero-bath": {
+    "model": "grok-imagine",
+    "prompt": "An unretouched evening photograph of a small outdoor stone rotenburo at a wooden onsen inn in the Shibu Onsen hills of Nagano. Irregular dark stones form the bath, hot water sending up a low veil of steam, a dusting of snow on the rocks and on nearby pine branches, a simple weathered wooden fence along one side. Dusk blue ambient light, ordinary winter color, slight sensor grain, realistic depth of field. The scene is empty of people, and every surface is plain unmarked wood and stone with no marks or lettering."
+  },
+  "exterior": {
+    "model": "grok-imagine",
+    "prompt": "A documentary photograph of a three-storey old wooden ryokan facade on a narrow sloping cobblestone lane in Shibu Onsen, Nagano, at winter dusk. Dark weathered timber, warm tungsten light behind paper shoji windows, a few plain paper lanterns with completely blank sides hanging under the eaves, light snow on the stones and roof edges. Shot from across the lane at eye level, natural mixed dusk light, muted earth browns, empty street, no signs and no lettering anywhere."
+  },
+  "room-main": {
+    "model": "grok-imagine",
+    "prompt": "A quiet daylight photograph inside a 10-tatami Japanese guest room at a small mountain ryokan. Woven tatami, a low dark wooden table set with a plain ceramic tea set, two worn zabuton cushions, shoji screens slid open onto a snowy mountain slope. Soft overcast daylight, earthy wood tones, a few everyday imperfections in the mats and wood, realistic depth of field, empty of people, surfaces free of writing."
+  },
+  "room-corner": {
+    "model": "grok-imagine",
+    "prompt": "An afternoon photograph of a corner guest room in an old wooden ryokan, with wide windows on two sides looking over a winter river valley. A wooden veranda just outside holds two simple wooden armchairs, tatami underfoot, pale plaster walls. Soft directional afternoon light, true wood grain, slight haze in the valley, empty of people, no text or logos."
+  },
+  "kaiseki": {
+    "model": "grok-imagine",
+    "prompt": "An overhead documentary photograph of a Shinshu kaiseki dinner on a dark worn lacquer tray. Beside slices of river-fish sashimi, blanched mountain vegetables, and a bowl of white rice sits a small individual earthenware ko-nabe on a low metal burner, lid off, pale broth visibly simmering inside. Handmade ceramic dishes, warm low indoor light, natural food color, a little lacquer wear, no people, and no writing anywhere."
+  },
+  "dish": {
+    "model": "grok-imagine",
+    "prompt": "A close-up food photograph of one grilled iwana char fillet glazed with miso, served on a slightly irregular handmade ceramic plate on a dark worn wooden table. Natural side light, real char marks on the skin, a little oil sheen, shallow depth of field, ordinary restaurant color, plate and table free of any marks or writing."
+  },
+  "entrance": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation photograph of a ryokan genkan entrance. An indigo noren of plain solid cloth with no pattern hangs in the doorway, irregular stone floor, a neat row of guest slippers, warm incandescent light from inside the wooden hall. Shot straight on, realistic materials, a little scuff on the stone, empty of people, cloth and walls completely blank."
+  }
+}

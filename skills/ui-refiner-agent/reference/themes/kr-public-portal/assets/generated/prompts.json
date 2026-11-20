@@ -1,0 +1,22 @@
+{
+  "hall": {
+    "model": "grok-imagine",
+    "prompt": "A dusk photograph of a modern Korean cultural centre building. A tall glass lobby glows with warm interior light behind a wide stone plaza, and a few Korean adults in ordinary coats walk across the paving without looking at the camera. Low blue evening sky, reflections in the glass, a little wear on the stone, realistic depth of field. The facade and plaza are free of signs and lettering."
+  },
+  "exhibition": {
+    "model": "grok-imagine",
+    "prompt": "A daylight photograph inside a white contemporary art gallery. Several Korean visitors in plain clothes stand quietly looking at large abstract paintings, seen from the side and from behind rather than facing the camera. Pale concrete floor, soft skylight, natural posture, realistic skin, a little space between people. The paintings are only fields of colour and shape, and the walls carry no labels or lettering."
+  },
+  "concert": {
+    "model": "grok-imagine",
+    "prompt": "A warm evening photograph inside a small wooden chamber concert hall, taken from the back of the audience. A string quartet of four Korean musicians sits on the stage with two violins, a viola and a cello, and the audience appears only as the backs of heads and shoulders. Dim house lights, a soft pool of warm stage light, simple wooden chairs, cream-blank music sheets with no notes visible. Natural posture, realistic depth of field, no banners and no lettering."
+  },
+  "workshop": {
+    "model": "grok-imagine",
+    "prompt": "A bright afternoon photograph of a children's art workshop in Korea. Korean elementary-school children sit along long wooden tables painting large sheets of paper, and a Korean instructor stands beside them watching the work rather than the camera. Water jars, brushes and open paint palettes on the tables, north window light, smudged cotton aprons, natural concentration. The papers show only colour and simple shapes, and the room has no posters or lettering."
+  },
+  "festival": {
+    "model": "grok-imagine",
+    "prompt": "A summer evening photograph of an outdoor festival in a Korean city park, shot from behind families seated on the grass. Warm bare string lights hang between large trees. Korean parents and children sit on plain grey picnic mats with empty hands and nothing on the cloth: no cups, no bottles, no food boxes, no bags. A small lit stage sits far in the distance under a dusk sky. Ordinary summer clothes, realistic low light, a little softness in the far crowd. The mats and the grass are blank, with no printing and no lettering anywhere."
+  }
+}

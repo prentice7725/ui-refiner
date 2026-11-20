@@ -1,0 +1,26 @@
+{
+  "banner-farm": {
+    "model": "grok-imagine",
+    "prompt": "A very wide winter photograph of a Jeju tangerine orchard, horizon sitting in the middle of the frame. Rows of small citrus trees heavy with ripe orange fruit and green leaves run toward a low black basalt stone wall under a clear blue sky. Cool clear daylight, dry grass between the rows, a few imperfect fruit, real bark and porous stone, no people. No signs and no lettering."
+  },
+  "tangerine": {
+    "model": "grok-imagine",
+    "prompt": "A top-down studio photograph of an open plain brown cardboard box filled with fresh small Jeju tangerines, many still attached to glossy green leaves, on a seamless white surface. Soft even light, a few natural blemishes on the peel, true orange colour. The box and fruit carry no stickers and no lettering."
+  },
+  "hallabong": {
+    "model": "grok-imagine",
+    "prompt": "A studio photograph of three large hallabong citrus fruits on a seamless white surface. Each fruit is bigger than a tangerine, with a pebbled orange rind and a small raised bump at the stem end. Soft shadow to one side, natural imperfections in the peel, no leaves, no stickers and no lettering."
+  },
+  "giftset": {
+    "model": "grok-imagine",
+    "prompt": "A studio photograph of a premium fruit gift on a white surface: a neat pale wooden box holding two large hallabong citrus, with their small stem bumps, and several smaller tangerines with a few green leaves. Soft shadow, visible wood grain, natural peel texture. The box is completely plain, with no printing and no lettering."
+  },
+  "sweetpotato": {
+    "model": "grok-imagine",
+    "prompt": "A top-down studio photograph of a plain woven basket filled with Jeju sweet potatoes on a seamless white surface. The potatoes have reddish-purple skin, irregular shapes, a little dry soil in the creases, and a soft natural shadow. No tags and no lettering."
+  },
+  "farmer": {
+    "model": "grok-imagine",
+    "prompt": "A documentary photograph of a Korean farmer in his fifties harvesting tangerines in a Jeju orchard. He wears a plain faded jacket and cap and reaches into a leafy tree, placing small orange fruit into a woven basket, looking at the branches rather than the camera. Cool winter daylight, a low basalt wall nearby, real bark and weathered hands, a few fallen fruit on the ground. No logos and no lettering."
+  }
+}

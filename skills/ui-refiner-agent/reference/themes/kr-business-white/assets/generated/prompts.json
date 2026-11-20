@@ -1,0 +1,14 @@
+{
+  "owner-tablet": {
+    "model": "grok-imagine",
+    "prompt": "An unretouched morning photograph of a Korean woman in her mid-thirties, the owner of a small neighbourhood café, standing behind a light wood counter and looking down at a tablet in her hands. Soft daylight from the front window, pale walls, a few ceramic cups and a simple pastry case slightly out of focus. The tablet screen is a soft grey blur with no interface. Ordinary cotton apron over a plain shirt, real skin texture, a little wear on the counter, realistic depth of field, calm and bright. No one else is in the frame, and every surface is free of lettering."
+  },
+  "team": {
+    "model": "grok-imagine",
+    "prompt": "A documentary daylight photograph of four Korean software colleagues around a bright white office table. Three sit with silver laptops whose lids face the camera, so only the plain metal backs of the screens are visible. One person stands in profile beside a completely blank whiteboard, explaining with open hands. White walls, two ordinary green plants, large windows, cotton shirts, a few cables and a dark mug, realistic depth of field. Nobody looks at the camera. The whiteboard is an empty white panel and the room is free of lettering."
+  },
+  "support": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation photograph of a Korean man in his mid-twenties at a tidy white desk, wearing a plain light-grey headset and a simple pale shirt. He is on a call, smiling slightly, gaze directed a little to the side. Soft daylight from a side window. Behind him a monitor shows only a smooth out-of-focus pale grey field with no lines and no shapes. A closed blank notebook lies on the desk. Ordinary skin texture, calm bright office, realistic depth of field, no badges and no lettering anywhere."
+  }
+}
