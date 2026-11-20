@@ -349,7 +349,10 @@ export function evaluateAiTells(m,{lang='ko'}={}){
   if(e.tracked>=TH.tracked)add('tracked-labels',e.tracked>=TH.trackedStrong?'strong':'moderate',{labels:e.tracked},e.targets);
   if(e.numbered>=TH.numbered)add('numbered-labels','moderate',{labels:e.numbered},e.targets);
   if(e.periodHeadings>=TH.period)add('period-headlines',e.periodHeadings>=TH.periodStrong?'strong':'moderate',{periodHeadings:e.periodHeadings,headings:e.headings},e.targets);
-  if(e.paper&&e.serifDisplay>=.5)add('paper-serif','moderate',{serifDisplay:e.serifDisplay});
+  // Korean and Japanese pages: strong. Cream paper with a serif display was on 44–50% of 79 Korean and Japanese pages
+  // that Claude and Codex built from one-line prompts and on 0.5–1.5% of 1790 human-made Korean and Japanese sites
+  // (20 November 2026). English design-forward sites use it more, so it stays moderate there.
+  if(e.paper&&e.serifDisplay>=.5)add('paper-serif',korean||m.japanese?'strong':'moderate',{serifDisplay:e.serifDisplay});
  }
  // Calibration (2026-11): faint off-white surfaces are ~10% of human sites and 25–40% of AI sites, but scoring it raised holdout human false positives 3%→7%, so it is reported only; refine uses it to keep directions apart.
  const bg=m.rootBackground?.rgb;
