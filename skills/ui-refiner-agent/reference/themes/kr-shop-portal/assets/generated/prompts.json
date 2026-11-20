@@ -22,5 +22,21 @@
   "farmer": {
     "model": "grok-imagine",
     "prompt": "A documentary photograph of a Korean farmer in his fifties harvesting tangerines in a Jeju orchard. He wears a plain faded jacket and cap and reaches into a leafy tree, placing small orange fruit into a woven basket, looking at the branches rather than the camera. Cool winter daylight, a low basalt wall nearby, real bark and weathered hands, a few fallen fruit on the ground. No logos and no lettering."
+  },
+  "cheonhyehyang": {
+    "model": "image_gen.imagegen",
+    "prompt": "A clean square studio photograph of exactly three cheonhyehyang citrus fruits on a matte white surface. Each is a smooth, thin-skinned, bright orange Korean citrus, slightly flattened round shape, with a short natural stem and one small green leaf. Arrange them with breathing room, subtle soft side shadow, real fine peel pores and slight natural blemishes. Neutral daylight, restrained true-to-life orange colour, realistic product photography, no text, no labels, no packaging, no marks, no logos, no CGI, illustration, HDR glow, lens flare or oversaturation."
+  },
+  "juice": {
+    "model": "image_gen.imagegen",
+    "prompt": "A clean square studio product photograph of two clear glass bottles filled with fresh cloudy tangerine juice, beside one cut-open tangerine and a few wedges on a matte white surface. Bottles have simple completely blank unprinted labels and plain caps, no words or marks. Soft natural daylight, realistic condensation-free glass reflections, juicy pulp visible, natural peel texture, gentle shadows and small imperfections, restrained colour, photographic realism, no brand names, text, logos, illustration, CGI, HDR glow, lens flare or oversaturation."
+  },
+  "jam": {
+    "model": "image_gen.imagegen",
+    "prompt": "A clean square studio product photograph of one clear glass jar filled with amber tangerine marmalade on a matte white surface, with a small plain spoon resting beside it. Jar has a completely blank unprinted paper label and a simple lid, no writing or marks. Soft window daylight, visible citrus peel suspended in marmalade, realistic glass and metal, gentle natural shadow, slight handmade imperfections, restrained colour. Photographic realism, no text, logos, packaging marks, illustration, CGI, HDR glow, lens flare or oversaturation."
+  },
+  "packing": {
+    "model": "image_gen.imagegen",
+    "prompt": "A documentary photograph inside a modest Jeju farm shed: Korean farm workers pack fresh tangerines into plain open cardboard boxes at a worn wooden table. Show a few workers from the side or behind, focused on their hands and fruit, nobody looking at camera. Natural winter daylight from the shed opening, real cardboard, wood grain and citrus peel, slight everyday disorder, muted warm tones and realistic depth of field. All boxes are completely plain, no labels, text, marks or logos anywhere. Photographic realism, no illustration, CGI, HDR glow, lens flare or oversaturation."
   }
 }
