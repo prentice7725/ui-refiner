@@ -62,3 +62,12 @@ For Japanese care services, clinics, salons, fitness and beauty: day services, h
 ## Applying to a client's content
 
 See `../README.md`. Clinics replace 「一日の流れ」 with 診療時間 (a weekly table with ○ and ／) and 院長あいさつ.
+
+Learned on a real day service (リハビリの家 デイサービス東浦和, 20 November 2026):
+
+- **No usable photograph of people**: the theme's generated group photograph in the hero as a mood image, marked `data-generated`, with a small 「写真はイメージです」 on it and a footer note. The client's real photographs (rooms at 295px, the building cut from a banner) go where they are facts: the feature cards and 私たちについて, at their own size, never upscaled.
+- **Several facilities of one operator**: pill tabs (施設) between the top line and the menu, the current one filled.
+- **ご利用の流れ** as four numbered steps, then the schedule and 利用できる方 in two columns, when the client gives a schedule list rather than a timed day.
+- **Fee tables** (要介護 / 要支援): two tables side by side, group rows (基本分 / 加算分 / 減算分) in the brand colour, figures right-aligned in tabular numbers, a scroll wrapper on phones, the ※ notes small under each.
+- **Info tables** with long labels (ドリンク・レクリエーション代) need a label column of about 11em.
+- Page length 8.7 screens with full fee tables: within the measured p75 (9.4).
