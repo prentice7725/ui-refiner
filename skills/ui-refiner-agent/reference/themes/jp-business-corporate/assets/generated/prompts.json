@@ -1,0 +1,30 @@
+{
+  "hero-plant": {
+    "model": "grok-imagine",
+    "prompt": "A wide dawn photograph of a modern Japanese factory building, low and clean, pale concrete and deep blue-grey metal panels, a few ordinary trees in front, clear early sky with a faint warm edge on the horizon. Quiet industrial yard, realistic materials, a little weathering at the base of the walls, no vehicles close to the camera, no people, and the building completely free of signs and lettering."
+  },
+  "tile-water": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation documentary photograph inside a water-treatment hall. Large cylindrical filter vessels and thick steel pipes rise through the frame, painted a quiet industrial grey with a few deep blue valve handles, condensation and a little scuff on the metal. Cool overhead light, realistic depth of field, no people, gauges turned away, and every surface free of labels and lettering."
+  },
+  "tile-air": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation photograph looking up toward a cleanroom ceiling fitted with large square HEPA filter units in a metal grid. Below, a Japanese technician in a plain white cleanroom suit and hood stands small in the frame, looking up at the filters rather than at the camera. Cool even light, real fabric folds, no badges, the ceiling panels blank, no lettering anywhere."
+  },
+  "tile-industrial": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation close photograph of rows of pleated industrial filter cartridges standing on a production line, pale filter paper and metal end caps, ordinary factory light. In the foreground a worker's gloved hands adjust one cartridge. Shallow depth of field, a little paper dust, no printed bands and no lettering on the cartridges or gloves."
+  },
+  "message": {
+    "model": "grok-imagine",
+    "prompt": "A calm documentary photograph of a Japanese company president in his late fifties, wearing a plain dark navy suit and no tie pin, standing in a bright factory corridor with pale walls and a long window. He looks slightly away from the camera, expression quiet. Soft daylight, realistic skin, the corridor empty behind him, no name badge, no signs and no lettering."
+  },
+  "recruit": {
+    "model": "grok-imagine",
+    "prompt": "A natural workshop photograph of three young Japanese engineers, two women and one man, gathered at a steel workbench looking down at a cylindrical filter part one of them holds. Ordinary work shirts, no logos, hair simply tied, expressions concentrated rather than posed. Daylight from a high window, tools slightly out of focus, nobody looking at the camera, and no labels or lettering on the part or the bench."
+  },
+  "lab": {
+    "model": "grok-imagine",
+    "prompt": "A clean-laboratory photograph of a Japanese lab technician in a plain white coat testing a sheet of filter media with a handheld measuring instrument. The instrument's display is a soft blank grey glow with no digits. Pale benches, soft daylight, realistic glassware without printed marks, the technician looking at the sample rather than the camera. No badges and no lettering anywhere."
+  }
+}

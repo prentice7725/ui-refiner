@@ -11,6 +11,10 @@ A theme is a finished design measured from real human-made sites: one archetype 
 | `jp-place-photo` | JP · place (inn, tourism, restaurant, wedding) · photo-led | 65 |
 | `kr-care-white` | KR · care (dental, dermatology, Korean medicine, hospital) · white quiet | 34 |
 | `kr-business-dark` | KR · business (maker, logistics, software) · dark cinematic | 35 |
+| `kr-business-white` | KR · business (software, B2B service, tax, hiring) · white quiet; the business theme without photographs | 50 |
+| `jp-care-corporate` | JP · care (dental, dermatology, day service, fitness, salon) · standard corporate | 68 |
+| `kr-place-photo` | KR · place (pension, resort, wedding, event) · photo-led | 29 |
+| `jp-business-corporate` | JP · business (maker, software, regional firm, builder) · standard corporate | 52 |
 
 Korea and Japan differ as much as trades do (Korean care sites go white and short, Japanese ones standard corporate with big type), so a theme is never reused across the two countries.
 
@@ -31,7 +35,7 @@ These held on three real pages (an inn, a dental clinic, a logistics company), a
 - **Optional slots** for content most real pages have and the skeletons leave out: about/values, process steps, FAQ, cases, an inline booking or quote form. Place them where they read best within the theme's rules; each theme's `theme.md` says where.
 - **Page length follows content** within the measured p25–p75 of the theme; the theme's median is a target for an average client, not a cap.
 - **Links to pages that do not exist are not made.** A 「자세히」 or 「詳細」 column with no detail page shows the client's own sub-items instead, or links to the booking form.
-- **Images**: the client's photographs first. Generated images (the theme's `assets/generated/`, Grok Imagine) are mood images: mark them `data-generated`, say so in the footer, never put one where it reads as a claim (a machine shop next to a warehouse name, a generated portrait next to a named doctor), and leave a section on type rather than mislead. List the photographs the client needs in the report.
+- **Images**: the client's photographs first. Generated images (the theme's `assets/generated/`, Grok Imagine) are mood images: mark them `data-generated`, say so in the footer, never put one where it reads as a claim (a machine shop next to a warehouse name, a generated portrait next to a named doctor), and leave a section on type rather than mislead. The theme samples' fictional clients are the exception: their people are as made up as their names, which the footer says. List the photographs the client needs in the report.
 - Run `keep check` and `stress` on the result; fix every broken stress row in CSS.
 
 ## Files per theme
