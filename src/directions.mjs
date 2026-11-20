@@ -191,7 +191,8 @@ export async function compareDirections(dir,{lang='auto',timeoutMs=45000,log}={}
 export async function verifyApplied(dir,target,{pick,log,lang='auto',timeoutMs=45000}={}){
  const root=path.resolve(dir);
  let sheet;try{sheet=JSON.parse(await fs.readFile(path.join(root,SHEET_JSON),'utf8'));}catch{throw new Error(`Run "ui-refiner directions ${dir}" first; ${SHEET_JSON} is missing.`);}
- const label=(pick||[...await readLog(log)].reverse().find(e=>e.project===projectOf(root))?.label||'').toUpperCase();
+ const selected=await fs.readFile(path.join(root,'PICK.json'),'utf8').then(JSON.parse,e=>{if(e.code==='ENOENT')return null;throw e;});
+ const label=(pick||selected?.label||[...await readLog(log)].reverse().find(e=>e.project===projectOf(root))?.label||'').toUpperCase();
  const chosen=sheet.items.find(d=>d.label===label);
  if(!chosen)throw new Error('No chosen direction: pass --pick or run "ui-refiner directions record" first.');
  const {result:r}=await scanUrl(target,{out:path.join(root,'_scans','applied'),lang,compare:false,timeoutMs,keepRaw:true});
@@ -204,6 +205,6 @@ export async function verifyApplied(dir,target,{pick,log,lang='auto',timeoutMs=4
  if(chosen.fonts?.length&&applied.fonts.length&&!chosen.fonts.some(f=>applied.fonts.includes(f)))drift.push({id:'type',chosen:chosen.fonts.join(' + '),applied:applied.fonts.join(' + ')});
  const problems=firstScreenProblems(m),habits=pageHabits(m);
  let standIns=null,loading=[];try{const html=await fs.readFile(path.resolve(target),'utf8');standIns=countStandIns(html);loading=loadingProblems(html);}catch{}
- await fs.writeFile(path.join(root,'VERIFY.json'),JSON.stringify({checkedAt:new Date().toISOString(),target,label,drift,problems,habits,loading},null,1)+'\n');
+ await fs.writeFile(path.join(root,'VERIFY.json'),JSON.stringify({checkedAt:new Date().toISOString(),target,label,selectionId:selected?.selectionId,drift,problems,habits,loading},null,1)+'\n');
  return {label,chosen:{hero:chosen.hero,bg:chosen.bg,fonts:chosen.fonts},applied:{...applied,standIns},drift,problems,habits,loading};
 }
