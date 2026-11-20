@@ -6,7 +6,11 @@ const here=path.dirname(fileURLToPath(import.meta.url));
 export const WANT={
  'jp-place-photo':{'hero-bath':[1600,900],'exterior':[1600,900],'room-main':[1600,1000],'room-corner':[1600,1000],'kaiseki':[1600,1000],'dish':[1200,1200],'entrance':[1200,1500]},
  'kr-care-white':{'hero-room':[1600,1200],'doctor':[1200,1500],'reception':[1600,1000],'xray-room':[1600,1000],'consult':[1600,1000]},
- 'kr-business-dark':{'hero-line':[1920,1080],'tile-machining':[1200,1500],'tile-automation':[1200,1500],'tile-semicon':[1200,1500],'tile-mold':[1200,1500],'tech-measure':[1600,1100]}
+ 'kr-business-dark':{'hero-line':[1920,1080],'tile-machining':[1200,1500],'tile-automation':[1200,1500],'tile-semicon':[1200,1500],'tile-mold':[1200,1500],'tech-measure':[1600,1100]},
+ 'kr-business-white':{'owner-tablet':[1600,1100],'team':[1600,1000],'support':[1200,1500]},
+ 'jp-care-corporate':{'hero-group':[1920,1080],'rehab':[1600,1100],'lunch':[1600,1100],'room':[1600,1100],'staff':[1600,1100],'exterior':[1600,1100]},
+ 'kr-place-photo':{'hero-sea':[1920,1080],'room-ocean':[1600,1100],'room-family':[1600,1100],'pool':[1600,1100],'bbq':[1600,1100],'walk':[1200,1500],'cafe':[1600,1100]},
+ 'jp-business-corporate':{'hero-plant':[1920,1080],'tile-water':[1200,1500],'tile-air':[1200,1500],'tile-industrial':[1200,1500],'message':[1600,1100],'recruit':[1600,1100],'lab':[1600,1100]}
 };
 function size(file){
  const b=fs.readFileSync(file);
