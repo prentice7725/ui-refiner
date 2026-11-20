@@ -30,6 +30,8 @@ ui-refiner prefer add surface paper --said "クリーム色の背景はもうや
 
 これだけです。`scan`はURL、ホスト名、ローカルの`.html`ファイルを受け付け、設定は不要で、対象プロジェクトを変更しません。`npm link`をしていない場合は`node bin/ui-refiner.mjs scan …`で実行します。
 
+日本・韓国のサイトを実測したデザインから始めるには、[skills/ui-refiner-agent/reference/themes](../skills/ui-refiner-agent/reference/themes/README.md)の13テーマから1つを選び、エージェントにそのテーマで作るよう頼みます。テーマごとに実測の根拠、トークン、セクションの骨格、CSS、サンプルページがあります。
+
 - **レポートの言語**はページに合わせます。日本語ページは日本語、韓国語ページは韓国語、それ以外は英語です。常に同じ言語にしたい場合は`UI_REFINER_LANG=ja`（または`ko`、`en`）を設定し、1回だけ変えるなら`--lang`を使います。ブラウザのロケールはホストに合わせます（`.jp` → `ja-JP`、`.kr` → `ko-KR`）。`--locale`で変更できます。
 - **再スキャンすると自動で比較します。** 出力フォルダーに同じページの前回スキャンがあれば、新しいレポートの先頭に前後比較が付きます。比較しない場合は`--no-compare`、別フォルダーのスキャンと比べる場合は`--compare <フォルダー>`を使います。
 - `--source src`でソースの静的検査を追加、`--out`で出力フォルダーを変更します（既定は`ui-refiner-scan/`）。
