@@ -1,0 +1,30 @@
+{
+  "hero-group": {
+    "model": "grok-imagine",
+    "prompt": "A wide unretouched photograph inside a bright Japanese day-service room. Care staff in plain light-green polo shirts and several elderly Japanese users sit in a loose circle doing a gentle seated stretch, laughing with each other rather than at the camera. Large windows, pale wood floor, soft green plants, morning daylight, natural wrinkles and cotton fabric, realistic depth of field. Shirts, walls and windows are completely plain, with no marks or lettering."
+  },
+  "rehab": {
+    "model": "grok-imagine",
+    "prompt": "A documentary photograph of a Japanese physical therapist in a plain light-green polo supporting an elderly Japanese man as he walks slowly between wooden parallel bars in a bright rehab corner. The therapist watches the man's feet, the man looks ahead at the bars. Large window daylight, pale floor, a folded towel on a chair, real wood grain and ordinary clothing, slight motion in the step, realistic depth of field. No logos and no lettering."
+  },
+  "lunch": {
+    "model": "grok-imagine",
+    "prompt": "A natural-light food photograph of a homely Japanese lunch on a worn wooden table: a bowl of white rice, a lacquer bowl of miso soup, a small grilled fish, and simmered vegetables in a shallow ceramic dish. At the near edge, an elderly person's hands hold plain wooden chopsticks, about to eat. Soft side window light, true food colour, a little steam, shallow depth of field, no garnish writing, dishes and table free of marks."
+  },
+  "room": {
+    "model": "grok-imagine",
+    "prompt": "An empty daylight photograph of a bright Japanese day-service room. Large windows along one wall, pale wooden floor, a small tatami corner with two low cushions, several simple wooden chairs around low tables, and a few leafy plants. Soft overcast morning light, a little scuff on the floor, realistic materials, no people, and every wall and table free of signs and lettering."
+  },
+  "staff": {
+    "model": "grok-imagine",
+    "prompt": "A friendly outdoor photograph of five Japanese care workers of mixed ages, three women and two men, standing together in front of a small wooden building entrance. They wear plain light-green polo shirts with no marks, ordinary trousers, and look at the camera with calm natural smiles. Sunny afternoon, a small garden at the side, realistic skin and fabric, slight differences in height and posture. The entrance has no sign and no lettering."
+  },
+  "exterior": {
+    "model": "grok-imagine",
+    "prompt": "A sunny afternoon photograph of a small modern single-storey day-care building on a quiet Japanese residential street. Pale wood facade, a gentle concrete ramp to a plain glass door, a small garden with shrubs along the front, neighbouring houses softly out of focus. Clear natural light, real wood grain, a little weathering on the ramp, no people, and the facade completely free of signs and lettering."
+  },
+  "bath": {
+    "model": "grok-imagine",
+    "prompt": "A clean daylight photograph of an empty accessible bathing room in a Japanese day-service centre. A wide white bathtub sits against pale tiled walls, with stainless handrails along the rim and a bath-chair lift parked at the near end. Large light floor tiles, a frosted window giving soft overcast light, a folded plain towel on a bench, and a little water sheen on the tile. Realistic materials, no people. Every surface is free of signs and lettering."
+  }
+}

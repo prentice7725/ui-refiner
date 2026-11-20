@@ -1,0 +1,26 @@
+{
+  "hero-line": {
+    "model": "grok-imagine",
+    "prompt": "A wide documentary photograph of a clean modern CNC machining line inside a Korean precision factory. Rows of enclosed machine tools recede down a long aisle under cool overhead industrial lighting, cool grey and steel blue, a dark but natural exposure with real shadow. One worker in a plain grey uniform stands far down the aisle, small in the frame and seen from behind. Machines and floor free of logos, screens, and lettering."
+  },
+  "tile-machining": {
+    "model": "grok-imagine",
+    "prompt": "A close-up portrait-orientation photograph of a 5-axis CNC spindle cutting an aluminium part, coolant spray in the air, the rest of the machine falling into a dark workshop background. Steel and aluminium with ordinary machining marks, cool dim industrial light, realistic depth of field, no people, no control screens and no logos."
+  },
+  "tile-automation": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation photograph of an industrial robot arm assembling a metal part inside an automation cell, seen through wire safety fencing in a dark factory. Cool steel-blue light, used cables and fixtures, the arm caught mid-motion. No people, fencing and machines free of labels and lettering."
+  },
+  "tile-semicon": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation photograph of a technician in a full white cleanroom suit and hood inspecting a machined stainless-steel semiconductor equipment part under a bright inspection lamp. The suit covers the hair, the person is Korean and turned toward the part rather than the camera. Real fabric wrinkles, cool white light, no badges and no lettering on the suit or the part."
+  },
+  "tile-mold": {
+    "model": "grok-imagine",
+    "prompt": "A portrait-orientation photograph of two large steel die-casting mold halves resting on a worn workshop floor. Heavy machined steel with visible tool texture, parting lines, and a little oil darkening, lit by dim overhead workshop light. Cool grey, documentary, no people, no chalk marks and no lettering on the steel."
+  },
+  "tech-measure": {
+    "model": "grok-imagine",
+    "prompt": "A documentary photograph of a coordinate measuring machine probing a small precision metal part on a granite table in a temperature-controlled metrology room. Cool even light, pale walls, the probe just touching the part. A Korean engineer in a plain grey work shirt stands in the background, out of focus, looking at the machine rather than the camera. No screens with readable text, no logos, no lettering."
+  }
+}

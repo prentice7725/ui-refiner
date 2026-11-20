@@ -1,0 +1,26 @@
+{
+  "hero-object": {
+    "model": "grok-imagine",
+    "prompt": "A real studio photograph, not a render, of a handmade paper owl sitting on a seamless white sweep. The owl is built from thick folded sheets of red, yellow and blue paper, with visible paper grain, crease lines, a slightly crooked fold and soft fibre edges. Soft overhead studio light, a faint grey contact shadow, ordinary camera sharpness. No text."
+  },
+  "work-package": {
+    "model": "grok-imagine",
+    "prompt": "A bright studio photograph of colourful tea boxes arranged on a white surface. The rectangular packages wear bold abstract patterns in red, yellow, blue and green, and every face is free of letters. Soft daylight, a little overlap, real cardboard edges, no logos and no lettering."
+  },
+  "work-poster": {
+    "model": "grok-imagine",
+    "prompt": "A bright photograph of three abstract posters pinned in a row on a white studio wall. The posters are only bold fields of colour and simple shapes in red, yellow and blue, with no letters. Even daylight, a couple of plain metal pins, a slight paper curl, and no other objects in frame."
+  },
+  "work-book": {
+    "model": "grok-imagine",
+    "prompt": "A daylight photograph of a small stack of picture books on a light wooden table. The covers are bold abstract fields of red, yellow and blue with simple shapes and no titles. Soft side light, visible paper edges, a little wear in the table grain. No letters anywhere."
+  },
+  "client": {
+    "model": "grok-imagine",
+    "prompt": "A warm afternoon photograph inside a small Japanese tea shop. Two owners in their forties, a woman and a man, stand behind a wooden counter of plain tea canisters and smile at one another, not at the camera. Soft window light, canisters in solid colours with no labels, realistic skin, ordinary clothes. No signs and no lettering."
+  },
+  "members": {
+    "model": "grok-imagine",
+    "prompt": "A bright photograph of four Japanese designers in casual cotton clothes standing in a sunlit white studio and looking at the camera with friendly relaxed smiles. Mixed ages, a plain wooden table with blank white sheets behind them, an empty white wall, realistic skin and a little uneven spacing. No easels, no sketches, no logos and no lettering."
+  }
+}
