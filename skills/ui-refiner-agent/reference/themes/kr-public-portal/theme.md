@@ -41,7 +41,7 @@ For Korean public bodies, foundations, associations, museums, universities and n
 5. **Programmes** (전시·공연·교육): tabs by kind, a four-column grid of poster images with title, period and place; status tag (접수중 / 마감) in text.
 6. **News / stories**: three columns of image cards with category, title, date.
 7. **Search band** (band): a large search field with popular keywords.
-8. **Partner and related sites**: a row of grey logos or names, then a 관련 사이트 select.
+8. **Partner and related sites** (유관기관): the bodies' own banner images in one even grid (`.banners` in `theme.css`): every banner in a same-height white cell with a hairline, grey until hover or focus; a body without a banner gets its name in the same cell. Picture banners (a photo with type) use `.banners--picture`: 3:1 cells, in colour, shown whole. A 관련 사이트 select only for sites that have no banner and no other place.
 9. **Footer**: address, representative phone, 개인정보처리방침 in bold, 이메일무단수집거부, copyright; accessibility mark text.
 
 ## Rules
@@ -59,3 +59,13 @@ For Korean public bodies, foundations, associations, museums, universities and n
 ## Applying to a client's content
 
 See `../README.md`. News outlets replace the programme grid with a lead story and section lists; universities add 입학 · 학사 quick links. Weak basis: none; this is the most common Korean public archetype.
+
+Learned on a real association page (대한수의사회, 20 November 2026):
+
+- **No programme photographs**: the slider carries the body's own card-news posters (square, with their own type), shown whole on the band ground (`object-fit: contain`), never cropped. Programmes and news cards are dropped when there is nothing to show in them.
+- **Boards without dates**: the title's bracket prefix ([안내], [공고], [부고]) becomes the tag, titles wrap to two lines, and each tab ends with its own 더보기 link.
+- **More than six quick links**: two rows of four.
+- **Member login**: a 회원 서비스 column (the real login form, 회원가입, ID/PW 찾기, 신상신고) beside a 언론보도 list, 2 : 1.
+- **Long sub-menus** (12 items): raise `--mega-h` to about 420px and tighten the link padding; seven top items fit at 132px each.
+- **Related bodies** as the banner grid (12 logo banners plus one name cell); **branches**, which have no banners, as a link row, not a select: every link stays a link.
+- Page length 2.1 screens: an association with little content stays below the measured p25, which is right.

@@ -42,7 +42,8 @@ For Japanese banks and credit unions, municipalities, chambers of commerce, asso
 7. **Campaigns and features** (キャンペーン・おすすめ情報): three or four image cards.
 8. **Online services**: a band with service links in two columns and app download text.
 9. **Rates / figures** (金利・手数料, for banks) or **event calendar** (for municipalities): a compact table in BIZ UDPGothic.
-10. **Footer**: links in columns, 金融機関コード or 所在地, 個人情報保護方針, copyright.
+10. **Related bodies and own projects** (関係機関・関連リンク): the client's own banner images in one even grid (`.banners` in `theme.css`). Japanese chambers and public bodies mostly use picture banners (a photo with type, about 3:1): `.banners--picture`, 3:1 cells, in colour, shown whole, never cropped. Logo banners use plain `.banners`: same-height white cells, grey until hover or focus. A body without a banner gets its name in the same cell.
+11. **Footer**: links in columns, 金融機関コード or 所在地, 個人情報保護方針, copyright.
 
 ## Rules
 
@@ -58,3 +59,14 @@ For Japanese banks and credit unions, municipalities, chambers of commerce, asso
 ## Applying to a client's content
 
 See `../README.md`. Municipalities use くらし・手続き · 子育て・教育 · 健康・福祉 · 防災 as purposes; universities 受験生 · 在学生 · 一般・地域の方 as audience tabs.
+
+Learned on a real chamber of commerce page (広島商工会議所, 20 November 2026):
+
+- **No campaign images**: one photograph of the client's own (the city) in the 16:6 frame, without carousel controls; the square buttons are the client's top three actions (入会の資料請求, WEB会員名簿, ニュースレター登録).
+- **Chambers' purposes**: 創業支援 · 経営支援 · 融資相談 · 事業承継 · 講演会・セミナー · 検定試験 · 貿易関係証明 · 貸し会議室, each linking to the client's own page.
+- **Topics beside the monthly bulletin**: the client's pick-ups as a list, the bulletin cover (所報) at 200px at the right.
+- **News without categories**: tag by source (会議所 / 関係機関), tabs filter by it; rows without a visible date keep the date column empty.
+- **The full service menu** the client lists on its top page goes in a five-column band, not cut down.
+- **事務局 directory** (floors, departments, phone numbers): three columns, phones in BIZ UDPGothic.
+- **Six menu items**: `repeat(6)` on desktop, three per row under 1024px.
+- **会議所の活動**: 会頭ごあいさつ and 提言・要望 as two text links, then 16 picture banners (部会, 委員会, 女性会, 青年部, Stay@広島 …) in `.banners--picture`, three per row beside the event column, two per row on phones. The original stacked them at mixed sizes down a side column.
