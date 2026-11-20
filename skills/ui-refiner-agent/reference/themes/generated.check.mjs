@@ -8,7 +8,13 @@ export const WANT={
  'kr-care-white':{'hero-room':[1600,1200],'doctor':[1200,1500],'reception':[1600,1000],'xray-room':[1600,1000],'consult':[1600,1000]},
  'kr-business-dark':{'hero-line':[1920,1080],'tile-machining':[1200,1500],'tile-automation':[1200,1500],'tile-semicon':[1200,1500],'tile-mold':[1200,1500],'tech-measure':[1600,1100]},
  'kr-business-white':{'owner-tablet':[1600,1100],'team':[1600,1000],'support':[1200,1500]},
- 'jp-care-corporate':{'hero-group':[1920,1080],'rehab':[1600,1100],'lunch':[1600,1100],'room':[1600,1100],'staff':[1600,1100],'exterior':[1600,1100]},
+ 'jp-care-corporate':{'hero-group':[1920,1080],'rehab':[1600,1100],'lunch':[1600,1100],'room':[1600,1100],'staff':[1600,1100],'exterior':[1600,1100],'bath':[1600,1100]},
+ 'kr-public-portal':{'hall':[1600,1100],'exhibition':[1600,1100],'concert':[1600,1100],'workshop':[1600,1100],'festival':[1600,1100]},
+ 'jp-public-portal':{'branch':[1600,1100],'consult':[1600,1100],'business':[1600,1100],'town':[1600,1100]},
+ 'kr-shop-portal':{'banner-farm':[1920,800],'tangerine':[1200,1200],'hallabong':[1200,1200],'giftset':[1200,1200],'sweetpotato':[1200,1200],'farmer':[1600,1100]},
+ 'jp-shop-portal':{'hero-brewer':[1920,840],'bottle-1':[1200,1200],'bottle-2':[1200,1200],'bottle-3':[1200,1200],'pairing':[1600,1100],'brewery':[1600,1100]},
+ 'kr-creative-dark':{'work-hero':[1920,1080],'work-1':[1200,1500],'work-2':[1600,1100],'work-3':[1600,1100],'work-4':[1200,1500],'studio':[1600,1100]},
+ 'jp-creative-colour':{'hero-object':[1600,1600],'work-package':[1600,1100],'work-poster':[1600,1100],'work-book':[1600,1100],'client':[1600,1100],'members':[1600,1100]},
  'kr-place-photo':{'hero-sea':[1920,1080],'room-ocean':[1600,1100],'room-family':[1600,1100],'pool':[1600,1100],'bbq':[1600,1100],'walk':[1200,1500],'cafe':[1600,1100]},
  'jp-business-corporate':{'hero-plant':[1920,1080],'tile-water':[1200,1500],'tile-air':[1200,1500],'tile-industrial':[1200,1500],'message':[1600,1100],'recruit':[1600,1100],'lab':[1600,1100]}
 };
