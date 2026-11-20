@@ -2,6 +2,14 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+### Changed
+- Themes are measured from 2245 sites (78 trade × country groups). A second collection added 484 Korean and Japanese sites to the thin groups: design, game, three new creative trades (architecture, photo and video, illustration), shop, Korean place and a few small trades. The new sites were assigned to the existing eight archetypes without moving them, so the other themes keep their basis.
+  - `kr-creative-dark` now rests on 34 sites (was 12) and is no longer marked weak. `kr-shop-portal` rests on 60 (was 26), `jp-shop-portal` on 57 (was 30) and `kr-place-photo` on 43 (was 29). Their archetypes held; their measured tables were updated.
+  - **`jp-creative-colour` is replaced by `jp-creative-bigtype`.** Among the 153 Japanese creative sites, bold colour fell to about 10%. The dense portal leads at 19%, but it is mostly game companies' portals. Big type is the most common archetype among design, photo and architecture studios: single English section words at 100–173px, a white ground and long pages. The new theme reuses the old theme's generated images, and its sample passes `stress`.
+- Theme application lessons from four real sites and a `.banners` related-body grid for the public portal themes (PR #53).
+
 ## 0.10.0 — 2026-11-20
 
 The design now leads. Models build pages well enough that telling AI-made from human-made pages matters less; what still goes wrong is that their pages look alike and not like the trade they are for.

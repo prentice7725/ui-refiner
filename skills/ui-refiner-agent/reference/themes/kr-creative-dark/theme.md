@@ -4,18 +4,18 @@ For Korean design studios, branding agencies, production companies and game stud
 
 ## Measured basis
 
-12 human-made Korean sites in the creative family that fall in the dark-cinematic archetype (design 67%, game 33%), measured November 2026 (`archetypes/spec-KR-creative-1.json`). **Weak basis: 12 sites**, so the values below lean on the shared traits that are clear across them (black ground, white text, large work images, few menu items) rather than on precise medians.
+34 human-made Korean sites in the creative family that fall in the dark-cinematic archetype (design 41%, game 29%, photo and video 15%, architecture 9%, illustration 6%), measured November 2026 (`archetypes/spec-KR-creative-1.json`). Dark cinematic stays the most common archetype of the 130 Korean creative sites (26%). The basis grew from 12 sites to 34 after a second collection; the shared traits held (black ground, white text, large work images, few menu items).
 
 | What | Measured | Theme value |
 |---|---|---|
-| Dark share of the first four screens | 47% / 59% / 77% | black ground throughout, one white section allowed |
-| Ground | white 50% (dark sections), black 33% | `#0a0a0a`, white section `#ffffff` |
-| Faces | Pretendard 33%; Inter and display faces for Latin | Pretendard; Inter for Latin |
-| Display | 19 / 40 / 56 px; some sites use one huge wordmark | a 160px wordmark or statement at 64px |
-| Weights | 400 | 500 for display, 400 body |
-| Buttons | black, white; radius 0–7 | text links with arrows, no filled buttons |
-| Hairlines | 0 / 2 / 15 | few |
-| Content width | 1200 / 1300 / 1360 | edge to edge with 40px margins |
+| Dark share of the first four screens | 37% / 59% / 82% | black ground throughout, one white section allowed |
+| Ground | white 53% (dark sections), black 29% | `#0a0a0a`, white section `#ffffff` |
+| Faces | Pretendard 21% of body faces, Noto Sans KR 15%; Inter, Montserrat for Latin | Pretendard; Inter for Latin |
+| Display | 26 / 44 / 60 px, display ÷ body 2.0 / 3.1 / 5.0; some sites use one huge wordmark | a 160px wordmark or statement at 64px |
+| Weights | h1 400 / 650 / 700 | 500 for display, 400 body |
+| Buttons | black 21%, white; radius 0 / 2 / 30 | text links with arrows, no filled buttons |
+| Hairlines | 0 / 5 / 15 | few |
+| Content width | 1200 / 1200 / 1300 | edge to edge with 40px margins |
 | Menu | about, works, contact, archive, instagram, careers | the same, in English or Korean |
 
 ## Tokens

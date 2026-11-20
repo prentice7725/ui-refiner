@@ -4,23 +4,23 @@ For Korean pensions, resorts, small hotels, glamping, cafés and wedding venues 
 
 ## Measured basis
 
-29 human-made Korean sites in the place family that fall in the photo-led archetype (inn 48%, tourism 21%, restaurant 14%, wedding 10%, event 7%), measured November 2026 (`archetypes/spec-KR-place-4.json`).
+43 human-made Korean sites in the place family that fall in the photo-led archetype (inn 49%, tourism 23%, restaurant 16%, wedding 7%, event 5%; 30% of the 143 Korean place sites), measured November 2026 (`archetypes/spec-KR-place-4.json`).
 
 | What | Measured (p25 / median / p75) | Theme value |
 |---|---|---|
-| Hero | full-bleed on 45%, headline left 34% or centred 14% | full-bleed view photograph, claim centred-left |
-| Photo blocks in the first four screens | 12% / 16% / 20% | photographs in every section |
-| Ground | white on 97% | `#ffffff`, one dark band `#1f2328` for rooms |
-| Faces | Noto Sans KR 14–17%, Roboto, Poppins for Latin; serif 17% | Noto Sans KR; Cormorant Garamond for short Latin labels |
+| Hero | full-bleed on 40%, headline left 26% or centred 19% | full-bleed view photograph, claim centred-left |
+| Photo blocks in the first four screens | 12% / 17% / 22% | photographs in every section |
+| Ground | white on 95% | `#ffffff`, one dark band `#1f2328` for rooms |
+| Faces | Noto Sans KR 19–24% of body faces, Roboto, Poppins for Latin; serif display 14% | Noto Sans KR; Cormorant Garamond for short Latin labels |
 | Weights | headings 400 / 400 / 700 | 400 (light, airy) |
 | Body | 13 / 15 / 16 px | 15px, line height 1.8 |
-| Display | 32 / 42 / 54 px, display ÷ body 2.1 / 2.6 / 3.6 | 44px / 400; 28px on phones |
+| Display | 30 / 40 / 54 px, display ÷ body 2.0 / 2.6 / 3.6 | 44px / 400; 28px on phones |
 | Text | white on photos 31%, #333 | ink `#2b2b2b`, soft `#777` |
-| Buttons | black, white, earth (#a58862); radius 0 / 0 / 8; 37px | earth `#a58862` filled for 예약, black outline otherwise; 0 radius, 48px |
+| Buttons | white, black, blue, earth (#a58862); radius 0 / 0 / 8; 40px | earth `#a58862` filled for 예약, black outline otherwise; 0 radius, 48px |
 | Boxes | radius 0 | 0 |
-| Photographs | 3 / 7 / 19 | 12–16 |
-| Content width | 1200 / 1280 / 1300 | 1280px |
-| Page length | 4 / 5.3 / 6.3 screens | 5–6 |
+| Photographs | 3 / 7 / 14 | 12–16 |
+| Content width | 1200 / 1280 / 1320 | 1280px |
+| Page length | 2.6 / 4.8 / 6.1 screens | 5–6 |
 | Menu words | reservation, about us, rooms, location, guide, special offer, 객실안내, 이용안내, 예약 | Korean menu with short English labels |
 
 ## Tokens
