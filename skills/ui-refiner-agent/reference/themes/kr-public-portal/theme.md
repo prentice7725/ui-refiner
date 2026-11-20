@@ -4,7 +4,7 @@ For Korean public bodies, foundations, associations, museums, universities and n
 
 ## Measured basis
 
-58 human-made Korean sites in the public family that fall in the dense-portal archetype (media 34%, government 24%, culture 10%, finance, associations, universities), measured November 2026 (`archetypes/spec-KR-public-3.json`).
+61 human-made Korean sites in the public family that fall in the dense-portal archetype (media 33%, government 23%, academies 10%, culture 10%, finance, associations, universities), measured November 2026 (`archetypes/spec-KR-public-3.json`).
 
 | What | Measured (p25 / median / p75) | Theme value |
 |---|---|---|
