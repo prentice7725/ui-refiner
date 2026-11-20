@@ -1,12 +1,13 @@
 ---
 name: ui-refiner-agent
-description: Make web pages and app screens that do not look AI-generated, review existing pages, and refine AI-looking pages in place. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "AI 티 빼줘", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "de-slop this page", "review this site's design", "AIっぽくないデザイン", "AIっぽさを消して", "このサイトのデザインを点検"; Japanese typesetting reviews; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
+description: Make web pages and app screens that do not look AI-generated, review existing pages, and refine AI-looking pages in place. Holds 13 themes measured from real Korean and Japanese sites (clinic, inn, shop, public body, company, studio) to start a new site from. Use when building or restyling a landing page, screen, layout or component; when asked "AI 티 안 나게", "업종 테마로 만들어 줘", "テーマで作って", "AI 티 빼줘", "디자인 점검", "이 페이지 디자인 개선 제안", "make this look less generic/AI-made", "de-slop this page", "review this site's design", "AIっぽくないデザイン", "AIっぽさを消して", "このサイトのデザインを点検"; Japanese typesetting reviews; or when asked to run UI Refiner. Not for Canvas, native game HUDs or backend-only work.
 ---
 
 # UI Refiner — design without the AI look
 
 Three jobs: **Build** a screen that looks chosen rather than generated, **Review** an existing page and propose a better design, and **Refine** an AI-looking page in place and measure the change. All rely on the same toolkit:
 
+- themes — 13 finished designs measured from 1761 human-made Korean and Japanese sites, one per purpose family and country ([reference/themes/README.md](reference/themes/README.md)).
 - `scan` — zero-config rendered review of any URL: AI-look signals, baseline accessibility/layout measurements, desktop + mobile screenshots, and a proposal-oriented `DESIGN_REVIEW.md`.
 - suta guidance — `vendor/suta/skills/suta/SKILL.md` (Korean): the AI-slop red lines, layout/motion values and 57 tested UI patterns.
 - `check` — the deep, policy-enforced QA gate for projects that install UI Refiner. Optional; see [reference/quality-gate.md](reference/quality-gate.md).
@@ -108,6 +109,7 @@ Variety belongs in two places: between the three directions for the main page, s
 ## Build a new screen
 
 1. Read the project first: framework, styling method, existing tokens and components, brand assets. Existing systems are the source of values.
+   - For a Korean or Japanese site with no design system of its own (a clinic, an inn, a shop, a public body, a company, a studio), start from a theme. Read [reference/themes/README.md](reference/themes/README.md), pick the theme by country and purpose family, and check the client has the material it needs: photo-led and dark themes need the client's own photographs, otherwise take the white-quiet or standard-corporate theme of that family. Read its `theme.md`, `theme.css` and `sample.html`, then follow "Applying a theme to a client's content": the client's menu and content mapped onto the skeleton, no invented sections, generated images marked and named in the footer. A theme replaces steps 2–3; steps 5–7 still apply. Say which theme you used and which photographs the client still needs.
 2. Read the suta guidance (`vendor/suta/skills/suta/SKILL.md`, especially "AI 슬롭 금지선", layout and motion values) and the patterns you will use.
 3. Decide the design direction **before** writing markup and state it in two or three lines: surface purpose (persuade / operate / read), the one primary action, type pairing and scale, one accent color, and what carries the hero (product, photo, data, typography — not a gradient).
 4. Avoid the defaults that read as generated:

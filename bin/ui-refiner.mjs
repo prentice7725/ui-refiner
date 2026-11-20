@@ -25,7 +25,7 @@ import {stressPage} from '../src/stress.mjs';
 import {ALLOW_FILE,readAllow,addAllow,removeAllow} from '../src/allow.mjs';
 import {extractSystem,checkSystem} from '../src/site-system.mjs';
 
-const help=`UI Refiner 0.9.0 — de-AI web design review and UI quality gate
+const help=`UI Refiner 0.10.0 — de-AI web design review and UI quality gate
   ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang auto|ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json | --no-compare] [--json]
       zero-config design review of any page; report language follows the page unless --lang or UI_REFINER_LANG is set;
       a rescan of the same page into the same --out folder is compared with the previous scan automatically
