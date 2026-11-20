@@ -24,11 +24,11 @@
     "prompt": "A night photograph inside a small Seoul design studio. Two Korean designers sit at separate desks, faces turned toward generic black monitors rather than the camera. Each screen shows only a grid of abstract grey and sand colour blocks, with no words. The monitor bezels are plain matte black with no logos. Desk lamps, a few blank white sheets, dark city windows, a bare wall, realistic low light. No logos and no lettering anywhere."
   },
   "work-5": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A photorealistic editorial still life for a Korean bookstore identity project: a plain canvas tote bag, several unprinted bookmarks and two plain kraft paper bags arranged on a charcoal dark-grey tabletop under a soft directional studio light. One small abstract geometric mark may appear on the tote and bags, made only of simple shapes without letters or symbols that resemble writing. Real cotton weave, paper fibers, subtle folds and scuffs, soft shadows, restrained neutral palette, natural depth of field. No readable text, letters, numbers, logos or brands. No illustration, CGI, HDR glow, lens flare or oversaturation."
   },
   "work-6": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A vertical photorealistic photograph of an abstract brass wall sign mounted on a dark charcoal stone wall in a quiet modern hotel lounge. The sign is only a simple sculptural geometric symbol with no letters, no numbers and no writing. Warm indirect light skims the brushed brass and uneven stone texture; a hint of lounge furniture softly out of focus at frame edge. Rich but restrained tones, real materials, slight imperfections, realistic depth of field. No logos or text anywhere; no CGI, illustration, HDR glow, lens flare or oversaturation."
   }
 }

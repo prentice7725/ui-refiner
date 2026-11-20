@@ -24,19 +24,19 @@
     "prompt": "A bright photograph of four Japanese designers in casual cotton clothes standing in a sunlit white studio and looking at the camera with friendly relaxed smiles. Mixed ages, a plain wooden table with blank white sheets behind them, an empty white wall, realistic skin and a little uneven spacing. No easels, no sketches, no logos and no lettering."
   },
   "work-logo": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A horizontal photorealistic editorial still life of a bright Japanese design office stationery set arranged on a clean white tabletop: several business cards, a plain envelope and folded letter paper. The stationery features one bold abstract geometric symbol built from red, yellow and blue shapes, repeated consistently, with no letters, words, numbers or realistic writing anywhere. Soft daylight, tactile paper edges, slight natural misalignment, crisp but realistic shadows and depth of field, joyful yet restrained colours. No text, no logos or brand names; no illustration, CGI, HDR glow, lens flare or oversaturation."
   },
   "work-web": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A horizontal photorealistic image of an open laptop on a light wood desk in a small Kyoto design office. The screen displays a bright, polished website layout made only of colourful abstract blocks, photographs represented as simple colour fields and geometric shapes; absolutely no readable text, letters, numbers, icons or UI labels. Soft window daylight, real laptop materials, subtle desk grain, a plain cup blurred in background, natural shallow depth of field, slight everyday imperfection. No brand logo, no CGI, no illustration, no HDR glow, lens flare or oversaturation."
   },
   "work-festival": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A horizontal daylight photograph of colourful fabric festival banners hanging across a narrow traditional Japanese street in Kyoto. Banners show only bold abstract patterns and blocks of bright colour, with no letters, symbols, characters or writing. A few distant Japanese pedestrians walk naturally beneath them, not looking at the camera. Sunlight filters between wooden shop fronts, realistic cloth movement and weathered surfaces, lively but natural colours, photographic depth of field. No signs, logos or readable text anywhere; no CGI, illustration, HDR glow, lens flare or oversaturation."
   },
   "work-bakery": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A horizontal photorealistic editorial photograph of bakery packaging on a bright white counter: a few unprinted paper bags and small cardboard boxes with a playful abstract pattern in vivid colours, alongside fresh crusty bread and pastries. Pattern consists only of simple shapes, no letters, words, numbers or logos. Soft natural bakery window light, real paper fibers and bread crust, slight folds and crumbs, inviting restrained colour, realistic depth of field. No readable text or brand marks, no illustration, CGI, HDR glow, lens flare or oversaturation."
   }
 }

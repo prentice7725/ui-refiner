@@ -606,6 +606,9 @@ input { font: inherit; color: inherit; }
 .story .eyebrow { display: block; margin-bottom: 8px; font-size: var(--small); font-weight: 600; color: var(--brand); }
 .story h2 { font-size: var(--h2); line-height: 1.4; }
 .story p { margin-top: 16px; font-size: 15px; line-height: 1.75; color: #3d3d3d; }
+.story-pack { margin-top: 20px; }
+.story-pack img { aspect-ratio: 16 / 11; }
+.story-pack figcaption { margin-top: 8px; font-size: var(--small); line-height: 1.6; color: var(--ink-soft); }
 .story .producer {
   display: flex;
   flex-wrap: wrap;

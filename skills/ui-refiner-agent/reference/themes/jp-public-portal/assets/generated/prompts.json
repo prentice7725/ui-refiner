@@ -16,23 +16,23 @@
     "prompt": "A morning photograph looking down a small Japanese shopping street under a metal arcade roof. Open shops show only solid indigo and cream noren curtains and wooden crates of vegetables, with no signboards anywhere in the street. A few Japanese people walk away from the camera. Cool early light, damp stone pavement, realistic depth of field. Every cloth, crate and wall is free of letters and marks."
   },
   "seminar": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A natural editorial photograph of a small money seminar for seniors in a modest Japanese bank meeting room. A Japanese staff member in a plain navy jacket explains a simple handout to a few Japanese senior participants seated around a pale wood table; participants listen naturally, seen from the side or behind, nobody looks at the camera. Printed sheets are blank or show only faint abstract lines with no readable text, no logos or signage. Soft window daylight, real wood and paper texture, quiet neutral palette, slight everyday imperfections, realistic depth of field. Photographic realism, no illustration, CGI, HDR glow, lens flare, oversaturation or plastic skin. No readable letters, numbers, labels, screens, marks or brand names anywhere."
   },
   "pension": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A warm natural daylight photograph of a Japanese couple in their late 60s talking with a Japanese bank staff member at a consultation desk in a regional bank branch. They sit at a pale wood desk, listening and speaking with relaxed expressions, looking at one another rather than the camera; the staff member wears a plain navy suit. A blank cream sheet and simple pen on the desk, bare softly lit wall, subtle window light, real skin and clothing texture, gentle depth of field. No readable text, logos, signs, numbers or labels anywhere. Photographic realism, slight imperfections, no illustration, CGI, HDR glow, lens flare or oversaturation."
   },
   "smartphone": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A close natural editorial photograph of one hand holding a modern smartphone above a lived-in Japanese kitchen table. The screen is on but displays only a few soft abstract coloured blocks with no icons, letters, numbers or recognizable interface; keep screen entirely free of readable UI. A plain ceramic cup and folded cloth sit softly out of focus nearby. Morning window light, realistic hand and skin, real wood grain, subtle everyday imperfections, natural depth of field. No people faces, logos or brand names. Photographic realism, no CGI, HDR glow, lens flare or oversaturation."
   },
   "family": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A candid wide photograph of a Japanese family of four, two parents and two school-age children, walking together along a quiet residential street lined with Japanese houses in spring. Seen from a little distance and mostly from behind, nobody looks at the camera. Fresh green hedges and a few pale blossoms, ordinary everyday clothes, gentle morning daylight, realistic pavement and house materials, natural movement and depth of field. No visible signs, house numbers, logos, letters or readable text anywhere. Photographic realism, slight imperfections, no illustration, CGI, HDR glow, lens flare or oversaturation."
   },
   "atm": {
-    "model": "grok-imagine",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A clean ATM corner inside a Japanese regional bank branch, two modern cash machines side by side, no people. Both screens are dark or show only abstract muted colour blocks, with no interface text or numbers. Pale wood trim, neutral warm grey walls and soft daylight, realistic materials, slight imperfections and natural photographic depth of field. No logos, signs, labels, brand names or readable text anywhere; no illustration, CGI, HDR glow, lens flare or oversaturation."
   }
 }
