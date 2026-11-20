@@ -18,5 +18,17 @@
   "festival": {
     "model": "grok-imagine",
     "prompt": "A summer evening photograph of an outdoor festival in a Korean city park, shot from behind families seated on the grass. Warm bare string lights hang between large trees. Korean parents and children sit on plain grey picnic mats with empty hands and nothing on the cloth: no cups, no bottles, no food boxes, no bags. A small lit stage sits far in the distance under a dusk sky. Ordinary summer clothes, realistic low light, a little softness in the far crowd. The mats and the grass are blank, with no printing and no lettering anywhere."
+  },
+  "dance": {
+    "model": "grok-imagine",
+    "prompt": "A contemporary dance performance on a dark theatre stage, three Korean dancers in simple flowing costumes caught in a natural expressive movement beneath soft focused stage light. The audience and theatre fall into darkness, realistic fabric and skin texture, restrained colours, documentary photographic realism and natural depth of field. No text, signs, logos or visible writing anywhere; no illustration, CGI, HDR glow, lens flare or oversaturation."
+  },
+  "lecture": {
+    "model": "grok-imagine",
+    "prompt": "A humanities lecture in a small auditorium of a Korean cultural centre. Adult Korean audience members sit facing away from the camera, with a Korean speaker at a simple lectern. A blank wall behind the speaker, no screen or projected content. Soft auditorium lighting, natural posture, realistic clothing and room materials, documentary photographic realism and depth of field. No text, logos, signs or readable writing anywhere; no illustration, CGI, HDR glow, lens flare or oversaturation."
+  },
+  "museum-family": {
+    "model": "grok-imagine",
+    "prompt": "A Korean family with two children looking together at a large abstract sculpture in a bright contemporary museum hall. The family is seen from the side or behind, naturally engaged with the artwork, nobody looking at the camera. Soft skylight, pale stone floor, real material texture and gentle depth of field. The sculpture is abstract with no letters or symbols, and the walls have no labels or signs. Photographic realism, no illustration, CGI, HDR glow, lens flare or oversaturation."
   }
 }
