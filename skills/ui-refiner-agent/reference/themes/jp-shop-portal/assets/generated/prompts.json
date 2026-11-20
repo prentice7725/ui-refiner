@@ -24,15 +24,15 @@
     "prompt": "An afternoon photograph of the white-plaster exterior of an old Japanese sake brewery. A large cedar-needle ball, a sugidama, hangs above a plain wooden entrance, with an aged dark tile roof and a quiet empty street. Warm side light, a little weathering and hairline cracks in the plaster, no people. The walls and the cedar ball carry no characters and no lettering."
   },
   "giftbox": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A refined square photographic still life of a clear sake bottle nestled in an open pale paulownia-wood gift box, with a sheet of plain white wrapping paper folded beside it on a white tabletop. The bottle has no label, writing or markings; simple unmarked glass and a plain cap. Soft natural studio daylight, subtle wood grain, gentle shadows, realistic glass reflections, quiet Japanese craft aesthetic, slight imperfections. No text, numbers, logos, labels or brand names anywhere. Photographic realism, no CGI, illustration, HDR glow, lens flare or oversaturation."
   },
   "rice": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A close horizontal documentary-style product photograph of polished sake rice grains filling a small traditional wooden measuring cup on a dark aged wooden table. Several grains spill naturally beside it. Raking soft window light reveals the rice texture and honest wood grain, subdued warm neutral tones, shallow but realistic depth of field, small imperfections. No containers with labels, no text, logos or marks. Photographic realism, no illustration, CGI, HDR glow, lens flare or oversaturation."
   },
   "seasonal": {
-    "model": "image_gen.imagegen",
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
     "prompt": "A quiet square seasonal product photograph of a frosted sake bottle with a completely blank pale-pink paper label and plain unmarked cap, standing beside a delicate sprig of cherry blossom on a white surface. Soft natural daylight, faint blossom shadows, realistic frosted glass and paper texture, restrained pale colours, gentle depth of field. No writing, symbols, logos, numbers or brand names. Photographic realism, slight imperfections, no illustration, CGI, HDR glow, lens flare or oversaturation."
   }
 }

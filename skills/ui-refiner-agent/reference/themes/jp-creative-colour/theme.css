@@ -307,7 +307,10 @@ h1, h2, h3, .display, .h2, .h3 {
   gap: 28px;
 }
 .voice-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); }
-.voice-card__media img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 1px solid var(--line); }
+.voice-card__media { overflow: hidden; border-bottom: 1px solid var(--line); }
+.voice-card__media img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+/* A closer crop of a work photo, so a card never repeats the works grid. */
+.voice-card__media--zoom img { transform: scale(var(--zoom, 1.6)); transform-origin: var(--focus, 50% 50%); }
 .voice-card__body { display: flex; flex-direction: column; flex: 1; padding: 28px 28px 32px; }
 .voice-card blockquote { flex: 1; font-size: 15px; line-height: 1.95; }
 .voice-card blockquote p::before { content: "「"; }

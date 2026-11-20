@@ -210,6 +210,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: var(--track); }
 }
 /* Uneven heights: tall and wide images alternate, the right column drops. */
 .work:nth-child(even) { margin-top: clamp(80px, 12vw, 200px); }
+/* Six works end on the right: the last image sits on the row's bottom so both columns end together. */
+.work:last-child:nth-child(even) { margin-top: 0; align-self: end; }
 .work--tall img { aspect-ratio: 4 / 5; }
 .work--wide img { aspect-ratio: 16 / 11; }
 
