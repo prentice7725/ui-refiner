@@ -6,13 +6,19 @@ const families={place:'숙박·관광·외식',care:'의료·케어',business:'�
 const styles={photo:'사진 중심',white:'밝은 여백',dark:'어두운 시네마틱',corporate:'기업 표준형',portal:'정보 밀집형',bigtype:'대형 타이포그래피'};
 const countries={kr:'한국',jp:'일본'};
 const cards=[];
+const previews={kr:[],jp:[]};
 for(const line of catalog.split(/\r?\n/).filter(line=>line.startsWith('| `'))){
  const row=/^\| `([a-z]+)-([a-z]+)-([a-z]+)` \| [^|]+ \| (\d+) \|$/.exec(line);
  if(!row)throw Error('Invalid theme row: '+line);
  const [,country,family,style,count]=row;
  if(!countries[country]||!families[family]||!styles[style])throw Error('Unknown theme: '+line);
  const id=[country,family,style].join('-');
- for(const asset of ['sample.html','shot-desktop.png'])await fs.access(new URL(id+'/'+asset,dir));
+ for(const asset of ['sample.html','shot-desktop.png','shot-mobile.png','theme.md'])await fs.access(new URL(id+'/'+asset,dir));
+ previews[country].push(`### [${id}](${id}/theme.md)
+
+| Desktop | Mobile |
+| --- | --- |
+| ![${id} desktop](${id}/shot-desktop.png) | ![${id} mobile](${id}/shot-mobile.png) |`);
  const photo=['photo','dark'].includes(style);
  cards.push(`<article data-country="${country}" data-family="${family}" data-photo="${photo}">
 <a href="${id}/sample.html"><img loading="lazy" src="${id}/shot-desktop.png" alt=""><div><small>${countries[country]} / ${families[family]}</small><h2>${styles[style]}</h2><span>${id} ↗</span></div></a>
@@ -44,7 +50,22 @@ form.addEventListener('change',filter);
 filter();
 </script></html>
 `;
-const target=new URL('index.html',dir);
-if(process.argv.includes('--check')){
- if(await fs.readFile(target,'utf8').then(text=>text.replaceAll('\r\n','\n'))!==html)throw Error('Refresh the gallery with node scripts/build-theme-gallery.mjs');
-}else await fs.writeFile(target,html);
+const markdown=`# Theme gallery
+
+[Korea](#korea) · [Japan](#japan)
+
+## Korea
+
+${previews.kr.join('\n\n')}
+
+## Japan
+
+${previews.jp.join('\n\n')}
+`;
+for(const [file,content] of [['index.html',html],['GALLERY.md',markdown]]){
+ const target=new URL(file,dir);
+ if(process.argv.includes('--check')){
+  const actual=(await fs.readFile(target,'utf8')).replaceAll('\r\n','\n');
+  if(actual!==content)throw Error('Refresh '+file+' with node scripts/build-theme-gallery.mjs');
+ }else await fs.writeFile(target,content);
+}
