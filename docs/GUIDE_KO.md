@@ -30,6 +30,8 @@ ui-refiner prefer add surface paper --said "크림 바탕은 이제 그만"   # 
 
 이게 전부입니다. `scan`은 URL, 호스트 이름, 로컬 `.html` 파일을 받고, 설정이 필요 없으며 대상 프로젝트를 바꾸지 않습니다. `npm link`를 하지 않았다면 `node bin/ui-refiner.mjs scan …`으로 실행합니다.
 
+한국·일본 사이트를 실측한 디자인에서 시작하려면 [skills/ui-refiner-agent/reference/themes](../skills/ui-refiner-agent/reference/themes/README.md)의 테마 13개 중 하나를 골라 에이전트에게 그 테마로 만들어 달라고 하면 됩니다. 테마마다 실측 근거, 토큰, 섹션 뼈대, CSS, 샘플 페이지가 있습니다.
+
 - **리포트 언어**는 페이지를 따릅니다. 일본어 페이지는 일본어, 한국어 페이지는 한국어, 그 밖에는 영어 리포트입니다. 항상 같은 언어로 받으려면 `UI_REFINER_LANG=ko`(또는 `ja`, `en`)를 설정하고, 한 번만 바꿀 때는 `--lang`을 씁니다. 브라우저 로케일은 호스트를 따릅니다(`.jp` → `ja-JP`, `.kr` → `ko-KR`). `--locale`로 바꿀 수 있습니다.
 - **다시 스캔하면 자동으로 비교합니다.** 출력 폴더에 같은 페이지의 이전 스캔이 있으면 새 리포트 맨 앞에 전후 비교가 붙습니다. 끄려면 `--no-compare`, 다른 폴더의 스캔과 비교하려면 `--compare <폴더>`를 씁니다.
 - `--source src`는 소스 정적 검사를 추가하고, `--out`은 출력 폴더를 바꿉니다(기본 `ui-refiner-scan/`).
