@@ -4,6 +4,9 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+### Changed
+- AI-look index: on Korean and Japanese pages a cream ground with a serif display (`paper-serif`) scores as strong (3) instead of moderate (2). It was on 44–50% of 79 Korean and Japanese pages that Claude and Codex built from one-line prompts and on 0.5–1.5% of 1790 human-made Korean and Japanese sites. Rescanned on 20 November 2026, score ≥ 20 flags 73% of those AI pages (was 65%; Claude 81%, Codex 64%; 12 held-out prompts 58% → 67%), while human-made sites stay at 7% in Korea and go from 2.6% to 2.9% in Japan (three sites that scored 19). English pages keep it moderate. Removing the deliberate-design discount was tried and rejected: real photographs and a chosen web font are still far more common on human sites (75–88% against 29–35%), and without the discount human Korean sites at 20 or more would go from 7% to 11%.
+
 ## 0.9.0 — 2026-11-20
 
 ### Added
