@@ -344,7 +344,7 @@ npm run smoke:review4
 
 CI는 단위·계약 테스트, 실제 Chromium UI·CLI 검사, 세션 타임아웃 검사, 고정 벤더 동기화 검증을 실행합니다. 정상/위반 페이지, 모노레포 변경, 이동한 체크아웃의 훅, 자동 ID, 1,600행 목록 뒤의 pointer 우선 탐지, 동일 상태 이미지와 요소 크롭을 검증합니다.
 
-실제 검사 출력과 해시·출처는 `test/fixtures`에 보존하고, 스모크의 실제 출력을 검토된 수정 정보 계약과 비교합니다. CI는 `upstream-contracts` 증거도 업로드합니다. 계약이 바뀌면 fixture를 자동으로 재생성하지 않고 검토해야 합니다. [CI 워크플로](../../.github/workflows/ci.yml)와 [구현 보고서](../history/IMPLEMENTATION_REPORT_KO.md)를 참고하세요.
+실제 검사 출력과 해시·출처는 `test/fixtures`에 보존하고, 스모크의 실제 출력을 검토된 수정 정보 계약과 비교합니다. CI는 `upstream-contracts` 증거도 업로드합니다. 계약이 바뀌면 fixture를 자동으로 재생성하지 않고 검토해야 합니다. [CI 워크플로](../../.github/workflows/ci.yml)를 참고하세요.
 
 ## 10. 표준 출력과 오프라인 검토
 

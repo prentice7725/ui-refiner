@@ -344,7 +344,7 @@ npm run smoke:review4
 
 CI runs unit/contract tests, real Chromium UI and CLI checks, session-timeout checks and pinned vendor-sync verification. Fixtures include clean/violating pages, monorepo changes, moved-checkout hooks, generated IDs, pointer-prioritized discovery after a 1600-row list, same-state images and element crops.
 
-Actual checker recordings and their hashes/provenance are retained in `test/fixtures`; live smoke output is compared with the reviewed repair contract. CI also uploads `upstream-contracts` evidence. Contract changes require review rather than silently regenerating fixtures. See [CI workflow](../../.github/workflows/ci.yml) and [implementation report](../history/IMPLEMENTATION_REPORT_KO.md).
+Actual checker recordings and their hashes/provenance are retained in `test/fixtures`; live smoke output is compared with the reviewed repair contract. CI also uploads `upstream-contracts` evidence. Contract changes require review rather than silently regenerating fixtures. See [CI workflow](../../.github/workflows/ci.yml).
 
 ## 10. Standard output and offline review
 
