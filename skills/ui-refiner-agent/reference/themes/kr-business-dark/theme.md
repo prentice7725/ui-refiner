@@ -58,3 +58,14 @@ For Korean makers, logistics firms, technology and B2B companies that want to lo
 - Neon gradients, glows, glass panels, purple; the dark is industrial, not crypto.
 - Icons in boxes for business areas; use photographs.
 - Invented figures: the capability band shows only the client's real numbers, else it is left out.
+
+## Applying to a client's content
+
+Learned on a real logistics page (한길로지스, 20 November 2026). See also `../README.md`.
+
+- **This theme needs the client's photographs or video.** Without them the page reads as a dark text template: choose the white-quiet or standard-corporate business theme instead, or ask for photographs (for logistics: high-bay racking, trucks at the docks, pick-and-pack stations, the real WMS screen, an aerial of the centre).
+- When it is used without photographs anyway: a type hero over the night ground, business areas as type tiles (number, name, line, hairline list), the client's product screen in the technology slot.
+- **Optional night sections**: process steps (hairline columns) after the figures, cases in the newsroom slot as text rows, FAQ, and a full quote form after the inquiry band (square dark fields, signal-blue submit, `color-scheme: dark` on the form).
+- **Long pages** (over about 7 screens) may take a second light section, for the form or the process, so the dark run is not unbroken.
+- **Figures** only from the client; write units in their own span (4.5만 <span>건</span>) so the figure reads as one fact.
+- KOR/EN switch, newsroom and family-site select are dropped when the client has none.

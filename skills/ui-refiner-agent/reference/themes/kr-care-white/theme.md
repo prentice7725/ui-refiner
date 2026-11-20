@@ -61,3 +61,16 @@ For Korean dental, dermatology and Korean-medicine clinics and small hospitals: 
 - Event banners, pop-ups, sliders, stacks of promotion images: that is the dense-portal archetype, not this one.
 - Gradient heroes, glass, emoji, stat strips of big numbers.
 - English taglines over Korean headings.
+
+## Applying to a client's content
+
+Learned on a real dental page (바른미소치과의원, 20 November 2026). See also `../README.md`.
+
+- **About / promises** go right after the hours strip as a hairline numbered list (soft-ink numbers), with the client's `#about` anchor there.
+- **Hours strip**: a small second line in a cell for notes such as (점심시간 없음); today's row from the client's own status text, moved into the utility bar. No status dots (a second colour).
+- **Treatments without detail pages**: the 「자세히」 column shows the client's sub-items instead of a link.
+- **Several doctors**: stacked entries (title, name, career list, quote) in the doctor block beside one room photograph; never a generated portrait next to a named doctor.
+- **FAQ** as hairline `<details>` rows on the warm band after first visit; **booking form** before the location, as the target of every 진료 예약 button: square hairline fields, accent filled submit, errors in ink with a 「확인해 주세요」 prefix (no red).
+- **Facilities** is dropped when the client has no facility content; room images go beside sections whose text they support.
+- **Phone menu** wraps to two lines (a scrolling row ran off screen at 320px in stress); a fixed bottom quick bar (전화 상담 / 진료 예약) is kept when the client has one, restyled white with a hairline.
+- Page length with FAQ and a form: about 8 screens, within the measured p75 (10.5).

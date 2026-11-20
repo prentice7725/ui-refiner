@@ -60,3 +60,17 @@ For Japanese inns, onsen ryokan, small hotels and tourism pages: places people c
 - Cards with shadows or rounded corners, icon rows, gradients other than the bottom fade on the hero photograph.
 - A dark page: the dark band is the footer only.
 - Stock English slogans ("Relax & Refresh"). The copy is the inn's own: the spring, the rooms, the meal, the way there.
+
+## Applying to a client's content
+
+Learned on a real inn page (やまびこ荘, Hakuba, 20 November 2026). See also `../README.md`.
+
+- **Booking bar**: take the client's own fields, including a fourth one (room type); when the fields and the phone block do not fit one row, give the bar a second row rather than narrowing the fields. The client's reservation section moves here, with its id.
+- **Hero buttons** are dropped when the booking bar sits right under the hero and does the same job.
+- **Seasons, three baths, a sample menu**: seasons go after the concept on the paper band (tabs over panels that are all in the HTML); several baths sit as a hairline row of three under the onsen block; a sample menu sits beside the cuisine text.
+- **A room without a photograph** is a full-width text row under the photo cards, never given a photo of another room.
+- **Plans with no plan pages** link each row to the booking bar (空室検索) instead of 「詳細」.
+- **FAQ** goes after access as a `<details>` list with hairlines; news (plain rows, not only links) after it. When the client has more photo-less sections than photographs, two such sections in a row at the end are accepted.
+- **Vertical heading**: size it from its content (not a fixed height); on phones set it horizontal.
+- **Header**: let it grow with a longer menu (min-height, wrap by whole items); on phones the reservation button may wrap.
+- Generated images are named for Shibu Onsen; for another town they are mood images only.
