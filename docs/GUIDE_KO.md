@@ -160,7 +160,7 @@ ui-refiner scan localhost:5173 --out scan-after --compare scan-before
 | 에이전트 | 방법 |
 |---|---|
 | Claude Code (플러그인) | `/plugin marketplace add prentice7725/ui-refiner` 후 `ui-refiner` 설치. 플러그인 폴더에서 `npm ci && npx playwright install chromium` 한 번 실행 |
-| Claude Code / Codex (프로젝트별) | 앱의 `tools/ui-refiner`에 이 저장소를 두고 `node tools/ui-refiner/scripts/install-agent-skill.mjs .` 실행. `.claude/skills/ui-refiner-agent`와 `/ui-review` 명령(Claude Code), `.agents/skills/ui-refiner-agent`(Codex)에 스킬을 두고 편집 후 훅을 등록 |
+| Claude Code / Codex (프로젝트별) | [빠른 시작](../README_KO.md#빠른-시작)에 따라 의존성과 Chromium을 준비하고 설치기에서 `--host claude` 또는 `--host codex`를 선택합니다. Claude Code에는 슬래시 명령과 편집·종료 훅을 등록합니다. Codex에서는 새 채팅에서 자연어로 스킬을 호출합니다. |
 
 내장 디자인 지식은 `vendor/suta/skills/suta`(한국어)에 있습니다. AI 슬롭 금지선, 레이아웃·모션 값, 테스트된 UI 패턴 57종입니다.
 
