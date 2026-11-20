@@ -1,7 +1,7 @@
 {
   "hero-sea": {
     "model": "grok-imagine",
-    "prompt": "A wide golden-hour photograph of a low white modern pension on a green hillside above a blue southern-Korean bay, small islands on the horizon. The building has a few large plain glass windows and a simple recessed door, white plaster and a flat roof, pines and dry grass around it. Warm low sunlight, a little haze over the water, no people. Walls, glass and the door are completely blank, with no signs and no lettering."
+    "prompt": "A wide golden-hour photograph of a two-storey white Korean seaside pension on a green hillside above a blue bay dotted with small islands. The guesthouse reads clearly as a house: large glass windows, deep balconies with thin metal railings on both floors, and a broad wooden deck terrace stepping down the slope, with a few pine trees beside it. Warm low sunlight, a little haze over the water, real plaster, weathered deck boards, and ordinary window frames. No people. Walls, glass and railings are completely blank, with no signs and no lettering."
   },
   "room-ocean": {
     "model": "grok-imagine",

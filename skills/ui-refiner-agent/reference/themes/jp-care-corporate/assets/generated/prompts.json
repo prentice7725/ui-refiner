@@ -22,5 +22,9 @@
   "exterior": {
     "model": "grok-imagine",
     "prompt": "A sunny afternoon photograph of a small modern single-storey day-care building on a quiet Japanese residential street. Pale wood facade, a gentle concrete ramp to a plain glass door, a small garden with shrubs along the front, neighbouring houses softly out of focus. Clear natural light, real wood grain, a little weathering on the ramp, no people, and the facade completely free of signs and lettering."
+  },
+  "bath": {
+    "model": "grok-imagine",
+    "prompt": "A clean daylight photograph of an empty accessible bathing room in a Japanese day-service centre. A wide white bathtub sits against pale tiled walls, with stainless handrails along the rim and a bath-chair lift parked at the near end. Large light floor tiles, a frosted window giving soft overcast light, a folded plain towel on a bench, and a little water sheen on the tile. Realistic materials, no people. Every surface is free of signs and lettering."
   }
 }

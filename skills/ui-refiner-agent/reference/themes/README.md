@@ -15,6 +15,12 @@ A theme is a finished design measured from real human-made sites: one archetype 
 | `jp-care-corporate` | JP · care (dental, dermatology, day service, fitness, salon) · standard corporate | 68 |
 | `kr-place-photo` | KR · place (pension, resort, wedding, event) · photo-led | 29 |
 | `jp-business-corporate` | JP · business (maker, software, regional firm, builder) · standard corporate | 52 |
+| `kr-public-portal` | KR · public (media, government, culture, finance, associations) · dense portal | 58 |
+| `jp-public-portal` | JP · public (finance, media, government, associations, universities) · dense portal | 64 |
+| `kr-shop-portal` | KR · shop (e-commerce, cosmetics, fashion) · dense portal | 26 |
+| `jp-shop-portal` | JP · shop (e-commerce, food, cosmetics, fashion) · dense portal | 30 |
+| `kr-creative-dark` | KR · creative (design, game) · dark cinematic; weak basis | 12 |
+| `jp-creative-colour` | JP · creative (game, design) · bold colour; weak basis | 7 |
 
 Korea and Japan differ as much as trades do (Korean care sites go white and short, Japanese ones standard corporate with big type), so a theme is never reused across the two countries.
 
