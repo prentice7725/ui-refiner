@@ -61,6 +61,14 @@ Which studios take which theme: a design, photo or video studio that shows its w
 - More than one English word per head; English sentences as claims longer than three words.
 - Splitting the English word across lines on phones: `--word` scales down with the viewport, and long words get `overflow-wrap: anywhere` only as the last resort.
 
+## Effects (optional)
+
+Measured on 40 Japanese big type sites of all families (`data/motion/summary.json`, November 2026): hero slides 55%, hero video 28%, scroll reveals 33%, a blurred fixed header 13%, a marquee 15%, a loading intro 7% (parallax 3%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `hero-video`, `reveal`.
+- **Only when the client asks**: `header-blur`, `marquee`, `intro`.
+- One moving hero: video *or* slides, never both.
+
 ## Applying to a client's content
 
 See `../README.md`. Architects show a project list with place and year instead of category tags; video production companies replace the hero photograph with a muted, paused-on-request video poster. Studios without client photographs keep the Works grid to the projects they can show; never fill it with generated mock-ups presented as real clients.

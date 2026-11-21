@@ -59,6 +59,15 @@ For Korean makers, logistics firms, technology and B2B companies that want to lo
 - Icons in boxes for business areas; use photographs.
 - Invented figures: the capability band shows only the client's real numbers, else it is left out.
 
+## Effects (optional)
+
+Measured on 40 Korean dark cinematic sites of all families (`data/motion/summary.json`, November 2026): hero slides 40%, hero video 33%, scroll reveals 17%, a blurred fixed header 5%, a marquee 3%, a loading intro 0% (parallax 7%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `hero-video`.
+- **Only when the client asks**: `reveal`, `header-blur`.
+- **Not for this theme**: `marquee`, `intro`.
+- One moving hero: video *or* slides, never both.
+
 ## Applying to a client's content
 
 Learned on a real logistics page (한길로지스, 20 November 2026). See also `../README.md`.

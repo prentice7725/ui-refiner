@@ -57,6 +57,14 @@ For Japanese manufacturers, software and engineering firms, regional companies a
 - Campaign banners, cartoon illustrations, pastel gradients, rounded pill buttons, more than one navy section.
 - Long English slogans; one short English word as the hero's label at most.
 
+## Effects (optional)
+
+Measured on 40 Japanese standard corporate sites of all families (`data/motion/summary.json`, November 2026): hero slides 55%, hero video 17%, scroll reveals 23%, a blurred fixed header 0%, a marquee 3%, a loading intro 5% (parallax 5%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `reveal`.
+- **Only when the client asks**: `hero-video`, `intro`.
+- **Not for this theme**: `header-blur`, `marquee`.
+
 ## Applying to a client's content
 
 See `../README.md`. Without IR (a private company) the link cards are 会社概要 · サステナビリティ · 採用情報. A regional service firm uses its service area map instead of the message watermark.

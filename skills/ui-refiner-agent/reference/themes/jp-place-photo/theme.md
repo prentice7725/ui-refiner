@@ -61,6 +61,15 @@ For Japanese inns, onsen ryokan, small hotels and tourism pages: places people c
 - A dark page: the dark band is the footer only.
 - Stock English slogans ("Relax & Refresh"). The copy is the inn's own: the spring, the rooms, the meal, the way there.
 
+## Effects (optional)
+
+Measured on 39 Japanese photo-led sites of all families (`data/motion/summary.json`, November 2026): hero slides 69%, hero video 13%, scroll reveals 36%, a blurred fixed header 5%, a marquee 3%, a loading intro 3% (parallax 13%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `reveal`.
+- **Only when the client asks**: `hero-video`, `header-blur`.
+- **Not for this theme**: `marquee`, `intro`.
+- Reveals on the concept, onsen and cuisine photographs and the room cards only. Try them on `sample.html?fx=all` or `?fx=hero-slides,reveal`.
+
 ## Applying to a client's content
 
 Learned on a real inn page (やまびこ荘, Hakuba, 20 November 2026). See also `../README.md`.

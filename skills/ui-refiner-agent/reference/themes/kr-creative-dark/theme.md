@@ -49,6 +49,15 @@ For Korean design studios, branding agencies, production companies and game stud
 
 - Neon accents, glowing gradients, cursor-follow effects that hide content, autoplaying sound.
 
+## Effects (optional)
+
+Measured on 40 Korean dark cinematic sites of all families (`data/motion/summary.json`, November 2026): hero slides 40%, hero video 33%, scroll reveals 17%, a blurred fixed header 5%, a marquee 3%, a loading intro 0% (parallax 7%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `hero-video`.
+- **Only when the client asks**: `reveal`, `header-blur`.
+- **Not for this theme**: `marquee`, `intro`.
+- One moving hero: video *or* slides, never both.
+
 ## Applying to a client's content
 
 See `../README.md`. Without photographs that can be shown large this theme does not hold; ask for the portfolio first, and use the client's studio or project photographs when the home page has no work images. Game studios lead with the game's key art and a trailer link.
