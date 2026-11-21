@@ -2,34 +2,34 @@
  "country": "JP",
  "family": "creative",
  "cluster": 3,
- "sites": 29,
+ "sites": 35,
  "trades": [
-  "game 41%",
-  "design 24%",
-  "architecture 14%",
-  "illustration 14%",
-  "photo 7%"
+  "game 34%",
+  "design 23%",
+  "architecture 17%",
+  "photo 14%",
+  "illustration 11%"
  ],
  "fonts": {
   "display": [
    "noto sans jp 14%",
-   "游ゴシック体 10%",
+   "游ゴシック体 9%",
+   "hiragino kaku gothic pron 6%",
    "fp-こぶりなゴシック stdn w3 3%",
    "mfw-pshueigoginstdn-l 3%",
    "yakuhanjps 3%",
    "noto-sans-cjk-jp 3%",
-   "yakuhanrp 3%",
-   "arial 3%"
+   "yakuhanrp 3%"
   ],
   "body": [
    "noto sans jp 31%",
-   "游ゴシック体 10%",
+   "游ゴシック体 9%",
+   "raleway 6%",
+   "sans-serif 6%",
+   "hiragino kaku gothic pron 6%",
    "fp-こぶりなゴシック stdn w3 3%",
-   "raleway 3%",
-   "sans-serif 3%",
    "mfw-pshueigoginstdn-l 3%",
-   "yakuhanjps 3%",
-   "noto-sans-cjk-jp 3%"
+   "yakuhanjps 3%"
   ]
  },
  "sizes": {
@@ -45,23 +45,23 @@
   },
   "h2": {
    "p25": 16,
-   "p50": 28,
+   "p50": 25,
    "p75": 40
   },
   "h3": {
    "p25": 14,
-   "p50": 19,
-   "p75": 28
+   "p50": 18,
+   "p75": 24
   },
   "display": {
    "p25": 30,
-   "p50": 45,
-   "p75": 60
+   "p50": 42,
+   "p75": 59.84
   },
   "ratio": {
    "p25": 2.14,
-   "p50": 3.21,
-   "p75": 4.2
+   "p50": 2.83,
+   "p75": 3.75
   }
  },
  "weights": {
@@ -76,21 +76,22 @@
    "p75": 700
   }
  },
- "serifShare": 0.1,
+ "serifShare": 0.14,
  "colours": {
   "ground": [
-   "#ffffff 79%",
+   "#ffffff 77%",
    "#f1f1f1 3%",
    "#f5f5f5 3%",
    "#f8fff3 3%",
    "#f9f9f9 3%",
    "#f8fff8 3%",
-   "#ffe462 3%"
+   "#ffe462 3%",
+   "#fefefe 3%"
   ],
   "text": [
-   "#000000 34%",
-   "#333333 14%",
-   "#222222 10%",
+   "#000000 29%",
+   "#333333 17%",
+   "#222222 11%",
    "#5e5d5d 3%",
    "#172955 3%",
    "#ffffff 3%",
@@ -98,27 +99,27 @@
    "#555555 3%"
   ],
   "heading": [
-   "#000000 14%",
-   "#ffffff 7%",
+   "#000000 11%",
+   "#ffffff 6%",
+   "#333333 6%",
    "#5e5d5d 3%",
    "#244866 3%",
    "#ff6827 3%",
    "#172955 3%",
-   "#3c3c3c 3%",
-   "#404248 3%"
+   "#3c3c3c 3%"
   ],
   "buttonHue": [
-   "white 28%",
-   "blue 14%",
-   "grey 10%",
-   "red 7%",
-   "black 7%",
-   "teal 7%",
+   "white 26%",
+   "blue 11%",
+   "grey 11%",
+   "red 9%",
+   "teal 9%",
+   "black 6%",
    "orange 3%"
   ],
   "buttonBg": [
-   "#ffffff 21%",
-   "#333333 7%",
+   "#ffffff 17%",
+   "#333333 6%",
    "#188bcc 3%",
    "#e60012 3%",
    "#000000 3%",
@@ -138,56 +139,56 @@
   "buttonRadius": {
    "p25": 0,
    "p50": 4,
-   "p75": 50
+   "p75": 29
   },
   "buttonHeight": {
    "p25": 40,
    "p50": 50,
-   "p75": 67
+   "p75": 70
   },
   "hairlines": {
-   "p25": 11,
+   "p25": 7,
    "p50": 29,
    "p75": 60
   },
   "content": {
    "p25": 1000,
    "p50": 1100,
-   "p75": 1240
+   "p75": 1230
   }
  },
  "layout": {
-  "heroFullBleed": 0.07,
+  "heroFullBleed": 0.09,
   "heroAlign": [
-   "left 45%",
-   "center 10%",
-   "below-fold 3%"
+   "left 40%",
+   "center 14%",
+   "below-fold 6%"
   ],
   "heroSide": [
-   "none 76%",
-   "media 24%"
+   "none 77%",
+   "media 23%"
   ],
-  "claimOnFirst": 0.41,
-  "actionOnFirst": 0.52,
+  "claimOnFirst": 0.43,
+  "actionOnFirst": 0.51,
   "screens": {
-   "p25": 5.49,
-   "p50": 6.72,
-   "p75": 11.95
+   "p25": 5.58,
+   "p50": 6.88,
+   "p75": 12.68
   },
   "photos": {
    "p25": 7,
    "p50": 19,
-   "p75": 33
+   "p75": 35
   },
   "nav": {
-   "p25": 3,
+   "p25": 4,
    "p50": 6,
-   "p75": 9
+   "p75": 10
   },
   "centred": {
    "p25": 0.01,
-   "p50": 0.05,
-   "p75": 0.1
+   "p50": 0.06,
+   "p75": 0.15
   }
  },
  "pixels": {
@@ -208,35 +209,35 @@
   },
   "colourful": {
    "p25": 0.06,
-   "p50": 0.11,
+   "p50": 0.1,
    "p75": 0.17
   }
  },
  "navLabels": [
-  "recruit 4%",
-  "english 2%",
-  "works 2%",
+  "recruit 3%",
   "contact 2%",
-  "news 2%",
-  "game 2%",
-  "お知らせ 2%",
-  "採用情報 2%",
-  "company 2%",
-  "en 2%",
-  "blog 1%",
+  "works 2%",
+  "english 2%",
+  "ホーム 1%",
   "制作実績 1%",
+  "news 1%",
+  "game 1%",
+  "お知らせ 1%",
+  "会社情報 1%",
+  "採用情報 1%",
+  "よくある質問 1%",
+  "company 1%",
+  "en 1%",
+  "about 1%",
+  "blog 1%",
   "ニュース 1%",
   "イベント・キャンペーン 1%",
   "shop 1%",
   "goods 1%",
   "サポート 1%",
   "トップ 1%",
-  "会社情報 1%",
   "投資家情報 1%",
-  "お問い合わせ 1%",
-  "会社案内 1%",
-  "よくある質問 1%",
-  "topics 1%"
+  "お問い合わせ 1%"
  ],
  "nearest": [
   "JP-game/spike-chunsoft.co.jp",
@@ -247,13 +248,13 @@
   "JP-illustration/colorido.co.jp",
   "JP-game/awahi-magazine.jp",
   "JP-photo/studioselfit.com",
+  "JP-photo/cs-innocence.com",
   "JP-design/design-kom.com",
+  "JP-architecture/kouketsu.co.jp",
   "JP-game/cc2.co.jp",
   "JP-design/nanairo-inc.jp",
   "JP-game/nippon1.jp",
-  "JP-game/nintendo.com_jp",
-  "JP-illustration/design-ark.jp",
-  "JP-illustration/tms-e.co.jp",
-  "JP-architecture/tohata.co.jp"
+  "JP-design/dotzero.jp",
+  "JP-game/nintendo.com_jp"
  ]
 }

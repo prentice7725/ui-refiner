@@ -2,16 +2,24 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.11.0 — 2026-11-21
+
+The themes rest on more sites and have been tried on real pages. Two more collections brought the measured sites from 1761 to 2,326, the thinnest themes were measured again, and the themes were applied to twelve real Korean and Japanese pages, whose lessons are now in the theme docs.
+
+### Added
+- A theme gallery: `skills/ui-refiner-agent/reference/themes/GALLERY.md` shows every theme's desktop and phone screenshots on GitHub, and `index.html` (built by `scripts/build-theme-gallery.mjs`) opens them in a browser from a local checkout.
+- The READMEs explain the themes in three steps: the eight page types, the six purpose families with their site counts, and the thirteen themes. A demonstration draws the Korean business family in all eight types (`docs/archetype-demo/`).
+- `data/archetypes/`: the measured site counts per country, family and type (`counts.json`) and the measured values of the theme cells (`spec-*.json`).
+- `.banners` in the two public portal themes: related bodies' own banner images in one even grid, logo banners grey until hover, picture banners in 3:1 cells.
 
 ### Changed
-- Themes are measured from 2245 sites (78 trade × country groups). A second collection added 484 Korean and Japanese sites to the thin groups: design, game, three new creative trades (architecture, photo and video, illustration), shop, Korean place and a few small trades. The new sites were assigned to the existing eight archetypes without moving them, so the other themes keep their basis.
+- A second collection (20 November 2026) brought the measured sites to 2245 (78 trade × country groups). It added 484 Korean and Japanese sites to the thin groups: design, game, three new creative trades (architecture, photo and video, illustration), shop, Korean place and a few small trades. The new sites were assigned to the existing eight archetypes without moving them, so the other themes keep their basis.
   - `kr-creative-dark` now rests on 34 sites (was 12) and is no longer marked weak. `kr-shop-portal` rests on 60 (was 26), `jp-shop-portal` on 57 (was 30) and `kr-place-photo` on 43 (was 29). Their archetypes held; their measured tables were updated.
   - **`jp-creative-colour` is replaced by `jp-creative-bigtype`.** Among the 153 Japanese creative sites, bold colour fell to about 10%. The dense portal leads at 19%, but it is mostly game companies' portals. Big type is the most common archetype among design, photo and architecture studios: single English section words at 100–173px, a white ground and long pages. The new theme reuses the old theme's generated images, and its sample passes `stress`.
-- Theme application lessons from four real sites and a `.banners` related-body grid for the public portal themes (PR #53).
+- Lessons from four real sites (a veterinary association, a chamber of commerce, a renovation firm, a day service) in the public, business and care themes.
 - Lessons from five more real sites (a hanok stay, a ginseng shop, a bamboo-craft shop, a product-photo studio, an architecture firm) in the shop, place and creative themes and the themes README. The new rules: check whether the original page is already designed before applying a theme; keep the client's data and formats as they are, errors included, and list the errors in the report; link outside booking and shop systems instead of imitating them.
-
 - A third collection (21 November 2026) added 81 Japanese design, photo and video, and architecture studios (85 listed). `jp-creative-bigtype` now rests on 36 sites (was 23). Across the 234 Japanese creative sites no archetype leads clearly; big type leads among design and photo studios, and studios whose sites read as companies are closer to `jp-business-corporate`. Only the three Japanese studio groups changed in `data/genre-reference`; earlier records are unchanged.
+- Installing the agent skill into a project that already has it now shows what would change and updates it only on request; files changed locally are listed for review and left alone. CI checks that the theme gallery is current.
 
 ### Fixed
 - `keep record` and `keep check` count only fields a visitor can reach. Site builders leave hidden widgets in the page, such as a colour picker with eight inputs, and those were recorded as the page's fields, so every redesign reported them lost. A field inside a closed `<details>` still counts when the `<details>` itself is shown.

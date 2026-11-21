@@ -1,6 +1,6 @@
 {
  "note": "Measured human-made sites per country and purpose family in each impression archetype (k-means, k=8, November 2026). spec-<country>-<family>-<archetype index>.json holds the measured values of one cell.",
- "sites": 2245,
+ "sites": 2326,
  "archetypes": ["short & small", "dark cinematic", "white quiet", "dense portal", "photo-led", "big type", "standard corporate", "bold colour"],
  "families": {
   "place": ["inn", "tourism", "restaurant", "wedding", "event", "wellness"],
@@ -22,6 +22,6 @@
   "JP public": [16, 3, 17, 64, 23, 11, 31, 14],
   "JP shop": [10, 4, 18, 57, 23, 19, 27, 7],
   "JP business": [27, 12, 38, 42, 29, 23, 52, 26],
-  "JP creative": [9, 16, 21, 29, 20, 23, 19, 16]
+  "JP creative": [18, 21, 30, 35, 35, 36, 38, 21]
  }
 }

@@ -2,33 +2,34 @@
  "country": "JP",
  "family": "creative",
  "cluster": 7,
- "sites": 16,
+ "sites": 21,
  "trades": [
-  "game 50%",
-  "design 25%",
-  "architecture 13%",
-  "illustration 13%"
+  "game 38%",
+  "design 24%",
+  "photo 19%",
+  "architecture 10%",
+  "illustration 10%"
  ],
  "fonts": {
   "display": [
-   "noto sans jp 25%",
-   "zen kaku gothic new 6%",
-   "noto-sans-cjk-jp 6%",
-   "be vietnam pro 6%",
-   "open sans 6%",
-   "avenir 6%",
-   "yakuhanjp_noto 6%",
-   "noto sans japanese 6%"
+   "noto sans jp 24%",
+   "zen kaku gothic new 5%",
+   "noto-sans-cjk-jp 5%",
+   "be vietnam pro 5%",
+   "open sans 5%",
+   "avenir 5%",
+   "yakuhanjp_noto 5%",
+   "noto sans japanese 5%"
   ],
   "body": [
-   "noto sans jp 38%",
-   "fp-koburinagostdn-w3 6%",
-   "zen kaku gothic new 6%",
-   "noto-sans-cjk-jp 6%",
-   "be vietnam pro 6%",
-   "roboto 6%",
-   "-apple-system 6%",
-   "open sans 6%"
+   "noto sans jp 33%",
+   "fp-koburinagostdn-w3 5%",
+   "zen kaku gothic new 5%",
+   "noto-sans-cjk-jp 5%",
+   "be vietnam pro 5%",
+   "roboto 5%",
+   "-apple-system 5%",
+   "open sans 5%"
   ]
  },
  "sizes": {
@@ -40,12 +41,12 @@
   "h1": {
    "p25": 13,
    "p50": 16,
-   "p75": 30
+   "p75": 32
   },
   "h2": {
    "p25": 16,
    "p50": 24,
-   "p75": 42
+   "p75": 44
   },
   "h3": {
    "p25": 16,
@@ -53,78 +54,79 @@
    "p75": 31
   },
   "display": {
-   "p25": 27,
-   "p50": 39.2,
-   "p75": 65
+   "p25": 28,
+   "p50": 44.8,
+   "p75": 72
   },
   "ratio": {
-   "p25": 2,
-   "p50": 2.8,
-   "p75": 4.33
+   "p25": 2.08,
+   "p50": 3.14,
+   "p75": 6.4
   }
  },
  "weights": {
   "h1": {
    "p25": 400,
-   "p50": 400,
+   "p50": 500,
    "p75": 700
   },
   "h2": {
-   "p25": 500,
-   "p50": 700,
+   "p25": 400,
+   "p50": 600,
    "p75": 700
   }
  },
  "serifShare": 0,
  "colours": {
   "ground": [
-   "#ffffff 63%",
-   "#f7f7f7 13%",
-   "#ebedf0 6%",
-   "#f122f9 6%",
-   "#f0efe9 6%",
-   "#fed500 6%"
+   "#ffffff 71%",
+   "#f7f7f7 10%",
+   "#ebedf0 5%",
+   "#f122f9 5%",
+   "#f0efe9 5%",
+   "#fed500 5%"
   ],
   "text": [
-   "#000000 38%",
-   "#333333 25%",
-   "#ffffff 13%",
-   "#05161a 6%",
-   "#f426fc 6%",
-   "#131313 6%",
-   "#6d6d6d 6%"
+   "#000000 33%",
+   "#333333 24%",
+   "#ffffff 14%",
+   "#05161a 5%",
+   "#f426fc 5%",
+   "#131313 5%",
+   "#6d6d6d 5%",
+   "#393939 5%"
   ],
   "heading": [
    "#ffffff 19%",
    "#000000 19%",
-   "#333333 19%",
-   "#05161a 6%",
-   "#f426fc 6%",
-   "#373a3c 6%",
-   "#424242 6%",
-   "#00b097 6%"
+   "#333333 14%",
+   "#05161a 5%",
+   "#f426fc 5%",
+   "#373a3c 5%",
+   "#424242 5%",
+   "#00b097 5%"
   ],
   "buttonHue": [
-   "white 31%",
+   "white 29%",
    "black 19%",
-   "green 6%",
-   "grey 6%",
-   "pink 6%",
-   "blue 6%",
-   "teal 6%",
-   "red 6%"
+   "grey 10%",
+   "teal 10%",
+   "green 5%",
+   "pink 5%",
+   "blue 5%",
+   "red 5%"
   ],
   "buttonBg": [
-   "#ffffff 25%",
-   "#000000 13%",
-   "#00752e 6%",
-   "#32373c 6%",
-   "#f425f9 6%",
-   "#221815 6%",
-   "#155c8e 6%",
-   "#00b097 6%",
-   "#f92424 6%",
-   "#e0e0e0 6%"
+   "#ffffff 24%",
+   "#000000 10%",
+   "#00752e 5%",
+   "#32373c 5%",
+   "#f425f9 5%",
+   "#221815 5%",
+   "#155c8e 5%",
+   "#00b097 5%",
+   "#f92424 5%",
+   "#e0e0e0 5%"
   ]
  },
  "shape": {
@@ -135,107 +137,108 @@
   },
   "buttonRadius": {
    "p25": 0,
-   "p50": 3,
-   "p75": 8
+   "p50": 0,
+   "p75": 35
   },
   "buttonHeight": {
-   "p25": 37,
-   "p50": 64,
+   "p25": 36,
+   "p50": 60,
    "p75": 74
   },
   "hairlines": {
-   "p25": 2,
-   "p50": 11,
+   "p25": 3,
+   "p50": 7,
    "p75": 21
   },
   "content": {
-   "p25": 960,
+   "p25": 1140,
    "p50": 1200,
    "p75": 1240
   }
  },
  "layout": {
-  "heroFullBleed": 0.44,
+  "heroFullBleed": 0.43,
   "heroAlign": [
-   "left 44%",
-   "center 19%",
-   "below-fold 6%"
+   "left 33%",
+   "center 24%",
+   "below-fold 10%",
+   "right 5%"
   ],
   "heroSide": [
    "none 81%",
-   "media 13%",
-   "panel 6%"
+   "media 14%",
+   "panel 5%"
   ],
-  "claimOnFirst": 0.25,
+  "claimOnFirst": 0.24,
   "actionOnFirst": 0.38,
   "screens": {
-   "p25": 4.25,
-   "p50": 7.37,
-   "p75": 8.2
+   "p25": 4.55,
+   "p50": 6.23,
+   "p75": 8.1
   },
   "photos": {
    "p25": 3,
-   "p50": 14,
-   "p75": 33
+   "p50": 9,
+   "p75": 23
   },
   "nav": {
    "p25": 0,
    "p50": 5,
-   "p75": 6
+   "p75": 7
   },
   "centred": {
    "p25": 0,
    "p50": 0.04,
-   "p75": 0.07
+   "p75": 0.06
   }
  },
  "pixels": {
   "white": {
    "p25": 0.23,
    "p50": 0.41,
-   "p75": 0.5
+   "p75": 0.49
   },
   "dark": {
-   "p25": 0.02,
+   "p25": 0.01,
    "p50": 0.03,
-   "p75": 0.15
+   "p75": 0.09
   },
   "photo": {
    "p25": 0.04,
    "p50": 0.06,
-   "p75": 0.08
+   "p75": 0.09
   },
   "colourful": {
    "p25": 0.29,
-   "p50": 0.32,
+   "p50": 0.34,
    "p75": 0.4
   }
  },
  "navLabels": [
-  "news 5%",
-  "works 制作実績 3%",
-  "サービス 3%",
-  "home 3%",
-  "works 3%",
-  "contact 3%",
-  "company 3%",
-  "事業紹介 3%",
-  "企業情報 3%",
-  "採用情報 3%",
-  "design memo デザイン備忘録 2%",
-  "contact us お問い合わせ 2%",
-  "お客様の声 2%",
-  "制作実績 2%",
-  "資料請求 2%",
+  "news 3%",
+  "works 制作実績 2%",
+  "サービス 2%",
   "お問い合わせ 2%",
-  "スケジュール / 出展者 2%",
-  "プログラム 2%",
-  "about 2%",
-  "member 2%",
-  "career 2%",
-  "最新情報 2%",
-  "イベント情報 2%",
-  "関連書籍 2%"
+  "home 2%",
+  "works 2%",
+  "contact 2%",
+  "company 2%",
+  "事業紹介 2%",
+  "企業情報 2%",
+  "採用情報 2%",
+  "en 2%",
+  "出張撮影 2%",
+  "design memo デザイン備忘録 1%",
+  "contact us お問い合わせ 1%",
+  "お客様の声 1%",
+  "制作実績 1%",
+  "資料請求 1%",
+  "スケジュール / 出展者 1%",
+  "プログラム 1%",
+  "about 1%",
+  "member 1%",
+  "career 1%",
+  "最新情報 1%"
  ],
  "nearest": [
   "JP-architecture/fujiyoshi.org",
@@ -246,13 +249,13 @@
   "JP-design/kaeru.design",
   "JP-design/kimura-agc.co.jp",
   "JP-design/884-dsn.com",
+  "JP-design/pkg.tokyo",
   "JP-game/diskgarage.com",
+  "JP-photo/fossette.jp",
   "JP-game/playism.com",
+  "JP-photo/express.co.jp",
   "JP-game/ganbarion.co.jp",
   "JP-illustration/yellows.jp",
-  "JP-game/dokomi.de_ja",
-  "JP-game/freestyles.jp",
-  "JP-game/toydium.co.jp",
-  "JP-game/est-est.co.jp"
+  "JP-game/dokomi.de_ja"
  ]
 }

@@ -21,7 +21,7 @@ Measured sites per country, family and archetype (`data/archetypes/counts.json`;
 | JP public | 16 | 3 | 17 | 64 | 23 | 11 | 31 | 14 | 179 |
 | JP shop | 10 | 4 | 18 | 57 | 23 | 19 | 27 | 7 | 165 |
 | JP business | 27 | 12 | 38 | 42 | 29 | 23 | 52 | 26 | 249 |
-| JP creative | 9 | 16 | 21 | 29 | 20 | 23 | 19 | 16 | 153 |
+| JP creative | 18 | 21 | 30 | 35 | 35 | 36 | 38 | 21 | 234 |
 
 Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (36, after standard corporate with 38) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) is a second theme for Korean business. The reasons:
 
