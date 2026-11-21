@@ -18,3 +18,6 @@ docs/AGENT_STUDY_2026-10-25.json
 
 # Local working data: raw scans, archetype work, experiments (not shared)
 local/
+
+# Claude app preview server for the themes (local)
+.claude/launch.json
