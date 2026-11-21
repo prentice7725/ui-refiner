@@ -12,7 +12,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {scanUrl} from '../src/scan.mjs';
-import {summarizeReference,renderReferenceSummary,compactSite,robotsPolicy,pendingRows,splitOf} from '../src/reference.mjs';
+import {summarizeReference,renderReferenceSummary,compactSite,robotsPolicy,pendingRows,splitOf,mergeOutputSites} from '../src/reference.mjs';
 
 const [listPath,rawDir,dataDir]=process.argv.slice(2);
 if(!listPath||!rawDir||!dataDir){console.error('usage: collect-reference.mjs <sites.tsv> <raw-dir> <data-dir> [--concurrency 2] [--delay 1500]');process.exit(2);}
@@ -63,10 +63,11 @@ async function resolve(u){
   }
  }
  await Promise.all(Array.from({length:concurrency},worker));
- // The output is rebuilt from the whole checkpoint, for the sites still on the list.
- const listed=new Set(rows.map(r=>r.url)),latest=new Map();
- for(const l of (await fs.readFile(logPath,'utf8').catch(()=>'')).split('\n').filter(Boolean)){const {key,rec}=JSON.parse(l);if(listed.has(key))latest.set(key,rec);}
- const sites=[...latest.values()].sort((a,b)=>a.category.localeCompare(b.category)||a.url.localeCompare(b.url));
+ // The output is rebuilt for the sites still on the list: from the whole checkpoint, keeping the records already in
+ // sites.json for sites this checkpoint has no line for (an earlier batch measured them with another checkpoint).
+ const checkpoint=(await fs.readFile(logPath,'utf8').catch(()=>'')).split('\n').filter(Boolean).map(l=>JSON.parse(l));
+ const existing=JSON.parse(await fs.readFile(path.join(dataDir,'sites.json'),'utf8').catch(()=>'{"sites":[]}')).sites||[];
+ const sites=mergeOutputSites(rows,checkpoint,existing);
  const summary=summarizeReference(sites);
  await fs.writeFile(path.join(dataDir,'sites.json'),JSON.stringify({collectedAt:new Date().toISOString(),sites},null,1)+'\n');
  await fs.writeFile(path.join(dataDir,'summary.json'),JSON.stringify(summary,null,2)+'\n');
