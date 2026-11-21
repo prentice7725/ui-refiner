@@ -23,7 +23,13 @@ Measured sites per country, family and archetype (`data/archetypes/counts.json`;
 | JP business | 27 | 12 | 38 | 42 | 29 | 23 | 52 | 26 | 249 |
 | JP creative | 9 | 16 | 21 | 29 | 20 | 23 | 19 | 16 | 153 |
 
-Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (23, after dense portal with 29) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) is a second theme for Korean business. Every family can be drawn in every archetype; `docs/archetype-demo/README.md` in the repository shows the Korean business family in all eight with demonstration samples, which are not themes.
+Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (23, after dense portal with 29) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) is a second theme for Korean business. The reasons:
+
+- `kr-care-white`: the 41 short & small Korean care sites are pages with little on them (median 2.2 screens, largest type 20px, a claim on the first screen on 22%), not a design to follow; the white-quiet ones run 7.2 screens with a 50px headline and a claim on 71%.
+- `jp-creative-bigtype`: 41% of the dense-portal Japanese creative sites are game companies' portals, which look like the shop and public portals; among design, photo and architecture studios, the clients this theme serves, big type is the most common.
+- `kr-business-dark`: 69% of the 172 dark-cinematic sites are Korean, so it is the most Korean-looking business theme, but it needs the client's own photographs (see "Choosing a theme"); `kr-business-white`, the most common archetype, is the one for clients without them.
+
+Every family can be drawn in every archetype; `docs/archetype-demo/README.md` in the repository shows the Korean business family in all eight with demonstration samples, which are not themes.
 
 | Theme | Country · family · archetype | Measured sites |
 |---|---|---|
