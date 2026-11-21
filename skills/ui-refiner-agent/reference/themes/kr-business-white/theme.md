@@ -58,6 +58,15 @@ For Korean software, B2B service, tax and accounting, hiring and other companies
 - Gradient blobs, glass, 3D illustrations, phone mockups floating at angles, icon grids, stat strips of big numbers, testimonial carousels.
 - English slogans over Korean headings. Small English labels only where the client's product uses them.
 
+## Effects (optional)
+
+Measured on 40 Korean white quiet sites of all families (`data/motion/summary.json`, November 2026): hero slides 42%, hero video 23%, scroll reveals 45%, a blurred fixed header 15%, a marquee 17%, a loading intro 0% (parallax 15%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `hero-video`, `reveal`.
+- **Only when the client asks**: `header-blur`, `marquee`.
+- **Not for this theme**: `intro`.
+- One moving hero: video *or* slides, never both.
+
 ## Applying to a client's content
 
 See `../README.md`. Without a product (a tax office, a hiring firm), the hero's right column holds the one thing the client really shows: a sample report, a checklist of the process, or one photograph of the people at work.

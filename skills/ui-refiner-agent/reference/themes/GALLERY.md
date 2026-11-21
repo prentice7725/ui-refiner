@@ -6,11 +6,15 @@
 
 ### [kr-care-white](kr-care-white/theme.md)
 
+Effects offered: `hero-slides`, `hero-video`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+
 | Desktop | Mobile |
 | --- | --- |
 | ![kr-care-white desktop](kr-care-white/shot-desktop.jpg) | ![kr-care-white mobile](kr-care-white/shot-mobile.jpg) |
 
 ### [kr-business-dark](kr-business-dark/theme.md)
+
+Effects offered: `hero-slides`, `hero-video` (open `sample.html?fx=hero-video` from a checkout to see them).
 
 | Desktop | Mobile |
 | --- | --- |
@@ -18,11 +22,15 @@
 
 ### [kr-business-white](kr-business-white/theme.md)
 
+Effects offered: `hero-slides`, `hero-video`, `reveal`.
+
 | Desktop | Mobile |
 | --- | --- |
 | ![kr-business-white desktop](kr-business-white/shot-desktop.jpg) | ![kr-business-white mobile](kr-business-white/shot-mobile.jpg) |
 
 ### [kr-place-photo](kr-place-photo/theme.md)
+
+Effects offered: `hero-slides` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
 
 | Desktop | Mobile |
 | --- | --- |
@@ -30,17 +38,23 @@
 
 ### [kr-public-portal](kr-public-portal/theme.md)
 
+Effects offered: `hero-slides`.
+
 | Desktop | Mobile |
 | --- | --- |
 | ![kr-public-portal desktop](kr-public-portal/shot-desktop.jpg) | ![kr-public-portal mobile](kr-public-portal/shot-mobile.jpg) |
 
 ### [kr-shop-portal](kr-shop-portal/theme.md)
 
+Effects offered: `hero-slides`.
+
 | Desktop | Mobile |
 | --- | --- |
 | ![kr-shop-portal desktop](kr-shop-portal/shot-desktop.jpg) | ![kr-shop-portal mobile](kr-shop-portal/shot-mobile.jpg) |
 
 ### [kr-creative-dark](kr-creative-dark/theme.md)
+
+Effects offered: `hero-slides`, `hero-video`.
 
 | Desktop | Mobile |
 | --- | --- |
@@ -50,11 +64,15 @@
 
 ### [jp-place-photo](jp-place-photo/theme.md)
 
+Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+
 | Desktop | Mobile |
 | --- | --- |
 | ![jp-place-photo desktop](jp-place-photo/shot-desktop.jpg) | ![jp-place-photo mobile](jp-place-photo/shot-mobile.jpg) |
 
 ### [jp-care-corporate](jp-care-corporate/theme.md)
+
+Effects offered: `hero-slides`, `reveal`.
 
 | Desktop | Mobile |
 | --- | --- |
@@ -62,11 +80,15 @@
 
 ### [jp-business-corporate](jp-business-corporate/theme.md)
 
+Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+
 | Desktop | Mobile |
 | --- | --- |
 | ![jp-business-corporate desktop](jp-business-corporate/shot-desktop.jpg) | ![jp-business-corporate mobile](jp-business-corporate/shot-mobile.jpg) |
 
 ### [jp-public-portal](jp-public-portal/theme.md)
+
+Effects offered: `hero-slides`, `reveal`.
 
 | Desktop | Mobile |
 | --- | --- |
@@ -74,11 +96,15 @@
 
 ### [jp-shop-portal](jp-shop-portal/theme.md)
 
+Effects offered: `hero-slides`, `reveal`.
+
 | Desktop | Mobile |
 | --- | --- |
 | ![jp-shop-portal desktop](jp-shop-portal/shot-desktop.jpg) | ![jp-shop-portal mobile](jp-shop-portal/shot-mobile.jpg) |
 
 ### [jp-creative-bigtype](jp-creative-bigtype/theme.md)
+
+Effects offered: `hero-slides`, `hero-video`, `reveal` (open `sample.html?fx=marquee,reveal,intro` from a checkout to see them).
 
 | Desktop | Mobile |
 | --- | --- |

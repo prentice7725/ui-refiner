@@ -62,6 +62,15 @@ For Korean dental, dermatology and Korean-medicine clinics and small hospitals: 
 - Gradient heroes, glass, emoji, stat strips of big numbers.
 - English taglines over Korean headings.
 
+## Effects (optional)
+
+Measured on 40 Korean white quiet sites of all families (`data/motion/summary.json`, November 2026): hero slides 42%, hero video 23%, scroll reveals 45%, a blurred fixed header 15%, a marquee 17%, a loading intro 0% (parallax 15%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `hero-video`, `reveal`.
+- **Only when the client asks**: `header-blur`, `marquee`.
+- **Not for this theme**: `intro`.
+- One moving hero: video *or* slides, never both.
+
 ## Applying to a client's content
 
 Learned on a real dental page (바른미소치과의원, 20 November 2026). See also `../README.md`.

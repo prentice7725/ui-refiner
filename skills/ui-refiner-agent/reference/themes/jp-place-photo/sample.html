@@ -10,10 +10,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&amp;family=Zen+Old+Mincho:wght@500&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&amp;family=Zen+Old+Mincho:wght@500&amp;display=swap"></noscript>
 <link rel="stylesheet" href="theme.css">
+<!-- Optional effects: name them on <html data-fx="...">, or try ?fx=hero-slides,reveal (or ?fx=all) in the address bar. -->
+<link rel="stylesheet" href="../effects/effects.css">
+<script src="../effects/effects.js" defer></script>
 </head>
 <body>
 
-<header class="site-header" id="top">
+<header class="site-header" id="top" data-fx-header>
   <div class="wrap">
     <a class="site-header__name" href="#top">湯宿 しずく庵</a>
     <nav class="site-nav" aria-label="メインメニュー">
@@ -31,16 +34,23 @@
 
 <main>
 
-  <section class="hero" aria-label="しずく庵">
+  <section class="hero" aria-label="しずく庵" data-fx-hero>
     <img class="photo" data-generated
       src="assets/generated/hero-bath.jpg"
       sizes="100vw" width="1600" height="900" fetchpriority="high"
       alt="夕暮れ、雪の積もった石組みの露天風呂から湯気が立つ">
+    <video class="fx-hero-video" data-src="assets/generated/hero-loop.mp4" poster="assets/generated/hero-bath.jpg"
+      muted playsinline loop preload="none" aria-hidden="true"></video>
+    <img class="photo" data-generated data-fx-slide src="assets/generated/exterior.jpg" loading="lazy"
+      width="1600" height="900" alt="">
+    <img class="photo" data-generated data-fx-slide src="assets/generated/room-main.jpg" loading="lazy"
+      width="1600" height="1067" alt="">
     <div class="hero__claim">
       <div class="wrap">
         <h1>石畳の湯の町で、<br>かけ流しの湯にひたる。</h1>
       </div>
     </div>
+    <button class="fx-pause" type="button" data-pause="一時停止" data-play="再生">一時停止</button>
   </section>
 
   <section class="booking" id="booking" aria-label="空室検索">
@@ -78,7 +88,7 @@
         <p>渋温泉の石畳を少し入ったところに、しずく庵はあります。客室は八つだけ。源泉は加水も加温もせず湯船にそそぎ、夕食は奥信濃の山と畑のものを、その日の分だけ仕込みます。</p>
         <p>館内には内湯がふたつと貸切の露天風呂、湯上がりに休める囲炉裏の間。外湯めぐりから戻ったら、部屋でゆっくり過ごしてください。</p>
       </div>
-      <div class="concept__photo frame">
+      <div class="concept__photo frame" data-reveal>
         <img class="photo" data-generated loading="lazy"
           src="assets/generated/exterior.jpg" style="object-position: 35% 50%;"
           sizes="(max-width: 767px) calc(100vw - 32px), 580px" width="1600" height="900"
@@ -89,7 +99,7 @@
 
   <section class="section onsen" id="onsen">
     <div class="wrap">
-      <div class="onsen__photo frame">
+      <div class="onsen__photo frame" data-reveal>
         <img class="photo" data-generated loading="lazy" style="object-position: 50% 70%; transform: scale(1.45); transform-origin: 52% 72%;"
           src="assets/generated/hero-bath.jpg"
           sizes="(max-width: 767px) calc(100vw - 32px), 640px" width="1600" height="900"
@@ -117,7 +127,7 @@
         <h2>客室</h2>
         <p>全八室、すべて畳の和室です。窓の外は路地と湯けむり、冬は屋根の雪。</p>
       </div>
-      <div class="rooms__grid rooms__grid--two">
+      <div class="rooms__grid rooms__grid--two" data-reveal>
         <article class="room">
           <div class="room__photo frame">
             <img class="photo" data-generated loading="lazy"
@@ -164,7 +174,7 @@
         <span class="label">CUISINE</span>
         <h2>お料理</h2>
       </div>
-      <div class="cuisine__strip cuisine__strip--two">
+      <div class="cuisine__strip cuisine__strip--two" data-reveal>
         <figure>
           <img class="photo" data-generated loading="lazy"
             src="assets/generated/kaiseki.jpg"
@@ -294,7 +304,7 @@
       </nav>
     </div>
     <div class="site-footer__bottom">
-      <p>掲載画像はこのテーマ用にAIで生成した見本（Grok Imagine）で、実在の宿を撮った写真ではありません。</p>
+      <p>掲載画像はこのテーマ用にAIで生成した見本（Grok Imagine）で、実在の宿を撮った写真ではありません。トップの動画はその画像から作ったものです。</p>
       <p>&copy; 湯宿 しずく庵</p>
     </div>
   </div>

@@ -11,8 +11,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap"></noscript>
 <link rel="stylesheet" href="theme.css">
+<!-- Optional effects: name them on <html data-fx="...">, or try ?fx=marquee,reveal,intro in the address bar. -->
+<link rel="stylesheet" href="../effects/effects.css">
+<script src="../effects/effects.js" defer></script>
 </head>
-<body>
+<body data-fx-intro="ふくろう舎">
 <a class="skip" href="#main">本文へ移動</a>
 
 <!-- 1. Header -->
@@ -69,7 +72,7 @@
 <section class="section" id="works" aria-labelledby="works-title">
   <div class="wrap">
     <h2 class="word" id="works-title"><span class="word__en" lang="en">Works</span><span class="word__ja">制作実績</span></h2>
-    <ul class="works__grid">
+    <ul class="works__grid" data-reveal>
       <li class="work"><a href="#works">
         <div class="work__media"><img src="assets/generated/work-package.jpg" width="1600" height="1100" loading="lazy"
           alt="煎茶の茶箱。赤・黄・青・緑の模様の箱を白い台に並べたところ" style="object-position: 20% 50%;" data-generated></div>
@@ -116,6 +119,11 @@
     <p class="works__more"><a class="button" href="#works">制作実績をもっと見る</a></p>
   </div>
 </section>
+
+<!-- Optional marquee (data-fx="marquee"): the services again, as a strip -->
+<div class="fx-marquee" aria-hidden="true">
+  <div class="fx-marquee__track" lang="en"><span>Logo</span><span>Package</span><span>Picture book</span><span>Poster</span><span>Sign</span><span>Website</span></div>
+</div>
 
 <!-- 5. Service -->
 <section class="section" id="service" aria-labelledby="service-title">

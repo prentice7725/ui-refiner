@@ -58,6 +58,14 @@ For Korean pensions, resorts, small hotels, glamping, cafés and wedding venues 
 - Event banner stacks, pop-up notices over the hero, coloured stickers, multiple bright colours, rounded cards with shadows.
 - Long Latin slogans; the Korean copy names the sea, the rooms and the way there.
 
+## Effects (optional)
+
+Measured on 39 Korean photo-led sites of all families (`data/motion/summary.json`, November 2026): hero slides 69%, hero video 3%, scroll reveals 10%, a blurred fixed header 0%, a marquee 3%, a loading intro 0% (parallax 5%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`.
+- **Only when the client asks**: `reveal`.
+- **Not for this theme**: `hero-video`, `header-blur`, `marquee`, `intro`.
+
 ## Applying to a client's content
 
 See `../README.md`. Wedding venues replace rooms with halls and offers with packages; cafés drop the booking bar for opening hours and a menu strip.
