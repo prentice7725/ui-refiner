@@ -13,15 +13,15 @@ for(const line of catalog.split(/\r?\n/).filter(line=>line.startsWith('| `'))){
  const [,country,family,style,count]=row;
  if(!countries[country]||!families[family]||!styles[style])throw Error('Unknown theme: '+line);
  const id=[country,family,style].join('-');
- for(const asset of ['sample.html','shot-desktop.png','shot-mobile.png','theme.md'])await fs.access(new URL(id+'/'+asset,dir));
+ for(const asset of ['sample.html','shot-desktop.jpg','shot-mobile.jpg','theme.md'])await fs.access(new URL(id+'/'+asset,dir));
  previews[country].push(`### [${id}](${id}/theme.md)
 
 | Desktop | Mobile |
 | --- | --- |
-| ![${id} desktop](${id}/shot-desktop.png) | ![${id} mobile](${id}/shot-mobile.png) |`);
+| ![${id} desktop](${id}/shot-desktop.jpg) | ![${id} mobile](${id}/shot-mobile.jpg) |`);
  const photo=['photo','dark'].includes(style);
  cards.push(`<article data-country="${country}" data-family="${family}" data-photo="${photo}">
-<a href="${id}/sample.html"><img loading="lazy" src="${id}/shot-desktop.png" alt=""><div><small>${countries[country]} / ${families[family]}</small><h2>${styles[style]}</h2><span>${id} ↗</span></div></a>
+<a href="${id}/sample.html"><img loading="lazy" src="${id}/shot-desktop.jpg" alt=""><div><small>${countries[country]} / ${families[family]}</small><h2>${styles[style]}</h2><span>${id} ↗</span></div></a>
 <p>실측 ${count}곳${photo?' · 고객 사진 필요':''}</p></article>`);
 }
 if(!cards.length)throw Error('Theme catalog is empty');

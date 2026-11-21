@@ -31,6 +31,18 @@ export function pendingRows(rows,records,{rowKey,recKey,done,attempts=3}){
  * robots.txt: the longest matching Allow/Disallow wins, Allow wins ties; * and $ supported. A group that names
  * `agent` (a product token such as "ui-refiner-reference") is used when there is one, otherwise the "*" group.
  */
+/**
+ * The sites for the output: one per listed URL, the latest checkpoint record first, else the record already in the
+ * output from an earlier run (checkpoints of earlier batches are not always kept, and dropping those records would
+ * lose measured sites). Sites taken off the list and sites never measured are left out. Sorted by category and URL.
+ */
+export function mergeOutputSites(listed,checkpoint,existing=[]){
+ const urls=new Set(listed.map(r=>r.url)),latest=new Map();
+ for(const s of existing)if(urls.has(s.url))latest.set(s.url,s);
+ for(const {key,rec} of checkpoint)if(urls.has(key))latest.set(key,rec);
+ return [...latest.values()].sort((a,b)=>a.category.localeCompare(b.category)||a.url.localeCompare(b.url));
+}
+
 export function robotsAllows(txt,pathname='/',agent){
  const groups=[];let cur=null,lastWasAgent=false;
  for(const raw of String(txt).split(/\r?\n/)){

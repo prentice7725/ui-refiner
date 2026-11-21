@@ -11,7 +11,7 @@
     "ui-refiner": "./bin/ui-refiner.mjs"
   },
   "scripts": {
-    "test": "node --test",
+    "test": "node --test \"test/**/*.test.mjs\"",
     "demo": "node examples/demo-server.mjs",
     "smoke:ui": "node scripts/smoke-ui.mjs",
     "smoke:gate": "node scripts/smoke-gate.mjs",
