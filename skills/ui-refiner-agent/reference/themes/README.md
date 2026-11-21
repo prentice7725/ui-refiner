@@ -23,11 +23,12 @@ Measured sites per country, family and archetype (`data/archetypes/counts.json`;
 | JP business | 27 | 12 | 38 | 42 | 29 | 23 | 52 | 26 | 249 |
 | JP creative | 18 | 21 | 30 | 35 | 35 | 36 | 38 | 21 | 234 |
 
-Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (36, after standard corporate with 38) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) is a second theme for Korean business. The reasons:
+Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (36, after standard corporate with 38) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) and `kr-business-corporate` (41) are second and third themes for Korean business. The reasons:
 
 - `kr-care-white`: the 41 short & small Korean care sites are pages with little on them (median 2.2 screens, largest type 20px, a claim on the first screen on 22%), not a design to follow; the white-quiet ones run 7.2 screens with a 50px headline and a claim on 71%.
 - `jp-creative-bigtype`: the Japanese creative family has no clear leader (standard corporate 38, big type 36, dense portal and photo-led 35 of 234). Standard corporate is mostly studios whose sites read as companies, which `jp-business-corporate` already serves; among the design and photo studios, the clients this theme serves, big type leads (28 to 22).
 - `kr-business-dark`: 69% of the 172 dark-cinematic sites are Korean, so it is the most Korean-looking business theme, but it needs the client's own photographs (see "Choosing a theme"); `kr-business-white`, the most common archetype, is the one for clients without them.
+- `kr-business-corporate`: logistics, makers and builders lean to standard corporate and photo-led, not white quiet (of 47 measured Korean logistics sites, 11 and 12 against 7). On a logistics page with no photographs of its own, a blind comparison (21 November 2026) read `kr-business-white` as a software template and a blue, photograph-led corporate page as the real thing.
 
 Every family can be drawn in every archetype; `docs/archetype-demo/README.md` in the repository shows the Korean business family in all eight with demonstration samples, which are not themes.
 
@@ -37,6 +38,7 @@ Every family can be drawn in every archetype; `docs/archetype-demo/README.md` in
 | `kr-care-white` | KR · care (dental, dermatology, Korean medicine, hospital) · white quiet | 38 |
 | `kr-business-dark` | KR · business (maker, logistics, software) · dark cinematic | 35 |
 | `kr-business-white` | KR · business (software, B2B service, tax, hiring) · white quiet; the business theme without photographs | 50 |
+| `kr-business-corporate` | KR · business (logistics, maker, builder) · standard corporate | 41 |
 | `jp-care-corporate` | JP · care (dental, dermatology, day service, fitness, salon) · standard corporate | 68 |
 | `kr-place-photo` | KR · place (pension, resort, restaurant, tourism, wedding) · photo-led | 43 |
 | `jp-business-corporate` | JP · business (maker, software, regional firm, builder) · standard corporate | 52 |
@@ -55,7 +57,8 @@ Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interacti
 
 1. Country of the page, then the purpose family of the client's trade.
 2. The archetype must suit the client's material:
-   - **Photo-led and dark cinematic need the client's own photographs or video** for the hero and most sections. Applied to a logistics page with no photographs, the dark theme read as a dark text template (20 November 2026). Without strong photographs, pick the white-quiet or standard-corporate theme of the same family instead.
+   - **Photo-led and dark cinematic need the client's own photographs or video**, or credited stand-ins of the same kind of place, for the hero and most sections. Applied to a logistics page with no photographs, the dark theme read as a dark text template (20 November 2026). Without strong photographs, pick the white-quiet or standard-corporate theme of the same family instead.
+   - `kr-business-corporate` opens on a full-width photograph too: a logistics firm or maker without photographs of its own gets credited stand-ins of its kind of work; with neither, `kr-business-white`.
    - White quiet works with few photographs (the measured sites use 3–4).
 3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest.
 
@@ -68,7 +71,7 @@ These held on twelve real pages (an inn, a dental clinic, a logistics company; a
 - **Optional slots** for content most real pages have and the skeletons leave out: about/values, process steps, FAQ, cases, an inline booking or quote form. Place them where they read best within the theme's rules; each theme's `theme.md` says where.
 - **Page length follows content** within the measured p25–p75 of the theme; the theme's median is a target for an average client, not a cap.
 - **Links to pages that do not exist are not made.** A 「자세히」 or 「詳細」 column with no detail page shows the client's own sub-items instead, or links to the booking form.
-- **Images**: the client's photographs first. Generated images (the theme's `assets/generated/`, made with Grok Imagine or Codex image generation) are mood images: mark them `data-generated`, say so in the footer, never put one where it reads as a claim (a machine shop next to a warehouse name, a generated portrait next to a named doctor), and leave a section on type rather than mislead. The theme samples' fictional clients are the exception: their people are as made up as their names, which the footer says. List the photographs the client needs in the report.
+- **Images**: the client's photographs first; then credited stand-ins of the same kind of place or work (`ui-refiner photos`, openly licensed, listed in the report as images to replace), preferring people at work to empty rooms. In a blind comparison (21 November 2026) judges found a dental page with stand-ins of a dentist treating a child more like a real clinic than a themed page carrying the sample's empty generated rooms, and a logistics page with warehouse stand-ins more real than a white theme with none. Generated images (the theme's `assets/generated/`, made with Grok Imagine or Codex image generation) are mood images: mark them `data-generated`, say so in the footer, never put one where it reads as a claim (a machine shop next to a warehouse name, a generated portrait next to a named doctor), and leave a section on type rather than mislead. The theme samples' fictional clients are the exception: their people are as made up as their names, which the footer says. List the photographs the client needs in the report.
 - **Small photographs** (old sites often have 295–770px images): never upscale one past about 1.5×. Show it at its own size (a split hero, a card photo) and leave the large frames to photographs that can fill them.
 - **Banners with baked-in type** (card news, posters, campaign banners) are shown whole (`object-fit: contain`), never cropped as photographs.
 - **Check first whether the original is already designed.** A theme gives a dated page order, but on a page that already has a strong look it can trade that look for a portal's tidiness (長岡銘竹, 21 November 2026). A small body size or an old platform does not by itself mark a dated page; look at it.

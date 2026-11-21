@@ -28,6 +28,14 @@ Effects offered: `hero-slides`, `hero-video`, `reveal`.
 | --- | --- |
 | ![kr-business-white desktop](kr-business-white/shot-desktop.jpg) | ![kr-business-white mobile](kr-business-white/shot-mobile.jpg) |
 
+### [kr-business-corporate](kr-business-corporate/theme.md)
+
+Effects offered: `hero-slides` (open `sample.html?fx=hero-slides` from a checkout to see them).
+
+| Desktop | Mobile |
+| --- | --- |
+| ![kr-business-corporate desktop](kr-business-corporate/shot-desktop.jpg) | ![kr-business-corporate mobile](kr-business-corporate/shot-mobile.jpg) |
+
 ### [kr-place-photo](kr-place-photo/theme.md)
 
 Effects offered: `hero-slides` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).

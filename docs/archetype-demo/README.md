@@ -1,6 +1,6 @@
 # One family in all eight types
 
-The 13 themes cover one or two page types per trade family and country. These pages show that a family can be drawn in every type: the Korean business family, for one fictional maker (한빛정밀, the client of the `kr-business-dark` sample), with the same content and photographs in each.
+The 14 themes cover one or two page types per trade family and country. These pages show that a family can be drawn in every type: the Korean business family, for one fictional maker (한빛정밀, the client of the `kr-business-dark` sample), with the same content and photographs in each.
 
 ![One fictional Korean maker drawn in all eight page types](../assets/archetype-demo-kr-business.jpg)
 
