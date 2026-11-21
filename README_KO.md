@@ -23,7 +23,87 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 
 **3. 테마 13개.** 테마는 한 나라의 한 업종군에서 흔한 유형을 완성한 디자인입니다. 크기, 색, 배치는 그 유형에 속한 사이트의 실측값에서 가져왔습니다. 테마 옆의 숫자는 그 나라, 그 업종군에서 해당 유형에 속한 사이트 수입니다. `kr-business-white`는 한국 business 235곳 가운데 50곳을 근거로 합니다.
 
-![한국·일본 웹 디자인 테마 13개의 샘플 페이지를 모은 이미지](docs/assets/themes.jpg)
+<!-- theme-grid:start (node scripts/build-theme-grid.mjs) -->
+<table>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-care-white/theme.md"><img src="docs/assets/themes/kr-care-white.jpg" alt="kr-care-white 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-care-white/theme.md">kr-care-white</a></b><br>
+<sub>한국 · care · white quiet ·&nbsp;38곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-business-dark/theme.md"><img src="docs/assets/themes/kr-business-dark.jpg" alt="kr-business-dark 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-business-dark/theme.md">kr-business-dark</a></b><br>
+<sub>한국 · business · dark cinematic ·&nbsp;35곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-business-white/theme.md"><img src="docs/assets/themes/kr-business-white.jpg" alt="kr-business-white 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-business-white/theme.md">kr-business-white</a></b><br>
+<sub>한국 · business · white quiet ·&nbsp;50곳</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md"><img src="docs/assets/themes/kr-place-photo.jpg" alt="kr-place-photo 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md">kr-place-photo</a></b><br>
+<sub>한국 · place · photo-led ·&nbsp;43곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-public-portal/theme.md"><img src="docs/assets/themes/kr-public-portal.jpg" alt="kr-public-portal 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-public-portal/theme.md">kr-public-portal</a></b><br>
+<sub>한국 · public · dense portal ·&nbsp;61곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md"><img src="docs/assets/themes/kr-shop-portal.jpg" alt="kr-shop-portal 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md">kr-shop-portal</a></b><br>
+<sub>한국 · shop · dense portal ·&nbsp;60곳</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md"><img src="docs/assets/themes/kr-creative-dark.jpg" alt="kr-creative-dark 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md">kr-creative-dark</a></b><br>
+<sub>한국 · creative · dark cinematic ·&nbsp;34곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-place-photo/theme.md"><img src="docs/assets/themes/jp-place-photo.jpg" alt="jp-place-photo 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-place-photo/theme.md">jp-place-photo</a></b><br>
+<sub>일본 · place · photo-led ·&nbsp;65곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md"><img src="docs/assets/themes/jp-care-corporate.jpg" alt="jp-care-corporate 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md">jp-care-corporate</a></b><br>
+<sub>일본 · care · standard corporate ·&nbsp;68곳</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md"><img src="docs/assets/themes/jp-business-corporate.jpg" alt="jp-business-corporate 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md">jp-business-corporate</a></b><br>
+<sub>일본 · business · standard corporate ·&nbsp;52곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-public-portal/theme.md"><img src="docs/assets/themes/jp-public-portal.jpg" alt="jp-public-portal 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-public-portal/theme.md">jp-public-portal</a></b><br>
+<sub>일본 · public · dense portal ·&nbsp;64곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md"><img src="docs/assets/themes/jp-shop-portal.jpg" alt="jp-shop-portal 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md">jp-shop-portal</a></b><br>
+<sub>일본 · shop · dense portal ·&nbsp;57곳</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md"><img src="docs/assets/themes/jp-creative-bigtype.jpg" alt="jp-creative-bigtype 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md">jp-creative-bigtype</a></b><br>
+<sub>일본 · creative · big type ·&nbsp;36곳</sub>
+</td>
+<td width="33%"></td>
+<td width="33%"></td>
+</tr>
+</table>
+<!-- theme-grid:end -->
 
 [테마 갤러리](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [측정 방법과 테마 목록](skills/ui-refiner-agent/reference/themes/README.md)
 
