@@ -1,0 +1,261 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 6,
+ "sites": 41,
+ "trades": [
+  "logistics 27%",
+  "maker 20%",
+  "corp 12%",
+  "hiring 12%",
+  "tax 12%",
+  "builder 5%",
+  "local 5%",
+  "software 5%",
+  "realestate 2%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard 17%",
+   "noto sans kr 17%",
+   "noto sans 7%",
+   "notosanskr 5%",
+   "nanumsquare 5%",
+   "roboto 5%",
+   "montserrat 2%",
+   "inter 2%"
+  ],
+  "body": [
+   "noto sans kr 22%",
+   "pretendard 17%",
+   "nanumsquare 7%",
+   "noto sans 7%",
+   "notosanskr 5%",
+   "roboto 5%",
+   "suit 2%",
+   "pretendardgov 2%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 18
+  },
+  "h1": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 32
+  },
+  "h2": {
+   "p25": 24,
+   "p50": 36,
+   "p75": 60
+  },
+  "h3": {
+   "p25": 19,
+   "p50": 30,
+   "p75": 45
+  },
+  "display": {
+   "p25": 48,
+   "p50": 58,
+   "p75": 68
+  },
+  "ratio": {
+   "p25": 2.9,
+   "p50": 3.44,
+   "p75": 4.14
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.05,
+ "colours": {
+  "ground": [
+   "#ffffff 98%",
+   "#cfcfcf 2%"
+  ],
+  "text": [
+   "#000000 24%",
+   "#ffffff 10%",
+   "#333333 10%",
+   "#666666 7%",
+   "#555555 7%",
+   "#777777 7%",
+   "#222222 5%",
+   "#5a5a5a 2%"
+  ],
+  "heading": [
+   "#000000 24%",
+   "#ffffff 20%",
+   "#555555 7%",
+   "#222222 7%",
+   "#666666 7%",
+   "#0055b8 2%",
+   "#4f5254 2%",
+   "#333333 2%"
+  ],
+  "buttonHue": [
+   "white 29%",
+   "blue 17%",
+   "black 12%",
+   "orange 7%",
+   "grey 7%",
+   "amber 5%",
+   "red 2%",
+   "green 2%"
+  ],
+  "buttonBg": [
+   "#ffffff 24%",
+   "#000000 5%",
+   "#222222 5%",
+   "#ffa800 2%",
+   "#888888 2%",
+   "#0055b8 2%",
+   "#2d5b79 2%",
+   "#f6fbf9 2%",
+   "#da291c 2%",
+   "#ffd84f 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 8
+  },
+  "buttonHeight": {
+   "p25": 39,
+   "p50": 54,
+   "p75": 80
+  },
+  "hairlines": {
+   "p25": 6,
+   "p50": 9,
+   "p75": 19
+  },
+  "content": {
+   "p25": 1170,
+   "p50": 1220,
+   "p75": 1310
+  }
+ },
+ "layout": {
+  "heroFullBleed": 1,
+  "heroAlign": [
+   "left 73%",
+   "center 17%",
+   "wide 5%",
+   "right 5%"
+  ],
+  "heroSide": [
+   "none 78%",
+   "media 20%",
+   "panel 2%"
+  ],
+  "claimOnFirst": 0.71,
+  "actionOnFirst": 0.66,
+  "screens": {
+   "p25": 3.83,
+   "p50": 4.52,
+   "p75": 5.63
+  },
+  "photos": {
+   "p25": 2,
+   "p50": 5,
+   "p75": 12
+  },
+  "nav": {
+   "p25": 2,
+   "p50": 6,
+   "p75": 9
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.16,
+   "p75": 0.41
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.4,
+   "p50": 0.48,
+   "p75": 0.57
+  },
+  "dark": {
+   "p25": 0.04,
+   "p50": 0.08,
+   "p75": 0.15
+  },
+  "photo": {
+   "p25": 0.03,
+   "p50": 0.04,
+   "p75": 0.06
+  },
+  "colourful": {
+   "p25": 0.04,
+   "p50": 0.07,
+   "p75": 0.15
+  }
+ },
+ "navLabels": [
+  "회사소개 5%",
+  "고객센터 3%",
+  "로그인 2%",
+  "eng 2%",
+  "투자정보 2%",
+  "제품소개 2%",
+  "고객지원 2%",
+  "지속가능경영 2%",
+  "브랜드 1%",
+  "인재채용 1%",
+  "기업소개 1%",
+  "윤리경영 1%",
+  "기술자료 1%",
+  "채용 1%",
+  "kor 1%",
+  "회원가입 1%",
+  "자료실 1%",
+  "계열사 1%",
+  "공지사항 1%",
+  "사업영역 1%",
+  "연혁 1%",
+  "인증현황 1%",
+  "전자공고 0%",
+  "시공실적 0%"
+ ],
+ "nearest": [
+  "KR-local/clean-aid.co.kr",
+  "KR-maker/pangum.com",
+  "KR-builder/eagon.com",
+  "KR-tax/taxhome.co.kr",
+  "KR-logistics/hdexp.co.kr",
+  "KR-logistics/hanilexpress.co.kr",
+  "KR-maker/zeidindus.com",
+  "KR-tax/taxmirae.co.kr",
+  "KR-hiring/recruit.kt.com",
+  "KR-software/iljincns.co.kr",
+  "KR-hiring/worldjob.or.kr",
+  "KR-maker/hdcc.co.kr",
+  "KR-logistics/hanjin.com",
+  "KR-hiring/incheon.go.kr_jobs",
+  "KR-corp/brils.co.kr",
+  "KR-logistics/panstar.co.kr"
+ ]
+}

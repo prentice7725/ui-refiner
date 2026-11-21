@@ -4,7 +4,26 @@ A theme is a finished design measured from real human-made sites: one archetype 
 
 ## Where the themes come from
 
-2245 human-made Korean and Japanese sites (78 trade × country groups, November 2026; 484 of them added in a second collection for the thin creative, shop and place groups) were measured from their stored scans and desktop screenshots and grouped into eight impression archetypes: short & small, dark cinematic, white quiet, dense portal, photo-led, big type, standard corporate, bold colour. Trades were then grouped by what a visitor comes to do: place (stay, eat, see), care (book and visit), public (look up and apply), shop (choose and buy), business (trust a company), creative (show work: design, game, architecture, photo and video, illustration). A theme is the most common archetype of one family in one country, with its values taken from that group's measurements (`theme.md`, "Measured basis").
+2245 human-made Korean and Japanese sites (78 trade × country groups, November 2026; 484 of them added in a second collection for the thin creative, shop and place groups) were measured from their stored scans and desktop screenshots and grouped into eight impression archetypes: short & small, dark cinematic, white quiet, dense portal, photo-led, big type, standard corporate, bold colour. Trades were then grouped by what a visitor comes to do: place (stay, eat, see), care (book and visit), public (look up and apply), shop (choose and buy), business (trust a company), creative (show work: design, game, architecture, photo and video, illustration). A theme is a common archetype of one family in one country, with its values taken from that group's measurements (`theme.md`, "Measured basis").
+
+Measured sites per country, family and archetype (`data/archetypes/counts.json`; the measured values of a cell are in `data/archetypes/spec-<country>-<family>-<archetype index>.json` for the cells that were specified):
+
+| | short & small | dark cinematic | white quiet | dense portal | photo-led | big type | standard corporate | bold colour | all |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| KR place | 17 | 18 | 14 | 18 | 43 | 11 | 15 | 7 | 143 |
+| KR care | 41 | 18 | 38 | 22 | 1 | 18 | 29 | 8 | 175 |
+| KR public | 24 | 7 | 28 | 61 | 13 | 5 | 42 | 22 | 202 |
+| KR shop | 21 | 6 | 33 | 60 | 27 | 11 | 31 | 10 | 199 |
+| KR business | 31 | 35 | 50 | 22 | 26 | 15 | 41 | 15 | 235 |
+| KR creative | 21 | 34 | 17 | 15 | 17 | 8 | 7 | 11 | 130 |
+| JP place | 11 | 14 | 9 | 9 | 65 | 15 | 18 | 15 | 156 |
+| JP care | 52 | 5 | 29 | 32 | 15 | 43 | 68 | 15 | 259 |
+| JP public | 16 | 3 | 17 | 64 | 23 | 11 | 31 | 14 | 179 |
+| JP shop | 10 | 4 | 18 | 57 | 23 | 19 | 27 | 7 | 165 |
+| JP business | 27 | 12 | 38 | 42 | 29 | 23 | 52 | 26 | 249 |
+| JP creative | 9 | 16 | 21 | 29 | 20 | 23 | 19 | 16 | 153 |
+
+Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (23, after dense portal with 29) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) is a second theme for Korean business. Every family can be drawn in every archetype; `docs/archetype-demo/README.md` in the repository shows the Korean business family in all eight with demonstration samples, which are not themes.
 
 | Theme | Country · family · archetype | Measured sites |
 |---|---|---|

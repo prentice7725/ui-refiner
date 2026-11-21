@@ -1,0 +1,259 @@
+{
+ "country": "JP",
+ "family": "creative",
+ "cluster": 5,
+ "sites": 23,
+ "trades": [
+  "design 52%",
+  "photo 22%",
+  "game 13%",
+  "architecture 9%",
+  "illustration 4%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 39%",
+   "montserrat 4%",
+   "dm sans 4%",
+   "yakuhanmps_noto 4%",
+   "游ゴシック 4%",
+   "yakuhanjp_narrow 4%",
+   "kozuka-gothic-pr6n 4%",
+   "manrope 4%"
+  ],
+  "body": [
+   "noto sans jp 43%",
+   "yu gothic 9%",
+   "shippori mincho 4%",
+   "yakuhanjp 4%",
+   "yakuhanmps_noto 4%",
+   "游ゴシック 4%",
+   "yakuhanjp_narrow 4%",
+   "montserrat 4%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 12,
+   "p50": 16,
+   "p75": 18
+  },
+  "h2": {
+   "p25": 16,
+   "p50": 32,
+   "p75": 50
+  },
+  "h3": {
+   "p25": 15,
+   "p50": 19,
+   "p75": 30
+  },
+  "display": {
+   "p25": 100,
+   "p50": 135,
+   "p75": 172.8
+  },
+  "ratio": {
+   "p25": 6.67,
+   "p50": 8.67,
+   "p75": 10.88
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 500,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 600,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.22,
+ "colours": {
+  "ground": [
+   "#ffffff 78%",
+   "#f7f6f0 4%",
+   "#f1ece8 4%",
+   "#fbfaf3 4%",
+   "#f0f0f0 4%",
+   "#fffeff 4%"
+  ],
+  "text": [
+   "#000000 22%",
+   "#333333 22%",
+   "#4b1800 4%",
+   "#0c0e4f 4%",
+   "#101010 4%",
+   "#1d1d1d 4%",
+   "#212121 4%",
+   "#264653 4%"
+  ],
+  "heading": [
+   "#ffffff 26%",
+   "#333333 17%",
+   "#000000 13%",
+   "#f04b00 4%",
+   "#101010 4%",
+   "#1d1d1d 4%",
+   "#212121 4%",
+   "#264653 4%"
+  ],
+  "buttonHue": [
+   "white 48%",
+   "black 13%",
+   "teal 9%",
+   "grey 4%",
+   "orange 4%",
+   "blue 4%",
+   "red 4%"
+  ],
+  "buttonBg": [
+   "#ffffff 30%",
+   "#f0f0f0 9%",
+   "#f7f6f0 4%",
+   "#333333 4%",
+   "#f04b00 4%",
+   "#f4f4f4 4%",
+   "#4babc6 4%",
+   "#262c3a 4%",
+   "#1032cf 4%",
+   "#000000 4%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 3,
+   "p75": 30
+  },
+  "buttonHeight": {
+   "p25": 43,
+   "p50": 58,
+   "p75": 88
+  },
+  "hairlines": {
+   "p25": 4,
+   "p50": 11,
+   "p75": 28
+  },
+  "content": {
+   "p25": 1150,
+   "p50": 1200,
+   "p75": 1230
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.65,
+  "heroAlign": [
+   "left 57%",
+   "center 13%",
+   "right 9%",
+   "wide 4%"
+  ],
+  "heroSide": [
+   "none 83%",
+   "media 17%"
+  ],
+  "claimOnFirst": 0.65,
+  "actionOnFirst": 0.57,
+  "screens": {
+   "p25": 9.4,
+   "p50": 13.29,
+   "p75": 14.72
+  },
+  "photos": {
+   "p25": 11,
+   "p50": 16,
+   "p75": 35
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 4,
+   "p75": 8
+  },
+  "centred": {
+   "p25": 0.01,
+   "p50": 0.1,
+   "p75": 0.16
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.3,
+   "p50": 0.49,
+   "p75": 0.58
+  },
+  "dark": {
+   "p25": 0.02,
+   "p50": 0.04,
+   "p75": 0.08
+  },
+  "photo": {
+   "p25": 0.02,
+   "p50": 0.05,
+   "p75": 0.08
+  },
+  "colourful": {
+   "p25": 0.04,
+   "p50": 0.07,
+   "p75": 0.2
+  }
+ },
+ "navLabels": [
+  "制作実績 5%",
+  "採用情報 4%",
+  "お問い合わせ 3%",
+  "会社情報 2%",
+  "会社概要 2%",
+  "recruit site 1%",
+  "interview interview 1%",
+  "whatwedo whatwedo 1%",
+  "仕事の全体像 1%",
+  "職種紹介 1%",
+  "ピックアップ事例 1%",
+  "culture culture 1%",
+  "tyoの挑戦 1%",
+  "数字で見るtyo 1%",
+  "研修制度 1%",
+  "福利厚生 1%",
+  "jobinformation jobinformation 1%",
+  "works 1%",
+  "voice 1%",
+  "media 1%",
+  "workflow 1%",
+  "company 1%",
+  "blog 1%",
+  "無料相談・資料請求 1%"
+ ],
+ "nearest": [
+  "JP-photo/tele-more.com",
+  "JP-design/crosswish.com",
+  "JP-photo/rockhearts.co.jp",
+  "JP-photo/nne.ne.jp",
+  "JP-design/frontier-web.co.jp",
+  "JP-architecture/rover-archi.com",
+  "JP-design/willstyle.co.jp",
+  "JP-game/toei-anim.co.jp",
+  "JP-architecture/house-ism.com",
+  "JP-game/tyo.co.jp_recruit",
+  "JP-photo/jpc-ltd.co.jp",
+  "JP-design/ok-design.co.jp",
+  "JP-design/mamezoudesign.com",
+  "JP-design/acsport.net",
+  "JP-photo/precieux-studio.com",
+  "JP-design/lionheart.co.jp"
+ ]
+}

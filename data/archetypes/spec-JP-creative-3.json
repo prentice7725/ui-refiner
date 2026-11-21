@@ -1,0 +1,259 @@
+{
+ "country": "JP",
+ "family": "creative",
+ "cluster": 3,
+ "sites": 29,
+ "trades": [
+  "game 41%",
+  "design 24%",
+  "architecture 14%",
+  "illustration 14%",
+  "photo 7%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 14%",
+   "游ゴシック体 10%",
+   "fp-こぶりなゴシック stdn w3 3%",
+   "mfw-pshueigoginstdn-l 3%",
+   "yakuhanjps 3%",
+   "noto-sans-cjk-jp 3%",
+   "yakuhanrp 3%",
+   "arial 3%"
+  ],
+  "body": [
+   "noto sans jp 31%",
+   "游ゴシック体 10%",
+   "fp-こぶりなゴシック stdn w3 3%",
+   "raleway 3%",
+   "sans-serif 3%",
+   "mfw-pshueigoginstdn-l 3%",
+   "yakuhanjps 3%",
+   "noto-sans-cjk-jp 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 14,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 11,
+   "p50": 16,
+   "p75": 21
+  },
+  "h2": {
+   "p25": 16,
+   "p50": 28,
+   "p75": 40
+  },
+  "h3": {
+   "p25": 14,
+   "p50": 19,
+   "p75": 28
+  },
+  "display": {
+   "p25": 30,
+   "p50": 45,
+   "p75": 60
+  },
+  "ratio": {
+   "p25": 2.14,
+   "p50": 3.21,
+   "p75": 4.2
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 500,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.1,
+ "colours": {
+  "ground": [
+   "#ffffff 79%",
+   "#f1f1f1 3%",
+   "#f5f5f5 3%",
+   "#f8fff3 3%",
+   "#f9f9f9 3%",
+   "#f8fff8 3%",
+   "#ffe462 3%"
+  ],
+  "text": [
+   "#000000 34%",
+   "#333333 14%",
+   "#222222 10%",
+   "#5e5d5d 3%",
+   "#172955 3%",
+   "#ffffff 3%",
+   "#404248 3%",
+   "#555555 3%"
+  ],
+  "heading": [
+   "#000000 14%",
+   "#ffffff 7%",
+   "#5e5d5d 3%",
+   "#244866 3%",
+   "#ff6827 3%",
+   "#172955 3%",
+   "#3c3c3c 3%",
+   "#404248 3%"
+  ],
+  "buttonHue": [
+   "white 28%",
+   "blue 14%",
+   "grey 10%",
+   "red 7%",
+   "black 7%",
+   "teal 7%",
+   "orange 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 21%",
+   "#333333 7%",
+   "#188bcc 3%",
+   "#e60012 3%",
+   "#000000 3%",
+   "#0086ff 3%",
+   "#cbcbcb 3%",
+   "#2c63a7 3%",
+   "#eeeeee 3%",
+   "#0a0a0a 3%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 4
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 4,
+   "p75": 50
+  },
+  "buttonHeight": {
+   "p25": 40,
+   "p50": 50,
+   "p75": 67
+  },
+  "hairlines": {
+   "p25": 11,
+   "p50": 29,
+   "p75": 60
+  },
+  "content": {
+   "p25": 1000,
+   "p50": 1100,
+   "p75": 1240
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.07,
+  "heroAlign": [
+   "left 45%",
+   "center 10%",
+   "below-fold 3%"
+  ],
+  "heroSide": [
+   "none 76%",
+   "media 24%"
+  ],
+  "claimOnFirst": 0.41,
+  "actionOnFirst": 0.52,
+  "screens": {
+   "p25": 5.49,
+   "p50": 6.72,
+   "p75": 11.95
+  },
+  "photos": {
+   "p25": 7,
+   "p50": 19,
+   "p75": 33
+  },
+  "nav": {
+   "p25": 3,
+   "p50": 6,
+   "p75": 9
+  },
+  "centred": {
+   "p25": 0.01,
+   "p50": 0.05,
+   "p75": 0.1
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.41,
+   "p50": 0.54,
+   "p75": 0.65
+  },
+  "dark": {
+   "p25": 0.02,
+   "p50": 0.05,
+   "p75": 0.09
+  },
+  "photo": {
+   "p25": 0.06,
+   "p50": 0.08,
+   "p75": 0.1
+  },
+  "colourful": {
+   "p25": 0.06,
+   "p50": 0.11,
+   "p75": 0.17
+  }
+ },
+ "navLabels": [
+  "recruit 4%",
+  "english 2%",
+  "works 2%",
+  "contact 2%",
+  "news 2%",
+  "game 2%",
+  "お知らせ 2%",
+  "採用情報 2%",
+  "company 2%",
+  "en 2%",
+  "blog 1%",
+  "制作実績 1%",
+  "ニュース 1%",
+  "イベント・キャンペーン 1%",
+  "shop 1%",
+  "goods 1%",
+  "サポート 1%",
+  "トップ 1%",
+  "会社情報 1%",
+  "投資家情報 1%",
+  "お問い合わせ 1%",
+  "会社案内 1%",
+  "よくある質問 1%",
+  "topics 1%"
+ ],
+ "nearest": [
+  "JP-game/spike-chunsoft.co.jp",
+  "JP-game/sega.co.jp",
+  "JP-architecture/archiplace.com",
+  "JP-design/oki-design.com",
+  "JP-game/pokemon.co.jp",
+  "JP-illustration/colorido.co.jp",
+  "JP-game/awahi-magazine.jp",
+  "JP-photo/studioselfit.com",
+  "JP-design/design-kom.com",
+  "JP-game/cc2.co.jp",
+  "JP-design/nanairo-inc.jp",
+  "JP-game/nippon1.jp",
+  "JP-game/nintendo.com_jp",
+  "JP-illustration/design-ark.jp",
+  "JP-illustration/tms-e.co.jp",
+  "JP-architecture/tohata.co.jp"
+ ]
+}

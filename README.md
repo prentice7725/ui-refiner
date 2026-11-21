@@ -4,9 +4,34 @@
 
 UI Refiner includes 13 web design themes based on measurements from 2,245 Korean and Japanese sites. Use them to build a page with Codex or Claude Code, or review an existing page with the CLI.
 
+## How the themes are built
+
+**1. Eight types of page.** The 2,245 sites fall into eight types by overall impression. Each drawing shows a type's measured average: ground, photographs, type size and density.
+
+![Schematics of the eight page types with the number of measured sites in each](docs/assets/archetypes.jpg)
+
+**2. Six families of trade.** Trades are grouped by what a visitor comes to do.
+
+| Family | Trades | Korea | Japan |
+|---|---|---|---|
+| place | inns, tourism, restaurants, weddings | 143 | 156 |
+| care | clinics, hospitals, care, salons, fitness | 175 | 259 |
+| public | government, associations, universities, media, finance | 202 | 179 |
+| shop | e-commerce, fashion, cosmetics, food | 199 | 165 |
+| business | makers, logistics, software, builders, tax, hiring | 235 | 249 |
+| creative | design, games, architecture, photo, illustration | 130 | 153 |
+
+**3. Thirteen themes.** Each theme is a finished design for a type that is common in one family in one country, with its sizes, colours and layout taken from those sites. The count next to a theme is the number of sites of that type in that family and country: `kr-business-white` rests on 50 of the 235 Korean business sites.
+
 ![Sample pages from all 13 Korean and Japanese web design themes](docs/assets/themes.jpg)
 
 [Theme gallery](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [Measurement method and catalog](skills/ui-refiner-agent/reference/themes/README.md)
+
+**4. One family in all eight types.** Any family can be drawn in any type. Here the Korean business family is drawn eight ways for one fictional maker. Two of the eight are themes. The other six are demonstration samples built from the measured values of their type, and are not offered as themes. The counts show how common each combination is: 50 Korean business sites are white quiet and 15 are bold colour.
+
+![One fictional Korean maker drawn in all eight page types](docs/assets/archetype-demo-kr-business.jpg)
+
+[Demonstration pages and counts](docs/archetype-demo/README.md)
 
 ## Quick start
 
