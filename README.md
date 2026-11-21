@@ -6,7 +6,7 @@ UI Refiner includes 13 web design themes based on measurements from 2,245 Korean
 
 ![Sample pages from all 13 Korean and Japanese web design themes](docs/assets/themes.jpg)
 
-[Theme gallery](skills/ui-refiner-agent/reference/themes/index.html) · [Measurement method and catalog](skills/ui-refiner-agent/reference/themes/README.md)
+[Theme gallery](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [Measurement method and catalog](skills/ui-refiner-agent/reference/themes/README.md)
 
 ## Quick start
 

@@ -6,7 +6,7 @@ UI Refiner는 한국·일본 사이트 2,245곳을 실측해 만든 웹 디자�
 
 ![한국·일본 웹 디자인 테마 13개의 샘플 페이지를 모은 이미지](docs/assets/themes.jpg)
 
-[테마 갤러리](skills/ui-refiner-agent/reference/themes/index.html) · [측정 방법과 테마 목록](skills/ui-refiner-agent/reference/themes/README.md)
+[테마 갤러리](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [측정 방법과 테마 목록](skills/ui-refiner-agent/reference/themes/README.md)
 
 ## 빠른 시작
 
