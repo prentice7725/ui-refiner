@@ -2,7 +2,9 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.12.0 — 2026-11-21
+
+The themes can move. Motion was measured on 630 Korean and Japanese sites, and each theme now lists the effects its group of sites uses (hero slides, hero video, scroll reveals, a blurred header, a marquee, a loading intro), off by default and offered by the skill when they fit. The archetype pipeline behind the themes is in the repository, and the theme images take a third of the space.
 
 ### Added
 - Optional effects for the themes (`skills/ui-refiner-agent/reference/themes/effects/`): hero video or hero slides with a pause control, scroll reveals on photographs, a blurred fixed header, a marquee strip and a short loading intro, all off by default and skipped for reduced motion. Each `theme.md` lists the effects that suit it under "Effects", and the skill offers them after applying a theme. Six samples carry the markup (`sample.html?fx=…`); `jp-place-photo` and `kr-business-dark` have hero loops made from their generated photographs. The gallery lists each theme's effects with a link that turns them on.
