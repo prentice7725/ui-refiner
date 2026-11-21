@@ -2,6 +2,19 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+### Added
+- `scripts/archetypes/`: the scripts that build `data/archetypes/` (features, assignment to the fixed k=8 archetypes, trades, purpose families, counts and cell specs) are now in the repository, with `features.jsonl`, `clusters.json`, `trades.json` and `purpose.json`. Re-running them reproduces the committed files. `data/archetypes/README.md` gives the order.
+
+### Changed
+- Theme screenshots are JPEG instead of PNG, and the generated theme images are recompressed at the same size: the themes folder shrinks from about 84 MB to 33 MB.
+- `npm test` runs only `test/**/*.test.mjs`.
+- `local/` is git-ignored, for raw scans and experiment folders kept next to the checkout.
+
+### Fixed
+- `scripts/collect-reference.mjs` no longer drops records from `sites.json` that an earlier batch measured with another checkpoint; sites taken off the list are still removed.
+
 ## 0.11.0 — 2026-11-21
 
 The themes rest on more sites and have been tried on real pages. Two more collections brought the measured sites from 1761 to 2,326, the thinnest themes were measured again, and the themes were applied to twelve real Korean and Japanese pages, whose lessons are now in the theme docs.

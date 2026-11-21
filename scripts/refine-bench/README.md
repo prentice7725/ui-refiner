@@ -67,7 +67,7 @@ scripts/refine-bench/judge.sh && node scripts/refine-bench/agg.cjs   # 요약과
 - **1단계 결과(2026-11-19, 36회, $37.7).** 차이가 없었습니다. typical 평균은 k 0.46, l 0.42로, 반복 사이에 흔들리는 폭보다 작습니다. 같은 시드에서 k와 l은 18쌍 중 16쌍이 같은 구조 계열과 같은 강조색을 받았습니다. 대부분의 업종이 페이지 종류 기본값처럼 사진으로 시작하기 때문입니다. 에이전트는 배정받은 강조색을 36회 중 34회, 구조 계열을 26회, 사진 바탕을 21회 따랐습니다. "사진 먼저"를 받고 반쪽 사진 구성으로 벗어난 경우는 지침을 고쳤습니다(edbe4d3). 다시 돌린 6회 중 4회가 배정을 따랐고, 나머지 2회는 사진이 없는 핀테크 페이지였습니다. 2단계는 돌리지 않았습니다.
 
 ```bash
-export BENCH_DIR=~/refine-trade
+export BENCH_DIR=local/experiments/refine-trade
 H=scripts/refine-bench
 ONLY="ja-inn ko-dental ja-care" $H/gen.sh         # 새 원본 3개 (모델 호출)
 PAGES="ja-inn" ARMS="k l" REPS=1 $H/pilot.sh     # 먼저 1회로 비용 확인

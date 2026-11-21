@@ -6,7 +6,7 @@ A theme is a finished design measured from real human-made sites: one archetype 
 
 2326 human-made Korean and Japanese sites (78 trade × country groups, November 2026; 484 added in a second collection for the thin creative, shop and place groups, and 81 Japanese design, photo and architecture studios in a third) were measured from their stored scans and desktop screenshots and grouped into eight impression archetypes: short & small, dark cinematic, white quiet, dense portal, photo-led, big type, standard corporate, bold colour. Trades were then grouped by what a visitor comes to do: place (stay, eat, see), care (book and visit), public (look up and apply), shop (choose and buy), business (trust a company), creative (show work: design, game, architecture, photo and video, illustration). A theme is a common archetype of one family in one country, with its values taken from that group's measurements (`theme.md`, "Measured basis").
 
-Measured sites per country, family and archetype (`data/archetypes/counts.json`; the measured values of a cell are in `data/archetypes/spec-<country>-<family>-<archetype index>.json` for the cells that were specified):
+Measured sites per country, family and archetype (`data/archetypes/counts.json`; the measured values of a cell are in `data/archetypes/spec-<country>-<family>-<archetype index>.json` for the cells that were specified; `data/archetypes/README.md` explains how the scripts in `scripts/archetypes/` rebuild them):
 
 | | short & small | dark cinematic | white quiet | dense portal | photo-led | big type | standard corporate | bold colour | all |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -79,4 +79,4 @@ These held on twelve real pages (an inn, a dental clinic, a logistics company; a
 
 ## Files per theme
 
-`theme.md` (measured basis, tokens, skeleton, components, rules), `theme.css`, `sample.html` (a fictional client), `shot-desktop.png`, `shot-mobile.png`, `assets/generated/` (generated images with `prompts.json`). `generated.check.mjs` checks that every listed generated image is present.
+`theme.md` (measured basis, tokens, skeleton, components, rules), `theme.css`, `sample.html` (a fictional client), `shot-desktop.jpg`, `shot-mobile.jpg`, `assets/generated/` (generated images with `prompts.json`). `generated.check.mjs` checks that every listed generated image is present.

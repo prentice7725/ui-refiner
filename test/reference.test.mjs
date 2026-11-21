@@ -89,3 +89,12 @@ test('a resumed run does new rows and passing failures, up to the attempt limit'
  assert.deepEqual(pendingRows(rows,[...log,{host:'c'}],opt).map(r=>r.h),['e'],'a later success settles it');
  assert.deepEqual(pendingRows(rows,[],opt).length,5);
 });
+
+test('reference output: rebuilding keeps earlier records the checkpoint no longer has, and drops sites taken off the list', async () => {
+ const {mergeOutputSites}=await import('../src/reference.mjs');
+ const listed=[{category:'JP-design',url:'https://a.jp/'},{category:'JP-design',url:'https://b.jp/'},{category:'KR-ec',url:'https://c.kr/'}];
+ const checkpoint=[{key:'https://a.jp/',rec:{category:'JP-design',url:'https://a.jp/',status:'error'}},{key:'https://a.jp/',rec:{category:'JP-design',url:'https://a.jp/',status:'ok',v:2}}];
+ const existing=[{category:'JP-design',url:'https://a.jp/',status:'ok',v:1},{category:'JP-design',url:'https://b.jp/',status:'ok',v:1},{category:'KR-ec',url:'https://gone.kr/',status:'ok'}];
+ const out=mergeOutputSites(listed,checkpoint,existing);
+ assert.deepEqual(out.map(s=>[s.url,s.v]),[['https://a.jp/',2],['https://b.jp/',1]],'the latest checkpoint record wins; b survives without one; unlisted and never-measured sites are absent');
+});
