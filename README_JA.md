@@ -23,7 +23,87 @@ UI Refiner は、韓国・日本のサイト 2,326 件の実測をもとにし�
 
 **3. テーマは 13 種類。** テーマは、ある国のある業種群に多い類型を仕上げたデザインです。サイズ、色、配置は、その類型に属するサイトの実測値から取っています。テーマに添えた数は、その国のその業種群で該当する類型に属するサイトの数です。`kr-business-white` は、韓国の business 235 件のうち 50 件を根拠にしています。
 
-![韓国・日本のウェブデザインテーマ全13種類のサンプルページ一覧](docs/assets/themes.jpg)
+<!-- theme-grid:start (node scripts/build-theme-grid.mjs) -->
+<table>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-care-white/theme.md"><img src="docs/assets/themes/kr-care-white.jpg" alt="kr-care-white のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-care-white/theme.md">kr-care-white</a></b><br>
+<sub>韓国 · care · white quiet ·&nbsp;38&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-business-dark/theme.md"><img src="docs/assets/themes/kr-business-dark.jpg" alt="kr-business-dark のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-business-dark/theme.md">kr-business-dark</a></b><br>
+<sub>韓国 · business · dark cinematic ·&nbsp;35&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-business-white/theme.md"><img src="docs/assets/themes/kr-business-white.jpg" alt="kr-business-white のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-business-white/theme.md">kr-business-white</a></b><br>
+<sub>韓国 · business · white quiet ·&nbsp;50&nbsp;件</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md"><img src="docs/assets/themes/kr-place-photo.jpg" alt="kr-place-photo のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md">kr-place-photo</a></b><br>
+<sub>韓国 · place · photo-led ·&nbsp;43&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-public-portal/theme.md"><img src="docs/assets/themes/kr-public-portal.jpg" alt="kr-public-portal のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-public-portal/theme.md">kr-public-portal</a></b><br>
+<sub>韓国 · public · dense portal ·&nbsp;61&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md"><img src="docs/assets/themes/kr-shop-portal.jpg" alt="kr-shop-portal のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md">kr-shop-portal</a></b><br>
+<sub>韓国 · shop · dense portal ·&nbsp;60&nbsp;件</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md"><img src="docs/assets/themes/kr-creative-dark.jpg" alt="kr-creative-dark のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md">kr-creative-dark</a></b><br>
+<sub>韓国 · creative · dark cinematic ·&nbsp;34&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-place-photo/theme.md"><img src="docs/assets/themes/jp-place-photo.jpg" alt="jp-place-photo のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-place-photo/theme.md">jp-place-photo</a></b><br>
+<sub>日本 · place · photo-led ·&nbsp;65&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md"><img src="docs/assets/themes/jp-care-corporate.jpg" alt="jp-care-corporate のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md">jp-care-corporate</a></b><br>
+<sub>日本 · care · standard corporate ·&nbsp;68&nbsp;件</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md"><img src="docs/assets/themes/jp-business-corporate.jpg" alt="jp-business-corporate のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md">jp-business-corporate</a></b><br>
+<sub>日本 · business · standard corporate ·&nbsp;52&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-public-portal/theme.md"><img src="docs/assets/themes/jp-public-portal.jpg" alt="jp-public-portal のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-public-portal/theme.md">jp-public-portal</a></b><br>
+<sub>日本 · public · dense portal ·&nbsp;64&nbsp;件</sub>
+</td>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md"><img src="docs/assets/themes/jp-shop-portal.jpg" alt="jp-shop-portal のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md">jp-shop-portal</a></b><br>
+<sub>日本 · shop · dense portal ·&nbsp;57&nbsp;件</sub>
+</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md"><img src="docs/assets/themes/jp-creative-bigtype.jpg" alt="jp-creative-bigtype のサンプルページの最初の画面" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md">jp-creative-bigtype</a></b><br>
+<sub>日本 · creative · big type ·&nbsp;36&nbsp;件</sub>
+</td>
+<td width="33%"></td>
+<td width="33%"></td>
+</tr>
+</table>
+<!-- theme-grid:end -->
 
 [テーマギャラリー](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [測定方法とテーマ一覧](skills/ui-refiner-agent/reference/themes/README.md)
 
