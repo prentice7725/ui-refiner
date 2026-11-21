@@ -2,11 +2,11 @@
 
 [English](README.md) · [한국어](README_KO.md) · [日本語](README_JA.md)
 
-UI Refiner includes 13 web design themes based on measurements from 2,245 Korean and Japanese sites. Use them to build a page with Codex or Claude Code, or review an existing page with the CLI.
+UI Refiner includes 13 web design themes based on measurements from 2,326 Korean and Japanese sites. Use them to build a page with Codex or Claude Code, or review an existing page with the CLI.
 
 ## How the themes are built
 
-**1. Eight types of page.** The 2,245 sites fall into eight types by overall impression. Each drawing shows a type's measured average: ground, photographs, type size and density.
+**1. Eight types of page.** The 2,326 sites fall into eight types by overall impression. Each drawing shows a type's measured average: ground, photographs, type size and density.
 
 ![Schematics of the eight page types with the number of measured sites in each](docs/assets/archetypes.jpg)
 
@@ -19,7 +19,7 @@ UI Refiner includes 13 web design themes based on measurements from 2,245 Korean
 | public | government, associations, universities, media, finance | 202 | 179 |
 | shop | e-commerce, fashion, cosmetics, food | 199 | 165 |
 | business | makers, logistics, software, builders, tax, hiring | 235 | 249 |
-| creative | design, games, architecture, photo, illustration | 130 | 153 |
+| creative | design, games, architecture, photo, illustration | 130 | 234 |
 
 **3. Thirteen themes.** Each theme is a finished design for a type that is common in one family in one country, with its sizes, colours and layout taken from those sites. The count next to a theme is the number of sites of that type in that family and country: `kr-business-white` rests on 50 of the 235 Korean business sites.
 
@@ -75,7 +75,7 @@ Run these commands in Claude Code, then run `npm ci` and `npx playwright install
 
 - **Review a page.** `scan` explains each design signal and suggests a change. The 0–100 score measures the strength of detected patterns. Quality issues such as text contrast are reported separately. Reports support English, Korean and Japanese. Set the language with `--lang en`, `ko` or `ja`.
 - **Refine an existing design.** The agent keeps the structure for smaller changes and offers three directions to choose from for a full redesign. Use `keep check` to check that links, forms and figures survived the edits, and `stress` to test the layout with longer labels and larger numbers.
-- **Build a new page.** The 13 themes draw on measurements from 2,245 Korean and Japanese sites. Open the gallery in a browser from your local checkout to filter samples by country, purpose and availability of client photos.
+- **Build a new page.** The 13 themes draw on measurements from 2,326 Korean and Japanese sites. Open the gallery in a browser from your local checkout to filter samples by country, purpose and availability of client photos.
 
 In a three-page pilot, the three-direction workflow had the best mean rank for individual pages, but the resulting pages were judged similar as a set. One model evaluated the designs. [Pilot results](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 

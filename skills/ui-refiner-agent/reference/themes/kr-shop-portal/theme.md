@@ -57,3 +57,11 @@ For Korean online shops: farm-direct and food malls, cosmetics and fashion store
 ## Applying to a client's content
 
 See `../README.md`. Fashion stores swap round category photos for a model lookbook strip; cosmetics add a skin-type finder in the shortcuts.
+
+Learned on a real ginseng shop (금산인삼몰, cafe24, 21 November 2026):
+
+- **Banners with their own type** (1250×450, 1250×190) are shown whole at their own ratio inside the width; the slide caption is left out because the banner already carries it.
+- **Five products a row** when the shop lists five or ten per section; 300px product photographs on white, `object-fit: contain`.
+- **The client's data is kept as it is, errors included**: one product listed a 판매가 (363,000원) above its 소비자가 (360,000원). The page shows both as the shop does and the report asks the client to check.
+- **Hidden platform controls** (cafe24's multishop country and language selects) are kept in a footer `<details>` so nothing the shop submits is lost.
+- Page length 5.3 screens, below the measured p25 (5.9): the shop lists 27 products on its top page.

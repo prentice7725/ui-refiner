@@ -7,7 +7,7 @@ description: Make web pages and app screens that do not look AI-generated, revie
 
 Three jobs: **Build** a screen that looks chosen rather than generated, **Review** an existing page and propose a better design, and **Refine** an AI-looking page in place and measure the change. All rely on the same toolkit:
 
-- themes — 13 finished designs measured from 2245 human-made Korean and Japanese sites, one per purpose family and country ([reference/themes/README.md](reference/themes/README.md)).
+- themes — 13 finished designs measured from 2326 human-made Korean and Japanese sites, one per purpose family and country ([reference/themes/README.md](reference/themes/README.md)).
 - `scan` — zero-config rendered review of any URL: AI-look signals, baseline accessibility/layout measurements, desktop + mobile screenshots, and a proposal-oriented `DESIGN_REVIEW.md`.
 - suta guidance — `vendor/suta/skills/suta/SKILL.md` (Korean): the AI-slop red lines, layout/motion values and 57 tested UI patterns.
 - `check` — the deep, policy-enforced QA gate for projects that install UI Refiner. Optional; see [reference/quality-gate.md](reference/quality-gate.md).
