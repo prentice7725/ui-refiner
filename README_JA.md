@@ -6,7 +6,7 @@ UI Refiner は、韓国・日本のサイト 2,245 件の実測をもとにし�
 
 ![韓国・日本のウェブデザインテーマ全13種類のサンプルページ一覧](docs/assets/themes.jpg)
 
-[テーマギャラリー](skills/ui-refiner-agent/reference/themes/index.html) · [測定方法とテーマ一覧](skills/ui-refiner-agent/reference/themes/README.md)
+[テーマギャラリー](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [測定方法とテーマ一覧](skills/ui-refiner-agent/reference/themes/README.md)
 
 ## クイックスタート
 
