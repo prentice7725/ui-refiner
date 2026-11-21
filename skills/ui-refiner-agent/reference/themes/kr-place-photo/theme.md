@@ -61,3 +61,10 @@ For Korean pensions, resorts, small hotels, glamping, cafés and wedding venues 
 ## Applying to a client's content
 
 See `../README.md`. Wedding venues replace rooms with halls and offers with packages; cafés drop the booking bar for opening hours and a menu strip.
+
+Learned on a real hanok stay (한옥에서, 담양 창평, 21 November 2026). The client had 1920px main photographs and 1300px album photographs, so the theme held as designed:
+
+- **Booking on an outside calendar** (onda and the like): the booking bar becomes the calendar link and the phone (`전화상담 · 24시간`), with no date form that would only pretend to book.
+- **No photograph per room**: the rooms band lists the houses and their rooms (안채 · 뜰안채 · 별채 · 사랑채) beside the one room photograph the client has; no room gets a photograph that is not its own.
+- **The client's album** goes in a four-column strip with its own captions; a café on the grounds takes the facilities mosaic.
+- **Member links** (로그인 · 회원가입) move to the footer: the header sits over the hero, and a pension rarely needs them up there.

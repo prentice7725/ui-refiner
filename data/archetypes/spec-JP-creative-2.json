@@ -2,66 +2,66 @@
  "country": "JP",
  "family": "creative",
  "cluster": 2,
- "sites": 21,
+ "sites": 30,
  "trades": [
-  "design 57%",
-  "photo 19%",
-  "game 14%",
-  "architecture 5%",
-  "illustration 5%"
+  "design 63%",
+  "photo 17%",
+  "game 10%",
+  "architecture 7%",
+  "illustration 3%"
  ],
  "fonts": {
   "display": [
-   "noto sans jp 19%",
-   "yakuhanjp 10%",
-   "wfont_0bd506_f18f6c3efa8d49a38b8ee32fe0730b4b 5%",
-   "游ゴシック体 5%",
-   "tsukushigothic 5%",
-   "fot-セザンヌ pro m 5%",
-   "hiragino kaku gothic pron 5%",
-   "游ゴシック 5%"
+   "noto sans jp 13%",
+   "yakuhanjp 7%",
+   "wfont_0bd506_f18f6c3efa8d49a38b8ee32fe0730b4b 3%",
+   "游ゴシック体 3%",
+   "tsukushigothic 3%",
+   "fot-セザンヌ pro m 3%",
+   "hiragino kaku gothic pron 3%",
+   "游ゴシック 3%"
   ],
   "body": [
-   "noto sans jp 24%",
+   "noto sans jp 17%",
    "yakuhanjp 10%",
-   "wfont_8be151_d8f1c749a1244687bb5627268a617358 5%",
-   "helveticaneueetextstd-bold 5%",
-   "游ゴシック体 5%",
-   "mfw-pa1gothicstd-light 5%",
-   "supria-sans 5%",
-   "futura-pt 5%"
+   "tsukushigothic 7%",
+   "wfont_8be151_d8f1c749a1244687bb5627268a617358 3%",
+   "helveticaneueetextstd-bold 3%",
+   "游ゴシック体 3%",
+   "mfw-pa1gothicstd-light 3%",
+   "supria-sans 3%"
   ]
  },
  "sizes": {
   "body": {
    "p25": 14,
-   "p50": 16,
+   "p50": 15,
    "p75": 16
   },
   "h1": {
-   "p25": 14,
-   "p50": 26,
+   "p25": 12,
+   "p50": 16,
    "p75": 34
   },
   "h2": {
-   "p25": 23,
-   "p50": 31,
+   "p25": 20,
+   "p50": 30,
    "p75": 34
   },
   "h3": {
-   "p25": 17,
+   "p25": 18,
    "p50": 22,
-   "p75": 29
+   "p75": 28
   },
   "display": {
-   "p25": 29.39,
+   "p25": 28,
    "p50": 38,
    "p75": 40
   },
   "ratio": {
-   "p25": 1.82,
-   "p50": 2.31,
-   "p75": 2.86
+   "p25": 1.88,
+   "p50": 2.36,
+   "p75": 2.93
   }
  },
  "weights": {
@@ -76,55 +76,56 @@
    "p75": 500
   }
  },
- "serifShare": 0.14,
+ "serifShare": 0.2,
  "colours": {
   "ground": [
-   "#ffffff 86%",
-   "#fafafa 5%",
-   "#f2f3f5 5%",
-   "#efece6 5%"
+   "#ffffff 87%",
+   "#fafafa 3%",
+   "#f2f3f5 3%",
+   "#efece6 3%",
+   "#f7f4f0 3%"
   ],
   "text": [
-   "#000000 33%",
-   "#3a3a3a 10%",
-   "#333333 10%",
-   "#1a1a1a 10%",
-   "#211915 5%",
-   "#2b2b2b 5%",
-   "#303131 5%",
-   "#555555 5%"
+   "#000000 30%",
+   "#3a3a3a 7%",
+   "#333333 7%",
+   "#1a1a1a 7%",
+   "#211915 3%",
+   "#2b2b2b 3%",
+   "#303131 3%",
+   "#555555 3%"
   ],
   "heading": [
-   "#000000 19%",
-   "#3a3a3a 10%",
-   "#333333 10%",
-   "#e4007f 5%",
-   "#211915 5%",
-   "#282828 5%",
-   "#2b2b2b 5%",
-   "#303131 5%"
+   "#000000 23%",
+   "#3a3a3a 7%",
+   "#333333 7%",
+   "#e4007f 3%",
+   "#211915 3%",
+   "#282828 3%",
+   "#2b2b2b 3%",
+   "#303131 3%"
   ],
   "buttonHue": [
-   "grey 24%",
-   "white 19%",
-   "teal 10%",
-   "pink 5%",
-   "orange 5%",
-   "amber 5%",
-   "blue 5%",
-   "black 5%"
+   "white 27%",
+   "grey 17%",
+   "teal 7%",
+   "black 7%",
+   "pink 3%",
+   "orange 3%",
+   "amber 3%",
+   "blue 3%"
   ],
   "buttonBg": [
-   "#ffffff 19%",
-   "#e4007f 5%",
-   "#3a3a3a 5%",
-   "#363434 5%",
-   "#f58220 5%",
-   "#ffbe2c 5%",
-   "#494949 5%",
-   "#3b82f6 5%",
-   "#1a9880 5%",
-   "#000000 5%"
+   "#ffffff 20%",
+   "#000000 7%",
+   "#e4007f 3%",
+   "#3a3a3a 3%",
+   "#363434 3%",
+   "#f58220 3%",
+   "#ffbe2c 3%",
+   "#494949 3%",
+   "#3b82f6 3%",
+   "#1a9880 3%"
   ]
  },
  "shape": {
@@ -135,60 +136,60 @@
   },
   "buttonRadius": {
    "p25": 0,
-   "p50": 4,
-   "p75": 30
+   "p50": 3,
+   "p75": 19
   },
   "buttonHeight": {
    "p25": 40,
-   "p50": 42,
-   "p75": 55
+   "p50": 45,
+   "p75": 51
   },
   "hairlines": {
-   "p25": 3,
-   "p50": 8,
-   "p75": 25
+   "p25": 2,
+   "p50": 9,
+   "p75": 17
   },
   "content": {
    "p25": 1000,
    "p50": 1110,
-   "p75": 1200
+   "p75": 1220
   }
  },
  "layout": {
-  "heroFullBleed": 0.24,
+  "heroFullBleed": 0.17,
   "heroAlign": [
-   "left 38%",
-   "below-fold 10%",
-   "center 10%",
-   "right 5%",
-   "wide 5%"
+   "left 43%",
+   "below-fold 7%",
+   "center 7%",
+   "right 3%",
+   "wide 3%"
   ],
   "heroSide": [
-   "none 86%",
-   "panel 10%",
-   "media 5%"
+   "none 87%",
+   "media 7%",
+   "panel 7%"
   ],
-  "claimOnFirst": 0.38,
-  "actionOnFirst": 0.24,
+  "claimOnFirst": 0.37,
+  "actionOnFirst": 0.23,
   "screens": {
-   "p25": 7.23,
-   "p50": 9.71,
-   "p75": 12.77
+   "p25": 6.96,
+   "p50": 9.52,
+   "p75": 11.76
   },
   "photos": {
-   "p25": 5,
+   "p25": 1,
    "p50": 8,
    "p75": 12
   },
   "nav": {
    "p25": 0,
-   "p50": 2,
-   "p75": 6
+   "p50": 6,
+   "p75": 7
   },
   "centred": {
    "p25": 0,
    "p50": 0.08,
-   "p75": 0.28
+   "p75": 0.22
   }
  },
  "pixels": {
@@ -210,51 +211,51 @@
   "colourful": {
    "p25": 0.01,
    "p50": 0.04,
-   "p75": 0.06
+   "p75": 0.05
   }
  },
  "navLabels": [
-  "contact 7%",
-  "works 5%",
+  "contact 5%",
   "お問い合わせ 4%",
-  "member 4%",
-  "home 3%",
+  "採用情報 4%",
   "制作実績 3%",
-  "company 3%",
-  "recruit 3%",
-  "about 3%",
-  "採用情報 3%",
-  "ホームページ制作 1%",
+  "works 3%",
+  "ホームページ制作 2%",
+  "member 2%",
+  "recruit 2%",
+  "about 2%",
+  "home 1%",
+  "company 1%",
+  "news 1%",
+  "en 1%",
+  "ブログ 1%",
+  "会社案内 1%",
+  "ホーム 1%",
+  "services 1%",
+  "お知らせ 1%",
   "ロゴ・印刷デザイン 1%",
   "よくあるご質問 1%",
   "ご依頼について 1%",
   "お役立ちブログ 1%",
   "お問い合わせ／ご依頼 1%",
-  "about english support 1%",
-  "top 1%",
-  "a b o u t a b o u t 1%",
-  "p r o j e c t s p r o j e c t s 1%",
-  "w o r k f l o w w o r k f l o w 1%",
-  "m e m b e r s m e m b e r s 1%",
-  "c u l t u r e c u l t u r e 1%",
-  "tsushima-design 1%"
+  "about english support 1%"
  ],
  "nearest": [
   "JP-photo/tfc.co.jp",
+  "JP-design/rikkadesign.com",
   "JP-design/tk-design.jp",
   "JP-architecture/unicreative.jp",
   "JP-design/x3-design.com",
+  "JP-design/makersmark.co.jp",
   "JP-design/caina.co.jp",
+  "JP-photo/craft5-inc.com",
   "JP-design/tsushima-design.com",
   "JP-photo/dub.co.jp",
   "JP-design/designstudio-l.jp",
   "JP-game/gzoe.co.jp",
+  "JP-design/moshi-moshi.jp",
   "JP-illustration/ttdesign.net",
   "JP-design/long-town.co.jp",
-  "JP-design/studiokeya.com",
-  "JP-game/torisan-net.com",
-  "JP-photo/kuppography.com",
-  "JP-game/hexadrive.jp",
-  "JP-photo/noblem.jp"
+  "JP-design/studiokeya.com"
  ]
 }

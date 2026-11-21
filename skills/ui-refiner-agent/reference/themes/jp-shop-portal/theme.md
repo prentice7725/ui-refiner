@@ -56,3 +56,11 @@ For Japanese makers and stores that sell online: sake and food brands, cosmetics
 ## Applying to a client's content
 
 See `../README.md`. Cosmetics stores add a 肌悩みから探す tile row; general stores with many categories move the category tabs into a left sidebar.
+
+Learned on a real bamboo-craft shop (長岡銘竹, カラーミーショップ, 21 November 2026):
+
+- **Check first whether the original is already designed.** This shop's own page (large bamboo photographs set off-grid, Mincho, generous white) was already strong; the theme turned it into an orderly portal, which is clearer to shop but loses that look. A small body size alone does not mark a dated site.
+- **Square slides** (700×700) do not fit the 16:7 main visual: the client's widest photograph becomes the main visual and the squares a six-up pick-up row.
+- **A long shopping guide** (返品, お支払い, 配送・送料 with a fare table) goes in `<details>` rows under the products; the fare table wraps on phones.
+- **The shop's CSS-only drawers** (checkbox toggles) stay working toggles: the menu and the category list on phones.
+- The client's phone link dials a different number from the one shown (shown 0771-56-8423, linked 075-925-5826); kept and reported, not fixed silently.

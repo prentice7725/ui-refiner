@@ -22,7 +22,10 @@ export function collectKeep(){
  // In-page anchors may be renamed with the sections; they are reported, not required.
  const links=hrefs.filter(h=>!h.startsWith('#')),anchors=hrefs.filter(h=>h.startsWith('#'));
  const forms=[...document.querySelectorAll('form')].map(f=>({action:f.getAttribute('action')?abs(f.getAttribute('action')):null,method:(f.getAttribute('method')||'get').toLowerCase()}));
- const fields=[...document.querySelectorAll('input,select,textarea')].filter(el=>!['hidden','submit','button','reset','image'].includes((el.getAttribute('type')||'').toLowerCase())).map(el=>({name:el.getAttribute('name')||el.id||null,type:(el.getAttribute('type')||el.tagName).toLowerCase(),required:el.required}));
+ // Fields a visitor can reach: site builders leave hidden widgets (colour pickers, editors) in the page,
+ // and those are not the page's own fields. A field in a closed <details> counts when the details is shown.
+ const reachable=el=>{const d=el.closest('details:not([open])'),t=d||el;return t.getClientRects().length>0&&getComputedStyle(t).visibility!=='hidden';};
+ const fields=[...document.querySelectorAll('input,select,textarea')].filter(el=>!['hidden','submit','button','reset','image'].includes((el.getAttribute('type')||'').toLowerCase())&&reachable(el)).map(el=>({name:el.getAttribute('name')||el.id||null,type:(el.getAttribute('type')||el.tagName).toLowerCase(),required:el.required}));
  // Facts: figures with an optional currency or unit, times, phone numbers, postcodes.
  const facts=[...new Set((text.match(/(?:[$¥₩€£]\s?)?\d[\d,.:/\-]*\s?(?:%|円|원|万|만|억|分|時間|min|mins|hrs?|hours?|명|人|社|件|km|kg|m²|㎡|년|年|月|日|개|個|点)?/g)||[]).map(s=>s.replace(/\s/g,'')).filter(s=>/[^\d]/.test(s)||s.length>=3))];
  return {url:location.href,links:[...new Set(links)],anchors:[...new Set(anchors)],forms,fields,facts,title:document.title};
