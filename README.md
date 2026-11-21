@@ -19,7 +19,7 @@ UI Refiner includes 13 web design themes based on measurements from 2,326 Korean
 | public | government, associations, universities, media, finance | 202 | 179 |
 | shop | e-commerce, fashion, cosmetics, food | 199 | 165 |
 | business | makers, logistics, software, builders, tax, hiring | 235 | 249 |
-| creative | design, games, architecture, photo, illustration | 130 | 153 |
+| creative | design, games, architecture, photo, illustration | 130 | 234 |
 
 **3. Thirteen themes.** Each theme is a finished design for a type that is common in one family in one country, with its sizes, colours and layout taken from those sites. The count next to a theme is the number of sites of that type in that family and country: `kr-business-white` rests on 50 of the 235 Korean business sites.
 
