@@ -34,6 +34,17 @@ Every moving hero needs `<button class="fx-pause" type="button" data-pause="…"
 - **Video:** 10–20 s, seamless loop, no audio, 1280×720 H.264 under 2.5 MB, with the hero photograph as the poster. If the client has no footage, a slow push-in across two of their photographs (made with ffmpeg) is fine; say so in the footer when the photographs are generated.
 - **Strength:** the default is quiet (14 px rise, 0.7 s, 12 px blur). `bold` (32 px, 1 s, 18 px) suits the dark cinematic and big-type themes only.
 
+## Applying to a client's page
+
+Learned on three client pages built from the themes (21 November 2026): a Hakuba inn (`jp-place-photo`), a Suwon dental clinic (`kr-care-white`) and a fulfilment company (`kr-business-dark`).
+
+- **The material decides first.** The fulfilment company had no photographs, so its hero is set in type; video and slides had nothing to show, and the effects its theme allows on request (reveals, header blur) add nothing to a page without pictures. Offer nothing then, and say why in one line.
+- **Slides only with the client's own photographs.** The inn page runs on generated stand-ins named for another town; slides put three of them in the most visible place instead of one. With stand-ins, offer slides as "once you have three photographs of your own", and keep the hero still until then.
+- **A framed hero photo can slide too.** On the clinic page the photo sits beside the text, so the slides change a seventh of the first screen, not all of it; the pause control goes in the photo's corner. On phones the photo is below the first screen and the slides wait until it is in view.
+- **Copied theme files can be older than the effects.** A page built before the effects has a `theme.css` without the effects block at its end; copy that block (slide stacking, pause position) from the current theme into the page CSS.
+- **Mark groups, not every picture.** `data-reveal` on the photo groups (concept, onsen, rooms, cuisine) gives four reveals, each bringing in several pictures at once.
+- **Pause labels in the page's language** (`一時停止` / `再生`, `일시정지` / `재생`).
+
 ## Basis
 
 `scripts/collect-motion.mjs` measured 630 human-made Korean and Japanese sites in November 2026, about 40 from each country and archetype of `data/archetypes/clusters.json` (desktop 1440×900, first screen watched for 8 s, then scrolled). `data/motion/summary.json` has the shares per country, archetype and family; `data/motion/sites.json` one record per site.
