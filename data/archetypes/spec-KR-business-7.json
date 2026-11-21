@@ -1,0 +1,247 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 7,
+ "sites": 15,
+ "trades": [
+  "maker 27%",
+  "logistics 20%",
+  "corp 13%",
+  "hiring 13%",
+  "local 13%",
+  "realestate 7%",
+  "software 7%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans kr 20%",
+   "malgun gothic 13%",
+   "poppins 7%",
+   "sen 7%",
+   "open sans 7%",
+   "inter tight 7%",
+   "nanumgothic 7%",
+   "roboto 7%"
+  ],
+  "body": [
+   "noto sans kr 27%",
+   "�������� 7%",
+   "malgun gothic 7%",
+   "suit 7%",
+   "notosanskr-regular 7%",
+   "sen 7%",
+   "open sans 7%",
+   "inter tight 7%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 17,
+   "p75": 18
+  },
+  "h1": {
+   "p25": 16,
+   "p50": 28,
+   "p75": 34
+  },
+  "h2": {
+   "p25": 22,
+   "p50": 48,
+   "p75": 70
+  },
+  "h3": {
+   "p25": 24,
+   "p50": 31,
+   "p75": 41
+  },
+  "display": {
+   "p25": 36,
+   "p50": 49,
+   "p75": 72
+  },
+  "ratio": {
+   "p25": 2.27,
+   "p50": 2.8,
+   "p75": 4
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 700,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 600,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0,
+ "colours": {
+  "ground": [
+   "#ffffff 87%",
+   "#dfedf5 7%",
+   "#fcfcfc 7%"
+  ],
+  "text": [
+   "#000000 27%",
+   "#ffffff 27%",
+   "#666666 20%",
+   "#1b1b1b 7%",
+   "#555555 7%",
+   "#252525 7%",
+   "#3d3d3d 7%"
+  ],
+  "heading": [
+   "#ffffff 47%",
+   "#666666 20%",
+   "#00406c 7%",
+   "#333333 7%",
+   "#000000 7%"
+  ],
+  "buttonHue": [
+   "black 20%",
+   "blue 13%",
+   "white 13%",
+   "orange 7%"
+  ],
+  "buttonBg": [
+   "#ffffff 13%",
+   "#000000 7%",
+   "#0056aa 7%",
+   "#4f7aba 7%",
+   "#e85623 7%",
+   "#282828 7%",
+   "#222222 7%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 20,
+   "p75": 40
+  },
+  "buttonHeight": {
+   "p25": 40,
+   "p50": 50,
+   "p75": 288
+  },
+  "hairlines": {
+   "p25": 2,
+   "p50": 7,
+   "p75": 21
+  },
+  "content": {
+   "p25": 1000,
+   "p50": 1280,
+   "p75": 1350
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.67,
+  "heroAlign": [
+   "left 47%",
+   "center 13%",
+   "right 7%",
+   "wide 7%",
+   "below-fold 7%"
+  ],
+  "heroSide": [
+   "none 100%"
+  ],
+  "claimOnFirst": 0.67,
+  "actionOnFirst": 0.6,
+  "screens": {
+   "p25": 1,
+   "p50": 2.69,
+   "p75": 5.51
+  },
+  "photos": {
+   "p25": 0,
+   "p50": 3,
+   "p75": 8
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 8
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0.26
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.08,
+   "p50": 0.19,
+   "p75": 0.3
+  },
+  "dark": {
+   "p25": 0.01,
+   "p50": 0.06,
+   "p75": 0.21
+  },
+  "photo": {
+   "p25": 0.04,
+   "p50": 0.07,
+   "p75": 0.08
+  },
+  "colourful": {
+   "p25": 0.29,
+   "p50": 0.36,
+   "p75": 0.41
+  }
+ },
+ "navLabels": [
+  "회사소개 6%",
+  "eng 6%",
+  "kor 4%",
+  "about​ 2%",
+  "products​ 2%",
+  "partnership​ 2%",
+  "education​ 2%",
+  "what's new 2%",
+  "support 2%",
+  "매장찾기 2%",
+  "다비치 마켓 2%",
+  "업무영역 2%",
+  "구성원소개 2%",
+  "실적소개 2%",
+  "업무문의 2%",
+  "인재채용 2%",
+  "hana소식 2%",
+  "english 2%",
+  "메인으로 2%",
+  "cn 2%",
+  "youtube 2%",
+  "투자정보 2%",
+  "사업소개 2%",
+  "채용정보 2%"
+ ],
+ "nearest": [
+  "KR-software/smart-mes.co.kr",
+  "KR-maker/samwhadsp.com",
+  "KR-logistics/ilyangexpress.com",
+  "KR-local/davich.com",
+  "KR-maker/bktray.com",
+  "KR-logistics/kr.inxpress.com",
+  "KR-logistics/dongbang.co.kr",
+  "KR-maker/hyundai-steelpipe.com",
+  "KR-corp/weatheri.co.kr",
+  "KR-corp/lxinternational.com",
+  "KR-maker/wsdf.co.kr",
+  "KR-local/haac.co.kr",
+  "KR-realestate/skreit.co.kr",
+  "KR-hiring/job.alio.go.kr",
+  "KR-hiring/skcareers.com"
+ ]
+}

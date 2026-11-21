@@ -1,0 +1,263 @@
+{
+ "country": "JP",
+ "family": "care",
+ "cluster": 6,
+ "sites": 68,
+ "trades": [
+  "dental 32%",
+  "skin 19%",
+  "care 15%",
+  "fitness 10%",
+  "salon 10%",
+  "beauty 9%",
+  "hospital 3%",
+  "kids 1%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 19%",
+   "游ゴシック体 9%",
+   "meiryo 6%",
+   "arial 4%",
+   "yakuhanjp 3%",
+   "hiragino kaku gothic pron 3%",
+   "zen maru gothic 3%",
+   "helvetica 3%"
+  ],
+  "body": [
+   "noto sans jp 22%",
+   "游ゴシック体 10%",
+   "メイリオ 6%",
+   "arial 6%",
+   "meiryo 6%",
+   "hiragino kaku gothic pron 4%",
+   "-apple-system 4%",
+   "ヒラギノ角ゴ pro w3 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 12,
+   "p50": 16,
+   "p75": 26
+  },
+  "h2": {
+   "p25": 16,
+   "p50": 28,
+   "p75": 34
+  },
+  "h3": {
+   "p25": 16,
+   "p50": 20,
+   "p75": 24
+  },
+  "display": {
+   "p25": 32,
+   "p50": 40,
+   "p75": 50
+  },
+  "ratio": {
+   "p25": 2.13,
+   "p50": 2.67,
+   "p75": 3.33
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.15,
+ "colours": {
+  "ground": [
+   "#ffffff 94%",
+   "#f9f9f9 1%",
+   "#fff5ff 1%",
+   "#fbf6f6 1%",
+   "#fff4e3 1%"
+  ],
+  "text": [
+   "#333333 28%",
+   "#000000 21%",
+   "#222222 6%",
+   "#444444 4%",
+   "#555555 3%",
+   "#332020 3%",
+   "#ffffff 3%",
+   "#303e48 1%"
+  ],
+  "heading": [
+   "#000000 19%",
+   "#333333 19%",
+   "#ffffff 13%",
+   "#444444 4%",
+   "#555555 3%",
+   "#332020 3%",
+   "#222222 3%",
+   "#b31741 1%"
+  ],
+  "buttonHue": [
+   "white 25%",
+   "green 10%",
+   "blue 9%",
+   "orange 9%",
+   "teal 6%",
+   "pink 4%",
+   "grey 4%",
+   "red 4%"
+  ],
+  "buttonBg": [
+   "#ffffff 21%",
+   "#408bd1 1%",
+   "#ff7708 1%",
+   "#8b6931 1%",
+   "#289e19 1%",
+   "#72bb32 1%",
+   "#3fa5f5 1%",
+   "#ff62a2 1%",
+   "#897469 1%",
+   "#f9f6f4 1%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 5,
+   "p75": 20
+  },
+  "buttonHeight": {
+   "p25": 40,
+   "p50": 51,
+   "p75": 71
+  },
+  "hairlines": {
+   "p25": 9,
+   "p50": 15,
+   "p75": 37
+  },
+  "content": {
+   "p25": 1000,
+   "p50": 1100,
+   "p75": 1200
+  }
+ },
+ "layout": {
+  "heroFullBleed": 1,
+  "heroAlign": [
+   "left 63%",
+   "center 26%",
+   "right 7%",
+   "wide 3%"
+  ],
+  "heroSide": [
+   "none 82%",
+   "media 9%",
+   "panel 9%"
+  ],
+  "claimOnFirst": 0.49,
+  "actionOnFirst": 0.44,
+  "screens": {
+   "p25": 5.19,
+   "p50": 7.39,
+   "p75": 9.38
+  },
+  "photos": {
+   "p25": 8,
+   "p50": 11,
+   "p75": 25
+  },
+  "nav": {
+   "p25": 2,
+   "p50": 6,
+   "p75": 9
+  },
+  "centred": {
+   "p25": 0.06,
+   "p50": 0.18,
+   "p75": 0.29
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.35,
+   "p50": 0.5,
+   "p75": 0.59
+  },
+  "dark": {
+   "p25": 0.01,
+   "p50": 0.02,
+   "p75": 0.05
+  },
+  "photo": {
+   "p25": 0.04,
+   "p50": 0.05,
+   "p75": 0.07
+  },
+  "colourful": {
+   "p25": 0.05,
+   "p50": 0.08,
+   "p75": 0.13
+  }
+ },
+ "navLabels": [
+  "お問い合わせ 3%",
+  "採用情報 3%",
+  "アクセス 2%",
+  "お知らせ 2%",
+  "よくあるご質問 1%",
+  "診療案内 1%",
+  "求人情報 1%",
+  "ホーム home 1%",
+  "トップページ 1%",
+  "ホーム 1%",
+  "top 1%",
+  "よくある質問 1%",
+  "web予約 1%",
+  "アクセス access 1%",
+  "トップ 1%",
+  "home 1%",
+  "医師紹介 1%",
+  "コラム 1%",
+  "法人概要 1%",
+  "アクセスマップ 1%",
+  "情報公開 1%",
+  "企業情報 1%",
+  "ご利用案内 1%",
+  "お客様の声 1%"
+ ],
+ "nearest": [
+  "JP-fitness/megalos.co.jp",
+  "JP-beauty/j-esthe.com",
+  "JP-care/k-aimu.co.jp",
+  "JP-salon/taya.co.jp",
+  "JP-hospital/hiroshima.hpho.jp",
+  "JP-dental/maioka-shika.com",
+  "JP-salon/3qcut.com",
+  "JP-dental/sendai.ryoeikai.or.jp",
+  "JP-skin/tashima-skin.com",
+  "JP-dental/nagatsudc.jp",
+  "JP-salon/uka.co.jp",
+  "JP-beauty/christinajapan.com",
+  "JP-skin/musashikoyama-hifu.com",
+  "JP-skin/sanritsu-machida.jp",
+  "JP-care/urawanosato.com",
+  "JP-fitness/rie-tanaka.com"
+ ]
+}
