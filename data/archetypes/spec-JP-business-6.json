@@ -1,0 +1,267 @@
+{
+ "country": "JP",
+ "family": "business",
+ "cluster": 6,
+ "sites": 52,
+ "trades": [
+  "maker 25%",
+  "software 21%",
+  "hiring 17%",
+  "local 12%",
+  "builder 10%",
+  "car 4%",
+  "realestate 4%",
+  "tax 4%",
+  "corp 2%",
+  "interior 2%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 27%",
+   "游ゴシック体 8%",
+   "メイリオ 6%",
+   "游ゴシック 4%",
+   "yakuhanjp 4%",
+   "noto sans cjk jp 4%",
+   "roboto 4%",
+   "-apple-system 4%"
+  ],
+  "body": [
+   "noto sans jp 31%",
+   "游ゴシック体 8%",
+   "meiryo 6%",
+   "游ゴシック 4%",
+   "yakuhanjp 4%",
+   "noto sans cjk jp 4%",
+   "roboto 4%",
+   "-apple-system 4%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 15,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 32
+  },
+  "h2": {
+   "p25": 20,
+   "p50": 30,
+   "p75": 36
+  },
+  "h3": {
+   "p25": 16,
+   "p50": 20,
+   "p75": 28
+  },
+  "display": {
+   "p25": 34,
+   "p50": 40,
+   "p75": 52
+  },
+  "ratio": {
+   "p25": 2.29,
+   "p50": 2.86,
+   "p75": 3.47
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 600,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 600,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.12,
+ "colours": {
+  "ground": [
+   "#ffffff 88%",
+   "#e6eaeb 2%",
+   "#eff0f1 2%",
+   "#1e2b3f 2%",
+   "#095abd 2%",
+   "#f1f2ed 2%",
+   "#f9f9f9 2%"
+  ],
+  "text": [
+   "#333333 21%",
+   "#000000 19%",
+   "#222222 12%",
+   "#ffffff 10%",
+   "#111111 4%",
+   "#2f2f2f 2%",
+   "#262626 2%",
+   "#00021c 2%"
+  ],
+  "heading": [
+   "#ffffff 17%",
+   "#000000 15%",
+   "#333333 13%",
+   "#222222 10%",
+   "#111111 4%",
+   "#404040 2%",
+   "#262626 2%",
+   "#0086a3 2%"
+  ],
+  "buttonHue": [
+   "white 31%",
+   "black 12%",
+   "blue 12%",
+   "teal 10%",
+   "grey 10%",
+   "orange 4%",
+   "red 2%",
+   "green 2%"
+  ],
+  "buttonBg": [
+   "#ffffff 25%",
+   "#000000 8%",
+   "#222222 2%",
+   "#e00000 2%",
+   "#262626 2%",
+   "#0086a3 2%",
+   "#e5e4df 2%",
+   "#006fb9 2%",
+   "#79d1c4 2%",
+   "#1c9be3 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 3,
+   "p75": 18
+  },
+  "buttonHeight": {
+   "p25": 37,
+   "p50": 50,
+   "p75": 63
+  },
+  "hairlines": {
+   "p25": 8,
+   "p50": 18,
+   "p75": 36
+  },
+  "content": {
+   "p25": 1040,
+   "p50": 1180,
+   "p75": 1250
+  }
+ },
+ "layout": {
+  "heroFullBleed": 1,
+  "heroAlign": [
+   "left 85%",
+   "wide 6%",
+   "center 6%",
+   "right 4%"
+  ],
+  "heroSide": [
+   "none 88%",
+   "media 10%",
+   "panel 2%"
+  ],
+  "claimOnFirst": 0.5,
+  "actionOnFirst": 0.52,
+  "screens": {
+   "p25": 5.56,
+   "p50": 7.19,
+   "p75": 9.62
+  },
+  "photos": {
+   "p25": 7,
+   "p50": 11,
+   "p75": 20
+  },
+  "nav": {
+   "p25": 4,
+   "p50": 7,
+   "p75": 10
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.03,
+   "p75": 0.13
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.42,
+   "p50": 0.52,
+   "p75": 0.61
+  },
+  "dark": {
+   "p25": 0.01,
+   "p50": 0.02,
+   "p75": 0.05
+  },
+  "photo": {
+   "p25": 0.03,
+   "p50": 0.04,
+   "p75": 0.07
+  },
+  "colourful": {
+   "p25": 0.04,
+   "p50": 0.11,
+   "p75": 0.16
+  }
+ },
+ "navLabels": [
+  "お問い合わせ 5%",
+  "採用情報 5%",
+  "企業情報 3%",
+  "サステナビリティ 3%",
+  "ir情報 2%",
+  "会社情報 2%",
+  "english 2%",
+  "en 1%",
+  "お知らせ 1%",
+  "お役立ち情報 1%",
+  "ニュース 1%",
+  "home 1%",
+  "ホーム 1%",
+  "製品情報 1%",
+  "jp 1%",
+  "イベントを探す 1%",
+  "建築実例 1%",
+  "テクノロジー 1%",
+  "商品情報 1%",
+  "リコール情報 1%",
+  "サポート 1%",
+  "トップ 1%",
+  "ログイン 1%",
+  "新規会員登録 1%"
+ ],
+ "nearest": [
+  "JP-software/chieru.co.jp",
+  "JP-local/white-kyubin.com",
+  "JP-software/alsi.co.jp",
+  "JP-corp/jt-kankyo.co.jp",
+  "JP-maker/nakanishi-inc.jp",
+  "JP-software/hd.fukuicompu.co.jp",
+  "JP-tax/tokyozeirishikai.or.jp",
+  "JP-software/cam-net.co.jp",
+  "JP-software/solxyz.co.jp",
+  "JP-maker/fukoku-rubber.co.jp",
+  "JP-realestate/sumitomo-rd.co.jp",
+  "JP-maker/tsurumipump.co.jp",
+  "JP-hiring/jobcafe-h.jp",
+  "JP-maker/trusco.co.jp",
+  "JP-car/isuzu.co.jp",
+  "JP-hiring/jobcafe-chiba.jp"
+ ]
+}

@@ -1,0 +1,263 @@
+{
+ "country": "JP",
+ "family": "shop",
+ "cluster": 3,
+ "sites": 57,
+ "trades": [
+  "ec 47%",
+  "food 35%",
+  "cosmetics 7%",
+  "fashion 7%",
+  "farm 4%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 16%",
+   "shippori mincho 4%",
+   "メイリオ 4%",
+   "ヒラギノ角ゴシック 2%",
+   "ヒラギノ角ゴ pron 2%",
+   "hiragino kaku gothic pron 2%",
+   "minnesystem 2%",
+   "游ゴシック 2%"
+  ],
+  "body": [
+   "noto sans jp 23%",
+   "メイリオ 5%",
+   "-apple-system 5%",
+   "arial 4%",
+   "hiragino kaku gothic pron 4%",
+   "roboto 4%",
+   "libre baskerville 4%",
+   "yugothic 4%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 13,
+   "p50": 14,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 14,
+   "p50": 20,
+   "p75": 28
+  },
+  "h2": {
+   "p25": 18,
+   "p50": 24,
+   "p75": 26
+  },
+  "h3": {
+   "p25": 15,
+   "p50": 18,
+   "p75": 22
+  },
+  "display": {
+   "p25": 24,
+   "p50": 30,
+   "p75": 36
+  },
+  "ratio": {
+   "p25": 1.76,
+   "p50": 2,
+   "p75": 2.57
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 600,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.16,
+ "colours": {
+  "ground": [
+   "#ffffff 82%",
+   "#f4f4f4 4%",
+   "#ecebe8 4%",
+   "#f8f6ec 2%",
+   "#f2f2eb 2%",
+   "#fffdfa 2%",
+   "#faf7f5 2%",
+   "#dddddd 2%"
+  ],
+  "text": [
+   "#333333 23%",
+   "#000000 19%",
+   "#222222 5%",
+   "#666666 4%",
+   "#555555 4%",
+   "#414141 4%",
+   "#606060 2%",
+   "#393c41 2%"
+  ],
+  "heading": [
+   "#000000 26%",
+   "#333333 14%",
+   "#222222 5%",
+   "#1d1c1c 4%",
+   "#606060 2%",
+   "#1e4d9e 2%",
+   "#000030 2%",
+   "#111184 2%"
+  ],
+  "buttonHue": [
+   "white 30%",
+   "grey 14%",
+   "red 11%",
+   "blue 5%",
+   "green 4%",
+   "black 4%",
+   "pink 2%",
+   "teal 2%"
+  ],
+  "buttonBg": [
+   "#ffffff 19%",
+   "#0058aa 2%",
+   "#1e4d9e 2%",
+   "#f2f2f2 2%",
+   "#004022 2%",
+   "#8b2a2a 2%",
+   "#5e5e5e 2%",
+   "#34996c 2%",
+   "#c82361 2%",
+   "#717171 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 2,
+   "p75": 7
+  },
+  "buttonHeight": {
+   "p25": 35,
+   "p50": 44,
+   "p75": 77
+  },
+  "hairlines": {
+   "p25": 15,
+   "p50": 28,
+   "p75": 56
+  },
+  "content": {
+   "p25": 980,
+   "p50": 1150,
+   "p75": 1200
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.02,
+  "heroAlign": [
+   "left 35%",
+   "center 12%",
+   "wide 5%",
+   "below-fold 4%"
+  ],
+  "heroSide": [
+   "none 77%",
+   "media 21%",
+   "panel 2%"
+  ],
+  "claimOnFirst": 0.32,
+  "actionOnFirst": 0.51,
+  "screens": {
+   "p25": 6.78,
+   "p50": 8.64,
+   "p75": 10.37
+  },
+  "photos": {
+   "p25": 15,
+   "p50": 19,
+   "p75": 29
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 7,
+   "p75": 10
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.07,
+   "p75": 0.17
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.44,
+   "p50": 0.55,
+   "p75": 0.63
+  },
+  "dark": {
+   "p25": 0.02,
+   "p50": 0.03,
+   "p75": 0.07
+  },
+  "photo": {
+   "p25": 0.05,
+   "p50": 0.08,
+   "p75": 0.09
+  },
+  "colourful": {
+   "p25": 0.07,
+   "p50": 0.11,
+   "p75": 0.14
+  }
+ },
+ "navLabels": [
+  "ログイン 4%",
+  "カート 4%",
+  "お気に入り 2%",
+  "ご利用ガイド 2%",
+  "お問い合わせ 2%",
+  "企業情報 1%",
+  "商品一覧 1%",
+  "商品情報 1%",
+  "about 1%",
+  "店舗情報 1%",
+  "新規登録 1%",
+  "オンラインショップ 1%",
+  "global 1%",
+  "お知らせ 1%",
+  "online store 1%",
+  "トップ 1%",
+  "化粧品 1%",
+  "新規会員登録 1%",
+  "ニュース 1%",
+  "会社概要 1%",
+  "トップページ 1%",
+  "お買い物ガイド 1%",
+  "カート cart 1%",
+  "お客様相談室 1%"
+ ],
+ "nearest": [
+  "JP-farm/gekkeikan.co.jp",
+  "JP-ec/minne.com",
+  "JP-food/kubojyozo.com",
+  "JP-ec/sekikagu-shop.jp",
+  "JP-food/thecoffeeshop.jp",
+  "JP-food/kewpie.co.jp",
+  "JP-ec/cainz.com",
+  "JP-ec/imabari-towel.jp",
+  "JP-ec/coordinatekagu.jp",
+  "JP-ec/yoshizawa-gama.com",
+  "JP-cosmetics/albion.co.jp",
+  "JP-ec/monde-wine.jp",
+  "JP-food/mizkan.co.jp",
+  "JP-cosmetics/shiro-shiro.jp",
+  "JP-food/sakurakaneyo.shop-pro.jp",
+  "JP-farm/ippodo-tea.co.jp"
+ ]
+}

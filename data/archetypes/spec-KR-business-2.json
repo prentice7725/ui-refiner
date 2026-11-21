@@ -1,0 +1,263 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 2,
+ "sites": 50,
+ "trades": [
+  "software 32%",
+  "maker 16%",
+  "hiring 14%",
+  "logistics 14%",
+  "tax 10%",
+  "local 6%",
+  "builder 4%",
+  "corp 4%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard 24%",
+   "pretendard variable 12%",
+   "noto sans kr 8%",
+   "decimal 2%",
+   "noto sans jp 2%",
+   "tahoma 2%",
+   "scdream 2%",
+   "times new roman 2%"
+  ],
+  "body": [
+   "pretendard 30%",
+   "pretendard variable 14%",
+   "noto sans kr 12%",
+   "times new roman 4%",
+   "decimal 2%",
+   "noto sans jp 2%",
+   "tahoma 2%",
+   "scdream 2%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 15,
+   "p50": 16,
+   "p75": 17
+  },
+  "h1": {
+   "p25": 16,
+   "p50": 30,
+   "p75": 46
+  },
+  "h2": {
+   "p25": 20,
+   "p50": 36,
+   "p75": 48
+  },
+  "h3": {
+   "p25": 19,
+   "p50": 24,
+   "p75": 32
+  },
+  "display": {
+   "p25": 36,
+   "p50": 51.2,
+   "p75": 70
+  },
+  "ratio": {
+   "p25": 2.33,
+   "p50": 3.43,
+   "p75": 4.62
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 600,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.02,
+ "colours": {
+  "ground": [
+   "#ffffff 92%",
+   "#f5f6f8 2%",
+   "#f8f8f8 2%",
+   "#fafaf9 2%",
+   "#fffefb 2%"
+  ],
+  "text": [
+   "#000000 20%",
+   "#ffffff 14%",
+   "#333333 8%",
+   "#222222 6%",
+   "#666666 6%",
+   "#444444 4%",
+   "#212529 2%",
+   "#383838 2%"
+  ],
+  "heading": [
+   "#ffffff 16%",
+   "#000000 14%",
+   "#333333 8%",
+   "#222222 4%",
+   "#111827 4%",
+   "#666666 4%",
+   "#111111 2%",
+   "#212529 2%"
+  ],
+  "buttonHue": [
+   "white 24%",
+   "black 22%",
+   "blue 14%",
+   "grey 8%",
+   "red 4%",
+   "teal 4%",
+   "orange 4%",
+   "pink 2%"
+  ],
+  "buttonBg": [
+   "#ffffff 22%",
+   "#000000 10%",
+   "#222222 4%",
+   "#111111 2%",
+   "#182d40 2%",
+   "#0aa5ff 2%",
+   "#434343 2%",
+   "#383838 2%",
+   "#de64af 2%",
+   "#2563eb 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 6
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 8,
+   "p75": 40
+  },
+  "buttonHeight": {
+   "p25": 37,
+   "p50": 44,
+   "p75": 54
+  },
+  "hairlines": {
+   "p25": 5,
+   "p50": 14,
+   "p75": 39
+  },
+  "content": {
+   "p25": 1080,
+   "p50": 1200,
+   "p75": 1340
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.34,
+  "heroAlign": [
+   "left 54%",
+   "center 10%",
+   "below-fold 4%",
+   "wide 2%"
+  ],
+  "heroSide": [
+   "none 82%",
+   "panel 12%",
+   "media 6%"
+  ],
+  "claimOnFirst": 0.74,
+  "actionOnFirst": 0.68,
+  "screens": {
+   "p25": 4.61,
+   "p50": 6.49,
+   "p75": 10.09
+  },
+  "photos": {
+   "p25": 1,
+   "p50": 3,
+   "p75": 9
+  },
+  "nav": {
+   "p25": 4,
+   "p50": 7,
+   "p75": 9
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.05,
+   "p75": 0.31
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.68,
+   "p50": 0.75,
+   "p75": 0.83
+  },
+  "dark": {
+   "p25": 0.01,
+   "p50": 0.04,
+   "p75": 0.13
+  },
+  "photo": {
+   "p25": 0,
+   "p50": 0.01,
+   "p75": 0.02
+  },
+  "colourful": {
+   "p25": 0.01,
+   "p50": 0.02,
+   "p75": 0.06
+  }
+ },
+ "navLabels": [
+  "회사소개 5%",
+  "로그인 2%",
+  "고객지원 2%",
+  "고객센터 2%",
+  "채용 1%",
+  "회원가입 1%",
+  "사업영역 1%",
+  "인재채용 1%",
+  "블로그 1%",
+  "지속가능경영 1%",
+  "투자정보 1%",
+  "뉴스룸 1%",
+  "site search 1%",
+  "기업 서비스 1%",
+  "kr 1%",
+  "en 1%",
+  "홍보센터 1%",
+  "네트워크 1%",
+  "서비스 1%",
+  "공지사항 1%",
+  "가격 1%",
+  "기능 1%",
+  "솔루션 1%",
+  "ir 1%"
+ ],
+ "nearest": [
+  "KR-software/onewms.co.kr",
+  "KR-maker/simmons.co.kr",
+  "KR-software/flow.team",
+  "KR-builder/apartmentary.com",
+  "KR-tax/jtax.co.kr",
+  "KR-hiring/jumpit.saramin.co.kr",
+  "KR-logistics/samillogistics.com",
+  "KR-software/celery.ai.kr",
+  "KR-hiring/poscointl.com_step",
+  "KR-software/whyworks.kr",
+  "KR-tax/findsemusa.com",
+  "KR-corp/bucketplace.com",
+  "KR-hiring/designerjob.co.kr",
+  "KR-maker/ko.daedong.co.kr",
+  "KR-corp/sebanggroup.com",
+  "KR-tax/dasoltax.com"
+ ]
+}

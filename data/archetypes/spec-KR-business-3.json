@@ -1,0 +1,250 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 3,
+ "sites": 22,
+ "trades": [
+  "hiring 59%",
+  "builder 23%",
+  "maker 9%",
+  "corp 5%",
+  "tax 5%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard variable 14%",
+   "pretendard 14%",
+   "onemobileg 5%",
+   "s-coredream 5%",
+   "noto sans kr 5%",
+   "맑은 고딕 5%"
+  ],
+  "body": [
+   "pretendard 36%",
+   "pretendard variable 18%",
+   "roboto 5%",
+   "nanum gothic 5%",
+   "raleway 5%",
+   "onemobileg 5%",
+   "malgun gothic 5%",
+   "noto sans kr 5%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 13,
+   "p50": 16,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 13,
+   "p50": 16,
+   "p75": 16
+  },
+  "h2": {
+   "p25": 16,
+   "p50": 24,
+   "p75": 36
+  },
+  "h3": {
+   "p25": 17,
+   "p50": 22,
+   "p75": 24
+  },
+  "display": {
+   "p25": 24,
+   "p50": 32,
+   "p75": 40
+  },
+  "ratio": {
+   "p25": 1.5,
+   "p50": 2.12,
+   "p75": 2.78
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0,
+ "colours": {
+  "ground": [
+   "#ffffff 100%"
+  ],
+  "text": [
+   "#000000 27%",
+   "#ffffff 14%",
+   "#333333 14%",
+   "#757575 9%",
+   "#666666 5%",
+   "#121212 5%",
+   "#1a1a1a 5%",
+   "#3c3c3c 5%"
+  ],
+  "heading": [
+   "#000000 14%",
+   "#ffffff 9%",
+   "#666666 5%",
+   "#345fc2 5%",
+   "#1a1a1e 5%",
+   "#333333 5%",
+   "#3c3c3c 5%",
+   "#21252a 5%"
+  ],
+  "buttonHue": [
+   "white 36%",
+   "blue 18%",
+   "black 14%",
+   "orange 5%",
+   "amber 5%",
+   "grey 5%",
+   "red 5%"
+  ],
+  "buttonBg": [
+   "#ffffff 23%",
+   "#000000 14%",
+   "#f96209 5%",
+   "#fee49b 5%",
+   "#0086cd 5%",
+   "#f8f8f8 5%",
+   "#f1f3f5 5%",
+   "#014898 5%",
+   "#4c7afb 5%",
+   "#f9f9f9 5%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 5
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 6,
+   "p75": 8
+  },
+  "buttonHeight": {
+   "p25": 32,
+   "p50": 40,
+   "p75": 46
+  },
+  "hairlines": {
+   "p25": 31,
+   "p50": 79,
+   "p75": 130
+  },
+  "content": {
+   "p25": 1200,
+   "p50": 1260,
+   "p75": 1280
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0,
+  "heroAlign": [
+   "left 45%"
+  ],
+  "heroSide": [
+   "none 64%",
+   "media 27%",
+   "panel 9%"
+  ],
+  "claimOnFirst": 0.45,
+  "actionOnFirst": 0.82,
+  "screens": {
+   "p25": 4.48,
+   "p50": 6.09,
+   "p75": 8.44
+  },
+  "photos": {
+   "p25": 6,
+   "p50": 11,
+   "p75": 23
+  },
+  "nav": {
+   "p25": 3,
+   "p50": 7,
+   "p75": 8
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0.14
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.49,
+   "p50": 0.58,
+   "p75": 0.66
+  },
+  "dark": {
+   "p25": 0.03,
+   "p50": 0.05,
+   "p75": 0.07
+  },
+  "photo": {
+   "p25": 0.03,
+   "p50": 0.04,
+   "p75": 0.07
+  },
+  "colourful": {
+   "p25": 0.05,
+   "p50": 0.07,
+   "p75": 0.09
+  }
+ },
+ "navLabels": [
+  "회원가입 4%",
+  "로그인 3%",
+  "회사소개 3%",
+  "채용정보 3%",
+  "인재정보 2%",
+  "커뮤니티 2%",
+  "홈 2%",
+  "주문조회 1%",
+  "10% 쿠폰 1%",
+  "쇼룸안내 1%",
+  "archive 1%",
+  "대량 / 제휴 1%",
+  "고객센터 1%",
+  "쉘빙 시스템 1%",
+  "서재 1%",
+  "침실 1%",
+  "거실 1%",
+  "브랜드스토리 1%",
+  "시공사례 1%",
+  "인테리어가이드 1%",
+  "제품보기 1%",
+  "주방셀프견적 1%",
+  "상담신청 1%",
+  "매장 1%"
+ ],
+ "nearest": [
+  "KR-builder/modd.co.kr",
+  "KR-maker/nsk.com_kr-ko",
+  "KR-builder/lxzin.com",
+  "KR-hiring/busanjob.net",
+  "KR-hiring/career.co.kr",
+  "KR-maker/winix.com",
+  "KR-hiring/samsungcareers.com",
+  "KR-hiring/linkareer.com",
+  "KR-hiring/scout.co.kr",
+  "KR-hiring/ibkonejob.co.kr",
+  "KR-hiring/gamejob.co.kr",
+  "KR-hiring/mediajob.co.kr",
+  "KR-hiring/job.gwd.go.kr",
+  "KR-hiring/careers.lg.com",
+  "KR-hiring/rallit.com",
+  "KR-corp/dodlesem.co.kr"
+ ]
+}

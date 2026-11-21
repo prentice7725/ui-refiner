@@ -1,0 +1,261 @@
+{
+ "country": "KR",
+ "family": "care",
+ "cluster": 2,
+ "sites": 38,
+ "trades": [
+  "dental 32%",
+  "skin 24%",
+  "kmed 21%",
+  "salon 13%",
+  "hospital 8%",
+  "fitness 3%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard variable 11%",
+   "noto serif kr 8%",
+   "nanumsquare 5%",
+   "pretendard 5%",
+   "noto sans kr 5%",
+   "georgia 5%",
+   "poppins 3%",
+   "quicksand 3%"
+  ],
+  "body": [
+   "pretendard 16%",
+   "pretendard variable 16%",
+   "noto sans kr 13%",
+   "imweb sans english 5%",
+   "nanum gothic 5%",
+   "nanumsquare 3%",
+   "maruburi-regular 3%",
+   "gmarket sans 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 15,
+   "p50": 16,
+   "p75": 18
+  },
+  "h1": {
+   "p25": 20,
+   "p50": 50,
+   "p75": 60
+  },
+  "h2": {
+   "p25": 28,
+   "p50": 36,
+   "p75": 45
+  },
+  "h3": {
+   "p25": 20,
+   "p50": 22,
+   "p75": 26
+  },
+  "display": {
+   "p25": 36,
+   "p50": 50,
+   "p75": 63
+  },
+  "ratio": {
+   "p25": 2.5,
+   "p50": 3.57,
+   "p75": 4.31
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 600,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.18,
+ "colours": {
+  "ground": [
+   "#ffffff 89%",
+   "#faf8f4 3%",
+   "#fafaf8 3%",
+   "#faf7f2 3%",
+   "#fbfaf6 3%"
+  ],
+  "text": [
+   "#000000 13%",
+   "#ffffff 11%",
+   "#666666 5%",
+   "#212121 5%",
+   "#5a625f 3%",
+   "#586173 3%",
+   "#191919 3%",
+   "#565656 3%"
+  ],
+  "heading": [
+   "#ffffff 8%",
+   "#000000 8%",
+   "#2d2e32 3%",
+   "#1e2a5a 3%",
+   "#191919 3%",
+   "#161616 3%",
+   "#101015 3%",
+   "#404040 3%"
+  ],
+  "buttonHue": [
+   "white 34%",
+   "red 11%",
+   "black 11%",
+   "orange 8%",
+   "green 8%",
+   "grey 5%",
+   "amber 3%",
+   "teal 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 24%",
+   "#000000 8%",
+   "#e02f2f 3%",
+   "#363636 3%",
+   "#f8d751 3%",
+   "#1f4a3e 3%",
+   "#614e31 3%",
+   "#e51744 3%",
+   "#f0f0f0 3%",
+   "#f4f4f4 3%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 4,
+   "p75": 100
+  },
+  "buttonHeight": {
+   "p25": 39,
+   "p50": 44,
+   "p75": 51
+  },
+  "hairlines": {
+   "p25": 7,
+   "p50": 16,
+   "p75": 32
+  },
+  "content": {
+   "p25": 1100,
+   "p50": 1180,
+   "p75": 1280
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.13,
+  "heroAlign": [
+   "left 32%",
+   "below-fold 8%",
+   "center 8%",
+   "right 5%"
+  ],
+  "heroSide": [
+   "none 63%",
+   "media 26%",
+   "panel 11%"
+  ],
+  "claimOnFirst": 0.71,
+  "actionOnFirst": 0.63,
+  "screens": {
+   "p25": 5.95,
+   "p50": 7.18,
+   "p75": 10.36
+  },
+  "photos": {
+   "p25": 3,
+   "p50": 4,
+   "p75": 13
+  },
+  "nav": {
+   "p25": 2,
+   "p50": 8,
+   "p75": 10
+  },
+  "centred": {
+   "p25": 0.03,
+   "p50": 0.23,
+   "p75": 0.47
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.49,
+   "p50": 0.68,
+   "p75": 0.78
+  },
+  "dark": {
+   "p25": 0.01,
+   "p50": 0.02,
+   "p75": 0.05
+  },
+  "photo": {
+   "p25": 0,
+   "p50": 0.01,
+   "p75": 0.03
+  },
+  "colourful": {
+   "p25": 0.01,
+   "p50": 0.02,
+   "p75": 0.04
+  }
+ },
+ "navLabels": [
+  "병원소개 4%",
+  "로그인 3%",
+  "커뮤니티 2%",
+  "회원가입 2%",
+  "임플란트 1%",
+  "치아교정 1%",
+  "진료안내 1%",
+  "의료진 소개 1%",
+  "오시는 길 1%",
+  "본문 바로가기 1%",
+  "login 1%",
+  "blog 1%",
+  "홈 1%",
+  "병원 둘러보기 1%",
+  "심미보철 1%",
+  "메인페이지로 1%",
+  "둘러보기 1%",
+  "home 1%",
+  "통증 클리닉 1%",
+  "원장 소개 1%",
+  "투명교정 0%",
+  "심미 치료 0%",
+  "크라운·보철 0%",
+  "일반 진료 0%"
+ ],
+ "nearest": [
+  "KR-dental/narane.co.kr",
+  "KR-kmed/skin.kyurim.com",
+  "KR-salon/kaijunghair.com",
+  "KR-dental/juniorjj.com",
+  "KR-dental/moondental.co.kr",
+  "KR-salon/seedthebeauty.com",
+  "KR-salon/ohmoosun.com",
+  "KR-kmed/danaa.com",
+  "KR-skin/viewclinic.com",
+  "KR-kmed/meerkj.co.kr",
+  "KR-skin/oarocnn.com",
+  "KR-dental/jhydental.com",
+  "KR-skin/oracleclinic.com",
+  "KR-skin/flowerskin.co.kr",
+  "KR-salon/lloydbomb.com",
+  "KR-hospital/jesushospital.com"
+ ]
+}

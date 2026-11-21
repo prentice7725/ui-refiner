@@ -1,0 +1,265 @@
+{
+ "country": "JP",
+ "family": "place",
+ "cluster": 4,
+ "sites": 65,
+ "trades": [
+  "inn 46%",
+  "tourism 29%",
+  "event 6%",
+  "restaurant 6%",
+  "wedding 6%",
+  "wellness 6%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 9%",
+   "yu mincho 6%",
+   "メイリオ 5%",
+   "游明朝 5%",
+   "poppins 3%",
+   "zen old mincho 3%",
+   "游ゴシック 3%",
+   "noto serif jp 3%"
+  ],
+  "body": [
+   "noto sans jp 17%",
+   "yu mincho 8%",
+   "游明朝 6%",
+   "メイリオ 6%",
+   "noto serif jp 5%",
+   "poppins 3%",
+   "yakuhanjp 3%",
+   "zen old mincho 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 15,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 28
+  },
+  "h2": {
+   "p25": 16,
+   "p50": 27,
+   "p75": 36
+  },
+  "h3": {
+   "p25": 15,
+   "p50": 18,
+   "p75": 24
+  },
+  "display": {
+   "p25": 28,
+   "p50": 36.67,
+   "p75": 48
+  },
+  "ratio": {
+   "p25": 1.86,
+   "p50": 2.33,
+   "p75": 3.13
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 500,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 500,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.28,
+ "colours": {
+  "ground": [
+   "#ffffff 83%",
+   "#f9f7f2 2%",
+   "#dcdbd5 2%",
+   "#f2efe6 2%",
+   "#e6e3e0 2%",
+   "#f7f1ea 2%",
+   "#f7f7f5 2%",
+   "#f3f3f3 2%"
+  ],
+  "text": [
+   "#000000 23%",
+   "#ffffff 17%",
+   "#333333 17%",
+   "#666666 5%",
+   "#011a38 2%",
+   "#282032 2%",
+   "#433d38 2%",
+   "#3e3a2a 2%"
+  ],
+  "heading": [
+   "#000000 31%",
+   "#ffffff 20%",
+   "#333333 11%",
+   "#0075ba 2%",
+   "#666666 2%",
+   "#282032 2%",
+   "#3e3a2a 2%",
+   "#343434 2%"
+  ],
+  "buttonHue": [
+   "white 23%",
+   "black 14%",
+   "orange 12%",
+   "amber 9%",
+   "grey 6%",
+   "green 5%",
+   "red 5%",
+   "teal 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 22%",
+   "#000000 11%",
+   "#7a6a56 3%",
+   "#fdcd00 2%",
+   "#e0ba25 2%",
+   "#e0dac4 2%",
+   "#252121 2%",
+   "#3e3a2a 2%",
+   "#94634b 2%",
+   "#fbfaf5 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 4,
+   "p75": 8
+  },
+  "buttonHeight": {
+   "p25": 40,
+   "p50": 50,
+   "p75": 59
+  },
+  "hairlines": {
+   "p25": 6,
+   "p50": 15,
+   "p75": 25
+  },
+  "content": {
+   "p25": 960,
+   "p50": 1150,
+   "p75": 1220
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.46,
+  "heroAlign": [
+   "left 43%",
+   "center 11%",
+   "below-fold 5%",
+   "wide 5%",
+   "right 2%"
+  ],
+  "heroSide": [
+   "none 83%",
+   "media 14%",
+   "panel 3%"
+  ],
+  "claimOnFirst": 0.43,
+  "actionOnFirst": 0.46,
+  "screens": {
+   "p25": 7.46,
+   "p50": 9.09,
+   "p75": 11.33
+  },
+  "photos": {
+   "p25": 10,
+   "p50": 19,
+   "p75": 33
+  },
+  "nav": {
+   "p25": 1,
+   "p50": 6,
+   "p75": 9
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.07,
+   "p75": 0.18
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.24,
+   "p50": 0.39,
+   "p75": 0.5
+  },
+  "dark": {
+   "p25": 0.05,
+   "p50": 0.08,
+   "p75": 0.15
+  },
+  "photo": {
+   "p25": 0.14,
+   "p50": 0.17,
+   "p75": 0.22
+  },
+  "colourful": {
+   "p25": 0.13,
+   "p50": 0.16,
+   "p75": 0.22
+  }
+ },
+ "navLabels": [
+  "アクセス 4%",
+  "温泉 3%",
+  "お問い合わせ 2%",
+  "客室 2%",
+  "料理 2%",
+  "館内施設 2%",
+  "お知らせ 2%",
+  "english 1%",
+  "お料理 1%",
+  "ホーム 1%",
+  "宿泊 1%",
+  "ご予約 1%",
+  "home 1%",
+  "周辺観光 1%",
+  "イベント 1%",
+  "特集 1%",
+  "jp 1%",
+  "よくあるご質問 1%",
+  "モデルコース 1%",
+  "採用情報 1%",
+  "news 1%",
+  "en 1%",
+  "日本語 1%",
+  "簡体中文 1%"
+ ],
+ "nearest": [
+  "JP-tourism/kurokawa-echoes.jp",
+  "JP-inn/yama-niwa.jp",
+  "JP-tourism/yourcityisgood.com_nagoya",
+  "JP-inn/yumotofujiya.jp",
+  "JP-tourism/hakone.or.jp",
+  "JP-inn/maruhachiryokan.com",
+  "JP-inn/fukinoyu.jp",
+  "JP-inn/gyominan.com",
+  "JP-tourism/akitafurusatomura.co.jp",
+  "JP-inn/yoshidaya-web.com",
+  "JP-tourism/okinawastory.jp",
+  "JP-tourism/nikko-kankou.org",
+  "JP-inn/ho-shi.co.jp",
+  "JP-inn/nasukogen-miyama.jp",
+  "JP-inn/mukayu.com",
+  "JP-event/fujirockfestival.com"
+ ]
+}

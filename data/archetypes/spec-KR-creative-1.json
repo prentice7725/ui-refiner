@@ -1,0 +1,262 @@
+{
+ "country": "KR",
+ "family": "creative",
+ "cluster": 1,
+ "sites": 34,
+ "trades": [
+  "design 41%",
+  "game 29%",
+  "photo 15%",
+  "architecture 9%",
+  "illustration 6%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard 12%",
+   "noto sans kr 6%",
+   "inter 3%",
+   "yoongothic 3%",
+   "strongsword_new 3%",
+   "spoqa han sans neo 3%",
+   "noto 3%",
+   "playfair display 3%"
+  ],
+  "body": [
+   "pretendard 21%",
+   "noto sans kr 15%",
+   "montserrat 6%",
+   "-apple-system 3%",
+   "roboto 3%",
+   "pretendardvariable 3%",
+   "yoongothic 3%",
+   "abcwhyte 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 13,
+   "p50": 15,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 26,
+   "p50": 45,
+   "p75": 65
+  },
+  "h2": {
+   "p25": 22,
+   "p50": 50,
+   "p75": 60
+  },
+  "h3": {
+   "p25": 16,
+   "p50": 24,
+   "p75": 52
+  },
+  "display": {
+   "p25": 26,
+   "p50": 44,
+   "p75": 60
+  },
+  "ratio": {
+   "p25": 2,
+   "p50": 3.08,
+   "p75": 5
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 650,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 500,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.03,
+ "colours": {
+  "ground": [
+   "#ffffff 53%",
+   "#000000 29%",
+   "#726d69 3%",
+   "#282828 3%",
+   "#f1efe9 3%",
+   "#08080f 3%",
+   "#191a1f 3%",
+   "#f3f3f3 3%"
+  ],
+  "text": [
+   "#ffffff 26%",
+   "#000000 18%",
+   "#333333 6%",
+   "#aaaaaa 6%",
+   "#a3a3a3 3%",
+   "#444444 3%",
+   "#e3e3e0 3%",
+   "#666666 3%"
+  ],
+  "heading": [
+   "#ffffff 21%",
+   "#000000 6%",
+   "#a3a3a3 3%",
+   "#f0f0ec 3%",
+   "#2b2b2b 3%",
+   "#333333 3%",
+   "#666666 3%",
+   "#24231f 3%"
+  ],
+  "buttonHue": [
+   "black 21%",
+   "white 9%",
+   "grey 6%",
+   "green 6%",
+   "amber 6%",
+   "orange 3%",
+   "teal 3%",
+   "blue 3%"
+  ],
+  "buttonBg": [
+   "#000000 12%",
+   "#ffffff 6%",
+   "#111111 6%",
+   "#1a1a1a 3%",
+   "#333333 3%",
+   "#569a43 3%",
+   "#ebe7d3 3%",
+   "#ff5100 3%",
+   "#00cccc 3%",
+   "#0c1450 3%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 2,
+   "p75": 30
+  },
+  "buttonHeight": {
+   "p25": 42,
+   "p50": 50,
+   "p75": 64
+  },
+  "hairlines": {
+   "p25": 0,
+   "p50": 5,
+   "p75": 15
+  },
+  "content": {
+   "p25": 1200,
+   "p50": 1200,
+   "p75": 1300
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.29,
+  "heroAlign": [
+   "left 29%",
+   "center 12%",
+   "wide 3%"
+  ],
+  "heroSide": [
+   "none 88%",
+   "panel 9%",
+   "media 3%"
+  ],
+  "claimOnFirst": 0.53,
+  "actionOnFirst": 0.47,
+  "screens": {
+   "p25": 1.16,
+   "p50": 4.32,
+   "p75": 6.85
+  },
+  "photos": {
+   "p25": 1,
+   "p50": 4,
+   "p75": 10
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 5,
+   "p75": 8
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0.4
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0,
+   "p50": 0.01,
+   "p75": 0.12
+  },
+  "dark": {
+   "p25": 0.37,
+   "p50": 0.59,
+   "p75": 0.82
+  },
+  "photo": {
+   "p25": 0.02,
+   "p50": 0.05,
+   "p75": 0.09
+  },
+  "colourful": {
+   "p25": 0.01,
+   "p50": 0.05,
+   "p75": 0.09
+  }
+ },
+ "navLabels": [
+  "contact 6%",
+  "about 4%",
+  "포트폴리오 4%",
+  "news 3%",
+  "home 2%",
+  "works 2%",
+  "press 2%",
+  "홈 2%",
+  "회사소개 2%",
+  "project 1%",
+  "career 1%",
+  "소식 1%",
+  "견적문의 1%",
+  "video 1%",
+  "game 1%",
+  "careers 1%",
+  "소개 1%",
+  "archive 1%",
+  "instagram 1%",
+  "email 1%",
+  "df official site 1%",
+  "what we do what we do 1%",
+  "work work 1%",
+  "about about 1%"
+ ],
+ "nearest": [
+  "KR-photo/studio.firstmkt.co.kr",
+  "KR-game/shiftup.co.kr",
+  "KR-design/de-blur.com",
+  "KR-game/npixel.co.kr",
+  "KR-design/silolab.kr",
+  "KR-design/brant.kr",
+  "KR-architecture/sudesign-arch.com",
+  "KR-photo/vmgstudio.net",
+  "KR-game/supercat.co.kr",
+  "KR-game/studiobside.com",
+  "KR-design/relay-works.kr",
+  "KR-photo/good-production.co.kr",
+  "KR-design/terraweb.co.kr",
+  "KR-design/bounz.kr",
+  "KR-illustration/artpq.com",
+  "KR-game/lizardsmoothie.com"
+ ]
+}

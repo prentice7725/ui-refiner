@@ -1,0 +1,264 @@
+{
+ "country": "JP",
+ "family": "public",
+ "cluster": 3,
+ "sites": 64,
+ "trades": [
+  "finance 27%",
+  "media 16%",
+  "gov 14%",
+  "org 14%",
+  "university 13%",
+  "culture 9%",
+  "academy 8%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans jp 22%",
+   "メイリオ 8%",
+   "biz udpgothic 5%",
+   "meiryo 3%",
+   "游ゴシック体 3%",
+   "zen kaku gothic new 2%",
+   "helvetica neue 2%",
+   "yakuhanjps_noto 2%"
+  ],
+  "body": [
+   "noto sans jp 36%",
+   "メイリオ 11%",
+   "游ゴシック体 5%",
+   "biz udpgothic 5%",
+   "helvetica neue 3%",
+   "meiryo 3%",
+   "yu gothic medium 3%",
+   "yakuhanjps 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 14,
+   "p50": 18,
+   "p75": 32
+  },
+  "h2": {
+   "p25": 18,
+   "p50": 24,
+   "p75": 30
+  },
+  "h3": {
+   "p25": 16,
+   "p50": 18,
+   "p75": 24
+  },
+  "display": {
+   "p25": 26,
+   "p50": 32,
+   "p75": 40
+  },
+  "ratio": {
+   "p25": 1.75,
+   "p50": 2,
+   "p75": 2.86
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 500,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.02,
+ "colours": {
+  "ground": [
+   "#ffffff 86%",
+   "#f7f7f5 2%",
+   "#f9f8f4 2%",
+   "#f0f0ee 2%",
+   "#f7f7f7 2%",
+   "#fdfdfd 2%",
+   "#fefefe 2%",
+   "#fafafa 2%"
+  ],
+  "text": [
+   "#333333 33%",
+   "#000000 31%",
+   "#222222 6%",
+   "#ffffff 3%",
+   "#161616 3%",
+   "#2e2e2e 2%",
+   "#3a3a3a 2%",
+   "#332200 2%"
+  ],
+  "heading": [
+   "#333333 27%",
+   "#000000 17%",
+   "#ffffff 16%",
+   "#222222 5%",
+   "#008743 2%",
+   "#3a3a3a 2%",
+   "#464344 2%",
+   "#332200 2%"
+  ],
+  "buttonHue": [
+   "white 39%",
+   "blue 14%",
+   "teal 8%",
+   "grey 6%",
+   "orange 6%",
+   "black 5%",
+   "green 5%",
+   "red 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 33%",
+   "#000000 3%",
+   "#009380 2%",
+   "#009c84 2%",
+   "#4a4a4a 2%",
+   "#d78b32 2%",
+   "#eed82b 2%",
+   "#d32f2f 2%",
+   "#e6002d 2%",
+   "#004098 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 2,
+   "p75": 5
+  },
+  "buttonHeight": {
+   "p25": 30,
+   "p50": 40,
+   "p75": 50
+  },
+  "hairlines": {
+   "p25": 18,
+   "p50": 39,
+   "p75": 54
+  },
+  "content": {
+   "p25": 990,
+   "p50": 1100,
+   "p75": 1200
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0,
+  "heroAlign": [
+   "left 50%",
+   "center 8%",
+   "wide 5%"
+  ],
+  "heroSide": [
+   "none 81%",
+   "media 13%",
+   "panel 6%"
+  ],
+  "claimOnFirst": 0.28,
+  "actionOnFirst": 0.61,
+  "screens": {
+   "p25": 5.1,
+   "p50": 6.74,
+   "p75": 8.19
+  },
+  "photos": {
+   "p25": 9,
+   "p50": 17,
+   "p75": 26
+  },
+  "nav": {
+   "p25": 4,
+   "p50": 9,
+   "p75": 12
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.06,
+   "p75": 0.2
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.43,
+   "p50": 0.55,
+   "p75": 0.62
+  },
+  "dark": {
+   "p25": 0.01,
+   "p50": 0.02,
+   "p75": 0.05
+  },
+  "photo": {
+   "p25": 0.03,
+   "p50": 0.05,
+   "p75": 0.08
+  },
+  "colourful": {
+   "p25": 0.08,
+   "p50": 0.11,
+   "p75": 0.16
+  }
+ },
+ "navLabels": [
+  "お問い合わせ 3%",
+  "よくあるご質問 2%",
+  "採用情報 2%",
+  "アクセス 2%",
+  "サイトマップ 2%",
+  "english 2%",
+  "ログイン 2%",
+  "イベント 1%",
+  "個人のお客さま 1%",
+  "店舗・atm 1%",
+  "よくある質問 1%",
+  "個人のお客様 1%",
+  "標準 1%",
+  "ニュース 1%",
+  "入会案内 1%",
+  "home 1%",
+  "ホーム 1%",
+  "en 1%",
+  "法人のお客さま 1%",
+  "口座開設 1%",
+  "企業情報 1%",
+  "language 1%",
+  "会員登録 1%",
+  "検定試験 1%"
+ ],
+ "nearest": [
+  "JP-finance/77bank.co.jp",
+  "JP-university/kumamoto-u.ac.jp",
+  "JP-culture/nakka-art.jp",
+  "JP-org/acci.or.jp",
+  "JP-org/tokyo-cci.or.jp",
+  "JP-gov/city.chiba.jp",
+  "JP-university/nagasaki-u.ac.jp",
+  "JP-gov/shizuoka-kjm.or.jp",
+  "JP-org/toyama.ccis-toyama.or.jp",
+  "JP-finance/hokuriku.rokin.or.jp",
+  "JP-university/ynu.ac.jp",
+  "JP-gov/city.saitama.lg.jp",
+  "JP-org/fukunet.or.jp",
+  "JP-org/nagoya-cci.or.jp",
+  "JP-finance/shizuoka.rokin.or.jp",
+  "JP-finance/shizuokabank.co.jp"
+ ]
+}

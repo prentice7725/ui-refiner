@@ -1,0 +1,264 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 1,
+ "sites": 35,
+ "trades": [
+  "maker 26%",
+  "logistics 23%",
+  "software 20%",
+  "hiring 11%",
+  "realestate 9%",
+  "corp 6%",
+  "local 6%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard 20%",
+   "noto sans kr 14%",
+   "pretendard variable 6%",
+   "jejumyeongjo 3%",
+   "hanwhagothic 3%",
+   "hyundai sans text kr 3%",
+   "nanumsquare regular 3%",
+   "metropolis 3%"
+  ],
+  "body": [
+   "pretendard 31%",
+   "noto sans kr 20%",
+   "pretendard variable 6%",
+   "noto sans sc 3%",
+   "jejumyeongjo 3%",
+   "times new roman 3%",
+   "hyundai sans text kr 3%",
+   "맑은 고딕 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 16,
+   "p50": 16,
+   "p75": 18
+  },
+  "h1": {
+   "p25": 16,
+   "p50": 28,
+   "p75": 40
+  },
+  "h2": {
+   "p25": 30,
+   "p50": 48,
+   "p75": 60
+  },
+  "h3": {
+   "p25": 18,
+   "p50": 25,
+   "p75": 32
+  },
+  "display": {
+   "p25": 48,
+   "p50": 57.15,
+   "p75": 70
+  },
+  "ratio": {
+   "p25": 2.67,
+   "p50": 3.36,
+   "p75": 4.71
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 600,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0,
+ "colours": {
+  "ground": [
+   "#ffffff 80%",
+   "#ebf0f2 3%",
+   "#212121 3%",
+   "#f9f9f9 3%",
+   "#060810 3%",
+   "#000000 3%",
+   "#2a3447 3%",
+   "#192a46 3%"
+  ],
+  "text": [
+   "#ffffff 17%",
+   "#000000 14%",
+   "#333333 11%",
+   "#222222 9%",
+   "#666666 9%",
+   "#161d24 3%",
+   "#111111 3%",
+   "#555555 3%"
+  ],
+  "heading": [
+   "#ffffff 31%",
+   "#000000 11%",
+   "#222222 6%",
+   "#666666 6%",
+   "#333333 6%",
+   "#161d24 3%",
+   "#034694 3%",
+   "#868b94 3%"
+  ],
+  "buttonHue": [
+   "white 26%",
+   "red 11%",
+   "blue 9%",
+   "black 9%",
+   "grey 9%",
+   "teal 6%",
+   "indigo 3%",
+   "green 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 23%",
+   "#005bac 3%",
+   "#2d2d2d 3%",
+   "#7408ff 3%",
+   "#1e1e1e 3%",
+   "#5f5f5f 3%",
+   "#2f2f2f 3%",
+   "#a72b2a 3%",
+   "#dedede 3%",
+   "#308424 3%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 4,
+   "p50": 8,
+   "p75": 50
+  },
+  "buttonHeight": {
+   "p25": 34,
+   "p50": 46,
+   "p75": 56
+  },
+  "hairlines": {
+   "p25": 4,
+   "p50": 10,
+   "p75": 26
+  },
+  "content": {
+   "p25": 1160,
+   "p50": 1200,
+   "p75": 1300
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.46,
+  "heroAlign": [
+   "left 37%",
+   "center 11%",
+   "wide 6%"
+  ],
+  "heroSide": [
+   "none 89%",
+   "media 6%",
+   "panel 6%"
+  ],
+  "claimOnFirst": 0.74,
+  "actionOnFirst": 0.71,
+  "screens": {
+   "p25": 1.79,
+   "p50": 4.42,
+   "p75": 6.6
+  },
+  "photos": {
+   "p25": 1,
+   "p50": 3,
+   "p75": 12
+  },
+  "nav": {
+   "p25": 2,
+   "p50": 6,
+   "p75": 8
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.1,
+   "p75": 0.18
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.02,
+   "p50": 0.16,
+   "p75": 0.33
+  },
+  "dark": {
+   "p25": 0.31,
+   "p50": 0.41,
+   "p75": 0.61
+  },
+  "photo": {
+   "p25": 0.01,
+   "p50": 0.04,
+   "p75": 0.06
+  },
+  "colourful": {
+   "p25": 0.03,
+   "p50": 0.07,
+   "p75": 0.14
+  }
+ },
+ "navLabels": [
+  "회사소개 4%",
+  "고객센터 2%",
+  "로그인 2%",
+  "en 2%",
+  "투자정보 2%",
+  "문의하기 2%",
+  "지속가능경영 2%",
+  "kr 2%",
+  "kor 2%",
+  "사업분야 1%",
+  "english 1%",
+  "고객지원 1%",
+  "홍보센터 1%",
+  "솔루션 1%",
+  "insights 1%",
+  "esg 1%",
+  "company 1%",
+  "eng 1%",
+  "contact 1%",
+  "기술정보 1%",
+  "도입 문의 1%",
+  "윤리경영 1%",
+  "뉴스룸 1%",
+  "운영사업 1%"
+ ],
+ "nearest": [
+  "KR-logistics/sylogis.co.kr",
+  "KR-maker/fursys.com",
+  "KR-local/see-channel.co.kr",
+  "KR-logistics/hllogistics.co.kr_ko",
+  "KR-maker/koaautomotive.com",
+  "KR-logistics/paxlogis.com",
+  "KR-maker/samick.co.kr",
+  "KR-software/newgenwise.co.kr",
+  "KR-hiring/careers.daangn.com",
+  "KR-maker/shingwang.co",
+  "KR-software/hd-solutions.co.kr",
+  "KR-corp/orionworld.com",
+  "KR-maker/shinseng.co.kr",
+  "KR-logistics/valex.co.kr",
+  "KR-hiring/1577-0365.or.kr",
+  "KR-software/modusign.co.kr"
+ ]
+}
