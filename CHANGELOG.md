@@ -2,6 +2,13 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+- `/ui-refine` starts a Korean or Japanese trade page with no brand of its own from a theme instead of three directions; the directions stay for other pages and on request. On six trade pages from `scripts/refine-bench/trades.tsv` (one run each, a blind judge asked in both orders) the themed page read as the more real site on all six once the fixes below were in, the judge would ship it on five with one split, and it cost $11.3 against $33.0. Only the two pages the theme first lost were run again after the fixes.
+- Taking a theme, the skill fetches credited stand-in photographs first when the client has none, and never carries a theme sample's generated images onto a client's page. A dental page built on the sample's empty generated rooms had lost to one with stand-ins of a dentist at work.
+- New theme `kr-business-corporate` (Korean logistics, makers, builders; standard corporate, 41 measured sites): full-width photograph hero, a quick bar for tracking and quotes, business tiles, figures band, sites table, notices and customer centre. A logistics page on `kr-business-white` had read as a software template.
+- `scripts/refine-bench`: theme benchmark arms (`o`, `p`), `theme-judge.mjs`, and `FIT_FILE` for `trade-fit.mjs`.
+
 ## 0.12.0 — 2026-11-21
 
 The themes can move. Motion was measured on 630 Korean and Japanese sites, and each theme now lists the effects its group of sites uses (hero slides, hero video, scroll reveals, a blurred header, a marquee, a loading intro), off by default and offered by the skill when they fit. The archetype pipeline behind the themes is in the repository, and the theme images take a third of the space.

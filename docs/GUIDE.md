@@ -30,7 +30,7 @@ ui-refiner prefer add surface paper --said "no more cream grounds"   # something
 
 That is the whole loop. `scan` takes any URL, bare host name or local `.html` file, needs no config and changes nothing in the target project. Without `npm link`, use `node bin/ui-refiner.mjs scan …` instead.
 
-To start a Korean or Japanese site from a measured design instead, pick one of the 13 themes in [skills/ui-refiner-agent/reference/themes](../skills/ui-refiner-agent/reference/themes/README.md) and ask the agent to build from it. Each theme has its measured basis, tokens, section skeleton, CSS and a sample page.
+To start a Korean or Japanese site from a measured design instead, pick one of the 14 themes in [skills/ui-refiner-agent/reference/themes](../skills/ui-refiner-agent/reference/themes/README.md) and ask the agent to build from it. Each theme has its measured basis, tokens, section skeleton, CSS and a sample page.
 
 - **Report language** follows the page: Japanese pages get a Japanese report, Korean pages Korean, everything else English. Set a fixed default with `UI_REFINER_LANG=ko` (or `ja`, `en`), or pass `--lang` for one run. The browser locale follows the host (`.jp` → `ja-JP`, `.kr` → `ko-KR`) unless `--locale` is given.
 - **Rescans compare automatically.** When the output folder already holds a scan of the same page, the new report opens with a before/after comparison. Use `--no-compare` to skip it, or `--compare <folder>` to compare with a scan elsewhere.

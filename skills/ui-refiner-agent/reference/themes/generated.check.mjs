@@ -7,6 +7,7 @@ export const WANT={
  'jp-place-photo':{'hero-bath':[1600,900],'exterior':[1600,900],'room-main':[1600,1000],'room-corner':[1600,1000],'kaiseki':[1600,1000],'dish':[1200,1200],'entrance':[1200,1500]},
  'kr-care-white':{'hero-room':[1600,1200],'doctor':[1200,1500],'reception':[1600,1000],'xray-room':[1600,1000],'consult':[1600,1000]},
  'kr-business-dark':{'hero-line':[1920,1080],'tile-machining':[1200,1500],'tile-automation':[1200,1500],'tile-semicon':[1200,1500],'tile-mold':[1200,1500],'tech-measure':[1600,1100]},
+ 'kr-business-corporate':{'hero-center':[1920,1080],'tile-storage':[1200,1500],'tile-cold':[1200,1500],'tile-linehaul':[1200,1500],'tile-parcel':[1200,1500],'dispatch':[1600,1100],'dock':[1600,1100]},
  'kr-business-white':{'owner-tablet':[1600,1100],'team':[1600,1000],'support':[1200,1500]},
  'jp-care-corporate':{'hero-group':[1920,1080],'rehab':[1600,1100],'lunch':[1600,1100],'room':[1600,1100],'staff':[1600,1100],'exterior':[1600,1100],'bath':[1600,1100]},
  'kr-public-portal':{'hall':[1600,1100],'exhibition':[1600,1100],'concert':[1600,1100],'workshop':[1600,1100],'festival':[1600,1100],'dance':[1600,1100],'lecture':[1600,1100],'museum-family':[1600,1100]},

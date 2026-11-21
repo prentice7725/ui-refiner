@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README_KO.md) · [日本語](README_JA.md)
 
-UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자인 테마 13개를 제공합니다. Codex와 Claude Code에서 업종에 맞는 테마로 페이지를 만들거나, CLI로 기존 페이지를 점검할 수 있습니다.
+UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자인 테마 14개를 제공합니다. Codex와 Claude Code에서 업종에 맞는 테마로 페이지를 만들거나, CLI로 기존 페이지를 점검할 수 있습니다.
 
 ## 테마를 만든 과정
 
@@ -21,7 +21,7 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 | business | 제조, 물류, 소프트웨어, 건설, 세무, 채용 | 235 | 249 |
 | creative | 디자인, 게임, 건축, 사진, 일러스트 | 130 | 234 |
 
-**3. 테마 13개.** 테마는 한 나라의 한 업종군에서 흔한 유형을 완성한 디자인입니다. 크기, 색, 배치는 그 유형에 속한 사이트의 실측값에서 가져왔습니다. 테마 옆의 숫자는 그 나라, 그 업종군에서 해당 유형에 속한 사이트 수입니다. `kr-business-white`는 한국 business 235곳 가운데 50곳을 근거로 합니다.
+**3. 테마 14개.** 테마는 한 나라의 한 업종군에서 흔한 유형을 완성한 디자인입니다. 크기, 색, 배치는 그 유형에 속한 사이트의 실측값에서 가져왔습니다. 테마 옆의 숫자는 그 나라, 그 업종군에서 해당 유형에 속한 사이트 수입니다. `kr-business-white`는 한국 business 235곳 가운데 50곳을 근거로 합니다.
 
 <!-- theme-grid:start (node scripts/build-theme-grid.mjs) -->
 <table>
@@ -44,6 +44,11 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 </tr>
 <tr>
 <td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-business-corporate/theme.md"><img src="docs/assets/themes/kr-business-corporate.jpg" alt="kr-business-corporate 샘플 페이지의 첫 화면" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-business-corporate/theme.md">kr-business-corporate</a></b><br>
+<sub>한국 · business · standard corporate ·&nbsp;41곳</sub>
+</td>
+<td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md"><img src="docs/assets/themes/kr-place-photo.jpg" alt="kr-place-photo 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md">kr-place-photo</a></b><br>
 <sub>한국 · place · photo-led ·&nbsp;43곳</sub>
@@ -53,13 +58,13 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-public-portal/theme.md">kr-public-portal</a></b><br>
 <sub>한국 · public · dense portal ·&nbsp;61곳</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md"><img src="docs/assets/themes/kr-shop-portal.jpg" alt="kr-shop-portal 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md">kr-shop-portal</a></b><br>
 <sub>한국 · shop · dense portal ·&nbsp;60곳</sub>
 </td>
-</tr>
-<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md"><img src="docs/assets/themes/kr-creative-dark.jpg" alt="kr-creative-dark 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md">kr-creative-dark</a></b><br>
@@ -70,13 +75,13 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-place-photo/theme.md">jp-place-photo</a></b><br>
 <sub>일본 · place · photo-led ·&nbsp;65곳</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md"><img src="docs/assets/themes/jp-care-corporate.jpg" alt="jp-care-corporate 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md">jp-care-corporate</a></b><br>
 <sub>일본 · care · standard corporate ·&nbsp;68곳</sub>
 </td>
-</tr>
-<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md"><img src="docs/assets/themes/jp-business-corporate.jpg" alt="jp-business-corporate 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md">jp-business-corporate</a></b><br>
@@ -87,19 +92,18 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-public-portal/theme.md">jp-public-portal</a></b><br>
 <sub>일본 · public · dense portal ·&nbsp;64곳</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md"><img src="docs/assets/themes/jp-shop-portal.jpg" alt="jp-shop-portal 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md">jp-shop-portal</a></b><br>
 <sub>일본 · shop · dense portal ·&nbsp;57곳</sub>
 </td>
-</tr>
-<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md"><img src="docs/assets/themes/jp-creative-bigtype.jpg" alt="jp-creative-bigtype 샘플 페이지의 첫 화면" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md">jp-creative-bigtype</a></b><br>
 <sub>일본 · creative · big type ·&nbsp;36곳</sub>
 </td>
-<td width="33%"></td>
 <td width="33%"></td>
 </tr>
 </table>
@@ -154,8 +158,8 @@ Claude Code 채팅에서 아래 두 명령을 실행한 뒤 플러그인 폴더�
 ## 사용 목적별 기능
 
 - **기존 페이지 점검.** `scan`은 디자인 신호의 근거와 수정 방향을 보여줍니다. 0–100점은 감지한 패턴의 강도를 나타냅니다. 글자 대비 같은 품질 문제는 별도로 보고합니다. 보고서는 한국어·일본어·영어를 지원하며 `--lang ko`처럼 지정할 수 있습니다.
-- **기존 페이지 수정.** 에이전트는 수정 범위가 작으면 기존 구조를 유지하고, 전면 개편할 때는 세 시안을 비교해 선택을 받습니다. `keep check`로 링크·폼·수치가 보존됐는지, `stress`로 긴 문구와 큰 숫자가 레이아웃을 깨는지 검사할 수 있습니다.
-- **새 페이지 제작.** 한국·일본 사이트 2,326곳의 실측을 바탕으로 만든 테마 13개가 있습니다. 저장소를 내려받은 뒤 갤러리를 브라우저로 열면 국가·업종·사진 보유 여부로 샘플을 고를 수 있습니다.
+- **기존 페이지 수정.** 에이전트는 수정 범위가 작으면 기존 구조를 유지하고, 전면 개편할 때는 한국·일본 업종 페이지면 맞는 테마에서 시작합니다. 그 밖의 페이지나 여러 안을 원하면 세 시안을 비교해 고르게 합니다. `keep check`로 링크·폼·수치가 보존됐는지, `stress`로 긴 문구와 큰 숫자가 레이아웃을 깨는지 검사할 수 있습니다.
+- **새 페이지 제작.** 한국·일본 사이트 2,326곳의 실측을 바탕으로 만든 테마 14개가 있습니다. 저장소를 내려받은 뒤 갤러리를 브라우저로 열면 국가·업종·사진 보유 여부로 샘플을 고를 수 있습니다.
 
 세 페이지를 대상으로 한 실험에서 세 시안 방식은 페이지별 평균 순위가 가장 높았지만, 완성된 세 페이지는 서로 비슷하다는 평가를 받았습니다. 모델 한 개가 평가한 결과입니다. [실험 결과](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 

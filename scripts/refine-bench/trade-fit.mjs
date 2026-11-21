@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // 업종 벤치마크 1단계의 기계 판정: 익숙한 안(A) 시안이 그 업종 실측(data/genre-reference/human.json)에 얼마나 맞는가.
-// 사용법: node trade-fit.mjs refine-k.1 refine-l.1 …   (BENCH_DIR 아래 pages/<id>/<방식>/refine-directions/a.html)
+// 사용법: node trade-fit.mjs refine-k.1 refine-l.1 …   (BENCH_DIR 아래 pages/<id>/<방식>/refine-directions/a.html; FIT_FILE=index.html이면 최종 페이지)
 // 페이지와 업종은 trades.tsv에서 읽는다. --trade 없이 만든 시안(k)도 같은 업종 실측에 대어 본다.
 // 잰 값은 수집기와 같다: 첫 화면 구성(heroSkeleton), 첫 화면 바탕과 강조색(first-screen-colour), 본문 크기, 제목 배율, 명조·세리프.
 // 결과: BENCH_DIR/trade-fit.json (시안마다 한 줄)과 페이지×방식 요약표.
@@ -43,7 +43,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  if(!arms.length){console.error('usage: trade-fit.mjs <방식…>  (예: refine-k.1 refine-l.1)');process.exit(2);}
  const browser=await chromium.launch(),rows=[];
  for(const p of pages)for(const arm of arms){
-  const file=path.join(B,'pages',p.id,arm,'refine-directions','a.html');
+  const file=path.join(B,'pages',p.id,arm,...(process.env.FIT_FILE||'refine-directions/a.html').split('/'));
   try{await fs.access(file);}catch{console.log('missing',p.id,arm);continue;}
   const country=COUNTRY[p.id.split('-')[0]],g=human.byTrade[`${p.trade}/${country}`];
   if(!g){console.log('no group',p.trade,country);continue;}
