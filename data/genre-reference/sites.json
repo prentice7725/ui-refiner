@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-20T13:23:15.725Z",
+ "collectedAt": "2026-11-21T07:49:43.261Z",
  "sites": [
   {
    "category": "JP-academy",
@@ -1747,6 +1747,149 @@
   },
   {
    "category": "JP-architecture",
+   "url": "http://www.am-design.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans japanese",
+     "noto sans jp"
+    ],
+    "sizes": 2,
+    "weights": 2,
+    "body": 10,
+    "h1": null,
+    "display": 12,
+    "ratio": 1.2,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.25,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 10,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 6,
+    "aria-reference": 6,
+    "control-state": 3,
+    "form-label": 2
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://a-etsuko.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 1,
+    "periodHeadings": 0,
+    "headings": 25,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "crimson text"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 14,
+    "h1": 43,
+    "display": 43,
+    "ratio": 3.07,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.5,
+    "fontFallback": 0,
+    "lineHeight": 2.07,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 75,
+    "accessible-name": 4,
+    "control-state": 2,
+    "viewport-bounds": 1,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://acehatano.jp/",
    "split": "tune",
    "status": "ok",
@@ -1889,6 +2032,13 @@
   },
   {
    "category": "JP-architecture",
+   "url": "https://archinet-kyoto.com/",
+   "split": "holdout",
+   "status": "error",
+   "error": "unreachable"
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://archiplace.com/",
    "split": "holdout",
    "status": "ok",
@@ -1964,6 +2114,241 @@
     "target-size": 2,
     "control-state": 2,
     "aria-reference": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://arcyoshi.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "a1 mincho",
+     "noto sans jp",
+     "ヒラギノ明朝 pron w3"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 15,
+    "h1": 24,
+    "display": 38,
+    "ratio": 2.53,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.35,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.53,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 25,
+    "accessible-name": 22,
+    "viewport-bounds": 10,
+    "control-state": 3
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://awax.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen kaku gothic new",
+     "josefin sans",
+     "yakuhanjp"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 18,
+    "h1": 18,
+    "display": 80,
+    "ratio": 4.44,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 36,
+    "target-size": 14,
+    "control-state": 3,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://collabohouse.info/",
+   "split": "tune",
+   "status": "error",
+   "error": "Could not load https://collabohouse.info/: HTTP 403 at https://collabohouse.info/; HTTP 403 at https://collabohouse.info/"
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://feeld-architects.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 1,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yugothic",
+     "roboto"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 13,
+    "h1": 14,
+    "display": 22,
+    "ratio": 1.69,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.04,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.68,
+    "fontFallback": 0,
+    "lineHeight": 1.85,
+    "bodySize": 13,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 118,
+    "text-contrast": 81,
+    "control-state": 13,
+    "form-label": 8,
+    "input-zoom": 8,
+    "accessible-name": 4,
+    "zoom-disabled": 1,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -2044,6 +2429,12 @@
     "control-state": 2,
     "viewport-bounds": 1
    }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://hattori-ao.com/",
+   "split": "tune",
+   "status": "robots"
   },
   {
    "category": "JP-architecture",
@@ -2202,6 +2593,83 @@
   },
   {
    "category": "JP-architecture",
+   "url": "https://marunouchi-arc.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 72,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yu mincho"
+    ],
+    "sizes": 8,
+    "weights": 4,
+    "body": 14,
+    "h1": 22,
+    "display": 36,
+    "ratio": 2.57,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.96,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.75,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 44,
+    "form-label": 6,
+    "viewport-bounds": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://miyama-architects.com/",
    "split": "tune",
    "status": "ok",
@@ -2345,6 +2813,85 @@
   },
   {
    "category": "JP-architecture",
+   "url": "https://shiga-archi.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "open sans",
+     "muli"
+    ],
+    "sizes": 9,
+    "weights": 7,
+    "body": 16,
+    "h1": null,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.25,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 1,
+    "lineHeight": 1.5,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 27,
+    "accessible-name": 10,
+    "input-zoom": 5,
+    "viewport-bounds": 3,
+    "target-size": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://shinsekkei.jp/",
    "split": "holdout",
    "status": "ok",
@@ -2413,6 +2960,237 @@
     "viewport-bounds": 6,
     "control-state": 5,
     "accessible-name": 4
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://sinkenstyle.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "tsukugopr5-m",
+     "tsukuminpr6-d"
+    ],
+    "sizes": 8,
+    "weights": 1,
+    "body": 16,
+    "h1": 16,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 12
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.15,
+    "rounded": 0.08,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 90,
+    "accessible-name": 19,
+    "text-contrast": 14,
+    "control-state": 7,
+    "target-size": 3
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://tomono-inc.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 16,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system",
+     "noto sans jp",
+     "noto-sans-cjk-jp",
+     "arial"
+    ],
+    "sizes": 11,
+    "weights": 5,
+    "body": 14,
+    "h1": 13,
+    "display": 30,
+    "ratio": 2.14,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.28,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 14,
+    "tightShare": 0.07,
+    "phraseAware": 0,
+    "issues": [
+     "ja-half-kana",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 27,
+    "accessible-name": 6,
+    "viewport-bounds": 4,
+    "control-state": 2,
+    "horizontal-overflow": 1,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://u-sekkei.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 1,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto-sans-jp-regular",
+     "meiryo",
+     "roboto-bold",
+     "hiragino kaku gothic pro"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 16,
+    "h1": 12,
+    "display": 44.8,
+    "ratio": 2.8,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.64,
+    "fontFallback": 0.77,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 200,
+    "text-contrast": 42,
+    "control-state": 18,
+    "accessible-name": 1,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -2498,6 +3276,600 @@
   },
   {
    "category": "JP-architecture",
+   "url": "https://withdom-architect.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 23,
+   "band": "low",
+   "signals": [
+    "glass",
+    "purple-gradient",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "glass",
+    "purple-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 4,
+    "numbered": 0,
+    "periodHeadings": 1,
+    "headings": 13,
+    "serifDisplay": 0.56,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "tenor sans",
+     "lexend"
+    ],
+    "sizes": 9,
+    "weights": 2,
+    "body": 18,
+    "h1": 16,
+    "display": 64,
+    "ratio": 3.56,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     213,
+     210,
+     210
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0.04,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 11,
+    "tracked": 4
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": 1.78,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "control-state": 42,
+    "text-contrast": 41,
+    "viewport-bounds": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.archi-first.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "generic-type",
+    "flat-scale"
+   ],
+   "scored": [
+    "generic-type"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "arial"
+    ],
+    "sizes": 2,
+    "weights": 1,
+    "body": 15,
+    "h1": 20,
+    "display": 20,
+    "ratio": 1.33,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": null,
+   "quality": {
+    "accessible-name": 16,
+    "text-contrast": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.atelier-bricolage.net/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "a1明朝",
+     "こぶりなゴシック w3 jis2004",
+     "リュウミン r-kl jis2004",
+     "times new roman"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 18,
+    "h1": 18,
+    "display": 24,
+    "ratio": 1.33,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0.93,
+    "lineHeight": 1.9,
+    "bodySize": 18,
+    "tightShare": 0.5,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-line-height",
+     "ja-tiny",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 8,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.atelier-casa.net/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体",
+     "times new roman",
+     "游明朝体"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 14,
+    "h1": 14,
+    "display": 38,
+    "ratio": 2.71,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.85,
+    "rounded": 0.37,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.79,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 53,
+    "form-label": 7,
+    "accessible-name": 3,
+    "control-state": 2,
+    "placeholder-text": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.atelier-switch.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 15,
+    "weights": 3,
+    "body": 15,
+    "h1": 30,
+    "display": 47,
+    "ratio": 3.13,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.57,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.86,
+    "fontFallback": 0,
+    "lineHeight": 2.2,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all"
+    ]
+   },
+   "quality": {
+    "text-contrast": 58,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.atelier-yamasaki.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0.83,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "raleway",
+     "avenir-lt-w01_35-light1475496",
+     "helvetica-w01-roman"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 14,
+    "h1": null,
+    "display": 45,
+    "ratio": 3.21,
+    "webfonts": 8
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.15,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.58,
+    "fontFallback": 0.33,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 539,
+    "control-state": 42,
+    "text-contrast": 10,
+    "label-consistency": 3,
+    "accessible-name": 3,
+    "aria-reference": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.atelierk-jp.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "helvetica"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 11,
+    "h1": 14,
+    "display": 18,
+    "ratio": 1.64,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.55,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 11,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 11,
+    "accessible-name": 6,
+    "zoom-disabled": 1,
+    "viewport-bounds": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.bee-2.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "hero-cta-below",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游明朝",
+     "times new roman",
+     "游ゴシック"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 14,
+    "h1": 16,
+    "display": 59.2,
+    "ratio": 4.23,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     128,
+     128,
+     128
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.31,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.65,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 13.6,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 55,
+    "target-size": 11,
+    "accessible-name": 8,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://www.e-kanda.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -2570,6 +3942,83 @@
     "text-contrast": 79,
     "viewport-bounds": 6,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.earth-ds.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "large-gradient"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "ｍｓ ｐ明朝",
+     "ヒラギノ角ゴ pro w3"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 13,
+    "h1": 11,
+    "display": 15,
+    "ratio": 1.15,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     0,
+     0,
+     0
+    ],
+    "dark": true
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 13,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 350,
+    "text-contrast": 100,
+    "accessible-name": 15,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -2880,6 +4329,87 @@
   },
   {
    "category": "JP-architecture",
+   "url": "https://www.kameoka-aa.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 10,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "tsukushigothic",
+     "proxima-n-w01-reg",
+     "sora",
+     "arial"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 10,
+    "h1": 15,
+    "display": 18,
+    "ratio": 1.8,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 10
+   },
+   "ja": {
+    "jaRatio": 0.55,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 290,
+    "control-state": 34,
+    "text-contrast": 6,
+    "target-size": 5,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://www.koken-archi.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -2953,6 +4483,81 @@
     "form-label": 8,
     "accessible-name": 7,
     "input-zoom": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.kouketsu.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "sans-serif",
+     "roboto mono"
+    ],
+    "sizes": 7,
+    "weights": 2,
+    "body": 14,
+    "h1": 12,
+    "display": 30,
+    "ratio": 2.14,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.24,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 1,
+    "lineHeight": 1.5,
+    "bodySize": 14.01,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 93,
+    "text-contrast": 64,
+    "control-state": 59
    }
   },
   {
@@ -3108,6 +4713,82 @@
   },
   {
    "category": "JP-architecture",
+   "url": "https://www.remoldesign.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino sans",
+     "midashi go mb1"
+    ],
+    "sizes": 5,
+    "weights": 2,
+    "body": 15,
+    "h1": 0,
+    "display": 72,
+    "ratio": 4.8,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.72,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 35,
+    "target-size": 11,
+    "text-contrast": 7,
+    "accessible-name": 4,
+    "control-state": 4,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
    "url": "https://www.rover-archi.com/",
    "split": "tune",
    "status": "ok",
@@ -3180,6 +4861,83 @@
     "accessible-name": 10,
     "target-size": 3,
     "control-state": 3
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.sakura-d.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 27,
+    "serifDisplay": 0.17,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system",
+     "futura-pt",
+     "arial",
+     "游明朝"
+    ],
+    "sizes": 16,
+    "weights": 4,
+    "body": 12,
+    "h1": 16,
+    "display": 60,
+    "ratio": 5,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.14,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.83,
+    "fontFallback": 0.02,
+    "lineHeight": 1.8,
+    "bodySize": 12,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 54,
+    "viewport-bounds": 13,
+    "control-state": 4,
+    "font-loading": 1
    }
   },
   {
@@ -3327,6 +5085,160 @@
    "quality": {
     "viewport-bounds": 38,
     "text-contrast": 19,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.space-tokyo.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "empty-frames",
+    "transition-all",
+    "buzzword-copy"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "dinnextltpro-regular",
+     "dinnextltpro-bold"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 16,
+    "h1": 48,
+    "display": 80,
+    "ratio": 5,
+    "webfonts": 7
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.23,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 1,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 88,
+    "control-state": 9,
+    "accessible-name": 4,
+    "viewport-bounds": 3,
+    "label-consistency": 2,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.sunpro-style.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 3,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ヒラギノ角ゴ pro",
+     "hind guntur"
+    ],
+    "sizes": 14,
+    "weights": 4,
+    "body": 18,
+    "h1": 16,
+    "display": 41,
+    "ratio": 2.28,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     69,
+     62,
+     63
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 3
+   },
+   "ja": {
+    "jaRatio": 0.67,
+    "fontFallback": 0,
+    "lineHeight": 2.5,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 391,
+    "text-contrast": 54,
+    "control-state": 3,
     "horizontal-overflow": 1
    }
   },
@@ -3553,6 +5465,81 @@
     "text-contrast": 16,
     "control-state": 7,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-architecture",
+   "url": "https://www.world-sekkei.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游明朝",
+     "yakuhanjp"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 15,
+    "h1": 15,
+    "display": 50,
+    "ratio": 3.33,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.2,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.61,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 87,
+    "accessible-name": 17,
+    "control-state": 3,
+    "viewport-bounds": 1
    }
   },
   {
@@ -22860,6 +24847,80 @@
   },
   {
    "category": "JP-design",
+   "url": "http://mondesign.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "tinted-page"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "fp-ヒラギノ角ゴ pron w5",
+     "founders grotesk"
+    ],
+    "sizes": 7,
+    "weights": 1,
+    "body": 16,
+    "h1": 23.75,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     242,
+     242,
+     242
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.39,
+    "fontFallback": 0,
+    "lineHeight": 1.38,
+    "bodySize": 16,
+    "tightShare": 0.67,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 47,
+    "accessible-name": 13,
+    "control-state": 4
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://884-dsn.com/",
    "split": "holdout",
    "status": "ok",
@@ -23075,6 +25136,87 @@
    },
    "quality": {
     "text-contrast": 20
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://arjuna.ne.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 26,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "mr-eaves-modern",
+     "游ゴシック体 medium"
+    ],
+    "sizes": 16,
+    "weights": 5,
+    "body": 15,
+    "h1": 15,
+    "display": 70,
+    "ratio": 4.67,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.65,
+    "fontFallback": 0,
+    "lineHeight": 2.22,
+    "bodySize": 17.28,
+    "tightShare": 0.1,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-orphans",
+     "ja-bad-break",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 62,
+    "aria-reference": 26,
+    "control-state": 15,
+    "form-label": 6,
+    "zoom-disabled": 1
    }
   },
   {
@@ -23556,6 +25698,158 @@
   },
   {
    "category": "JP-design",
+   "url": "https://droom711.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [],
+    "sizes": 0,
+    "weights": 0,
+    "body": 16,
+    "h1": 16,
+    "display": 0,
+    "ratio": null,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.58,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 90,
+    "viewport-bounds": 11,
+    "accessible-name": 10,
+    "horizontal-overflow": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://e-adshin.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "large-gradient",
+    "transition-all"
+   ],
+   "scored": [
+    "large-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat"
+    ],
+    "sizes": 20,
+    "weights": 5,
+    "body": 14,
+    "h1": 11,
+    "display": 115.2,
+    "ratio": 8.23,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.22,
+    "rounded": 0.03,
+    "cardGrids": 0,
+    "largeGradients": 7,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.67,
+    "fontFallback": 0,
+    "lineHeight": 2.4,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 159,
+    "accessible-name": 24,
+    "control-state": 7,
+    "target-size": 2,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://eibukobo.com/",
    "split": "holdout",
    "status": "ok",
@@ -23628,6 +25922,148 @@
    "quality": {
     "text-contrast": 33,
     "control-state": 12
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://emdesign.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 0,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yugothic"
+    ],
+    "sizes": 5,
+    "weights": 3,
+    "body": 15,
+    "h1": 30,
+    "display": 15,
+    "ratio": 1,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.09,
+    "rounded": 0.06,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.79,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 41,
+    "viewport-bounds": 3
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://grow-group.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 21,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "archivo narrow"
+    ],
+    "sizes": 18,
+    "weights": 5,
+    "body": 14,
+    "h1": 32,
+    "display": 160,
+    "ratio": 11.43,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0.03,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 1,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.8,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 141,
+    "viewport-bounds": 9,
+    "accessible-name": 2,
+    "label-consistency": 1
    }
   },
   {
@@ -24365,6 +26801,79 @@
   },
   {
    "category": "JP-design",
+   "url": "https://makersmark.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック medium",
+     "material icons",
+     "-apple-system"
+    ],
+    "sizes": 11,
+    "weights": 3,
+    "body": 13,
+    "h1": 12.8,
+    "display": 28,
+    "ratio": 2.15,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.08,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": 1.75,
+    "bodySize": 12.8,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 40,
+    "target-size": 14,
+    "horizontal-overflow": 1,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://mamezoudesign.com/",
    "split": "tune",
    "status": "ok",
@@ -24518,6 +27027,93 @@
     "control-state": 2,
     "zoom-disabled": 1,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://monf.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 16,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "many-hues",
+    "accent-word",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 2,
+    "headings": 127,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "outfit",
+     "noto serif jp",
+     "monbranfont"
+    ],
+    "sizes": 21,
+    "weights": 4,
+    "body": 16,
+    "h1": 10,
+    "display": 110,
+    "ratio": 6.88,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 8,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0.52,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.62,
+    "fontFallback": 0,
+    "lineHeight": 1.85,
+    "bodySize": 15.94,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tracking",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 206,
+    "accessible-name": 40,
+    "target-size": 40,
+    "viewport-bounds": 2,
+    "control-state": 1,
+    "zoom-disabled": 1
    }
   },
   {
@@ -24900,6 +27496,86 @@
   },
   {
    "category": "JP-design",
+   "url": "https://sanowataru.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 9,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "秀英角ゴシック銀 m",
+     "overpass",
+     "d秀英角ゴシック銀 b"
+    ],
+    "sizes": 5,
+    "weights": 4,
+    "body": 22,
+    "h1": 16,
+    "display": 38,
+    "ratio": 1.73,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.81,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.62,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "text-contrast": 79,
+    "viewport-bounds": 27,
+    "accessible-name": 5,
+    "control-state": 3,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://spicato.com/",
    "split": "tune",
    "status": "ok",
@@ -24976,6 +27652,83 @@
   },
   {
    "category": "JP-design",
+   "url": "https://stans.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "hero-cta-below"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 26,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "mfw-yugopr6n-medium",
+     "mfw-yugopr6n-demi",
+     "instrument sans"
+    ],
+    "sizes": 11,
+    "weights": 2,
+    "body": 14,
+    "h1": 14,
+    "display": 100,
+    "ratio": 7.14,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.11,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-break-all",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 12,
+    "viewport-bounds": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://studiokeya.com/",
    "split": "tune",
    "status": "ok",
@@ -25047,6 +27800,154 @@
     "viewport-bounds": 4,
     "zoom-disabled": 1,
     "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://t3design.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "card-grid",
+    "tinted-page",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "card-grid"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 28,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yakuhanjp"
+    ],
+    "sizes": 17,
+    "weights": 4,
+    "body": 15,
+    "h1": 10,
+    "display": 100,
+    "ratio": 6.67,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     245,
+     245,
+     245
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.13,
+    "rounded": 0,
+    "cardGrids": 1,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.88,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 21,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://tcd.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all",
+    "hero-cta-below"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "poppins"
+    ],
+    "sizes": 11,
+    "weights": 5,
+    "body": 14,
+    "h1": 36,
+    "display": 38,
+    "ratio": 2.71,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 62,
+    "accessible-name": 2
    }
   },
   {
@@ -25357,6 +28258,85 @@
     "text-contrast": 52,
     "control-state": 10,
     "accessible-name": 7
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.asobou.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "catamaran"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 15,
+    "h1": 1,
+    "display": 45,
+    "ratio": 3,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.7,
+    "fontFallback": 0,
+    "lineHeight": 1.43,
+    "bodySize": 16,
+    "tightShare": 0.88,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 42,
+    "target-size": 10,
+    "accessible-name": 2,
+    "viewport-bounds": 2,
+    "control-state": 1
    }
   },
   {
@@ -25753,6 +28733,157 @@
   },
   {
    "category": "JP-design",
+   "url": "https://www.doing.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato",
+     "yu gothic",
+     "sans-serif"
+    ],
+    "sizes": 10,
+    "weights": 2,
+    "body": 11,
+    "h1": null,
+    "display": 31,
+    "ratio": 2.82,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.03,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.48,
+    "fontFallback": 0.56,
+    "lineHeight": 1.8,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 29,
+    "viewport-bounds": 1,
+    "accessible-name": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.dotzero.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 14,
+   "band": "low",
+   "signals": [
+    "gradient-text",
+    "hero-cta-below",
+    "transition-all"
+   ],
+   "scored": [
+    "gradient-text"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "hiragino kaku gothic pron",
+     "roboto"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 13,
+    "h1": 10,
+    "display": 22,
+    "ratio": 1.69,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.33,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 13,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "control-state": 86,
+    "text-contrast": 54,
+    "target-size": 33,
+    "accessible-name": 2,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://www.f-creation.co.jp/",
    "split": "holdout",
    "status": "ok",
@@ -25825,6 +28956,88 @@
     "aria-reference": 12,
     "viewport-bounds": 1,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.fieldcorp.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "tinted-page",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 20,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 29,
+    "serifDisplay": 0,
+    "paper": true,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "futura-pt",
+     "ryo-gothic-plusn"
+    ],
+    "sizes": 10,
+    "weights": 4,
+    "body": 12,
+    "h1": 10,
+    "display": 40,
+    "ratio": 3.33,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     247,
+     244,
+     240
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 20
+   },
+   "ja": {
+    "jaRatio": 0.49,
+    "fontFallback": 0,
+    "lineHeight": 1.6,
+    "bodySize": 12,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 25,
+    "accessible-name": 15,
+    "control-state": 7,
+    "viewport-bounds": 2,
+    "target-size": 1
    }
   },
   {
@@ -25905,6 +29118,80 @@
     "text-contrast": 35,
     "control-state": 3,
     "accessible-name": 2
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.goodbymarket.net/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "midashi go mb31",
+     "verdana",
+     "helvetica"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 13,
+    "h1": null,
+    "display": 36,
+    "ratio": 2.77,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.48,
+    "fontFallback": 1,
+    "lineHeight": 1.5,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "accessible-name": 17,
+    "text-contrast": 3,
+    "control-state": 2
    }
   },
   {
@@ -26141,6 +29428,154 @@
   },
   {
    "category": "JP-design",
+   "url": "https://www.maxfive.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "tsukushigothic",
+     "libre baskerville",
+     "matisse",
+     "rodin-light"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 15,
+    "h1": null,
+    "display": 60,
+    "ratio": 4,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.63,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 465,
+    "control-state": 29,
+    "text-contrast": 12,
+    "accessible-name": 2,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.moshi-moshi.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "gothic medium bbb"
+    ],
+    "sizes": 4,
+    "weights": 1,
+    "body": 20,
+    "h1": null,
+    "display": 20,
+    "ratio": 1,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.72,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 32,
+    "accessible-name": 10
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://www.mother.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -26212,6 +29647,170 @@
    "quality": {
     "text-contrast": 50,
     "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.mpcreative.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 18,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体",
+     "spartan",
+     "sans-serif",
+     "roboto"
+    ],
+    "sizes": 17,
+    "weights": 4,
+    "body": 10,
+    "h1": 12,
+    "display": 80,
+    "ratio": 8,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.21,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 18
+   },
+   "ja": {
+    "jaRatio": 0.63,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 69,
+    "target-size": 34,
+    "accessible-name": 8,
+    "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.neoindex.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 33,
+   "band": "medium",
+   "signals": [
+    "large-gradient",
+    "tracked-labels",
+    "numbered-labels",
+    "many-hues",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "large-gradient",
+    "tracked-labels",
+    "numbered-labels",
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 9,
+    "numbered": 4,
+    "periodHeadings": 0,
+    "headings": 34,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "lato",
+     "poppins"
+    ],
+    "sizes": 26,
+    "weights": 5,
+    "body": 16,
+    "h1": 12,
+    "display": 180,
+    "ratio": 11.25,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.09,
+    "rounded": 0.14,
+    "cardGrids": 0,
+    "largeGradients": 2,
+    "glass": 0,
+    "tracked": 9
+   },
+   "ja": {
+    "jaRatio": 0.87,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 313,
+    "control-state": 93,
+    "accessible-name": 2
    }
   },
   {
@@ -26615,6 +30214,170 @@
   },
   {
    "category": "JP-design",
+   "url": "https://www.pkg.tokyo/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 18,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "source-han-sans-japanese",
+     "helveticaneue",
+     "helveticaneue-light"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 14,
+    "h1": 32,
+    "display": 44,
+    "ratio": 3.14,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.03,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0.02,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 48,
+    "form-label": 7,
+    "accessible-name": 7,
+    "input-zoom": 7,
+    "viewport-bounds": 3,
+    "control-state": 1,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.rcnt.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "gradient-text",
+    "many-hues",
+    "transition-all",
+    "buzzword-copy"
+   ],
+   "scored": [
+    "gradient-text",
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans japanese",
+     "lobster",
+     "noto serif",
+     "jost"
+    ],
+    "sizes": 20,
+    "weights": 6,
+    "body": 16,
+    "h1": 12,
+    "display": 50,
+    "ratio": 3.13,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 6,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.26,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 1,
+    "lineHeight": 1.6,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 139,
+    "viewport-bounds": 93,
+    "control-state": 38,
+    "horizontal-overflow": 1,
+    "font-loading": 1,
+    "accessible-name": 1,
+    "form-label": 1
+   }
+  },
+  {
+   "category": "JP-design",
    "url": "https://www.redkirin.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -26691,6 +30454,85 @@
     "target-size": 22,
     "label-consistency": 2,
     "control-state": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.rikkadesign.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "wfont_12d1e1_4971afb3008f48b48c3bffa05fa837d9",
+     "rodin-light",
+     "proxima-n-w01-reg",
+     "geotica-w01-four-open"
+    ],
+    "sizes": 6,
+    "weights": 3,
+    "body": 14,
+    "h1": null,
+    "display": 33,
+    "ratio": 2.36,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0.96,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 367,
+    "control-state": 21,
+    "text-contrast": 14,
+    "form-label": 6,
+    "input-zoom": 6,
+    "horizontal-overflow": 1
    }
   },
   {
@@ -26779,6 +30621,77 @@
     "aria-reference": 4,
     "form-label": 1,
     "font-loading": 1
+   }
+  },
+  {
+   "category": "JP-design",
+   "url": "https://www.siance.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "hero-cta-below"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "yakuhanjp",
+     "neue-frutiger-world"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 16,
+    "h1": 18,
+    "display": 26,
+    "ratio": 1.63,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.71,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "control-state": 21,
+    "text-contrast": 5
    }
   },
   {
@@ -74888,6 +78801,386 @@
   },
   {
    "category": "JP-photo",
+   "url": "https://c4-5e.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 20,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp"
+    ],
+    "sizes": 11,
+    "weights": 5,
+    "body": 16,
+    "h1": 36,
+    "display": 38.4,
+    "ratio": 2.4,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 275,
+    "text-contrast": 87,
+    "accessible-name": 6,
+    "target-size": 1,
+    "zoom-disabled": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://craft5-inc.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 11,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "a1ゴシック m jis2004",
+     "rubik",
+     "a1ゴシック r jis2004"
+    ],
+    "sizes": 8,
+    "weights": 5,
+    "body": 14,
+    "h1": 40,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.1,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.73,
+    "fontFallback": 0,
+    "lineHeight": 1.9,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 9,
+    "viewport-bounds": 3,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://ellroy.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "tracked-labels"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 58,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 1,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "-apple-system",
+     "adobe-hebrew",
+     "roboto"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 14,
+    "h1": 14,
+    "display": 70,
+    "ratio": 5,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.02,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 58
+   },
+   "ja": {
+    "jaRatio": 0.59,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0.05,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 92,
+    "control-state": 20,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://first-studio.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 4,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 22,
+    "serifDisplay": 0.14,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ヒラギノ角ゴ pron w3",
+     "ヒラギノ明朝 pro w3"
+    ],
+    "sizes": 12,
+    "weights": 2,
+    "body": 13,
+    "h1": 10,
+    "display": 35,
+    "ratio": 2.69,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.21,
+    "rounded": 0.34,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 4
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 13,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 146,
+    "viewport-bounds": 25,
+    "target-size": 12,
+    "control-state": 2,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://gjc.me/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "transition-all",
+    "buzzword-copy",
+    "generic-cta",
+    "hero-cta-below"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 56,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "oswald",
+     "notosansjp"
+    ],
+    "sizes": 29,
+    "weights": 5,
+    "body": 18,
+    "h1": 19,
+    "display": 51,
+    "ratio": 2.83,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     254,
+     254,
+     254
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.42,
+    "rounded": 0.21,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 1.78,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-orphans",
+     "ja-bad-break",
+     "ja-tracking",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 81,
+    "accessible-name": 7,
+    "viewport-bounds": 4
+   }
+  },
+  {
+   "category": "JP-photo",
    "url": "https://la-viecouleur.com/",
    "split": "holdout",
    "status": "ok",
@@ -74966,6 +79259,160 @@
   },
   {
    "category": "JP-photo",
+   "url": "https://memory-plus.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans japanese",
+     "游明朝体",
+     "ubuntu"
+    ],
+    "sizes": 6,
+    "weights": 4,
+    "body": 16,
+    "h1": 32,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.38,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.9,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 11,
+    "viewport-bounds": 3,
+    "font-loading": 1,
+    "control-state": 1,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://nihoncolor.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 16,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "zen kaku gothic new",
+     "poppins"
+    ],
+    "sizes": 16,
+    "weights": 4,
+    "body": 18,
+    "h1": null,
+    "display": 150,
+    "ratio": 8.33,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.11,
+    "rounded": 0.14,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.76,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 18,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-tracking"
+    ]
+   },
+   "quality": {
+    "text-contrast": 44,
+    "target-size": 19,
+    "viewport-bounds": 11,
+    "control-state": 10,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
    "url": "https://noblem.jp/",
    "split": "holdout",
    "status": "ok",
@@ -75040,6 +79487,401 @@
     "text-contrast": 44,
     "viewport-bounds": 3,
     "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://photo-k.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "helvetica",
+     "游明朝"
+    ],
+    "sizes": 9,
+    "weights": 4,
+    "body": 13,
+    "h1": 13,
+    "display": 28,
+    "ratio": 2.15,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     247,
+     247,
+     247
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.85,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 114,
+    "control-state": 7,
+    "accessible-name": 6,
+    "target-size": 5,
+    "font-loading": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://photo-studio-kanno.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "tinted-page",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 17,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman",
+     "noto serif jp",
+     "material icons",
+     "raleway"
+    ],
+    "sizes": 13,
+    "weights": 4,
+    "body": 16,
+    "h1": 28.8,
+    "display": 32,
+    "ratio": 2,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     242,
+     242,
+     240
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.64,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.59,
+    "fontFallback": 0.78,
+    "lineHeight": 1.67,
+    "bodySize": 19.2,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-tracking",
+     "ja-orphans",
+     "ja-bad-break"
+    ]
+   },
+   "quality": {
+    "text-contrast": 50,
+    "viewport-bounds": 17,
+    "control-state": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://photo-studio-princess.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0.5,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "ヒラギノ明朝 pro w3",
+     "noto serif",
+     "hiragino kaku gothic pro",
+     "yellowtail"
+    ],
+    "sizes": 10,
+    "weights": 2,
+    "body": 14,
+    "h1": 12,
+    "display": 40,
+    "ratio": 2.86,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.64,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.69,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 21,
+    "viewport-bounds": 8,
+    "target-size": 8,
+    "accessible-name": 7,
+    "control-state": 5
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://re-imagine.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 2,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 13,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 8,
+    "nestedHosts": 1,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "outfit",
+     "ヒラギノ角ゴシック pro"
+    ],
+    "sizes": 12,
+    "weights": 6,
+    "body": 14,
+    "h1": 28,
+    "display": 50,
+    "ratio": 3.57,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 0,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0.33,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 2
+   },
+   "ja": {
+    "jaRatio": 0.53,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 50,
+    "viewport-bounds": 3,
+    "control-state": 1,
+    "accessible-name": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://reactor.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 5,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "小塚ゴシック pro",
+     "ubuntu",
+     "inter"
+    ],
+    "sizes": 12,
+    "weights": 4,
+    "body": 14,
+    "h1": 14,
+    "display": 64,
+    "ratio": 4.57,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.07,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 5
+   },
+   "ja": {
+    "jaRatio": 0.54,
+    "fontFallback": 0,
+    "lineHeight": 1.45,
+    "bodySize": 14,
+    "tightShare": 0.25,
+    "phraseAware": 0,
+    "issues": [
+     "ja-tiny",
+     "ja-full-alnum",
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 22,
+    "viewport-bounds": 5,
+    "control-state": 3,
+    "accessible-name": 2
    }
   },
   {
@@ -75195,6 +80037,88 @@
   },
   {
    "category": "JP-photo",
+   "url": "https://sionnet.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 12,
+   "band": "low",
+   "signals": [
+    "purple-gradient",
+    "transition-all"
+   ],
+   "scored": [
+    "purple-gradient"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 8,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans cjk jp",
+     "josefin sans",
+     "noto sans",
+     "hurricane"
+    ],
+    "sizes": 18,
+    "weights": 2,
+    "body": 14,
+    "h1": 32,
+    "display": 103.04,
+    "ratio": 7.36,
+    "webfonts": 5
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 1,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.61,
+    "fontFallback": 0.37,
+    "lineHeight": 1.42,
+    "bodySize": 14.08,
+    "tightShare": 1,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 95,
+    "text-contrast": 92,
+    "control-state": 4,
+    "accessible-name": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
    "url": "https://snow-in.cc/",
    "split": "holdout",
    "status": "ok",
@@ -75273,6 +80197,697 @@
   },
   {
    "category": "JP-photo",
+   "url": "https://studio-ciel.photo/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "times new roman",
+     "shippori mincho"
+    ],
+    "sizes": 12,
+    "weights": 2,
+    "body": 17,
+    "h1": null,
+    "display": 42,
+    "ratio": 2.47,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.59,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.74,
+    "fontFallback": 0,
+    "lineHeight": 1.7,
+    "bodySize": 15,
+    "tightShare": 0.33,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 40,
+    "target-size": 8,
+    "accessible-name": 6,
+    "viewport-bounds": 3,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://studioai.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 14,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "kumbh sans"
+    ],
+    "sizes": 12,
+    "weights": 3,
+    "body": 16,
+    "h1": 34,
+    "display": 172.8,
+    "ratio": 10.8,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.25,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.6,
+    "fontFallback": 0,
+    "lineHeight": 1.5,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 52,
+    "text-contrast": 20,
+    "control-state": 2
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://vsq.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "tracked-labels",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "tracked-labels"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 3,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 3,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans japanese"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 14,
+    "h1": 13,
+    "display": 46,
+    "ratio": 3.29,
+    "webfonts": 0
+   },
+   "color": {
+    "hues": 4,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 3
+   },
+   "ja": {
+    "jaRatio": 0.59,
+    "fontFallback": 0,
+    "lineHeight": 2.4,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 23,
+    "accessible-name": 22,
+    "viewport-bounds": 15,
+    "control-state": 2,
+    "font-loading": 1,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.a-on.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "empty-frames"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "rodin-light",
+     "anton",
+     "tsukushigothic"
+    ],
+    "sizes": 8,
+    "weights": 1,
+    "body": 15,
+    "h1": 120,
+    "display": 120,
+    "ratio": 8,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.71,
+    "fontFallback": 0,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 301,
+    "text-contrast": 12,
+    "control-state": 7,
+    "label-consistency": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.apro-g.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 4,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "outfit",
+     "noto sans jp",
+     "homemade apple"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 14,
+    "h1": 34,
+    "display": 144,
+    "ratio": 10.29,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.06,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.57,
+    "fontFallback": 0,
+    "lineHeight": 1.63,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 56,
+    "control-state": 8,
+    "accessible-name": 7
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.caratt.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 15,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "montserrat",
+     "quattrocento",
+     "noto sans jp",
+     "noto serif jp"
+    ],
+    "sizes": 12,
+    "weights": 5,
+    "body": 14,
+    "h1": 10,
+    "display": 52,
+    "ratio": 3.71,
+    "webfonts": 6
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.08,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.53,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 18,
+    "accessible-name": 8,
+    "control-state": 4,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.cs-innocence.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 42,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "raleway"
+    ],
+    "sizes": 11,
+    "weights": 4,
+    "body": 15,
+    "h1": 12,
+    "display": 30,
+    "ratio": 2,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.17,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.64,
+    "fontFallback": 0.05,
+    "lineHeight": 2,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 34,
+    "control-state": 10,
+    "target-size": 8,
+    "text-contrast": 5,
+    "accessible-name": 5
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.cue-inc.co.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游ゴシック体",
+     "ヒラギノ明朝 pro w3"
+    ],
+    "sizes": 8,
+    "weights": 2,
+    "body": 16,
+    "h1": 16,
+    "display": 48,
+    "ratio": 3,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.33,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 1,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.82,
+    "fontFallback": 0,
+    "lineHeight": 1.8,
+    "bodySize": 17.6,
+    "tightShare": 0.29,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "text-contrast": 29,
+    "accessible-name": 2,
+    "horizontal-overflow": 1,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.delta.photo/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 5,
+   "band": "low",
+   "signals": [
+    "many-hues",
+    "transition-all"
+   ],
+   "scored": [
+    "many-hues"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 41,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 6,
+    "nestedHosts": 1,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "arial",
+     "lineseed regular",
+     "lineseed bold",
+     "lineseed extrabold"
+    ],
+    "sizes": 13,
+    "weights": 4,
+    "body": 14,
+    "h1": 14,
+    "display": 96,
+    "ratio": 6.86,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 5,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.13,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.91,
+    "fontFallback": 1,
+    "lineHeight": 1.5,
+    "bodySize": 14,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-break-all",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "text-contrast": 98,
+    "control-state": 1
+   }
+  },
+  {
+   "category": "JP-photo",
    "url": "https://www.dub.co.jp/",
    "split": "tune",
    "status": "ok",
@@ -75347,6 +80962,240 @@
     "target-size": 10,
     "control-state": 3,
     "viewport-bounds": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.eizouseisaku-factory.com/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "accent-word",
+    "empty-frames",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 12,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "montserrat",
+     "ot-paoto-gothic-stdn",
+     "arial black"
+    ],
+    "sizes": 13,
+    "weights": 2,
+    "body": 18,
+    "h1": 11,
+    "display": 100,
+    "ratio": 5.56,
+    "webfonts": 2
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.5,
+    "rounded": 0.08,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.77,
+    "fontFallback": 0.1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-full-alnum"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 833,
+    "control-state": 54,
+    "text-contrast": 20,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.express.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 6,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans cjk jp",
+     "roboto"
+    ],
+    "sizes": 9,
+    "weights": 3,
+    "body": 15,
+    "h1": null,
+    "display": 96,
+    "ratio": 6.4,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 3,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.05,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.7,
+    "fontFallback": 0,
+    "lineHeight": 1.57,
+    "bodySize": 15,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "text-contrast": 88,
+    "control-state": 38,
+    "viewport-bounds": 2,
+    "accessible-name": 2,
+    "horizontal-overflow": 1,
+    "zoom-disabled": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.fossette.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "default-accent",
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 21,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "genjyuugothic",
+     "texgyreadventor",
+     "itcavantgarde",
+     "-apple-system"
+    ],
+    "sizes": 11,
+    "weights": 6,
+    "body": 16,
+    "h1": 10,
+    "display": 60,
+    "ratio": 3.75,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0.05,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.52,
+    "fontFallback": 1,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": [
+     "ja-font-fallback",
+     "ja-bad-break",
+     "ja-orphans"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 53,
+    "text-contrast": 24,
+    "accessible-name": 13,
+    "control-state": 6
    }
   },
   {
@@ -75511,6 +81360,85 @@
   },
   {
    "category": "JP-photo",
+   "url": "https://www.kumafu.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 9,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all",
+    "generic-cta"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 10,
+    "serifDisplay": 1,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "游明朝",
+     "helvetica"
+    ],
+    "sizes": 10,
+    "weights": 3,
+    "body": 17,
+    "h1": 23,
+    "display": 47.2512,
+    "ratio": 2.78,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.8,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.78,
+    "fontFallback": 0,
+    "lineHeight": 1.83,
+    "bodySize": 17.12,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all"
+    ]
+   },
+   "quality": {
+    "text-contrast": 57,
+    "accessible-name": 6,
+    "control-state": 2,
+    "viewport-bounds": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
    "url": "https://www.kuppography.com/",
    "split": "holdout",
    "status": "ok",
@@ -75578,6 +81506,13 @@
     "text-contrast": 3,
     "viewport-bounds": 1
    }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.lifestudio.jp/",
+   "split": "holdout",
+   "status": "error",
+   "error": "Could not load https://www.lifestudio.jp/: page.goto: Timeout 45000ms exceeded."
   },
   {
    "category": "JP-photo",
@@ -75958,6 +81893,86 @@
   },
   {
    "category": "JP-photo",
+   "url": "https://www.s-ament.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "empty-frames",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 4,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "rodin-light",
+     "roboto-bold",
+     "tsukushigothic",
+     "tsukushibmarugothic"
+    ],
+    "sizes": 14,
+    "weights": 3,
+    "body": 14,
+    "h1": 78,
+    "display": 78,
+    "ratio": 5.57,
+    "webfonts": 9
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.67,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.67,
+    "fontFallback": 0.07,
+    "lineHeight": null,
+    "bodySize": null,
+    "tightShare": null,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 477,
+    "control-state": 35,
+    "text-contrast": 20,
+    "accessible-name": 9,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
    "url": "https://www.scene-tokyo.com/",
    "split": "holdout",
    "status": "ok",
@@ -76037,6 +82052,238 @@
     "control-state": 6,
     "target-size": 5,
     "viewport-bounds": 2
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.sia-style.jp/",
+   "split": "holdout",
+   "status": "ok",
+   "lang": "ja",
+   "score": 8,
+   "band": "low",
+   "signals": [
+    "centered",
+    "transition-all"
+   ],
+   "scored": [
+    "centered"
+   ],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 7,
+    "serifDisplay": 0.25,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "stardos stencil",
+     "noto serif jp"
+    ],
+    "sizes": 9,
+    "weights": 1,
+    "body": 16,
+    "h1": 16,
+    "display": 40,
+    "ratio": 2.5,
+    "webfonts": 3
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.75,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.88,
+    "fontFallback": 0,
+    "lineHeight": 2,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": []
+   },
+   "quality": {
+    "viewport-bounds": 247,
+    "text-contrast": 34,
+    "control-state": 1,
+    "zoom-disabled": 1,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.soei-pro.com/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [],
+   "scored": [],
+   "craft": [
+    "custom-webfont"
+   ],
+   "measures": {
+    "tracked": 0,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 2,
+    "serifDisplay": 0,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "メイリオ",
+     "ｍｓ ゴシック",
+     "ｍｓ ｐゴシック"
+    ],
+    "sizes": 4,
+    "weights": 3,
+    "body": 16,
+    "h1": 24,
+    "display": 24,
+    "ratio": 1.5,
+    "webfonts": 1
+   },
+   "color": {
+    "hues": 1,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0,
+    "rounded": 0,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 0
+   },
+   "ja": {
+    "jaRatio": 0.81,
+    "fontFallback": 0,
+    "lineHeight": 1.4,
+    "bodySize": 16,
+    "tightShare": 1,
+    "phraseAware": 0,
+    "issues": [
+     "ja-line-height"
+    ]
+   },
+   "quality": {
+    "viewport-bounds": 156,
+    "text-contrast": 12,
+    "target-size": 4,
+    "control-state": 3,
+    "horizontal-overflow": 1
+   }
+  },
+  {
+   "category": "JP-photo",
+   "url": "https://www.studio-alice.co.jp/",
+   "split": "tune",
+   "status": "ok",
+   "lang": "ja",
+   "score": 0,
+   "band": "none",
+   "signals": [
+    "transition-all"
+   ],
+   "scored": [],
+   "craft": [
+    "custom-webfont",
+    "imagery"
+   ],
+   "measures": {
+    "tracked": 1,
+    "numbered": 0,
+    "periodHeadings": 0,
+    "headings": 24,
+    "serifDisplay": 0.18,
+    "paper": false,
+    "nestedCards": 0,
+    "nestedHosts": 0,
+    "iconBoxes": 0
+   },
+   "type": {
+    "families": [
+     "noto sans jp",
+     "lusitana",
+     "hannari",
+     "noto serif jp"
+    ],
+    "sizes": 23,
+    "weights": 3,
+    "body": 16,
+    "h1": 28,
+    "display": 120,
+    "ratio": 7.5,
+    "webfonts": 4
+   },
+   "color": {
+    "hues": 2,
+    "rootBg": [
+     255,
+     255,
+     255
+    ],
+    "dark": false
+   },
+   "layout": {
+    "centered": 0.13,
+    "rounded": 0.18,
+    "cardGrids": 0,
+    "largeGradients": 0,
+    "glass": 0,
+    "tracked": 1
+   },
+   "ja": {
+    "jaRatio": 0.79,
+    "fontFallback": 0.02,
+    "lineHeight": 1.75,
+    "bodySize": 16,
+    "tightShare": 0,
+    "phraseAware": 0,
+    "issues": [
+     "ja-break-all",
+     "ja-tiny"
+    ]
+   },
+   "quality": {
+    "text-contrast": 73,
+    "viewport-bounds": 23,
+    "control-state": 13,
+    "target-size": 3,
+    "accessible-name": 2,
+    "font-loading": 1
    }
   },
   {

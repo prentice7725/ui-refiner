@@ -11,6 +11,8 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 - Theme application lessons from four real sites and a `.banners` related-body grid for the public portal themes (PR #53).
 - Lessons from five more real sites (a hanok stay, a ginseng shop, a bamboo-craft shop, a product-photo studio, an architecture firm) in the shop, place and creative themes and the themes README. The new rules: check whether the original page is already designed before applying a theme; keep the client's data and formats as they are, errors included, and list the errors in the report; link outside booking and shop systems instead of imitating them.
 
+- A third collection (21 November 2026) added 81 Japanese design, photo and video, and architecture studios (85 listed). `jp-creative-bigtype` now rests on 36 sites (was 23). Across the 234 Japanese creative sites no archetype leads clearly; big type leads among design and photo studios, and studios whose sites read as companies are closer to `jp-business-corporate`. Only the three Japanese studio groups changed in `data/genre-reference`; earlier records are unchanged.
+
 ### Fixed
 - `keep record` and `keep check` count only fields a visitor can reach. Site builders leave hidden widgets in the page, such as a colour picker with eight inputs, and those were recorded as the page's fields, so every redesign reported them lost. A field inside a closed `<details>` still counts when the `<details>` itself is shown.
 

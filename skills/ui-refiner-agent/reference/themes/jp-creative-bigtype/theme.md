@@ -4,23 +4,25 @@ For Japanese design offices, web and video production companies, photo studios a
 
 ## Measured basis
 
-23 human-made Japanese sites in the creative family that fall in the big-type archetype (design 52%, photo and video 22%, game 13%, architecture 9%, illustration 4%), measured November 2026 (`archetypes/spec-JP-creative-5.json`). The Japanese creative family has 153 sites. Its most common archetype is the dense portal (19%), but that one is mostly game companies' portals (41% of it); among design, photo and architecture studios, big type is the most common. This theme replaced `jp-creative-colour` (bold colour, 7 sites) after the second collection.
+36 human-made Japanese sites in the creative family that fall in the big-type archetype (design 50%, photo and video 28%, architecture 11%, game 8%, illustration 3%), measured November 2026 (`archetypes/spec-JP-creative-5.json`). The Japanese creative family has 234 sites after a third collection of 81 studios on 21 November 2026. Across the family no archetype leads clearly (standard corporate 16%, dense portal, photo-led and big type 15% each). Among the 181 design, photo and architecture studios, standard corporate (34) and big type (32) are level, and big type leads among design and photo studios (28 to 22). A third of the dense-portal sites are game companies' portals. This theme replaced `jp-creative-colour` (bold colour, 7 sites) after the second collection.
+
+Which studios take which theme: a design, photo or video studio that shows its work takes this theme; a studio whose site reads as a company (web production firms, house designers, family photo studios with many branches) is closer to `jp-business-corporate`; architects lean photo-led (14 of 51) as much as standard corporate (12).
 
 | What | Measured (p25 / median / p75) | Theme value |
 |---|---|---|
-| Display | 100 / 135 / 173 px; display ÷ body 6.7 / 8.7 / 10.9 | English section words at `clamp(64px, 11vw, 160px)` / 600 |
-| h1 / h2 | h1 12 / 16 / 18 px (the Japanese label), h2 16 / 32 / 50 px | Japanese label 14px beside the word; h3 22px |
-| Hero | full-bleed on 65%; claim left 57% | full-bleed photograph, English claim lower left |
-| Ground | white on 78%; warm off-whites (#f7f6f0, #f1ece8) | `#ffffff`, band `#f6f4ef` |
-| Faces | Noto Sans JP 39–43%; Montserrat, DM Sans, Manrope for Latin; serif 22% | Noto Sans JP; Manrope for the English words |
+| Display | 100 / 120 / 160 px; display ÷ body 6.7 / 8.0 / 10.8 | English section words at `clamp(64px, 11vw, 160px)` / 600 |
+| h1 / h2 | h1 14 / 16 / 18 px (the Japanese label), h2 16 / 30 / 44 px | Japanese label 14px beside the word; h3 22px |
+| Hero | full-bleed on 58%; claim left 56% | full-bleed photograph, English claim lower left |
+| Ground | white on 81%; warm off-whites (#f7f6f0, #f1ece8) | `#ffffff`, band `#f6f4ef` |
+| Faces | Noto Sans JP 33% of body faces, Yu Gothic, YakuHanJP; Montserrat, DM Sans, Manrope for Latin; serif 17% | Noto Sans JP; Manrope for the English words |
 | Body | 14 / 16 / 16 px | 16px, line height 1.9 |
-| Text | #000, #333; headings white on photos 26% | ink `#1b1b1b`, soft `#6b6b6b` |
-| Buttons | white 48% (outlined), black, teal, one orange (#f04b00); radius 0 / 3 / 30; 43 / 58 / 88px tall | outlined black, 0 radius, 60px; one vermilion accent `#e8471c` |
+| Text | #000, #333; headings white on photos 19% | ink `#1b1b1b`, soft `#6b6b6b` |
+| Buttons | white 42% (outlined), black 19%, grey, teal; radius 0 / 4 / 78; 48 / 64 / 71px tall | outlined black, 0 radius, 60px; one vermilion accent `#e8471c` |
 | Boxes | radius 0 | 0 |
-| Hairlines | 4 / 11 / 28 | few: news rows, service rows |
-| Photographs | 11 / 16 / 35 | 12–16 (the work) |
-| Content width | 1150 / 1200 / 1230 | 1200px |
-| Page length | 9.4 / 13.3 / 14.7 screens | as long as the work shown; the sample, with six works, is 8 screens |
+| Hairlines | 5 / 18 / 37 | few: news rows, service rows |
+| Photographs | 15 / 25 / 50 | 12–16 (the work) |
+| Content width | 1150 / 1200 / 1280 | 1200px |
+| Page length | 11.8 / 13.4 / 17.1 screens | as long as the work shown; the sample, with six works, is 8 screens |
 | Menu | 制作実績, 採用情報, お問い合わせ, 会社情報, works, service, company, recruit, blog | English words with small Japanese, or the reverse |
 
 ## Tokens

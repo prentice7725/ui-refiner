@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "measured": "2026-11-20",
- "sites": 2284,
+ "measured": "2026-11-21",
+ "sites": 2365,
  "droppedForLanguage": 160,
  "minSites": 8,
  "source": "Human-made Korean and Japanese sites by trade (scripts/genre-sites.tsv), first desktop screen at 1440x900. robots.txt respected; measurements only. A trade/country appears only with 8 or more sites; hero and colour each need 8 of their own. lineHeight is measured on Japanese pages only.",
@@ -122,40 +122,42 @@
    }
   },
   "architecture/JP": {
-   "sites": 25,
+   "sites": 51,
    "hero": {
-    "sites": 25,
+    "sites": 51,
     "share": {
-     "full-bleed": 0.56,
-     "below-fold": 0.32,
-     "left+stacked": 0.04,
-     "center+stacked": 0.04,
-     "left+media": 0.04
+     "full-bleed": 0.549,
+     "below-fold": 0.294,
+     "left+stacked": 0.059,
+     "center+stacked": 0.059,
+     "left+media": 0.02,
+     "wide+stacked": 0.019
     }
    },
    "colour": {
-    "sites": 24,
+    "sites": 50,
     "ground": {
-     "image": 0.833,
-     "light": 0.125,
-     "blue": 0.042
+     "image": 0.82,
+     "light": 0.12,
+     "blue": 0.04,
+     "dark": 0.02
     },
     "accent": {
-     "blue": 0.375,
-     "indigo": 0.25,
-     "ink": 0.125,
-     "green": 0.083,
-     "red": 0.042,
-     "brown": 0.042,
-     "orange": 0.042,
-     "amber": 0.042
+     "blue": 0.32,
+     "ink": 0.26,
+     "indigo": 0.18,
+     "green": 0.08,
+     "red": 0.06,
+     "amber": 0.06,
+     "brown": 0.02,
+     "orange": 0.02
     }
    },
    "type": {
     "body": 14,
-    "displayRatio": 3.21,
+    "displayRatio": 2.57,
     "lineHeight": 1.8,
-    "serifDisplay": 0.2
+    "serifDisplay": 0.275
    }
   },
   "architecture/KR": {
@@ -656,46 +658,49 @@
    }
   },
   "design/JP": {
-   "sites": 58,
+   "sites": 83,
    "hero": {
-    "sites": 56,
+    "sites": 81,
     "share": {
-     "full-bleed": 0.411,
-     "below-fold": 0.303,
-     "left+stacked": 0.143,
-     "left+media": 0.053,
-     "left+panel": 0.036,
-     "center+stacked": 0.035,
-     "right+stacked": 0.018
+     "full-bleed": 0.371,
+     "below-fold": 0.333,
+     "left+stacked": 0.148,
+     "left+media": 0.049,
+     "left+panel": 0.025,
+     "center+media": 0.025,
+     "center+stacked": 0.024,
+     "right+stacked": 0.012,
+     "wide+stacked": 0.012
     }
    },
    "colour": {
-    "sites": 52,
+    "sites": 77,
     "ground": {
-     "image": 0.615,
-     "light": 0.288,
-     "dark": 0.058,
-     "orange": 0.019,
-     "brown": 0.019
+     "image": 0.584,
+     "light": 0.325,
+     "dark": 0.052,
+     "orange": 0.013,
+     "brown": 0.013,
+     "blue": 0.013
     },
     "accent": {
-     "ink": 0.269,
-     "blue": 0.231,
-     "indigo": 0.173,
-     "amber": 0.096,
-     "red": 0.077,
-     "green": 0.038,
-     "brown": 0.038,
-     "teal": 0.038,
-     "orange": 0.019,
-     "pink": 0.019
+     "ink": 0.299,
+     "blue": 0.234,
+     "indigo": 0.169,
+     "amber": 0.091,
+     "teal": 0.052,
+     "red": 0.052,
+     "green": 0.039,
+     "brown": 0.026,
+     "pink": 0.026,
+     "orange": 0.013
     }
    },
    "type": {
     "body": 15,
-    "displayRatio": 2.8,
+    "displayRatio": 2.81,
     "lineHeight": 1.8,
-    "serifDisplay": 0.155
+    "serifDisplay": 0.133
    }
   },
   "design/KR": {
@@ -2109,41 +2114,42 @@
    }
   },
   "photo/JP": {
-   "sites": 20,
+   "sites": 50,
    "hero": {
-    "sites": 19,
+    "sites": 49,
     "share": {
-     "full-bleed": 0.421,
-     "below-fold": 0.263,
-     "center+stacked": 0.105,
-     "left+stacked": 0.053,
-     "wide+stacked": 0.053,
-     "center+media": 0.053,
-     "left+panel": 0.053
+     "full-bleed": 0.572,
+     "below-fold": 0.204,
+     "left+stacked": 0.062,
+     "center+stacked": 0.061,
+     "left+panel": 0.041,
+     "wide+stacked": 0.021,
+     "center+media": 0.021,
+     "right+media": 0.02
     }
    },
    "colour": {
-    "sites": 18,
+    "sites": 48,
     "ground": {
-     "image": 0.778,
-     "light": 0.222
+     "image": 0.833,
+     "light": 0.167
     },
     "accent": {
-     "ink": 0.333,
-     "teal": 0.111,
-     "blue": 0.111,
-     "indigo": 0.111,
-     "red": 0.111,
-     "pink": 0.111,
-     "orange": 0.056,
-     "amber": 0.056
+     "blue": 0.229,
+     "ink": 0.208,
+     "indigo": 0.146,
+     "red": 0.104,
+     "teal": 0.083,
+     "amber": 0.083,
+     "pink": 0.083,
+     "orange": 0.063
     }
    },
    "type": {
-    "body": 14,
+    "body": 15,
     "displayRatio": 3.57,
     "lineHeight": 1.8,
-    "serifDisplay": 0.15
+    "serifDisplay": 0.22
    }
   },
   "photo/KR": {
