@@ -145,3 +145,18 @@ test('gate hook: plugin and installer register it, and the script blocks with ex
  const off=spawnSync(process.execPath,[new URL('../scripts/refine-gate-hook.mjs',import.meta.url).pathname.replace(/^\/(?=[A-Za-z]:)/,'')],{input:JSON.stringify({cwd}),encoding:'utf8',env:{...process.env,UI_REFINER_GATE:'off'}});
  assert.equal(off.status,0);
 });
+
+test('keep: fields hidden by the site builder are not inventoried; visible ones and closed details still are (real browser)', async () => {
+ const {recordKeep}=await import('../src/keep.mjs');
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'keep-hidden-'));
+ const page=path.join(dir,'page.html');
+ await fs.writeFile(page,`<!doctype html><html><body>
+  <form action="/search"><input name="q" type="text"></form>
+  <details><summary>Shipping</summary><select name="country"><option>JP</option></select></details>
+  <input type="checkbox" id="drawer" style="position:absolute;opacity:0;width:1px;height:1px">
+  <div class="builder-colour-picker" style="display:none"><input name="clr-hex-value" type="text"><input name="clr-alpha" type="range"></div>
+  <input name="later" type="text" hidden>
+ </body></html>`);
+ const {inventory}=await recordKeep(page,{out:path.join(dir,'keep.json')});
+ assert.deepEqual(inventory.fields.map(f=>f.name).sort(),['country','drawer','q']);
+});

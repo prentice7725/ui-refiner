@@ -62,3 +62,12 @@ For Japanese design offices, web and video production companies, photo studios a
 ## Applying to a client's content
 
 See `../README.md`. Architects show a project list with place and year instead of category tags; video production companies replace the hero photograph with a muted, paused-on-request video poster. Studios without client photographs keep the Works grid to the projects they can show; never fill it with generated mock-ups presented as real clients.
+
+Learned on a real architecture firm (交建設計, stations and commercial buildings, 21 November 2026):
+
+- **No slogan on the client's page**: the claim is the firm's English name (KOKEN ARCHITECTS); no English claim is invented.
+- **A night photograph** in the hero: the header moves onto white above the hero and the claim turns white over a dark gradient.
+- **Work names come from the work pages** when the home page shows images only; the category tag is the client's own URL category (Station, Commercial …).
+- **Seven large works** (the client's slider) two a row with the first across the width, then the rest three a row.
+- **Dates and numbers keep the client's format** (2026年11月19日, not 2026.11.19); `keep check` reads a changed format as a lost fact.
+- **An 800px recruit photograph** sits beside the text at its own size instead of filling the recruit band.

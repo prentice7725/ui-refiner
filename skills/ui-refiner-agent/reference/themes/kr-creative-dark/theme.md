@@ -51,4 +51,10 @@ For Korean design studios, branding agencies, production companies and game stud
 
 ## Applying to a client's content
 
-See `../README.md`. Without the client's work images this theme does not hold; ask for the portfolio first. Game studios lead with the game's key art and a trailer link.
+See `../README.md`. Without photographs that can be shown large this theme does not hold; ask for the portfolio first, and use the client's studio or project photographs when the home page has no work images. Game studios lead with the game's key art and a trailer link.
+
+Learned on a real product-photo studio (몽상뷰 M.S.V STUDIO, 21 November 2026): the home page had no work images, only 2000px photographs of the studio, mostly bright. Large, the bright space photographs held on the black ground; what the theme needs is photographs that can be shown large, not dark ones.
+
+- **No work images on the home page**: the twelve portfolio categories become a large two-column index (Inter, 24–40px) linking to the client's category pages.
+- **The studio space** goes in a quiet three-column mosaic; the photographer's portrait and career list sit in the white About section with the process steps.
+- **A long client list** (160 names in seven groups) stays complete: grouped columns, the lead group larger, the figures (200+, 95%) at the display size.

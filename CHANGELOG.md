@@ -9,6 +9,10 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
   - `kr-creative-dark` now rests on 34 sites (was 12) and is no longer marked weak. `kr-shop-portal` rests on 60 (was 26), `jp-shop-portal` on 57 (was 30) and `kr-place-photo` on 43 (was 29). Their archetypes held; their measured tables were updated.
   - **`jp-creative-colour` is replaced by `jp-creative-bigtype`.** Among the 153 Japanese creative sites, bold colour fell to about 10%. The dense portal leads at 19%, but it is mostly game companies' portals. Big type is the most common archetype among design, photo and architecture studios: single English section words at 100–173px, a white ground and long pages. The new theme reuses the old theme's generated images, and its sample passes `stress`.
 - Theme application lessons from four real sites and a `.banners` related-body grid for the public portal themes (PR #53).
+- Lessons from five more real sites (a hanok stay, a ginseng shop, a bamboo-craft shop, a product-photo studio, an architecture firm) in the shop, place and creative themes and the themes README. The new rules: check whether the original page is already designed before applying a theme; keep the client's data and formats as they are, errors included, and list the errors in the report; link outside booking and shop systems instead of imitating them.
+
+### Fixed
+- `keep record` and `keep check` count only fields a visitor can reach. Site builders leave hidden widgets in the page, such as a colour picker with eight inputs, and those were recorded as the page's fields, so every redesign reported them lost. A field inside a closed `<details>` still counts when the `<details>` itself is shown.
 
 ## 0.10.0 — 2026-11-20
 
