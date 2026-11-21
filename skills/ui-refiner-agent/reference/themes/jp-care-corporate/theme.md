@@ -59,6 +59,14 @@ For Japanese care services, clinics, salons, fitness and beauty: day services, h
 - Banners stacked with campaign prices, cartoon mascots, gradient headings, more than one bright colour outside the tags.
 - A dark page or dark sections; the footer is a pale tint, not dark.
 
+## Effects (optional)
+
+Measured on 40 Japanese standard corporate sites of all families (`data/motion/summary.json`, November 2026): hero slides 55%, hero video 17%, scroll reveals 23%, a blurred fixed header 0%, a marquee 3%, a loading intro 5% (parallax 5%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `reveal`.
+- **Only when the client asks**: `hero-video`, `intro`.
+- **Not for this theme**: `header-blur`, `marquee`.
+
 ## Applying to a client's content
 
 See `../README.md`. Clinics replace 「一日の流れ」 with 診療時間 (a weekly table with ○ and ／) and 院長あいさつ.

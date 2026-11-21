@@ -56,6 +56,14 @@ For Japanese banks and credit unions, municipalities, chambers of commerce, asso
 
 - Mascot illustrations stacked over campaign banners, gradients, more than three colours on the page chrome.
 
+## Effects (optional)
+
+Measured on 39 Japanese dense portal sites of all families (`data/motion/summary.json`, November 2026): hero slides 69%, hero video 3%, scroll reveals 23%, a blurred fixed header 0%, a marquee 8%, a loading intro 0% (parallax 3%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `reveal`.
+- **Only when the client asks**: `marquee`.
+- **Not for this theme**: `hero-video`, `header-blur`, `intro`.
+
 ## Applying to a client's content
 
 See `../README.md`. Municipalities use くらし・手続き · 子育て・教育 · 健康・福祉 · 防災 as purposes; universities 受験生 · 在学生 · 一般・地域の方 as audience tabs.

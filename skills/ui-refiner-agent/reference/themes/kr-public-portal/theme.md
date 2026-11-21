@@ -56,6 +56,14 @@ For Korean public bodies, foundations, associations, museums, universities and n
 - Floating pop-up windows over the hero, stacks of banner images with prices, gradient banners, emoji.
 - More than one slider on the first screen.
 
+## Effects (optional)
+
+Measured on 40 Korean dense portal sites of all families (`data/motion/summary.json`, November 2026): hero slides 57%, hero video 5%, scroll reveals 13%, a blurred fixed header 0%, a marquee 3%, a loading intro 0% (parallax 5%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`.
+- **Only when the client asks**: `hero-video`, `reveal`.
+- **Not for this theme**: `header-blur`, `marquee`, `intro`.
+
 ## Applying to a client's content
 
 See `../README.md`. News outlets replace the programme grid with a lead story and section lists; universities add 입학 · 학사 quick links. Weak basis: none; this is the most common Korean public archetype.
