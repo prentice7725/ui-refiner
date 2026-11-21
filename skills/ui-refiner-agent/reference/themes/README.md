@@ -61,7 +61,7 @@ Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interacti
 
 ## Applying a theme to a client's content
 
-These held on seven real pages (an inn, a dental clinic, a logistics company; then a Korean veterinary association, a Japanese chamber of commerce, a Tokyo renovation firm and a Saitama day service), all of which kept every link, form, field and figure (`keep check`) and passed `stress`:
+These held on twelve real pages (an inn, a dental clinic, a logistics company; a Korean veterinary association, a Japanese chamber of commerce, a Tokyo renovation firm, a Saitama day service; then a hanok stay, a ginseng shop, a bamboo-craft shop, a product-photo studio and an architecture firm), all of which kept every link, form, field and figure (`keep check`) and passed `stress`:
 
 - **Keep the client's menu** (its words, order and anchors), not the theme's menu words. Drop a menu item only when the client has no content for it.
 - **Map content onto the skeleton in order; drop skeleton sections the client has no content for.** Never invent a section's content (no made-up facilities, news, figures or quotes). A figures band shows only the client's own numbers.
@@ -71,6 +71,9 @@ These held on seven real pages (an inn, a dental clinic, a logistics company; th
 - **Images**: the client's photographs first. Generated images (the theme's `assets/generated/`, made with Grok Imagine or Codex image generation) are mood images: mark them `data-generated`, say so in the footer, never put one where it reads as a claim (a machine shop next to a warehouse name, a generated portrait next to a named doctor), and leave a section on type rather than mislead. The theme samples' fictional clients are the exception: their people are as made up as their names, which the footer says. List the photographs the client needs in the report.
 - **Small photographs** (old sites often have 295–770px images): never upscale one past about 1.5×. Show it at its own size (a split hero, a card photo) and leave the large frames to photographs that can fill them.
 - **Banners with baked-in type** (card news, posters, campaign banners) are shown whole (`object-fit: contain`), never cropped as photographs.
+- **Check first whether the original is already designed.** A theme gives a dated page order, but on a page that already has a strong look it can trade that look for a portal's tidiness (長岡銘竹, 21 November 2026). A small body size or an old platform does not by itself mark a dated page; look at it.
+- **Keep the client's data and formats as they are**, errors included: dates, prices and phone numbers in the client's own format; a sale price above the list price or a phone link to a different number is shown as the client has it and listed in the report for the client to check.
+- **Outside systems stay outside**: a booking calendar, a cart or a shop platform is linked, never imitated with a form that only looks like it works.
 - Put client overrides in a separate stylesheet after `theme.css`; scope any rule that changes grid columns to a desktop media query, or it overrides the theme's phone layout.
 - Run `keep check` and `stress` on the result; fix every broken stress row in CSS. Serve the page over `http://127.0.0.1` for `keep check`: on a `file://` page, root-relative form actions (`/login`) resolve to the drive and read as lost.
 
