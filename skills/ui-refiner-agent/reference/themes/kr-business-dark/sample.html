@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"></noscript>
 <link rel="stylesheet" href="theme.css">
+<!-- Optional effects: name them on <html data-fx="...">, or try ?fx=hero-video or ?fx=hero-slides in the address bar. -->
+<link rel="stylesheet" href="../effects/effects.css">
+<script src="../effects/effects.js" defer></script>
 </head>
 <body>
 
@@ -38,13 +41,16 @@
 <main>
 
 <!-- 2. Hero -->
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" data-fx-hero>
   <div class="hero__media">
     <img src="assets/generated/hero-line.jpg"
          width="1920" height="1080" sizes="100vw"
          alt="정밀가공 공장의 긴 통로 양옆으로 CNC 가공기가 줄지어 서 있고, 작업자 한 명이 멀리 걸어가는 모습"
          style="object-fit: cover;"
          fetchpriority="high" data-generated>
+    <video class="fx-hero-video" data-src="assets/generated/hero-loop.mp4" poster="assets/generated/hero-line.jpg"
+      muted playsinline loop preload="none" aria-hidden="true"></video>
+    <img class="fx-slide-photo" data-fx-slide src="assets/generated/tech-measure.jpg" loading="lazy" width="1650" height="1100" alt="" data-generated>
   </div>
   <div class="wrap hero__body" id="about">
     <span class="label">Precision &amp; Automation</span>
@@ -55,6 +61,7 @@
       <a class="btn btn--outline" href="#inquiry">문의하기</a>
     </div>
   </div>
+  <button class="fx-pause" type="button" data-pause="일시정지" data-play="재생">일시정지</button>
 </section>
 
 <!-- 3. Business areas -->
@@ -314,7 +321,7 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 Hanbit Precision Co., Ltd. 테마 샘플용 가상 회사입니다.</p>
-      <p class="credit">이 페이지의 이미지는 테마 샘플용으로 AI가 생성한 이미지(Grok Imagine)이며, 실제 회사의 사진이 아닙니다.</p>
+      <p class="credit">이 페이지의 이미지는 테마 샘플용으로 AI가 생성한 이미지(Grok Imagine)이며, 실제 회사의 사진이 아닙니다. 첫 화면 영상은 그 이미지로 만든 것입니다.</p>
     </div>
   </div>
 </footer>

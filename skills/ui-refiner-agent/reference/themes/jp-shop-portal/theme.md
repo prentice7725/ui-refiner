@@ -53,6 +53,14 @@ For Japanese makers and stores that sell online: sake and food brands, cosmetics
 
 - Black-Friday-style banners with bursts and gradients, more than one carousel, countdowns, mascot pop-ups.
 
+## Effects (optional)
+
+Measured on 39 Japanese dense portal sites of all families (`data/motion/summary.json`, November 2026): hero slides 69%, hero video 3%, scroll reveals 23%, a blurred fixed header 0%, a marquee 8%, a loading intro 0% (parallax 3%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `reveal`.
+- **Only when the client asks**: `marquee`.
+- **Not for this theme**: `hero-video`, `header-blur`, `intro`.
+
 ## Applying to a client's content
 
 See `../README.md`. Cosmetics stores add a 肌悩みから探す tile row; general stores with many categories move the category tabs into a left sidebar.

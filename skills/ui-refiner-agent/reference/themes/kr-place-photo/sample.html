@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&amp;family=Noto+Sans+KR:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&amp;family=Noto+Sans+KR:wght@400;500&amp;display=swap"></noscript>
 <link rel="stylesheet" href="theme.css">
+<!-- Optional effects: name them on <html data-fx="...">, or try ?fx=hero-slides,reveal in the address bar. -->
+<link rel="stylesheet" href="../effects/effects.css">
+<script src="../effects/effects.js" defer></script>
 </head>
 <body>
 
@@ -31,11 +34,13 @@
 
 <main>
 
-  <section class="hero" aria-label="바다정원 펜션">
+  <section class="hero" aria-label="바다정원 펜션" data-fx-hero>
     <img class="photo" data-generated
       src="assets/generated/hero-sea.jpg" style="object-position: 30% 60%;"
       sizes="100vw" width="1920" height="1080" fetchpriority="high"
       alt="해 질 무렵, 소나무 사이 언덕 위의 하얀 펜션과 섬이 떠 있는 남해 바다">
+    <img class="photo" data-generated data-fx-slide src="assets/generated/room-ocean.jpg" loading="lazy" width="1600" height="1100" alt="">
+    <img class="photo" data-generated data-fx-slide src="assets/generated/pool.jpg" loading="lazy" width="1600" height="1100" alt="">
     <div class="hero__claim">
       <div class="wrap">
         <span class="hero__label">OCEAN VIEW STAY</span>
@@ -43,6 +48,7 @@
         <p class="hero__line">섬이 점점이 떠 있는 바다를 내려다보는 언덕 위 펜션입니다.</p>
       </div>
     </div>
+    <button class="fx-pause" type="button" data-pause="일시정지" data-play="재생">일시정지</button>
   </section>
 
   <section class="booking" id="booking" aria-label="객실 예약">
@@ -84,7 +90,7 @@
 
   <section class="section concept" id="concept">
     <div class="wrap">
-      <div class="concept__photo frame">
+      <div class="concept__photo frame" data-reveal>
         <img class="photo" data-generated loading="lazy"
           src="assets/generated/hero-sea.jpg" style="object-position: 82% 50%; transform: scale(1.35); transform-origin: 82% 50%;"
           sizes="(max-width: 767px) calc(100vw - 32px), 720px" width="1920" height="1080"
@@ -109,7 +115,7 @@
         <h2>스페셜 오퍼</h2>
         <p>지금 예약할 수 있는 할인과 패키지입니다. 예약 시 요청란에 오퍼 이름을 적어 주세요.</p>
       </div>
-      <div class="offers__grid">
+      <div class="offers__grid" data-reveal>
         <article class="offer">
           <div class="offer__photo frame">
             <img class="photo" data-generated loading="lazy"
@@ -163,7 +169,7 @@
         <h2>객실 안내</h2>
         <p>오션 디럭스 네 개와 패밀리 로프트 두 개, 모두 바다 쪽으로 창이 납니다.</p>
       </div>
-      <div class="rooms__grid">
+      <div class="rooms__grid" data-reveal>
         <article class="room">
           <div class="room__photo frame">
             <img class="photo" data-generated loading="lazy"

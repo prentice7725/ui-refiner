@@ -80,3 +80,5 @@ These held on twelve real pages (an inn, a dental clinic, a logistics company; a
 ## Files per theme
 
 `theme.md` (measured basis, tokens, skeleton, components, rules), `theme.css`, `sample.html` (a fictional client), `shot-desktop.jpg`, `shot-mobile.jpg`, `assets/generated/` (generated images with `prompts.json`). `generated.check.mjs` checks that every listed generated image is present.
+
+`effects/` holds optional effects shared by the themes (hero video or slides, scroll reveals, a blurred header). A theme lists the ones that suit it under "Effects" in its `theme.md`; so far only `jp-place-photo` does. See `effects/README.md`.

@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Noto+Sans+JP:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Noto+Sans+JP:wght@400;600;700&amp;display=swap"></noscript>
 <link rel="stylesheet" href="theme.css">
+<!-- Optional effects: name them on <html data-fx="...">, or try ?fx=hero-slides,reveal in the address bar. -->
+<link rel="stylesheet" href="../effects/effects.css">
+<script src="../effects/effects.js" defer></script>
 </head>
 <body>
 
@@ -42,14 +45,17 @@
 <main>
 
 <!-- 2. Hero -->
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" data-fx-hero>
   <div class="hero__media">
     <img src="assets/generated/hero-plant.jpg"
          width="1920" height="1080" sizes="100vw"
          alt="夜明けの空の下に建つ、低く横に長い工場の建屋"
          style="object-position: 60% 50%;"
          fetchpriority="high" data-generated>
+    <img class="fx-slide-photo" data-fx-slide src="assets/generated/lab.jpg" loading="lazy" width="1600" height="1100" alt="" data-generated>
+    <img class="fx-slide-photo" data-fx-slide src="assets/generated/recruit.jpg" loading="lazy" width="1600" height="1100" alt="" data-generated>
   </div>
+  <button class="fx-pause" type="button" data-pause="一時停止" data-play="再生">一時停止</button>
   <div class="wrap hero__body">
     <span class="label" lang="en">Filtration</span>
     <h1 class="display hero__title" id="hero-title"><span>見えないところで、</span><span>水と空気を守りつづける。</span></h1>
@@ -127,7 +133,7 @@
       </div>
       <p class="lede">水・空気・工程液。ろ過するものに合わせて、三つの事業でフィルターをつくっています。</p>
     </div>
-    <div class="biz-tiles">
+    <div class="biz-tiles" data-reveal>
       <a class="biz-tile" href="#">
         <img src="assets/generated/tile-water.jpg"
              width="1200" height="1800" sizes="(max-width: 767px) 100vw, 380px"
@@ -179,7 +185,7 @@
       <p class="message__sign">代表取締役<strong>東 和也</strong></p>
       <a class="more" href="#">代表メッセージを詳しく見る</a>
     </div>
-    <figure class="message__media">
+    <figure class="message__media" data-reveal>
       <img src="assets/generated/message.jpg"
            width="1650" height="1100" sizes="(max-width: 767px) 100vw, 500px"
            alt="明るい工場の廊下に立つ、紺色のスーツの男性"

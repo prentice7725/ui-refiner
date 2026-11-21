@@ -294,3 +294,8 @@ a:hover { text-decoration-thickness: 1px; text-underline-offset: 4px; }
   .footer-nav ul { grid-template-columns: repeat(2, auto); gap: 8px 24px; }
   .button { width: 100%; }
 }
+
+/* ---------- optional effects (../effects/) ---------- */
+.fx-marquee { padding-block: clamp(24px, 4vw, 48px); border-block: 1px solid var(--line, #e5e2dc); }
+.fx-marquee__track { --fx-marquee-time: 45s; font-family: var(--latin); font-weight: 600; font-size: clamp(48px, 8vw, 120px); line-height: 1; letter-spacing: -0.02em; }
+.fx-marquee__track > span::after { content: "·"; padding-left: 0.8em; color: var(--accent); }
