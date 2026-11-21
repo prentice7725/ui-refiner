@@ -1,0 +1,27 @@
+{
+ "note": "Measured human-made sites per country and purpose family in each impression archetype (k-means, k=8, November 2026). spec-<country>-<family>-<archetype index>.json holds the measured values of one cell.",
+ "sites": 2245,
+ "archetypes": ["short & small", "dark cinematic", "white quiet", "dense portal", "photo-led", "big type", "standard corporate", "bold colour"],
+ "families": {
+  "place": ["inn", "tourism", "restaurant", "wedding", "event", "wellness"],
+  "care": ["dental", "skin", "kmed", "hospital", "care", "beauty", "salon", "fitness", "kids"],
+  "public": ["gov", "org", "university", "academy", "culture", "media", "finance"],
+  "shop": ["ec", "fashion", "cosmetics", "food", "farm"],
+  "business": ["corp", "maker", "logistics", "software", "builder", "realestate", "car", "tax", "local", "hiring", "interior"],
+  "creative": ["design", "game", "architecture", "photo", "illustration"]
+ },
+ "groups": {
+  "KR place": [17, 18, 14, 18, 43, 11, 15, 7],
+  "KR care": [41, 18, 38, 22, 1, 18, 29, 8],
+  "KR public": [24, 7, 28, 61, 13, 5, 42, 22],
+  "KR shop": [21, 6, 33, 60, 27, 11, 31, 10],
+  "KR business": [31, 35, 50, 22, 26, 15, 41, 15],
+  "KR creative": [21, 34, 17, 15, 17, 8, 7, 11],
+  "JP place": [11, 14, 9, 9, 65, 15, 18, 15],
+  "JP care": [52, 5, 29, 32, 15, 43, 68, 15],
+  "JP public": [16, 3, 17, 64, 23, 11, 31, 14],
+  "JP shop": [10, 4, 18, 57, 23, 19, 27, 7],
+  "JP business": [27, 12, 38, 42, 29, 23, 52, 26],
+  "JP creative": [9, 16, 21, 29, 20, 23, 19, 16]
+ }
+}

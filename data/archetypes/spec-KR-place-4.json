@@ -1,0 +1,259 @@
+{
+ "country": "KR",
+ "family": "place",
+ "cluster": 4,
+ "sites": 43,
+ "trades": [
+  "inn 49%",
+  "tourism 23%",
+  "restaurant 16%",
+  "wedding 7%",
+  "event 5%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans kr 9%",
+   "poppins 2%",
+   "s-coredream 2%",
+   "spoqa han sans 2%",
+   "notosanskr 2%",
+   "quiche-sans 2%",
+   "nanum barun gothic 2%",
+   "kopub dotum 2%"
+  ],
+  "body": [
+   "noto sans kr 19%",
+   "roboto 7%",
+   "notosanskr 5%",
+   "pretendard 5%",
+   "nanum gothic 5%",
+   "nanumbarungothic 2%",
+   "돋움 2%",
+   "poppins 2%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 13,
+   "p50": 15,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 14,
+   "p50": 16,
+   "p75": 35
+  },
+  "h2": {
+   "p25": 16,
+   "p50": 24,
+   "p75": 48
+  },
+  "h3": {
+   "p25": 20,
+   "p50": 28,
+   "p75": 35
+  },
+  "display": {
+   "p25": 30,
+   "p50": 40,
+   "p75": 54
+  },
+  "ratio": {
+   "p25": 2,
+   "p50": 2.57,
+   "p75": 3.63
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.14,
+ "colours": {
+  "ground": [
+   "#ffffff 95%",
+   "#222222 2%",
+   "#c0c0c0 2%"
+  ],
+  "text": [
+   "#ffffff 26%",
+   "#000000 21%",
+   "#333333 12%",
+   "#666666 5%",
+   "#363636 2%",
+   "#8f7d75 2%",
+   "#888888 2%",
+   "#6d6d6d 2%"
+  ],
+  "heading": [
+   "#000000 21%",
+   "#ffffff 16%",
+   "#333333 9%",
+   "#9f7b51 2%",
+   "#f0f0f0 2%",
+   "#242424 2%",
+   "#6b6b6b 2%",
+   "#141212 2%"
+  ],
+  "buttonHue": [
+   "white 21%",
+   "black 16%",
+   "blue 9%",
+   "orange 7%",
+   "grey 5%",
+   "red 5%",
+   "teal 2%",
+   "amber 2%"
+  ],
+  "buttonBg": [
+   "#ffffff 14%",
+   "#000000 7%",
+   "#e8e6e6 5%",
+   "#a58862 2%",
+   "#262626 2%",
+   "#252c41 2%",
+   "#0b6e4f 2%",
+   "#d3bba8 2%",
+   "#1b1b1b 2%",
+   "#555555 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 8
+  },
+  "buttonHeight": {
+   "p25": 32,
+   "p50": 40,
+   "p75": 56
+  },
+  "hairlines": {
+   "p25": 4,
+   "p50": 12,
+   "p75": 19
+  },
+  "content": {
+   "p25": 1200,
+   "p50": 1280,
+   "p75": 1320
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.4,
+  "heroAlign": [
+   "left 26%",
+   "center 19%",
+   "wide 5%",
+   "right 2%",
+   "below-fold 2%"
+  ],
+  "heroSide": [
+   "none 77%",
+   "panel 14%",
+   "media 9%"
+  ],
+  "claimOnFirst": 0.49,
+  "actionOnFirst": 0.63,
+  "screens": {
+   "p25": 2.6,
+   "p50": 4.79,
+   "p75": 6.11
+  },
+  "photos": {
+   "p25": 3,
+   "p50": 7,
+   "p75": 14
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 6,
+   "p75": 10
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.08,
+   "p75": 0.44
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.19,
+   "p50": 0.31,
+   "p75": 0.45
+  },
+  "dark": {
+   "p25": 0.05,
+   "p50": 0.1,
+   "p75": 0.17
+  },
+  "photo": {
+   "p25": 0.12,
+   "p50": 0.17,
+   "p75": 0.22
+  },
+  "colourful": {
+   "p25": 0.1,
+   "p50": 0.16,
+   "p75": 0.23
+  }
+ },
+ "navLabels": [
+  "로그인 3%",
+  "reservation 3%",
+  "고객센터 2%",
+  "about us 2%",
+  "faq 1%",
+  "about 1%",
+  "rooms 1%",
+  "guide 1%",
+  "객실안내 1%",
+  "site search 1%",
+  "icon 1%",
+  "home 1%",
+  "location 1%",
+  "프로모션 1%",
+  "테마여행 1%",
+  "이용안내 1%",
+  "예약조회 1%",
+  "dining 1%",
+  "membership 1%",
+  "블로그 1%",
+  "커뮤니티 1%",
+  "장바구니 1%",
+  "여행지 1%",
+  "여행정보 1%"
+ ],
+ "nearest": [
+  "KR-inn/haenaruhotel.co.kr",
+  "KR-inn/hotel-view.co.kr",
+  "KR-inn/eldoradoresort.co.kr",
+  "KR-inn/aromapensiontel.com",
+  "KR-inn/hiddencliff.kr",
+  "KR-event/pentaport.co.kr",
+  "KR-tourism/itour.incheon.go.kr",
+  "KR-inn/seamarqhotel.com",
+  "KR-inn/sonohotelsresorts.com",
+  "KR-tourism/yeosu.go.kr_tour",
+  "KR-tourism/tour.daegu.go.kr",
+  "KR-restaurant/momos.co.kr",
+  "KR-tourism/alpacaworld.co.kr",
+  "KR-inn/suites.co.kr",
+  "KR-inn/lavalsehotel.co.kr",
+  "KR-restaurant/fonduecroissant.co.kr"
+ ]
+}

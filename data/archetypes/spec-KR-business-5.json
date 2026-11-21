@@ -1,0 +1,254 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 5,
+ "sites": 15,
+ "trades": [
+  "software 33%",
+  "builder 20%",
+  "corp 13%",
+  "local 7%",
+  "logistics 7%",
+  "maker 7%",
+  "realestate 7%",
+  "tax 7%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans kr 20%",
+   "adobe-garamond-pro 7%",
+   "open sans 7%",
+   "otokisans3n 7%",
+   "scdream 7%",
+   "nanum barun gothic 7%",
+   "pretendard semibold 7%",
+   "pretendard variable 7%"
+  ],
+  "body": [
+   "noto sans kr 20%",
+   "exo 2 7%",
+   "pretendard 7%",
+   "open sans 7%",
+   "otokisans3n 7%",
+   "scdream 7%",
+   "avenir-lt-w01_35-light1475496 7%",
+   "nanum barun gothic 7%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 13,
+   "p50": 16,
+   "p75": 18
+  },
+  "h1": {
+   "p25": 16,
+   "p50": 26,
+   "p75": 40
+  },
+  "h2": {
+   "p25": 20,
+   "p50": 32,
+   "p75": 46
+  },
+  "h3": {
+   "p25": 21,
+   "p50": 40,
+   "p75": 48
+  },
+  "display": {
+   "p25": 80,
+   "p50": 106,
+   "p75": 180
+  },
+  "ratio": {
+   "p25": 4.67,
+   "p50": 7.57,
+   "p75": 11.78
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 400,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0.2,
+ "colours": {
+  "ground": [
+   "#ffffff 87%",
+   "#f4f4f4 7%",
+   "#f8f7f4 7%"
+  ],
+  "text": [
+   "#000000 27%",
+   "#333333 20%",
+   "#ffffff 13%",
+   "#171717 7%",
+   "#162b6f 7%",
+   "#a1a1aa 7%",
+   "#6a7080 7%",
+   "#212121 7%"
+  ],
+  "heading": [
+   "#ffffff 27%",
+   "#333333 20%",
+   "#a72b2a 7%",
+   "#000000 7%",
+   "#162b6f 7%",
+   "#171717 7%",
+   "#0b0c10 7%",
+   "#212121 7%"
+  ],
+  "buttonHue": [
+   "blue 27%",
+   "amber 13%",
+   "black 13%",
+   "white 13%",
+   "orange 7%"
+  ],
+  "buttonBg": [
+   "#ffffff 13%",
+   "#0175c2 7%",
+   "#fffc29 7%",
+   "#0076c7 7%",
+   "#272727 7%",
+   "#000000 7%",
+   "#0047ff 7%",
+   "#ffd54f 7%",
+   "#358eff 7%",
+   "#fd5108 7%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 20,
+   "p75": 62
+  },
+  "buttonHeight": {
+   "p25": 40,
+   "p50": 48,
+   "p75": 50
+  },
+  "hairlines": {
+   "p25": 4,
+   "p50": 9,
+   "p75": 39
+  },
+  "content": {
+   "p25": 1200,
+   "p50": 1280,
+   "p75": 1400
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.67,
+  "heroAlign": [
+   "left 53%",
+   "center 27%"
+  ],
+  "heroSide": [
+   "none 80%",
+   "media 20%"
+  ],
+  "claimOnFirst": 0.73,
+  "actionOnFirst": 0.8,
+  "screens": {
+   "p25": 6.16,
+   "p50": 8.15,
+   "p75": 11.27
+  },
+  "photos": {
+   "p25": 8,
+   "p50": 21,
+   "p75": 23
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 6,
+   "p75": 10
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.18,
+   "p75": 0.33
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.26,
+   "p50": 0.44,
+   "p75": 0.53
+  },
+  "dark": {
+   "p25": 0.03,
+   "p50": 0.11,
+   "p75": 0.19
+  },
+  "photo": {
+   "p25": 0.01,
+   "p50": 0.03,
+   "p75": 0.06
+  },
+  "colourful": {
+   "p25": 0.07,
+   "p50": 0.13,
+   "p75": 0.18
+  }
+ },
+ "navLabels": [
+  "제품소개 2%",
+  "투자정보 2%",
+  "인재채용 2%",
+  "회사소개 2%",
+  "home 2%",
+  "문의하기 2%",
+  "support 2%",
+  "lx 하우시스 1%",
+  "기업소개 1%",
+  "esg 1%",
+  "hansol 한솔제지 1%",
+  "지속가능경영 1%",
+  "소식 1%",
+  "고객문의 1%",
+  "가상전시관 1%",
+  "eng 1%",
+  "오뚜기 1%",
+  "esg경영 1%",
+  "제품 이야기 1%",
+  "브랜드경험 1%",
+  "홍보센터 1%",
+  "고객 서비스 1%",
+  "사이트맵으로 이동 1%",
+  "kr 1%"
+ ],
+ "nearest": [
+  "KR-software/prever.co.kr",
+  "KR-corp/otoki.com",
+  "KR-realestate/smilersa.com",
+  "KR-builder/daelimbath.com",
+  "KR-builder/lxhausys.co.kr",
+  "KR-software/greetinghr.com",
+  "KR-builder/jakomo.co.kr",
+  "KR-maker/kovea.com",
+  "KR-logistics/e-tgl.com",
+  "KR-tax/samil.com",
+  "KR-corp/hansolpaper.co.kr",
+  "KR-software/gaonsoft.com",
+  "KR-local/cesco.co.kr",
+  "KR-software/serp.co.kr",
+  "KR-software/hunesion.com"
+ ]
+}

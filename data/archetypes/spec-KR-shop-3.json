@@ -1,0 +1,256 @@
+{
+ "country": "KR",
+ "family": "shop",
+ "cluster": 3,
+ "sites": 60,
+ "trades": [
+  "ec 48%",
+  "fashion 15%",
+  "farm 15%",
+  "cosmetics 12%",
+  "food 10%"
+ ],
+ "fonts": {
+  "display": [
+   "pretendard 10%",
+   "noto sans kr 7%",
+   "nanum gothic 3%",
+   "나눔바른고딕 2%",
+   "globalwebfont 2%",
+   "assistant 2%",
+   "roboto 2%",
+   "heebo 2%"
+  ],
+  "body": [
+   "pretendard 30%",
+   "noto sans kr 12%",
+   "pretendard variable 8%",
+   "nanum gothic 5%",
+   "jost 3%",
+   "roboto 3%",
+   "malgun gothic 3%",
+   "red hat display 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 0,
+   "p50": 13,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 16,
+   "p50": 26,
+   "p75": 30
+  },
+  "h2": {
+   "p25": 18,
+   "p50": 28,
+   "p75": 32
+  },
+  "h3": {
+   "p25": 16,
+   "p50": 24,
+   "p75": 30
+  },
+  "display": {
+   "p25": 29.47,
+   "p50": 32,
+   "p75": 40
+  },
+  "ratio": {
+   "p25": 2,
+   "p50": 2.4,
+   "p75": 2.86
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 500,
+   "p50": 600,
+   "p75": 700
+  }
+ },
+ "serifShare": 0,
+ "colours": {
+  "ground": [
+   "#ffffff 98%",
+   "#faf5eb 2%"
+  ],
+  "text": [
+   "#757575 22%",
+   "#000000 20%",
+   "#333333 8%",
+   "#212529 7%",
+   "#ffffff 5%",
+   "#111111 3%",
+   "#222222 3%",
+   "#353535 3%"
+  ],
+  "heading": [
+   "#000000 15%",
+   "#ffffff 8%",
+   "#212529 5%",
+   "#333333 5%",
+   "#111111 3%",
+   "#222222 3%",
+   "#151515 2%",
+   "#242424 2%"
+  ],
+  "buttonHue": [
+   "white 32%",
+   "black 10%",
+   "grey 10%",
+   "red 8%",
+   "green 5%",
+   "blue 3%",
+   "orange 3%",
+   "amber 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 18%",
+   "#000000 7%",
+   "#333333 5%",
+   "#eeeeee 5%",
+   "#f5f5f5 3%",
+   "#fae100 3%",
+   "#e00011 2%",
+   "#1443ff 2%",
+   "#26292a 2%",
+   "#f8f9fa 2%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 20
+  },
+  "buttonHeight": {
+   "p25": 40,
+   "p50": 50,
+   "p75": 56
+  },
+  "hairlines": {
+   "p25": 12,
+   "p50": 29,
+   "p75": 78
+  },
+  "content": {
+   "p25": 1200,
+   "p50": 1260,
+   "p75": 1320
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0,
+  "heroAlign": [
+   "left 18%",
+   "center 8%",
+   "below-fold 3%",
+   "wide 2%"
+  ],
+  "heroSide": [
+   "none 82%",
+   "media 18%"
+  ],
+  "claimOnFirst": 0.43,
+  "actionOnFirst": 0.62,
+  "screens": {
+   "p25": 5.94,
+   "p50": 6.91,
+   "p75": 10.4
+  },
+  "photos": {
+   "p25": 9,
+   "p50": 18,
+   "p75": 36
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 9,
+   "p75": 12
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.01,
+   "p75": 0.08
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.46,
+   "p50": 0.52,
+   "p75": 0.61
+  },
+  "dark": {
+   "p25": 0.03,
+   "p50": 0.05,
+   "p75": 0.1
+  },
+  "photo": {
+   "p25": 0.06,
+   "p50": 0.09,
+   "p75": 0.1
+  },
+  "colourful": {
+   "p25": 0.06,
+   "p50": 0.09,
+   "p75": 0.14
+  }
+ },
+ "navLabels": [
+  "로그인 5%",
+  "회원가입 5%",
+  "고객센터 4%",
+  "이벤트 3%",
+  "주문조회 2%",
+  "장바구니 2%",
+  "마이페이지 2%",
+  "브랜드 2%",
+  "신상품 2%",
+  "최근본상품 2%",
+  "베스트 1%",
+  "0 1%",
+  "장바구니 0 1%",
+  "사과 1%",
+  "랭킹 1%",
+  "기획전 1%",
+  "커뮤니티 1%",
+  "쿠폰 1%",
+  "찜 1%",
+  "신상 1%",
+  "쌀 1%",
+  "감홍 1%",
+  "브랜드관 1%",
+  "선물세트 1%"
+ ],
+ "nearest": [
+  "KR-ec/brandi.co.kr",
+  "KR-cosmetics/cosrx.co.kr",
+  "KR-fashion/bonfeel.kr",
+  "KR-ec/nongsarang.co.kr",
+  "KR-cosmetics/isoi.co.kr",
+  "KR-ec/ansungyugi.com",
+  "KR-fashion/eyenshop.com",
+  "KR-food/roastery-wimi.kr",
+  "KR-ec/insam-mall.com",
+  "KR-food/napoleonbakery.co.kr",
+  "KR-food/ohsmall.co.kr",
+  "KR-cosmetics/clubclio.co.kr",
+  "KR-ec/hanjistory.com",
+  "KR-ec/craftshop.co.kr",
+  "KR-food/2mancoffee.co.kr",
+  "KR-ec/jisungmall.com"
+ ]
+}

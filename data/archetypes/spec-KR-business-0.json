@@ -1,0 +1,258 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 0,
+ "sites": 31,
+ "trades": [
+  "hiring 29%",
+  "builder 16%",
+  "logistics 16%",
+  "maker 13%",
+  "local 10%",
+  "realestate 6%",
+  "software 6%",
+  "tax 3%"
+ ],
+ "fonts": {
+  "display": [
+   "open sans 3%",
+   "noto sans korean 3%",
+   "ns_eb 3%",
+   "pretendard 3%",
+   "-apple-system 3%",
+   "noto sans cjk kr 3%",
+   "nanumgothic 3%",
+   "nanum barun gothic 3%"
+  ],
+  "body": [
+   "pretendard 13%",
+   "noto sans korean 10%",
+   "noto sans kr 6%",
+   "times new roman 6%",
+   "brandon-grot-w01-light 3%",
+   "kopubworld dotum 3%",
+   "kopubdotummedium 3%",
+   "arial 3%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 14,
+   "p50": 14,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 16,
+   "p50": 20,
+   "p75": 38
+  },
+  "h2": {
+   "p25": 17,
+   "p50": 24,
+   "p75": 38
+  },
+  "h3": {
+   "p25": 16,
+   "p50": 19,
+   "p75": 24
+  },
+  "display": {
+   "p25": 18,
+   "p50": 24,
+   "p75": 46
+  },
+  "ratio": {
+   "p25": 1.5,
+   "p50": 2,
+   "p75": 2.63
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 500,
+   "p50": 700,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 600,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0,
+ "colours": {
+  "ground": [
+   "#ffffff 94%",
+   "#f2f2f2 3%",
+   "#fafafa 3%"
+  ],
+  "text": [
+   "#000000 23%",
+   "#ffffff 13%",
+   "#666666 10%",
+   "#111111 6%",
+   "#333333 6%",
+   "#636363 3%",
+   "#222222 3%",
+   "#393838 3%"
+  ],
+  "heading": [
+   "#666666 6%",
+   "#111111 6%",
+   "#ffffff 6%",
+   "#555555 3%",
+   "#292929 3%",
+   "#2c3e50 3%",
+   "#00387f 3%",
+   "#121212 3%"
+  ],
+  "buttonHue": [
+   "white 26%",
+   "grey 10%",
+   "blue 6%",
+   "green 6%",
+   "black 3%",
+   "orange 3%"
+  ],
+  "buttonBg": [
+   "#ffffff 26%",
+   "#333333 6%",
+   "#000000 3%",
+   "#4d72ec 3%",
+   "#2ed573 3%",
+   "#f46b18 3%",
+   "#0067ac 3%",
+   "#323c46 3%",
+   "#2e9a40 3%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 2,
+   "p75": 10
+  },
+  "buttonHeight": {
+   "p25": 32,
+   "p50": 40,
+   "p75": 58
+  },
+  "hairlines": {
+   "p25": 1,
+   "p50": 6,
+   "p75": 16
+  },
+  "content": {
+   "p25": 1140,
+   "p50": 1200,
+   "p75": 1280
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.06,
+  "heroAlign": [
+   "left 16%",
+   "center 10%",
+   "wide 6%",
+   "right 3%"
+  ],
+  "heroSide": [
+   "none 81%",
+   "media 13%",
+   "panel 6%"
+  ],
+  "claimOnFirst": 0.39,
+  "actionOnFirst": 0.65,
+  "screens": {
+   "p25": 1,
+   "p50": 1.31,
+   "p75": 3.17
+  },
+  "photos": {
+   "p25": 0,
+   "p50": 2,
+   "p75": 6
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 2
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.36,
+   "p50": 0.45,
+   "p75": 0.66
+  },
+  "dark": {
+   "p25": 0.02,
+   "p50": 0.03,
+   "p75": 0.1
+  },
+  "photo": {
+   "p25": 0.01,
+   "p50": 0.03,
+   "p75": 0.05
+  },
+  "colourful": {
+   "p25": 0.03,
+   "p50": 0.06,
+   "p75": 0.12
+  }
+ },
+ "navLabels": [
+  "커뮤니티 5%",
+  "about 2%",
+  "manifesto 2%",
+  "research 2%",
+  "projects 2%",
+  "contact 2%",
+  "s t u d i o _ s u s p i c i o n 2%",
+  "​수 상 건 축 2%",
+  "일반채용 2%",
+  "인사교류센터 2%",
+  "대체인력뱅크 2%",
+  "공모직위 2%",
+  "개방형직위 2%",
+  "알림마당 2%",
+  "회원가입 2%",
+  "로그인 2%",
+  "채용정보 2%",
+  "교육/훈련 정보 2%",
+  "내게 맞는 지원정책 2%",
+  "대구우수기업 2%",
+  "센터안내 2%",
+  "병원소개 2%",
+  "진료과목 2%",
+  "특화진료 2%"
+ ],
+ "nearest": [
+  "KR-realestate/dabangapp.com",
+  "KR-hiring/job.daegu.go.kr",
+  "KR-local/cleantopia.com",
+  "KR-software/it-win.co.kr",
+  "KR-maker/uicd.co.kr",
+  "KR-hiring/jobdaejeon.or.kr",
+  "KR-hiring/career.logistics.kurly.com",
+  "KR-tax/bznav.com",
+  "KR-logistics/hpnt.co.kr",
+  "KR-hiring/hifive.go.kr",
+  "KR-builder/jipie.site",
+  "KR-maker/aluko.co.kr",
+  "KR-hiring/gojobs.go.kr",
+  "KR-maker/pipeway.co.kr",
+  "KR-maker/rinnai.co.kr",
+  "KR-logistics/ekoral.chunil.co.kr"
+ ]
+}

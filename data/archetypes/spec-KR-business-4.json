@@ -1,0 +1,258 @@
+{
+ "country": "KR",
+ "family": "business",
+ "cluster": 4,
+ "sites": 26,
+ "trades": [
+  "logistics 46%",
+  "maker 19%",
+  "realestate 12%",
+  "local 8%",
+  "tax 8%",
+  "builder 4%",
+  "software 4%"
+ ],
+ "fonts": {
+  "display": [
+   "noto sans kr 23%",
+   "futura-pt 4%",
+   "montserratr 4%",
+   "sebanggothic 4%",
+   "poppins 4%",
+   "nanum barun gothic 4%",
+   "noto sans korean 4%",
+   "pretendard 4%"
+  ],
+  "body": [
+   "noto sans kr 31%",
+   "malgun gothic 8%",
+   "pretendard 8%",
+   "sebanggothic 8%",
+   "proxima-nova 4%",
+   "middleschool_student 4%",
+   "imweb sans 4%",
+   "ntk 4%"
+  ]
+ },
+ "sizes": {
+  "body": {
+   "p25": 13,
+   "p50": 15,
+   "p75": 16
+  },
+  "h1": {
+   "p25": 15,
+   "p50": 28,
+   "p75": 36
+  },
+  "h2": {
+   "p25": 24,
+   "p50": 30,
+   "p75": 48
+  },
+  "h3": {
+   "p25": 22,
+   "p50": 24,
+   "p75": 37
+  },
+  "display": {
+   "p25": 42,
+   "p50": 48.21,
+   "p75": 70
+  },
+  "ratio": {
+   "p25": 2.77,
+   "p50": 3.33,
+   "p75": 3.71
+  }
+ },
+ "weights": {
+  "h1": {
+   "p25": 400,
+   "p50": 600,
+   "p75": 700
+  },
+  "h2": {
+   "p25": 400,
+   "p50": 700,
+   "p75": 700
+  }
+ },
+ "serifShare": 0,
+ "colours": {
+  "ground": [
+   "#ffffff 92%",
+   "#fcfcfc 4%",
+   "#f5f5f5 4%"
+  ],
+  "text": [
+   "#000000 23%",
+   "#333333 12%",
+   "#666666 8%",
+   "#ffffff 8%",
+   "#575757 4%",
+   "#242424 4%",
+   "#363636 4%",
+   "#6c6c6c 4%"
+  ],
+  "heading": [
+   "#ffffff 31%",
+   "#666666 8%",
+   "#222222 4%",
+   "#363636 4%",
+   "#2a2a2a 4%",
+   "#171b28 4%",
+   "#465064 4%",
+   "#151515 4%"
+  ],
+  "buttonHue": [
+   "white 19%",
+   "red 15%",
+   "grey 4%",
+   "green 4%",
+   "blue 4%",
+   "black 4%",
+   "teal 4%"
+  ],
+  "buttonBg": [
+   "#ffffff 8%",
+   "#363636 4%",
+   "#068238 4%",
+   "#da291c 4%",
+   "#ce1313 4%",
+   "#f0f0f0 4%",
+   "#cc0000 4%",
+   "#465064 4%",
+   "#f2f2f2 4%",
+   "#ed1c24 4%"
+  ]
+ },
+ "shape": {
+  "radius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 0
+  },
+  "buttonRadius": {
+   "p25": 0,
+   "p50": 0,
+   "p75": 5
+  },
+  "buttonHeight": {
+   "p25": 36,
+   "p50": 42,
+   "p75": 60
+  },
+  "hairlines": {
+   "p25": 4,
+   "p50": 6,
+   "p75": 13
+  },
+  "content": {
+   "p25": 1160,
+   "p50": 1200,
+   "p75": 1240
+  }
+ },
+ "layout": {
+  "heroFullBleed": 0.38,
+  "heroAlign": [
+   "left 27%",
+   "center 12%",
+   "wide 4%"
+  ],
+  "heroSide": [
+   "none 81%",
+   "media 12%",
+   "panel 8%"
+  ],
+  "claimOnFirst": 0.69,
+  "actionOnFirst": 0.5,
+  "screens": {
+   "p25": 2.91,
+   "p50": 3.63,
+   "p75": 4.96
+  },
+  "photos": {
+   "p25": 3,
+   "p50": 6,
+   "p75": 8
+  },
+  "nav": {
+   "p25": 0,
+   "p50": 5,
+   "p75": 7
+  },
+  "centred": {
+   "p25": 0,
+   "p50": 0.25,
+   "p75": 0.39
+  }
+ },
+ "pixels": {
+  "white": {
+   "p25": 0.23,
+   "p50": 0.35,
+   "p75": 0.49
+  },
+  "dark": {
+   "p25": 0.05,
+   "p50": 0.11,
+   "p75": 0.14
+  },
+  "photo": {
+   "p25": 0.11,
+   "p50": 0.14,
+   "p75": 0.19
+  },
+  "colourful": {
+   "p25": 0.13,
+   "p50": 0.17,
+   "p75": 0.2
+  }
+ },
+ "navLabels": [
+  "회사소개 7%",
+  "투자정보 4%",
+  "고객지원 4%",
+  "home 3%",
+  "채용정보 3%",
+  "esg 3%",
+  "인재채용 3%",
+  "projects 2%",
+  "contact 2%",
+  "korean 2%",
+  "고객서비스 2%",
+  "e-service 2%",
+  "login 2%",
+  "고객센터 2%",
+  "사업소개 2%",
+  "제품소개 2%",
+  "홍보센터 2%",
+  "about 1%",
+  "works 1%",
+  "in progress 1%",
+  "병원소개 1%",
+  "특화클리닉 1%",
+  "강아지진료실 1%",
+  "고양이 진료실 1%"
+ ],
+ "nearest": [
+  "KR-logistics/eunsan.co.kr",
+  "KR-realestate/prugio.com",
+  "KR-logistics/djship.co.kr",
+  "KR-logistics/taiyoungship.co.kr",
+  "KR-logistics/pancon.co.kr",
+  "KR-logistics/yongmalogis.co.kr",
+  "KR-logistics/lotteglogis.com",
+  "KR-logistics/sebang.com",
+  "KR-logistics/heung-a.com",
+  "KR-tax/taxgn.co.kr",
+  "KR-maker/grinding.co.kr",
+  "KR-tax/edamtax.com",
+  "KR-maker/bintechkorea.com",
+  "KR-builder/d-atelier.net",
+  "KR-logistics/sebangexpress.com",
+  "KR-local/xn--jj0bz32a1nd.com"
+ ]
+}
