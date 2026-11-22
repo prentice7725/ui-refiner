@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README_KO.md) · [日本語](README_JA.md)
 
-UI Refiner includes 13 web design themes based on measurements from 2,326 Korean and Japanese sites. Use them to build a page with Codex or Claude Code, or review an existing page with the CLI.
+UI Refiner includes 14 web design themes based on measurements from 2,326 Korean and Japanese sites. Use them to build a page with Codex or Claude Code, or review an existing page with the CLI.
 
 ## How the themes are built
 
@@ -21,7 +21,7 @@ UI Refiner includes 13 web design themes based on measurements from 2,326 Korean
 | business | makers, logistics, software, builders, tax, hiring | 235 | 249 |
 | creative | design, games, architecture, photo, illustration | 130 | 234 |
 
-**3. Thirteen themes.** Each theme is a finished design for a type that is common in one family in one country, with its sizes, colours and layout taken from those sites. The count next to a theme is the number of sites of that type in that family and country: `kr-business-white` rests on 50 of the 235 Korean business sites.
+**3. Fourteen themes.** Each theme is a finished design for a type that is common in one family in one country, with its sizes, colours and layout taken from those sites. The count next to a theme is the number of sites of that type in that family and country: `kr-business-white` rests on 50 of the 235 Korean business sites.
 
 <!-- theme-grid:start (node scripts/build-theme-grid.mjs) -->
 <table>
@@ -44,6 +44,11 @@ UI Refiner includes 13 web design themes based on measurements from 2,326 Korean
 </tr>
 <tr>
 <td align="center" valign="top" width="33%">
+<a href="skills/ui-refiner-agent/reference/themes/kr-business-corporate/theme.md"><img src="docs/assets/themes/kr-business-corporate.jpg" alt="First screen of the kr-business-corporate sample page" width="100%"></a><br>
+<b><a href="skills/ui-refiner-agent/reference/themes/kr-business-corporate/theme.md">kr-business-corporate</a></b><br>
+<sub>Korea · business · standard corporate ·&nbsp;41&nbsp;sites</sub>
+</td>
+<td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md"><img src="docs/assets/themes/kr-place-photo.jpg" alt="First screen of the kr-place-photo sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-place-photo/theme.md">kr-place-photo</a></b><br>
 <sub>Korea · place · photo-led ·&nbsp;43&nbsp;sites</sub>
@@ -53,13 +58,13 @@ UI Refiner includes 13 web design themes based on measurements from 2,326 Korean
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-public-portal/theme.md">kr-public-portal</a></b><br>
 <sub>Korea · public · dense portal ·&nbsp;61&nbsp;sites</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md"><img src="docs/assets/themes/kr-shop-portal.jpg" alt="First screen of the kr-shop-portal sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-shop-portal/theme.md">kr-shop-portal</a></b><br>
 <sub>Korea · shop · dense portal ·&nbsp;60&nbsp;sites</sub>
 </td>
-</tr>
-<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md"><img src="docs/assets/themes/kr-creative-dark.jpg" alt="First screen of the kr-creative-dark sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/kr-creative-dark/theme.md">kr-creative-dark</a></b><br>
@@ -70,13 +75,13 @@ UI Refiner includes 13 web design themes based on measurements from 2,326 Korean
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-place-photo/theme.md">jp-place-photo</a></b><br>
 <sub>Japan · place · photo-led ·&nbsp;65&nbsp;sites</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md"><img src="docs/assets/themes/jp-care-corporate.jpg" alt="First screen of the jp-care-corporate sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-care-corporate/theme.md">jp-care-corporate</a></b><br>
 <sub>Japan · care · standard corporate ·&nbsp;68&nbsp;sites</sub>
 </td>
-</tr>
-<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md"><img src="docs/assets/themes/jp-business-corporate.jpg" alt="First screen of the jp-business-corporate sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-business-corporate/theme.md">jp-business-corporate</a></b><br>
@@ -87,19 +92,18 @@ UI Refiner includes 13 web design themes based on measurements from 2,326 Korean
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-public-portal/theme.md">jp-public-portal</a></b><br>
 <sub>Japan · public · dense portal ·&nbsp;64&nbsp;sites</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md"><img src="docs/assets/themes/jp-shop-portal.jpg" alt="First screen of the jp-shop-portal sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-shop-portal/theme.md">jp-shop-portal</a></b><br>
 <sub>Japan · shop · dense portal ·&nbsp;57&nbsp;sites</sub>
 </td>
-</tr>
-<tr>
 <td align="center" valign="top" width="33%">
 <a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md"><img src="docs/assets/themes/jp-creative-bigtype.jpg" alt="First screen of the jp-creative-bigtype sample page" width="100%"></a><br>
 <b><a href="skills/ui-refiner-agent/reference/themes/jp-creative-bigtype/theme.md">jp-creative-bigtype</a></b><br>
 <sub>Japan · creative · big type ·&nbsp;36&nbsp;sites</sub>
 </td>
-<td width="33%"></td>
 <td width="33%"></td>
 </tr>
 </table>
@@ -154,8 +158,8 @@ Run these commands in Claude Code, then run `npm ci` and `npx playwright install
 ## What you can do
 
 - **Review a page.** `scan` explains each design signal and suggests a change. The 0–100 score measures the strength of detected patterns. Quality issues such as text contrast are reported separately. Reports support English, Korean and Japanese. Set the language with `--lang en`, `ko` or `ja`.
-- **Refine an existing design.** The agent keeps the structure for smaller changes and offers three directions to choose from for a full redesign. Use `keep check` to check that links, forms and figures survived the edits, and `stress` to test the layout with longer labels and larger numbers.
-- **Build a new page.** The 13 themes draw on measurements from 2,326 Korean and Japanese sites. Open the gallery in a browser from your local checkout to filter samples by country, purpose and availability of client photos.
+- **Refine an existing design.** The agent keeps the structure for smaller changes and, for a full redesign, starts a Korean or Japanese trade page from the matching theme; other pages, or anyone who asks for options, get three directions to choose from. Use `keep check` to check that links, forms and figures survived the edits, and `stress` to test the layout with longer labels and larger numbers.
+- **Build a new page.** The 14 themes draw on measurements from 2,326 Korean and Japanese sites. Open the gallery in a browser from your local checkout to filter samples by country, purpose and availability of client photos.
 
 In a three-page pilot, the three-direction workflow had the best mean rank for individual pages, but the resulting pages were judged similar as a set. One model evaluated the designs. [Pilot results](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 

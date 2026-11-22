@@ -1,0 +1,30 @@
+{
+  "hero-center": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Photographic documentary image, unretouched realistic exposure and depth of field, natural colour, Korean setting. Wide early-morning photograph of a large modern logistics centre in Gyeonggi province, seen from the yard at ground level: a long pale grey building with a row of loading docks, several white box trucks backed against the docks, clear pale blue sky, sun low on the left, long shadows on concrete. Leave the left third calm with sky and building wall for white headline text. No logos, lettering, readable signs, number plates, or readable screens. People, if visible, are Korean in plain work clothes without badges and do not look at camera. 16:9 landscape composition."
+  },
+  "tile-storage": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Portrait documentary photograph, unretouched realistic exposure and depth of field, natural colour, Korean setting: a high-bay warehouse aisle with tall steel pallet racks full of plain brown cartons, one Korean worker in plain work clothes without badges driving a reach-truck forklift down the aisle, worker not looking at camera, cool even light. No logos, lettering, readable signs, number plates, or readable screens."
+  },
+  "tile-cold": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Portrait documentary photograph, unretouched realistic exposure and depth of field, natural colour, Korean setting: inside a cold-storage room, a Korean worker in an insulated navy jacket and knit cap checks pallets wrapped in film, faint frost on the racks, cool white light. Worker in plain clothes without badges and not looking at camera. No logos, lettering, readable signs, number plates, or readable screens."
+  },
+  "tile-linehaul": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Portrait documentary photograph, unretouched realistic exposure and depth of field, natural colour, Korean setting: a large Korean cargo truck with a plain white box body on an expressway at dawn, shot from a low angle on the shoulder, soft light, motion only in the road. No logos, lettering, readable signs, number plates, or readable screens."
+  },
+  "tile-parcel": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Portrait documentary photograph, unretouched realistic exposure and depth of field, natural colour, Korean setting: a parcel sorting line, plain brown boxes on a long conveyor, two Korean workers in plain grey work vests sorting them, warm overhead lights. Workers without badges and not looking at camera. No logos, lettering, readable signs, number plates, or readable screens."
+  },
+  "dispatch": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Documentary, unretouched realistic photograph with natural colour and depth of field, Korean setting: a dispatch control room, three Korean staff in plain work clothes without badges at desks with monitors showing only blurred maps and pale fields, a large wall display that is a soft unreadable blur, daylight from one side. Staff do not look at camera. No logos, lettering, readable signs, number plates, or readable screens. Landscape composition."
+  },
+  "dock": {
+    "model": "codex image_gen (codex exec, gpt-6-luna)",
+    "prompt": "Documentary, unretouched realistic photograph with natural colour and depth of field, Korean setting: a Korean worker in a plain grey work jacket guiding a pallet jack of wrapped cartons out of a truck at a loading dock, daylight from the open dock door. Worker without badge and not looking at camera. No logos, lettering, readable signs, number plates, or readable screens. Landscape composition."
+  }
+}

@@ -14,6 +14,8 @@
 #   refine-k, refine-l  업종 벤치마크 1단계: 익숙한 안(A) 시안만 만든다 (variants/trade-mock.md). k는 --trade 없이, l은 trades.tsv의 업종으로.
 #                       두 조건은 페이지·반복마다 같은 --seed를 쓴다. 시안은 refine-directions/a.html에 남는다
 #   refine-m, refine-n  업종 벤치마크 2단계: 끝까지 고치되 A를 고른다 (variants/trade-full.md). m은 --trade 없이, n은 업종으로
+#   refine-o, refine-p  테마 벤치마크: o는 지금의 /ui-refine (세 방향, 테마 금지: variants/theme-off.md), p는 세 방향 대신 테마에서 시작 (variants/theme-on.md).
+#                       페이지는 trades.tsv. 최종 페이지를 trade-fit.mjs(FIT_FILE=index.html)와 trade-judge.sh로 잰다
 # 폴더 이름을 a–d로 둔 것은 에이전트가 경로에서 조건을 읽지 못하게 하려는 것이다.
 # 환경변수: PAGES (기본 4개), REPS (기본 "1 2 3"), ARMS (기본 "a b c d")
 pw(){ pwd -W 2>/dev/null || pwd; }  # Git Bash(윈도우)에서는 C:/… 경로
@@ -49,6 +51,8 @@ one(){ # 한 조건의 한 반복: 페이지를 순서대로 돌려 앞 페이�
          case "$arm" in k|m) TRADE="";; esac
          case "$arm" in k|l) v=trade-mock.md; gate=off; tools="";; *) v=trade-full.md; gate=on; tools="Agent Task";; esac
          REP=$rep KIND="$KIND" TRADE="$TRADE" SEED="$SEED" UI_REFINER_GATE=$gate EXTRA_PROMPT="$HERE/variants/$v" EXTRA_TOOLS="$tools" "$HERE/arm.sh" refine-$arm "$id";;
+      o) REP=$rep EXTRA_PROMPT="$HERE/variants/theme-off.md" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-o "$id";;
+      p) REP=$rep EXTRA_PROMPT="$HERE/variants/theme-on.md" EXTRA_TOOLS="Agent Task" "$HERE/arm.sh" refine-p "$id";;
     esac
   done
 }
@@ -58,4 +62,7 @@ names=""; mocks=""; for arm in $ARMS; do for rep in $REPS; do case "$arm" in k|l
 [ -n "$names" ] && STAGES=1 node "$HERE/shots.cjs" $names && node "$HERE/forms.cjs" $names
 # shellcheck disable=SC2086
 [ -n "$mocks" ] && SHOT_FILE=refine-directions/a.html node "$HERE/shots.cjs" $mocks && node "$HERE/trade-fit.mjs" $mocks
+themes=""; for arm in $ARMS; do for rep in $REPS; do case "$arm" in o|p) themes="$themes refine-$arm.$rep";; esac; done; done
+# shellcheck disable=SC2086
+[ -n "$themes" ] && FIT_FILE=index.html node "$HERE/trade-fit.mjs" $themes
 echo "다음: ARMS=$(echo $ARMS | sed 's/[a-z]/refine-&/g; s/ /,/g') REPS=$(echo $REPS | tr ' ' ,) ORDERS=2 STAGES=1 node $HERE/judge-prep.cjs && $HERE/judge.sh && node $HERE/agg.cjs"
