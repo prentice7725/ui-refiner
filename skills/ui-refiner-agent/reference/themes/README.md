@@ -60,7 +60,7 @@ Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interacti
    - **Photo-led and dark cinematic need the client's own photographs or video**, or credited stand-ins of the same kind of place, for the hero and most sections. Applied to a logistics page with no photographs, the dark theme read as a dark text template (20 November 2026). Without strong photographs, pick the white-quiet or standard-corporate theme of the same family instead.
    - `kr-business-corporate` opens on a full-width photograph too: a logistics firm or maker without photographs of its own gets credited stand-ins of its kind of work; with neither, `kr-business-white`.
    - White quiet works with few photographs (the measured sites use 3–4).
-3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest.
+3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest. `ui-refiner theme starter <theme> --brand "#rrggbb" --face "<typeface>"` writes them onto the theme's tokens in `brand.css` and lists where the colour breaks contrast on the theme's sample.
 
 ## Applying a theme to a client's content
 
@@ -77,7 +77,8 @@ These held on twelve real pages (an inn, a dental clinic, a logistics company; a
 - **Check first whether the original is already designed.** A theme gives a dated page order, but on a page that already has a strong look it can trade that look for a portal's tidiness (長岡銘竹, 21 November 2026). A small body size or an old platform does not by itself mark a dated page; look at it.
 - **Keep the client's data and formats as they are**, errors included: dates, prices and phone numbers in the client's own format; a sale price above the list price or a phone link to a different number is shown as the client has it and listed in the report for the client to check.
 - **Outside systems stay outside**: a booking calendar, a cart or a shop platform is linked, never imitated with a form that only looks like it works.
-- Put client overrides in a separate stylesheet after `theme.css`; scope any rule that changes grid columns to a desktop media query, or it overrides the theme's phone layout.
+- Start with `ui-refiner theme starter <theme> --out <folder>`: `theme.css`, `theme.md`, `brand.css` (the client's colour and typeface on the tokens) and `STARTER.md` (the photographs the theme needs, with place and ratio). It copies no sample page and no generated image.
+- Put client overrides in a separate stylesheet after `theme.css` and `brand.css`; scope any rule that changes grid columns to a desktop media query, or it overrides the theme's phone layout.
 - Run `keep check` and `stress` on the result; fix every broken stress row in CSS. Serve the page over `http://127.0.0.1` for `keep check`: on a `file://` page, root-relative form actions (`/login`) resolve to the drive and read as lost.
 
 ## Files per theme

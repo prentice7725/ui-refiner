@@ -159,7 +159,7 @@ Run these commands in Claude Code, then run `npm ci` and `npx playwright install
 
 - **Review a page.** `scan` explains each design signal and suggests a change. The 0–100 score measures the strength of detected patterns. Quality issues such as text contrast are reported separately. Reports support English, Korean and Japanese. Set the language with `--lang en`, `ko` or `ja`.
 - **Refine an existing design.** The agent keeps the structure for smaller changes and, for a full redesign, starts a Korean or Japanese trade page from the matching theme; other pages, or anyone who asks for options, get three directions to choose from. Use `keep check` to check that links, forms and figures survived the edits, and `stress` to test the layout with longer labels and larger numbers.
-- **Build a new page.** The 14 themes draw on measurements from 2,326 Korean and Japanese sites. Open the gallery in a browser from your local checkout to filter samples by country, purpose and availability of client photos.
+- **Build a new page.** The 14 themes draw on measurements from 2,326 Korean and Japanese sites. Open the gallery in a browser from your local checkout to filter samples by country, purpose and availability of client photos. `ui-refiner theme starter <theme> --brand "#rrggbb"` copies a theme into your project with your brand colour on it, and lists the photographs it needs and any contrast the colour breaks.
 
 In a three-page pilot, the three-direction workflow had the best mean rank for individual pages, but the resulting pages were judged similar as a set. One model evaluated the designs. [Pilot results](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 

@@ -19,6 +19,7 @@ ui-refiner keep record index.html                                  # 리파인 �
 ui-refiner directions deal refine-directions --kind service --tone calm --lang ko   # 익숙한 안·맞춤 안·과감한 안에 히어로 구조와 각 안의 재료를 배정
 ui-refiner directions refine-directions     # 디자인 시안(.html) 여러 개를 나란히 비교해 하나 고르기
 ui-refiner directions record refine-directions --pick B                # 고른 방향 기록(다른 고객에겐 다른 방향)
+ui-refiner theme starter kr-care-white --brand "#0b5cab"           # 실측 테마 파일과 brand.css 내보내기, 필요한 사진과 브랜드 색 때문에 깨진 대비 목록
 ui-refiner photos "dentist chair" --out assets/stand-in             # 실제 사진이 오기 전까지 쓸 출처 표기 임시 사진(Wikimedia Commons)
 ui-refiner directions verify refine-directions index.html             # 완성본이 고른 구조를 지켰는지 확인
 ui-refiner system extract index.html                                  # 고른 디자인을 사이트의 다른 페이지용 규칙으로 저장

@@ -21,6 +21,7 @@ import {loadMaterials} from './materials.mjs';
 import {fetchStandIns} from './photos.mjs';
 import {recordKeep,checkKeep} from './keep.mjs';
 import {stressPage} from './stress.mjs';
+import {listThemes,themeStarter} from './theme-starter.mjs';
 import {ALLOW_FILE,readAllow,addAllow,removeAllow} from './allow.mjs';
 import {extractSystem,checkSystem} from './site-system.mjs';
 
@@ -65,7 +66,13 @@ const help=`UI Refiner 0.12.0 — de-AI web design review and UI quality gate
   ui-refiner stress <page|url> [--out ui-refiner-stress] [--lang ko|ja|en] [--json]
       swaps realistic worst-case values (long labels and headings, long emails and URLs, big numbers) into the
       rendered text at 320, 390 and 1440px and lists what broke with the usual fix (exit 1 when something broke)
-  ui-refiner init [--preset ${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
+  ui-refiner theme list [--json]
+  ui-refiner theme starter <theme> [--out ui-refiner-theme] [--brand "#rrggbb"] [--face "Typeface name"] [--json]
+      copies a measured Korean or Japanese theme (theme.css, theme.md) and writes brand.css, which puts the client's
+      colour and typeface on the theme's tokens, and STARTER.md, which lists the photographs the theme needs with
+      their place and ratio; with --brand it renders the theme's sample in that colour and lists the text and buttons
+      whose contrast the colour broke at 1440 and 390px, each with the nearest shade that passes (a warning; exit 0)
+  ui-refiner init [--preset${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
   ui-refiner review validate --from review.json --report report.json [--out validated.json]
@@ -89,7 +96,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--no-optimise'){out.noOptimise=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed','--said'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed','--said','--brand','--face'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -132,6 +139,24 @@ try{
     else console.log((r.findings.length?r.findings.map((f,i)=>`${i+1}. [${f.severity.toUpperCase()}] ${f.width}px ${f.kind}: ${f.type}${f.element?` — ${f.element}`:''}${f.value?` → “${f.value}”`:''}${f.with?` (on “${f.with}”)`:''}\n   fix: ${f.fix}`).join('\n'):'[HELD] nothing broke with worst-case values')
       +`\n[TESTED] ${Object.entries(r.tested).map(([k,n])=>`${k} ${n}`).join(', ')} (${r.lang}, ${r.widths.join('/')}px)\n[STRESS] ${path.join(r.dir,'STRESS.md')}`);
     process.exitCode=r.broken?1:0;
+  }
+  else if(command==='theme'&&sub==='list'&&args._.length===2){
+    const themes=await listThemes();
+    console.log(args.json?JSON.stringify(themes,null,2):themes.map(t=>`${t.id.padEnd(24)} ${t.basis} (${t.sites} sites)`).join('\n'));
+  }
+  else if(command==='theme'&&sub==='starter'&&args._.length===3){
+    const r=await themeStarter(args._[2],{out:args.out||'ui-refiner-theme',brand:args.brand,face:args.face});
+    if(args.json)console.log(JSON.stringify(r,null,2));
+    else{
+      const c=r.contrast;
+      console.log(`[THEME] ${r.theme.id} in ${r.dir} (${r.files.join(', ')})`
+        +(r.tokens?'\n[BRAND] '+Object.entries(r.tokens).map(([k,v])=>`${k} ${v}`).join(', '):'')
+        +(r.literal?`\n[WARN] theme.css writes the theme colour ${r.literal} time(s) outside the tokens; brand.css does not reach those`:'')
+        +(c?.skipped?`\n[WARN] contrast not checked: ${c.skipped}`:'')
+        +(c?.failures?.length?'\n'+c.failures.map((f,i)=>`${i+1}. [CONTRAST] ${f.kind} ${f.element}${f.text?` “${f.text}”`:''}: ${f.colour} on ${f.on} is ${f.ratio}:1, needs ${f.needs}:1${f.fix?`\n   fix: ${f.fix}`:''}`).join('\n'):'')
+        +(c&&!c.skipped&&!c.failures.length?`\n[CONTRAST] ${c.checked} changed colours still meet WCAG AA at ${c.widths.join(' and ')}px`:'')
+        +`\n[PHOTOS] ${r.photos.length} photograph slots listed in ${path.join(r.dir,'STARTER.md')}`);
+    }
   }
   else if(command==='photos'&&args._.length===2){
     const r=await fetchStandIns(sub,{out:args.out||'assets/stand-in',count:args.count?Number(args.count):6,orientation:args.orientation||'landscape',lang:args.lang&&args.lang!=='auto'?args.lang:'en',optimise:!args.noOptimise,page:args.page});
