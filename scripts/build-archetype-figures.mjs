@@ -47,7 +47,7 @@ for(const file of files){
  await page.goto(file.href);await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready);
  shots.push((await page.screenshot({type:'jpeg',quality:85})).toString('base64'));await page.close();
 }
-const demoSheet=`<body style="${frame}"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px 16px;width:1544px">${archetypes.map((name,i)=>`<figure style="margin:0"><img src="data:image/jpeg;base64,${shots[i]}" style="display:block;width:100%;border:1px solid #c5cbc6"><figcaption style="margin-top:8px"><b style="font-size:15px">${name}</b> · ${kr[i]} of ${kr.reduce((a,b)=>a+b)} sites${[1,2].includes(i)?' · theme':''}</figcaption></figure>`).join('')}</div></body>`;
+const demoSheet=`<body style="${frame}"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px 16px;width:1544px">${archetypes.map((name,i)=>`<figure style="margin:0"><img src="data:image/jpeg;base64,${shots[i]}" style="display:block;width:100%;border:1px solid #c5cbc6"><figcaption style="margin-top:8px"><b style="font-size:15px">${name}</b> · ${kr[i]} of ${kr.reduce((a,b)=>a+b)} sites${[1,2,6].includes(i)?' · theme':''}</figcaption></figure>`).join('')}</div></body>`;
 for(const [name,html] of [['archetypes',types],['archetype-demo-kr-business',demoSheet]]){
  const page=await browser.newPage({viewport:{width:1600,height:100}});
  await page.setContent(html,{waitUntil:'load'});

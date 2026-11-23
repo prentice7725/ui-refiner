@@ -111,7 +111,7 @@ UI Refiner includes 14 web design themes based on measurements from 2,326 Korean
 
 [Theme gallery](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [Measurement method and catalog](skills/ui-refiner-agent/reference/themes/README.md)
 
-**4. One family in all eight types.** Any family can be drawn in any type. Here the Korean business family is drawn eight ways for one fictional maker. Two of the eight are themes. The other six are demonstration samples built from the measured values of their type, and are not offered as themes. The counts show how common each combination is: 50 Korean business sites are white quiet and 15 are bold colour.
+**4. One family in all eight types.** Any family can be drawn in any type. Here the Korean business family is drawn eight ways for one fictional maker. Three of the eight types have a theme: dark cinematic, white quiet and standard corporate. The other five exist only as demonstration samples built from the measured values of their type, and are not offered as themes. The counts show how common each combination is: 50 Korean business sites are white quiet and 15 are bold colour.
 
 ![One fictional Korean maker drawn in all eight page types](docs/assets/archetype-demo-kr-business.jpg)
 

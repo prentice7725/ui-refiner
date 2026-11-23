@@ -111,7 +111,7 @@ UI Refiner は、韓国・日本のサイト 2,326 件の実測をもとにし�
 
 [テーマギャラリー](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [測定方法とテーマ一覧](skills/ui-refiner-agent/reference/themes/README.md)
 
-**4. 一つの業種群を 8 種類の類型で。** どの業種群も 8 種類の類型で描けます。下の図は、韓国の business 業種群の架空の製造会社 1 社を 8 通りに描いたものです。このうち二つはテーマです。残りの六つは各類型の実測値から作ったデモ用サンプルで、テーマとしては提供していません。数は、その組み合わせがどれだけ多いかを示します。韓国の business サイトのうち white quiet は 50 件、bold colour は 15 件です。
+**4. 一つの業種群を 8 種類の類型で。** どの業種群も 8 種類の類型で描けます。下の図は、韓国の business 業種群の架空の製造会社 1 社を 8 通りに描いたものです。8 種類のうち dark cinematic、white quiet、standard corporate の三つにはテーマがあります。残りの五つは各類型の実測値から作ったデモ用サンプルだけで、テーマとしては提供していません。数は、その組み合わせがどれだけ多いかを示します。韓国の business サイトのうち white quiet は 50 件、bold colour は 15 件です。
 
 ![架空の韓国の製造会社 1 社を 8 種類のページ類型で描いた図](docs/assets/archetype-demo-kr-business.jpg)
 

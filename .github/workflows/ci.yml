@@ -17,6 +17,8 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - run: node scripts/build-theme-gallery.mjs --check
+      - run: node scripts/build-theme-grid.mjs --check
+      - run: node scripts/build-archetype-demo.mjs --check
       - run: npm test
       - run: npm run smoke:ui
       - run: npm run smoke:gate
