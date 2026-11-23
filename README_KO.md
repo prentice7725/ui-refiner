@@ -111,7 +111,7 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 
 [테마 갤러리](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [측정 방법과 테마 목록](skills/ui-refiner-agent/reference/themes/README.md)
 
-**4. 한 업종군을 8가지 유형으로.** 어느 업종군이든 8가지 유형으로 그릴 수 있습니다. 아래는 한국 business 업종군의 가상 제조사 한 곳을 8가지로 그린 것입니다. 이 가운데 둘은 테마입니다. 나머지 여섯은 해당 유형의 실측값으로 만든 시연용 샘플이며 테마로 제공하지 않습니다. 숫자는 그 조합이 얼마나 흔한지를 보여줍니다. 한국 business 사이트 가운데 white quiet는 50곳이고 bold colour는 15곳입니다.
+**4. 한 업종군을 8가지 유형으로.** 어느 업종군이든 8가지 유형으로 그릴 수 있습니다. 아래는 한국 business 업종군의 가상 제조사 한 곳을 8가지로 그린 것입니다. 여덟 유형 가운데 dark cinematic, white quiet, standard corporate 셋은 테마가 있습니다. 나머지 다섯은 해당 유형의 실측값으로 만든 시연용 샘플만 있으며 테마로 제공하지 않습니다. 숫자는 그 조합이 얼마나 흔한지를 보여줍니다. 한국 business 사이트 가운데 white quiet는 50곳이고 bold colour는 15곳입니다.
 
 ![가상의 한국 제조사 한 곳을 페이지 유형 8가지로 그린 이미지](docs/assets/archetype-demo-kr-business.jpg)
 

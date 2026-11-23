@@ -12,7 +12,7 @@ The 14 themes cover one or two page types per trade family and country. These pa
 | dense portal | 22 | [portal.html](kr-business/portal.html) | demonstration |
 | photo-led | 26 | [photo.html](kr-business/photo.html) | demonstration |
 | big type | 15 | [bigtype.html](kr-business/bigtype.html) | demonstration |
-| standard corporate | 41 | [corporate.html](kr-business/corporate.html) | demonstration |
+| standard corporate | 41 | [corporate.html](kr-business/corporate.html) | demonstration; the theme is [kr-business-corporate](../../skills/ui-refiner-agent/reference/themes/kr-business-corporate/theme.md) |
 | bold colour | 15 | [colour.html](kr-business/colour.html) | demonstration |
 
 The counts are the Korean business sites of each type, out of 235. A low count means few real sites of this family look that way, so the page may read as unusual for the trade.
