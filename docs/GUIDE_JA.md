@@ -19,6 +19,7 @@ ui-refiner keep record index.html                                  # リファ�
 ui-refiner directions deal refine-directions --kind service --tone calm --lang ja   # 案ごとにヒーロー構成・地色・色の系統を割り当て、避ける書体を列挙
 ui-refiner directions refine-directions     # デザイン案（.html）を並べて比較し、1つ選ぶ
 ui-refiner directions record refine-directions --pick B                # 選んだ方針を記録（別のクライアントには別の方針）
+ui-refiner theme starter care-white --brand "#0b5cab"           # 実測テーマのファイルと brand.css を書き出し、必要な写真とブランド色で崩れたコントラストを一覧
 ui-refiner photos "dentist chair" --out assets/stand-in             # 実際の写真が届くまでの出典付き仮写真（Wikimedia Commons）
 ui-refiner directions verify refine-directions index.html             # 仕上がりが選んだ構成を保っているか確認
 ui-refiner system extract index.html                                  # 選んだデザインをサイトの他のページ用に保存

@@ -1,0 +1,405 @@
+/* 스튜디오 포트폴리오 · 다크 (creative-dark) — see theme.md for the measured basis. */
+
+:root {
+  --ground: #0a0a0a;
+  --ground-2: #141414;
+  --paper: #ffffff;
+  --on-dark: #f5f5f5;
+  --on-dark-soft: #8a8a8a;
+  --ink: #0a0a0a;
+  --ink-soft: #5c5c5c;
+  --line: rgba(255, 255, 255, .14);
+  --line-light: rgba(10, 10, 10, .14);
+  --text: "Pretendard", "Pretendard Variable", sans-serif;
+  --latin: "Inter", "Pretendard", "Pretendard Variable", sans-serif;
+  --body: 16px;
+  --leading: 1.7;
+  --display-size: 64px;
+  --word-size: clamp(72px, 12vw, 180px);
+  --h3: 20px;
+  --track: -0.03em;
+  --radius: 0;
+  --margin: 40px;
+
+  --gap: clamp(96px, 12vw, 176px);
+  --header-h: 72px;
+}
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--header-h); }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--on-dark);
+  font-family: var(--text);
+  font-size: var(--body);
+  line-height: var(--leading);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 { font-weight: 500; letter-spacing: var(--track); }
+
+/* Latin runs: studio name, labels, client names, email. */
+.latin { font-family: var(--latin); }
+
+/* Small English label above a section, never instead of its content. */
+.label {
+  display: block;
+  margin-bottom: 32px;
+  font-family: var(--latin);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--on-dark-soft);
+}
+
+.num { font-variant-numeric: tabular-nums; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* ---------- Layout ---------- */
+
+/* Edge to edge: no content max-width, only the side margin. */
+.edge { padding-inline: var(--margin); }
+
+.section { padding-block: var(--gap) 0; }
+.section--paper {
+  margin-top: var(--gap);
+  padding-block: var(--gap);
+  background: var(--paper);
+  color: var(--ink);
+}
+.section--paper .label { color: var(--ink-soft); }
+
+/* Text link with an arrow; the theme has no filled buttons. */
+.arrow-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+.arrow-link::after { content: "→"; font-family: var(--latin); transition: transform .2s; }
+.arrow-link:hover::after { transform: translateX(4px); }
+
+/* ---------- 1. Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  min-height: var(--header-h);
+  padding-block: 12px;
+  background: var(--ground);
+  color: var(--on-dark);
+}
+
+.wordmark-small {
+  font-family: var(--latin);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.wordmark-small span { color: var(--on-dark-soft); margin-left: 6px; font-family: var(--text); }
+
+.nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 32px; margin-left: auto; font-family: var(--latin); font-size: 14px; font-weight: 500; }
+/* Menu labels stay on one line; with long labels the menu wraps as whole items. */
+.nav a { padding-block: 6px; white-space: nowrap; }
+.nav a:hover { color: var(--on-dark-soft); }
+
+/* ---------- 2. Statement / wordmark ---------- */
+
+.statement { padding-block: clamp(80px, 12vw, 160px) clamp(64px, 8vw, 112px); }
+
+.statement__text {
+  max-width: 17em;
+  font-size: var(--display-size);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: var(--track);
+}
+
+/* Alternative to the sentence: the studio's wordmark at full width. */
+.wordmark {
+  display: block;
+  font-family: var(--latin);
+  font-size: var(--word-size);
+  font-weight: 500;
+  line-height: 1;
+  padding-bottom: .06em;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin-top: 40px;
+  font-family: var(--latin);
+  font-size: 14px;
+  color: var(--on-dark-soft);
+}
+
+/* ---------- 3. Featured work ---------- */
+
+.featured__media img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--ground-2);
+}
+
+.featured__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: baseline;
+  padding-top: 24px;
+}
+.featured__title { font-size: 28px; font-weight: 500; letter-spacing: var(--track); line-height: 1.35; }
+.featured__client { display: block; margin-bottom: 4px; font-size: 14px; color: var(--on-dark-soft); }
+.featured__fact { font-size: 14px; color: var(--on-dark-soft); }
+.featured__meta .arrow-link { justify-self: start; }
+.featured__fact b { display: block; font-weight: 500; color: var(--on-dark); }
+
+/* ---------- 4. Works grid ---------- */
+
+.works-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+.works-head .label { margin-bottom: 40px; }
+
+.works {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--margin);
+  row-gap: clamp(64px, 8vw, 120px);
+  align-items: start;
+}
+/* Uneven heights: tall and wide images alternate, the right column drops. */
+.work:nth-child(even) { margin-top: clamp(80px, 12vw, 200px); }
+/* Six works end on the right: the last image sits on the row's bottom so both columns end together. */
+.work:last-child:nth-child(even) { margin-top: 0; align-self: end; }
+.work--tall img { aspect-ratio: 4 / 5; }
+.work--wide img { aspect-ratio: 16 / 11; }
+
+.work a { display: block; }
+.work img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--ground-2);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  padding-top: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--on-dark-soft);
+  transition: transform .25s ease, color .25s ease;
+}
+.caption__project { color: var(--on-dark); font-weight: 500; }
+.caption .sep { color: var(--on-dark-soft); }
+.caption__discipline { flex-basis: 100%; font-family: var(--latin); font-size: 13px; }
+
+/* Hover lifts the caption only; the image stays still. */
+.work a:hover .caption,
+.work a:focus-visible .caption { transform: translateY(-6px); color: var(--on-dark); }
+
+/* ---------- 5. Clients ---------- */
+
+.clients {
+  columns: 3;
+  column-gap: var(--margin);
+  font-size: 22px;
+  line-height: 1.8;
+  letter-spacing: -0.02em;
+  color: var(--on-dark-soft);
+}
+.clients li { break-inside: avoid; }
+
+/* ---------- 6. About (the one white section) ---------- */
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--margin);
+  align-items: start;
+}
+.about__text {
+  max-width: 22em;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: var(--track);
+}
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 8px 56px;
+  margin-top: 56px;
+  font-size: 15px;
+}
+.about__facts dt { color: var(--ink-soft); font-size: 13px; }
+.about__facts dd { font-weight: 500; }
+
+.disciplines { border-top: 1px solid var(--line-light); }
+.disciplines li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 8px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line-light);
+}
+.disciplines .num { font-family: var(--latin); font-size: 13px; color: var(--ink-soft); padding-top: 4px; }
+.disciplines strong { display: block; font-size: var(--h3); font-weight: 500; letter-spacing: -0.02em; }
+.disciplines p { margin-top: 2px; font-size: 15px; color: var(--ink-soft); }
+
+.about__media { margin-top: 56px; }
+.about__media img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; }
+
+/* ---------- 7. Journal ---------- */
+
+.journal { border-top: 1px solid var(--line); }
+.journal__row {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: baseline;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.journal__date { font-family: var(--latin); font-size: 14px; color: var(--on-dark-soft); }
+.journal__title { font-size: var(--h3); font-weight: 500; letter-spacing: -0.02em; line-height: 1.5; }
+.journal__kind { font-family: var(--latin); font-size: 13px; color: var(--on-dark-soft); }
+
+/* ---------- 8. Contact ---------- */
+
+.contact { padding-bottom: var(--gap); }
+.contact__mail {
+  display: inline-block;
+  max-width: 100%;
+  font-family: var(--latin);
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+  border-bottom: 2px solid currentColor;
+}
+.contact__mail:hover { color: var(--on-dark-soft); }
+.contact__lede { margin-bottom: 20px; color: var(--on-dark-soft); }
+.contact__info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px 40px;
+  margin-top: 56px;
+  font-size: 15px;
+  color: var(--on-dark-soft);
+}
+.contact__info address { font-style: normal; }
+.contact__links { display: flex; gap: 28px; font-family: var(--latin); color: var(--on-dark); }
+.contact__links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- 9. Footer ---------- */
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 24px;
+  padding-block: 24px 32px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--on-dark-soft);
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+  :root { --display-size: 52px; }
+  .featured__meta { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 64px; }
+}
+
+/* ---------- Phone ---------- */
+
+@media (max-width: 767px) {
+  :root {
+    --margin: 20px;
+    --display-size: 34px;
+    --body: 15px;
+    --header-h: 60px;
+    --gap: 96px;
+  }
+
+  .nav { gap: 18px; font-size: 13px; }
+  .wordmark-small span { display: none; }
+
+  .statement { padding-block: 56px 48px; }
+  .statement__text { line-height: 1.3; }
+  .wordmark { font-size: clamp(40px, 16.5vw, 96px); }
+  .services { margin-top: 28px; gap: 2px 16px; font-size: 13px; }
+
+  .featured__media img { aspect-ratio: 4 / 3; }
+  .featured__meta { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding-top: 18px; }
+  .featured__meta > :first-child { grid-column: 1 / -1; }
+  .featured__title { font-size: 22px; }
+
+  .works-head .label { margin-bottom: 28px; }
+  .works { grid-template-columns: minmax(0, 1fr); row-gap: 56px; }
+  .work:nth-child(even) { margin-top: 0; }
+  .caption { font-size: 14px; padding-top: 12px; }
+
+  .clients { columns: 2; column-gap: 20px; font-size: 17px; }
+
+  .about__text { font-size: 22px; }
+  .about__facts { grid-template-columns: repeat(2, auto); gap: 12px 32px; margin-top: 40px; }
+
+  .journal__row { grid-template-columns: minmax(0, 1fr); gap: 4px; padding-block: 22px; }
+  .journal__kind { display: none; }
+  .journal__title { font-size: 17px; }
+
+  .contact__mail { font-size: clamp(28px, 9vw, 40px); }
+  .contact__info { flex-direction: column; margin-top: 40px; }
+
+  .site-footer { flex-direction: column; }
+}

@@ -1,119 +1,157 @@
 # Theme gallery
 
-[Korea](#korea) · [Japan](#japan)
+Themes are grouped by what a visitor comes to do. Each was measured in Korea or Japan and can be used for either.
 
-## Korea
+[Place](#place) · [Care](#care) · [Business](#business) · [Public](#public) · [Shop](#shop) · [Creative](#creative)
 
-### [kr-care-white](kr-care-white/theme.md)
+## Place
 
-Effects offered: `hero-slides`, `hero-video`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+### [place-photo-quiet](place-photo-quiet/theme.md)
 
-| Desktop | Mobile |
-| --- | --- |
-| ![kr-care-white desktop](kr-care-white/shot-desktop.jpg) | ![kr-care-white mobile](kr-care-white/shot-mobile.jpg) |
+Measured on 65 Japanese sites.
 
-### [kr-business-dark](kr-business-dark/theme.md)
-
-Effects offered: `hero-slides`, `hero-video` (open `sample.html?fx=hero-video` from a checkout to see them).
+Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
 
 | Desktop | Mobile |
 | --- | --- |
-| ![kr-business-dark desktop](kr-business-dark/shot-desktop.jpg) | ![kr-business-dark mobile](kr-business-dark/shot-mobile.jpg) |
+| ![place-photo-quiet desktop](place-photo-quiet/shot-desktop.jpg) | ![place-photo-quiet mobile](place-photo-quiet/shot-mobile.jpg) |
 
-### [kr-business-white](kr-business-white/theme.md)
+### [place-photo-view](place-photo-view/theme.md)
 
-Effects offered: `hero-slides`, `hero-video`, `reveal`.
-
-| Desktop | Mobile |
-| --- | --- |
-| ![kr-business-white desktop](kr-business-white/shot-desktop.jpg) | ![kr-business-white mobile](kr-business-white/shot-mobile.jpg) |
-
-### [kr-business-corporate](kr-business-corporate/theme.md)
-
-Effects offered: `hero-slides` (open `sample.html?fx=hero-slides` from a checkout to see them).
-
-| Desktop | Mobile |
-| --- | --- |
-| ![kr-business-corporate desktop](kr-business-corporate/shot-desktop.jpg) | ![kr-business-corporate mobile](kr-business-corporate/shot-mobile.jpg) |
-
-### [kr-place-photo](kr-place-photo/theme.md)
+Measured on 43 Korean sites.
 
 Effects offered: `hero-slides` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
 
 | Desktop | Mobile |
 | --- | --- |
-| ![kr-place-photo desktop](kr-place-photo/shot-desktop.jpg) | ![kr-place-photo mobile](kr-place-photo/shot-mobile.jpg) |
+| ![place-photo-view desktop](place-photo-view/shot-desktop.jpg) | ![place-photo-view mobile](place-photo-view/shot-mobile.jpg) |
 
-### [kr-public-portal](kr-public-portal/theme.md)
+## Care
+
+### [care-white](care-white/theme.md)
+
+Measured on 38 Korean sites.
+
+Effects offered: `hero-slides`, `hero-video`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+
+| Desktop | Mobile |
+| --- | --- |
+| ![care-white desktop](care-white/shot-desktop.jpg) | ![care-white mobile](care-white/shot-mobile.jpg) |
+
+### [care-corporate](care-corporate/theme.md)
+
+Measured on 68 Japanese sites.
+
+Effects offered: `hero-slides`, `reveal`.
+
+| Desktop | Mobile |
+| --- | --- |
+| ![care-corporate desktop](care-corporate/shot-desktop.jpg) | ![care-corporate mobile](care-corporate/shot-mobile.jpg) |
+
+## Business
+
+### [business-dark](business-dark/theme.md)
+
+Measured on 35 Korean sites.
+
+Effects offered: `hero-slides`, `hero-video` (open `sample.html?fx=hero-video` from a checkout to see them).
+
+| Desktop | Mobile |
+| --- | --- |
+| ![business-dark desktop](business-dark/shot-desktop.jpg) | ![business-dark mobile](business-dark/shot-mobile.jpg) |
+
+### [business-white](business-white/theme.md)
+
+Measured on 50 Korean sites.
+
+Effects offered: `hero-slides`, `hero-video`, `reveal`.
+
+| Desktop | Mobile |
+| --- | --- |
+| ![business-white desktop](business-white/shot-desktop.jpg) | ![business-white mobile](business-white/shot-mobile.jpg) |
+
+### [business-corporate-quickbar](business-corporate-quickbar/theme.md)
+
+Measured on 41 Korean sites.
+
+Effects offered: `hero-slides` (open `sample.html?fx=hero-slides` from a checkout to see them).
+
+| Desktop | Mobile |
+| --- | --- |
+| ![business-corporate-quickbar desktop](business-corporate-quickbar/shot-desktop.jpg) | ![business-corporate-quickbar mobile](business-corporate-quickbar/shot-mobile.jpg) |
+
+### [business-corporate-message](business-corporate-message/theme.md)
+
+Measured on 52 Japanese sites.
+
+Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+
+| Desktop | Mobile |
+| --- | --- |
+| ![business-corporate-message desktop](business-corporate-message/shot-desktop.jpg) | ![business-corporate-message mobile](business-corporate-message/shot-mobile.jpg) |
+
+## Public
+
+### [public-portal-search](public-portal-search/theme.md)
+
+Measured on 61 Korean sites.
 
 Effects offered: `hero-slides`.
 
 | Desktop | Mobile |
 | --- | --- |
-| ![kr-public-portal desktop](kr-public-portal/shot-desktop.jpg) | ![kr-public-portal mobile](kr-public-portal/shot-mobile.jpg) |
+| ![public-portal-search desktop](public-portal-search/shot-desktop.jpg) | ![public-portal-search mobile](public-portal-search/shot-mobile.jpg) |
 
-### [kr-shop-portal](kr-shop-portal/theme.md)
+### [public-portal-purpose](public-portal-purpose/theme.md)
+
+Measured on 64 Japanese sites.
+
+Effects offered: `hero-slides`, `reveal`.
+
+| Desktop | Mobile |
+| --- | --- |
+| ![public-portal-purpose desktop](public-portal-purpose/shot-desktop.jpg) | ![public-portal-purpose mobile](public-portal-purpose/shot-mobile.jpg) |
+
+## Shop
+
+### [shop-portal-grid](shop-portal-grid/theme.md)
+
+Measured on 60 Korean sites.
 
 Effects offered: `hero-slides`.
 
 | Desktop | Mobile |
 | --- | --- |
-| ![kr-shop-portal desktop](kr-shop-portal/shot-desktop.jpg) | ![kr-shop-portal mobile](kr-shop-portal/shot-mobile.jpg) |
+| ![shop-portal-grid desktop](shop-portal-grid/shot-desktop.jpg) | ![shop-portal-grid mobile](shop-portal-grid/shot-mobile.jpg) |
 
-### [kr-creative-dark](kr-creative-dark/theme.md)
+### [shop-portal-story](shop-portal-story/theme.md)
+
+Measured on 57 Japanese sites.
+
+Effects offered: `hero-slides`, `reveal`.
+
+| Desktop | Mobile |
+| --- | --- |
+| ![shop-portal-story desktop](shop-portal-story/shot-desktop.jpg) | ![shop-portal-story mobile](shop-portal-story/shot-mobile.jpg) |
+
+## Creative
+
+### [creative-dark](creative-dark/theme.md)
+
+Measured on 34 Korean sites.
 
 Effects offered: `hero-slides`, `hero-video`.
 
 | Desktop | Mobile |
 | --- | --- |
-| ![kr-creative-dark desktop](kr-creative-dark/shot-desktop.jpg) | ![kr-creative-dark mobile](kr-creative-dark/shot-mobile.jpg) |
+| ![creative-dark desktop](creative-dark/shot-desktop.jpg) | ![creative-dark mobile](creative-dark/shot-mobile.jpg) |
 
-## Japan
+### [creative-bigtype](creative-bigtype/theme.md)
 
-### [jp-place-photo](jp-place-photo/theme.md)
-
-Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
-
-| Desktop | Mobile |
-| --- | --- |
-| ![jp-place-photo desktop](jp-place-photo/shot-desktop.jpg) | ![jp-place-photo mobile](jp-place-photo/shot-mobile.jpg) |
-
-### [jp-care-corporate](jp-care-corporate/theme.md)
-
-Effects offered: `hero-slides`, `reveal`.
-
-| Desktop | Mobile |
-| --- | --- |
-| ![jp-care-corporate desktop](jp-care-corporate/shot-desktop.jpg) | ![jp-care-corporate mobile](jp-care-corporate/shot-mobile.jpg) |
-
-### [jp-business-corporate](jp-business-corporate/theme.md)
-
-Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
-
-| Desktop | Mobile |
-| --- | --- |
-| ![jp-business-corporate desktop](jp-business-corporate/shot-desktop.jpg) | ![jp-business-corporate mobile](jp-business-corporate/shot-mobile.jpg) |
-
-### [jp-public-portal](jp-public-portal/theme.md)
-
-Effects offered: `hero-slides`, `reveal`.
-
-| Desktop | Mobile |
-| --- | --- |
-| ![jp-public-portal desktop](jp-public-portal/shot-desktop.jpg) | ![jp-public-portal mobile](jp-public-portal/shot-mobile.jpg) |
-
-### [jp-shop-portal](jp-shop-portal/theme.md)
-
-Effects offered: `hero-slides`, `reveal`.
-
-| Desktop | Mobile |
-| --- | --- |
-| ![jp-shop-portal desktop](jp-shop-portal/shot-desktop.jpg) | ![jp-shop-portal mobile](jp-shop-portal/shot-mobile.jpg) |
-
-### [jp-creative-bigtype](jp-creative-bigtype/theme.md)
+Measured on 36 Japanese sites.
 
 Effects offered: `hero-slides`, `hero-video`, `reveal` (open `sample.html?fx=marquee,reveal,intro` from a checkout to see them).
 
 | Desktop | Mobile |
 | --- | --- |
-| ![jp-creative-bigtype desktop](jp-creative-bigtype/shot-desktop.jpg) | ![jp-creative-bigtype mobile](jp-creative-bigtype/shot-mobile.jpg) |
+| ![creative-bigtype desktop](creative-bigtype/shot-desktop.jpg) | ![creative-bigtype mobile](creative-bigtype/shot-mobile.jpg) |

@@ -19,6 +19,7 @@ ui-refiner keep record index.html                                  # list links,
 ui-refiner directions deal refine-directions --kind service --tone calm --lang en   # deal each mock a hero structure, a surface and a colour family; list faces to avoid
 ui-refiner directions refine-directions     # three design-direction mocks (.html) side by side, to pick one
 ui-refiner directions record refine-directions --pick B                # remember the pick so other clients get something else
+ui-refiner theme starter care-white --brand "#0b5cab"           # a measured theme's files plus brand.css; lists photographs needed and contrast the brand colour broke
 ui-refiner photos "dentist chair" --out assets/stand-in             # credited stand-in photos (Wikimedia Commons) until the real ones arrive
 ui-refiner directions verify refine-directions index.html             # check the applied page kept the chosen structure
 ui-refiner system extract index.html                                  # save the picked design for the site's other pages

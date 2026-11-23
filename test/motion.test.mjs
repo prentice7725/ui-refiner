@@ -37,14 +37,14 @@ test('motion: summary gives shares per group', () => {
 const themes=fileURLToPath(new URL('../skills/ui-refiner-agent/reference/themes/',import.meta.url));
 const types={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.mp4':'video/mp4','.json':'application/json'};
 
-test('motion: measures the effects of the jp-place-photo sample in a real browser', {timeout:120000}, async () => {
+test('motion: measures the effects of the place-photo-quiet sample in a real browser', {timeout:120000}, async () => {
  const server=http.createServer(async (req,res)=>{
   const f=path.join(themes,decodeURIComponent(new URL(req.url,'http://x').pathname));
   try{const b=await fs.readFile(f);res.writeHead(200,{'content-type':types[path.extname(f)]||'application/octet-stream'});res.end(b);}
   catch{res.writeHead(404);res.end();}
  });
  await new Promise(r=>server.listen(0,'127.0.0.1',r));
- const base=`http://127.0.0.1:${server.address().port}/jp-place-photo/sample.html`;
+ const base=`http://127.0.0.1:${server.address().port}/place-photo-quiet/sample.html`;
  const {chromium}=await import('playwright');
  const browser=await chromium.launch();
  const run=async (q,watchMs,page0=base)=>{
@@ -53,7 +53,7 @@ test('motion: measures the effects of the jp-place-photo sample in a real browse
   finally{await ctx.close();}
  };
  try{
-  const big=base.replace('jp-place-photo','jp-creative-bigtype');
+  const big=base.replace('place-photo-quiet','creative-bigtype');
   const [still,all,slides,strip,noStrip]=await Promise.all([run('',3000),run('?fx=all',3000),run('?fx=hero-slides',7500),run('?fx=marquee',2000,big),run('',2000,big)]);
   assert.equal(strip.marquee,true,'the marquee strip');assert.equal(noStrip.marquee,false);assert.equal(all.marquee,false);
   assert.equal(still.heroVideo,false);assert.equal(still.heroSlides,false);assert.equal(still.reveal,false);

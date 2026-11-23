@@ -1,0 +1,74 @@
+# 蔵元オンラインストア · 商品と物語 (shop, dense portal; measured in Japan)
+
+For makers and stores that sell online: sake and food brands, cosmetics, crafts and general e-commerce. Measured Japanese shop sites mix the store with the brand's story: products by category, recommended content, the maker's history and news, all orderly on white. Measured on Japanese sites; it serves the same trades on a Korean page too (`ui-refiner theme starter shop-portal-story --lang ko`).
+
+## Measured basis
+
+57 human-made Japanese sites in the shop family that fall in the dense-portal archetype (e-commerce 47%, food 35%, cosmetics 7%, fashion 7%, farm 4%; 34% of the 165 Japanese shop sites), measured November 2026 (`archetypes/spec-JP-shop-3.json`).
+
+| What | Measured (p25 / median / p75) | Theme value |
+|---|---|---|
+| Ground | white on 82%; #f4f4f4, #ecebe8, #f8f6ec | `#ffffff`, band `#f7f5ef` |
+| Photographs | 15 / 19 / 29 | 18–24 |
+| Faces | Noto Sans JP 23% of body faces; Shippori Mincho 4%; serif display on 16% | Noto Sans JP; Shippori Mincho for the brand's headings |
+| Body | 13 / 14 / 16 px | 15px, line height 1.85 |
+| Display | 24 / 30 / 36 px, display ÷ body 1.8 / 2.0 / 2.6 | 32px Shippori Mincho 600 |
+| Buttons | white 30%, grey, red, deep blue (#1e4d9e, #0058aa), deep green (#004022); radius 0 / 2 / 7; 44px | deep indigo `#1f3a5f` for カートに入れる, 0 radius, 48px |
+| Hairlines | 15 / 28 / 56 | many |
+| Hero | full-bleed on 2%; left 35%, centred 12% | a wide visual inside the width, 16:7 |
+| Page length | 6.8 / 8.6 / 10.4 screens | 8–9 |
+| Content width | 980 / 1150 / 1200 | 1140px |
+| Menu | カート, ログイン, お気に入り, 商品情報, 企業情報, 店舗情報, ご利用ガイド | the same |
+
+## Tokens
+
+```css
+--ground:#ffffff; --band:#f7f5ef; --ink:#222222; --ink-soft:#666666; --line:#e2ded4;
+--brand:#1f3a5f; --brand-soft:#e8edf3; --accent:#a3342b;
+--text:"Noto Sans JP","Hiragino Sans",sans-serif; --mincho:"Shippori Mincho","Yu Mincho",serif;
+--body:15px; --leading:1.85; --display-size:32px; --h2:24px; --h3:16px;
+--radius:0; --content:1140px; --gap:clamp(56px,7vw,96px);
+```
+
+## Skeleton (in order)
+
+1. **Top line**: 送料・お届けについて, ご利用ガイド, ログイン, お気に入り, カート (count).
+2. **Header**: logo, menu (商品一覧 · ギフト · 蔵の物語 · 店舗情報 · お知らせ), search.
+3. **Main visual**: one wide photograph inside the width (the master at work, a seasonal bottle), a Mincho line over or beside it; dots if several.
+4. **Recommended content** (おすすめコンテンツ): a horizontal row of five image cards (pairing, recipes, the season's limited release), scrollable.
+5. **Products by category** (the trade component): category tabs (純米大吟醸 · 純米酒 · 季節限定 · ギフト), a five-column grid of bottle images on white with name, volume, price (税込), カートに入れる.
+6. **Gift band** (band): a photograph of a gift set, wrapping and のし options as text.
+7. **The maker's story** (蔵の物語): Mincho heading, a large photograph of the brewery, three short paragraphs, 創業 year as a fact.
+8. **Ranking**: 1–5 with small images, name, price.
+9. **News**: date, tag, title rows.
+10. **Footer**: 特定商取引法に基づく表記, プライバシーポリシー, 20歳未満の飲酒は法律で禁止されています (for alcohol), company address, copyright.
+
+## Rules
+
+- Product images on white, uniform size and angle; prices with 税込 in tabular figures.
+- Mincho only for brand headings and the main visual's line; everything else Noto Sans JP.
+- One brand colour (indigo) for cart buttons and links; the accent red for 限定 and 新商品 tags only.
+
+## Avoid
+
+- Black-Friday-style banners with bursts and gradients, more than one carousel, countdowns, mascot pop-ups.
+
+## Effects (optional)
+
+Measured on 39 Japanese dense portal sites of all families (`data/motion/summary.json`, November 2026): hero slides 69%, hero video 3%, scroll reveals 23%, a blurred fixed header 0%, a marquee 8%, a loading intro 0% (parallax 3%, not built). How to add them: `../effects/README.md`.
+
+- **Offer** when the client has the material: `hero-slides`, `reveal`.
+- **Only when the client asks**: `marquee`.
+- **Not for this theme**: `hero-video`, `header-blur`, `intro`.
+
+## Applying to a client's content
+
+See `../README.md`. Cosmetics stores add a 肌悩みから探す tile row; general stores with many categories move the category tabs into a left sidebar.
+
+Learned on a real bamboo-craft shop (長岡銘竹, カラーミーショップ, 21 November 2026):
+
+- **Check first whether the original is already designed.** This shop's own page (large bamboo photographs set off-grid, Mincho, generous white) was already strong; the theme turned it into an orderly portal, which is clearer to shop but loses that look. A small body size alone does not mark a dated site.
+- **Square slides** (700×700) do not fit the 16:7 main visual: the client's widest photograph becomes the main visual and the squares a six-up pick-up row.
+- **A long shopping guide** (返品, お支払い, 配送・送料 with a fare table) goes in `<details>` rows under the products; the fare table wraps on phones.
+- **The shop's CSS-only drawers** (checkbox toggles) stay working toggles: the menu and the category list on phones.
+- The client's phone link dials a different number from the one shown (shown 0771-56-8423, linked 075-925-5826); kept and reported, not fixed silently.

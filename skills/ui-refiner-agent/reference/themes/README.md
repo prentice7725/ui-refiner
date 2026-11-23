@@ -1,6 +1,6 @@
 # Themes
 
-A theme is a finished design measured from real human-made sites: one archetype of one purpose family in one country. It gives a page its ground, type, colour, shapes, section skeleton and the trade's own components, so the page reads as a real site of its kind rather than a model's habit.
+A theme is a finished design measured from real human-made sites: one archetype of one purpose family, measured in Korea or in Japan. Where it was measured is its source, not a limit on its use: a theme serves a client of its family in either language. It gives a page its ground, type, colour, shapes, section skeleton and the trade's own components, so the page reads as a real site of its kind rather than a model's habit.
 
 ## Where the themes come from
 
@@ -23,44 +23,44 @@ Measured sites per country, family and archetype (`data/archetypes/counts.json`;
 | JP business | 27 | 12 | 38 | 42 | 29 | 23 | 52 | 26 | 249 |
 | JP creative | 18 | 21 | 30 | 35 | 35 | 36 | 38 | 21 | 234 |
 
-Ten themes take the most common archetype of their cell. `kr-care-white` (38 sites, after short & small with 41) and `jp-creative-bigtype` (36, after standard corporate with 38) take the runner-up, and `kr-business-dark` (35, after white quiet with 50 and standard corporate with 41) and `kr-business-corporate` (41) are second and third themes for Korean business. The reasons:
+Ten themes take the most common archetype of their cell. `care-white` (38 sites, after short & small with 41) and `creative-bigtype` (36, after standard corporate with 38) take the runner-up, and `business-dark` (35, after white quiet with 50 and standard corporate with 41) and `business-corporate-quickbar` (41) are second and third themes for Korean business. The reasons:
 
-- `kr-care-white`: the 41 short & small Korean care sites are pages with little on them (median 2.2 screens, largest type 20px, a claim on the first screen on 22%), not a design to follow; the white-quiet ones run 7.2 screens with a 50px headline and a claim on 71%.
-- `jp-creative-bigtype`: the Japanese creative family has no clear leader (standard corporate 38, big type 36, dense portal and photo-led 35 of 234). Standard corporate is mostly studios whose sites read as companies, which `jp-business-corporate` already serves; among the design and photo studios, the clients this theme serves, big type leads (28 to 22).
-- `kr-business-dark`: 69% of the 172 dark-cinematic sites are Korean, so it is the most Korean-looking business theme, but it needs the client's own photographs (see "Choosing a theme"); `kr-business-white`, the most common archetype, is the one for clients without them.
-- `kr-business-corporate`: logistics, makers and builders lean to standard corporate and photo-led, not white quiet (of 47 measured Korean logistics sites, 11 and 12 against 7). On a logistics page with no photographs of its own, a blind comparison (21 November 2026) read `kr-business-white` as a software template and a blue, photograph-led corporate page as the real thing.
+- `care-white`: the 41 short & small Korean care sites are pages with little on them (median 2.2 screens, largest type 20px, a claim on the first screen on 22%), not a design to follow; the white-quiet ones run 7.2 screens with a 50px headline and a claim on 71%.
+- `creative-bigtype`: the Japanese creative family has no clear leader (standard corporate 38, big type 36, dense portal and photo-led 35 of 234). Standard corporate is mostly studios whose sites read as companies, which `business-corporate-message` already serves; among the design and photo studios, the clients this theme serves, big type leads (28 to 22).
+- `business-dark`: 69% of the 172 dark-cinematic sites are Korean, so it is the most Korean-looking business theme, but it needs the client's own photographs (see "Choosing a theme"); `business-white`, the most common archetype, is the one for clients without them.
+- `business-corporate-quickbar`: logistics, makers and builders lean to standard corporate and photo-led, not white quiet (of 47 measured Korean logistics sites, 11 and 12 against 7). On a logistics page with no photographs of its own, a blind comparison (21 November 2026) read `business-white` as a software template and a blue, photograph-led corporate page as the real thing.
 
 Every family can be drawn in every archetype; `docs/archetype-demo/README.md` in the repository shows the Korean business family in all eight with demonstration samples, which are not themes.
 
-| Theme | Country · family · archetype | Measured sites |
+| Theme | Measured in · family · archetype | Measured sites |
 |---|---|---|
-| `jp-place-photo` | JP · place (inn, tourism, restaurant, wedding) · photo-led | 65 |
-| `kr-care-white` | KR · care (dental, dermatology, Korean medicine, hospital) · white quiet | 38 |
-| `kr-business-dark` | KR · business (maker, logistics, software) · dark cinematic | 35 |
-| `kr-business-white` | KR · business (software, B2B service, tax, hiring) · white quiet; the business theme without photographs | 50 |
-| `kr-business-corporate` | KR · business (logistics, maker, builder) · standard corporate | 41 |
-| `jp-care-corporate` | JP · care (dental, dermatology, day service, fitness, salon) · standard corporate | 68 |
-| `kr-place-photo` | KR · place (pension, resort, restaurant, tourism, wedding) · photo-led | 43 |
-| `jp-business-corporate` | JP · business (maker, software, regional firm, builder) · standard corporate | 52 |
-| `kr-public-portal` | KR · public (media, government, culture, finance, associations) · dense portal | 61 |
-| `jp-public-portal` | JP · public (finance, media, government, associations, universities) · dense portal | 64 |
-| `kr-shop-portal` | KR · shop (e-commerce, fashion, farm, cosmetics, food) · dense portal | 60 |
-| `jp-shop-portal` | JP · shop (e-commerce, food, cosmetics, fashion) · dense portal | 57 |
-| `kr-creative-dark` | KR · creative (design, game, photo, architecture, illustration) · dark cinematic | 34 |
-| `jp-creative-bigtype` | JP · creative (design, photo and video, architecture studios) · big type | 36 |
+| `place-photo-quiet` | JP · place (inn, tourism, restaurant, wedding) · photo-led | 65 |
+| `care-white` | KR · care (dental, dermatology, Korean medicine, hospital) · white quiet | 38 |
+| `business-dark` | KR · business (maker, logistics, software) · dark cinematic | 35 |
+| `business-white` | KR · business (software, B2B service, tax, hiring) · white quiet; the business theme without photographs | 50 |
+| `business-corporate-quickbar` | KR · business (logistics, maker, builder) · standard corporate | 41 |
+| `care-corporate` | JP · care (dental, dermatology, day service, fitness, salon) · standard corporate | 68 |
+| `place-photo-view` | KR · place (pension, resort, restaurant, tourism, wedding) · photo-led | 43 |
+| `business-corporate-message` | JP · business (maker, software, regional firm, builder) · standard corporate | 52 |
+| `public-portal-search` | KR · public (media, government, culture, finance, associations) · dense portal | 61 |
+| `public-portal-purpose` | JP · public (finance, media, government, associations, universities) · dense portal | 64 |
+| `shop-portal-grid` | KR · shop (e-commerce, fashion, farm, cosmetics, food) · dense portal | 60 |
+| `shop-portal-story` | JP · shop (e-commerce, food, cosmetics, fashion) · dense portal | 57 |
+| `creative-dark` | KR · creative (design, game, photo, architecture, illustration) · dark cinematic | 34 |
+| `creative-bigtype` | JP · creative (design, photo and video, architecture studios) · big type | 36 |
 
-Korea and Japan differ as much as trades do (Korean care sites go white and short, Japanese ones standard corporate with big type), so a theme is never reused across the two countries.
+Korea and Japan differ in which archetype is common (Korean care sites go white and short, Japanese ones standard corporate with big type), which is why each theme records where it was measured. That says where the design comes from, not where it may be used. A Korean clinic can take the care theme measured in Japan, and a Japanese maker the dark theme measured in Korea. `ui-refiner theme starter <theme> --lang ko|ja` moves the theme's faces, line height and line breaking to the page's language; the menu words and trade components in `theme.md` stay the measured language's, so keep their structure and use the client's words.
 
 Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interactive filters and sample pages, open `index.html` from this folder in a local browser.
 
 ## Choosing a theme
 
-1. Country of the page, then the purpose family of the client's trade.
+1. The purpose family of the client's trade. Every theme of that family is a candidate, whichever country it was measured in; the count table above shows how common each look is in the client's own country, which matters when the client wants to look like its neighbours and not when it wants to stand apart.
 2. The archetype must suit the client's material:
    - **Photo-led and dark cinematic need the client's own photographs or video**, or credited stand-ins of the same kind of place, for the hero and most sections. Applied to a logistics page with no photographs, the dark theme read as a dark text template (20 November 2026). Without strong photographs, pick the white-quiet or standard-corporate theme of the same family instead.
-   - `kr-business-corporate` opens on a full-width photograph too: a logistics firm or maker without photographs of its own gets credited stand-ins of its kind of work; with neither, `kr-business-white`.
+   - `business-corporate-quickbar` opens on a full-width photograph too: a logistics firm or maker without photographs of its own gets credited stand-ins of its kind of work; with neither, `business-white`.
    - White quiet works with few photographs (the measured sites use 3–4).
-3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest.
+3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest. `ui-refiner theme starter <theme> --brand "#rrggbb" --face "<typeface>"` writes them onto the theme's tokens in `brand.css` and lists where the colour breaks contrast on the theme's sample.
 
 ## Applying a theme to a client's content
 
@@ -77,11 +77,12 @@ These held on twelve real pages (an inn, a dental clinic, a logistics company; a
 - **Check first whether the original is already designed.** A theme gives a dated page order, but on a page that already has a strong look it can trade that look for a portal's tidiness (長岡銘竹, 21 November 2026). A small body size or an old platform does not by itself mark a dated page; look at it.
 - **Keep the client's data and formats as they are**, errors included: dates, prices and phone numbers in the client's own format; a sale price above the list price or a phone link to a different number is shown as the client has it and listed in the report for the client to check.
 - **Outside systems stay outside**: a booking calendar, a cart or a shop platform is linked, never imitated with a form that only looks like it works.
-- Put client overrides in a separate stylesheet after `theme.css`; scope any rule that changes grid columns to a desktop media query, or it overrides the theme's phone layout.
+- Start with `ui-refiner theme starter <theme> --out <folder>`: `theme.css`, `theme.md`, `brand.css` (the client's colour and typeface on the tokens) and `STARTER.md` (the photographs the theme needs, with place and ratio). It copies no sample page and no generated image.
+- Put client overrides in a separate stylesheet after `theme.css` and `brand.css`; scope any rule that changes grid columns to a desktop media query, or it overrides the theme's phone layout.
 - Run `keep check` and `stress` on the result; fix every broken stress row in CSS. Serve the page over `http://127.0.0.1` for `keep check`: on a `file://` page, root-relative form actions (`/login`) resolve to the drive and read as lost.
 
 ## Files per theme
 
 `theme.md` (measured basis, tokens, skeleton, components, rules), `theme.css`, `sample.html` (a fictional client), `shot-desktop.jpg`, `shot-mobile.jpg`, `assets/generated/` (generated images with `prompts.json`). `generated.check.mjs` checks that every listed generated image is present.
 
-`effects/` holds optional effects shared by the themes (hero video or slides, scroll reveals, a blurred header). A theme lists the ones that suit it under "Effects" in its `theme.md`; so far only `jp-place-photo` does. See `effects/README.md`.
+`effects/` holds optional effects shared by the themes (hero video or slides, scroll reveals, a blurred header). A theme lists the ones that suit it under "Effects" in its `theme.md`; so far only `place-photo-quiet` does. See `effects/README.md`.

@@ -7,22 +7,24 @@ const root=new URL('../',import.meta.url),dir='skills/ui-refiner-agent/reference
 const catalog=await fs.readFile(new URL(dir+'README.md',root),'utf8');
 const themes=[];
 for(const line of catalog.split(/\r?\n/).filter(line=>line.startsWith('| `'))){
- const row=/^\| `((kr|jp)-([a-z]+)-[a-z]+)` \| [A-Z]+ · [^·]+ · ([a-z& -]+?)(?:;[^|]*)? \| (\d+) \|$/.exec(line);
+ const row=/^\| `(([a-z]+)-[a-z]+(?:-[a-z]+)?)` \| (KR|JP) · [^·]+ · ([a-z& -]+?)(?:;[^|]*)? \| (\d+) \|$/.exec(line);
  if(!row)throw Error('Invalid theme row: '+line);
- themes.push({id:row[1],country:row[2],family:row[3],type:row[4],sites:row[5]});
+ themes.push({id:row[1],family:row[2],country:row[3],type:row[4],sites:row[5]});
 }
-themes.sort((a,b)=>(a.country==='kr'?0:1)-(b.country==='kr'?0:1));
+// Grouped by family: a theme's name carries its family and look, and the country is only where it was measured.
+const FAMILIES=['place','care','business','public','shop','creative'];
+themes.sort((a,b)=>FAMILIES.indexOf(a.family)-FAMILIES.indexOf(b.family));
 const words={
- 'README.md':{kr:'Korea',jp:'Japan',sites:n=>n+' sites',alt:id=>'First screen of the '+id+' sample page'},
- 'README_KO.md':{kr:'한국',jp:'일본',sites:n=>n+'곳',alt:id=>id+' 샘플 페이지의 첫 화면'},
- 'README_JA.md':{kr:'韓国',jp:'日本',sites:n=>n+' 件',alt:id=>id+' のサンプルページの最初の画面'}
+ 'README.md':{KR:'Korean',JP:'Japanese',sites:(n,c)=>n+' '+c+' sites',alt:id=>'First screen of the '+id+' sample page'},
+ 'README_KO.md':{KR:'한국',JP:'일본',sites:(n,c)=>c+' '+n+'곳 실측',alt:id=>id+' 샘플 페이지의 첫 화면'},
+ 'README_JA.md':{KR:'韓国',JP:'日本',sites:(n,c)=>c+' '+n+' 件を実測',alt:id=>id+' のサンプルページの最初の画面'}
 };
 const START='<!-- theme-grid:start (node scripts/build-theme-grid.mjs) -->',END='<!-- theme-grid:end -->',COLUMNS=3;
 const grid=w=>{
  const cells=themes.map(t=>`<td align="center" valign="top" width="33%">
 <a href="${dir}${t.id}/theme.md"><img src="docs/assets/themes/${t.id}.jpg" alt="${w.alt(t.id)}" width="100%"></a><br>
 <b><a href="${dir}${t.id}/theme.md">${t.id}</a></b><br>
-<sub>${w[t.country]} · ${t.family} · ${t.type} ·&nbsp;${w.sites(t.sites).replace(' ','&nbsp;')}</sub>
+<sub>${t.type} · ${w.sites(t.sites,w[t.country])}</sub>
 </td>`);
  while(cells.length%COLUMNS)cells.push('<td width="33%"></td>');
  const rows=[];for(let i=0;i<cells.length;i+=COLUMNS)rows.push('<tr>\n'+cells.slice(i,i+COLUMNS).join('\n')+'\n</tr>');
