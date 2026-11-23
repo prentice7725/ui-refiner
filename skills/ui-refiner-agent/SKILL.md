@@ -126,6 +126,24 @@ Variety belongs in two places: between the three directions for the main page, s
 6. Run the dev server and `ui-refiner scan http://127.0.0.1:<port> --source src`. Fix strong and moderate signals that are not deliberate, plus contrast/label/overflow issues. Rerun the same scan after each round; it compares with the previous scan automatically, so resolved and new signals are explicit. At most two fix-and-rescan rounds; then report what remains and why. Then run `ui-refiner stress http://127.0.0.1:<port>` and fix its broken rows: a screen built against its own demo copy breaks first on a longer label, a long email or a phone number with an extension.
 7. Look at the screenshots before claiming the result is done.
 
+## Optional: Modern Web Guidance
+
+[Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) (Chrome, Edge, Firefox and MDN teams; Apache-2.0) is a separate skill with guides on current web platform features: dialogs and popovers, form validation, images, animation, loading, accessibility. UI Refiner does not include it and does not need it. Use it only when one of these holds:
+
+- the person asks for it ("with Modern Web Guidance", "MWG로", "MWG も使って");
+- the project already has it: a `modern-web-guidance` folder under `.claude/skills` or `.agents/skills`, or its plugin among the host's skills.
+
+Then, in **Refine** and **Build a new screen**, before writing or changing HTML, CSS or client-side JS:
+
+1. Read its `SKILL.md` when it is installed. Without an install, the guides are still reachable: `npx -y modern-web-guidance@latest search "<what you are building>"`, then `npx -y modern-web-guidance@latest retrieve "<id>"`.
+2. Search for what this page really has (a menu, a dialog, a form, a table, a carousel, images, fonts) and follow the guides you retrieve. Do not add a feature because a guide exists for it.
+3. It decides how things are built, never how the page looks. The theme or chosen direction, `keep check`, `stress`, `directions verify` and the craft list stay as written, and win where they disagree with a guide.
+4. In the report, say that it was used and name the guides followed.
+
+Do not install it yourself. When the person asks for it and it is missing, work through `npx` as above and tell them the install command (`npx modern-web-guidance@latest install`) in case they want it kept.
+
+It is off by default because it changed nothing we could measure: on three pages refined with and without it (19 November 2026, one run each), both versions had no serious axe finding and the same Lighthouse accessibility (99.7) and best-practices (96) scores. Take it as a preference of the person's, not as a quality step.
+
 ## Japanese pages (日本語)
 
 - Japanese pages get a Japanese report and `.jp` hosts a `ja-JP` browser automatically; use `--lang ko|en --locale ja-JP` to read a Japanese page's report in another language.

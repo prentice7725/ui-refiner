@@ -170,6 +170,10 @@ ui-refiner scan localhost:5173 --out scan-after --compare scan-before
 
 同梱のデザイン知識は`vendor/suta/skills/suta`（韓国語）にあります。AIスロップの禁止ライン、レイアウト・モーションの値、テスト済みUIパターン57種です。
 
+### Modern Web Guidance と併用する（任意）
+
+UI Refiner はページの見た目を決めます。[Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) はページの作り方（ダイアログ、フォーム、画像、読み込み、アクセシビリティ）を扱う別のスキルです。併用するには「Modern Web Guidance を使って landing.html をリファインして」のように依頼するか、プロジェクトにインストールしておくと（`npx modern-web-guidance@latest install`）スキルが自動で使います。既定ではオフです。3 ページで使った場合と使わない場合を比べたところ、アクセシビリティとベストプラクティスのスコアは同じでした。
+
 ## 詳細QAゲート（任意）
 
 開発やCIで強制ゲートが必要なプロジェクトでは、`init`＋`check`でプロジェクトのポリシーに沿ってsutaの静的検査とlintappleの描画検査を実行します。ルート、操作状態、ベースライン、変更行スコープ、証拠画像、ARIA比較、ビジュアルリグレッション、SARIF/HTMLエクスポート、レビューパケットに対応します。
