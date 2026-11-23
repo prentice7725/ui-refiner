@@ -1,0 +1,463 @@
+/* 맑은 진료실 · 하얀 여백 (care-white)
+   Korean dental, dermatology and Korean-medicine clinics. White ground, hairlines, one deep-green accent.
+   Spec: theme.md in this folder. */
+
+:root {
+  --ground: #ffffff;
+  --band: #f8f6f2;
+  --ink: #191c1f;
+  --ink-soft: #5f6670;
+  --line: #e3e5e8;
+  --line-strong: #191c1f;
+  --accent: #1f4a3e;
+  --accent-soft: #e8efec;
+  --text: "Pretendard", "Pretendard Variable", "Noto Sans KR", sans-serif;
+  --body: 16px;
+  --leading: 1.75;
+  --display-size: 52px;
+  --h2: 36px;
+  --h3: 20px;
+  --radius: 0;
+  --button-radius: 4px;
+  --content: 1180px;
+  --gap: clamp(72px, 10vw, 128px);
+
+  --gutter: 24px;
+  --small: 14px;
+  --treatment-name: 22px;
+}
+
+/* ---------- base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--body);
+  line-height: var(--leading);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h2 { font-size: var(--h2); }
+h3 { font-size: var(--h3); line-height: 1.45; }
+
+img { display: block; max-width: 100%; height: auto; border-radius: var(--radius); }
+img[data-stand-in], img[data-generated] { object-fit: cover; }
+
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.num, .tabular { font-variant-numeric: tabular-nums; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- layout helpers ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--content) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--gap); }
+.section--band { background: var(--band); }
+
+.section-head { margin-bottom: 48px; max-width: 720px; }
+.section-head .label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: var(--small);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.section-head p { margin-top: 16px; color: var(--ink-soft); }
+
+/* ---------- buttons and links ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: var(--button-radius);
+  background: var(--accent);
+  color: #ffffff;
+  font-size: var(--body);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.button:hover { background: #173a31; }
+
+.text-link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* ---------- 1. utility bar ---------- */
+
+.utility {
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.utility .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 8px;
+}
+.utility a { text-decoration: none; }
+
+/* ---------- 2. header ---------- */
+
+.site-header { border-bottom: 1px solid var(--line); background: var(--ground); }
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  min-height: 80px;
+}
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav { margin-left: auto; }
+.nav ul { display: flex; gap: 32px; }
+.nav a {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+/* ---------- 3. hero ---------- */
+
+.hero { padding-block: 72px 80px; }
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 64px;
+  align-items: center;
+}
+.hero .label {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.hero h1 {
+  font-size: var(--display-size);
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+}
+.hero .lede {
+  margin-top: 24px;
+  max-width: 34em;
+  font-size: 18px;
+  color: var(--ink-soft);
+}
+.hero .actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 40px;
+}
+.hero .actions .text-link { font-variant-numeric: tabular-nums; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 3; }
+
+/* ---------- 4. hours strip ---------- */
+
+.hours {
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line);
+}
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.hours-table caption { text-align: left; }
+.hours-table tbody {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.hours-table tr {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px 20px 26px;
+  border-left: 1px solid var(--line);
+}
+.hours-table tr:first-child { border-left: 0; padding-left: 0; }
+.hours-table th, .hours-table td { padding: 0; text-align: left; }
+.hours-table th { font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.hours-table td { font-size: 20px; font-weight: 600; }
+.hours-table .closed td { color: var(--ink-soft); }
+.hours-table tr.is-today th,
+.hours-table tr.is-today td { color: var(--accent); }
+.hours-table tr.is-today th::after {
+  content: "오늘";
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-size: 12px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+}
+
+/* ---------- 5. treatments ---------- */
+
+.treatments { border-top: 1px solid var(--line-strong); }
+.treatment {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 240px) minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: baseline;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.treatment .no {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.treatment h3 { font-size: var(--treatment-name); }
+.treatment p { color: var(--ink-soft); }
+.treatment .text-link { font-size: 15px; white-space: nowrap; }
+
+/* ---------- 6. doctor ---------- */
+
+.doctor {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
+}
+.doctor-photo img { width: 100%; aspect-ratio: 3 / 4; object-position: 50% 30%; }
+.doctor .label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: var(--small);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.doctor .name { font-size: var(--h2); }
+.doctor .title { margin-top: 6px; font-size: 18px; color: var(--ink-soft); }
+.career {
+  margin-top: 32px;
+  border-top: 1px solid var(--line-strong);
+}
+.career li {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.doctor blockquote {
+  margin: 36px 0 0;
+  font-size: 18px;
+  line-height: 1.8;
+}
+.doctor blockquote footer {
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ---------- 7. first visit ---------- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+.steps li {
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+.steps .step-no {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.steps h3 { margin-top: 8px; }
+.steps p { margin-top: 8px; color: var(--ink-soft); }
+
+/* ---------- 8. facilities ---------- */
+
+.facilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.facilities img { width: 100%; aspect-ratio: 4 / 3; }
+.facilities figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.facilities figcaption strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
+
+/* ---------- 9. location ---------- */
+
+.location {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 64px;
+  align-items: start;
+}
+.location dl { border-top: 1px solid var(--line-strong); }
+.location dl > div {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.location dt { font-weight: 600; }
+.location dd { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.map-frame {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ---------- 10. footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: 48px 56px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.site-footer .brand { display: block; margin-bottom: 16px; font-size: 18px; color: var(--ink); }
+.site-footer .facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 20px;
+  font-variant-numeric: tabular-nums;
+}
+.site-footer .facts span { white-space: nowrap; }
+.site-footer .credit {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+
+/* ---------- phone ---------- */
+
+@media (max-width: 767px) {
+  :root {
+    --display-size: 32px;
+    --h2: 26px;
+    --h3: 18px;
+    --treatment-name: 20px;
+    --gutter: 20px;
+  }
+
+  .utility .wrap { font-size: 12px; }
+  .utility .night-until { display: none; }
+
+  .site-header .wrap {
+    flex-wrap: wrap;
+    gap: 0 16px;
+    min-height: 0;
+    padding-block: 14px 0;
+  }
+  .brand { font-size: 20px; }
+  .site-header .button { margin-left: auto; min-height: 44px; padding: 0 18px; font-size: 15px; }
+  .nav {
+    order: 3;
+    width: 100%;
+    margin: 12px 0 0;
+    border-top: 1px solid var(--line);
+    overflow-x: auto;
+  }
+  .nav ul { gap: 20px; padding-block: 10px; }
+  .nav a { font-size: 15px; }
+
+  .hero { padding-block: 40px 48px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
+  .hero .label { margin-bottom: 14px; font-size: 14px; }
+  .hero .lede { margin-top: 18px; font-size: 16px; }
+  .hero .actions { margin-top: 28px; }
+
+  .hours-table tbody { grid-template-columns: 1fr; }
+  .hours-table tr,
+  .hours-table tr:first-child {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .hours-table tr:first-child { border-top: 0; }
+  .hours-table td { font-size: 17px; }
+
+  .section-head { margin-bottom: 32px; }
+
+  .treatment {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 4px 12px;
+    padding-block: 22px;
+  }
+  .treatment p, .treatment .text-link { grid-column: 2; }
+  .treatment .text-link { justify-self: start; margin-top: 4px; }
+
+  .doctor { grid-template-columns: 1fr; gap: 36px; }
+  .doctor-photo img { aspect-ratio: 4 / 5; }
+  .doctor blockquote { font-size: 17px; }
+
+  .steps { grid-template-columns: 1fr; gap: 24px; }
+
+  .facilities { grid-template-columns: 1fr; gap: 32px; }
+
+  .location { grid-template-columns: 1fr; gap: 32px; }
+  .location dl > div { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
+}
+
+/* ---------- optional effects (../effects/) ---------- */
+.hero-photo { position: relative; overflow: hidden; }
+.hero-photo [data-fx-slide] { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-photo .fx-pause, .hero-photo .fx-pause:hover { top: auto; right: 12px; bottom: 12px; min-width: 40px; height: 40px; }

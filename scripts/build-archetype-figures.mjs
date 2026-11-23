@@ -38,7 +38,7 @@ const frame='font:13px/1.4 Pretendard Variable,Pretendard,Malgun Gothic,system-u
 const types=`<body style="${frame}"><div style="display:grid;grid-template-columns:repeat(8,1fr);gap:16px;width:1544px">${archetypes.map((name,i)=>`<figure style="margin:0"><div style="height:300px;overflow:hidden;border:1px solid #c5cbc6;background:#fff">${schematic[i]}</div><figcaption style="margin-top:10px"><b style="font-size:15px">${name}</b><br>${total(i)} sites<br><span style="color:#5a6a62">KR ${country('KR',i)} · JP ${country('JP',i)}</span></figcaption></figure>`).join('')}</div></body>`;
 
 const themes=new URL('skills/ui-refiner-agent/reference/themes/',root),demo=new URL('docs/archetype-demo/kr-business/',root);
-const files=['short',null,'white','portal','photo','bigtype','corporate','colour'].map(n=>n?new URL(n+'.html',demo):new URL('kr-business-dark/sample.html',themes));
+const files=['short',null,'white','portal','photo','bigtype','corporate','colour'].map(n=>n?new URL(n+'.html',demo):new URL('business-dark/sample.html',themes));
 const kr=groups['KR business'];
 const browser=await chromium.launch();
 const shots=[];

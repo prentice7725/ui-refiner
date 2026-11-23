@@ -11,7 +11,7 @@ Optional motion and surface effects on top of a theme. A theme is static by defa
 <script src="effects/effects.js" defer></script>
 ```
 
-To try them on a sample page, add `?fx=hero-slides,reveal`, `?fx=marquee,intro` or `?fx-level=bold` to its address. Samples with effect markup: `jp-place-photo`, `kr-place-photo`, `kr-care-white`, `jp-business-corporate` (slides, reveals), `kr-business-dark` (video or slides), `jp-creative-bigtype` (marquee, intro, reveals). The portal themes have their own carousels.
+To try them on a sample page, add `?fx=hero-slides,reveal`, `?fx=marquee,intro` or `?fx-level=bold` to its address. Samples with effect markup: `place-photo-quiet`, `place-photo-view`, `care-white`, `business-corporate-message` (slides, reveals), `business-dark` (video or slides), `creative-bigtype` (marquee, intro, reveals). The portal themes have their own carousels.
 
 | Effect | Markup | What it does | Fallback |
 |---|---|---|---|
@@ -36,7 +36,7 @@ Every moving hero needs `<button class="fx-pause" type="button" data-pause="…"
 
 ## Applying to a client's page
 
-Learned on three client pages built from the themes (21 November 2026): a Hakuba inn (`jp-place-photo`), a Suwon dental clinic (`kr-care-white`) and a fulfilment company (`kr-business-dark`).
+Learned on three client pages built from the themes (21 November 2026): a Hakuba inn (`place-photo-quiet`), a Suwon dental clinic (`care-white`) and a fulfilment company (`business-dark`).
 
 - **The material decides first.** The fulfilment company had no photographs, so its hero is set in type; video and slides had nothing to show, and the effects its theme allows on request (reveals, header blur) add nothing to a page without pictures. Offer nothing then, and say why in one line.
 - **Slides only with the client's own photographs.** The inn page runs on generated stand-ins named for another town; slides put three of them in the most visible place instead of one. With stand-ins, offer slides as "once you have three photographs of your own", and keep the hero still until then.

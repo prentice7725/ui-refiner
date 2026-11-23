@@ -13,7 +13,7 @@ const BRAND_TOKENS=['brand','accent','signal','product','earth'];
 export async function listThemes(dir=THEMES_DIR){
  const catalog=await fs.readFile(path.join(dir,'README.md'),'utf8'),themes=[];
  for(const line of catalog.split(/\r?\n/)){
-  const row=/^\| `([a-z]+-[a-z]+-[a-z]+)` \| ([^|]+) \| (\d+) \|$/.exec(line);
+  const row=/^\| `([a-z]+-[a-z]+(?:-[a-z]+)?)` \| ([^|]+) \| (\d+) \|$/.exec(line);
   if(row)themes.push({id:row[1],basis:row[2].trim(),sites:Number(row[3])});
  }
  return themes;
@@ -54,18 +54,51 @@ export function brandValues(tokens,brand){
  return out;
 }
 
-function brandCss({id,tokens,values,face}){
+// A theme is typeset for the language it was measured in. For a page in the other language the faces, line height
+// and line breaking are swapped; everything else in the theme stays.
+export const LANGUAGES={
+ ko:{sans:['Pretendard','Pretendard Variable','Noto Sans KR'],serif:['Noto Serif KR','Nanum Myeongjo'],own:/^(pretendard|noto s(ans|erif) kr|apple sd gothic neo|malgun gothic|nanum)/i,
+  rules:'body { word-break: keep-all; overflow-wrap: anywhere; line-break: auto; }',leading:-.15,track:null,
+  fonts:'Pretendard (cdn.jsdelivr.net/gh/orioncactus/pretendard) or Noto Sans KR'},
+ ja:{sans:['Noto Sans JP','Hiragino Sans','Yu Gothic'],serif:['Zen Old Mincho','Yu Mincho','Hiragino Mincho ProN'],own:/^(noto s(ans|erif) jp|hiragino|yu (gothic|mincho)|meiryo|biz ud|zen |shippori)/i,
+  rules:'body { word-break: normal; overflow-wrap: anywhere; line-break: strict; }',leading:.15,track:'0',
+  fonts:'Noto Sans JP (Google Fonts); the Hiragino and Yu faces are system fonts'}
+};
+const GENERIC=/^(sans-serif|serif|monospace|system-ui|ui-sans-serif|ui-serif)$/i;
+/** One font stack moved to another language: Latin faces keep their place, the source language's faces give way to the target's. */
+export function swapStack(stack,from,to){
+ const names=stack.split(',').map(s=>s.trim().replace(/^["']|["']$/g,'')).filter(Boolean);
+ if(!names.some(n=>LANGUAGES[from].own.test(n)))return null;
+ const serif=names.some(n=>LANGUAGES[from].own.test(n)&&/mincho|serif|myeongjo/i.test(n))||(names.at(-1)||'').toLowerCase()==='serif'&&!names.some(n=>LANGUAGES[from].sans.includes(n));
+ const latin=names.filter(n=>!LANGUAGES[from].own.test(n)&&!GENERIC.test(n));
+ return [...latin,...LANGUAGES[to][serif?'serif':'sans']].map(n=>`"${n}"`).join(', ')+', '+(serif?'serif':'sans-serif');
+}
+/** The tokens and rules that move a theme from the language it was measured in to another. */
+export function languageSwap(tokens,from,to){
+ if(!LANGUAGES[to])throw new Error(`--lang takes ${Object.keys(LANGUAGES).join(' or ')} (got ${to})`);
+ if(from===to||!LANGUAGES[from])return null;
+ const out={};
+ for(const [name,value] of Object.entries(tokens)){if(!/,/.test(value)||!/serif|sans/i.test(value))continue;const next=swapStack(value,from,to);if(next)out[name]=next;}
+ const leading=parseFloat(tokens['--leading']);
+ if(Number.isFinite(leading))out['--leading']=String(+(Math.min(2,Math.max(1.5,leading+LANGUAGES[to].leading))).toFixed(2));
+ if(LANGUAGES[to].track!==null&&tokens['--track'])out['--track']=LANGUAGES[to].track;
+ return {from,to,tokens:out,rules:LANGUAGES[to].rules,fonts:LANGUAGES[to].fonts};
+}
+
+function brandCss({id,tokens,values,face,language}){
  const names=brandTokens(tokens),lines=[];
  if(values)for(const [name,value] of Object.entries(values))lines.push(` ${name}: ${value}; /* theme: ${tokens[name]} */`);
  else if(names)for(const name of [names.main,...names.derived])lines.push(` /* ${name}: ${tokens[name]}; */`);
- if(face&&tokens['--text'])lines.push(` --text: "${face}", ${tokens['--text']};`);
- else if(tokens['--text'])lines.push(` /* --text: "Your typeface", ${tokens['--text']}; */`);
+ const text=language?.tokens['--text']||tokens['--text'];
+ if(language)for(const [name,value] of Object.entries(language.tokens))if(name!=='--text'||!face)lines.push(` ${name}: ${value}; /* theme (${language.from}): ${tokens[name]} */`);
+ if(face&&text)lines.push(` --text: "${face}", ${text};`);
+ else if(text&&!language)lines.push(` /* --text: "Your typeface", ${text}; */`);
  return `/* The client's own colour and typeface on ${id}. Link this after theme.css; keep other overrides in a third file.
    Written by \`ui-refiner theme starter\`.${values?'':' No brand colour was given: uncomment and set the lines the client has.'} */
 :root {
 ${lines.join('\n')}
 }
-`;
+${language?`/* Line breaking for ${language.to}; the theme was typeset for ${language.from}. */\n${language.rules}\n`:''}`;
 }
 
 /** Photographs the theme's sample uses: where, how large and at what ratio, so the same slots can be filled. */
@@ -157,7 +190,7 @@ export function suggestFix(failure,{brandColours=[],ink}={}){
 }
 
 /** Copies the theme and writes brand.css and STARTER.md into `out`. */
-export async function themeStarter(id,{out='ui-refiner-theme',brand,face,dir=THEMES_DIR,render=true,launch}={}){
+export async function themeStarter(id,{out='ui-refiner-theme',brand,face,lang,dir=THEMES_DIR,render=true,launch}={}){
  const themes=await listThemes(dir),theme=themes.find(t=>t.id===id);
  if(!theme)throw new Error(`Unknown theme ${id}. Themes: ${themes.map(t=>t.id).join(', ')}`);
  const colour=brand===undefined?null:parseHex(brand);
@@ -165,10 +198,12 @@ export async function themeStarter(id,{out='ui-refiner-theme',brand,face,dir=THE
  const from=path.join(dir,id),target=path.resolve(out);await fs.mkdir(target,{recursive:true});
  const css=await fs.readFile(path.join(from,'theme.css'),'utf8'),tokens=rootTokens(css),names=brandTokens(tokens);
  if(colour&&!names)throw new Error(`${id} has no colour of its own to replace (it works in black, white and photographs); leave --brand out`);
- const values=colour?brandValues(tokens,colour):null,brandSheet=brandCss({id,tokens,values,face});
+ const sample=await fs.readFile(path.join(from,'sample.html'),'utf8'),measured=/<html[^>]*\blang="([a-z]{2})/i.exec(sample)?.[1]||null;
+ const language=lang?languageSwap(tokens,measured,lang):null;
+ const values=colour?brandValues(tokens,colour):null,brandSheet=brandCss({id,tokens,values,face,language});
  for(const file of ['theme.css','theme.md'])await fs.copyFile(path.join(from,file),path.join(target,file));
  await fs.writeFile(path.join(target,'brand.css'),brandSheet);
- const slots=photoSlots(await fs.readFile(path.join(from,'sample.html'),'utf8'));
+ const slots=photoSlots(sample);
  // A literal copy of the theme colour outside the tokens would not follow brand.css.
  const body=css.replace(/:root\s*\{[^}]*\}/,''),literal=names?(body.match(new RegExp(tokens[names.main].replace('#','#?'),'gi'))||[]).length:0;
  let check=null;
@@ -177,7 +212,7 @@ export async function themeStarter(id,{out='ui-refiner-theme',brand,face,dir=THE
   catch(error){check={skipped:String(error.message||error).split('\n')[0]};}
   for(const f of check.failures||[])f.fix=suggestFix(f,{brandColours:Object.values(values),ink:parseHex(tokens['--ink'])})?.how||null;
  }
- const result={theme,dir:target,files:['theme.css','theme.md','brand.css','STARTER.md'],brand:colour,face:face||null,tokens:values,
+ const result={theme,dir:target,files:['theme.css','theme.md','brand.css','STARTER.md'],brand:colour,face:face||null,measuredIn:measured,language,tokens:values,
   untouched:names?null:'no colour token',literal,contrast:check,photos:slots,ok:!(check&&check.failures&&check.failures.length)};
  await fs.writeFile(path.join(target,'STARTER.md'),starterDoc(result,tokens,names));
  return result;
@@ -191,6 +226,13 @@ function starterDoc(r,tokens,names){
   L.push('',`The derived tokens keep the theme's lightness steps and tint strength with the client's hue. Check them against the client's own palette if it documents one.`);}
  else if(names)L.push(`No brand colour was given. The theme's own colour is \`${names.main}\` (${tokens[names.main]}); set it in \`brand.css\`, or run again with \`--brand "#rrggbb"\`.`);
  else L.push('This theme has no colour of its own: it works in black, white and photographs. Keep the client\'s colour to the logo.');
+ if(r.language){L.push('',`## Language: ${r.language.from} → ${r.language.to}`,'',`The theme was measured on ${r.language.from} sites and typeset for that language. \`brand.css\` moves it to ${r.language.to}:`,'','| Token | Theme | Now |','|---|---|---|');
+  for(const [name,value] of Object.entries(r.language.tokens))L.push(`| \`${name}\` | ${tokens[name]} | ${value} |`);
+  L.push('',`Line breaking: \`${r.language.rules}\``,'',`Load on the page: ${r.language.fonts}.`,'',
+   'Check by hand, because tokens do not reach them:',
+   '- letter-spacing written on single rules (Japanese headings are often tracked open, Korean ones set tight);',
+   '- the menu words, section labels and trade components in \`theme.md\`, which are the measured language\'s own (a Japanese portal\'s 「目的からさがす」, a Korean clinic\'s 진료 예약 bar): keep the structure, use the client\'s words;',
+   '- the measured values in \`theme.md\` describe sites of the other language, so page length and type sizes are a starting point here, not a measured range.');}
  if(r.face)L.push('',`Typeface: \`--text\` now starts with "${r.face}". Load the font on the page; the theme's stack stays as the fallback.`);
  if(r.literal)L.push('',`\`theme.css\` writes the theme colour ${r.literal} time(s) outside the tokens; those places do not follow \`brand.css\`. Search for ${tokens[names.main]}.`);
  if(r.contrast){L.push('','## Contrast with the brand colour','');

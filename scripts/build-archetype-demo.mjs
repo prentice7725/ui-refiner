@@ -1,10 +1,10 @@
-// One fictional Korean maker (한빛정밀, the kr-business-dark sample client) drawn in the impression archetypes that
+// One fictional Korean maker (한빛정밀, the business-dark sample client) drawn in the impression archetypes that
 // have no finished theme for the Korean business family. Demonstration samples, not themes.
 // node scripts/build-archetype-demo.mjs → docs/archetype-demo/kr-business/<archetype>.html
 import fs from 'node:fs/promises';
 
 const out=new URL('../docs/archetype-demo/kr-business/',import.meta.url);
-const IMG='../../../skills/ui-refiner-agent/reference/themes/kr-business-dark/assets/generated/';
+const IMG='../../../skills/ui-refiner-agent/reference/themes/business-dark/assets/generated/';
 const PHOTOS={
  hero:['hero-line.jpg',1920,1080,'정밀가공 공장의 긴 통로 양옆으로 CNC 가공기가 줄지어 서 있고, 작업자 한 명이 멀리 걸어가는 모습'],
  measure:['tech-measure.jpg',1650,1100,'항온 측정실에서 3차원 측정기 프로브가 정밀 부품을 측정하고, 뒤에서 엔지니어가 지켜보는 모습'],
@@ -24,7 +24,7 @@ const BUSINESS=[
  ['semicon','반도체 장비 부품','챔버 부품과 진공 플랜지, 클린룸 세정 출하','50% 40%'],
  ['mold','금형','프레스·다이캐스팅 금형 설계와 제작','50% 55%']
 ];
-// Sample figures, invented for the fictional client as in the kr-business-dark sample.
+// Sample figures, invented for the fictional client as in the business-dark sample.
 const FIGURES=[['1998','년','화성에서 설립'],['2','곳','생산 공장 (화성 · 천안)'],['14','개국','부품 수출국'],['±2','μm','양산 가공 공차']];
 const TECH_TITLE='가공부터 조립까지 한 공장에서 검증합니다';
 const TECH_LEDE='부품을 깎는 팀과 라인을 짜는 팀이 같은 바닥에서 일하기 때문에, 공차 문제는 도면 단계에서 먼저 걸러집니다.';
@@ -98,7 +98,7 @@ body:`<div class="sheet">
 ${footer()}
 </div>`};
 
-// 2 white quiet: 50 sites (the kr-business-white theme). Three quarters white, Pretendard, display 52px/700, left headline with a panel, 0–3 photographs.
+// 2 white quiet: 50 sites (the business-white theme). Three quarters white, Pretendard, display 52px/700, left headline with a panel, 0–3 photographs.
 pages.white={archetype:'white quiet',sites:50,font:PRETENDARD,css:`
 :root{--content:1200px;--ink:#111418;--soft:#5b6470;--line:#e4e7eb;--band:#f5f6f8}
 body{background:#fff;color:var(--ink);font:16px/1.7 "Pretendard Variable",Pretendard,sans-serif}

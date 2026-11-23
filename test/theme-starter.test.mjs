@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {listThemes,rootTokens,brandTokens,brandValues,photoSlots,contrast,parseHex,suggestFix,themeStarter,THEMES_DIR} from '../src/theme-starter.mjs';
+import {swapStack,languageSwap,listThemes,rootTokens,brandTokens,brandValues,photoSlots,contrast,parseHex,suggestFix,themeStarter,THEMES_DIR} from '../src/theme-starter.mjs';
 
 const rgb=hex=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));
 
 test('theme starter: the catalog lists every theme folder', async () => {
  const themes=await listThemes();
- const folders=(await fs.readdir(THEMES_DIR,{withFileTypes:true})).filter(d=>d.isDirectory()&&/^(kr|jp)-/.test(d.name)).map(d=>d.name).sort();
+ const folders=(await fs.readdir(THEMES_DIR,{withFileTypes:true})).filter(d=>d.isDirectory()&&d.name!=='effects').map(d=>d.name).sort();
  assert.deepEqual(themes.map(t=>t.id).sort(),folders);
  assert.ok(themes.every(t=>t.sites>0&&t.basis.includes('·')));
 });
@@ -23,6 +23,29 @@ test('theme starter: brand tokens are found and derived tokens keep the theme\'s
  assert.ok(contrast(rgb(values['--brand-soft']),[255,255,255])<1.25,'soft stays a pale tint');
  assert.equal(brandTokens(rootTokens(':root{--ground:#0a0a0a;--ink:#0a0a0a;}')),null);
  assert.equal(parseHex('#abc'),'#aabbcc');assert.equal(parseHex('0B5CAB'),'#0b5cab');assert.equal(parseHex('blue'),null);
+});
+
+test('theme starter: a theme moves to the other language by faces, line height and line breaking', async () => {
+ assert.equal(swapStack('"Zen Old Mincho", "Yu Mincho", serif','ja','ko'),'"Noto Serif KR", "Nanum Myeongjo", serif');
+ assert.equal(swapStack('"Inter", "Noto Sans JP", sans-serif','ja','ko'),'"Inter", "Pretendard", "Pretendard Variable", "Noto Sans KR", sans-serif');
+ assert.equal(swapStack('"Cormorant Garamond", "Times New Roman", serif','ko','ja'),null,'a Latin-only stack is left alone');
+ const swap=languageSwap({'--text':'"Pretendard", "Noto Sans KR", sans-serif','--leading':'1.7','--track':'-0.02em','--ink':'#111111'},'ko','ja');
+ assert.deepEqual(swap.tokens,{'--text':'"Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif','--leading':'1.85','--track':'0'});
+ assert.match(swap.rules,/line-break: strict/);
+ assert.equal(languageSwap({'--text':'"Pretendard", sans-serif'},'ko','ko'),null);
+ assert.throws(()=>languageSwap({},'ko','fr'),/--lang takes ko or ja/);
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'ui-refiner-starter-'));
+ try{
+  for(const theme of await listThemes()){
+   const own=(await themeStarter(theme.id,{out:tmp,render:false})).measuredIn,other=own==='ko'?'ja':'ko';
+   assert.ok(['ko','ja'].includes(own),theme.id+': sample declares its language');
+   assert.equal((await themeStarter(theme.id,{out:tmp,lang:own,render:false})).language,null);
+   const r=await themeStarter(theme.id,{out:tmp,lang:other,render:false}),brand=await fs.readFile(path.join(tmp,'brand.css'),'utf8');
+   assert.ok(r.language.tokens['--text']&&r.language.tokens['--leading'],theme.id+': text face and line height move');
+   assert.ok(!Object.values(r.language.tokens).some(v=>(own==='ko'?/Pretendard|Noto Sans KR/:/Noto Sans JP|Hiragino|Yu Gothic/).test(v)),theme.id+': no face of the measured language is left');
+   assert.ok(brand.includes(r.language.rules)&&(await fs.readFile(path.join(tmp,'STARTER.md'),'utf8')).includes('## Language: '+own+' → '+other));
+  }
+ }finally{await fs.rm(tmp,{recursive:true,force:true});}
 });
 
 test('theme starter: photograph slots carry section, ratio and size', () => {
@@ -57,20 +80,20 @@ test('theme starter: writes the theme, brand.css and STARTER.md for every theme,
    assert.ok(!/assets\/generated/.test(doc+brand),`${theme.id}: no generated image is carried`);
   }
   await assert.rejects(themeStarter('kr-nothing-here',{out:tmp}),/Unknown theme/);
-  await assert.rejects(themeStarter('kr-care-white',{out:tmp,brand:'green',render:false}),/hex colour/);
+  await assert.rejects(themeStarter('care-white',{out:tmp,brand:'green',render:false}),/hex colour/);
  }finally{await fs.rm(tmp,{recursive:true,force:true});}
 });
 
 test('theme starter: a pale brand colour is reported where it breaks contrast on the sample', async () => {
  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'ui-refiner-starter-'));
  try{
-  const pale=await themeStarter('kr-care-white',{out:tmp,brand:'#ffd400'});
+  const pale=await themeStarter('care-white',{out:tmp,brand:'#ffd400'});
   if(pale.contrast.skipped)return; // no browser on this machine
   assert.equal(pale.ok,false);
   assert.ok(pale.contrast.failures.some(f=>f.kind==='text'&&f.on==='#ffd400'&&f.fix.includes('ink')));
   assert.deepEqual(pale.contrast.widths,[1440,390]);
   assert.ok(pale.contrast.failures.every(f=>f.widths.length&&f.widths.every(w=>[1440,390].includes(w))));
-  const dark=await themeStarter('kr-care-white',{out:tmp,brand:'#0b5cab'});
+  const dark=await themeStarter('care-white',{out:tmp,brand:'#0b5cab'});
   assert.equal(dark.ok,true);assert.ok(dark.contrast.checked>0);
  }finally{await fs.rm(tmp,{recursive:true,force:true});}
 });
