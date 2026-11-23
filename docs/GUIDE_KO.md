@@ -165,6 +165,10 @@ ui-refiner scan localhost:5173 --out scan-after --compare scan-before
 
 내장 디자인 지식은 `vendor/suta/skills/suta`(한국어)에 있습니다. AI 슬롭 금지선, 레이아웃·모션 값, 테스트된 UI 패턴 57종입니다.
 
+### Modern Web Guidance와 함께 쓰기 (선택)
+
+UI Refiner는 페이지가 어떻게 보일지를 정합니다. [Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance)는 페이지를 어떻게 만들지를 다루는 별도 스킬입니다(다이얼로그, 폼, 이미지, 로딩, 접근성). 함께 쓰려면 "Modern Web Guidance로 landing.html 리파인해줘"처럼 요청하거나, 프로젝트에 설치해 두면(`npx modern-web-guidance@latest install`) 스킬이 알아서 씁니다. 기본값은 꺼짐입니다. 세 페이지를 쓴 것과 안 쓴 것으로 비교했을 때 접근성과 권장 사항 점수가 같았습니다.
+
 ## 심화 QA 게이트 (선택)
 
 개발이나 CI에서 강제 게이트가 필요한 프로젝트는 `init` + `check`로 프로젝트 정책에 맞춰 suta 정적 검사와 lintapple 렌더링 검사를 실행합니다. 라우트, 상호작용 상태, 베이스라인, 변경 줄 범위, 증거 이미지, ARIA 비교, 시각 회귀, SARIF/HTML 내보내기, 리뷰 패킷을 지원합니다.

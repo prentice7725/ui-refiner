@@ -165,6 +165,10 @@ Install it in one of these ways:
 
 The bundled design knowledge lives in `vendor/suta/skills/suta` (Korean): AI-slop red lines, layout and motion values and 57 tested UI patterns.
 
+### With Modern Web Guidance (optional)
+
+UI Refiner decides how a page looks. [Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) is a separate skill about how it is built: dialogs, forms, images, loading, accessibility. To use both, ask for it ("refine landing.html with Modern Web Guidance"), or install it in the project (`npx modern-web-guidance@latest install`) and the skill picks it up. It is off by default: on three pages refined with and without it, accessibility and best-practices scores were the same.
+
 ## Deep QA gate (optional)
 
 For projects that want an enforced gate in development or CI, `init` + `check` runs the suta static audit and lintapple rendered checks against a project policy. It adds routes, interaction states, baselines, changed-line scope, evidence images, ARIA diffs, visual regression, SARIF/HTML export and review packets.
