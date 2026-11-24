@@ -62,6 +62,19 @@ Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interacti
    - White quiet works with few photographs (the measured sites use 3–4).
 3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest. `ui-refiner theme starter <theme> --brand "#rrggbb" --face "<typeface>"` writes them onto the theme's tokens in `brand.css` and lists where the colour breaks contrast on the theme's sample.
 
+### Between themes of one family
+
+Where a family has more than one theme, the client's content decides, never the country a theme was measured in. Each line names what tips the choice. It is read from what each theme's skeleton puts first, not measured, so check that the client really has that content.
+
+- **place.** `place-photo-view` when the place is booked for where it is and what the rooms are: it opens on the view, then offers, rooms, facilities and a gallery. `place-photo-quiet` when the stay itself is the offer: the bath, the meal and the plans each get a section, under serif headings. A pension, glamping site or wedding venue chosen from its photographs takes view; an inn or restaurant known for its kitchen or its bath takes quiet.
+- **care.** `care-white` when people come for a treatment and a doctor: the hours strip first, then treatments, the doctor, the first visit. `care-corporate` when people come to a place and its staff over time: a photograph of people, news, about, services, a day there, recruiting. A clinic with named treatments and one or two doctors takes white; a day service, a care home, a gym, or a clinic that posts news and hires takes corporate.
+- **public.** `public-portal-search` when visitors arrive knowing the name of what they want (a programme, a notice, a form): search, quick links, programmes. `public-portal-purpose` when they arrive with a situation and no name for it ("I moved", "I need a loan"): important notices, then find by purpose, online services, rates.
+- **shop.** `shop-portal-grid` when people compare and buy: a category bar, product grids with prices and discounts, reviews, the delivery promise. `shop-portal-story` when the maker is the reason to buy: recommended content, products by category, gifts, the maker's story. Many products from many producers takes grid; one maker's own goods takes story.
+- **business.** Material first: with no photographs of the work, `business-white`, which needs a product, a process or a result to show in place of a picture. With photographs: `business-corporate-quickbar` when customers come to do something (track a parcel, ask for a quote, find a site), `business-corporate-message` when the page is read by partners and applicants (news, the company's message, technology, recruiting), and `business-dark` when scale is the message and the photographs or video are strong enough to carry dark full-width sections.
+- **creative.** `creative-dark` when the work is the page: a statement, then project after project, large, on black. `creative-bigtype` when the studio also has to explain itself: service, about, client voices and recruiting on a long white page.
+
+When two still fit, the count table shows which look is more common in the client's country. Say in the report which theme was chosen and the content that decided it.
+
 ## Applying a theme to a client's content
 
 These held on twelve real pages (an inn, a dental clinic, a logistics company; a Korean veterinary association, a Japanese chamber of commerce, a Tokyo renovation firm, a Saitama day service; then a hanok stay, a ginseng shop, a bamboo-craft shop, a product-photo studio and an architecture firm), all of which kept every link, form, field and figure (`keep check`) and passed `stress`:
