@@ -2,6 +2,10 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+- Themes README, "Between themes of one family": for each family with more than one theme, what in the client's content tips the choice (for example `public-portal-search` when visitors know the name of what they want, `public-portal-purpose` when they arrive with a situation). The skill decides between such themes by that content and no longer by where a theme was measured.
+
 ## 0.13.0 — 2026-11-23
 
 Themes are no longer tied to a country, and a theme can be started in a project with the client's own colour and language. A theme's name now says its family and look; the country is only where it was measured. `/ui-refine` starts Korean and Japanese trade pages from a theme.
