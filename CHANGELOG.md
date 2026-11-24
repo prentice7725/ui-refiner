@@ -4,6 +4,8 @@ All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `pac
 
 ## Unreleased
 
+- Applying a theme now starts with what is the client's own: before the theme goes on, the skill lists up to six traits of the original in `ui-refiner-traits.json` (always asking what the first photograph shows, what the page leads with and which device it stages), builds around them, and afterwards has each marked kept, weakened or lost, repairing the weight-3 ones. On nine real themed pages (24 November 2026, three passes by two judges) content and grouping survived while the clients' own visual devices (0 of 8 kept) and lead order (0 of 3) were flattened into the theme's standard blocks. With the step, three of those pages kept 86–100% of their weighted traits against 47–64% without it (25 November 2026, one run each).
+- `/ui-refine` no longer tells the agent to pick a theme by country.
 - Themes README, "Between themes of one family": for each family with more than one theme, what in the client's content tips the choice (for example `public-portal-search` when visitors know the name of what they want, `public-portal-purpose` when they arrive with a situation). The skill decides between such themes by that content and no longer by where a theme was measured.
 
 ## 0.13.0 — 2026-11-23
