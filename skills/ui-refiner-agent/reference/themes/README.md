@@ -61,6 +61,7 @@ Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interacti
    - `business-corporate-quickbar` opens on a full-width photograph too: a logistics firm or maker without photographs of its own gets credited stand-ins of its kind of work; with neither, `business-white`.
    - White quiet works with few photographs (the measured sites use 3–4).
 3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest. `ui-refiner theme starter <theme> --brand "#rrggbb" --face "<typeface>"` writes them onto the theme's tokens in `brand.css` and lists where the colour breaks contrast on the theme's sample.
+4. A client with no logo file gets its name as a wordmark in the theme's face, with no symbol. The marks in the samples (the chip beside the name in `business-white` and `business-corporate-quickbar`, the drawn emblem in `public-portal-purpose`) are stand-ins for the sample, so take them out of the client's page.
 
 ### Between themes of one family
 
