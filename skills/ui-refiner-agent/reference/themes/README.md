@@ -79,6 +79,23 @@ When two still fit, the count table shows which look is more common in the clien
 
 These held on twelve real pages (an inn, a dental clinic, a logistics company; a Korean veterinary association, a Japanese chamber of commerce, a Tokyo renovation firm, a Saitama day service; then a hanok stay, a ginseng shop, a bamboo-craft shop, a product-photo studio and an architecture firm), all of which kept every link, form, field and figure (`keep check`) and passed `stress`:
 
+### First: what is the client's own
+
+A theme keeps a client's content and loses its character quietly. On nine real pages checked on 24 November 2026 (three passes by two independent judges), the themed page kept how the client groups what it offers (8 of 8 such traits) and most of its content, and weakened nearly every visual device of the client's own (none of 8 kept) and what the page led with (none of 3). A chamber of commerce lost its chalkboard hero and its membership-first opening, an association its coloured shortcut tiles, a bamboo shop its opening photograph of food served in bamboo, replaced by a grove. Almost nothing was removed outright: it was flattened into the theme's standard block. So, on every page that had a site before:
+
+1. **Before applying the theme, write `ui-refiner-traits.json` next to the page.** From the original's screenshots, list up to six things that are this business's own: what a regular customer would miss, and a competitor's page would not have. Not the name, logo, address or phone number, and not what every site of the trade has. Fewer is fine; do not pad the list. Each entry has `trait` (one concrete sentence), `where`, `kind` (content, order, grouping, photography, visual or voice) and `weight` 1–3, where 3 means the page would not be this business's without it. Answer three questions every time, and list the answer when it is the client's own: what does the first photograph show, what does the page lead with, and which one device does it repeat or stage?
+2. **Apply the theme around the list.**
+   - The hero keeps the client's subject: the photograph the original opened on, or another of the same subject, even where the theme's sample opens on something more typical of the trade.
+   - What the original led with stays within the first two screens, built from the theme's components.
+   - A weight-3 device is rebuilt in the theme's tokens as one component, not dropped. One such exception to the theme's rules a page is expected; say in the report which rule it bends.
+   - Emphasis the client set (a red menu item, a mark of standing) stays emphasised.
+3. **After building, check each trait.** Give a subagent that has not seen the original only the finished page's screenshots and the list, and have it mark each trait kept, weakened (partly there, pushed down, or flattened into a standard block) or lost, with what it saw. Without subagents, do it yourself from the screenshots, one trait at a time. Repair every weight-3 trait that is not kept and check again.
+4. **Put the list and its verdicts in the report.**
+
+Tested on three of those pages on 25 November 2026 (an association, a chamber of commerce and the bamboo shop; one run with these steps and one without, judged against the earlier trait lists): without the steps 47–64% of the weighted traits survived, the same as before; with them 86–100%, and the clients' visual devices went from none of 8 kept to 6 of 8. `keep check` and `stress` passed either way and the scan score stayed at 5 or below. The steps cost about a quarter more per page. Whether the pages that keep their traits are also the better designs was not judged.
+
+A page whose weight-3 traits are mostly visual is the already-designed page of the rule below: consider leaving its look alone.
+
 - **Keep the client's menu** (its words, order and anchors), not the theme's menu words. Drop a menu item only when the client has no content for it.
 - **Map content onto the skeleton in order; drop skeleton sections the client has no content for.** Never invent a section's content (no made-up facilities, news, figures or quotes). A figures band shows only the client's own numbers.
 - **Optional slots** for content most real pages have and the skeletons leave out: about/values, process steps, FAQ, cases, an inline booking or quote form. Place them where they read best within the theme's rules; each theme's `theme.md` says where.
