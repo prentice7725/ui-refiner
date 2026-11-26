@@ -1,4 +1,4 @@
-// One fictional Korean maker (한빛정밀, the business-dark sample client) drawn in the impression archetypes that
+// One fictional Korean maker (새움정밀, the business-dark sample client) drawn in the impression archetypes that
 // have no finished theme for the Korean business family. Demonstration samples, not themes.
 // node scripts/build-archetype-demo.mjs → docs/archetype-demo/kr-business/<archetype>.html
 import fs from 'node:fs/promises';
@@ -17,7 +17,7 @@ const photo=(key,{eager=false,position='50% 50%'}={})=>{const [file,w,h,alt]=PHO
  return `<img src="${IMG}${file}" width="${w}" height="${h}" alt="${alt}" style="object-position:${position}" ${eager?'fetchpriority="high"':'loading="lazy"'} data-generated>`;};
 
 const CLAIM=['마이크로미터 단위의 정밀함으로','라인을 움직입니다'];
-const INTRO='1998년 화성에서 시작한 한빛정밀은 자동차와 반도체 장비에 들어가는 정밀 부품을 깎고, 그 부품을 만드는 자동화 라인까지 직접 설계합니다.';
+const INTRO='1998년 화성에서 시작한 새움정밀은 자동차와 반도체 장비에 들어가는 정밀 부품을 깎고, 그 부품을 만드는 자동화 라인까지 직접 설계합니다.';
 const BUSINESS=[
  ['machining','정밀가공 부품','변속기·조향 장치용 샤프트와 하우징','50% 62%'],
  ['automation','자동화 설비','조립·검사·적재 라인 턴키 공급','45% 40%'],
@@ -42,17 +42,17 @@ const NOTO='<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 const BASE=`*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;word-break:keep-all;overflow-wrap:anywhere}img{display:block;max-width:100%;height:auto;object-fit:cover}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}a:focus-visible{outline:2px solid currentColor;outline-offset:3px}h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}ul,ol{padding:0;list-style:none}.wrap{max-width:var(--content);margin-inline:auto;padding-inline:24px}.num{font-variant-numeric:tabular-nums}`;
 const nav=(items=MENU)=>items.map(([href,label])=>`<a href="${href}">${label}</a>`).join('');
 const news=()=>NEWS.map(([date,cat,title])=>`<li><a href="#"><time class="num">${date}</time><span>${cat}</span><strong>${title}</strong></a></li>`).join('');
-const footer=(extra='')=>`<footer class="foot"><div class="wrap">${extra}<p><strong>한빛정밀 주식회사</strong> 대표이사 홍길동 · 경기도 화성시 OO로 00 · 사업자등록번호 000-00-00000 · 대표전화 031-000-0000 · contact@example.com</p>
-<p>© 2026 Hanbit Precision Co., Ltd. 유형 시연용 가상 회사입니다. 이 페이지의 이미지는 AI가 생성한 이미지(Grok Imagine)이며, 실제 회사의 사진이 아닙니다.</p></div></footer>`;
+const footer=(extra='')=>`<footer class="foot"><div class="wrap">${extra}<p><strong>새움정밀 주식회사</strong> 대표이사 홍길동 · 경기도 화성시 OO로 00 · 사업자등록번호 000-00-00000 · 대표전화 031-000-0000 · contact@example.com</p>
+<p>© 2026 Saeum Precision Co., Ltd. 유형 시연용 가상 회사입니다. 이 페이지의 이미지는 AI가 생성한 이미지(Grok Imagine)이며, 실제 회사의 사진이 아닙니다.</p></div></footer>`;
 const page=({archetype,sites,font,css,body})=>`<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>한빛정밀 | 정밀가공 부품 · 자동화 설비</title>
-<meta name="description" content="한빛정밀은 자동차와 반도체 장비에 들어가는 정밀가공 부품과 자동화 라인을 만듭니다.">
+<title>새움정밀 | 정밀가공 부품 · 자동화 설비</title>
+<meta name="description" content="새움정밀은 자동차와 반도체 장비에 들어가는 정밀가공 부품과 자동화 라인을 만듭니다.">
 <!-- Archetype demonstration, not a theme: Korean business family drawn as "${archetype}" (${sites} of 235 measured sites).
-     한빛정밀 is a fictional client; all images are AI-generated samples (Grok Imagine). Built by scripts/build-archetype-demo.mjs. -->
+     새움정밀 is a fictional client; all images are AI-generated samples (Grok Imagine). Built by scripts/build-archetype-demo.mjs. -->
 ${font}
 <style>
 ${BASE}
@@ -86,7 +86,7 @@ h2{font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid #22
 .foot{font-size:12px;color:#777;padding:18px 0;border-top:1px solid #d9dada}.foot .wrap{padding-inline:32px}
 @media(max-width:760px){.intro,.cols{grid-template-columns:1fr;padding-inline:20px}.intro img{width:100%}.top{padding-inline:20px}.foot .wrap{padding-inline:20px}.biz li{grid-template-columns:1fr;gap:0}}`,
 body:`<div class="sheet">
-<header class="top"><a class="logo" href="#">한빛정밀 <small>HANBIT PRECISION</small></a><nav aria-label="주 메뉴"><a href="#business">사업분야</a><a href="#inquiry">오시는 길 · 문의</a></nav></header>
+<header class="top"><a class="logo" href="#">새움정밀 <small>SAEUM PRECISION</small></a><nav aria-label="주 메뉴"><a href="#business">사업분야</a><a href="#inquiry">오시는 길 · 문의</a></nav></header>
 <main>
 <section class="intro" id="about"><div><h1>${CLAIM.join(' ')}</h1><p>${INTRO}</p></div>${photo('hero',{eager:true})}</section>
 <div class="cols">
@@ -117,10 +117,10 @@ h2.h2{font-size:36px;line-height:1.3;letter-spacing:-.02em;font-weight:700}
 .close .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px}.close p{color:var(--soft);margin-top:8px}
 .foot{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--soft)}.foot strong{color:var(--ink)}
 @media(max-width:900px){.hero .wrap,.tech,.two{grid-template-columns:1fr;gap:40px}h1{font-size:32px}h2.h2{font-size:26px}.head nav{display:none}.head .wrap{justify-content:space-between}.rows li{grid-template-columns:1fr;gap:4px}.close .wrap{flex-direction:column;align-items:flex-start}}`,
-body:`<header class="head"><div class="wrap"><a class="logo" href="#">한빛정밀</a><nav aria-label="주 메뉴">${nav()}</nav><a class="btn btn--sm" href="#inquiry">문의하기</a></div></header>
+body:`<header class="head"><div class="wrap"><a class="logo" href="#">새움정밀</a><nav aria-label="주 메뉴">${nav()}</nav><a class="btn btn--sm" href="#inquiry">문의하기</a></div></header>
 <main>
 <section class="hero" id="about"><div class="wrap"><div><p class="label">정밀가공 부품 · 자동화 설비</p><h1>${CLAIM.map(l=>`<span>${l}</span>`).join(' ')}</h1><p>${INTRO}</p><div class="acts"><a class="btn" href="#inquiry">견적 · 기술 문의</a><a class="link" href="#business">사업분야 보기</a></div></div>
-<div class="panel"><h2>숫자로 보는 한빛정밀</h2><ul>${FIGURES.map(([v,u,l])=>`<li><span>${l}</span><b class="num">${v}<small>${u}</small></b></li>`).join('')}</ul></div></div></section>
+<div class="panel"><h2>숫자로 보는 새움정밀</h2><ul>${FIGURES.map(([v,u,l])=>`<li><span>${l}</span><b class="num">${v}<small>${u}</small></b></li>`).join('')}</ul></div></div></section>
 <section id="business" style="padding-top:0"><div class="wrap"><p class="label">사업분야</p><h2 class="h2">설계 도면 한 장에서 양산 라인까지</h2><ol class="rows">${BUSINESS.map(([, name,line],i)=>`<li><span class="num">0${i+1}</span><h3>${name}</h3><p>${line}</p></li>`).join('')}</ol></div></section>
 <section class="band" id="technology"><div class="wrap tech"><div><p class="label">기술</p><h2 class="h2">${TECH_TITLE}</h2><p class="lede">${TECH_LEDE}</p><ol class="steps">${TECH.map(([t,d],i)=>`<li><span class="num">0${i+1}</span><div><strong>${t}</strong><p>${d}</p></div></li>`).join('')}</ol></div><figure>${photo('measure',{position:'60% 50%'})}</figure></div></section>
 <section><div class="wrap two"><div id="news"><p class="label">홍보센터</p><h2 class="h2">새 소식</h2><ul class="plain">${news()}</ul></div><div><p class="label">사업장</p><h2 class="h2">화성 · 천안 · 하노이</h2><ul class="plain">${SITES.map(([role,name,detail])=>`<li class="site"><small>${role}</small><div><b>${name}</b><small>${detail}</small></div></li>`).join('')}</ul></div></div></section>
@@ -150,7 +150,7 @@ body{background:#fff;color:#222;font:15px/1.6 "Pretendard Variable",Pretendard,s
 .foot{background:#f3f4f6;border-top:1px solid var(--line);font-size:12px;color:#666;padding:18px 0}.foot nav{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px;color:#222}
 @media(max-width:900px){.first,.boards{grid-template-columns:1fr}.goods{grid-template-columns:repeat(2,1fr)}.gnb .wrap{overflow-x:auto;padding:0}.gnb a{white-space:nowrap;padding:10px 14px}.tel{display:none}.head .wrap{flex-wrap:wrap;gap:12px}.search{max-width:none;flex-basis:100%}.figs{grid-template-columns:1fr 1fr}.banners{grid-template-columns:1fr 1fr}.visual img{height:220px}.visual h1{font-size:20px}}`,
 body:`<div class="util"><div class="wrap"><a href="#">로그인</a><a href="#">회원가입</a><a href="#">협력사 포털</a><a href="#">사이트맵</a><a href="#" lang="en">ENG</a></div></div>
-<header class="head"><div class="wrap"><a class="logo" href="#">한빛정밀<small>HANBIT PRECISION</small></a><form class="search" role="search"><input type="search" aria-label="품번 · 품명 검색" placeholder="품번 · 품명 검색"><button type="submit">검색</button></form><p class="tel">견적 · 기술 문의<b class="num">031-000-0000</b></p></div></header>
+<header class="head"><div class="wrap"><a class="logo" href="#">새움정밀<small>SAEUM PRECISION</small></a><form class="search" role="search"><input type="search" aria-label="품번 · 품명 검색" placeholder="품번 · 품명 검색"><button type="submit">검색</button></form><p class="tel">견적 · 기술 문의<b class="num">031-000-0000</b></p></div></header>
 <nav class="gnb" aria-label="주 메뉴"><div class="wrap">${nav([['#business','전체 품목'],...MENU,['#jobs','채용정보']])}</div></nav>
 <main class="wrap">
 <div class="first">
@@ -158,7 +158,7 @@ body:`<div class="util"><div class="wrap"><a href="#">로그인</a><a href="#">�
 <section class="visual" id="about">${photo('hero',{eager:true})}<div><h1>${CLAIM.join(' ')}</h1><p>${INTRO}</p></div></section>
 <aside class="quote" id="inquiry"><h2>빠른 견적 문의</h2><form action="mailto:contact@example.com"><select aria-label="품목"><option>품목 선택</option>${BUSINESS.map(([, name])=>`<option>${name}</option>`).join('')}</select><input type="text" aria-label="회사명" placeholder="회사명"><input type="tel" aria-label="연락처" placeholder="연락처"><button type="submit">견적 요청</button></form><p>대표전화 031-000-0000 · contact@example.com</p></aside>
 </div>
-<ul class="figs" aria-label="숫자로 보는 한빛정밀">${FIGURES.map(([v,u,l])=>`<li><b class="num">${v}${u}</b>${l}</li>`).join('')}</ul>
+<ul class="figs" aria-label="숫자로 보는 새움정밀">${FIGURES.map(([v,u,l])=>`<li><b class="num">${v}${u}</b>${l}</li>`).join('')}</ul>
 <section class="sec" id="business"><h2>사업분야 <a href="#">전체 보기 +</a></h2><div class="goods">${BUSINESS.map(([key,name,line,position])=>`<a href="#">${photo(key,{position})}<b>${name}</b><span>${line}</span></a>`).join('')}<a href="#technology">${photo('measure',{position:'60% 50%'})}<b>측정 · 검사</b><span>항온 측정실 전수 검사</span></a><a href="#sites">${photo('hero',{position:'50% 70%'})}<b>화성 · 천안 공장</b><span>가공부터 조립까지 한 공장에서</span></a></div></section>
 <div class="boards">
 <section class="board" id="news"><h2>새 소식</h2><ul>${news()}</ul></section>
@@ -183,7 +183,7 @@ body{background:#fff;color:#1c1c1c;font:15px/1.75 "Noto Sans KR",sans-serif}
 .strip{background:#1c1c1c;color:#fff}.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;padding-block:44px}.strip h2{margin:0}.strip p{opacity:.8}.strip .btn{margin:0}
 .foot{padding:28px 0;font-size:12px;color:#777}
 @media(max-width:900px){.head nav{display:none}.head .wrap{padding-inline:20px}.hero div{left:20px;right:20px;bottom:40px}h1{font-size:30px}.mosaic{grid-template-columns:1fr 1fr}.mosaic div{padding:40px 16px 16px}.mosaic h3{font-size:17px}.mosaic p{display:none}.split{grid-template-columns:1fr}.split img{min-height:260px}.split div{padding:40px 20px}.strip .wrap{flex-direction:column;align-items:flex-start}}`,
-body:`<header class="head"><div class="wrap"><a class="logo" href="#">한빛정밀</a><nav aria-label="주 메뉴">${nav()}</nav></div></header>
+body:`<header class="head"><div class="wrap"><a class="logo" href="#">새움정밀</a><nav aria-label="주 메뉴">${nav()}</nav></div></header>
 <main>
 <section class="hero" id="about">${photo('measure',{eager:true,position:'60% 45%'})}<div><h1>${CLAIM.map(l=>`<span>${l}</span>`).join(' ')}</h1><p>${INTRO}</p><a class="btn" href="#business">사업분야 보기</a></div></section>
 <section class="mosaic" id="business" aria-label="사업분야">${BUSINESS.map(([key,name,line,position])=>`<a href="#">${photo(key,{position})}<div><h3>${name}</h3><p>${line}</p></div></a>`).join('')}</section>
@@ -210,12 +210,12 @@ body{background:#fff;color:#111;font:16px/1.7 "Pretendard Variable",Pretendard,s
 .call{background:#111;color:#fff;padding:140px 48px}.call a.big{display:block;font-size:clamp(40px,9vw,140px);line-height:1.1;letter-spacing:-.045em;font-weight:400}.call p{margin-top:40px;display:flex;gap:32px;flex-wrap:wrap;align-items:center}
 .foot{padding:28px 0;font-size:12px;color:#777}.foot .wrap{max-width:none;padding-inline:48px}
 @media(max-width:900px){.head nav{display:none}.head .wrap,.foot .wrap{padding-inline:20px}.hero,.giant,.figs,.call{padding-inline:20px}.tech{padding:0 20px 80px;grid-template-columns:1fr;gap:32px}.hero .row,.giant li{grid-template-columns:1fr;gap:20px}.giant img{width:100%}.figs{gap:48px 20px;padding-block:80px}.giant{padding-top:72px}.call{padding-block:80px}.wide img{height:52vh}}`,
-body:`<header class="head"><div class="wrap"><a class="logo" href="#">한빛정밀</a><nav aria-label="주 메뉴">${nav()}</nav></div></header>
+body:`<header class="head"><div class="wrap"><a class="logo" href="#">새움정밀</a><nav aria-label="주 메뉴">${nav()}</nav></div></header>
 <main>
 <section class="hero" id="about"><h1>${CLAIM.map(l=>`<span>${l}</span>`).join(' ')}</h1><div class="row"><p>${INTRO}</p><div><a class="pill" href="#inquiry">견적 · 기술 문의하기</a></div></div></section>
 <figure class="wide">${photo('hero',{eager:true,position:'50% 62%'})}</figure>
 <section class="giant" id="business"><p>사업분야</p><ol>${BUSINESS.map(([key,name,line,position])=>`<li><h2>${name}<small>${line}</small></h2>${photo(key,{position})}</li>`).join('')}</ol></section>
-<ul class="figs" aria-label="숫자로 보는 한빛정밀">${FIGURES.map(([v,u,l])=>`<li><b class="num">${v}<small>${u}</small></b><span>${l}</span></li>`).join('')}</ul>
+<ul class="figs" aria-label="숫자로 보는 새움정밀">${FIGURES.map(([v,u,l])=>`<li><b class="num">${v}<small>${u}</small></b><span>${l}</span></li>`).join('')}</ul>
 <figure class="wide">${photo('measure',{position:'60% 50%'})}</figure>
 <section class="tech" id="technology" style="padding-top:120px"><div><h2>${TECH_TITLE}</h2><p class="lede">${TECH_LEDE}</p></div><ol>${TECH.map(([t,d])=>`<li><strong>${t}</strong><p>${d}</p></li>`).join('')}</ol></section>
 <section class="call" id="inquiry"><a class="big" href="mailto:contact@example.com">프로젝트를<br>함께 시작합니다 →</a><p><a class="pill" href="mailto:contact@example.com">견적 · 기술 문의하기</a><span>대표전화 031-000-0000</span><span>contact@example.com</span></p></section>
@@ -241,11 +241,11 @@ section{padding:100px 0}.title{text-align:center;margin-bottom:48px}.title small
 .contact{background:#222;color:#fff;padding:56px 0}.contact .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px}.contact h2{font-size:28px}.contact p{opacity:.8}.contact .btn{margin:0}
 .foot{background:#f4f6f8;padding:32px 0;font-size:13px;color:#666}.foot nav{display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:10px;color:#222}
 @media(max-width:900px){.head nav,.lang{display:none}h1{font-size:32px}h2{font-size:26px}section{padding:64px 0}.cards{grid-template-columns:1fr 1fr;gap:12px}.cards div{padding:14px}.tech,.two{grid-template-columns:1fr;gap:40px}.figs{grid-template-columns:1fr 1fr}.figs li{padding:28px 12px}.figs b{font-size:32px}.contact .wrap{flex-direction:column;align-items:flex-start}}`,
-body:`<header class="head"><div class="wrap"><a class="logo" href="#">한빛정밀</a><nav aria-label="주 메뉴">${nav()}</nav><div class="lang" aria-label="언어 선택"><a href="#" aria-current="true">KOR</a><a href="#" lang="en">ENG</a></div></div></header>
+body:`<header class="head"><div class="wrap"><a class="logo" href="#">새움정밀</a><nav aria-label="주 메뉴">${nav()}</nav><div class="lang" aria-label="언어 선택"><a href="#" aria-current="true">KOR</a><a href="#" lang="en">ENG</a></div></div></header>
 <main>
 <div class="hero" id="about">${photo('semicon',{eager:true,position:'50% 38%'})}<div class="wrap"><small>PRECISION &amp; AUTOMATION</small><h1>${CLAIM.map(l=>`<span>${l}</span>`).join(' ')}</h1><p>${INTRO}</p><a class="btn" href="#business">사업분야 보기</a></div><div class="pager" aria-hidden="true"><div class="wrap"><span>01</span><i></i><span>03</span></div></div></div>
 <section id="business"><div class="wrap"><div class="title"><small>BUSINESS</small><h2>사업분야</h2><p>설계 도면 한 장에서 양산 라인까지, 네 개 사업부가 한 공장 안에서 이어집니다.</p></div><div class="cards">${BUSINESS.map(([key,name,line,position])=>`<a href="#">${photo(key,{position})}<div><h3>${name}</h3><p>${line}</p><span>자세히 보기 +</span></div></a>`).join('')}</div></div></section>
-<ul class="figs" aria-label="숫자로 보는 한빛정밀">${FIGURES.map(([v,u,l])=>`<li><b class="num">${v}<small>${u}</small></b>${l}</li>`).join('')}</ul>
+<ul class="figs" aria-label="숫자로 보는 새움정밀">${FIGURES.map(([v,u,l])=>`<li><b class="num">${v}<small>${u}</small></b>${l}</li>`).join('')}</ul>
 <section class="grey" id="technology"><div class="wrap tech">${photo('measure',{position:'60% 50%'})}<div><small>TECHNOLOGY</small><h2>${TECH_TITLE}</h2><p>${TECH_LEDE}</p><ol>${TECH.map(([t,d],i)=>`<li><b class="num">0${i+1}</b><div><strong>${t}</strong><p>${d}</p></div></li>`).join('')}</ol></div></div></section>
 <section><div class="wrap two"><div id="news"><h2>홍보센터 <a href="#">더 보기 +</a></h2><ul class="rows">${news()}</ul></div><div><h2>사업장</h2><ul class="rows">${SITES.map(([role,name,detail])=>`<li class="site"><small>${role}</small><div><strong>${name}</strong><small class="d">${detail}</small></div></li>`).join('')}</ul></div></div></section>
 <section class="contact" id="inquiry"><div class="wrap"><div><h2>프로젝트 문의</h2><p>대표전화 031-000-0000 · contact@example.com</p></div><a class="btn" href="mailto:contact@example.com">견적 · 기술 문의하기</a></div></section>
@@ -266,7 +266,7 @@ body{background:var(--blue);color:#fff;font:17px/1.7 "Noto Sans KR",sans-serif}
 .call .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;padding-block:80px}.call h2{font-size:48px;font-weight:700;line-height:1.25}
 .foot{background:#0b2b4d;padding:28px 0;font-size:12px;opacity:.9}
 @media(max-width:900px){.head nav{display:none}.hero .wrap,.tech .wrap,.blocks{grid-template-columns:1fr}h1{font-size:32px}.blocks a{padding:40px 24px;min-height:0}.blocks h2,.call h2{font-size:32px}.tech h2{font-size:26px}.call .wrap{flex-direction:column;align-items:flex-start}.hero .wrap{padding-block:24px 56px}.tech .wrap{padding-block:56px}}`,
-body:`<header class="head"><div class="wrap"><a class="logo" href="#">한빛정밀</a><nav aria-label="주 메뉴"><a href="#business">사업분야</a><a href="#technology">기술</a><a href="#inquiry">문의</a></nav></div></header>
+body:`<header class="head"><div class="wrap"><a class="logo" href="#">새움정밀</a><nav aria-label="주 메뉴"><a href="#business">사업분야</a><a href="#technology">기술</a><a href="#inquiry">문의</a></nav></div></header>
 <main>
 <section class="hero" id="about"><div class="wrap"><div><h1>${CLAIM.map(l=>`<span>${l}</span>`).join(' ')}</h1><p>${INTRO}</p><a class="pill" href="#inquiry">견적 · 기술 문의하기</a></div>${photo('machining',{eager:true,position:'50% 62%'})}</div></section>
 <section class="blocks" id="business" aria-label="사업분야">${BUSINESS.map(([, name,line],i)=>`<a href="#"><small class="num">0${i+1}</small><h2>${name}</h2><p>${line}</p></a>`).join('')}</section>
