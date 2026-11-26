@@ -70,6 +70,23 @@ Measured on 39 Japanese photo-led sites of all families (`data/motion/summary.js
 - **Not for this theme**: `marquee`, `intro`.
 - Reveals on the concept, onsen and cuisine photographs and the room cards only. Try them on `sample.html?fx=all` or `?fx=hero-slides,reveal`.
 
+## Stand-out variant (optional)
+
+`statement.css`, linked after `theme.css` (with Zen Old Mincho 400 loaded); see it with `sample.html?variant=statement`. For an inn that wants to look unlike the inns in the same town. The theme stays the default.
+
+Measured on the most distinctive quarter of Japanese place sites (35 of 142 inns, restaurants, weddings, tourism and event sites, by distance from the family mean on the 23 archetype features) against the other three quarters:
+
+| What | Distinctive quarter | The rest | Variant |
+|---|---|---|---|
+| Display size, display ÷ body | 56px, 3.8 | 38px, 2.4 | 64px on desktop over the photograph; 30px on phones so the claim keeps two lines |
+| Display weight | 400 | 500 | 400 |
+| White share of four screens | 14% | 40% | the cuisine section on the night ground |
+| Dark ground | 20% | 2% | one dark band only |
+
+The full-bleed photograph of the bath and the booking bar under it stay as in the theme: for an inn the photograph is the offer.
+
+Blind test (26 November 2026, the sample page, Claude and Codex judges, 12 verdicts in both orders): a traveller would remember the variant 12 of 12, the owner would pick it 11 of 12 and judges would ship it 11 of 12; the theme read as the more typical site 9 of 12. An earlier version that put the whole page on dark and the photograph under the claim lost the owner's pick 12 of 12 ("a moody dark template").
+
 ## Applying to a client's content
 
 Learned on a real inn page (やまびこ荘, Hakuba, 20 November 2026). See also `../README.md`.

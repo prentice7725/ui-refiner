@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
 <link rel="stylesheet" href="theme.css">
+<!-- Stand-out variant (theme.md, "Stand-out variant"): off unless the address has ?variant=statement. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&amp;display=swap" media="not all" data-variant>
+<link rel="stylesheet" href="statement.css" media="not all" data-variant>
+<script>if(new URLSearchParams(location.search).get('variant')==='statement')for(const l of document.querySelectorAll('link[data-variant]'))l.media='all';</script>
 <!-- Optional effects: name them on <html data-fx="...">, or try ?fx=hero-slides,reveal in the address bar. -->
 <link rel="stylesheet" href="../effects/effects.css">
 <script src="../effects/effects.js" defer></script>

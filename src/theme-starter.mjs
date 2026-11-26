@@ -9,12 +9,18 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 export const THEMES_DIR=fileURLToPath(new URL('../skills/ui-refiner-agent/reference/themes/',import.meta.url));
 // The token a theme uses for its own colour, in the order looked for; -soft, -deep and -dark follow it.
 const BRAND_TOKENS=['brand','accent','signal','product','earth'];
+export const VARIANTS=['statement'];
 
 export async function listThemes(dir=THEMES_DIR){
  const catalog=await fs.readFile(path.join(dir,'README.md'),'utf8'),themes=[];
  for(const line of catalog.split(/\r?\n/)){
   const row=/^\| `([a-z]+-[a-z]+(?:-[a-z]+)?)` \| ([^|]+) \| (\d+) \|$/.exec(line);
   if(row)themes.push({id:row[1],basis:row[2].trim(),sites:Number(row[3])});
+ }
+ // A theme may carry optional variants: statement.css is the stand-out variant (themes README, "Stand-out variants").
+ for(const t of themes){
+  t.variants=[];
+  for(const v of VARIANTS)if(await fs.access(path.join(dir,t.id,v+'.css')).then(()=>true,()=>false))t.variants.push(v);
  }
  return themes;
 }
@@ -190,9 +196,11 @@ export function suggestFix(failure,{brandColours=[],ink}={}){
 }
 
 /** Copies the theme and writes brand.css and STARTER.md into `out`. */
-export async function themeStarter(id,{out='ui-refiner-theme',brand,face,lang,dir=THEMES_DIR,render=true,launch}={}){
+export async function themeStarter(id,{out='ui-refiner-theme',brand,face,lang,variant,dir=THEMES_DIR,render=true,launch}={}){
  const themes=await listThemes(dir),theme=themes.find(t=>t.id===id);
  if(!theme)throw new Error(`Unknown theme ${id}. Themes: ${themes.map(t=>t.id).join(', ')}`);
+ if(variant!==undefined&&!VARIANTS.includes(variant))throw new Error(`--variant takes ${VARIANTS.join(' or ')} (got ${variant})`);
+ if(variant&&!theme.variants.includes(variant))throw new Error(`${id} has no ${variant} variant. Themes with one: ${themes.filter(t=>t.variants.includes(variant)).map(t=>t.id).join(', ')}`);
  const colour=brand===undefined?null:parseHex(brand);
  if(brand!==undefined&&!colour)throw new Error(`--brand needs a hex colour such as #0b5cab (got ${brand})`);
  const from=path.join(dir,id),target=path.resolve(out);await fs.mkdir(target,{recursive:true});
@@ -201,18 +209,21 @@ export async function themeStarter(id,{out='ui-refiner-theme',brand,face,lang,di
  const sample=await fs.readFile(path.join(from,'sample.html'),'utf8'),measured=/<html[^>]*\blang="([a-z]{2})/i.exec(sample)?.[1]||null;
  const language=lang?languageSwap(tokens,measured,lang):null;
  const values=colour?brandValues(tokens,colour):null,brandSheet=brandCss({id,tokens,values,face,language});
- for(const file of ['theme.css','theme.md'])await fs.copyFile(path.join(from,file),path.join(target,file));
+ const copied=['theme.css','theme.md',...(variant?[variant+'.css']:[])];
+ for(const file of copied)await fs.copyFile(path.join(from,file),path.join(target,file));
+ // The variant's own CSS is part of what the brand colour is checked against.
+ const variantCss=variant?await fs.readFile(path.join(from,variant+'.css'),'utf8'):'';
  await fs.writeFile(path.join(target,'brand.css'),brandSheet);
  const slots=photoSlots(sample);
  // A literal copy of the theme colour outside the tokens would not follow brand.css.
  const body=css.replace(/:root\s*\{[^}]*\}/,''),literal=names?(body.match(new RegExp(tokens[names.main].replace('#','#?'),'gi'))||[]).length:0;
  let check=null;
  if(values&&render){
-  try{check=await brandContrast(path.join(from,'sample.html'),brandSheet,{launch});}
+  try{check=await brandContrast(path.join(from,'sample.html'),variantCss+'\n'+brandSheet,{launch});}
   catch(error){check={skipped:String(error.message||error).split('\n')[0]};}
   for(const f of check.failures||[])f.fix=suggestFix(f,{brandColours:Object.values(values),ink:parseHex(tokens['--ink'])})?.how||null;
  }
- const result={theme,dir:target,files:['theme.css','theme.md','brand.css','STARTER.md'],brand:colour,face:face||null,measuredIn:measured,language,tokens:values,
+ const result={theme,dir:target,files:[...copied,'brand.css','STARTER.md'],variant:variant||null,brand:colour,face:face||null,measuredIn:measured,language,tokens:values,
   untouched:names?null:'no colour token',literal,contrast:check,photos:slots,ok:!(check&&check.failures&&check.failures.length)};
  await fs.writeFile(path.join(target,'STARTER.md'),starterDoc(result,tokens,names));
  return result;
@@ -220,8 +231,10 @@ export async function themeStarter(id,{out='ui-refiner-theme',brand,face,lang,di
 
 function starterDoc(r,tokens,names){
  const L=[`# ${r.theme.id}: starter`,'',`${r.theme.basis} (${r.theme.sites} measured sites). Read \`theme.md\` for the skeleton, components and rules.`,'',
-  '## Link order','','```html','<link rel="stylesheet" href="theme.css">','<link rel="stylesheet" href="brand.css">','<!-- the page\'s own overrides, if any, in a third file -->','```','',
-  '## Brand',''];
+  '## Link order','','```html','<link rel="stylesheet" href="theme.css">',...(r.variant?[`<link rel="stylesheet" href="${r.variant}.css">`]:[]),'<link rel="stylesheet" href="brand.css">','<!-- the page\'s own overrides, if any, in a last file -->','```',''];
+ if(r.variant)L.push('## Stand-out variant','',`\`${r.variant}.css\` is the theme's stand-out variant, for a client who wants to look unlike its neighbours. Read "Stand-out variant" in \`theme.md\` for what it changes and the font it needs, and keep the trade's core content on the first screen as large as the variant has it.`,'');
+ else if(r.theme.variants?.length)L.push(`This theme also has a stand-out variant (\`--variant ${r.theme.variants.join('|')}\`) for a client who wants to look unlike its neighbours; see "Stand-out variant" in \`theme.md\`.`,'');
+ L.push('## Brand','');
  if(r.tokens){L.push('| Token | Theme | Client |','|---|---|---|');for(const [name,value] of Object.entries(r.tokens))L.push(`| \`${name}\` | ${tokens[name]} | ${value} |`);
   L.push('',`The derived tokens keep the theme's lightness steps and tint strength with the client's hue. Check them against the client's own palette if it documents one.`);}
  else if(names)L.push(`No brand colour was given. The theme's own colour is \`${names.main}\` (${tokens[names.main]}); set it in \`brand.css\`, or run again with \`--brand "#rrggbb"\`.`);

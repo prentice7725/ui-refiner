@@ -62,6 +62,7 @@ Browse the [desktop and mobile screenshots](GALLERY.md) on GitHub. For interacti
    - White quiet works with few photographs (the measured sites use 3–4).
 3. A real brand (logo, documented colours or typeface) keeps its colour and face; the theme gives the rest. `ui-refiner theme starter <theme> --brand "#rrggbb" --face "<typeface>"` writes them onto the theme's tokens in `brand.css` and lists where the colour breaks contrast on the theme's sample.
 4. A client with no logo file gets its name as a wordmark in the theme's face, with no symbol. The marks in the samples (the chip beside the name in `business-white` and `business-corporate-quickbar`, the drawn emblem in `public-portal-purpose`) are stand-ins for the sample, so take them out of the client's page.
+5. A client who wants to look unlike its neighbours gets the theme's stand-out variant where one exists (`care-white`, `place-photo-quiet`, `business-white`; see "Stand-out variants" below). The theme stays the default.
 
 ### Between themes of one family
 
@@ -75,6 +76,25 @@ Where a family has more than one theme, the client's content decides, never the 
 - **creative.** `creative-dark` when the work is the page: a statement, then project after project, large, on black. `creative-bigtype` when the studio also has to explain itself: service, about, client voices and recruiting on a long white page.
 
 When two still fit, the count table shows which look is more common in the client's country. Say in the report which theme was chosen and the content that decided it.
+
+## Stand-out variants
+
+A theme is the common look of its trade: it reads as real and is easy to ship, and it is also what the neighbours have. Three themes carry an optional `statement.css` measured on the most distinctive quarter of their family, the sites farthest from the family mean on the 23 archetype features, against the other three quarters. Link it after `theme.css`; see it in the sample with `sample.html?variant=statement`; `ui-refiner theme starter <theme> --variant statement` copies it.
+
+| Theme | What the variant takes from the distinctive quarter | Remember (of 12) | Owner picks | Ship | More typical |
+|---|---|---|---|---|---|
+| care-white | serif display at 78px, photographs to the window edge | 12 | 11 | 3 | theme 12 |
+| place-photo-quiet | larger, lighter Mincho claim; one section on the night ground | 12 | 11 | 11 | theme 9 |
+| business-white | full-width photograph, dark closing band, wider product screen | 12 | 9 | 7 | theme 6, even 3 |
+
+Blind tests on the sample pages, 26 November 2026: Claude and Codex judges, each version shown as X and as Y. Each theme's `theme.md` has its measured values under "Stand-out variant".
+
+Two rules came out of the first round, where two of the three variants lost the owner's pick:
+
+- **Keep the trade's core content on the first screen, as large as in the theme or larger**: the photograph of the inn, the product screen of the software, the clinic's hours and booking. Variants that shrank the bath photograph under a claim or pushed the product screen below the fold were called a moody dark template and a generic SaaS template (owners 0 and 6 of 12).
+- **Put the measured difference on type, on one section's ground and on photograph size**, not on the page structure. Distance from the mean alone can land on another stock look.
+
+A variant for another theme follows the same steps: rank the family's sites by distance from the mean (`data/archetypes/features.jsonl`), look at the top quarter's screenshots and drop pop-ups and broken captures, compare the quarter with the rest, apply only the differences that keep the core content, and test it blind against the theme before adding it.
 
 ## Applying a theme to a client's content
 
@@ -119,6 +139,6 @@ A page whose weight-3 traits are mostly visual is the already-designed page of t
 
 ## Files per theme
 
-`theme.md` (measured basis, tokens, skeleton, components, rules), `theme.css`, `sample.html` (a fictional client), `shot-desktop.jpg`, `shot-mobile.jpg`, `assets/generated/` (generated images with `prompts.json`). `generated.check.mjs` checks that every listed generated image is present.
+`theme.md` (measured basis, tokens, skeleton, components, rules), `theme.css`, `statement.css` (the optional stand-out variant, three themes so far), `sample.html` (a fictional client), `shot-desktop.jpg`, `shot-mobile.jpg`, `assets/generated/` (generated images with `prompts.json`). `generated.check.mjs` checks that every listed generated image is present.
 
 `effects/` holds optional effects shared by the themes (hero video or slides, scroll reveals, a blurred header). A theme lists the ones that suit it under "Effects" in its `theme.md`; so far only `place-photo-quiet` does. See `effects/README.md`.

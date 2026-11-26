@@ -97,3 +97,30 @@ test('theme starter: a pale brand colour is reported where it breaks contrast on
   assert.equal(dark.ok,true);assert.ok(dark.contrast.checked>0);
  }finally{await fs.rm(tmp,{recursive:true,force:true});}
 });
+
+test('theme starter: --variant statement copies the stand-out variant and links it after theme.css', async () => {
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'ui-refiner-starter-'));
+ try{
+  const themes=await listThemes(),withVariant=themes.filter(t=>t.variants.includes('statement')).map(t=>t.id).sort();
+  assert.deepEqual(withVariant,['business-white','care-white','place-photo-quiet']);
+  for(const id of withVariant){
+   const out=path.join(tmp,id),r=await themeStarter(id,{out,variant:'statement',render:false});
+   assert.equal(r.variant,'statement');
+   assert.deepEqual((await fs.readdir(out)).sort(),['STARTER.md','brand.css','statement.css','theme.css','theme.md']);
+   assert.equal(await fs.readFile(path.join(out,'statement.css'),'utf8'),await fs.readFile(path.join(THEMES_DIR,id,'statement.css'),'utf8'));
+   const doc=await fs.readFile(path.join(out,'STARTER.md'),'utf8');
+   assert.ok(doc.indexOf('href="theme.css"')<doc.indexOf('href="statement.css"')&&doc.indexOf('href="statement.css"')<doc.indexOf('href="brand.css"'),`${id}: link order`);
+   assert.match(doc,/## Stand-out variant/);
+   // Without --variant the starter only mentions it.
+   const plain=path.join(tmp,id+'-plain');await themeStarter(id,{out:plain,render:false});
+   assert.ok(!(await fs.readdir(plain)).includes('statement.css'));
+   assert.match(await fs.readFile(path.join(plain,'STARTER.md'),'utf8'),/--variant statement/);
+   // The sample keeps the variant off unless the address asks for it.
+   const sample=await fs.readFile(path.join(THEMES_DIR,id,'sample.html'),'utf8');
+   assert.match(sample,/<link rel="stylesheet" href="statement.css" media="not all" data-variant>/);
+   assert.match(sample,/get\('variant'\)==='statement'/);
+  }
+  await assert.rejects(themeStarter('creative-dark',{out:tmp,variant:'statement',render:false}),/has no statement variant\. Themes with one: place-photo-quiet, care-white, business-white/);
+  await assert.rejects(themeStarter('care-white',{out:tmp,variant:'loud',render:false}),/--variant takes statement/);
+ }finally{await fs.rm(tmp,{recursive:true,force:true});}
+});

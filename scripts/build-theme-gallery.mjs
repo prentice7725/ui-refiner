@@ -13,7 +13,7 @@ const LANGS={
   styles:{photo:'Photo-led',white:'White and quiet',dark:'Dark cinematic',corporate:'Standard corporate',portal:'Dense portal',bigtype:'Big type'},
   effects:{'hero-slides':'slides','hero-video':'video','reveal':'scroll reveal','header-blur':'header blur','marquee':'marquee','intro':'intro'},
   measured:(country,n)=>`Measured on ${n} ${country==='KR'?'Korean':'Japanese'} sites`,needsPhotos:'needs the client’s photographs',
-  effectsLabel:'Effects',seeEffects:'see them on',trade:'Trade',all:'All',photos:'Client photos',hasPhotos:'Has photos · show all',noPhotos:'No photos · hide themes that need them',
+  effectsLabel:'Effects',seeEffects:'see them on',variant:'See the stand-out variant',trade:'Trade',all:'All',photos:'Client photos',hasPhotos:'Has photos · show all',noPhotos:'No photos · hide themes that need them',
   count:'n+" themes"',none:'No theme matches. Change the trade or photo filter.',list:'Themes',language:'Language'},
  ko:{file:'index.ko.html',name:'한국어',title:'테마 미리보기',
   intro:'한국·일본 사이트 2,326곳을 실측해 만든 <a href="https://github.com/prentice7725/ui-refiner">UI Refiner</a>의 웹 디자인 테마입니다. 견본 속 업체, 사람, 숫자와 사진은 모두 지어낸 것입니다.',
@@ -21,7 +21,7 @@ const LANGS={
   styles:{photo:'사진 중심',white:'밝은 여백',dark:'어두운 시네마틱',corporate:'기업 표준형',portal:'정보 밀집형',bigtype:'대형 타이포그래피'},
   effects:{'hero-slides':'슬라이드','hero-video':'영상','reveal':'스크롤 등장','header-blur':'헤더 블러','marquee':'마키','intro':'인트로'},
   measured:(country,n)=>`${country==='KR'?'한국':'일본'} 사이트 ${n}곳 실측`,needsPhotos:'고객 사진 필요',
-  effectsLabel:'효과',seeEffects:'효과 켜고 보기',trade:'업종',all:'전체',photos:'고객 사진',hasPhotos:'사진 있음 · 전체 보기',noPhotos:'사진 없음 · 사진 필수 테마 제외',
+  effectsLabel:'효과',seeEffects:'효과 켜고 보기',variant:'눈에 띄는 변형 보기',trade:'업종',all:'전체',photos:'고객 사진',hasPhotos:'사진 있음 · 전체 보기',noPhotos:'사진 없음 · 사진 필수 테마 제외',
   count:'"테마 "+n+"개"',none:'조건에 맞는 테마가 없습니다. 업종 또는 사진 조건을 변경해 주세요.',list:'테마 목록',language:'언어'},
  ja:{file:'index.ja.html',name:'日本語',title:'テーマのプレビュー',
   intro:'韓国と日本のサイト2,326件を実測して作った<a href="https://github.com/prentice7725/ui-refiner">UI Refiner</a>のWebデザインテーマです。見本に登場する事業者、人物、数字、写真はすべて架空のものです。',
@@ -29,7 +29,7 @@ const LANGS={
   styles:{photo:'写真中心',white:'明るい余白',dark:'ダークシネマティック',corporate:'企業標準型',portal:'情報密集型',bigtype:'大型タイポグラフィ'},
   effects:{'hero-slides':'スライド','hero-video':'動画','reveal':'スクロール表示','header-blur':'ヘッダーぼかし','marquee':'マーキー','intro':'イントロ'},
   measured:(country,n)=>`${country==='KR'?'韓国':'日本'}のサイト${n}件を実測`,needsPhotos:'顧客の写真が必要',
-  effectsLabel:'エフェクト',seeEffects:'エフェクトを見る',trade:'業種',all:'すべて',photos:'顧客の写真',hasPhotos:'写真あり・すべて表示',noPhotos:'写真なし・写真が必要なテーマを除く',
+  effectsLabel:'エフェクト',seeEffects:'エフェクトを見る',variant:'目立つバリエーションを見る',trade:'業種',all:'すべて',photos:'顧客の写真',hasPhotos:'写真あり・すべて表示',noPhotos:'写真なし・写真が必要なテーマを除く',
   count:'"テーマ"+n+"件"',none:'条件に合うテーマがありません。業種か写真の条件を変えてください。',list:'テーマ一覧',language:'言語'}
 };
 // The effects a theme offers (theme.md, "Effects"), and the address that turns them on in its sample, when it has one.
@@ -49,24 +49,28 @@ for(const line of catalog.split(/\r?\n/).filter(line=>line.startsWith('| `'))){
  if(!familyTitles[family]||!style)throw Error('Unknown theme: '+line);
  for(const asset of ['sample.html','shot-desktop.jpg','shot-mobile.jpg','theme.md'])await fs.access(new URL(id+'/'+asset,dir));
  const fx=await effectsOf(id);
+ // The stand-out variant (statement.css), shown in the sample with ?variant=statement.
+ const variant=await fs.access(new URL(id+'/statement.css',dir)).then(()=>true,()=>false);
  previews[family].push(`### [${id}](${id}/theme.md)
 
 Measured on ${count} ${country==='KR'?'Korean':'Japanese'} sites.
 ${fx.names.length?`
 Effects offered: ${fx.names.map(n=>'`'+n+'`').join(', ')}${fx.demo?` (open \`sample.html${fx.demo}\` from a checkout to see them)`:''}.
+`:''}${variant?`
+Stand-out variant: \`statement.css\` (open \`sample.html?variant=statement\` from a checkout; see "Stand-out variant" in its theme.md).
 `:''}
 | Desktop | Mobile |
 | --- | --- |
 | ![${id} desktop](${id}/shot-desktop.jpg) | ![${id} mobile](${id}/shot-mobile.jpg) |`);
- themes.push({id,family,country,style,count,fx,photo:['photo','dark'].includes(style)});
+ themes.push({id,family,country,style,count,fx,variant,photo:['photo','dark'].includes(style)});
 }
 if(!themes.length)throw Error('Theme catalog is empty');
 const options=entries=>Object.entries(entries).map(([key,value])=>`<option value="${key}">${value}</option>`).join('');
 const page=lang=>{
  const t=LANGS[lang];
- const cards=themes.map(({id,family,country,style,count,fx,photo})=>`<article data-family="${family}" data-photo="${photo}">
+ const cards=themes.map(({id,family,country,style,count,fx,variant,photo})=>`<article data-family="${family}" data-photo="${photo}">
 <a href="${id}/sample.html"><img loading="lazy" src="${id}/shot-desktop.jpg" alt=""><div><small>${t.families[family]}</small><h2>${t.styles[style]}</h2><span>${id} ↗</span></div></a>
-<p>${t.measured(country,count)}${photo?' · '+t.needsPhotos:''}</p>${fx.names.length?`<p class="fx">${t.effectsLabel}: ${fx.names.map(n=>t.effects[n]||n).join(' · ')}${fx.demo?` · <a href="${id}/sample.html${fx.demo}">${t.seeEffects}</a>`:''}</p>`:''}</article>`);
+<p>${t.measured(country,count)}${photo?' · '+t.needsPhotos:''}</p>${fx.names.length?`<p class="fx">${t.effectsLabel}: ${fx.names.map(n=>t.effects[n]||n).join(' · ')}${fx.demo?` · <a href="${id}/sample.html${fx.demo}">${t.seeEffects}</a>`:''}</p>`:''}${variant?`<p class="fx"><a href="${id}/sample.html?variant=statement">${t.variant}</a></p>`:''}</article>`);
  const alternates=Object.entries(LANGS).map(([code,l])=>`<link rel="alternate" hreflang="${code}" href="${l.file}">`).join('');
  const nav=Object.entries(LANGS).map(([code,l])=>`<a href="${l.file}" lang="${code}" hreflang="${code}"${code===lang?' aria-current="page"':''}>${l.name}</a>`).join(' ');
  return `<!doctype html>

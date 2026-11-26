@@ -1,0 +1,29 @@
+/* place-photo-quiet · stand-out variant ("statement"). Optional: link it after theme.css, and load Zen Old Mincho 400.
+   Turn it on in the sample with sample.html?variant=statement. Measured basis and test: theme.md, "Stand-out variant".
+
+   Measured on the most distinctive quarter of Japanese place sites (35 of 142 inns, restaurants, weddings, tourism
+   and event sites, by distance from the family mean on the 23 archetype features) against the other three quarters:
+   display 56px vs 38px, display/body 3.8 vs 2.4, h1 weight 400 vs 500, headline width 24% vs 16% of the page,
+   serif display 49% vs 25%, white share 14% vs 40%, dark ground 20% vs 2%.
+   The trade's core content stays: for an inn that is the photograph of the place, so the full-bleed photo hero and
+   the booking bar under it are as in the theme. The measured traits go on the type and on one section's ground. */
+
+:root {
+  --display-size: clamp(34px, 4.4vw, 64px);
+  --h2: clamp(26px, 2.4vw, 36px);
+}
+
+/* The claim on the photograph: larger and lighter Mincho. */
+h1, h2 { font-weight: 400; }
+.hero__claim h1 { line-height: 1.45; letter-spacing: 0.06em; }
+/* phones: the longest line (11 characters) stays on one line at 390px, as in the theme */
+@media (max-width: 767px) { .hero__claim h1 { font-size: 30px; letter-spacing: 0.02em; } }
+
+/* Less white: the cuisine section on the night ground (the one dark band; the rest stays light). */
+#cuisine {
+  --ink: #eee8de;
+  --ink-soft: #b9afa1;
+  --line: #3b352e;
+  background: var(--night);
+  color: var(--ink);
+}

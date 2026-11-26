@@ -71,6 +71,23 @@ Measured on 40 Korean white quiet sites of all families (`data/motion/summary.js
 - **Not for this theme**: `intro`.
 - One moving hero: video *or* slides, never both.
 
+## Stand-out variant (optional)
+
+`statement.css`, linked after `theme.css` (with Noto Serif KR 600 loaded); see it with `sample.html?variant=statement`. For a clinic that wants to look unlike the clinics next door. The theme stays the default.
+
+Measured on the most distinctive quarter of Korean dental, dermatology, Korean-medicine and hospital sites (21 of 87, by distance from the family mean on the 23 archetype features) against the other three quarters:
+
+| What | Distinctive quarter | The rest | Variant |
+|---|---|---|---|
+| Serif display | 38% | 15% | Noto Serif KR 600 for h1 and h2 |
+| Display size, display ÷ body | 78px, 5.0 | 50px, 3.1 | 78px on desktop, 44px on phones |
+| Full-bleed hero | 38% | 16% of the white-quiet cell | the hero photograph runs to the right edge of the window; the doctor's portrait to the left edge |
+| Paper ground | 5% | 6% | stays white (cream with a serif display is a scored AI-look signal) |
+
+The hours strip, the claim and the booking button stay on a 900px first screen, as in the theme.
+
+Blind test (26 November 2026, the sample page, Claude and Codex judges, 12 verdicts in both orders): a patient would remember the variant 12 of 12, the clinic's director would pick it 11 of 12; the theme still read as the more typical local-studio site 12 of 12 and was the one judges would ship 9 of 12. An earlier version that pushed the hours strip off the first screen lost the director's pick 3 of 4.
+
 ## Applying to a client's content
 
 Learned on a real dental page (바른미소치과의원, 20 November 2026). See also `../README.md`.
