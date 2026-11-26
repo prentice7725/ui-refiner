@@ -2,11 +2,16 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
-## Unreleased
+## 0.15.0 — 2026-11-26
 
+Three themes gain an optional stand-out variant for clients who want to look unlike their neighbours, and the theme gallery is in English, Korean and Japanese.
+
+### Added
 - Stand-out variants: `care-white`, `place-photo-quiet` and `business-white` carry an optional `statement.css`, measured on the most distinctive quarter of their family (the sites farthest from the family mean on the 23 archetype features) and kept to the trade's core content on the first screen. See them with `sample.html?variant=statement` and in the gallery; `ui-refiner theme starter <theme> --variant statement` copies one, links it after `theme.css`, and checks the brand colour with it; `theme list` names the themes that have one. In blind tests on the sample pages (26 November 2026, Claude and Codex judges, 12 verdicts per theme) the variant was the one remembered 12 of 12 in all three and the owner's pick 11, 11 and 9 of 12, while the plain theme still read as the more typical site. A first round that let the distinctive traits move the trade's core content (the inn's photograph, the product screen, the clinic's hours) lost the owner's pick in two of the three; the themes README now states that rule. The plain theme stays the default; the skill uses a variant when the person wants the client to look unlike its neighbours.
-- `business-white` screenshots redrawn: the customer-story photograph was blank in the full-page capture (a lazy image), not on the page.
 - The theme gallery is in English (`index.html`), Korean (`index.ko.html`) and Japanese (`index.ja.html`), each linking to the others; the note on a published sample links back to the gallery in the sample's language.
+
+### Fixed
+- `business-white` screenshots redrawn: the customer-story photograph was blank in the full-page capture (a lazy image), not on the page.
 
 ## 0.14.0 — 2026-11-26
 
