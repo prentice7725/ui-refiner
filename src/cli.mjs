@@ -25,7 +25,7 @@ import {listThemes,themeStarter} from './theme-starter.mjs';
 import {ALLOW_FILE,readAllow,addAllow,removeAllow} from './allow.mjs';
 import {extractSystem,checkSystem} from './site-system.mjs';
 
-const help=`UI Refiner 0.13.0 — de-AI web design review and UI quality gate
+const help=`UI Refiner 0.14.0 — de-AI web design review and UI quality gate
   ui-refiner scan <url|host|file> [--out ui-refiner-scan] [--lang auto|ko|ja|en] [--locale ja-JP] [--source src] [--compare previous-scan-dir|scan.json | --no-compare] [--json]
       zero-config design review of any page; report language follows the page unless --lang or UI_REFINER_LANG is set;
       a rescan of the same page into the same --out folder is compared with the previous scan automatically
