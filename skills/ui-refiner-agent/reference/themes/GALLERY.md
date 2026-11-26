@@ -12,6 +12,8 @@ Measured on 65 Japanese sites.
 
 Effects offered: `hero-slides`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
 
+Stand-out variant: `statement.css` (open `sample.html?variant=statement` from a checkout; see "Stand-out variant" in its theme.md).
+
 | Desktop | Mobile |
 | --- | --- |
 | ![place-photo-quiet desktop](place-photo-quiet/shot-desktop.jpg) | ![place-photo-quiet mobile](place-photo-quiet/shot-mobile.jpg) |
@@ -33,6 +35,8 @@ Effects offered: `hero-slides` (open `sample.html?fx=hero-slides,reveal` from a 
 Measured on 38 Korean sites.
 
 Effects offered: `hero-slides`, `hero-video`, `reveal` (open `sample.html?fx=hero-slides,reveal` from a checkout to see them).
+
+Stand-out variant: `statement.css` (open `sample.html?variant=statement` from a checkout; see "Stand-out variant" in its theme.md).
 
 | Desktop | Mobile |
 | --- | --- |
@@ -65,6 +69,8 @@ Effects offered: `hero-slides`, `hero-video` (open `sample.html?fx=hero-video` f
 Measured on 50 Korean sites.
 
 Effects offered: `hero-slides`, `hero-video`, `reveal`.
+
+Stand-out variant: `statement.css` (open `sample.html?variant=statement` from a checkout; see "Stand-out variant" in its theme.md).
 
 | Desktop | Mobile |
 | --- | --- |

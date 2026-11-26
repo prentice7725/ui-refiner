@@ -67,6 +67,24 @@ Measured on 40 Korean white quiet sites of all families (`data/motion/summary.js
 - **Not for this theme**: `intro`.
 - One moving hero: video *or* slides, never both.
 
+## Stand-out variant (optional)
+
+`statement.css`, linked after `theme.css`; see it with `sample.html?variant=statement`. For a company that wants to look unlike the other tools in its category. The theme stays the default.
+
+Measured on the most distinctive quarter of Korean software, B2B service, tax, hiring, real-estate and local business sites (21 of 86, by distance from the family mean on the 23 archetype features) against the white-quiet cell this theme comes from:
+
+| What | Distinctive quarter | White-quiet cell | Variant |
+|---|---|---|---|
+| White share of four screens | 48% | 75% | a full-width photograph in the customer stories; a dark closing band |
+| Full-bleed hero or photograph | 43% | 23% | the customer photograph runs the full width of the window |
+| Photographs per page | 7 | 3.5 | the same photographs, larger |
+| Dark ground | 10% | 0% | the closing band only |
+| h1 weight | 600 | 700 | 600 |
+
+The split hero with the live product screen stays on the first screen, wider than in the theme: for software the product is the offer.
+
+Blind test (26 November 2026, the sample page, Claude and Codex judges, 12 verdicts in both orders): a shop owner would remember the variant 12 of 12, the founder would pick it 9 of 12 and judges would ship it 7 of 12 (Codex alone: 3 of 6 and 1 of 6, preferring the theme's photograph beside the cases for scanning); the theme read as the more typical site 6 of 12, the variant 3, with 3 even. An earlier version with a dark centred hero and the screen below the first screen lost: founders 6 of 12, ship 2 of 12 ("a generic SaaS template").
+
 ## Applying to a client's content
 
 See `../README.md`. Without a product (a tax office, a hiring firm), the hero's right column holds the one thing the client really shows: a sample report, a checklist of the process, or one photograph of the people at work.

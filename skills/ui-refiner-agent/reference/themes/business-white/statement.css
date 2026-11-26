@@ -1,0 +1,37 @@
+/* business-white · stand-out variant ("statement"). Optional: link it after theme.css.
+   Turn it on in the sample with sample.html?variant=statement. Measured basis and test: theme.md, "Stand-out variant".
+
+   Measured on the most distinctive quarter of Korean software, B2B service, tax, hiring, real-estate and local
+   business sites (21 of 86, by distance from the family mean on the 23 archetype features) against the white-quiet
+   cell this theme comes from: white share 48% vs 75%, full-bleed hero or photograph 43% vs 23%, photographs 7 vs 3.5,
+   dark ground 10% vs 0%, h1 weight 600 vs 700. Serif stays rare (5%), so no serif.
+   The trade's core content stays: for software that is the product screen, so the split hero with the live screen
+   stays on the first screen, wider than in the theme. The measured traits go on a full-width photograph and a dark
+   closing band. */
+
+:root { --night: #111418; }
+
+h1, h2 { font-weight: 600; }
+
+/* Hero: the product screen gets more of the width. */
+@media (min-width: 768px) {
+  .hero .wrap { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: 56px; }
+}
+
+/* Cases: the owner's photograph runs the full width of the window, the cases sit in three columns under it. */
+#cases .cases { grid-template-columns: 1fr; gap: 56px; }
+#cases .cases-photo { width: 100vw; margin-left: calc(50% - 50vw); }
+#cases .cases-photo img { aspect-ratio: 21 / 8; object-fit: cover; object-position: 50% 40%; border-radius: 0; }
+#cases .cases-photo figcaption { width: min(100% - 48px, 1200px); margin-inline: auto; }
+#cases .case-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+
+/* Closing band on the dark ground. */
+.closing { background: var(--night); color: #fff; }
+.closing p { color: #c6ccd4; }
+.closing .button { background: #fff; border-color: #fff; color: var(--night); }
+.closing .button:hover { background: #e6e9ed; border-color: #e6e9ed; }
+
+@media (max-width: 767px) {
+  #cases .cases-photo img { aspect-ratio: 4 / 3; }
+  #cases .case-list { grid-template-columns: 1fr; }
+}

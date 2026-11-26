@@ -1,0 +1,64 @@
+/* care-white · stand-out variant ("statement"). Optional: link it after theme.css, and load Noto Serif KR 600.
+   Turn it on in the sample with sample.html?variant=statement. Measured basis and test: theme.md, "Stand-out variant".
+
+   Measured on the most distinctive quarter of Korean medical care sites (21 of 87 dental, dermatology,
+   Korean-medicine and hospital sites, by distance from the family mean on the 23 archetype features) against the
+   other three quarters: serif display 38% vs 15%, display 78px vs 50px, display/body 5.0 vs 3.1, h1 weight 650 vs 700,
+   full-bleed hero 38% vs 16% of the white-quiet cell. Paper ground 5% in both, so the ground stays white.
+   The trade's core content stays on the first screen: the claim, the booking button and the hours strip. */
+
+:root {
+  --serif: "Noto Serif KR", "Nanum Myeongjo", serif;
+  --display-size: clamp(44px, 5.4vw, 78px);
+  --h2: clamp(28px, 2.9vw, 42px);
+}
+
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.doctor .name { font-family: var(--serif); }
+
+/* Hero: the claim at left on white, the photograph running to the right edge of the window.
+   It keeps care-white's height, so the hours strip stays on a 900px first screen. */
+.hero { padding-block: 0; }
+.hero .wrap {
+  max-width: none;
+  padding-inline: max(var(--gutter), calc((100vw - var(--content)) / 2)) 0;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: stretch;
+}
+.hero .wrap > div { padding-block: 64px 72px; align-self: center; }
+.hero h1 { line-height: 1.2; }
+.hero .lede { margin-top: 20px; }
+.hero .actions { margin-top: 32px; }
+.hero-photo { height: 100%; min-height: 520px; }
+.hero-photo img { height: 100%; aspect-ratio: auto; object-fit: cover; }
+
+/* Doctor: the portrait runs to the left edge, full section height, on the warm band. */
+#doctor { padding-block: 0; }
+#doctor .wrap.doctor {
+  max-width: none;
+  padding-inline: 0 max(var(--gutter), calc((100vw - var(--content)) / 2));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 88px;
+  align-items: stretch;
+}
+#doctor .wrap.doctor > div { padding-block: var(--gap); align-self: center; }
+.doctor-photo { height: 100%; min-height: 760px; }
+.doctor-photo img { height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 50% 25%; }
+
+@media (max-width: 767px) {
+  .hero .wrap, #doctor .wrap.doctor { padding-inline: 0; grid-template-columns: 1fr; gap: 0; }
+  /* care-white's phone spacing and its 4:3 photograph, so the booking button and the whole chair stay in view */
+  .hero .wrap > div { padding: 40px var(--gutter) 48px; }
+  .hero .lede { margin-top: 18px; }
+  .hero .actions { margin-top: 28px; }
+  .hero-photo { min-height: 0; }
+  .hero-photo img { aspect-ratio: 4 / 3; height: auto; }
+  #doctor .wrap.doctor > div { padding: 48px var(--gutter) 72px; }
+  .doctor-photo { min-height: 0; }
+  .doctor-photo img { aspect-ratio: 4 / 5; height: auto; }
+}

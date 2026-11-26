@@ -67,13 +67,14 @@ const help=`UI Refiner 0.14.0 — de-AI web design review and UI quality gate
       swaps realistic worst-case values (long labels and headings, long emails and URLs, big numbers) into the
       rendered text at 320, 390 and 1440px and lists what broke with the usual fix (exit 1 when something broke)
   ui-refiner theme list [--json]
-  ui-refiner theme starter <theme> [--out ui-refiner-theme] [--brand "#rrggbb"] [--face "Typeface name"] [--lang ko|ja] [--json]
+  ui-refiner theme starter <theme> [--out ui-refiner-theme] [--brand "#rrggbb"] [--face "Typeface name"] [--lang ko|ja] [--variant statement] [--json]
       copies a measured Korean or Japanese theme (theme.css, theme.md) and writes brand.css, which puts the client's
       colour and typeface on the theme's tokens, and STARTER.md, which lists the photographs the theme needs with
       their place and ratio; with --brand it renders the theme's sample in that colour and lists the text and buttons
       whose contrast the colour broke at 1440 and 390px, each with the nearest shade that passes (a warning; exit 0);
       a theme can be used for either language: --lang swaps its faces, line height and line breaking when the page
-      is not in the language the theme was measured in
+      is not in the language the theme was measured in; --variant statement also copies the theme's stand-out
+      variant (statement.css, three themes so far) for a client who wants to look unlike its neighbours
   ui-refiner init [--preset${presets.join('|')}] [--dir path] [--locale en-US|ko-KR|ja-JP]
   ui-refiner check [--config ui-refiner.config.json] [--url http://127.0.0.1:5173] [--changed-only] [--base ref]
   ui-refiner review packet --from report.json --out review-folder
@@ -98,7 +99,7 @@ function parse(args){const out={_:[]};for(let i=0;i<args.length;i++){
   if(a==='--no-photo'){out.noPhoto=true;continue;}
   if(a==='--no-optimise'){out.noOptimise=true;continue;}
   if(a==='--help'){out.help=true;continue;}
-  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed','--said','--brand','--face'].includes(a))throw new Error(`Unknown flag ${a}`);
+  if(!['--preset','--dir','--config','--url','--from','--out','--locale','--base','--format','--report','--query','--limit','--lang','--source','--compare','--pick','--page','--log','--kind','--trade','--tone','--count','--orientation','--system','--reason','--file','--seed','--said','--brand','--face','--variant'].includes(a))throw new Error(`Unknown flag ${a}`);
   const value=args[++i];if(!value||value.startsWith('--'))throw new Error(`Missing value for ${a}`);
   const key=a.slice(2);if(out[key])throw new Error(`Duplicate flag ${a}`);out[key]=value;
 }return out;}
@@ -144,10 +145,10 @@ try{
   }
   else if(command==='theme'&&sub==='list'&&args._.length===2){
     const themes=await listThemes();
-    console.log(args.json?JSON.stringify(themes,null,2):themes.map(t=>`${t.id.padEnd(24)} ${t.basis} (${t.sites} sites)`).join('\n'));
+    console.log(args.json?JSON.stringify(themes,null,2):themes.map(t=>`${t.id.padEnd(24)} ${t.basis} (${t.sites} sites)${t.variants.length?` · variant: ${t.variants.join(', ')}`:''}`).join('\n'));
   }
   else if(command==='theme'&&sub==='starter'&&args._.length===3){
-    const r=await themeStarter(args._[2],{out:args.out||'ui-refiner-theme',brand:args.brand,face:args.face,lang:args.lang});
+    const r=await themeStarter(args._[2],{out:args.out||'ui-refiner-theme',brand:args.brand,face:args.face,lang:args.lang,variant:args.variant});
     if(args.json)console.log(JSON.stringify(r,null,2));
     else{
       const c=r.contrast;
