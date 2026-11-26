@@ -21,3 +21,4 @@ local/
 
 # Claude app preview server for the themes (local)
 .claude/launch.json
+_site/
