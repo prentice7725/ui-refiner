@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>테마 미리보기 · UI Refiner</title><link rel="alternate" hreflang="en" href="index.html"><link rel="alternate" hreflang="ko" href="index.ko.html"><link rel="alternate" hreflang="ja" href="index.ja.html"><style>
+*{box-sizing:border-box}body{margin:auto;max-width:90rem;padding:clamp(1rem,4vw,4rem);background:#f7f7f4;color:#18241f;font:1rem/1.5 system-ui,sans-serif}h1{font-size:clamp(2rem,5vw,4rem);letter-spacing:-.055em;margin:0 0 1.2rem}form{display:flex;gap:1rem;flex-wrap:wrap;border-block:1px solid #aeb7af;padding:1rem 0}label{display:grid;gap:.25rem}select{padding:.55rem;color:inherit;font:inherit}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1.5rem}article{background:white;border:1px solid #ccd3ce}article img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}article div,article p{padding:0 1rem}article div{margin-top:.8rem}a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #15613a;outline-offset:2px}article a{display:block}a:hover h2{text-decoration:underline}h2{margin:.15rem 0}small,span,article p{color:#405149}article .fx a,.intro a{color:inherit;text-decoration:underline;text-underline-offset:.2em}.intro{max-width:44rem;margin:0 0 1.5rem;color:#405149}.lang{display:flex;gap:1rem;justify-content:flex-end;margin:0 0 1rem;font-size:.9rem}.lang a{color:#405149}.lang a[aria-current]{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:.2em}:lang(ko){font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif}:lang(ja){font-family:"Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,"Noto Sans JP",system-ui,sans-serif}
+</style><nav class="lang" aria-label="언어"><a href="index.html" lang="en" hreflang="en">English</a> <a href="index.ko.html" lang="ko" hreflang="ko" aria-current="page">한국어</a> <a href="index.ja.html" lang="ja" hreflang="ja">日本語</a></nav><main><h1>테마 미리보기</h1>
+<p class="intro">한국·일본 사이트 2,326곳을 실측해 만든 <a href="https://github.com/prentice7725/ui-refiner">UI Refiner</a>의 웹 디자인 테마입니다. 견본 속 업체, 사람, 숫자와 사진은 모두 지어낸 것입니다.</p>
+<form><label>업종<select name="family"><option value="">전체</option><option value="place">숙박·관광·외식</option><option value="care">의료·케어</option><option value="business">기업</option><option value="shop">쇼핑</option><option value="public">공공·정보</option><option value="creative">창작·스튜디오</option></select></label>
+<label>고객 사진<select name="photo"><option value="">사진 있음 · 전체 보기</option><option value="false">사진 없음 · 사진 필수 테마 제외</option></select></label></form>
+<p role="status" id="status"></p><section aria-label="테마 목록"><article data-family="place" data-photo="true">
+<a href="place-photo-quiet/sample.html"><img loading="lazy" src="place-photo-quiet/shot-desktop.jpg" alt=""><div><small>숙박·관광·외식</small><h2>사진 중심</h2><span>place-photo-quiet ↗</span></div></a>
+<p>일본 사이트 65곳 실측 · 고객 사진 필요</p><p class="fx">효과: 슬라이드 · 스크롤 등장 · <a href="place-photo-quiet/sample.html?fx=hero-slides,reveal">효과 켜고 보기</a></p></article>
+<article data-family="care" data-photo="false">
+<a href="care-white/sample.html"><img loading="lazy" src="care-white/shot-desktop.jpg" alt=""><div><small>의료·케어</small><h2>밝은 여백</h2><span>care-white ↗</span></div></a>
+<p>한국 사이트 38곳 실측</p><p class="fx">효과: 슬라이드 · 영상 · 스크롤 등장 · <a href="care-white/sample.html?fx=hero-slides,reveal">효과 켜고 보기</a></p></article>
+<article data-family="business" data-photo="true">
+<a href="business-dark/sample.html"><img loading="lazy" src="business-dark/shot-desktop.jpg" alt=""><div><small>기업</small><h2>어두운 시네마틱</h2><span>business-dark ↗</span></div></a>
+<p>한국 사이트 35곳 실측 · 고객 사진 필요</p><p class="fx">효과: 슬라이드 · 영상 · <a href="business-dark/sample.html?fx=hero-video">효과 켜고 보기</a></p></article>
+<article data-family="business" data-photo="false">
+<a href="business-white/sample.html"><img loading="lazy" src="business-white/shot-desktop.jpg" alt=""><div><small>기업</small><h2>밝은 여백</h2><span>business-white ↗</span></div></a>
+<p>한국 사이트 50곳 실측</p><p class="fx">효과: 슬라이드 · 영상 · 스크롤 등장</p></article>
+<article data-family="business" data-photo="false">
+<a href="business-corporate-quickbar/sample.html"><img loading="lazy" src="business-corporate-quickbar/shot-desktop.jpg" alt=""><div><small>기업</small><h2>기업 표준형</h2><span>business-corporate-quickbar ↗</span></div></a>
+<p>한국 사이트 41곳 실측</p><p class="fx">효과: 슬라이드 · <a href="business-corporate-quickbar/sample.html?fx=hero-slides">효과 켜고 보기</a></p></article>
+<article data-family="care" data-photo="false">
+<a href="care-corporate/sample.html"><img loading="lazy" src="care-corporate/shot-desktop.jpg" alt=""><div><small>의료·케어</small><h2>기업 표준형</h2><span>care-corporate ↗</span></div></a>
+<p>일본 사이트 68곳 실측</p><p class="fx">효과: 슬라이드 · 스크롤 등장</p></article>
+<article data-family="place" data-photo="true">
+<a href="place-photo-view/sample.html"><img loading="lazy" src="place-photo-view/shot-desktop.jpg" alt=""><div><small>숙박·관광·외식</small><h2>사진 중심</h2><span>place-photo-view ↗</span></div></a>
+<p>한국 사이트 43곳 실측 · 고객 사진 필요</p><p class="fx">효과: 슬라이드 · <a href="place-photo-view/sample.html?fx=hero-slides,reveal">효과 켜고 보기</a></p></article>
+<article data-family="business" data-photo="false">
+<a href="business-corporate-message/sample.html"><img loading="lazy" src="business-corporate-message/shot-desktop.jpg" alt=""><div><small>기업</small><h2>기업 표준형</h2><span>business-corporate-message ↗</span></div></a>
+<p>일본 사이트 52곳 실측</p><p class="fx">효과: 슬라이드 · 스크롤 등장 · <a href="business-corporate-message/sample.html?fx=hero-slides,reveal">효과 켜고 보기</a></p></article>
+<article data-family="public" data-photo="false">
+<a href="public-portal-search/sample.html"><img loading="lazy" src="public-portal-search/shot-desktop.jpg" alt=""><div><small>공공·정보</small><h2>정보 밀집형</h2><span>public-portal-search ↗</span></div></a>
+<p>한국 사이트 61곳 실측</p><p class="fx">효과: 슬라이드</p></article>
+<article data-family="public" data-photo="false">
+<a href="public-portal-purpose/sample.html"><img loading="lazy" src="public-portal-purpose/shot-desktop.jpg" alt=""><div><small>공공·정보</small><h2>정보 밀집형</h2><span>public-portal-purpose ↗</span></div></a>
+<p>일본 사이트 64곳 실측</p><p class="fx">효과: 슬라이드 · 스크롤 등장</p></article>
+<article data-family="shop" data-photo="false">
+<a href="shop-portal-grid/sample.html"><img loading="lazy" src="shop-portal-grid/shot-desktop.jpg" alt=""><div><small>쇼핑</small><h2>정보 밀집형</h2><span>shop-portal-grid ↗</span></div></a>
+<p>한국 사이트 60곳 실측</p><p class="fx">효과: 슬라이드</p></article>
+<article data-family="shop" data-photo="false">
+<a href="shop-portal-story/sample.html"><img loading="lazy" src="shop-portal-story/shot-desktop.jpg" alt=""><div><small>쇼핑</small><h2>정보 밀집형</h2><span>shop-portal-story ↗</span></div></a>
+<p>일본 사이트 57곳 실측</p><p class="fx">효과: 슬라이드 · 스크롤 등장</p></article>
+<article data-family="creative" data-photo="true">
+<a href="creative-dark/sample.html"><img loading="lazy" src="creative-dark/shot-desktop.jpg" alt=""><div><small>창작·스튜디오</small><h2>어두운 시네마틱</h2><span>creative-dark ↗</span></div></a>
+<p>한국 사이트 34곳 실측 · 고객 사진 필요</p><p class="fx">효과: 슬라이드 · 영상</p></article>
+<article data-family="creative" data-photo="false">
+<a href="creative-bigtype/sample.html"><img loading="lazy" src="creative-bigtype/shot-desktop.jpg" alt=""><div><small>창작·스튜디오</small><h2>대형 타이포그래피</h2><span>creative-bigtype ↗</span></div></a>
+<p>일본 사이트 36곳 실측</p><p class="fx">효과: 슬라이드 · 영상 · 스크롤 등장 · <a href="creative-bigtype/sample.html?fx=marquee,reveal,intro">효과 켜고 보기</a></p></article></section></main>
+<script>
+const form=document.querySelector('form');
+function filter(){
+ const selected=new FormData(form);
+ let n=0;
+ for(const card of document.querySelectorAll('article')){
+  card.hidden=Array.from(selected).some(([key,value])=>value && card.dataset[key]!==value);
+  if(!card.hidden)n++;
+ }
+ document.getElementById('status').textContent=n?"테마 "+n+"개":"조건에 맞는 테마가 없습니다. 업종 또는 사진 조건을 변경해 주세요.";
+}
+form.addEventListener('change',filter);
+filter();
+</script></html>

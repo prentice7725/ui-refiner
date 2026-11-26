@@ -2,6 +2,10 @@
 
 All notable changes to UI Refiner. Dates are in Asia/Tokyo. Versions follow `package.json`; the deep-gate report `version` field and comparison contexts carry the same number.
 
+## Unreleased
+
+- The theme gallery is in English (`index.html`), Korean (`index.ko.html`) and Japanese (`index.ja.html`), each linking to the others; the note on a published sample links back to the gallery in the sample's language.
+
 ## 0.14.0 — 2026-11-26
 
 Applying a theme now keeps what is the client's own, and the theme gallery with its 14 samples is published on GitHub Pages.
