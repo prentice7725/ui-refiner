@@ -1,12 +1,12 @@
 # UI Refiner
 
-[English](README.md) · [한국어](README_KO.md) · [日本語](README_JA.md)
+[English](README.md) | 한국어 | [日本語](README_JA.md)
 
-UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자인 테마 14개를 제공합니다. Codex와 Claude Code에서 업종에 맞는 테마로 페이지를 만들거나, CLI로 기존 페이지를 점검할 수 있습니다.
+UI Refiner는 한국과 일본의 사이트 2,326곳을 실측해 만든 웹 디자인 테마 14개를 제공합니다. Codex나 Claude Code에서 업종에 맞는 테마로 페이지를 만들거나, CLI로 기존 페이지를 점검할 수 있습니다.
 
 ## 테마를 만든 과정
 
-**1. 페이지 유형 8가지.** 실측한 2,326곳은 전체 인상에 따라 8가지 유형으로 나뉩니다. 그림은 유형별 실측 평균(바탕, 사진, 글자 크기, 밀도)을 도식으로 그린 것입니다.
+**1. 페이지 유형 8가지.** 실측한 2,326곳은 전체 인상에 따라 8가지 유형으로 나뉩니다. 아래 그림은 유형별 실측 평균(바탕, 사진, 글자 크기, 밀도)을 도식으로 나타낸 것입니다.
 
 ![페이지 유형 8가지의 도식과 유형별 실측 사이트 수](docs/assets/archetypes.jpg)
 
@@ -21,7 +21,7 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 | business | 제조, 물류, 소프트웨어, 건설, 세무, 채용 | 235 | 249 |
 | creative | 디자인, 게임, 건축, 사진, 일러스트 | 130 | 234 |
 
-**3. 테마 14개.** 테마는 한 나라의 한 업종군에서 흔한 유형을 완성한 디자인입니다. 크기, 색, 배치는 그 유형에 속한 사이트의 실측값에서 가져왔습니다. 테마 옆의 숫자는 그 나라, 그 업종군에서 해당 유형에 속한 사이트 수입니다. `business-white`는 한국 business 235곳 가운데 50곳을 근거로 합니다. 나라는 그 테마를 측정한 곳일 뿐 쓸 수 있는 곳을 정하지 않습니다. 한국 의원이 일본에서 측정한 테마를 써도 되고, `theme starter --lang`이 조판을 페이지 언어에 맞춰 줍니다.
+**3. 테마 14개.** 각 테마는 특정 국가의 한 업종군에서 자주 쓰이는 유형을 완성한 디자인으로, 크기·색·배치를 해당 유형 사이트의 실측값에서 가져왔습니다. 테마 옆의 숫자는 그 나라와 업종군에서 해당 유형에 속한 사이트 수입니다. 예를 들어 `business-white`는 한국 `business` 사이트 235곳 가운데 50곳을 바탕으로 합니다. 국가 표기는 테마를 측정한 곳일 뿐 사용할 수 있는 지역을 제한하지 않습니다. 한국 의원이 일본에서 측정한 테마를 써도 되며, `theme starter --lang`을 쓰면 조판을 페이지 언어에 맞춰 줍니다.
 
 <!-- theme-grid:start (node scripts/build-theme-grid.mjs) -->
 <table>
@@ -111,7 +111,7 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 
 [테마 갤러리](skills/ui-refiner-agent/reference/themes/GALLERY.md) · [측정 방법과 테마 목록](skills/ui-refiner-agent/reference/themes/README.md)
 
-**4. 한 업종군을 8가지 유형으로.** 어느 업종군이든 8가지 유형으로 그릴 수 있습니다. 아래는 한국 business 업종군의 가상 제조사 한 곳을 8가지로 그린 것입니다. 여덟 유형 가운데 dark cinematic, white quiet, standard corporate 셋은 테마가 있습니다. 나머지 다섯은 해당 유형의 실측값으로 만든 시연용 샘플만 있으며 테마로 제공하지 않습니다. 숫자는 그 조합이 얼마나 흔한지를 보여줍니다. 한국 business 사이트 가운데 white quiet는 50곳이고 bold colour는 15곳입니다.
+**4. 한 업종군을 8가지 유형으로.** 어느 업종군이든 8가지 유형으로 그릴 수 있습니다. 아래는 한국 `business` 업종군의 가상 제조사 한 곳을 8가지로 그린 예시입니다. 여덟 유형 가운데 `dark cinematic`, `white quiet`, `standard corporate` 셋은 테마로 제공합니다. 나머지 다섯은 해당 유형의 실측값으로 만든 시연용 샘플일 뿐 테마로 제공하지 않습니다. 숫자는 그 조합이 얼마나 흔한지를 나타냅니다. 한국 `business` 사이트 가운데 `white quiet`는 50곳, `bold colour`는 15곳입니다.
 
 ![가상의 한국 제조사 한 곳을 페이지 유형 8가지로 그린 이미지](docs/assets/archetype-demo-kr-business.jpg)
 
@@ -119,7 +119,7 @@ UI Refiner는 한국·일본 사이트 2,326곳을 실측해 만든 웹 디자�
 
 ## 빠른 시작
 
-Node.js 22.18 이상, npm, Git이 필요합니다. 기존 앱에 연결하려면 앱의 루트에서 실행하세요.
+Node.js 22.18 이상, npm, Git이 필요합니다. 기존 앱에 연결하려면 앱의 루트 디렉터리에서 실행하세요.
 
 ```sh
 git clone https://github.com/prentice7725/ui-refiner tools/ui-refiner
@@ -130,23 +130,23 @@ node bin/ui-refiner.mjs doctor
 node bin/ui-refiner.mjs scan examples/ai-slop-landing.html --lang ko
 ```
 
-예제 스캔이 끝나면 `ui-refiner-scan/DESIGN_REVIEW.md`를 여세요. 같은 폴더에 데스크톱·모바일 스크린샷이 저장됩니다. 예제 파일 대신 URL이나 로컬 HTML 경로를 넣으면 내 페이지를 검사합니다. 같은 페이지를 같은 출력 폴더에 다시 스캔하면 이전 결과와 비교합니다.
+예제 스캔이 끝나면 `ui-refiner-scan/DESIGN_REVIEW.md`를 여세요. 같은 폴더에 데스크톱·모바일 스크린샷도 저장됩니다. 예제 파일 대신 URL이나 로컬 HTML 경로를 넣으면 내 페이지를 검사합니다. 같은 페이지를 같은 출력 폴더에 다시 스캔하면 이전 결과와 비교해 줍니다.
 
 ## 에이전트에 연결하기
 
-위에서 연 `tools/ui-refiner` 폴더에서 사용하는 도구에 맞는 명령 하나를 실행하세요. CLI만 쓴다면 여기까지 설치할 필요가 없습니다.
+위에서 연 `tools/ui-refiner` 폴더에서 사용하는 도구에 맞는 명령 하나를 실행하세요. CLI만 쓴다면 이 단계는 건너뛰어도 됩니다.
 
 | 도구 | 설치 명령 | 대상 앱에서 사용 |
 |---|---|---|
 | Codex | `node scripts/install-agent-skill.mjs ../.. --host codex` | 새 채팅에서 “landing.html 디자인을 점검해 줘” |
 | Claude Code | `node scripts/install-agent-skill.mjs ../.. --host claude` | `/ui-review landing.html`로 점검, `/ui-refine landing.html`로 수정 |
 
-설치기를 다시 실행하면 버전과 파일 차이를 확인할 수 있습니다. `--update`를 붙이면 갱신 가능한 파일을 적용하고 사용자가 수정한 파일은 표시합니다.
+설치기를 다시 실행하면 설치된 버전과 파일 차이를 확인할 수 있습니다. `--update`를 붙이면 갱신 가능한 파일을 적용하며, 사용자가 수정한 파일은 따로 표시합니다.
 
 <details>
 <summary>Claude Code 플러그인으로 설치</summary>
 
-Claude Code 채팅에서 아래 두 명령을 실행한 뒤 플러그인 폴더에서 `npm ci`와 `npx playwright install chromium`을 실행하세요.
+Claude Code 채팅에서 아래 두 명령을 실행한 뒤, 플러그인 폴더에서 `npm ci`와 `npx playwright install chromium`을 실행하세요.
 
 ```text
 /plugin marketplace add prentice7725/ui-refiner
@@ -157,10 +157,10 @@ Claude Code 채팅에서 아래 두 명령을 실행한 뒤 플러그인 폴더�
 
 ## 사용 목적별 기능
 
-- **기존 페이지 점검.** `scan`은 디자인 신호의 근거와 수정 방향을 보여줍니다. 0–100점은 감지한 패턴의 강도를 나타냅니다. 글자 대비 같은 품질 문제는 별도로 보고합니다. 보고서는 한국어·일본어·영어를 지원하며 `--lang ko`처럼 지정할 수 있습니다.
-- **기존 페이지 수정.** 에이전트는 수정 범위가 작으면 기존 구조를 유지하고, 전면 개편할 때는 한국·일본 업종 페이지면 맞는 테마에서 시작합니다. 그 밖의 페이지나 여러 안을 원하면 세 시안을 비교해 고르게 합니다. `keep check`로 링크·폼·수치가 보존됐는지, `stress`로 긴 문구와 큰 숫자가 레이아웃을 깨는지 검사할 수 있습니다.
-- **새 페이지 제작.** 한국·일본 사이트 2,326곳의 실측을 바탕으로 만든 테마 14개가 있습니다. 저장소를 내려받은 뒤 갤러리를 브라우저로 열면 업종·사진 보유 여부로 샘플을 고를 수 있습니다. `ui-refiner theme starter <theme> --brand "#rrggbb"`는 테마를 프로젝트로 복사하면서 브랜드 색을 입히고, 필요한 사진과 그 색 때문에 깨지는 대비를 알려줍니다.
+- **기존 페이지 점검.** `scan`은 감지한 디자인 신호의 근거와 수정 방향을 알려 줍니다. 0–100점은 감지한 패턴의 강도를 나타내며, 글자 대비 같은 품질 문제는 별도로 보고합니다. 보고서는 한국어·일본어·영어를 지원하며 `--lang ko`처럼 지정할 수 있습니다.
+- **기존 페이지 수정.** 수정 범위가 작으면 기존 구조를 유지하고, 전면 개편할 때는 한국·일본 업종 페이지라면 맞는 테마에서 시작합니다. 그 밖의 페이지이거나 여러 안을 원할 때는 세 시안을 비교해 고르게 합니다. `keep check`로 링크·폼·수치가 보존됐는지 확인하고, `stress`로 긴 문구와 큰 숫자가 레이아웃을 깨는지 검사할 수 있습니다.
+- **새 페이지 제작.** 한국과 일본의 사이트 2,326곳을 실측해 만든 테마 14개를 제공합니다. 저장소를 내려받은 뒤 로컬 갤러리를 브라우저로 열면 업종과 사진 보유 여부로 샘플을 고를 수 있습니다. `ui-refiner theme starter <theme> --brand "#rrggbb"`는 테마를 프로젝트로 복사하면서 브랜드 색을 입히고, 필요한 사진과 그 색 때문에 깨지는 대비를 알려 줍니다. `--lang`으로 조판 언어를 전환할 수 있으며, 세 테마(`care-white`, `place-photo-quiet`, `business-white`)에는 차별화된 변형(`--variant statement`)도 포함됩니다.
 
-세 페이지를 대상으로 한 실험에서 세 시안 방식은 페이지별 평균 순위가 가장 높았지만, 완성된 세 페이지는 서로 비슷하다는 평가를 받았습니다. 모델 한 개가 평가한 결과입니다. [실험 결과](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
+세 페이지를 대상으로 한 시험에서는 세 시안 방식이 페이지별 평균 순위에서 가장 높았지만, 완성된 세 페이지는 서로 비슷하다는 평가를 받았습니다. 모델 한 개로 평가한 결과입니다. [시험 결과](docs/refine-pilot-2026-11-15-local/results-five-arms.json)
 
 [전체 가이드 및 프로젝트 QA 설정](docs/GUIDE_KO.md) · [변경 기록](CHANGELOG.md) · [MIT](LICENSE) · [외부 코드·데이터 라이선스](licenses/THIRD_PARTY.md)
